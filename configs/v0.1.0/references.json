@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "release": "GTSim v0.1.0",
+  "references": [
+    {
+      "id": "h100_gemm_512",
+      "status": "release_reproduced",
+      "workload": "H100 persistent two-stage GEMM",
+      "hardware": "H100 SXM",
+      "arguments": ["512", "512", "512"],
+      "expected_total_cycles": 12956,
+      "command": "gtsim_gemm 512 512 512"
+    },
+    {
+      "id": "h100_fa3_1_1_1_128_128",
+      "status": "release_reproduced",
+      "workload": "H100 FA3 two-stage pipeline",
+      "hardware": "H100 SXM",
+      "arguments": ["1", "1", "1", "128", "128"],
+      "expected_total_cycles": 7168,
+      "command": "gtsim_fa3 1 1 1 128 128"
+    }
+  ]
+}

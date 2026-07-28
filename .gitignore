@@ -1,0 +1,17 @@
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+Testing/
+*.o
+*.a
+*.dylib
+*.so
+*.exe
+*.log
+*.ncu-rep
+*.trace*
+__pycache__/
+.DS_Store
+.vscode/
+validation/results/
