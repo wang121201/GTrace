@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 3.16)
+project(tilegen_trace_cosim LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(ZLIB REQUIRED)
+find_package(Threads REQUIRED)
+add_executable(tilegen_native
+  source/work/tilegen-full-r1/canonical-full-runtime-r4/streaming.cpp
+  source/work/tilegen-full-r1/core-native-copy-r2/src/gpu.cpp
+  source/work/tilegen-full-r1/core-native-copy-r2/src/scheduler.cpp
+  source/work/tilegen-full-r1/core-native-copy-r2/src/simulator.cpp
+  source/work/tilegen-full-r1/core-native-copy-r2/src/simulator_session.cpp
+  source/work/tilegen-full-r1/core-native-copy-r2/src/sm.cpp
+  source/work/tilegen-full-r1/core-native-copy-r2/src/subpartition.cpp
+  source/work/hbfsim-latest/upstream/src/app/system_config.cpp
+  source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp
+  source/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp
+  source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp
+  source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp
+  source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp
+  source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp
+  source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp
+  source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp
+  source/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp
+  source/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp
+  source/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp
+  source/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp
+  source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp
+  source/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp
+)
+target_include_directories(tilegen_native PRIVATE
+  source/work/tilegen-full-r1/core-native-copy-r2/include
+  source/work/tilegen-evaluation-r1/driver
+  source/work/tilegen-norm-shared-r1/adapter
+  source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party
+  source/work/hbfsim-latest/upstream/src
+  source/work/gddr6-support/hbf_coupling
+)
+target_compile_definitions(tilegen_native PRIVATE TILEGEN_DIRTY_SECTOR_MODE=2)
+target_compile_options(tilegen_native PRIVATE -Wall -Wextra)
+target_link_libraries(tilegen_native PRIVATE ZLIB::ZLIB Threads::Threads)

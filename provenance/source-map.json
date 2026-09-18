@@ -1,0 +1,1984 @@
+{
+  "schema": "TILEGEN_NATIVE_DEPENDENCY_IMPORT_V1",
+  "input_sha256": "552a79065fa2e08d809964880d9e462a906b897457e6b2bf8e68bcab250e6d36",
+  "overlay_sha256": "45adfcacaf4bca3b48fdaf30a0097568f121e91f880ac0634ea83587f5e0d463",
+  "overlay_alias_count": 68,
+  "translation_unit_count": 22,
+  "file_count": 171,
+  "effective_overlay_files": 57,
+  "bytes": 4190647,
+  "native_capture_performed": false,
+  "B8_imported": false,
+  "source_semantics_modified": false,
+  "absolute_include_rewrites": 19,
+  "source_root": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment",
+  "rows": [
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party/nlohmann/json.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party/nlohmann/json.hpp",
+      "repository_path": "source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party/nlohmann/json.hpp",
+      "overlay_applied": false,
+      "original_bytes": 919975,
+      "original_sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6",
+      "copied_bytes": 919975,
+      "copied_sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/gddr6-support/hbf_coupling/prepared/directed_time.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/gddr6-support/hbf_coupling/prepared/directed_time.h",
+      "repository_path": "source/work/gddr6-support/hbf_coupling/prepared/directed_time.h",
+      "overlay_applied": false,
+      "original_bytes": 3578,
+      "original_sha256": "19ded7e38869c90539112e86f277899c757e7934d4230a44a50d3262372ea55e",
+      "copied_bytes": 3578,
+      "copied_sha256": "19ded7e38869c90539112e86f277899c757e7934d4230a44a50d3262372ea55e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/app/system_config.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/app/system_config.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/app/system_config.cpp",
+      "overlay_applied": false,
+      "original_bytes": 32019,
+      "original_sha256": "de9c57e37a9e3f5d26e3f278ce1d7096ee9150cd8b20ef4ed60055d61867283f",
+      "copied_bytes": 32019,
+      "copied_sha256": "de9c57e37a9e3f5d26e3f278ce1d7096ee9150cd8b20ef4ed60055d61867283f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/app/system_config.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/app/system_config.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/app/system_config.hpp",
+      "overlay_applied": false,
+      "original_bytes": 4376,
+      "original_sha256": "0b6dd8a106b69626ebc82ff95308b7405f798e029e8113ed97b60493044541ff",
+      "copied_bytes": 4376,
+      "copied_sha256": "0b6dd8a106b69626ebc82ff95308b7405f798e029e8113ed97b60493044541ff",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_config.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_config.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/host/hbf_config.hpp",
+      "overlay_applied": false,
+      "original_bytes": 10522,
+      "original_sha256": "d3b63ff8b39e01aceb1a08b0c36b4c41df0b2802071b16f6fa1404cb75ca47f4",
+      "copied_bytes": 10522,
+      "copied_sha256": "d3b63ff8b39e01aceb1a08b0c36b4c41df0b2802071b16f6fa1404cb75ca47f4",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp",
+      "overlay_applied": false,
+      "original_bytes": 444753,
+      "original_sha256": "a82e9e7e5eb64ee19fe3f06621e28829ecbb7f57715886141dd17fe2ff775fde",
+      "copied_bytes": 444753,
+      "copied_sha256": "a82e9e7e5eb64ee19fe3f06621e28829ecbb7f57715886141dd17fe2ff775fde",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_controller.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_controller.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/host/hbf_controller.hpp",
+      "overlay_applied": false,
+      "original_bytes": 90278,
+      "original_sha256": "8dc09d6266598d16c6f1370dc463d2cae11d37b213aea77ef778ffe6742fdc23",
+      "copied_bytes": 90278,
+      "copied_sha256": "8dc09d6266598d16c6f1370dc463d2cae11d37b213aea77ef778ffe6742fdc23",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp",
+      "overlay_applied": false,
+      "original_bytes": 64196,
+      "original_sha256": "0f273817f4d74de7b6a883e96ba77c02204c0022066aabf729d4f1b46f3fadf9",
+      "copied_bytes": 64196,
+      "copied_sha256": "0f273817f4d74de7b6a883e96ba77c02204c0022066aabf729d4f1b46f3fadf9",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp",
+      "overlay_applied": false,
+      "original_bytes": 28983,
+      "original_sha256": "a4dcc5582b3df298c025cb015cd546228b10b3066a7a2ef3d8eba0ef5afc8cc8",
+      "copied_bytes": 28983,
+      "copied_sha256": "a4dcc5582b3df298c025cb015cd546228b10b3066a7a2ef3d8eba0ef5afc8cc8",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.hpp",
+      "overlay_applied": false,
+      "original_bytes": 517,
+      "original_sha256": "b549ea2ef24026964329738f87846e9ce036a48455c9ca0d74c7895de68e4536",
+      "copied_bytes": 517,
+      "copied_sha256": "b549ea2ef24026964329738f87846e9ce036a48455c9ca0d74c7895de68e4536",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp",
+      "overlay_applied": false,
+      "original_bytes": 5767,
+      "original_sha256": "1dbda009daf3032055ae0c31088ceb6f7b5b4b7f0c69bb093077a10d378bc9d4",
+      "copied_bytes": 5767,
+      "copied_sha256": "1dbda009daf3032055ae0c31088ceb6f7b5b4b7f0c69bb093077a10d378bc9d4",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp",
+      "overlay_applied": false,
+      "original_bytes": 11503,
+      "original_sha256": "400fd6cc863f00101d5bc6b21e8170a6318b16a60f4b70492efe9c466bfd7119",
+      "copied_bytes": 11503,
+      "copied_sha256": "400fd6cc863f00101d5bc6b21e8170a6318b16a60f4b70492efe9c466bfd7119",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+      "overlay_applied": false,
+      "original_bytes": 37423,
+      "original_sha256": "2761e80808fb056e45839d528475dd59a0169bac67beb9c78a5eb3d8fd8d007d",
+      "copied_bytes": 37423,
+      "copied_sha256": "2761e80808fb056e45839d528475dd59a0169bac67beb9c78a5eb3d8fd8d007d",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/address_heatmap.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/address_heatmap.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/address_heatmap.hpp",
+      "overlay_applied": false,
+      "original_bytes": 7528,
+      "original_sha256": "ed782f559c914a3bb9abe92242d69e8e116d5e66572e5d09b4beaa0f8118417f",
+      "copied_bytes": 7528,
+      "copied_sha256": "ed782f559c914a3bb9abe92242d69e8e116d5e66572e5d09b4beaa0f8118417f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp",
+      "overlay_applied": false,
+      "original_bytes": 6347,
+      "original_sha256": "5f5080bbdd9843e790292ef62b2fa39b4f39a6e4f2fcdc3c0a8dde7e818d0bda",
+      "copied_bytes": 6347,
+      "copied_sha256": "5f5080bbdd9843e790292ef62b2fa39b4f39a6e4f2fcdc3c0a8dde7e818d0bda",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/base_die_link.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/base_die_link.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/base_die_link.hpp",
+      "overlay_applied": false,
+      "original_bytes": 1901,
+      "original_sha256": "fe6f1117fadcb99f345e937269486d1f91025d262e900b00b4a205436e21475e",
+      "copied_bytes": 1901,
+      "copied_sha256": "fe6f1117fadcb99f345e937269486d1f91025d262e900b00b4a205436e21475e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp",
+      "overlay_applied": false,
+      "original_bytes": 9720,
+      "original_sha256": "5fbc0d1a89cd48a2f42d122b68158707e46486708104d9caa610c2a863e817ed",
+      "copied_bytes": 9720,
+      "copied_sha256": "5fbc0d1a89cd48a2f42d122b68158707e46486708104d9caa610c2a863e817ed",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.hpp",
+      "overlay_applied": false,
+      "original_bytes": 5452,
+      "original_sha256": "e250874eb71bdeaa4fab12ddd285bcaa4ea2b7dcb95a21610a7ed5c973af499f",
+      "copied_bytes": 5452,
+      "copied_sha256": "e250874eb71bdeaa4fab12ddd285bcaa4ea2b7dcb95a21610a7ed5c973af499f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp",
+      "overlay_applied": false,
+      "original_bytes": 51380,
+      "original_sha256": "187867e0db28bf830161eb5b4a10b17aacce4b2e7413a656830e1a1b21e7015a",
+      "copied_bytes": 51380,
+      "copied_sha256": "187867e0db28bf830161eb5b4a10b17aacce4b2e7413a656830e1a1b21e7015a",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.hpp",
+      "overlay_applied": false,
+      "original_bytes": 15343,
+      "original_sha256": "1ec89f1df9005bad19ecd53b3f7713bacd1f2ffe42e947f8a766ec706abb9701",
+      "copied_bytes": 15343,
+      "copied_sha256": "1ec89f1df9005bad19ecd53b3f7713bacd1f2ffe42e947f8a766ec706abb9701",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+      "overlay_applied": false,
+      "original_bytes": 30173,
+      "original_sha256": "7bf8c2c7defbc878b67cf3066dafca48853d8d6b7864bf32dfd64a1c96811c0a",
+      "copied_bytes": 30173,
+      "copied_sha256": "7bf8c2c7defbc878b67cf3066dafca48853d8d6b7864bf32dfd64a1c96811c0a",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/gap_calendar.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/gap_calendar.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/gap_calendar.hpp",
+      "overlay_applied": false,
+      "original_bytes": 6171,
+      "original_sha256": "bad943adc9e4631d94c30fa1b51f25c665579e16094d542104729218ebed9670",
+      "copied_bytes": 6171,
+      "copied_sha256": "bad943adc9e4631d94c30fa1b51f25c665579e16094d542104729218ebed9670",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_config.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_config.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_config.hpp",
+      "overlay_applied": false,
+      "original_bytes": 6058,
+      "original_sha256": "9241a41f135d49aea00ed50e845ca8c3847c1a8a978aa4b0e8a69af597cf939b",
+      "copied_bytes": 6058,
+      "copied_sha256": "9241a41f135d49aea00ed50e845ca8c3847c1a8a978aa4b0e8a69af597cf939b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp",
+      "overlay_applied": false,
+      "original_bytes": 9947,
+      "original_sha256": "7e2ec124c6f86804253536b53a257fc81e13b46ca12be584cc62d362e185cca4",
+      "copied_bytes": 9947,
+      "copied_sha256": "7e2ec124c6f86804253536b53a257fc81e13b46ca12be584cc62d362e185cca4",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.hpp",
+      "overlay_applied": false,
+      "original_bytes": 3482,
+      "original_sha256": "1358813578eb719c405ea4b4da27b794ba17c70a345e7c20a49c0d525544043b",
+      "copied_bytes": 3482,
+      "copied_sha256": "1358813578eb719c405ea4b4da27b794ba17c70a345e7c20a49c0d525544043b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_standard.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_standard.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_standard.hpp",
+      "overlay_applied": false,
+      "original_bytes": 896,
+      "original_sha256": "f9a1b25aed6d4a1601e500d35fb27dc5b172070d773760cf97f8f2aeffecb27b",
+      "copied_bytes": 896,
+      "copied_sha256": "f9a1b25aed6d4a1601e500d35fb27dc5b172070d773760cf97f8f2aeffecb27b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbm/hbm_config.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbm/hbm_config.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_config.hpp",
+      "overlay_applied": false,
+      "original_bytes": 3547,
+      "original_sha256": "f7e233096b3efad2cfa2c2dd8f58e0e1bf3a2b783e19469d4256a6fec97e5d5e",
+      "copied_bytes": 3547,
+      "copied_sha256": "f7e233096b3efad2cfa2c2dd8f58e0e1bf3a2b783e19469d4256a6fec97e5d5e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-guard-r1/hbm_device.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+      "overlay_applied": true,
+      "original_bytes": 102872,
+      "original_sha256": "b2d62d09f75a7dfa0b760fce56ea76159c96e747ddfa1775e8190dbc393604d8",
+      "copied_bytes": 102872,
+      "copied_sha256": "b2d62d09f75a7dfa0b760fce56ea76159c96e747ddfa1775e8190dbc393604d8",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-independent-pc-r1/hbm_device.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.hpp",
+      "overlay_applied": true,
+      "original_bytes": 21599,
+      "original_sha256": "ba20fc2f59e40434b0ec622dffe79acfa77881cd65c9b63629a3b41ea0d817e9",
+      "copied_bytes": 21599,
+      "copied_sha256": "ba20fc2f59e40434b0ec622dffe79acfa77881cd65c9b63629a3b41ea0d817e9",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/physical_types.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/physical_types.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/physical_types.hpp",
+      "overlay_applied": false,
+      "original_bytes": 12537,
+      "original_sha256": "e91bb6097d86582aa44fbd4561cf4cf22327e8b74bd778e786861abd9ede6337",
+      "copied_bytes": 12537,
+      "copied_sha256": "e91bb6097d86582aa44fbd4561cf4cf22327e8b74bd778e786861abd9ede6337",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+      "overlay_applied": false,
+      "original_bytes": 16878,
+      "original_sha256": "822cc3e37b3a4f6b6545c63914e4d0b7ad5c82cbf17b4d264c34d4e8aea3ef91",
+      "copied_bytes": 16878,
+      "copied_sha256": "822cc3e37b3a4f6b6545c63914e4d0b7ad5c82cbf17b4d264c34d4e8aea3ef91",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/resource_calendar.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/resource_calendar.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/resource_calendar.hpp",
+      "overlay_applied": false,
+      "original_bytes": 5256,
+      "original_sha256": "96556c2bfd0ed394f7718272047afe501ab8d3557772cd1afe6e64e5e0603449",
+      "copied_bytes": 5256,
+      "copied_sha256": "96556c2bfd0ed394f7718272047afe501ab8d3557772cd1afe6e64e5e0603449",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp",
+      "overlay_applied": false,
+      "original_bytes": 53244,
+      "original_sha256": "69b2abc988083a159bf310764b622e2e1cecc115ce7b0cd82079fd442bbac04d",
+      "copied_bytes": 53244,
+      "copied_sha256": "69b2abc988083a159bf310764b622e2e1cecc115ce7b0cd82079fd442bbac04d",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/simulation_session.hpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/simulation_session.hpp",
+      "repository_path": "source/work/hbfsim-latest/upstream/src/physical/simulation_session.hpp",
+      "overlay_applied": false,
+      "original_bytes": 16098,
+      "original_sha256": "edb47687ba947a4c73097480129e918e7f8cdb4f0fd2f715528fbcf052951a0a",
+      "copied_bytes": 16098,
+      "copied_sha256": "edb47687ba947a4c73097480129e918e7f8cdb4f0fd2f715528fbcf052951a0a",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-evaluation-r1/driver/backend_reporting.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-evaluation-r1/driver/backend_reporting.h",
+      "repository_path": "source/work/tilegen-evaluation-r1/driver/backend_reporting.h",
+      "overlay_applied": false,
+      "original_bytes": 8380,
+      "original_sha256": "9432f90a4ba44dd212d4aaebd9e70f7ebddedbe2733f62f3bb775561d368e092",
+      "copied_bytes": 8380,
+      "copied_sha256": "9432f90a4ba44dd212d4aaebd9e70f7ebddedbe2733f62f3bb775561d368e092",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/attention_support.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/attention_support.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/attention_support.h",
+      "overlay_applied": false,
+      "original_bytes": 5330,
+      "original_sha256": "b2a1a1063da9462480c405eea1fc8b5f3e7cd91f08417d69e77022007b89807e",
+      "copied_bytes": 5330,
+      "copied_sha256": "b2a1a1063da9462480c405eea1fc8b5f3e7cd91f08417d69e77022007b89807e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/frame_bridge.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/frame_bridge.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/frame_bridge.h",
+      "overlay_applied": false,
+      "original_bytes": 4269,
+      "original_sha256": "0f754902660febdad7e2b9c3eb2167782e6f6cc39f5c40741ca7c2d87e633830",
+      "copied_bytes": 4269,
+      "copied_sha256": "0f754902660febdad7e2b9c3eb2167782e6f6cc39f5c40741ca7c2d87e633830",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/helper_class_gate.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/helper_class_gate.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/helper_class_gate.h",
+      "overlay_applied": false,
+      "original_bytes": 6617,
+      "original_sha256": "833c2aa7aa582445f1c2e945da43eec712dbf0d6cc38078014f82ec63c4c0d9e",
+      "copied_bytes": 6617,
+      "copied_sha256": "833c2aa7aa582445f1c2e945da43eec712dbf0d6cc38078014f82ec63c4c0d9e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/helper_support.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/helper_support.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/helper_support.h",
+      "overlay_applied": false,
+      "original_bytes": 15290,
+      "original_sha256": "4db736b32d88f230e3fa432db99cb16562f9614d9b3e10b660d896a3b50e0488",
+      "copied_bytes": 15290,
+      "copied_sha256": "4db736b32d88f230e3fa432db99cb16562f9614d9b3e10b660d896a3b50e0488",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/legacy_prepared.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/legacy_prepared.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/legacy_prepared.h",
+      "overlay_applied": false,
+      "original_bytes": 3823,
+      "original_sha256": "3a6e131280fa3a67b04f003583e4218634b74f9449db6f4c83b844cd96d73c2d",
+      "copied_bytes": 3823,
+      "copied_sha256": "3a6e131280fa3a67b04f003583e4218634b74f9449db6f4c83b844cd96d73c2d",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/model_dispatch.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-integration-r1/reference-prefix512-r1/model_dispatch.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/model_dispatch.h",
+      "overlay_applied": true,
+      "original_bytes": 17456,
+      "original_sha256": "86ec0c1b4d2c6cf50cbd6a4e83acfa6c0be7ebe20e06e3f290acedadf43ac5d4",
+      "copied_bytes": 17456,
+      "copied_sha256": "86ec0c1b4d2c6cf50cbd6a4e83acfa6c0be7ebe20e06e3f290acedadf43ac5d4",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/sealed_inputs.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/sealed_inputs.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/sealed_inputs.h",
+      "overlay_applied": false,
+      "original_bytes": 399446,
+      "original_sha256": "29c41aba4320d9d6e795ee957fb5e5e05609b2697fc355811d558e2d83fc95c9",
+      "copied_bytes": 399446,
+      "copied_sha256": "29c41aba4320d9d6e795ee957fb5e5e05609b2697fc355811d558e2d83fc95c9",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/streaming.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/streaming.cpp",
+      "repository_path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/streaming.cpp",
+      "overlay_applied": true,
+      "original_bytes": 33755,
+      "original_sha256": "07719f5da52068c09981ad203ce184d175b2d3d33afe2980aee2c2100933d45f",
+      "copied_bytes": 33415,
+      "copied_sha256": "d03f63531e56add518b642ca503aba3e518eee1fe7ef57a08d5e7b889db410bd",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/fine_context.h",
+          "replacement": "../../tilegen-hybrid-full-r1/fine_context.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/bindings.h",
+          "replacement": "../../tilegen-hybrid-cache-r1/bindings.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/tiny_context.h",
+          "replacement": "../../tilegen-hybrid-cache-r1/tiny_context.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/options.h",
+          "replacement": "../../tilegen-hybrid-full-r1/options.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/progress_summary.h",
+          "replacement": "../../tilegen-hybrid-cache-r1/progress_summary.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-driver-r1/model_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-driver-r1/model_plan.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/model_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 8776,
+      "original_sha256": "9e3ca30e1cf20ad3811c33d17967dbcbfb47392d3e10a773646960504129eb9f",
+      "copied_bytes": 8776,
+      "copied_sha256": "9e3ca30e1cf20ad3811c33d17967dbcbfb47392d3e10a773646960504129eb9f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-driver-r1/modeled_builder.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-driver-r1/modeled_builder.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/modeled_builder.h",
+      "overlay_applied": false,
+      "original_bytes": 3471,
+      "original_sha256": "00cdeb37c566ea1264b91b42dd482ebe552e2ece96955488a182202302a1057f",
+      "copied_bytes": 3471,
+      "copied_sha256": "00cdeb37c566ea1264b91b42dd482ebe552e2ece96955488a182202302a1057f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-driver-r1/sealed_inputs.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-driver-r1/sealed_inputs.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/sealed_inputs.h",
+      "overlay_applied": false,
+      "original_bytes": 5235,
+      "original_sha256": "20009af6159f671be927c80e36205d34ab9ad06e18742afdce0854c3af0d1288",
+      "copied_bytes": 5235,
+      "copied_sha256": "20009af6159f671be927c80e36205d34ab9ad06e18742afdce0854c3af0d1288",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-driver-r2/model_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-driver-r2/model_plan.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-gemv-driver-r2/model_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 8058,
+      "original_sha256": "0385b93c436d637388c76b64e62309a6b1866a504dbfdb523956d0a151e99a11",
+      "copied_bytes": 8058,
+      "copied_sha256": "0385b93c436d637388c76b64e62309a6b1866a504dbfdb523956d0a151e99a11",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-driver-r2/sealed_inputs.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-driver-r2/sealed_inputs.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-gemv-driver-r2/sealed_inputs.h",
+      "overlay_applied": false,
+      "original_bytes": 11835,
+      "original_sha256": "9f42a5b783463df432acf07137b72d6e5543455b7f7465ec10205ad7bcebdccf",
+      "copied_bytes": 11835,
+      "copied_sha256": "9f42a5b783463df432acf07137b72d6e5543455b7f7465ec10205ad7bcebdccf",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-host-r2/modeled_builder.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-host-r2/modeled_builder.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-gemv-host-r2/modeled_builder.h",
+      "overlay_applied": false,
+      "original_bytes": 3609,
+      "original_sha256": "0e973ec5e74ce3a93b7fcca17647fc464a9a28690f0987bb2f3c5136d03f22d8",
+      "copied_bytes": 3609,
+      "copied_sha256": "0e973ec5e74ce3a93b7fcca17647fc464a9a28690f0987bb2f3c5136d03f22d8",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-host-r2/prepared_address.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-host-r2/prepared_address.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-gemv-host-r2/prepared_address.h",
+      "overlay_applied": false,
+      "original_bytes": 1360,
+      "original_sha256": "18ebbc4981483ab523ececc6620b631a1550b669f3b4d8e931f6934778e64c9d",
+      "copied_bytes": 1360,
+      "copied_sha256": "18ebbc4981483ab523ececc6620b631a1550b669f3b4d8e931f6934778e64c9d",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-indexput-driver-r2/model_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-indexput-driver-r2/model_plan.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-indexput-driver-r2/model_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 7067,
+      "original_sha256": "480c2febb3f5d2739044b9cf9db93cd2f00e2ad7a508e37f6c7f658f61633a45",
+      "copied_bytes": 7067,
+      "copied_sha256": "480c2febb3f5d2739044b9cf9db93cd2f00e2ad7a508e37f6c7f658f61633a45",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-indexput-driver-r2/modeled_builder.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-indexput-driver-r2/modeled_builder.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-indexput-driver-r2/modeled_builder.h",
+      "overlay_applied": false,
+      "original_bytes": 5145,
+      "original_sha256": "2ed970e392ba957eaa9919a9aa0eb273f8b096728324eb6ce143533629655c91",
+      "copied_bytes": 5145,
+      "copied_sha256": "2ed970e392ba957eaa9919a9aa0eb273f8b096728324eb6ce143533629655c91",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-indexput-driver-r2/sealed_inputs.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-indexput-driver-r2/sealed_inputs.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-indexput-driver-r2/sealed_inputs.h",
+      "overlay_applied": false,
+      "original_bytes": 10472,
+      "original_sha256": "96b653f3ce1982c76ee553775b9fe7ac8a3e863f4678cc5555210f42c3907248",
+      "copied_bytes": 10472,
+      "copied_sha256": "96b653f3ce1982c76ee553775b9fe7ac8a3e863f4678cc5555210f42c3907248",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-indexput-driver-r2/source_adapter.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-indexput-driver-r2/source_adapter.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-indexput-driver-r2/source_adapter.h",
+      "overlay_applied": false,
+      "original_bytes": 6836,
+      "original_sha256": "c17521d9cd834362bb3c0e91f8a25dea0769a606c21b05f7a1e3a381c2e3ec3c",
+      "copied_bytes": 6836,
+      "copied_sha256": "c17521d9cd834362bb3c0e91f8a25dea0769a606c21b05f7a1e3a381c2e3ec3c",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/copy_adapter_support.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/copy_adapter_support.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/copy_adapter_support.h",
+      "overlay_applied": false,
+      "original_bytes": 2113,
+      "original_sha256": "72f2797010f246953e7b028abb9d204a8211a868fdd35205a9937762769591ae",
+      "copied_bytes": 2113,
+      "copied_sha256": "72f2797010f246953e7b028abb9d204a8211a868fdd35205a9937762769591ae",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/index_adapter_support.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/index_adapter_support.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/index_adapter_support.h",
+      "overlay_applied": false,
+      "original_bytes": 2106,
+      "original_sha256": "dbf13ecd90acfbca659583d5377dfdb6b6926a59b794d1b33f1848ea9f2f1c33",
+      "copied_bytes": 2106,
+      "copied_sha256": "dbf13ecd90acfbca659583d5377dfdb6b6926a59b794d1b33f1848ea9f2f1c33",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/mixed_seals.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/mixed_seals.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/mixed_seals.h",
+      "overlay_applied": false,
+      "original_bytes": 2941,
+      "original_sha256": "9638560e4f24135066a0f4b5de74b55e5af329b6dcf8d878b3d262ab0c96850d",
+      "copied_bytes": 2941,
+      "copied_sha256": "9638560e4f24135066a0f4b5de74b55e5af329b6dcf8d878b3d262ab0c96850d",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/model_dispatch.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/model_dispatch.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/model_dispatch.h",
+      "overlay_applied": false,
+      "original_bytes": 9435,
+      "original_sha256": "df1d883df3e36f9aa21d946243c267e30aa917c737ebc6e0ae83b56d1d8a5105",
+      "copied_bytes": 9435,
+      "copied_sha256": "df1d883df3e36f9aa21d946243c267e30aa917c737ebc6e0ae83b56d1d8a5105",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/p28_support.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/p28_support.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/p28_support.h",
+      "overlay_applied": false,
+      "original_bytes": 3089,
+      "original_sha256": "483e31097b7f78ccfdbd82bffe94c2cec672af0bc166776da88d764e8203f208",
+      "copied_bytes": 3089,
+      "copied_sha256": "483e31097b7f78ccfdbd82bffe94c2cec672af0bc166776da88d764e8203f208",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/rotary_class_support.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-mixed643-driver-r1/rotary_class_support.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/rotary_class_support.h",
+      "overlay_applied": false,
+      "original_bytes": 155902,
+      "original_sha256": "37a538cb2850f96f203c3c6d9d23a24b79095d8ace123cce5836370d4ab29515",
+      "copied_bytes": 155902,
+      "copied_sha256": "37a538cb2850f96f203c3c6d9d23a24b79095d8ace123cce5836370d4ab29515",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-driver-r1/model_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-driver-r1/model_plan.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-norm-driver-r1/model_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 8751,
+      "original_sha256": "b3e3cbdaaabbbd3bc6b52de64862d1ac0478ab9bc7f6b34e3d588d0209c76a9f",
+      "copied_bytes": 8751,
+      "copied_sha256": "b3e3cbdaaabbbd3bc6b52de64862d1ac0478ab9bc7f6b34e3d588d0209c76a9f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-driver-r1/modeled_builder.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-driver-r1/modeled_builder.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-norm-driver-r1/modeled_builder.h",
+      "overlay_applied": false,
+      "original_bytes": 3470,
+      "original_sha256": "d221da9aa3f2d56004e025d49a92dc262851d3ad68a5f26c05c2cbef0a9d394a",
+      "copied_bytes": 3470,
+      "copied_sha256": "d221da9aa3f2d56004e025d49a92dc262851d3ad68a5f26c05c2cbef0a9d394a",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-driver-r1/sealed_inputs.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-driver-r1/sealed_inputs.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-norm-driver-r1/sealed_inputs.h",
+      "overlay_applied": false,
+      "original_bytes": 4256,
+      "original_sha256": "68b30498d4f52d812a2a95d9583289dde85f1a762cf7ce8372cc5703f05ad460",
+      "copied_bytes": 4256,
+      "copied_sha256": "68b30498d4f52d812a2a95d9583289dde85f1a762cf7ce8372cc5703f05ad460",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/model_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/model_plan.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/model_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 6632,
+      "original_sha256": "18b48de275b3e4cdb1d96af65bcda567ec653f77f9b47a4c2c133148713571bd",
+      "copied_bytes": 6632,
+      "copied_sha256": "18b48de275b3e4cdb1d96af65bcda567ec653f77f9b47a4c2c133148713571bd",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/modeled_builder.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/modeled_builder.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/modeled_builder.h",
+      "overlay_applied": false,
+      "original_bytes": 4917,
+      "original_sha256": "617a8ecca7ee7070efc46584c36f140a4048ed5c90943b6071e6f6011d554b04",
+      "copied_bytes": 4917,
+      "copied_sha256": "617a8ecca7ee7070efc46584c36f140a4048ed5c90943b6071e6f6011d554b04",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/sealed_inputs.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/sealed_inputs.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/sealed_inputs.h",
+      "overlay_applied": false,
+      "original_bytes": 4529,
+      "original_sha256": "17dce883a3b6534f4db728c47e77a17ef9cc83ea1649fb4d82271dfa0a03b536",
+      "copied_bytes": 4529,
+      "copied_sha256": "17dce883a3b6534f4db728c47e77a17ef9cc83ea1649fb4d82271dfa0a03b536",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/source_adapter.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/source_adapter.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/source_adapter.h",
+      "overlay_applied": false,
+      "original_bytes": 5794,
+      "original_sha256": "6e8ff0aaf4d78f5d1ca26d88e008bf7e9123ec1640bead2a2079547934ebf5ed",
+      "copied_bytes": 5794,
+      "copied_sha256": "6e8ff0aaf4d78f5d1ca26d88e008bf7e9123ec1640bead2a2079547934ebf5ed",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-driver-r1/model_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-driver-r1/model_plan.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-rotary-driver-r1/model_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 7449,
+      "original_sha256": "ef1940f2a0159ae1a44a618160d0ab125fdaa451dd15317bdae8b5e3419d3ab5",
+      "copied_bytes": 7449,
+      "copied_sha256": "ef1940f2a0159ae1a44a618160d0ab125fdaa451dd15317bdae8b5e3419d3ab5",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-driver-r1/modeled_builder.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-driver-r1/modeled_builder.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-rotary-driver-r1/modeled_builder.h",
+      "overlay_applied": false,
+      "original_bytes": 3458,
+      "original_sha256": "0a295d6e02bf896b53f5f0b1f6c458864165689c79c2410e19081c62b9609bc7",
+      "copied_bytes": 3458,
+      "copied_sha256": "0a295d6e02bf896b53f5f0b1f6c458864165689c79c2410e19081c62b9609bc7",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-driver-r1/sealed_inputs.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-driver-r1/sealed_inputs.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-rotary-driver-r1/sealed_inputs.h",
+      "overlay_applied": false,
+      "original_bytes": 4590,
+      "original_sha256": "25d6fe3b2f738c538a1cf7888c750301877165e312e27714669598e9bdedd09b",
+      "copied_bytes": 4590,
+      "copied_sha256": "25d6fe3b2f738c538a1cf7888c750301877165e312e27714669598e9bdedd09b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-driver-r1/model_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-driver-r1/model_plan.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-silu-driver-r1/model_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 8981,
+      "original_sha256": "2c320342e02967352acf1062ad6d41514b312a0cd681b495206c6a49002df743",
+      "copied_bytes": 8981,
+      "copied_sha256": "2c320342e02967352acf1062ad6d41514b312a0cd681b495206c6a49002df743",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-driver-r1/modeled_builder.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-driver-r1/modeled_builder.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-silu-driver-r1/modeled_builder.h",
+      "overlay_applied": false,
+      "original_bytes": 3460,
+      "original_sha256": "da14edfa2533cec8a87709e0535e5e7b725eaeb53827de99f381618ee9258e89",
+      "copied_bytes": 3460,
+      "copied_sha256": "da14edfa2533cec8a87709e0535e5e7b725eaeb53827de99f381618ee9258e89",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-driver-r1/sealed_inputs.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-driver-r1/sealed_inputs.h",
+      "repository_path": "source/work/tilegen-full-r1/canonical-silu-driver-r1/sealed_inputs.h",
+      "overlay_applied": false,
+      "original_bytes": 3339,
+      "original_sha256": "422466c135bdba2e33e2efef48b61e34b53616873e4ee504fb28d3b7f574f786",
+      "copied_bytes": 3339,
+      "copied_sha256": "422466c135bdba2e33e2efef48b61e34b53616873e4ee504fb28d3b7f574f786",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/bulk_copy.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/bulk_copy.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/bulk_copy.h",
+      "overlay_applied": true,
+      "original_bytes": 26422,
+      "original_sha256": "18c592bc52d3a228506565c2723413f61ddcda393d74ab63b031f223becaaab2",
+      "copied_bytes": 26422,
+      "copied_sha256": "18c592bc52d3a228506565c2723413f61ddcda393d74ab63b031f223becaaab2",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cta_graph_store.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/cta_graph_store.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/cta_graph_store.h",
+      "overlay_applied": true,
+      "original_bytes": 35571,
+      "original_sha256": "b827c465a83ee7cb3c1e335a5680fea89fb289bcd0c41ed5c0ee8dba39818911",
+      "copied_bytes": 35571,
+      "copied_sha256": "b827c465a83ee7cb3c1e335a5680fea89fb289bcd0c41ed5c0ee8dba39818911",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cta_sparse_slots.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/include/cta_sparse_slots.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/cta_sparse_slots.h",
+      "overlay_applied": true,
+      "original_bytes": 11613,
+      "original_sha256": "c5b41229b86c27eacea78b5b1adaf9d1c9ad91a2387a35fb1d5eb482e741b773",
+      "copied_bytes": 11613,
+      "copied_sha256": "c5b41229b86c27eacea78b5b1adaf9d1c9ad91a2387a35fb1d5eb482e741b773",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cta_warp_placement.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/cta_warp_placement.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/cta_warp_placement.h",
+      "overlay_applied": true,
+      "original_bytes": 1229,
+      "original_sha256": "6701357f8b553f85dd5e89a8ce590ca8ccce92f06113d09eaa8299fd44d8944c",
+      "copied_bytes": 1229,
+      "copied_sha256": "6701357f8b553f85dd5e89a8ce590ca8ccce92f06113d09eaa8299fd44d8944c",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cycle.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/cycle.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/cycle.h",
+      "overlay_applied": true,
+      "original_bytes": 567,
+      "original_sha256": "d097deac2c86a7922aa0f9ec87299d8decb7cd18d9556c7146a3c9a1c9e2ff14",
+      "copied_bytes": 567,
+      "copied_sha256": "d097deac2c86a7922aa0f9ec87299d8decb7cd18d9556c7146a3c9a1c9e2ff14",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cycle_overlap.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/cycle_overlap.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/cycle_overlap.h",
+      "overlay_applied": true,
+      "original_bytes": 11950,
+      "original_sha256": "31ee18bed6e9ec5fcda38a424e903fea9396b756bc4a06c22f3a6dab05b38a15",
+      "copied_bytes": 11950,
+      "copied_sha256": "31ee18bed6e9ec5fcda38a424e903fea9396b756bc4a06c22f3a6dab05b38a15",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/dag_node.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/dag_node.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/dag_node.h",
+      "overlay_applied": true,
+      "original_bytes": 20940,
+      "original_sha256": "50e6823eda5db331cc3ae73294505614192c3e8968413046339c3560251b8778",
+      "copied_bytes": 20940,
+      "copied_sha256": "50e6823eda5db331cc3ae73294505614192c3e8968413046339c3560251b8778",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/dirty_sector_eval.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-memory-port-r1/dirty_sector_eval.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/dirty_sector_eval.h",
+      "overlay_applied": true,
+      "original_bytes": 4178,
+      "original_sha256": "ce8fb9e4dd37e9d8bc0f75c6462464ae2fc1f872033c0000c9feeca832a43ef5",
+      "copied_bytes": 4178,
+      "copied_sha256": "ce8fb9e4dd37e9d8bc0f75c6462464ae2fc1f872033c0000c9feeca832a43ef5",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/gpu.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/gpu.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/gpu.h",
+      "overlay_applied": true,
+      "original_bytes": 6774,
+      "original_sha256": "6c1d51160f724d72863547dc62d6b99f0401f2a81290fd7ade50c251beed4651",
+      "copied_bytes": 6774,
+      "copied_sha256": "6c1d51160f724d72863547dc62d6b99f0401f2a81290fd7ade50c251beed4651",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/host_issue_certificate.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion/include/host_issue_certificate.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/host_issue_certificate.h",
+      "overlay_applied": true,
+      "original_bytes": 683,
+      "original_sha256": "407f356115039dce7fd4eb9f323b4cccdd87bbecb6bae64810192ca67ee0f95d",
+      "copied_bytes": 683,
+      "copied_sha256": "407f356115039dce7fd4eb9f323b4cccdd87bbecb6bae64810192ca67ee0f95d",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/host_pipeline_front.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/include/host_pipeline_front.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/host_pipeline_front.h",
+      "overlay_applied": true,
+      "original_bytes": 965,
+      "original_sha256": "e168311c217b73ea3ae03262e9e5b08abb6ed076eaaaa2a9079d4d4421353a89",
+      "copied_bytes": 965,
+      "copied_sha256": "e168311c217b73ea3ae03262e9e5b08abb6ed076eaaaa2a9079d4d4421353a89",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/lazy_ready_queue.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/lazy_ready_queue.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/lazy_ready_queue.h",
+      "overlay_applied": true,
+      "original_bytes": 7360,
+      "original_sha256": "bf1d3c6ef672e822b373b7e895d1d72f18b8ac95ff1b2e6c4eb2b6e694982424",
+      "copied_bytes": 7360,
+      "copied_sha256": "bf1d3c6ef672e822b373b7e895d1d72f18b8ac95ff1b2e6c4eb2b6e694982424",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/memory.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/memory.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h",
+      "overlay_applied": true,
+      "original_bytes": 117092,
+      "original_sha256": "b595262b7cc92d01a3b86fc3eccf009b9d4d5fdd446ad96aae42b20f8a1f54f6",
+      "copied_bytes": 117092,
+      "copied_sha256": "b595262b7cc92d01a3b86fc3eccf009b9d4d5fdd446ad96aae42b20f8a1f54f6",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/model_semantics.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/model_semantics.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/model_semantics.h",
+      "overlay_applied": true,
+      "original_bytes": 7706,
+      "original_sha256": "5c023882e4f9afc5400b87bdc855721da6a90605b749ea5aca9700c86a7d5bb4",
+      "copied_bytes": 7706,
+      "copied_sha256": "5c023882e4f9afc5400b87bdc855721da6a90605b749ea5aca9700c86a7d5bb4",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/noc.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/noc.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/noc.h",
+      "overlay_applied": true,
+      "original_bytes": 16668,
+      "original_sha256": "7492b96dc52c2df2aef2c84b9977a0c5382b1dc96d2f3c381917148d44054ad3",
+      "copied_bytes": 16668,
+      "copied_sha256": "7492b96dc52c2df2aef2c84b9977a0c5382b1dc96d2f3c381917148d44054ad3",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/p32_observation.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/p32_observation.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/p32_observation.h",
+      "overlay_applied": true,
+      "original_bytes": 6898,
+      "original_sha256": "4bbe1d4a05413bf3b1d126046a4ec9a204c537a6ef7d302e56ecfdc8bc9d265b",
+      "copied_bytes": 6898,
+      "copied_sha256": "4bbe1d4a05413bf3b1d126046a4ec9a204c537a6ef7d302e56ecfdc8bc9d265b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/p32_request_mask.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/p32_request_mask.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/p32_request_mask.h",
+      "overlay_applied": true,
+      "original_bytes": 3186,
+      "original_sha256": "f27a9a65a3e07c00d44f9f0cb85e0ea7fe0b5291de7eca3f697096d0a2d1ad08",
+      "copied_bytes": 3186,
+      "copied_sha256": "f27a9a65a3e07c00d44f9f0cb85e0ea7fe0b5291de7eca3f697096d0a2d1ad08",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/per_sm_l1.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+      "overlay_applied": true,
+      "original_bytes": 23296,
+      "original_sha256": "0600ff6d2d1bf6974d660e153139a4ab315333204a100e8684b555178349623a",
+      "copied_bytes": 23296,
+      "copied_sha256": "0600ff6d2d1bf6974d660e153139a4ab315333204a100e8684b555178349623a",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/pipeline.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/include/pipeline.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/pipeline.h",
+      "overlay_applied": true,
+      "original_bytes": 3610,
+      "original_sha256": "387d564fb07a31a897ebd615a03328bffbb452b082c86c42d5e1aae445a0d05f",
+      "copied_bytes": 3610,
+      "copied_sha256": "387d564fb07a31a897ebd615a03328bffbb452b082c86c42d5e1aae445a0d05f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/retry_host_memo.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/retry_host_memo.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/retry_host_memo.h",
+      "overlay_applied": true,
+      "original_bytes": 1924,
+      "original_sha256": "33418c9addbb05490dc1653d127ca5edfae7d2e78dbbf59135933f45ef25c182",
+      "copied_bytes": 1924,
+      "copied_sha256": "33418c9addbb05490dc1653d127ca5edfae7d2e78dbbf59135933f45ef25c182",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/retry_prefix.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/retry_prefix.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/retry_prefix.h",
+      "overlay_applied": true,
+      "original_bytes": 2524,
+      "original_sha256": "080a2292e311242d0d31a1ad2adb9988ef3e7d7ed0e831c4d040f0a760130ecc",
+      "copied_bytes": 2524,
+      "copied_sha256": "080a2292e311242d0d31a1ad2adb9988ef3e7d7ed0e831c4d040f0a760130ecc",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/rtx4000_ada_profile_readiness.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/rtx4000_ada_profile_readiness.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/rtx4000_ada_profile_readiness.h",
+      "overlay_applied": true,
+      "original_bytes": 10129,
+      "original_sha256": "0090492b9b818fb6f54775fd7482097400ffa3ca36ca0e29dae93e0c881edb12",
+      "copied_bytes": 10129,
+      "copied_sha256": "0090492b9b818fb6f54775fd7482097400ffa3ca36ca0e29dae93e0c881edb12",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/scheduler.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/scheduler.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/scheduler.h",
+      "overlay_applied": true,
+      "original_bytes": 9679,
+      "original_sha256": "bbd7dbbd0b4afe38a85e8b5e40c8e9931fd9a8a66e74dd0c576031de2e169f70",
+      "copied_bytes": 9679,
+      "copied_sha256": "bbd7dbbd0b4afe38a85e8b5e40c8e9931fd9a8a66e74dd0c576031de2e169f70",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/scheduler_observer.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/scheduler_observer.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/scheduler_observer.h",
+      "overlay_applied": true,
+      "original_bytes": 6814,
+      "original_sha256": "edacc13d5f4100a41d4a4e4d971751b279e7171c9cedf1795411cf9283203b7f",
+      "copied_bytes": 6814,
+      "copied_sha256": "edacc13d5f4100a41d4a4e4d971751b279e7171c9cedf1795411cf9283203b7f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/sector_observer.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/sector_observer.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/sector_observer.h",
+      "overlay_applied": true,
+      "original_bytes": 3760,
+      "original_sha256": "b77ea82709a8a18a30df98c1f4f7c0721e0031573b8771fba132fa448f5723cb",
+      "copied_bytes": 3760,
+      "copied_sha256": "b77ea82709a8a18a30df98c1f4f7c0721e0031573b8771fba132fa448f5723cb",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/session_mode.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/session_mode.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/session_mode.h",
+      "overlay_applied": true,
+      "original_bytes": 170,
+      "original_sha256": "2db9324c9bee66f22095ac10fee5e67a06eadef1332fc976f9d1309ad4e9a6d9",
+      "copied_bytes": 170,
+      "copied_sha256": "2db9324c9bee66f22095ac10fee5e67a06eadef1332fc976f9d1309ad4e9a6d9",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/simulator.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/simulator.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/simulator.h",
+      "overlay_applied": true,
+      "original_bytes": 37192,
+      "original_sha256": "568ef402e51c533a837181a8c01b9540a679fe9a058b4df2e1b2a3d03f222a06",
+      "copied_bytes": 37192,
+      "copied_sha256": "568ef402e51c533a837181a8c01b9540a679fe9a058b4df2e1b2a3d03f222a06",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/simulator_session.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/simulator_session.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/simulator_session.h",
+      "overlay_applied": true,
+      "original_bytes": 2392,
+      "original_sha256": "963c78fcd5d5a75f361b6014ae80ed4ea860db28893d0f9b9df78cba4ee9dbaf",
+      "copied_bytes": 2392,
+      "copied_sha256": "963c78fcd5d5a75f361b6014ae80ed4ea860db28893d0f9b9df78cba4ee9dbaf",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/sm.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/sm.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/sm.h",
+      "overlay_applied": true,
+      "original_bytes": 6714,
+      "original_sha256": "62ef1392dee51ff9ce878527454b05c8c64c7d6387a12a6f7ff5f3cf4c48e460",
+      "copied_bytes": 6714,
+      "copied_sha256": "62ef1392dee51ff9ce878527454b05c8c64c7d6387a12a6f7ff5f3cf4c48e460",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/subpartition.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/include/subpartition.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/subpartition.h",
+      "overlay_applied": true,
+      "original_bytes": 5971,
+      "original_sha256": "464ccfb69e3827ad1c373777bfc6fb8c18bd020f43ac1cbb7bf041e479dffe83",
+      "copied_bytes": 5971,
+      "copied_sha256": "464ccfb69e3827ad1c373777bfc6fb8c18bd020f43ac1cbb7bf041e479dffe83",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/tma.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/tma.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/tma.h",
+      "overlay_applied": true,
+      "original_bytes": 389,
+      "original_sha256": "2f3d4437b0e308f3d1d1c38b6f561f29ecbede02e99a3e066fb8159169725840",
+      "copied_bytes": 389,
+      "copied_sha256": "2f3d4437b0e308f3d1d1c38b6f561f29ecbede02e99a3e066fb8159169725840",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/tmem.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/tmem.h",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/include/tmem.h",
+      "overlay_applied": true,
+      "original_bytes": 7913,
+      "original_sha256": "269d6d44a860d1a9ce529d9e67503f41a6af4171d1e5f0c741d95c7bcfa970eb",
+      "copied_bytes": 7913,
+      "copied_sha256": "269d6d44a860d1a9ce529d9e67503f41a6af4171d1e5f0c741d95c7bcfa970eb",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/gpu.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/src/gpu.cpp",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/src/gpu.cpp",
+      "overlay_applied": true,
+      "original_bytes": 9362,
+      "original_sha256": "2191fdc6c6b39a3c4b7a5140af5825a5795e0990eaef7c81b872460233dbba6b",
+      "copied_bytes": 9362,
+      "copied_sha256": "2191fdc6c6b39a3c4b7a5140af5825a5795e0990eaef7c81b872460233dbba6b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/scheduler.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion/src/scheduler.cpp",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/src/scheduler.cpp",
+      "overlay_applied": true,
+      "original_bytes": 31075,
+      "original_sha256": "82a817f5a741f8e1f7176c8ad7b4d929ff34d9bccb95bf4389ed7c4eb4cd83de",
+      "copied_bytes": 31075,
+      "copied_sha256": "82a817f5a741f8e1f7176c8ad7b4d929ff34d9bccb95bf4389ed7c4eb4cd83de",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/simulator.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/src/simulator.cpp",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/src/simulator.cpp",
+      "overlay_applied": true,
+      "original_bytes": 55280,
+      "original_sha256": "6356a82e99ba3e445124e09cd7baeac9ea8842f3942d0760ed34576153176256",
+      "copied_bytes": 55280,
+      "copied_sha256": "6356a82e99ba3e445124e09cd7baeac9ea8842f3942d0760ed34576153176256",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/simulator_session.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/src/simulator_session.cpp",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/src/simulator_session.cpp",
+      "overlay_applied": true,
+      "original_bytes": 5901,
+      "original_sha256": "c4f02bfbabeea768dd2ef923ef8e727422276fe2b1606846627f81b7d465f62e",
+      "copied_bytes": 5901,
+      "copied_sha256": "c4f02bfbabeea768dd2ef923ef8e727422276fe2b1606846627f81b7d465f62e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/sm.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/src/sm.cpp",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/src/sm.cpp",
+      "overlay_applied": true,
+      "original_bytes": 7496,
+      "original_sha256": "c44537914573ff063a219876510b57b74bf80f1e6a43f19fdcb9e9ff66f8c5d1",
+      "copied_bytes": 7496,
+      "copied_sha256": "c44537914573ff063a219876510b57b74bf80f1e6a43f19fdcb9e9ff66f8c5d1",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/subpartition.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/src/subpartition.cpp",
+      "repository_path": "source/work/tilegen-full-r1/core-native-copy-r2/src/subpartition.cpp",
+      "overlay_applied": true,
+      "original_bytes": 29651,
+      "original_sha256": "0bef9d7123d38b4b493cb3c157871d80e8426ee37de3f12aa5d522d9448c9129",
+      "copied_bytes": 29651,
+      "copied_sha256": "0bef9d7123d38b4b493cb3c157871d80e8426ee37de3f12aa5d522d9448c9129",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-attention-r1/model.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-attention-r1/model.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-attention-r1/model.h",
+      "overlay_applied": false,
+      "original_bytes": 12503,
+      "original_sha256": "fd4548442cdd5ef9f55f6f054990961ae7e689f97e9f0d612a6ae612dfc4cb1c",
+      "copied_bytes": 12503,
+      "copied_sha256": "fd4548442cdd5ef9f55f6f054990961ae7e689f97e9f0d612a6ae612dfc4cb1c",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-attention-r1/phase_seals.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-attention-r1/phase_seals.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-attention-r1/phase_seals.h",
+      "overlay_applied": false,
+      "original_bytes": 13127,
+      "original_sha256": "905fe49041bfa70df4112d2330f024cb02d96034ae8314331db9732e1866b1b6",
+      "copied_bytes": 13127,
+      "copied_sha256": "905fe49041bfa70df4112d2330f024cb02d96034ae8314331db9732e1866b1b6",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-gemm-p28-r2/statistics.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-gemm-p28-r2/statistics.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-gemm-p28-r2/statistics.h",
+      "overlay_applied": false,
+      "original_bytes": 1284,
+      "original_sha256": "7644b93e31cf264ef466848f97d3f92882f3072186a3dd4b19a97b7e77bd9c2e",
+      "copied_bytes": 1284,
+      "copied_sha256": "7644b93e31cf264ef466848f97d3f92882f3072186a3dd4b19a97b7e77bd9c2e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-gemm-p28-r2/streaming.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-gemm-p28-r2/streaming.cpp",
+      "repository_path": "source/work/tilegen-full-r1/driver-gemm-p28-r2/streaming.cpp",
+      "overlay_applied": false,
+      "original_bytes": 22742,
+      "original_sha256": "27f97defc3128e37514192916a82e6c8538513e952d32fd80093d3e1791c068d",
+      "copied_bytes": 22742,
+      "copied_sha256": "27f97defc3128e37514192916a82e6c8538513e952d32fd80093d3e1791c068d",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_catalog.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_catalog.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_catalog.h",
+      "overlay_applied": false,
+      "original_bytes": 4321,
+      "original_sha256": "dd0bdbeef224d65b2924a195a2bfebfdf2bbd24eee1169b53c6b945923c8dfc1",
+      "copied_bytes": 4321,
+      "copied_sha256": "dd0bdbeef224d65b2924a195a2bfebfdf2bbd24eee1169b53c6b945923c8dfc1",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_qualified.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_qualified.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_qualified.h",
+      "overlay_applied": false,
+      "original_bytes": 1908,
+      "original_sha256": "b001efa03d6b39ed552318741cfeaaf16067c368b9a405faaf7e83a5a9e2da43",
+      "copied_bytes": 1908,
+      "copied_sha256": "b001efa03d6b39ed552318741cfeaaf16067c368b9a405faaf7e83a5a9e2da43",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/builder.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/builder.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/builder.h",
+      "overlay_applied": false,
+      "original_bytes": 6604,
+      "original_sha256": "06df72e65713545eb413385da77bcc71842ae0c3d03acf4eeee8e9034ad08631",
+      "copied_bytes": 6604,
+      "copied_sha256": "06df72e65713545eb413385da77bcc71842ae0c3d03acf4eeee8e9034ad08631",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/counters.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/build-sector-r2/counters.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/counters.h",
+      "overlay_applied": true,
+      "original_bytes": 1818,
+      "original_sha256": "66ccc8347bb262c13493e774ce21a95665ee74c3e7c945e07c04f0f757cbe753",
+      "copied_bytes": 1818,
+      "copied_sha256": "66ccc8347bb262c13493e774ce21a95665ee74c3e7c945e07c04f0f757cbe753",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/family_admission.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/family_admission.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/family_admission.h",
+      "overlay_applied": false,
+      "original_bytes": 5915,
+      "original_sha256": "d496e773f2ee8e6e141c7049a1f2d1ed8d472583ca3df2e1190f6097bcaf9b59",
+      "copied_bytes": 5915,
+      "copied_sha256": "d496e773f2ee8e6e141c7049a1f2d1ed8d472583ca3df2e1190f6097bcaf9b59",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_admission.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_admission.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_admission.h",
+      "overlay_applied": false,
+      "original_bytes": 6448,
+      "original_sha256": "6831c8ac2b120d8464054b9fd71bba41042a7acd6334d24c6d7b56d8cd56833e",
+      "copied_bytes": 6448,
+      "copied_sha256": "6831c8ac2b120d8464054b9fd71bba41042a7acd6334d24c6d7b56d8cd56833e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_model_sources.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_model_sources.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_model_sources.h",
+      "overlay_applied": false,
+      "original_bytes": 143178,
+      "original_sha256": "a3405bc12986a6ab5ee80883cdd1f2d8d3750e1327f04fa27a341e3bb5218382",
+      "copied_bytes": 143178,
+      "copied_sha256": "a3405bc12986a6ab5ee80883cdd1f2d8d3750e1327f04fa27a341e3bb5218382",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/l2_event_audit.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/l2_event_audit.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/l2_event_audit.h",
+      "overlay_applied": false,
+      "original_bytes": 2062,
+      "original_sha256": "72860c4d4d1575e04168fce8dd226ec5c0167769b12738e91941aff063e18f99",
+      "copied_bytes": 2062,
+      "copied_sha256": "72860c4d4d1575e04168fce8dd226ec5c0167769b12738e91941aff063e18f99",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/linear31_admission.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/linear31_admission.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/linear31_admission.h",
+      "overlay_applied": false,
+      "original_bytes": 5840,
+      "original_sha256": "5d5271d35caf3aa6d0fe702ca7c3706a6d6dbc1f32008aa232f67b89684d958f",
+      "copied_bytes": 5840,
+      "copied_sha256": "5d5271d35caf3aa6d0fe702ca7c3706a6d6dbc1f32008aa232f67b89684d958f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/native_memory_program.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion/include/native_memory_program.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/native_memory_program.h",
+      "overlay_applied": true,
+      "original_bytes": 14081,
+      "original_sha256": "9fef1c4ca114f83202b3b71eeff11ff4f2a44224bd0f78ea5460b509998cbeb4",
+      "copied_bytes": 14081,
+      "copied_sha256": "9fef1c4ca114f83202b3b71eeff11ff4f2a44224bd0f78ea5460b509998cbeb4",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_admission.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_admission.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_admission.h",
+      "overlay_applied": false,
+      "original_bytes": 5243,
+      "original_sha256": "5f00d0b671064b2dc36867b8c5d1a19a106e34e8d0eb888cb64a92d8dd690dd2",
+      "copied_bytes": 5243,
+      "copied_sha256": "5f00d0b671064b2dc36867b8c5d1a19a106e34e8d0eb888cb64a92d8dd690dd2",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_model_sources.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_model_sources.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_model_sources.h",
+      "overlay_applied": false,
+      "original_bytes": 75792,
+      "original_sha256": "a2decb7eee381275a46808c6407ef8931003264694595bf15f10b66fce43944b",
+      "copied_bytes": 75792,
+      "copied_sha256": "a2decb7eee381275a46808c6407ef8931003264694595bf15f10b66fce43944b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/range_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/range_plan.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/range_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 2712,
+      "original_sha256": "dcd5e11890c4b135a6fd0976f875c0b940cfb6898d1e72c20eb6bd1e2ef69350",
+      "copied_bytes": 2712,
+      "copied_sha256": "dcd5e11890c4b135a6fd0976f875c0b940cfb6898d1e72c20eb6bd1e2ef69350",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/register_program.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/register_program.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/register_program.h",
+      "overlay_applied": false,
+      "original_bytes": 10575,
+      "original_sha256": "2feb2bfd5b30865a2d1de9e0945be187a4ce166013e41308e12ec03592569b05",
+      "copied_bytes": 10575,
+      "copied_sha256": "2feb2bfd5b30865a2d1de9e0945be187a4ce166013e41308e12ec03592569b05",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/semantic_hash.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/semantic_hash.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/semantic_hash.h",
+      "overlay_applied": false,
+      "original_bytes": 745,
+      "original_sha256": "6c5a1aa7bfd6cd2124d3fb48802c56804b331b5933e0634d5341550c4c6ac35f",
+      "copied_bytes": 745,
+      "copied_sha256": "6c5a1aa7bfd6cd2124d3fb48802c56804b331b5933e0634d5341550c4c6ac35f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/sha256.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion/include/sha256.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/sha256.h",
+      "overlay_applied": true,
+      "original_bytes": 5279,
+      "original_sha256": "48f2bcb813d93c1fa509cc255e4d1cea2c2a5293ebb1c68e6692f581e62d8bf8",
+      "copied_bytes": 5279,
+      "copied_sha256": "48f2bcb813d93c1fa509cc255e4d1cea2c2a5293ebb1c68e6692f581e62d8bf8",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_admission.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_admission.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_admission.h",
+      "overlay_applied": false,
+      "original_bytes": 6310,
+      "original_sha256": "6477bc58d46e330cd41eedc2d3811d826d9e4e45aad6d728721b128f3d349562",
+      "copied_bytes": 6310,
+      "copied_sha256": "6477bc58d46e330cd41eedc2d3811d826d9e4e45aad6d728721b128f3d349562",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_catalog.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_catalog.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_catalog.h",
+      "overlay_applied": false,
+      "original_bytes": 3405,
+      "original_sha256": "27b7e5856218b005d2cca2434704b912e503452f677aabbf497d011a9c555da1",
+      "copied_bytes": 3405,
+      "copied_sha256": "27b7e5856218b005d2cca2434704b912e503452f677aabbf497d011a9c555da1",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_qualified.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_qualified.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_qualified.h",
+      "overlay_applied": false,
+      "original_bytes": 1484,
+      "original_sha256": "90479bd60318a5d333be231f32c73a5f423a830cb34861c4d045240ce49e246f",
+      "copied_bytes": 1484,
+      "copied_sha256": "90479bd60318a5d333be231f32c73a5f423a830cb34861c4d045240ce49e246f",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/streaming.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/streaming.cpp",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/streaming.cpp",
+      "overlay_applied": false,
+      "original_bytes": 30882,
+      "original_sha256": "261b77ca09a9445ef149aad5f8417424f5ea1b21bb22956eb71d6476fac8e550",
+      "copied_bytes": 30882,
+      "copied_sha256": "261b77ca09a9445ef149aad5f8417424f5ea1b21bb22956eb71d6476fac8e550",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-hash-bulk-r1/sha256.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-hash-bulk-r1/sha256.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-pooled-hash-bulk-r1/sha256.h",
+      "overlay_applied": false,
+      "original_bytes": 3627,
+      "original_sha256": "71482a5bba470590a9727b85b65faf81bce8a6bd092cbc6741690673aa9fca72",
+      "copied_bytes": 3627,
+      "copied_sha256": "71482a5bba470590a9727b85b65faf81bce8a6bd092cbc6741690673aa9fca72",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-prefill-gemm-next-r1/role_profiles.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-prefill-gemm-next-r1/role_profiles.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/role_profiles.h",
+      "overlay_applied": false,
+      "original_bytes": 840,
+      "original_sha256": "677cc879b0b2d8529f8597bc451ec0ae8ebce75e6f14a1890d87b7bf493eeb9e",
+      "copied_bytes": 840,
+      "copied_sha256": "677cc879b0b2d8529f8597bc451ec0ae8ebce75e6f14a1890d87b7bf493eeb9e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-prefill-gemm-next-r1/statistics.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-prefill-gemm-next-r1/statistics.h",
+      "repository_path": "source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/statistics.h",
+      "overlay_applied": false,
+      "original_bytes": 1284,
+      "original_sha256": "7644b93e31cf264ef466848f97d3f92882f3072186a3dd4b19a97b7e77bd9c2e",
+      "copied_bytes": 1284,
+      "copied_sha256": "7644b93e31cf264ef466848f97d3f92882f3072186a3dd4b19a97b7e77bd9c2e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-prefill-gemm-next-r1/streaming.cpp",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-prefill-gemm-next-r1/streaming.cpp",
+      "repository_path": "source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/streaming.cpp",
+      "overlay_applied": false,
+      "original_bytes": 24298,
+      "original_sha256": "f23887eb33b74d82e2dde4301704103f467ad3a84231ab7699b086b0ff4a73b8",
+      "copied_bytes": 24298,
+      "copied_sha256": "f23887eb33b74d82e2dde4301704103f467ad3a84231ab7699b086b0ff4a73b8",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/observation-output-compact-r1/compact_cycle_overlap.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/observation-output-compact-r1/compact_cycle_overlap.h",
+      "repository_path": "source/work/tilegen-full-r1/observation-output-compact-r1/compact_cycle_overlap.h",
+      "overlay_applied": false,
+      "original_bytes": 4967,
+      "original_sha256": "300646c4f07aded8a75960a76739f309e3e1968effe7716f93cb05392e12508e",
+      "copied_bytes": 4967,
+      "copied_sha256": "300646c4f07aded8a75960a76739f309e3e1968effe7716f93cb05392e12508e",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/runtime-compressed-frame-r1/compressed_frame.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/runtime-compressed-frame-r1/compressed_frame.h",
+      "repository_path": "source/work/tilegen-full-r1/runtime-compressed-frame-r1/compressed_frame.h",
+      "overlay_applied": false,
+      "original_bytes": 5657,
+      "original_sha256": "2e3fbd8c543ec88040f30f5c8b0614d4163d4329d68eefa1affdd19c64063c8b",
+      "copied_bytes": 5657,
+      "copied_sha256": "2e3fbd8c543ec88040f30f5c8b0614d4163d4329d68eefa1affdd19c64063c8b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-drain-native-r1/native_backend.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-drain-native-r1/native_backend.h",
+      "repository_path": "source/work/tilegen-hbf-drain-native-r1/native_backend.h",
+      "overlay_applied": false,
+      "original_bytes": 26188,
+      "original_sha256": "c38dd92110316b10d701203caf61ec6c7d1fc08334d47ab632365b0256935d27",
+      "copied_bytes": 26188,
+      "copied_sha256": "c38dd92110316b10d701203caf61ec6c7d1fc08334d47ab632365b0256935d27",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/bindings.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/bindings.h",
+      "repository_path": "source/work/tilegen-hybrid-cache-r1/bindings.h",
+      "overlay_applied": true,
+      "original_bytes": 10360,
+      "original_sha256": "177a472b48f01169a468d74c0ca1d8b0f83996b5af712a16150a3590e7e04680",
+      "copied_bytes": 10262,
+      "copied_sha256": "eaf18045a2e1fc98b57c7189f16d97317b0844653f810c12f3d9bcc542218c6b",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/prefill_binding.h",
+          "replacement": "prefill_binding.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/prefill_binding.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/prefill_binding.h",
+      "repository_path": "source/work/tilegen-hybrid-cache-r1/prefill_binding.h",
+      "overlay_applied": true,
+      "original_bytes": 21461,
+      "original_sha256": "d409ae3033cf87542cc73ab0b48db1bed05acf5cdd08ae4646a22c827729a0f6",
+      "copied_bytes": 21248,
+      "copied_sha256": "ded832585cdd20155f24be39eaf5f3a584c2dc2aecf1f63fa3b54014595ce650",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/source.h",
+          "replacement": "../tilegen-tiny-full-r1/source.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/prefill_support.h",
+          "replacement": "../tilegen-tiny-full-r1/prefill_support.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/prefill_seals.h",
+          "replacement": "../tilegen-tiny-full-r1/prefill_seals.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/progress_summary.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/progress_summary.h",
+      "repository_path": "source/work/tilegen-hybrid-cache-r1/progress_summary.h",
+      "overlay_applied": true,
+      "original_bytes": 2072,
+      "original_sha256": "acb9b7f7f57e4c8eef3a596d7b83875153b3c1c80c77346c1bb97a0aef2b3ce0",
+      "copied_bytes": 2072,
+      "copied_sha256": "acb9b7f7f57e4c8eef3a596d7b83875153b3c1c80c77346c1bb97a0aef2b3ce0",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/tiny_context.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/tiny_context.h",
+      "repository_path": "source/work/tilegen-hybrid-cache-r1/tiny_context.h",
+      "overlay_applied": true,
+      "original_bytes": 21632,
+      "original_sha256": "9274e6d450bdb83770f0161b980748d51052a8c608e11696d0fa0bd385457881",
+      "copied_bytes": 21490,
+      "copied_sha256": "60aaf8390d0b99f8742fc2d0325c88c1afa4084e9c182c522b0c4341ab6bf6c1",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/port.h",
+          "replacement": "../tilegen-memory-epoch-native-r1/port.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/prefill_setup.h",
+          "replacement": "../tilegen-prefill-compute-native-r1/prefill_setup.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/fine_context.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/fine_context.h",
+      "repository_path": "source/work/tilegen-hybrid-full-r1/fine_context.h",
+      "overlay_applied": true,
+      "original_bytes": 6464,
+      "original_sha256": "a1ac94ed36f932d1b34e07bb13b823733cd98e42df68977a22e8aa8de7dad2b4",
+      "copied_bytes": 6464,
+      "copied_sha256": "a1ac94ed36f932d1b34e07bb13b823733cd98e42df68977a22e8aa8de7dad2b4",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/options.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/options.h",
+      "repository_path": "source/work/tilegen-hybrid-full-r1/options.h",
+      "overlay_applied": true,
+      "original_bytes": 2090,
+      "original_sha256": "5d45e185c89a0509fd543e5000ede895c8bd72bbe30e82e0c67a1e4bdaf2db50",
+      "copied_bytes": 2090,
+      "copied_sha256": "5d45e185c89a0509fd543e5000ede895c8bd72bbe30e82e0c67a1e4bdaf2db50",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/ada_source.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/ada_source.h",
+      "repository_path": "source/work/tilegen-memory-epoch-native-r1/ada_source.h",
+      "overlay_applied": false,
+      "original_bytes": 13907,
+      "original_sha256": "5710aa9d3729a8e39a17019d8887e8eb1fb69d03369d43d8c58a770a46b2d488",
+      "copied_bytes": 13907,
+      "copied_sha256": "5710aa9d3729a8e39a17019d8887e8eb1fb69d03369d43d8c58a770a46b2d488",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/port.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/port.h",
+      "repository_path": "source/work/tilegen-memory-epoch-native-r1/port.h",
+      "overlay_applied": false,
+      "original_bytes": 30555,
+      "original_sha256": "c84256597551a42ab385b26b3000658fb3ed6f239dbc1c286a7426e92a75fbf4",
+      "copied_bytes": 30379,
+      "copied_sha256": "fb191a41ba0d98f00e6d89a3ea1dc6d7400b0964def58cbdc48ace43f5811d4e",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/source.h",
+          "replacement": "../tilegen-tiny-full-r1/source.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/ada_source.h",
+          "replacement": "ada_source.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-phase-runtime-r1/phase_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-phase-runtime-r1/phase_plan.h",
+      "repository_path": "source/work/tilegen-memory-phase-runtime-r1/phase_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 11158,
+      "original_sha256": "772dc174beb5fa2fa1b285219647b8e401b3f7e3442ba4c4b43dac45aae48058",
+      "copied_bytes": 11158,
+      "copied_sha256": "772dc174beb5fa2fa1b285219647b8e401b3f7e3442ba4c4b43dac45aae48058",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-norm-shared-r1/adapter/backend.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/backend.h",
+      "repository_path": "source/work/tilegen-norm-shared-r1/adapter/backend.h",
+      "overlay_applied": true,
+      "original_bytes": 21667,
+      "original_sha256": "7d5be3af3fb5ad27a1b09e00fd185aca40426767b9ce6f8ad91825837d5b70f1",
+      "copied_bytes": 21599,
+      "copied_sha256": "ff3af5987fdc120928e81b7a0751b0e5606fa8036a7ded488b2dc801cfc76a88",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-drain-native-r1/native_backend.h",
+          "replacement": "../../tilegen-hbf-drain-native-r1/native_backend.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-norm-shared-r1/adapter/integration.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-native-r1/integration.h",
+      "repository_path": "source/work/tilegen-norm-shared-r1/adapter/integration.h",
+      "overlay_applied": true,
+      "original_bytes": 22884,
+      "original_sha256": "a5fd5bff945110af9d247d790e0ca4d7ab33edb2be675ae3fa03bf6d66c53825",
+      "copied_bytes": 22884,
+      "copied_sha256": "a5fd5bff945110af9d247d790e0ca4d7ab33edb2be675ae3fa03bf6d66c53825",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-integration-r1/binding.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-integration-r1/binding.h",
+      "repository_path": "source/work/tilegen-packet-integration-r1/binding.h",
+      "overlay_applied": false,
+      "original_bytes": 7601,
+      "original_sha256": "1364285626c844f1af25f19135ec4188d83b0c50a7c4393f1f25d03f91c2c8dc",
+      "copied_bytes": 7601,
+      "copied_sha256": "1364285626c844f1af25f19135ec4188d83b0c50a7c4393f1f25d03f91c2c8dc",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-integration-r1/source_support.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/source_support_bridge.h",
+      "repository_path": "source/work/tilegen-packet-integration-r1/source_support.h",
+      "overlay_applied": true,
+      "original_bytes": 185,
+      "original_sha256": "21d7858b1857b371a14c041da04f20d0dd78ebd85283a941fbb769cdd1577f10",
+      "copied_bytes": 185,
+      "copied_sha256": "21d7858b1857b371a14c041da04f20d0dd78ebd85283a941fbb769cdd1577f10",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-runtime-r1/runtime.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/runtime.h",
+      "repository_path": "source/work/tilegen-packet-runtime-r1/runtime.h",
+      "overlay_applied": true,
+      "original_bytes": 57675,
+      "original_sha256": "8c57bd13523d3d68cb0473b0550dd0c1c5114a3df413c1d2e8c00e225c2cf94a",
+      "copied_bytes": 57533,
+      "copied_sha256": "3f963370f3ffae24b276ee007771a4ff7b4a519a6317ddf9db0f206d8e82118a",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-phase-runtime-r1/phase_plan.h",
+          "replacement": "../tilegen-memory-phase-runtime-r1/phase_plan.h"
+        },
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/selector.h",
+          "replacement": "../tilegen-prefill-compute-native-r1/pref_support/selector.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/compiled_program.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/compiled_program.h",
+      "repository_path": "source/work/tilegen-prefill-compute-native-r1/pref_support/compiled_program.h",
+      "overlay_applied": false,
+      "original_bytes": 5223,
+      "original_sha256": "5683f37d14d9fb2ff39e3a42a78932935a0ddff51157001b7a74fd8608358367",
+      "copied_bytes": 5155,
+      "copied_sha256": "c8906e5cc4a65cf3366ccc6366c3712a75f0f43530e5946283e317e1e61e3928",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-phase-r1/runtime-recurrence-r1/resource_recurrence.h",
+          "replacement": "../../tilegen-prefill-compute-phase-r1/runtime-recurrence-r1/resource_recurrence.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/engine.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/engine.h",
+      "repository_path": "source/work/tilegen-prefill-compute-native-r1/pref_support/engine.h",
+      "overlay_applied": false,
+      "original_bytes": 18733,
+      "original_sha256": "f217f5d6e9d451583bab7ba6dfff3c705a7c3bfbc55d4b29ecac9bd99de6de98",
+      "copied_bytes": 18612,
+      "copied_sha256": "230ad3fa9cbc5a3aa587ebf68cf41abb0dc5b81cbccd95748e7092ff939bc216",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/compiled_program.h",
+          "replacement": "compiled_program.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/selector.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/selector.h",
+      "repository_path": "source/work/tilegen-prefill-compute-native-r1/pref_support/selector.h",
+      "overlay_applied": false,
+      "original_bytes": 6071,
+      "original_sha256": "dfe87813485434207253a54cdf0852281778233476fb92e2ea8a9a9af26dfef4",
+      "copied_bytes": 5950,
+      "copied_sha256": "e83f0a48303026afbbea44d24d0c39b96ad736d3b5edb3b41ce8eb64956f801b",
+      "absolute_include_rewrites": [
+        {
+          "original": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/pref_support/engine.h",
+          "replacement": "engine.h"
+        }
+      ]
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/prefill_setup.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/prefill_setup.h",
+      "repository_path": "source/work/tilegen-prefill-compute-native-r1/prefill_setup.h",
+      "overlay_applied": false,
+      "original_bytes": 10753,
+      "original_sha256": "d5db90b38ab00f27b43fcc21a026f1187f9f4b5aeef7b40fdc9c3bcb9fa915db",
+      "copied_bytes": 10753,
+      "copied_sha256": "d5db90b38ab00f27b43fcc21a026f1187f9f4b5aeef7b40fdc9c3bcb9fa915db",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-phase-r1/runtime-recurrence-r1/resource_recurrence.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-phase-r1/runtime-recurrence-r1/resource_recurrence.h",
+      "repository_path": "source/work/tilegen-prefill-compute-phase-r1/runtime-recurrence-r1/resource_recurrence.h",
+      "overlay_applied": false,
+      "original_bytes": 8069,
+      "original_sha256": "4016e5bcb7f49969db7314bd4a00247dfc04ec0d917463f65bac79af91127f8d",
+      "copied_bytes": 8069,
+      "copied_sha256": "4016e5bcb7f49969db7314bd4a00247dfc04ec0d917463f65bac79af91127f8d",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-phase-r1/segment_plan.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-phase-r1/segment_plan.h",
+      "repository_path": "source/work/tilegen-prefill-compute-phase-r1/segment_plan.h",
+      "overlay_applied": false,
+      "original_bytes": 17868,
+      "original_sha256": "591a0c0b47d58d86691f0b2fa9c154d98f0d8fed83d608562dcacaa9d956dc37",
+      "copied_bytes": 17868,
+      "copied_sha256": "591a0c0b47d58d86691f0b2fa9c154d98f0d8fed83d608562dcacaa9d956dc37",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-basic-r1/gemv_binding.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-basic-r1/gemv_binding.h",
+      "repository_path": "source/work/tilegen-tiny-basic-r1/gemv_binding.h",
+      "overlay_applied": false,
+      "original_bytes": 7282,
+      "original_sha256": "89bf8767d1faad7dcefc372602426afede68d44be4baf4e6869e198708aed6c2",
+      "copied_bytes": 7282,
+      "copied_sha256": "89bf8767d1faad7dcefc372602426afede68d44be4baf4e6869e198708aed6c2",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-basic-r1/silu_binding.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-basic-r1/silu_binding.h",
+      "repository_path": "source/work/tilegen-tiny-basic-r1/silu_binding.h",
+      "overlay_applied": false,
+      "original_bytes": 9139,
+      "original_sha256": "c12911d0fa523744ba8c0d5fb67943ddacd61dea0364bac085491db3e3699cbb",
+      "copied_bytes": 9139,
+      "copied_sha256": "c12911d0fa523744ba8c0d5fb67943ddacd61dea0364bac085491db3e3699cbb",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/import.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/import.h",
+      "repository_path": "source/work/tilegen-tiny-full-r1/import.h",
+      "overlay_applied": false,
+      "original_bytes": 6667,
+      "original_sha256": "08deb8be5e3b673ac0f6ea141596aa9f84aa6d1fda4139b55bb9895416048301",
+      "copied_bytes": 6667,
+      "copied_sha256": "08deb8be5e3b673ac0f6ea141596aa9f84aa6d1fda4139b55bb9895416048301",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/prefill_seals.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/prefill_seals.h",
+      "repository_path": "source/work/tilegen-tiny-full-r1/prefill_seals.h",
+      "overlay_applied": false,
+      "original_bytes": 1980,
+      "original_sha256": "d1f50413e8d1e6efb77045da946471a1272ab67b2b13b4313ba6a16233a25fe6",
+      "copied_bytes": 1980,
+      "copied_sha256": "d1f50413e8d1e6efb77045da946471a1272ab67b2b13b4313ba6a16233a25fe6",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/prefill_support.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/prefill_support_bridge.h",
+      "repository_path": "source/work/tilegen-tiny-full-r1/prefill_support.h",
+      "overlay_applied": true,
+      "original_bytes": 175,
+      "original_sha256": "f9aa47f59a9359ab7ed7823b5d377f20b394b4b5f4b8b014e964294d99fd2700",
+      "copied_bytes": 175,
+      "copied_sha256": "f9aa47f59a9359ab7ed7823b5d377f20b394b4b5f4b8b014e964294d99fd2700",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/reporting.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/reporting-observed.h",
+      "repository_path": "source/work/tilegen-tiny-full-r1/reporting.h",
+      "overlay_applied": true,
+      "original_bytes": 4460,
+      "original_sha256": "17bf649b4a159338af9fa6c12670c6637b5cd88a5699f9bbf8ba701e828a6bb5",
+      "copied_bytes": 4460,
+      "copied_sha256": "17bf649b4a159338af9fa6c12670c6637b5cd88a5699f9bbf8ba701e828a6bb5",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/source.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/source.h",
+      "repository_path": "source/work/tilegen-tiny-full-r1/source.h",
+      "overlay_applied": false,
+      "original_bytes": 1878,
+      "original_sha256": "6f9e19a86707038ce3ae9146f785c670bb121b20227cf3f4c5367c28ef3ffc1b",
+      "copied_bytes": 1878,
+      "copied_sha256": "6f9e19a86707038ce3ae9146f785c670bb121b20227cf3f4c5367c28ef3ffc1b",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-norm-r1/norm_binding.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-norm-r1/norm_binding.h",
+      "repository_path": "source/work/tilegen-tiny-norm-r1/norm_binding.h",
+      "overlay_applied": false,
+      "original_bytes": 10322,
+      "original_sha256": "e8749999774c6946026c9842b71b93b8e499721470c4950a99b2c2f444806f27",
+      "copied_bytes": 10322,
+      "copied_sha256": "e8749999774c6946026c9842b71b93b8e499721470c4950a99b2c2f444806f27",
+      "absolute_include_rewrites": []
+    },
+    {
+      "logical_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-rotary-r1/rotary_binding.h",
+      "effective_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-rotary-r1/rotary_binding.h",
+      "repository_path": "source/work/tilegen-tiny-rotary-r1/rotary_binding.h",
+      "overlay_applied": false,
+      "original_bytes": 9881,
+      "original_sha256": "a316f4e594a8c4e305995ea4b96b5712ee3ee6e21f18befd587df8c64ae560d3",
+      "copied_bytes": 9881,
+      "copied_sha256": "a316f4e594a8c4e305995ea4b96b5712ee3ee6e21f18befd587df8c64ae560d3",
+      "absolute_include_rewrites": []
+    }
+  ]
+}

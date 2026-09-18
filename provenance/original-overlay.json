@@ -1,0 +1,346 @@
+{
+  "version": 0,
+  "use-external-names": false,
+  "roots": [
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/model_dispatch.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-integration-r1/reference-prefix512-r1/model_dispatch.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/streaming.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/streaming.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/bulk_copy.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/bulk_copy.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cta_graph_store.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/cta_graph_store.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cta_sparse_slots.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/include/cta_sparse_slots.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cta_warp_placement.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/cta_warp_placement.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cycle.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/cycle.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/cycle_overlap.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/cycle_overlap.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/dag_node.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/dag_node.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/dirty_sector_eval.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-memory-port-r1/dirty_sector_eval.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/gpu.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/gpu.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/host_issue_certificate.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion/include/host_issue_certificate.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/host_pipeline_front.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/include/host_pipeline_front.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/lazy_ready_queue.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/lazy_ready_queue.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/memory.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/memory.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/model_semantics.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/model_semantics.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/noc.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/noc.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/observation_summary.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/observation_summary.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/p32_observation.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/p32_observation.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/p32_request_mask.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/p32_request_mask.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/per_sm_l1.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/pipeline.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/include/pipeline.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/retry_host_memo.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/retry_host_memo.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/retry_prefix.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/retry_prefix.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/rtx4000_ada_profile_readiness.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/rtx4000_ada_profile_readiness.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/scheduler.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/scheduler.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/scheduler_observer.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/scheduler_observer.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/sector_observer.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/sector_observer.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/session_mode.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/session_mode.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/simulator.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/simulator.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/simulator_session.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/simulator_session.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/sm.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/sm.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/subpartition.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/include/subpartition.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/tma.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/tma.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include/tmem.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/include/tmem.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/gpu.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/src/gpu.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/scheduler.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion/src/scheduler.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/simulator.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/src/simulator.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/simulator_session.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/src/simulator_session.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/sm.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/core/src/sm.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/subpartition.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion-v2/src/subpartition.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/counters.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-sector32-eval-r1/build-sector-r2/counters.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/native_memory_program.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion/include/native_memory_program.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/driver-pooled-fusednorm-r1/sha256.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-execution-speed-r2/full32-promotion/include/sha256.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/bindings.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/bindings.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/prefill_binding.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/prefill_binding.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/progress_summary.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/progress_summary.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/reporting-observed.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/reporting-observed.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/runtime-observed.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/runtime-observed.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/streaming.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/streaming.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/tiny_context.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/tiny_context.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/bindings.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/bindings.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/fine_context.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/fine_context.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/options.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/options.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/prefill_support_bridge.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/prefill_support_bridge.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/source_support_bridge.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/source_support_bridge.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/streaming.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/streaming.cpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/tiny_context.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/tiny_context.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-norm-shared-r1/adapter/backend.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-epoch-native-r1/backend.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-norm-shared-r1/adapter/integration.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-native-r1/integration.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-norm-shared-r1/adapter/native_backend.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-drain-native-r1/native_backend.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-integration-r1/source_support.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/source_support_bridge.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-runtime-r1/runtime.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-prefill-compute-native-r1/runtime.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/prefill_support.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-full-r1/build-r2/sources/prefill_support_bridge.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-tiny-full-r1/reporting.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hybrid-cache-r1/build-r1/sources/reporting-observed.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-packet-runtime-r1/phase_plan.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-memory-phase-runtime-r1/phase_plan.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.hpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-independent-pc-r1/hbm_device.hpp"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-guard-r1/hbm_device.cpp"
+    }
+  ]
+}

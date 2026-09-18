@@ -1,0 +1,33 @@
+#pragma once
+#include "source_adapter.h"
+namespace canonical_prefillcopy {
+struct Formula{U warp,ordinal,pc,width;char op;std::string role;};
+struct Model {
+ J plan,templ;std::vector<Formula>records;std::vector<const J*>calls;std::unique_ptr<CopyCatalog>catalog;
+ Model(const J&in){
+  keys(in,{"schema","plan_file","memory_model","service_address_map","selected_source_keys","max_kernel_cycles","aggregate_observations"});const auto s=seals();
+  p::need(in.at("schema")=="CANONICAL_PREFILLCOPY_MODELED_SEQUENCE_V1"&&in.at("aggregate_observations").is_boolean()&&in.at("plan_file")==s.at("plan_file")&&in.at("memory_model")==s.at("memory_model"),"sealed explicit Copy envelope/profile");
+  plan=strict_parse(check_pin(s.at("plan_file")));templ=strict_parse(check_pin(s.at("template_file")));p::need(plan.at("schema")=="CANONICAL_PREFILLCOPY_STRUCTURAL_PLAN_V1"&&plan.at("calls").size()==32&&plan.at("process")==J({{"pid",1925216},{"start_ticks",857625100}}),"canonical Prefill plan");
+  for(auto k:{"driver_admitted","native_target_qualified","full_workflow_qualified","branch_value_semantics_proved","implicit_register_dependencies_complete"})p::need(plan.at(k)==false,"explicit estimate flags");p::need(plan.at("template")==s.at("template_file"),"same template seal");catalog=std::make_unique<CopyCatalog>(s,templ);
+  std::array<U,4>ord{};for(const auto&r:source().program.bodies[0].records){U o=ord[r.warp]++;p::need(o<8&&r.pc==pcs[o]&&r.mask==UINT32_MAX&&r.lanes.size()==32&&r.width==2&&r.op==(o%2?'W':'R'),"closed body ordinal formula");records.push_back({U(r.warp),o,r.pc,U(r.width),r.op,o%2?"destination":"value_input"});}
+  p::need(records.size()==32,"32 source records");const auto& selected=in.at("selected_source_keys");p::need(selected.is_array()&&!selected.empty()&&selected.size()<=32,"one through32 selected calls");std::set<std::string>wanted;for(const auto&k:selected)p::need(k.is_string()&&wanted.insert(k.get<std::string>()).second,"unique source keys");U prior=0;J context;
+  for(const auto&c:plan.at("calls"))if(wanted.count(c.at("source_launch_key").get<std::string>())){validate_call(c);p::need(selected.at(calls.size())==c.at("source_launch_key"),"actual source order");U id=p::natural(c.at("native_launch_binding").at("native_launch_id"));p::need(id>prior,"native launch order");prior=id;J now={{"process",c.at("process")},{"context_id",c.at("context_id")},{"stream_u64",c.at("stream_u64")}};if(calls.empty())context=now;else p::need(context==now,"one process/context/stream");calls.push_back(&c);}
+  p::need(calls.size()==selected.size()&&in.at("service_address_map")==service_map(),"exact selected target VA map");
+ }
+ const SourceBundle&source()const{return catalog->get("COPY");}
+ void validate_call(const J&c)const{
+  p::need(c.at("schema")=="CANONICAL_PREFILLCOPY_ESTIMATED_TARGET_V1"&&c.at("process")==plan.at("process")&&c.at("native_launch_binding").at("process")==c.at("process")&&c.at("native_launch_binding").at("source_launch_key")==c.at("source_launch_key")&&c.at("code_sha256")==code,"current canonical call identity");
+  p::need(c.at("phase")=="Prefill"&&c.at("grid")==J::array({256,1,1})&&c.at("block")==J::array({128,1,1})&&p::natural(c.at("first_argument_count"))==131072,"Prefill Copy shape only");
+  for(auto k:{"estimated_compute","estimated_address","observed_parameter_bytes_match_source"})p::need(c.at(k)==true,"explicit estimate");for(auto k:{"native_target_qualified","driver_admitted","branch_value_semantics_proved","implicit_register_dependencies_complete","opaque_functor_typed_layout_qualified","full_functor_bytes_source_transfer_qualified"})p::need(c.at(k)==false,"unknown semantics preserved");
+  const auto&r=c.at("native_resources");p::need(r.at("max_active_blocks_per_sm")==12&&r.at("threads_per_cta")==128&&r.at("registers")==12&&r.at("dynamic_shared_bytes")==0&&r.at("static_shared_bytes")==0&&r.at("binary_version")==86&&r.at("occupancy_query_result")==0,"native source resource limit");
+  for(auto role:{"value_input","destination"}){const auto&o=c.at(role);bool read=std::string(role)=="value_input";U base=p::natural(o.at("data_address")),size=p::natural(o.at("addressed_span_bytes"));p::need(base>0&&base%128==0&&size==U(read?389120:262144),"target span");(void)p::add(base,size);p::need(o.at("shape")==J::array({32,4096})&&o.at("stride_bytes")==J::array({read?12288:8192,2})&&o.at("dtype")=="torch.bfloat16"&&o.at("logical_bytes")==262144,"actual and derived view shape");p::need(o.at("logical_identity").get<std::string>().rfind("1925216:857625100:",0)==0,"current process logical identity");p::need(o.at("logical_root").is_null()==!read&&o.at("tensor_hook_observed")==read,"scratch is not a tensor hook");}
+  const auto&a=c.at("value_input");const auto&b=c.at("destination");U av=p::natural(a.at("data_address")),bv=p::natural(b.at("data_address"));p::need(p::add(av,389120)<=bv||p::add(bv,262144)<=av,"source/destination nonalias");
+ }
+ U address(const J&c,U cta,const Formula&r,U lane)const{
+  p::need(cta<256&&r.warp<4&&r.ordinal<8&&lane<32,"formula domain");U e=cta*512+r.warp*32+lane+(r.ordinal/2)*128;const auto&o=c.at(r.role);U offset=r.role=="value_input"?(e/4096)*12288+(e%4096)*2:e*2;
+  U a=p::add(p::natural(o.at("data_address")),offset);p::need(p::add(a,r.width)<=p::add(p::natural(o.at("data_address")),p::natural(o.at("addressed_span_bytes"))),"target typed/derived span");return a;
+ }
+ J service_map()const{std::vector<std::pair<U,U>>spans;for(auto*c:calls)for(auto role:{"value_input","destination"}){const auto&o=c->at(role);U lo=p::natural(o.at("data_address")),hi=p::add(lo,p::natural(o.at("addressed_span_bytes")));p::need(hi<=UINT64_MAX-127,"aligned map bound");spans.emplace_back(lo/128*128,(hi+127)/128*128);}std::sort(spans.begin(),spans.end());std::vector<std::pair<U,U>>merged;for(auto x:spans){if(!merged.empty()&&x.first<=merged.back().second)merged.back().second=std::max(x.second,merged.back().second);else merged.push_back(x);}J rows=J::array();U off=0;for(auto[lo,hi]:merged){rows.push_back({{"source_base",lo},{"bytes",hi-lo},{"service_base",off}});off=p::add(off,hi-lo);}return {{"schema","SG_SOURCE_TO_SERVICE_MAP_V1"},{"qualification","PACKED_SOURCE_GENERATED_128B_LINES_NOT_PHYSICAL_HARDWARE_ADDRESSES"},{"spans",rows}};}
+ J address_oracle(const J&c)const{tiny_sha::Sha256 h;U count=0;for(U cta=0;cta<256;++cta)for(const auto&r:records)for(U l=0;l<32;++l){h.add(std::to_string(cta)+":"+std::to_string(r.warp)+":"+std::to_string(r.ordinal)+":"+std::to_string(l)+":"+std::to_string(address(c,cta,r,l))+"\n");++count;}return {{"source_launch_key",c.at("source_launch_key")},{"lane_addresses",count},{"sha256",h.hex()}};}
+};
+}

@@ -1,0 +1,40 @@
+{
+  "compiler": "clang++",
+  "flags": [
+    "-ivfsoverlay",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-native-r1/overlay.json",
+    "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+    "-std=c++20",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/include",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-evaluation-r1/driver",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-norm-shared-r1/adapter",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/gddr6-support/hbf_coupling"
+  ],
+  "translation_units": [
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-full-runtime-r4/streaming.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/gpu.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/scheduler.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/simulator.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/simulator_session.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/sm.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/core-native-copy-r2/src/subpartition.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/app/system_config.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp"
+  ],
+  "parent_plan": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-native-r1/compile-plan.json"
+}
