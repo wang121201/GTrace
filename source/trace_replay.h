@@ -23,6 +23,29 @@ template<class Signed> inline Signed source_id(U value) {
     require(value<=U(std::numeric_limits<Signed>::max()),"replay source ID exceeds signed native field");
     return static_cast<Signed>(value);
 }
+inline J physical_json(const p::hbm::HbmStats& stats) {
+    J out;
+#define FIELD(x) out[#x]=stats.x
+    FIELD(read_bytes);FIELD(write_bytes);FIELD(row_hits);FIELD(row_misses);FIELD(row_conflicts);
+    FIELD(controller_buffer_read_bytes);FIELD(controller_buffer_write_bytes);
+    FIELD(controller_buffer_transfers);FIELD(controller_buffer_bus_busy_ns);
+    FIELD(activations);FIELD(precharges);FIELD(refresh_count);FIELD(bus_busy_ns);FIELD(finish_ns);
+    FIELD(pseudo_channels);FIELD(active_pseudo_channels);FIELD(max_pseudo_channel_accesses);
+    FIELD(max_queue_occupancy);FIELD(max_pseudo_channel_busy_ns);FIELD(avg_active_pseudo_channel_busy_ns);
+    FIELD(replicated_requests);FIELD(replicated_bursts);
+#undef FIELD
+    out["first_arrival_ns"]=std::isfinite(stats.first_arrival_ns)?J(stats.first_arrival_ns):J(nullptr);
+    J work=J::object();
+#define WORK(x) work[#x]=stats.stage_work.x
+    WORK(ingress_queue_wait_ns);WORK(scheduler_queue_wait_ns);WORK(address_mapping_ns);WORK(translation_ns);
+    WORK(mapping_dram_ns);WORK(write_buffer_dram_ns);WORK(refresh_stall_ns);WORK(precharge_ns);WORK(activation_ns);
+    WORK(command_ns);WORK(array_read_ns);WORK(array_program_ns);WORK(array_erase_ns);WORK(media_lane_transfer_ns);
+    WORK(page_buffer_ns);WORK(sram_staging_ns);WORK(channel_transfer_ns);WORK(tsv_transfer_ns);WORK(hb_io_transfer_ns);
+    WORK(transport_latency_ns);WORK(ecc_queue_wait_ns);WORK(ecc_latency_ns);WORK(maintenance_ns);
+#undef WORK
+    out["overlapping_stage_work_ns"]=std::move(work);
+    return out;
+}
 class Replay {
     struct Live { U call,bytes;bool write;g::CacheLineKey key; };
     struct Call {
@@ -74,29 +97,7 @@ class Replay {
         require(next<=max_cycles_,"memory-only replay completion exceeds cycle budget");
         cycle_=next;++advance_calls_;completions(backend_.step(cycle_));
     }
-    static J physical_json(const p::hbm::HbmStats& stats) {
-        J out;
-#define FIELD(x) out[#x]=stats.x
-        FIELD(read_bytes);FIELD(write_bytes);FIELD(row_hits);FIELD(row_misses);FIELD(row_conflicts);
-        FIELD(controller_buffer_read_bytes);FIELD(controller_buffer_write_bytes);
-        FIELD(controller_buffer_transfers);FIELD(controller_buffer_bus_busy_ns);
-        FIELD(activations);FIELD(precharges);FIELD(refresh_count);FIELD(bus_busy_ns);FIELD(finish_ns);
-        FIELD(pseudo_channels);FIELD(active_pseudo_channels);FIELD(max_pseudo_channel_accesses);
-        FIELD(max_queue_occupancy);FIELD(max_pseudo_channel_busy_ns);FIELD(avg_active_pseudo_channel_busy_ns);
-        FIELD(replicated_requests);FIELD(replicated_bursts);
-#undef FIELD
-        out["first_arrival_ns"]=std::isfinite(stats.first_arrival_ns)?J(stats.first_arrival_ns):J(nullptr);
-        J work=J::object();
-#define WORK(x) work[#x]=stats.stage_work.x
-        WORK(ingress_queue_wait_ns);WORK(scheduler_queue_wait_ns);WORK(address_mapping_ns);WORK(translation_ns);
-        WORK(mapping_dram_ns);WORK(write_buffer_dram_ns);WORK(refresh_stall_ns);WORK(precharge_ns);WORK(activation_ns);
-        WORK(command_ns);WORK(array_read_ns);WORK(array_program_ns);WORK(array_erase_ns);WORK(media_lane_transfer_ns);
-        WORK(page_buffer_ns);WORK(sram_staging_ns);WORK(channel_transfer_ns);WORK(tsv_transfer_ns);WORK(hb_io_transfer_ns);
-        WORK(transport_latency_ns);WORK(ecc_queue_wait_ns);WORK(ecc_latency_ns);WORK(maintenance_ns);
-#undef WORK
-        out["overlapping_stage_work_ns"]=std::move(work);
-        return out;
-    }
+
 public:
     Replay(sg_hbf::Clock clock,const p::hbm::HbmConfig& config,
            U max_live=4096,U credits=32,sg_hbf::DrainMode drain=sg_hbf::DrainMode::Global,

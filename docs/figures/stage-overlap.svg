@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600">
+<rect width="1080" height="600" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#172b4d} .label{font-size:15px}</style>
+<text x="28" y="36" font-size="25">Unchanged direct trace + explicit stage overlap</text>
+<text x="28" y="65" font-size="17">B1 · 48 CTAs/group · uncalibrated timing approximation</text>
+<text x="28" y="120" font-size="19">Window 1 — serial stages</text>
+<path d="M175 135V278" stroke="#e5e7eb"/>
+<path d="M345 135V278" stroke="#e5e7eb"/>
+<path d="M515 135V278" stroke="#e5e7eb"/>
+<path d="M685 135V278" stroke="#e5e7eb"/>
+<path d="M855 135V278" stroke="#e5e7eb"/>
+<path d="M1025 135V278" stroke="#e5e7eb"/>
+<text x="30" y="160" font-size="15">CTA group 0</text>
+<rect x="175.000" y="143" width="191.291" height="23" rx="2" fill="#E69F00"/>
+<rect x="366.291" y="143" width="15.553" height="23" rx="2" fill="#0072B2"/>
+<text x="30" y="195" font-size="15">CTA group 1</text>
+<rect x="381.844" y="178" width="191.110" height="23" rx="2" fill="#E69F00"/>
+<rect x="572.954" y="178" width="15.553" height="23" rx="2" fill="#0072B2"/>
+<text x="30" y="230" font-size="15">CTA group 2</text>
+<rect x="588.506" y="213" width="190.225" height="23" rx="2" fill="#E69F00"/>
+<rect x="778.732" y="213" width="15.553" height="23" rx="2" fill="#0072B2"/>
+<text x="30" y="265" font-size="15">CTA group 3</text>
+<rect x="794.284" y="248" width="190.406" height="23" rx="2" fill="#E69F00"/>
+<rect x="984.690" y="248" width="15.553" height="23" rx="2" fill="#0072B2"/>
+<text x="28" y="327" font-size="19">Window 2 — next-group prefetch</text>
+<path d="M175 342V485" stroke="#e5e7eb"/>
+<text x="168" y="508" font-size="15">0.0</text>
+<path d="M345 342V485" stroke="#e5e7eb"/>
+<text x="338" y="508" font-size="15">4.2</text>
+<path d="M515 342V485" stroke="#e5e7eb"/>
+<text x="508" y="508" font-size="15">8.4</text>
+<path d="M685 342V485" stroke="#e5e7eb"/>
+<text x="678" y="508" font-size="15">12.6</text>
+<path d="M855 342V485" stroke="#e5e7eb"/>
+<text x="848" y="508" font-size="15">16.8</text>
+<path d="M1025 342V485" stroke="#e5e7eb"/>
+<text x="1018" y="508" font-size="15">21.0</text>
+<text x="30" y="367" font-size="15">CTA group 0</text>
+<rect x="175.000" y="350" width="191.291" height="23" rx="2" fill="#E69F00"/>
+<rect x="366.291" y="350" width="15.553" height="23" rx="2" fill="#0072B2"/>
+<text x="30" y="402" font-size="15">CTA group 1</text>
+<rect x="363.961" y="385" width="192.068" height="23" rx="2" fill="#E69F00"/>
+<rect x="556.029" y="385" width="15.553" height="23" rx="2" fill="#0072B2"/>
+<text x="30" y="437" font-size="15">CTA group 2</text>
+<rect x="554.692" y="420" width="190.424" height="23" rx="2" fill="#E69F00"/>
+<rect x="745.116" y="420" width="15.553" height="23" rx="2" fill="#0072B2"/>
+<text x="30" y="472" font-size="15">CTA group 3</text>
+<rect x="743.924" y="455" width="190.623" height="23" rx="2" fill="#E69F00"/>
+<rect x="934.546" y="455" width="15.553" height="23" rx="2" fill="#0072B2"/>
+<text x="320" y="538" font-size="15">Modeled time (microseconds); first four groups of selected GEMV</text>
+<rect x="28.000" y="555" width="18.000" height="23" rx="2" fill="#E69F00"/>
+<text x="56" y="573" font-size="15">First admission → all group memory complete (not bus busy)</text>
+<rect x="727.000" y="555" width="18.000" height="23" rx="2" fill="#0072B2"/>
+<text x="757" y="573" font-size="15">Estimated compute</text>
+</svg>

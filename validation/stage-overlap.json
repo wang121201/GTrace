@@ -1,0 +1,340 @@
+{
+  "schema": "TILEGEN_STAGE_OVERLAP_VALIDATION_V1",
+  "status": "PASS",
+  "base_commit": "983a29ded073a30af114b424ad231dca4c3eae0c",
+  "branch": "codex/tilegen-trace-cosim-20260918-r1",
+  "qualification": "EXPLICIT_UNCALIBRATED_STAGE_APPROXIMATION",
+  "CPU_only": true,
+  "GPU_sampling_or_NCU_fitting": false,
+  "runs": {
+    "decode-direct": {
+      "receipt": {
+        "path": "build/stage-validation/decode-direct/run-receipt.json",
+        "sha256": "c8da0414b863938f6827de32861bd25f91ed8cde7f06cbf53572d8d603c530f4"
+      },
+      "result": {
+        "path": "build/stage-validation/decode-direct/result.json",
+        "sha256": "e72c940e08a8f9cd258837bb633dd0c99de6eea33105e46eb13213a2c3b5adc8"
+      },
+      "CPU_seconds": 24.172923,
+      "CPU_minutes": 0.40288205,
+      "elapsed_seconds": 24.730157792,
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "trace_records": 591652,
+      "trace_read_bytes": 75595776,
+      "trace_write_bytes": 33920
+    },
+    "decode-memory": {
+      "receipt": {
+        "path": "build/stage-validation/decode-memory/run-receipt.json",
+        "sha256": "7492fa29318669dc244437d98f12e5055b23da2e132cd93ca21f2551965f0bbd"
+      },
+      "result": {
+        "path": "build/stage-validation/decode-memory/result.json",
+        "sha256": "1e9e0e2838d4829b47a35e12d4d109918214b265f0647693d6762598d71d7757"
+      },
+      "CPU_seconds": 1.330859,
+      "CPU_minutes": 0.022180983333333334,
+      "elapsed_seconds": 1.3491565410000002,
+      "physical_time_ns": 225053.3333333333,
+      "aggregate_bandwidth_GBps": 336.052325374726,
+      "read_bytes": 75595776,
+      "write_bytes": 33920,
+      "request_payload_fnv1a64": 1371834365176850156,
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "trace_records": 591652,
+      "trace_read_bytes": 75595776,
+      "trace_write_bytes": 33920
+    },
+    "decode-w1": {
+      "receipt": {
+        "path": "build/stage-validation/decode-w1/run-receipt.json",
+        "sha256": "ec91b38ecd3fad75e17b8aa409c9f72c295f5eae3aa8b4e2950dcbac224bdbfa"
+      },
+      "result": {
+        "path": "build/stage-validation/decode-w1/result.json",
+        "sha256": "e27f17b45c7ea9e92f783e914bffa65c9fde929082eb2dd0b1dfcfb086d65e7a"
+      },
+      "CPU_seconds": 1.335732,
+      "CPU_minutes": 0.0222622,
+      "elapsed_seconds": 1.37561525,
+      "makespan_ns": 244271.9315734264,
+      "physical_time_ns": 243069.77777777775,
+      "aggregate_bandwidth_GBps": 309.6127152753375,
+      "memory_span_bandwidth_GBps": 311.1439714613271,
+      "compute_busy_cycles": 41781,
+      "compute_native_outstanding_overlap_cycles": 0,
+      "read_bytes": 75595776,
+      "write_bytes": 33920,
+      "request_payload_fnv1a64": 1371834365176850156,
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "trace_records": 591652,
+      "trace_read_bytes": 75595776,
+      "trace_write_bytes": 33920
+    },
+    "decode-w2": {
+      "receipt": {
+        "path": "build/stage-validation/decode-w2/run-receipt.json",
+        "sha256": "01c85ef65c571c1426310b0a1219371fd8e5662c340921c93adecb49eb58f86d"
+      },
+      "result": {
+        "path": "build/stage-validation/decode-w2/result.json",
+        "sha256": "99ca80825f1edd80fe6aa521a67fdc5a625c0fad82bd908b3d44a4e069b6e8c3"
+      },
+      "CPU_seconds": 1.317372,
+      "CPU_minutes": 0.0219562,
+      "elapsed_seconds": 1.3300322500000001,
+      "makespan_ns": 227875.30821889042,
+      "physical_time_ns": 226673.3333333333,
+      "aggregate_bandwidth_GBps": 331.89070194192476,
+      "memory_span_bandwidth_GBps": 333.6506102761684,
+      "compute_busy_cycles": 41781,
+      "compute_native_outstanding_overlap_cycles": 35570,
+      "read_bytes": 75595776,
+      "write_bytes": 33920,
+      "request_payload_fnv1a64": 1371834365176850156,
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "trace_records": 591652,
+      "trace_read_bytes": 75595776,
+      "trace_write_bytes": 33920
+    },
+    "decode-w4": {
+      "receipt": {
+        "path": "build/stage-validation/decode-w4/run-receipt.json",
+        "sha256": "78b481c219bd8ca2b88566fb4aa7bc204eaecb9f03de3ff0ea32d830576acc04"
+      },
+      "result": {
+        "path": "build/stage-validation/decode-w4/result.json",
+        "sha256": "292413d661f822b86a376269f2ff5b979267e1da3e696b911faec14aa44c3540"
+      },
+      "CPU_seconds": 1.320568,
+      "CPU_minutes": 0.022009466666666665,
+      "elapsed_seconds": 1.331322917,
+      "makespan_ns": 227875.30821889042,
+      "physical_time_ns": 226673.3333333333,
+      "aggregate_bandwidth_GBps": 331.89070194192476,
+      "memory_span_bandwidth_GBps": 333.6506102761684,
+      "compute_busy_cycles": 41781,
+      "compute_native_outstanding_overlap_cycles": 35570,
+      "read_bytes": 75595776,
+      "write_bytes": 33920,
+      "request_payload_fnv1a64": 1371834365176850156,
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "trace_records": 591652,
+      "trace_read_bytes": 75595776,
+      "trace_write_bytes": 33920
+    },
+    "nine-direct": {
+      "receipt": {
+        "path": "build/stage-validation/nine-direct/run-receipt.json",
+        "sha256": "4ad8b519f5feea1c2f3f1d276da0d54d97c2dd4fcd3f1b9c8db6001357f32859"
+      },
+      "result": {
+        "path": "build/stage-validation/nine-direct/result.json",
+        "sha256": "0710c8f466e854f73f3c0e8a674d353da41acf55893ecbb0e66a0bba783f091e"
+      },
+      "CPU_seconds": 47.316883,
+      "CPU_minutes": 0.7886147166666666,
+      "elapsed_seconds": 47.696361834,
+      "trace_sha256": "a124fdc166e62d298bc0e6ca079a7744fc600c91a6caf198b559741221a260f0",
+      "trace_records": 67935,
+      "trace_read_bytes": 8695680,
+      "trace_write_bytes": 0
+    },
+    "nine-plain": {
+      "receipt": {
+        "path": "build/stage-validation/nine-plain/run-receipt.json",
+        "sha256": "3696b4ba2c3d7db76c467ae50da8c7e1d0e3b86c35551f7618f2b5b37d07a8b3"
+      },
+      "result": {
+        "path": "build/stage-validation/nine-plain/result.json",
+        "sha256": "5b698914f1c8844c24c322f46b9005d50823e0d3bc6f018b57724989e414ff40"
+      },
+      "CPU_seconds": 48.075429,
+      "CPU_minutes": 0.80125715,
+      "elapsed_seconds": 48.381833708,
+      "trace_sha256": "a124fdc166e62d298bc0e6ca079a7744fc600c91a6caf198b559741221a260f0",
+      "trace_records": 67935,
+      "trace_read_bytes": 8695680,
+      "trace_write_bytes": 0
+    },
+    "nine-w1": {
+      "receipt": {
+        "path": "build/stage-validation/nine-w1/run-receipt.json",
+        "sha256": "de91bd1bd3ab327c5925d6378be8d1184bc4fa5a1ba2f932a5fd41310cda89e1"
+      },
+      "result": {
+        "path": "build/stage-validation/nine-w1/result.json",
+        "sha256": "0859e72ed07dc7be5da87c49dadae91126a6b3f811a5dc461e6c07fc50f2292b"
+      },
+      "CPU_seconds": 0.33547899999999997,
+      "CPU_minutes": 0.005591316666666666,
+      "elapsed_seconds": 0.34282608400000003,
+      "makespan_ns": 823607.2544091333,
+      "physical_time_ns": 822899.111111111,
+      "aggregate_bandwidth_GBps": 10.558042019965445,
+      "memory_span_bandwidth_GBps": 10.56712771053884,
+      "compute_busy_cycles": 1709896,
+      "compute_native_outstanding_overlap_cycles": 0,
+      "read_bytes": 8695680,
+      "write_bytes": 0,
+      "request_payload_fnv1a64": 1013340932379616009,
+      "trace_sha256": "a124fdc166e62d298bc0e6ca079a7744fc600c91a6caf198b559741221a260f0",
+      "trace_records": 67935,
+      "trace_read_bytes": 8695680,
+      "trace_write_bytes": 0
+    },
+    "nine-w2": {
+      "receipt": {
+        "path": "build/stage-validation/nine-w2/run-receipt.json",
+        "sha256": "1c96a76d0cb223ca79b3aeca43dcd87dd8bfd5193dca1de09fdf007f0fd233e5"
+      },
+      "result": {
+        "path": "build/stage-validation/nine-w2/result.json",
+        "sha256": "c180743c8b3dd265b29adf315a5bc2f829bfda34f3442ce10b0d0ee5fc149b8a"
+      },
+      "CPU_seconds": 0.33628,
+      "CPU_minutes": 0.005604666666666667,
+      "elapsed_seconds": 0.34234125,
+      "makespan_ns": 823607.2544091333,
+      "physical_time_ns": 822899.111111111,
+      "aggregate_bandwidth_GBps": 10.558042019965445,
+      "memory_span_bandwidth_GBps": 10.56712771053884,
+      "compute_busy_cycles": 1709896,
+      "compute_native_outstanding_overlap_cycles": 0,
+      "read_bytes": 8695680,
+      "write_bytes": 0,
+      "request_payload_fnv1a64": 1013340932379616009,
+      "trace_sha256": "a124fdc166e62d298bc0e6ca079a7744fc600c91a6caf198b559741221a260f0",
+      "trace_records": 67935,
+      "trace_read_bytes": 8695680,
+      "trace_write_bytes": 0
+    }
+  },
+  "builds": [
+    {
+      "path": "build/stage-native-r1/build-receipt.json",
+      "sha256": "5b2e516f561aa74bf3f2b1c7038e535bc42a34b60d65f1a3b734dbbb3913831b"
+    },
+    {
+      "path": "build/stage-replay-r1/build-receipt.json",
+      "sha256": "7615beca28976c784bab733f1a64e145e1e21a06f1ff3d7d8a7419c421b4e375"
+    }
+  ],
+  "checks": {
+    "stage_tick_oracle": 4428,
+    "static_resource_hand_checks": 25,
+    "seven_unit_suites_normal_and_ASAN_UBSAN": "PASS; LeakSanitizer disabled",
+    "source_profile_census_matches_independent_pinned_node_audit": [
+      {
+        "call_index": 0,
+        "template_class": 0,
+        "CTAs": 512,
+        "census": {
+          "SIMD": {
+            "nodes": 3428,
+            "modeled_lane_slots": 102460,
+            "reservation_cycles": 3428
+          }
+        }
+      },
+      {
+        "call_index": 1,
+        "template_class": 0,
+        "CTAs": 1,
+        "census": {
+          "SIMD": {
+            "nodes": 9744,
+            "modeled_lane_slots": 304864,
+            "reservation_cycles": 9744
+          },
+          "SFU": {
+            "nodes": 1312,
+            "modeled_lane_slots": 41984,
+            "reservation_cycles": 10496
+          }
+        }
+      },
+      {
+        "call_index": 2,
+        "template_class": 0,
+        "CTAs": 512,
+        "census": {
+          "SIMD": {
+            "nodes": 10768,
+            "modeled_lane_slots": 336100,
+            "reservation_cycles": 10768
+          }
+        }
+      }
+    ],
+    "stage_CLI_cases": 14,
+    "memory_CLI_cases": 17,
+    "decode_original_trace_SHA_unchanged": true,
+    "nine_family_profile_switch_trace_SHA_unchanged": true,
+    "pure_replay_physical_cycles_calls_hash_unchanged": true,
+    "nine_family_single_CTA_kernel_barrier_W1_W2_identical": true,
+    "unsupported_family_rejected_without_published_trace": true
+  },
+  "test_receipts": [
+    {
+      "path": "build/stage-unit-r2/summary.json",
+      "sha256": "43398dcc6a8098bf3cb97a5f4024ea42bb4e61a06d90acb894f95b35b9e76a4c"
+    },
+    {
+      "path": "build/stage-unit-asan-r1/summary.json",
+      "sha256": "b8baffe4cfdfc597aa73ab30d39846f30446143a16a5f06c56d9b5b91fc9970c"
+    },
+    {
+      "path": "build/stage-memory-cli-r1/summary.json",
+      "sha256": "d35c3ec3d64ec05b42ca0a592b64b124516cc5749836729efd30934bafac4279"
+    },
+    {
+      "path": "build/stage-cli-r1/summary.json",
+      "sha256": "f7cc024a588435395acaf08f59410c9f0c8018792239ca74e91b9ab6bca3f326"
+    }
+  ],
+  "decode_scope": "Llama3-8B B1 selected epoch-3-launch-28/29/30 only: GEMV512, SiLU1, GEMV512 CTAs; 23 groups; not a complete layer/decode/inference",
+  "nine_family_scope": "One selected CTA each of nine native binding families; not full workflow; compressed frames/source pins retained",
+  "input_preparation": {
+    "path": "build/stage-validation-inputs/preparation.json",
+    "sha256": "6c15a071f19d132f41a778ba5d28c64ffa94d72ed6dcc42b4cc43db7fb377ebf"
+  },
+  "historical_fine_reference": {
+    "receipts": [
+      {
+        "path": "build/shared-frontend-validation/paired-final/candidate-1/run-receipt.json",
+        "sha256": "93f8ac05c606b8ee329b17972dd3e31810dc9bc7b00ee4d83705a2747ba1944c"
+      },
+      {
+        "path": "build/shared-frontend-validation/paired-final/candidate-2/run-receipt.json",
+        "sha256": "fc5bf286d02b3b8cf550b6cee43b62a5dc9c9f40dce3e9315bf37fdb75f6603e"
+      },
+      {
+        "path": "build/shared-frontend-validation/paired-final/candidate-3/run-receipt.json",
+        "sha256": "8389ac7169c9de4338e0501b4be5605edc2536898c66c228413476119c3a4440"
+      }
+    ],
+    "CPU_median_seconds": 45.96764,
+    "CPU_median_minutes": 0.7661273333333334,
+    "simulated_ns": 533812.772467006,
+    "read_bytes": 75595776,
+    "write_bytes": 4864,
+    "new_stage_write_bytes": 33920,
+    "qualification": "Different cache execution order/write traffic and dependency model. Host cost reference only, not equal-work timing accuracy comparison. Not rerun or used to fit new stage costs."
+  },
+  "derived": {
+    "decode_W1_to_W2_modeled_makespan_reduction_percent": 6.712446759200117,
+    "decode_generation_plus_W2_CPU_seconds": 25.490295,
+    "decode_generation_plus_W2_CPU_minutes": 0.42483825,
+    "historical_fine_CPU_divided_by_stage_replay_CPU": 34.893439362609804,
+    "historical_fine_CPU_divided_by_generation_plus_stage_CPU": 1.8033388785810445
+  },
+  "limitations": [
+    "single timing sample per new workload/config; no statistical speedup claim",
+    "fixed direct cache hit/miss/eviction decisions; cache-hit latency omitted",
+    "static resource estimate; dependencies/shared/barrier/kernel launch waits omitted",
+    "intra-stage requests before compute; only inter-stage overlap",
+    "automatic profile covers nine native binding families, not full 1138 calls; B8 remains paused"
+  ]
+}

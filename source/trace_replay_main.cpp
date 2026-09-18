@@ -1,7 +1,9 @@
 #include "trace_replay.h"
+#include "stage_replay.h"
 #include "work/tilegen-norm-shared-r1/adapter/integration.h"
 #include <fstream>
 #include <iostream>
+#include <memory>
 #include <sstream>
 
 namespace {
@@ -23,8 +25,12 @@ struct Identity final:GTSim::L2DramAddressMapper{
 };
 J run(const J& spec){
     need(spec.at("schema")=="TILEGEN_TRACE_REPLAY_INPUT_V1","unknown replay input schema");
+    const auto mode=spec.value("mode",std::string("memory-only-replay"));
+    need(mode=="memory-only-replay"||mode=="stage-overlap-replay","unknown replay mode");
+    const bool staged=mode=="stage-overlap-replay";
     const auto transport=J::parse(verified(spec,"control",1<<20));
-    const auto source=J::parse(verified(spec,"source_result",128<<20));
+    const auto source_bytes=verified(spec,"source_result",128<<20);
+    const auto source=J::parse(source_bytes);
     const auto receipt=J::parse(verified(spec,"source_run_receipt",1<<20));
     const auto config_bytes=verified(spec,"native_config",1<<20);
     need(source.at("schema")=="NATIVE_MEMORY_FUNCTIONAL_DIRECT_V1"&&source.at("mode")=="direct"&&
@@ -57,7 +63,32 @@ J run(const J& spec){
         "pipeline call label/order differs from sealed control");
     need(source.at("cache").at("DRAM_read_bytes")==expected.at("read_bytes")&&
         source.at("cache").at("DRAM_write_bytes")==expected.at("write_bytes"),"source cache/trace byte census differs");
-    trace_replay::Replay replay(clock,cfg,coupling::natural(profile.at("max_live")),
+    J phases;
+    if(staged){
+        need(receipt.at("phase_profile_exported")==true&&receipt.at("result_sha256")==tiny_sha::sha256(source_bytes),
+            "phase profile/result differs from generating run receipt SHA");
+        phases=source.at("phase_profile");
+        need(phases.at("schema")=="TILEGEN_CTA_STAGE_PROFILE_V1"&&
+            phases.at("qualification")=="EXPLICIT_UNCALIBRATED_STAGE_APPROXIMATION",
+            "stage replay requires an explicitly qualified direct phase profile");
+        std::vector<U> covered(call_count,0);U previous_call=0;
+        for(const auto& stage:phases.at("stages")){
+            const U call=coupling::natural(stage.at("call_index"));
+            need(call<call_count&&call>=previous_call,"invalid stage call order");
+            const U begin=coupling::natural(stage.at("cta_begin")),end=coupling::natural(stage.at("cta_end"));
+            need(begin==covered[call]&&end>begin&&end<=coupling::natural(source.at("pipeline").at(call).at("CTAs")),
+                "stage CTA partition differs from source direct call");
+            covered[call]=end;previous_call=call;
+        }
+        for(U i=0;i<call_count;++i)need(covered[i]==coupling::natural(source.at("pipeline").at(i).at("CTAs")),
+            "stage profile does not cover every selected CTA");
+    }
+    std::unique_ptr<trace_replay::Replay> memory;
+    std::unique_ptr<stage_replay::Replay> stages;
+    if(staged)stages=std::make_unique<stage_replay::Replay>(clock,cfg,phases,
+        coupling::natural(spec.at("prefetch_stages")),coupling::natural(profile.at("max_live")),
+        coupling::natural(profile.at("credits_per_pc")),drain,coupling::natural(spec.at("max_cycles")));
+    else memory=std::make_unique<trace_replay::Replay>(clock,cfg,coupling::natural(profile.at("max_live")),
         coupling::natural(profile.at("credits_per_pc")),drain,coupling::natural(spec.at("max_cycles")),call_count);
     // Validation is streaming. All simulation state is private and provisional
     // until whole-file SHA, footer, per-call census and final drain pass.
@@ -67,24 +98,25 @@ J run(const J& spec){
         const U base=mapper.map({1,record.source_line_address});
         need(record.service_address>=base&&record.service_address-base<128&&
             record.bytes<=128-(record.service_address-base),"trace service address differs from declared source map");
-        replay.accept(record);
+        if(stages)stages->accept(record);else memory->accept(record);
     });
     const auto checked=trace.to_json();
     for(const auto* key:{"mode","context_sha256","records","read_requests","write_requests","read_bytes","write_bytes",
                         "file_bytes","record_sha256","file_sha256","request_payload_fnv1a64"})
         need(checked.at(key)==expected.at(key),"source trace receipt census/hash differs from replay input");
-    auto out=replay.finish();
+    auto out=stages?stages->finish():memory->finish();
     need(out.at("requests")==trace.records&&out.at("request_payload_fnv1a64")==trace.request_payload_fnv1a64,"replay/input trace census differs");
-    U seen_calls=0;
+    std::vector<bool> seen_calls(call_count,false);
     for(auto& row:out.at("calls")){
         const U index=row.at("call_index").get<U>();const auto& original=source.at("pipeline").at(index);
         need(row.at("read_bytes")==original.at("DRAM_read_bytes")&&row.at("write_bytes")==original.at("DRAM_write_bytes"),"replay per-call traffic differs from source direct run");
-        row["source_launch_key"]=original.at("source_launch_key");row["family"]=original.at("family");row["phase"]=original.at("phase");++seen_calls;
+        need(!seen_calls[index],"duplicate replay call result");seen_calls[index]=true;
+        row["source_launch_key"]=original.at("source_launch_key");row["family"]=original.at("family");row["phase"]=original.at("phase");
     }
     // Calls producing no DRAM records do not appear in replay.calls.
     for(U i=0;i<call_count;++i){const auto& original=source.at("pipeline").at(i);
-        if(original.at("DRAM_read_bytes")==0&&original.at("DRAM_write_bytes")==0)++seen_calls;}
-    need(seen_calls==call_count,"source nonempty call missing in replay");
+        if(original.at("DRAM_read_bytes")==0&&original.at("DRAM_write_bytes")==0)seen_calls[i]=true;}
+    need(std::all_of(seen_calls.begin(),seen_calls.end(),[](bool seen){return seen;}),"source nonempty call missing in replay");
     out["trace"]=checked;out["input_manifest"]=spec;out["batch_size"]=1;
     out["memory_model"]=coupling::native_identity(cfg,config_path);
     out["native_config_sha256"]=tiny_sha::sha256(config_bytes);
@@ -93,7 +125,9 @@ J run(const J& spec){
     out["config_provenance_scope"]="replay cfg snapshot/hash and resolved profile; historical direct receipt pins cfg path, not original cfg bytes";
     out["cosim_timing_equivalent"]=false;out["source_final_dirty_flush"]=source.at("final_dirty_flush");
     out["selected_source_count"]=call_count;out["selected_CTAs"]=source.at("selected_CTAs");
-    out["qualification"]="MEMORY_ONLY_SATURATED_REPLAY_NOT_INFERENCE_LATENCY_OR_HARDWARE_CALIBRATION";
+    out["qualification"]=staged?"EXPLICIT_UNCALIBRATED_STAGE_APPROXIMATION":
+        "MEMORY_ONLY_SATURATED_REPLAY_NOT_INFERENCE_LATENCY_OR_HARDWARE_CALIBRATION";
+    if(staged){out["phase_profile"]=phases;out["phase_profile_sha256"]=tiny_sha::sha256(phases.dump());}
     return out;
 }
 }
@@ -101,5 +135,5 @@ int main(int argc,char** argv){
     try{need(argc==2,"usage: tilegen_replay replay-input.json");
         const auto result=run(J::parse(read_file(argv[1],1<<20)));
         std::cout<<result.dump(2)<<'\n';return 0;
-    }catch(const std::exception& e){std::cerr<<"memory-only replay failed: "<<e.what()<<'\n';return 1;}
+    }catch(const std::exception& e){std::cerr<<"trace replay failed: "<<e.what()<<'\n';return 1;}
 }

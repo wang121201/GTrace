@@ -54,13 +54,13 @@ target_link_libraries(tilegen_replay PRIVATE ZLIB::ZLIB Threads::Threads)
 include(CTest)
 if(BUILD_TESTING)
   get_target_property(TILEGEN_INCLUDES tilegen_native INCLUDE_DIRECTORIES)
-  foreach(TEST_NAME dirty32_test direct_cache_smoke native_trace_test cta_validation_test trace_replay_test)
+  foreach(TEST_NAME dirty32_test direct_cache_smoke native_trace_test cta_validation_test trace_replay_test stage_replay_test direct_phase_profile_test)
     add_executable(${TEST_NAME} tests/${TEST_NAME}.cpp)
     target_include_directories(${TEST_NAME} PRIVATE source ${TILEGEN_INCLUDES})
     target_compile_definitions(${TEST_NAME} PRIVATE TILEGEN_DIRTY_SECTOR_MODE=2)
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} "${CMAKE_CURRENT_BINARY_DIR}/${TEST_NAME}-artifacts")
   endforeach()
-  foreach(HBF_TEST native_trace_test trace_replay_test)
+  foreach(HBF_TEST native_trace_test trace_replay_test stage_replay_test)
   target_sources(${HBF_TEST} PRIVATE
     source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp
     source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp

@@ -10,6 +10,8 @@
 
 最新增加：已有 direct trace 可通过独立 `replay.py` 直接回放到 HBFSIM，跳过计算和 GPU stall，保留内存队列/时序。Decode 有界子集的 591,652 条请求回放 CPU **0.022 分钟**；完整生成与回放合计约 **0.440 分钟**，与保留计算依赖的 cosim 口径不同。见 [纯访存回放说明](docs/memory-only-replay.md)。
 
+现在可在这条 direct 路径导出 CTA 组计算 profile，再用 `replay.py --mode stage-overlap` 执行阶段级计算/访存重叠。地址流不变，计算成本取原 SourceNode 的静态资源需求，运行时跳过 warp/DAG 调度；窗口、计算尾部、kernel 屏障及近似范围见 [阶段重叠说明](docs/stage-overlap.md)。自动 profile 当前限九类原生 binding，不覆盖完整 1138-call 流程。
+
 ## 独立分支与实现
 
 - 基线提交 `0e21251f126510744d1b319f043e7e6b2dae5e1f`：抽取 22 个翻译单元、171 个实际源码依赖（约 4.19 MB），展开原 VFS overlay。原工作目录未修改，B8 候选仍在另一个仓库。
@@ -24,6 +26,7 @@
 | 参数 | 执行方式 | 时序范围 |
 |---|---|---|
 | `replay.py` | 已有 direct cache 后 trace → HBFSIM；不重新建模/cache | 全部请求就绪，按原序尽快填充有限内存队列；无计算/依赖/GPU stall |
+| `replay.py --mode stage-overlap` | direct `--phase-ctas 48` 导出的 trace + 静态计算 profile → HBFSIM | 阶段访存完成后计算，下一组可预取；跨 kernel 屏障，固定 direct cache，无 warp 依赖执行 |
 | `--mode direct` | 原生地址；9 类免逐 CTA DAG，11 类单 CTA 投影；功能 L1/L2 | 固定 call / CTA / member 顺序；立即完成；不运行计算调度或 HBFSIM，时间字段未知 |
 | `--mode cosim`（默认） | 原生计算/依赖图、已有精确主机加速、GTSim L1/L2、HBFSIM | 保留计算、访存停顿及重叠，有限队列/准入 |
 | `--mode cosim-fast` | C 原 hybrid 路径与 fine fallback | **显式近似时序档**：q16、memory-phase16、epoch8、independent drain；不宣称与全 fine 周期相同 |

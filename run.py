@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True, help='New result directory')
     parser.add_argument('--binary', type=Path, default=ROOT/'build/shared-frontend-r2/tilegen_native')
     parser.add_argument('--mode', choices=('direct', 'cosim', 'cosim-fast'), default='cosim')
+    parser.add_argument('--phase-ctas', type=int, default=0, help='Direct only: export approximate compute/stage profile; 48 is one reference SM wave; default off')
     parser.add_argument('--trace', action='store_true', help='Export admitted cosim DRAM requests; direct always exports')
     parser.add_argument('--max-trace-bytes', type=int, default=8 << 30)
     parser.add_argument('--full-workflow', action='store_true')
@@ -32,11 +33,15 @@ def main():
     args = parser.parse_args()
     if args.max_trace_bytes < 4096 or args.timeout_seconds <= 0:
         parser.error('trace quota must be >=4096 bytes and timeout positive')
+    if not 0 <= args.phase_ctas <= 4096 or (args.phase_ctas and args.mode != 'direct'):
+        parser.error('--phase-ctas requires direct mode and a size in 1..4096')
     binary, source, out = args.binary.resolve(), args.input.resolve(), args.output.resolve()
     if not binary.is_file() or not source.is_file():
         parser.error('binary and input must exist')
     out.mkdir(parents=True, exist_ok=False)
     argv = [str(binary), '--mode='+args.mode]
+    if args.phase_ctas:
+        argv += ['--phase-ctas='+str(args.phase_ctas)]
     if args.trace or args.mode == 'direct':
         argv += ['--trace='+str(out/'dram.tgn'), '--max-trace-bytes='+str(args.max_trace_bytes)]
     if args.full_workflow:
@@ -70,6 +75,11 @@ def main():
                               'MODELED_HYBRID_BOUNDED_SUBSEQUENCE_EXECUTED', 'MODELED_HYBRID_FULL_1138_CONTINUOUS_EXECUTED'})
             if not identity or not successful:
                 raise ValueError('engine result identity or completion status is invalid')
+            if args.phase_ctas:
+                phases = result.get('phase_profile', {})
+                if not isinstance(phases, dict) or phases.get('schema') != 'TILEGEN_CTA_STAGE_PROFILE_V1' or not phases.get('stages'):
+                    raise ValueError('requested stage profile is missing')
+                receipt.update(phase_ctas=args.phase_ctas, phase_profile_exported=True)
             if args.trace or args.mode == 'direct':
                 trace = result.get('trace', {})
                 path = out/'dram.tgn'
@@ -79,6 +89,7 @@ def main():
                         or path.stat().st_size != trace.get('file_bytes')
                         or sha(path) != trace.get('file_sha256')):
                     raise ValueError('requested trace is missing, incomplete or changed')
+            receipt['result_sha256'] = sha(out/'result.json')
     except subprocess.TimeoutExpired:
         receipt.update(status='TIMEOUT', error='Child terminated at requested deadline; incomplete trace is not qualified.')
     except (OSError, ValueError, TypeError) as error:

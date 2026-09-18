@@ -4,6 +4,7 @@
 // submits requests to HBFSIM. Unsupported bindings retain the exact fine Builder
 // one CTA at a time and project its global subops without executing that DAG.
 #include "direct_cache.h"
+#include "direct_phase_profile.h"
 #include <chrono>
 
 namespace direct_native {
@@ -69,13 +70,18 @@ inline U fallback(const canonical_full::Model& model,compressed_frame::Cache& fr
     }
     throw std::runtime_error("direct unsupported native family: "+family);
 }
-inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace::Writer& writer) {
+inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace::Writer& writer,U phase_ctas=0) {
     using namespace native_sequence;
     const auto started=std::chrono::steady_clock::now();
     auto model_owner=frames.with_decoded("Helpers",[&](const std::string& raw){
         return std::make_unique<canonical_full::Model>(in,raw);
     });
     auto& model=*model_owner;
+    // Fail before executing any call or emitting cache traffic. This optional
+    // static profile must never silently construct a fine fallback CTA graph.
+    if(phase_ctas)for(const auto& target:model.calls)
+        if(!hybrid_full::Bindings::supports(target.family))
+            throw std::runtime_error("direct stage profile lacks native binding for family: "+target.family);
     std::vector<std::unique_ptr<canonical_full::Prepared>> prepared;
     U node_count=0,cta_count=0;
     for(const auto& target:model.calls) {
@@ -90,6 +96,7 @@ inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace:
     // Validate the same sealed memory-profile contract, but construct only the
     // address mapper. No HbmDevice, native service engine or GPU session exists.
     const auto cfg=g::make_rtx4000_ada_footprint_reference_config();
+    J phase_profile=phase_ctas?direct_phase::profile(cfg,phase_ctas):J();
     const auto& profile=in.at("memory_model");
     require(profile.at("schema")=="SG_FRAGMENT_MEMORY_PROFILE_V1"&&
         profile.at("qualification")=="EXPLICIT_UNCALIBRATED_MODEL_PARAMETERS"&&
@@ -122,7 +129,11 @@ inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace:
         const bool fast=hybrid_full::Bindings::supports(item.family);
         if(fast) {
             auto binding=bindings.bind(item);
+            std::unique_ptr<direct_phase::Call> phase_call;
+            if(phase_ctas)phase_call=std::make_unique<direct_phase::Call>(*binding,cfg,index);
+            U group_begin=0,record_begin=phase_ctas?before.at("trace_records").get<U>():0;
             for(U cta=0;cta<binding->ctas();++cta) {
+                if(phase_call)phase_call->observe_cta(cta);
                 const auto nodes=binding->nodes(cta);
                 for(U member=0;member<nodes.size();++member) {
                     const auto& node=nodes[member];
@@ -139,7 +150,14 @@ inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace:
                     require(bytes==memory.global_bytes,"direct binding byte census differs");
                     cache.instruction(1,memory.write,memory.bypass_l1,memory.global_subops,context);
                 }
+                if(phase_call&&(cta+1-group_begin==phase_ctas||cta+1==binding->ctas())) {
+                    const U record_end=cache.snapshot().at("trace_records").get<U>();
+                    auto& stages=phase_profile.at("stages");
+                    stages.push_back(phase_call->finish_stage(U(stages.size()),group_begin,cta+1,record_begin,record_end));
+                    group_begin=cta+1;record_begin=record_end;
+                }
             }
+            if(phase_call)phase_profile.at("calls").push_back(phase_call->ledger());
             ++fast_calls;
         } else {
             peak_fallback_nodes=std::max(peak_fallback_nodes,fallback(model,frames,mapper,item,index,cache));
@@ -164,7 +182,7 @@ inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace:
     }
     const double engine_seconds=std::chrono::duration<double>(std::chrono::steady_clock::now()-engine_started).count();
     cache.verify_resident_ledger();model.finish();
-    return {{"schema","NATIVE_MEMORY_FUNCTIONAL_DIRECT_V1"},{"status","COMPLETED"},
+    J result={{"schema","NATIVE_MEMORY_FUNCTIONAL_DIRECT_V1"},{"status","COMPLETED"},
         {"mode","functional-direct"},{"ordering","canonical_call_then_CTA_ascending_then_original_member_then_subop_first_line_occurrence"},
         {"source_memory_rules","same original canonical Model and native bindings; one-CTA original fine Builder fallback"},
         {"source_identity",model.workflow.at("process")},{"workflow_file",canonical_full::seals().at("workflow_file")},
@@ -191,5 +209,7 @@ inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace:
         {"compressed_frame_cache",frames.receipt()},{"source_pool",model.receipt()},
         {"host_engine_seconds",engine_seconds},
         {"host_total_seconds",std::chrono::duration<double>(std::chrono::steady_clock::now()-started).count()}};
+    if(phase_ctas)result["phase_profile"]=std::move(phase_profile);
+    return result;
 }
 } // namespace direct_native

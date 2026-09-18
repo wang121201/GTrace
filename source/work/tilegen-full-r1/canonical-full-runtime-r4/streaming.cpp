@@ -160,13 +160,14 @@ int main(int argc,char**argv) {
  try {
   bool validate=false,eager=false,events=true,full=false;
   std::string mode="cosim",trace_path;
-  std::uint64_t trace_cap=native_trace::default_max_bytes;
+  std::uint64_t trace_cap=native_trace::default_max_bytes,phase_ctas=0;
   for(int i=1;i<argc;++i) {
    const std::string a=argv[i];
    if(a=="--help") {
     std::cout<<"TileGen native B1: --mode=cosim|cosim-fast|direct --trace=PATH --max-trace-bytes=N --full-workflow\n"
              <<"cosim preserves native compute dependencies; cosim-fast is the explicitly approximate hybrid profile.\n"
-             <<"direct uses the same native addresses with deterministic functional cache order, without timing.\n";
+             <<"direct uses the same native addresses with deterministic functional cache order, without timing.\n"
+             <<"direct --phase-ctas=N additionally exports an approximate CTA-stage compute profile (1..4096).\n";
     return 0;
    }
    if(a.rfind("--mode=",0)==0)mode=a.substr(7);
@@ -181,6 +182,12 @@ int main(int argc,char**argv) {
    const std::string a=argv[i];
    if(a.rfind("--mode=",0)==0)continue;
    if(a.rfind("--trace=",0)==0)trace_path=a.substr(8);
+   else if(a.rfind("--phase-ctas=",0)==0) {
+    const auto value=a.substr(13);std::size_t used=0;
+    native_program::need(!value.empty()&&value[0]!='-',"positive stage CTA size");
+    phase_ctas=std::stoull(value,&used);
+    native_program::need(used==value.size()&&phase_ctas>0&&phase_ctas<=4096,"stage CTA size must be 1..4096");
+   }
    else if(a.rfind("--max-trace-bytes=",0)==0) {
     const auto value=a.substr(18);std::size_t used=0;
     native_program::need(!value.empty()&&value[0]!='-',"positive trace byte limit");
@@ -196,6 +203,7 @@ int main(int argc,char**argv) {
   }
   native_program::need(mode!="direct"||(!validate&&!eager&&events&&!trace_path.empty()),"direct requires trace path and functional execution");
   native_program::need(!validate||trace_path.empty(),"validate-only cannot save an execution trace");
+  native_program::need(!phase_ctas||mode=="direct","stage profile export requires direct mode");
   nlohmann::json result;
   {
    auto transport=compressed_frame::read_control(std::cin);auto control=transport.at("decoded_control");
@@ -213,7 +221,7 @@ int main(int argc,char**argv) {
    if(!trace_path.empty())writer=std::make_unique<native_trace::Writer>(trace_path,
       mode=="direct"?native_trace::Mode::FunctionalDirect:native_trace::Mode::NativeCosim,context_sha,trace_cap);
    unified_trace::writer=writer.get();
-   result=mode=="direct"?direct_native::run(control,frames,full,*writer):canonical_full::run(control,frames,validate,eager,events,false,full);
+   result=mode=="direct"?direct_native::run(control,frames,full,*writer,phase_ctas):canonical_full::run(control,frames,validate,eager,events,false,full);
    unified_trace::writer=nullptr;
    if(writer) {
     const auto receipt=writer->finish();
