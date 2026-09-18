@@ -1,0 +1,20 @@
+{
+  "status": "PASS_CPU_ONLY_CAPACITY_REVISION",
+  "GPU_executed": false,
+  "NVCC_executed": false,
+  "remote_executed": false,
+  "steps": [
+    {
+      "test": "test_capacity",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_exact_frozen_validator_and_workload (test_capacity.CapacityTests) ... ok\ntest_only_two_source_literals_changed (test_capacity.CapacityTests) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.011s\n\nOK\n"
+    },
+    {
+      "test": "test_observer",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_all_33_and_exact_new_keys (test_observer.ObserverTests) ... ok\ntest_hash_epoch_static_and_pair_rejections (test_observer.ObserverTests) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.028s\n\nOK\n"
+    }
+  ]
+}

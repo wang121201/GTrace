@@ -1,0 +1,9 @@
+{
+  "original_source": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/sglang-integration/nvbit_observer_r3/observer.cu",
+  "original_sha256": "7ebb59827281aea8651921b476af5f54bea17772e5aeac72da13a1d27160f2f7",
+  "new_sha256": "e136fb1e82380bd9d09b0e69f4452a5e9007319ea3352047f7a22de8b22beba5",
+  "patch_scope": "Only DEFAULT_CAP and its diagnostic text; all event/scope/static/launch logic unchanged",
+  "original_build_py_sha256": "f4c290b9ab34741a30c69131cb42810861217583d6f7c4e3dcdfb98076048b54",
+  "r1_wrapper_manifest_sha256": "48d8d0366b965b5df13325861135ad931b7d1fd53a35c55a36d1b87a90d12e00",
+  "capture_manifest_sha256": "fe559d9bca3a03446e801a37c0a544a09694a22cf9b028909c0af3df478d4884"
+}

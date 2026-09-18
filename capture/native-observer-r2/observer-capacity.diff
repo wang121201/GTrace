@@ -1,0 +1,20 @@
+--- original-r3/observer.cu
++++ observer-r2-1GiB/observer.cu
+@@ -33,7 +33,7 @@
+ 
+ namespace sgobs {
+ using std::string;
+-const uint64_t DEFAULT_CAP = 256ull << 20;
++const uint64_t DEFAULT_CAP = 1ull << 30;
+ const uint64_t RESERVED_FINISH = 128ull << 10;
+ const uint64_t MAX_LAUNCHES = 100000, MAX_FUNCTIONS = 4096;
+ static thread_local unsigned internal_depth = 0;
+@@ -127,7 +127,7 @@
+   void initialize() {
+     owner=getpid();ticks=start_ticks();const char *root=getenv("SG_NVBIT_OUTPUT_ROOT");if(!root||!*root)return;
+     const char *budget=getenv("SG_NVBIT_MAX_BYTES");if(budget&&*budget){string b=bounded(budget,20);need(b.find_first_not_of("0123456789")==string::npos,"decimal metadata quota");cap=std::stoull(b);}
+-    need(cap>=(2ull<<20)&&cap<=DEFAULT_CAP,"metadata quota outside 2..256 MiB envelope");
++    need(cap>=(2ull<<20)&&cap<=DEFAULT_CAP,"metadata quota outside 2..1024 MiB envelope");
+     char real[PATH_MAX];need(realpath(root,real)!=nullptr&&string(root)==real,"canonical existing output root");
+     int parent=::open(real,O_RDONLY|O_DIRECTORY|O_NOFOLLOW|O_CLOEXEC);need(parent>=0,"output root open");
+     struct stat st{};need(fstat(parent,&st)==0&&S_ISDIR(st.st_mode)&&st.st_uid==getuid(),"output root owner/type");

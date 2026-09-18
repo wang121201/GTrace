@@ -1,0 +1,1046 @@
+{
+  "schema": "TILEGEN_NATIVE_P1024D32_ADMISSION_AUDIT_V1",
+  "generated_utc": "2026-09-18T20:27:51.120789+00:00",
+  "status": "METADATA_CAPTURED_NOT_ADMITTED_STATIC_REVIEW",
+  "repo_head": "09d0953958a3da25f973d4eb4d45ba3806ff5c02",
+  "GPU_executed_by_this_audit": false,
+  "simulation_executed_by_this_audit": false,
+  "production_code_modified": false,
+  "new_workload_admitted": false,
+  "capture_root": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts",
+  "input_contract": {
+    "schema": "SGLANG_FIXED_PD_INPUT_V1",
+    "batch_size": 1,
+    "prefill_length": 1024,
+    "decode_steps": 32,
+    "max_total_tokens": 1280,
+    "output_feedback": false,
+    "input_source": "Frozen arithmetic prompt IDs; alternating 944/291 decode IDs; no tokenizer/chat template",
+    "model": "/home/xmu/.cache/modelscope/hub/models/LLM-Research/Meta-Llama-3-8B-Instruct",
+    "dtype": "bfloat16",
+    "layers": 32,
+    "tp_size": 1,
+    "pp_size": 1,
+    "attention_backend": "flashinfer",
+    "native_eager": true,
+    "warmup_runs": 1,
+    "mem_fraction_static": 0.9,
+    "cuda_graph": false,
+    "torch_compile": false,
+    "disable_overlap_schedule": true,
+    "disable_radix_cache": true,
+    "sampling_retained": true,
+    "numerical_acceptance": "NOT_ASSESSED",
+    "sha256": "2c793a532b64cd83b5a096a9b7b2889be9d579a7cc3d3c7da4164ed7aa8f9b8f"
+  },
+  "metadata_coverage": {
+    "parameter_and_module_boundary_metadata": true,
+    "backend_private_tensors_complete": false,
+    "native_scope_abi_enabled": false,
+    "kernel_launch_metadata": true,
+    "tilegraph_complete": false,
+    "instruction_memory_trace_collected": false,
+    "lifetime_tracking": "Python tensor weakrefs; backend-private allocations may be unobserved",
+    "timing": "instrumented diagnostic only; module hooks and stage control D2H add overhead"
+  },
+  "current_profiler_event_domain": {
+    "source": "torch.profiler CPU/CUDA metadata",
+    "kernel_count": 13112,
+    "unique_symbol_texts": 32,
+    "code_sha_bearing_events": 0,
+    "is_native_ABI_registry": false
+  },
+  "old_registry_domain": {
+    "native_selected_calls": 1138,
+    "phase_counts": {
+      "Prefill": 408,
+      "Decode1": 365,
+      "Decode2": 365
+    },
+    "journal_joined_before_rows": 1138,
+    "same_count_domain_as_profiler": false
+  },
+  "phase_contexts": [
+    {
+      "phase": "Prefill",
+      "seq_lens": [
+        1024
+      ],
+      "positions_first": 0,
+      "positions_last": 1023,
+      "input_elements": 1024,
+      "kv_token_slots": 1024
+    },
+    {
+      "phase": "Decode1",
+      "seq_lens": [
+        1025
+      ],
+      "positions_first": 1024,
+      "positions_last": 1024,
+      "input_elements": 1,
+      "kv_token_slots": 1025
+    },
+    {
+      "phase": "Decode2",
+      "seq_lens": [
+        1026
+      ],
+      "positions_first": 1025,
+      "positions_last": 1025,
+      "input_elements": 1,
+      "kv_token_slots": 1026
+    },
+    {
+      "phase": "Decode3",
+      "seq_lens": [
+        1027
+      ],
+      "positions_first": 1026,
+      "positions_last": 1026,
+      "input_elements": 1,
+      "kv_token_slots": 1027
+    },
+    {
+      "phase": "Decode4",
+      "seq_lens": [
+        1028
+      ],
+      "positions_first": 1027,
+      "positions_last": 1027,
+      "input_elements": 1,
+      "kv_token_slots": 1028
+    },
+    {
+      "phase": "Decode5",
+      "seq_lens": [
+        1029
+      ],
+      "positions_first": 1028,
+      "positions_last": 1028,
+      "input_elements": 1,
+      "kv_token_slots": 1029
+    },
+    {
+      "phase": "Decode6",
+      "seq_lens": [
+        1030
+      ],
+      "positions_first": 1029,
+      "positions_last": 1029,
+      "input_elements": 1,
+      "kv_token_slots": 1030
+    },
+    {
+      "phase": "Decode7",
+      "seq_lens": [
+        1031
+      ],
+      "positions_first": 1030,
+      "positions_last": 1030,
+      "input_elements": 1,
+      "kv_token_slots": 1031
+    },
+    {
+      "phase": "Decode8",
+      "seq_lens": [
+        1032
+      ],
+      "positions_first": 1031,
+      "positions_last": 1031,
+      "input_elements": 1,
+      "kv_token_slots": 1032
+    },
+    {
+      "phase": "Decode9",
+      "seq_lens": [
+        1033
+      ],
+      "positions_first": 1032,
+      "positions_last": 1032,
+      "input_elements": 1,
+      "kv_token_slots": 1033
+    },
+    {
+      "phase": "Decode10",
+      "seq_lens": [
+        1034
+      ],
+      "positions_first": 1033,
+      "positions_last": 1033,
+      "input_elements": 1,
+      "kv_token_slots": 1034
+    },
+    {
+      "phase": "Decode11",
+      "seq_lens": [
+        1035
+      ],
+      "positions_first": 1034,
+      "positions_last": 1034,
+      "input_elements": 1,
+      "kv_token_slots": 1035
+    },
+    {
+      "phase": "Decode12",
+      "seq_lens": [
+        1036
+      ],
+      "positions_first": 1035,
+      "positions_last": 1035,
+      "input_elements": 1,
+      "kv_token_slots": 1036
+    },
+    {
+      "phase": "Decode13",
+      "seq_lens": [
+        1037
+      ],
+      "positions_first": 1036,
+      "positions_last": 1036,
+      "input_elements": 1,
+      "kv_token_slots": 1037
+    },
+    {
+      "phase": "Decode14",
+      "seq_lens": [
+        1038
+      ],
+      "positions_first": 1037,
+      "positions_last": 1037,
+      "input_elements": 1,
+      "kv_token_slots": 1038
+    },
+    {
+      "phase": "Decode15",
+      "seq_lens": [
+        1039
+      ],
+      "positions_first": 1038,
+      "positions_last": 1038,
+      "input_elements": 1,
+      "kv_token_slots": 1039
+    },
+    {
+      "phase": "Decode16",
+      "seq_lens": [
+        1040
+      ],
+      "positions_first": 1039,
+      "positions_last": 1039,
+      "input_elements": 1,
+      "kv_token_slots": 1040
+    },
+    {
+      "phase": "Decode17",
+      "seq_lens": [
+        1041
+      ],
+      "positions_first": 1040,
+      "positions_last": 1040,
+      "input_elements": 1,
+      "kv_token_slots": 1041
+    },
+    {
+      "phase": "Decode18",
+      "seq_lens": [
+        1042
+      ],
+      "positions_first": 1041,
+      "positions_last": 1041,
+      "input_elements": 1,
+      "kv_token_slots": 1042
+    },
+    {
+      "phase": "Decode19",
+      "seq_lens": [
+        1043
+      ],
+      "positions_first": 1042,
+      "positions_last": 1042,
+      "input_elements": 1,
+      "kv_token_slots": 1043
+    },
+    {
+      "phase": "Decode20",
+      "seq_lens": [
+        1044
+      ],
+      "positions_first": 1043,
+      "positions_last": 1043,
+      "input_elements": 1,
+      "kv_token_slots": 1044
+    },
+    {
+      "phase": "Decode21",
+      "seq_lens": [
+        1045
+      ],
+      "positions_first": 1044,
+      "positions_last": 1044,
+      "input_elements": 1,
+      "kv_token_slots": 1045
+    },
+    {
+      "phase": "Decode22",
+      "seq_lens": [
+        1046
+      ],
+      "positions_first": 1045,
+      "positions_last": 1045,
+      "input_elements": 1,
+      "kv_token_slots": 1046
+    },
+    {
+      "phase": "Decode23",
+      "seq_lens": [
+        1047
+      ],
+      "positions_first": 1046,
+      "positions_last": 1046,
+      "input_elements": 1,
+      "kv_token_slots": 1047
+    },
+    {
+      "phase": "Decode24",
+      "seq_lens": [
+        1048
+      ],
+      "positions_first": 1047,
+      "positions_last": 1047,
+      "input_elements": 1,
+      "kv_token_slots": 1048
+    },
+    {
+      "phase": "Decode25",
+      "seq_lens": [
+        1049
+      ],
+      "positions_first": 1048,
+      "positions_last": 1048,
+      "input_elements": 1,
+      "kv_token_slots": 1049
+    },
+    {
+      "phase": "Decode26",
+      "seq_lens": [
+        1050
+      ],
+      "positions_first": 1049,
+      "positions_last": 1049,
+      "input_elements": 1,
+      "kv_token_slots": 1050
+    },
+    {
+      "phase": "Decode27",
+      "seq_lens": [
+        1051
+      ],
+      "positions_first": 1050,
+      "positions_last": 1050,
+      "input_elements": 1,
+      "kv_token_slots": 1051
+    },
+    {
+      "phase": "Decode28",
+      "seq_lens": [
+        1052
+      ],
+      "positions_first": 1051,
+      "positions_last": 1051,
+      "input_elements": 1,
+      "kv_token_slots": 1052
+    },
+    {
+      "phase": "Decode29",
+      "seq_lens": [
+        1053
+      ],
+      "positions_first": 1052,
+      "positions_last": 1052,
+      "input_elements": 1,
+      "kv_token_slots": 1053
+    },
+    {
+      "phase": "Decode30",
+      "seq_lens": [
+        1054
+      ],
+      "positions_first": 1053,
+      "positions_last": 1053,
+      "input_elements": 1,
+      "kv_token_slots": 1054
+    },
+    {
+      "phase": "Decode31",
+      "seq_lens": [
+        1055
+      ],
+      "positions_first": 1054,
+      "positions_last": 1054,
+      "input_elements": 1,
+      "kv_token_slots": 1055
+    },
+    {
+      "phase": "Decode32",
+      "seq_lens": [
+        1056
+      ],
+      "positions_first": 1055,
+      "positions_last": 1055,
+      "input_elements": 1,
+      "kv_token_slots": 1056
+    }
+  ],
+  "current_profiler_shapes": {
+    "norm_including_fused": [
+      {
+        "grid": [
+          1024,
+          1,
+          1
+        ],
+        "block": [
+          32,
+          16,
+          1
+        ],
+        "profiler_event_count": 65
+      },
+      {
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          32,
+          16,
+          1
+        ],
+        "profiler_event_count": 2080
+      }
+    ],
+    "silu": [
+      {
+        "grid": [
+          1024,
+          1,
+          1
+        ],
+        "block": [
+          1024,
+          1,
+          1
+        ],
+        "profiler_event_count": 32
+      },
+      {
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          1024,
+          1,
+          1
+        ],
+        "profiler_event_count": 1024
+      }
+    ],
+    "rotary": [
+      {
+        "grid": [
+          128,
+          40,
+          1
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "profiler_event_count": 32
+      },
+      {
+        "grid": [
+          1,
+          40,
+          1
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "profiler_event_count": 1024
+      }
+    ],
+    "prefill_attention": [
+      {
+        "grid": [
+          32,
+          1,
+          8
+        ],
+        "block": [
+          32,
+          4,
+          1
+        ],
+        "profiler_event_count": 32
+      }
+    ],
+    "decode_attention": [
+      {
+        "grid": [
+          9,
+          8,
+          1
+        ],
+        "block": [
+          16,
+          4,
+          2
+        ],
+        "profiler_event_count": 1024
+      }
+    ],
+    "merge_states": [
+      {
+        "grid": [
+          48,
+          1,
+          1
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "profiler_event_count": 1024
+      }
+    ],
+    "cutlass_gemm": [
+      {
+        "grid": [
+          64,
+          3,
+          1
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "profiler_event_count": 32
+      },
+      {
+        "grid": [
+          64,
+          14,
+          1
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "profiler_event_count": 32
+      }
+    ],
+    "ampere_gemm": [
+      {
+        "grid": [
+          32,
+          8,
+          2
+        ],
+        "block": [
+          128,
+          1,
+          1
+        ],
+        "profiler_event_count": 32
+      },
+      {
+        "grid": [
+          16,
+          8,
+          3
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "profiler_event_count": 32
+      }
+    ]
+  },
+  "symbol_texts_absent_from_old_selected_journal": [
+    {
+      "symbol": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8::Params)",
+      "profiler_event_count": 64,
+      "comparison": "exact text absent from old selected native journal; no SASS equivalence conclusion"
+    },
+    {
+      "symbol": "ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_32x1_tn",
+      "profiler_event_count": 32,
+      "comparison": "exact text absent from old selected native journal; no SASS equivalence conclusion"
+    },
+    {
+      "symbol": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_tn",
+      "profiler_event_count": 32,
+      "comparison": "exact text absent from old selected native journal; no SASS equivalence conclusion"
+    },
+    {
+      "symbol": "void flashinfer::PersistentVariableLengthMergeStatesKernel<8u, 16u, 8u, 4u, __nv_bfloat16, __nv_bfloat16, int>(__nv_bfloat16*, float*, int*, __nv_bfloat16*, float*, unsigned int, unsigned int*, unsigned int)",
+      "profiler_event_count": 1024,
+      "comparison": "exact text absent from old selected native journal; no SASS equivalence conclusion"
+    }
+  ],
+  "strict_admission_constraints": [
+    {
+      "id": "sealed-registry",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-full-runtime-r4/model_dispatch.h",
+      "line": 18,
+      "finding": "Input schema, workflow pin, original 1138 registry, exact same-process launch/argument/code/resource identities and fixed union-map are required; changing P/epoch is insufficient."
+    },
+    {
+      "id": "direct-full-selection",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/direct_native.h",
+      "line": 83,
+      "finding": "phase profile fails before traffic for unsupported families; full workflow requires original 1138/full grids; bounded alternative <=64 calls and <=15000000 source nodes."
+    },
+    {
+      "id": "norm-shape",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-norm-driver-r1/model_plan.h",
+      "line": 28,
+      "finding": "Prefill rows=32; exact [rows,1,1], block[32,16,1], full object extents and native resources."
+    },
+    {
+      "id": "silu-phase-shape",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-silu-driver-r1/model_plan.h",
+      "line": 35,
+      "finding": "Only Prefill/Decode1/Decode2; Prefill rows32; block1024 and intermediate14336."
+    },
+    {
+      "id": "rotary-shape",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-rotary-driver-r1/model_plan.h",
+      "line": 17,
+      "finding": "Code and source grid must match captured template; nnz32/1 and exact strides/positions bounds."
+    },
+    {
+      "id": "indexput-shape-phase",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-indexput-driver-r2/model_plan.h",
+      "line": 21,
+      "finding": "Only Prefill/Decode1/Decode2; Prefill grid64 and32768 elements, decode grid2 and1024 elements; phase-specific memory bodies."
+    },
+    {
+      "id": "gemv-identity",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-gemv-driver-r2/model_plan.h",
+      "line": 18,
+      "finding": "Old PID/start_ticks, exact code/parameter-layout/grid/block/resources and120 nonpointer bytes; newer unchanged dimensions are only reuse candidates."
+    },
+    {
+      "id": "gemm-attention-frames",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-full-runtime-r4/model_dispatch.h",
+      "line": 34,
+      "finding": "Sealed exact node SHA/counts, fixed role grids, resources and CTA strides; AttentionPrefill/Decode1/Decode2 only."
+    },
+    {
+      "id": "fast-stage-nine-families",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-hybrid-cache-r1/bindings.h",
+      "line": 92,
+      "finding": "GEMV, SiLU, FusedNorm, PlainNorm, Rotary, P28QKV, GEMMO, GEMMGate, GEMMDown; no attention/helper/IndexPut/PrefillCopy stage binding."
+    },
+    {
+      "id": "trace-cap",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/native_trace.h",
+      "line": 147,
+      "finding": "144 bytes per record +224-byte envelope; hard64GiB cap; default8GiB. No completed P1024D32 trace size measured."
+    },
+    {
+      "id": "hbf-seed",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/hbf_replay_backend.h",
+      "line": 51,
+      "finding": "1..512 source parent credits; <=65536 seed ranges; single merged range compact, multiple ranges <=1048576 total pages; no timed preload."
+    },
+    {
+      "id": "hbf-prepass",
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/trace_replay_main.cpp",
+      "line": 145,
+      "finding": "Whole trace verification/prepass; source-address bitmap <=8388608 4KiB slots and touched-page budget <=8388608; this does not override sparse1M limit."
+    }
+  ],
+  "scale_bounds": {
+    "trace_record_bytes": 144,
+    "trace_envelope_bytes": 224,
+    "default_trace_cap_bytes": 8589934592,
+    "hard_trace_cap_bytes": 68719476736,
+    "max_records_in_one_hard_cap_trace": 477218586,
+    "measured_P1024D32_postcache_record_count": null,
+    "hbf_sparse_total_page_cap": 1048576,
+    "hbf_sparse_page_size_bytes": 4096,
+    "hbf_compact_single_range_exempt_from_sparse_cap": true,
+    "hbf_prepass_bitmap_slot_cap": 8388608,
+    "hbf_max_parent_requests": 512
+  },
+  "remaining_work": [
+    "Complete new native launch/code/SASS/ABI/allocation identity capture and bind typed private tensors; metadata profiler evidence alone is insufficient.",
+    "Create witness groups by symbol/code + grid/block + shape + phase/context + control class; sample full selected CTA warps with dynamic PC/order/masks/global/shared/barrier/constants and independent heldout CTA checks.",
+    "Rebuild and seal current-process workflow/argument/root/union-map plans; generalize proven row/phase formulas, not hardcoded old identity substitutions.",
+    "Implement new GEMM symbol/CTA geometries and merge-state family; regenerate attention loops/address/control templates for1024/1025..1056 rather than repeating old33/34 context bodies.",
+    "Extend fast materializers and phase compute coverage beyond nine families; compare exact materialized ranges/ordinals/byte/hash against same new fine/source oracle on bounded calls.",
+    "Preflight trace size and sparse seed representation; if limits exceed, explicitly implement qualified segmented/streaming transport preserving cross-phase cache/order and a scalable seeded image before full replay.",
+    "After native admission, compare identical source implementation/phases/initial cache/protocol to actual new NCU R/W/time; hardware counters cannot supply missing instruction witnesses."
+  ],
+  "nonclaims": [
+    "No proof of new code SHA or dynamic loop trip counts from profiler symbol/launch geometry.",
+    "No ratio or delta between13112 profiler events and1138 native ABI registry counts.",
+    "No old P32D2/P512D32/B8P1024D4 result substituted for new B1P1024D32.",
+    "No NCU permission diagnosis made here; input/model admission remains independently incomplete."
+  ],
+  "evidence_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/manifest.json",
+      "bytes": 181111,
+      "sha256": "29529b6baeeda05523be73e96328edd851d1fa0a6051931d198c69cce4c0366e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/kernel_launches.json",
+      "bytes": 32932212,
+      "sha256": "20819c1d77874908d4600296866b18c7bf7ac3bc08926951255ed82d7d4c235b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/module_calls.json",
+      "bytes": 22848112,
+      "sha256": "130bd9fdef4ebe3b10542cf6c2402e2f77a48926f9a12dd889c7c438c84175a3"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/tensor_roots.json",
+      "bytes": 1771202,
+      "sha256": "98f179530c6ec1e4df5af249934c3546cfaa32ca62f8baa1d68b990bc6efe31e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/files.sha256.json",
+      "bytes": 5160,
+      "sha256": "b45f160c867977540e84c062a862dba8b735f0df9915af64a93e35ad021a3dac"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-workflow-r1/workflow.json",
+      "bytes": 2549618,
+      "sha256": "6a7e13633df9ab09a283c4cb804b7ac71f07a34ae7f6b98e4c26b0b0f877d0c0"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/captured-allargs-norm-r1/observer/process-1925216-857625100/launch-journal.jsonl",
+      "bytes": 10438812,
+      "sha256": "affdf5f51d9e302de82ef9fb2179d344b4fccc898dc81a9ef8bf60ec3961ba38"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-full-runtime-r4/sealed_inputs.h",
+      "bytes": 399446,
+      "sha256": "29c41aba4320d9d6e795ee957fb5e5e05609b2697fc355811d558e2d83fc95c9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Prefill.json",
+      "bytes": 58614,
+      "sha256": "247b3d2200df570f60c23d9186127279219764d9140e8f089134d65a6c6d6a2f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode1.json",
+      "bytes": 12430,
+      "sha256": "c106989c821dd1baaeb059137fd911eae17b4ca41151f12ce790e99400ae3471"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode2.json",
+      "bytes": 12441,
+      "sha256": "565b89015fb8a6c09445d551117ff12e7b874997798d260b14df862fd7e18c6f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode3.json",
+      "bytes": 12451,
+      "sha256": "fbc0ff7831789303b24636dc39ecb56ac9a7aa6a9ff36b3ade3837f463279a6b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode4.json",
+      "bytes": 12461,
+      "sha256": "992f303eea469c409ec9d9d525ecc40067741d4f4d59017779a4d3869cfbd2dd"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode5.json",
+      "bytes": 12469,
+      "sha256": "097d341fd1746ca31ecafebc2c59063e85825a211e5d9ab903054af62b232144"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode6.json",
+      "bytes": 12481,
+      "sha256": "f7f8749ddbb116902b79acb6248579ff9762367b3602cc1bafef9e76f667cda1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode7.json",
+      "bytes": 12489,
+      "sha256": "6de233bbefbd0d786bdcb1356e99704d3f1ee75d06495675d0b9942c97aaf626"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode8.json",
+      "bytes": 12499,
+      "sha256": "cea224006a406cb6a76e1eb8eccdb74eb3a7bd044e030f517650b08d4fa42b51"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode9.json",
+      "bytes": 12511,
+      "sha256": "698033766463a754d1964241f5d8029c484c21d0db18e157a0c2c53dcdafcfc6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode10.json",
+      "bytes": 12523,
+      "sha256": "12aead9dec0df830810a4d21b815a9ef14ca41be10d03ace37c532d2810d5d83"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode11.json",
+      "bytes": 12533,
+      "sha256": "d16b9ca3c6b1f71fb583f212fa09783e89a6b2a27c57cabdee87042e1a1a701f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode12.json",
+      "bytes": 12544,
+      "sha256": "7d88bc5cbcb0bb7046a9bab9afa13da63c1f091fe45579bb649177ef63c44039"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode13.json",
+      "bytes": 12553,
+      "sha256": "309edb8c7323472e79968b898b80c2c30b9fa3fc4cbab800a65e944caa4d4c6c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode14.json",
+      "bytes": 12563,
+      "sha256": "df79453b18391a9d933e4d5dc3bab8f384efd2e9da8f80ba5bf5953515a39915"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode15.json",
+      "bytes": 12574,
+      "sha256": "121edadc97ab4bca7dc30b83f175a2b045a8c1012402dbd1c5cc8b0fcecc45f1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode16.json",
+      "bytes": 12584,
+      "sha256": "d9fff34018e94d18fd4b010c38e51bd26dd395ad1f902bd46c10a40275ac8815"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode17.json",
+      "bytes": 12593,
+      "sha256": "2d2cd984a39426e5d71d0a69c15c7d2642016ebd4c778d70b93ace44bdd951ff"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode18.json",
+      "bytes": 12603,
+      "sha256": "4215db4658e04a4d4a7b71815bfb3372ce05b5c5f3d09f3463848b47decb8923"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode19.json",
+      "bytes": 12611,
+      "sha256": "89a9f7414217b7dd32324369a3f05fe7b8bc93cce90daa8b8bbb13d789eabb18"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode20.json",
+      "bytes": 12623,
+      "sha256": "311fcfbeb23ac5e5683aebebf815a5778899c8e96772ff6d2cd13262ff7d1fe6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode21.json",
+      "bytes": 12634,
+      "sha256": "d7d20c912a97970a5fb1b6325731e8b3d49860337c21e9672cb0c4cd2ab5e165"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode22.json",
+      "bytes": 12644,
+      "sha256": "97adbf84f24601ee428d48425123a5f025f671b28091c96342ab3b7962262882"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode23.json",
+      "bytes": 12653,
+      "sha256": "a1470bb9b93d52add3f1959ccde0c5941d69f0a169cabc7f933f92eebde11ac9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode24.json",
+      "bytes": 12663,
+      "sha256": "c72321f5db3d7f75813bad0f665ad1132acb0976228da8c79602c1ac4ea6c7cd"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode25.json",
+      "bytes": 12673,
+      "sha256": "945b44595c043ed229abeca01fe1086b89eab97bb2aea6db065de8ff4fed265a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode26.json",
+      "bytes": 12682,
+      "sha256": "ccd3584a95cd57f3f1fa38b581f3807d8dbd762484e563d5f72c87ca1ec743fc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode27.json",
+      "bytes": 12693,
+      "sha256": "600b1d2dac4a2f466378002a51d950c6970fe552b9db74a519580349255b19f1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode28.json",
+      "bytes": 12704,
+      "sha256": "7770e0b0f1ca33f06b91d03373212b71227f603e835a4eb6cf6fd02a733000da"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode29.json",
+      "bytes": 12713,
+      "sha256": "df64d93e471926ad114c2d96c2da54eb7a6cf608909d414f1daf8567d056be0a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode30.json",
+      "bytes": 12723,
+      "sha256": "9a98851be97955a9fef732bef28b321df4046554ae436366947bf354f97a7fc6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode31.json",
+      "bytes": 12733,
+      "sha256": "be8cbbe103a169fc2b7831df64a5125a5c5f27e83318dc5c44e799b164f60fd4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/Decode32.json",
+      "bytes": 12744,
+      "sha256": "1c4c09247117f3cfe82f416edcbf619ec068dbc42780bac458f5085d7df26f5b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-full-runtime-r4/model_dispatch.h",
+      "bytes": 17456,
+      "sha256": "86ec0c1b4d2c6cf50cbd6a4e83acfa6c0be7ebe20e06e3f290acedadf43ac5d4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/direct_native.h",
+      "bytes": 14225,
+      "sha256": "787c155b8d9378c9952d5e8179fdea3378678307809522ecf34be74a0b263e3e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-norm-driver-r1/model_plan.h",
+      "bytes": 8751,
+      "sha256": "b3e3cbdaaabbbd3bc6b52de64862d1ac0478ab9bc7f6b34e3d588d0209c76a9f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-silu-driver-r1/model_plan.h",
+      "bytes": 8981,
+      "sha256": "2c320342e02967352acf1062ad6d41514b312a0cd681b495206c6a49002df743"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-rotary-driver-r1/model_plan.h",
+      "bytes": 7449,
+      "sha256": "ef1940f2a0159ae1a44a618160d0ab125fdaa451dd15317bdae8b5e3419d3ab5"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-indexput-driver-r2/model_plan.h",
+      "bytes": 7067,
+      "sha256": "480c2febb3f5d2739044b9cf9db93cd2f00e2ad7a508e37f6c7f658f61633a45"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-gemv-driver-r2/model_plan.h",
+      "bytes": 8058,
+      "sha256": "0385b93c436d637388c76b64e62309a6b1866a504dbfdb523956d0a151e99a11"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-hybrid-cache-r1/bindings.h",
+      "bytes": 10262,
+      "sha256": "eaf18045a2e1fc98b57c7189f16d97317b0844653f810c12f3d9bcc542218c6b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/native_trace.h",
+      "bytes": 13512,
+      "sha256": "d70f51a166b36c4d8cad78cf45ac3fe68820ebfb53cec35a662cb9d3ee2a4453"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/hbf_replay_backend.h",
+      "bytes": 19612,
+      "sha256": "56d55fa34495deda5d4cc6b5aaba6280e6d45d1d43041c5061fa021dffcef6d2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/trace_replay_main.cpp",
+      "bytes": 16961,
+      "sha256": "1b246e665f34749b062645be1c556d3a925b869053e7ba862fcb19549687f132"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/controller.json",
+      "bytes": 19809,
+      "sha256": "856ea334bf1c3d758dbfcf6f8b5ee56c17765626f7a5bd5c29a0fb8b065d35c6"
+    }
+  ],
+  "metadata_driver_weight_content_hashes_complete": false,
+  "weight_identity_evidence": {
+    "metadata_driver": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/metadata/artifacts/manifest.json",
+      "weight_content_hashes_complete": false,
+      "scope": "This driver flag alone excludes outer-controller content hashing."
+    },
+    "outer_controller": {
+      "receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/controller.json",
+        "bytes": 19809,
+        "sha256": "856ea334bf1c3d758dbfcf6f8b5ee56c17765626f7a5bd5c29a0fb8b065d35c6"
+      },
+      "status": "PASS_CAPTURE_CLOSURE_NOT_MODEL_QUALIFICATION",
+      "complete_config_index_and_four_weight_shard_content_SHA256_recorded": true,
+      "model_identity": [
+        {
+          "path": "/home/xmu/.cache/modelscope/hub/models/LLM-Research/Meta-Llama-3-8B-Instruct/config.json",
+          "bytes": 654,
+          "sha256": "61f3de03a16ca8046b05dc777bce72717022bc8522152eee61a69072272ef54b",
+          "device": 66310,
+          "inode": 190907521,
+          "mtime_ns": 1777190334944944416
+        },
+        {
+          "path": "/home/xmu/.cache/modelscope/hub/models/LLM-Research/Meta-Llama-3-8B-Instruct/model.safetensors.index.json",
+          "bytes": 23950,
+          "sha256": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b",
+          "device": 66310,
+          "inode": 190907527,
+          "mtime_ns": 1777190335684945738
+        },
+        {
+          "path": "/home/xmu/.cache/modelscope/hub/models/LLM-Research/Meta-Llama-3-8B-Instruct/model-00001-of-00004.safetensors",
+          "bytes": 4976698672,
+          "sha256": "d8cf9c4d0dd972e1a2131bfe656235ee98221679711a3beef6d46dadf0f20b5c",
+          "device": 66310,
+          "inode": 190907523,
+          "mtime_ns": 1777192388762055948
+        },
+        {
+          "path": "/home/xmu/.cache/modelscope/hub/models/LLM-Research/Meta-Llama-3-8B-Instruct/model-00002-of-00004.safetensors",
+          "bytes": 4999802720,
+          "sha256": "8d4782b4a69ef03845159ce1a15e272aadaaf134dc138d68f616098e8531729c",
+          "device": 66310,
+          "inode": 190907524,
+          "mtime_ns": 1777191904070439267
+        },
+        {
+          "path": "/home/xmu/.cache/modelscope/hub/models/LLM-Research/Meta-Llama-3-8B-Instruct/model-00003-of-00004.safetensors",
+          "bytes": 4915916176,
+          "sha256": "3acdd690e65c24f42a24581b8467af98bd3ca357444580f8012aacd2bd607921",
+          "device": 66310,
+          "inode": 190907525,
+          "mtime_ns": 1777191909776571253
+        },
+        {
+          "path": "/home/xmu/.cache/modelscope/hub/models/LLM-Research/Meta-Llama-3-8B-Instruct/model-00004-of-00004.safetensors",
+          "bytes": 1168138808,
+          "sha256": "67e9ad31c8c32abf3a55ee7fc7217b3ecb35fd3c74d98a5bd233e0e4d6964f46",
+          "device": 66310,
+          "inode": 190907526,
+          "mtime_ns": 1777191110748700618
+        }
+      ],
+      "metadata_manifest_sha256": "29529b6baeeda05523be73e96328edd851d1fa0a6051931d198c69cce4c0366e",
+      "input_contract_sha256": "2c793a532b64cd83b5a096a9b7b2889be9d579a7cc3d3c7da4164ed7aa8f9b8f",
+      "receipt_to_metadata_and_input_binding_verified": true,
+      "all_six_names_sizes_and_available_metadata_hashes_match": true
+    },
+    "audit_scope": "Read existing controller receipt and checked its content hash, metadata manifest SHA/input binding, six file names/sizes and available metadata hashes; did not reread remote weight payloads. Weight-hash coverage is not a current admission blocker."
+  },
+  "weight_evidence_clarified_utc": "2026-09-18T20:31:17.014552+00:00"
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "SGLANG_PD_OBSERVER_R2_UPLOAD_V1",
+  "remote_directory": "/home/xmu/nvidiagds/codex-runs/tilegen-stage-p1024d32-20260918-zhi/observer-r2",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4181,
+      "sha256": "52e0e93b8434df2867ebcde98fed9914a71fa20e1958473dae708d6cd699fcac"
+    },
+    {
+      "path": "build.py",
+      "bytes": 4590,
+      "sha256": "f4c290b9ab34741a30c69131cb42810861217583d6f7c4e3dcdfb98076048b54"
+    },
+    {
+      "path": "build_controlled.py",
+      "bytes": 3477,
+      "sha256": "3c41c4b0b16dda0fbc179d91b2006b803c73e9e0e1bb23eb401e7996c6a3dac4"
+    },
+    {
+      "path": "cpu-preflight.json",
+      "bytes": 869,
+      "sha256": "319306f6bd200b0b3ecadd0d97e1eebcc773281f7c27d8cb67d51fdee09dfbe6"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 1937,
+      "sha256": "6f559f2fc2e6a0301ffea46f9a6f79d2f4cb22ab6aaf8245c04c89e71e38f25b"
+    },
+    {
+      "path": "observer-capacity.diff",
+      "bytes": 1243,
+      "sha256": "b21c2a2605db7faec17817cbd039e34a871f31d45f91188d9a5aa94ab279fa00"
+    },
+    {
+      "path": "observer.cu",
+      "bytes": 35677,
+      "sha256": "e136fb1e82380bd9d09b0e69f4452a5e9007319ea3352047f7a22de8b22beba5"
+    },
+    {
+      "path": "origin.json",
+      "bytes": 726,
+      "sha256": "66804c03c42744a7c671fb441b6584640660144274716da4d4b6feb972ba3ccc"
+    },
+    {
+      "path": "prepare_package.py",
+      "bytes": 1720,
+      "sha256": "fed4b01fe74e69e3c65d47e1bf4566879f1dde75015f87d4eed6231d99e7c7dc"
+    },
+    {
+      "path": "run_observer.py",
+      "bytes": 6696,
+      "sha256": "1993f8671539e939456d777a0c544354cb857bda6e23c0993e1fcd3e81c6d167"
+    },
+    {
+      "path": "support.py",
+      "bytes": 2191,
+      "sha256": "143a6ada10492d4d8289e662e99cd1c851a7fda9817cdf67b48a620ae024c0f4"
+    },
+    {
+      "path": "test_capacity.py",
+      "bytes": 1638,
+      "sha256": "872e20214d245b5e816d0d4326b578defe784dd131af594ebd875c6793568900"
+    }
+  ]
+}

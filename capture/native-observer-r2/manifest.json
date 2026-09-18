@@ -1,0 +1,63 @@
+{
+  "schema": "SG_NVBIT_METADATA_OBSERVER_MANIFEST_V1",
+  "revision": "p1024d32-metadata-cap-r2",
+  "status": "LOCAL_SOURCE_ONLY_REQUIRES_NVCC_BUILD",
+  "build_inputs": {
+    "observer.cu": {
+      "bytes": 35677,
+      "sha256": "e136fb1e82380bd9d09b0e69f4452a5e9007319ea3352047f7a22de8b22beba5"
+    },
+    "build.py": {
+      "bytes": 4590,
+      "sha256": "f4c290b9ab34741a30c69131cb42810861217583d6f7c4e3dcdfb98076048b54"
+    }
+  },
+  "nvbit_headers": {
+    "cuda.h": {
+      "bytes": 1145929,
+      "sha256": "b7dd24919990c4ebce0b311163eb330a55227335e7e23ef2af4f0800fd3ab620"
+    },
+    "generated_cuda_meta.h": {
+      "bytes": 106473,
+      "sha256": "8ebecd97c4796c801fa58d55e2dcbd7abd5d676342f8687f47221881050abe90"
+    },
+    "instr_types.h": {
+      "bytes": 4943,
+      "sha256": "97250d4ecef29ec6de03d7a2da9af154fadec9d9bcc6798de1c1fd754a482473"
+    },
+    "nvbit.h": {
+      "bytes": 17410,
+      "sha256": "70348229ac8324e0b498fe546b980e5541a78481bbe3c62c4d67c429508b9773"
+    },
+    "nvbit_reg_rw.h": {
+      "bytes": 3534,
+      "sha256": "79854c7a13af635005694edabf99b8da28f90d54b550400e7115667f727e7fe5"
+    },
+    "nvbit_tool.h": {
+      "bytes": 3118,
+      "sha256": "c027a4442277d3a0721cae8af9356ac41ebc719905a55569bb83834fcdbb4bf5"
+    },
+    "tools_cuda_api_meta.h": {
+      "bytes": 75170,
+      "sha256": "1be7ecc9daf8d2cd1ffee2fdb6771bc9585759e162ab317504d5d2fe8ecee4c6"
+    },
+    "utils/channel.hpp": {
+      "bytes": 8265,
+      "sha256": "0db6353681fbb45c891b30104d3848c177fae724239471cc24e4dba576952ac4"
+    },
+    "utils/utils.h": {
+      "bytes": 5244,
+      "sha256": "49922ad83b16e98e6bfe61ca1e3091eb627a2150c59183e723c45b46a180c9e7"
+    }
+  },
+  "runtime_files": [
+    "observer.cu",
+    "build.py",
+    "manifest.json"
+  ],
+  "cpu_tests": 6,
+  "dynamic_address_capture": false,
+  "static_inspection_scope": "marked_epochs_only",
+  "all_launches_counted": true,
+  "max_metadata_bytes": 1073741824
+}
