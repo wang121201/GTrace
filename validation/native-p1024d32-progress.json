@@ -1,0 +1,190 @@
+{
+  "schema": "TILEGEN_NATIVE_P1024D32_PROGRESS_V1",
+  "status": "NATIVE_INPUTS_AND_FORMAL_NCU_CAPTURED_MODEL_NOT_ADMITTED",
+  "input_contract_sha256": "2c793a532b64cd83b5a096a9b7b2889be9d579a7cc3d3c7da4164ed7aa8f9b8f",
+  "source": "current native SGLang 0.4.10 / real Meta-Llama-3-8B-Instruct BF16 / B1 / 32 layers / P1024 / D32",
+  "capture_root": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1",
+  "controller_sha256": "856ea334bf1c3d758dbfcf6f8b5ee56c17765626f7a5bd5c29a0fb8b065d35c6",
+  "host_receipt_sha256": "54668a6953078b60a9a65bccb874f9a1224adf5f245ae2ccaffef84a12730109",
+  "metadata_manifest_sha256": "29529b6baeeda05523be73e96328edd851d1fa0a6051931d198c69cce4c0366e",
+  "phases": 33,
+  "natural_cuda_event_ms": {
+    "Prefill": 195.42323303222656,
+    "Decode1": 47.84025573730469,
+    "Decode2": 47.01465606689453,
+    "Decode3": 46.934017181396484,
+    "Decode4": 46.94425582885742,
+    "Decode5": 46.95859146118164,
+    "Decode6": 47.318016052246094,
+    "Decode7": 46.928062438964844,
+    "Decode8": 46.94937515258789,
+    "Decode9": 46.94425582885742,
+    "Decode10": 46.934017181396484,
+    "Decode11": 47.017982482910156,
+    "Decode12": 46.9483528137207,
+    "Decode13": 47.02105712890625,
+    "Decode14": 46.91865539550781,
+    "Decode15": 46.92787170410156,
+    "Decode16": 46.97065734863281,
+    "Decode17": 46.98204803466797,
+    "Decode18": 46.96985626220703,
+    "Decode19": 46.95552062988281,
+    "Decode20": 46.92793655395508,
+    "Decode21": 47.115264892578125,
+    "Decode22": 46.97395324707031,
+    "Decode23": 46.97795104980469,
+    "Decode24": 48.568321228027344,
+    "Decode25": 49.32710266113281,
+    "Decode26": 47.100929260253906,
+    "Decode27": 46.915584564208984,
+    "Decode28": 46.97907257080078,
+    "Decode29": 46.96063995361328,
+    "Decode30": 46.94937515258789,
+    "Decode31": 46.97087860107422,
+    "Decode32": 46.93299102783203
+  },
+  "NCU_read_write_bandwidth": {
+    "full": {
+      "n": 3,
+      "read_bytes": {
+        "mean": 507176877056,
+        "sample_sd": 21503108.492377188
+      },
+      "write_bytes": {
+        "mean": 5828136533.333333,
+        "sample_sd": 2064341.4612019334
+      },
+      "duration_ns": {
+        "mean": 3489190250.6666665,
+        "sample_sd": 233740483.1136658
+      },
+      "same_run_GBps": {
+        "mean": 147.46761653969872,
+        "sample_sd": 9.874555639828403
+      },
+      "ratio_of_means_GBps": 147.0269537441575
+    },
+    "Prefill": {
+      "n": 3,
+      "read_bytes": {
+        "mean": 22453146368,
+        "sample_sd": 15481516.627274474
+      },
+      "write_bytes": {
+        "mean": 5785563434.666667,
+        "sample_sd": 8142770.96777782
+      },
+      "duration_ns": {
+        "mean": 217122933.33333334,
+        "sample_sd": 3055051.314500189
+      },
+      "same_run_GBps": {
+        "mean": 130.0749280350229,
+        "sample_sd": 1.7382501260657894
+      },
+      "ratio_of_means_GBps": 130.05862332982483
+    },
+    "Decode1": {
+      "n": 3,
+      "read_bytes": {
+        "mean": 15145557589.333334,
+        "sample_sd": 71268.57162405693
+      },
+      "write_bytes": {
+        "mean": 18159360,
+        "sample_sd": 346750.3698743521
+      },
+      "duration_ns": {
+        "mean": 112917013.33333333,
+        "sample_sd": 8876343.194148665
+      },
+      "same_run_GBps": {
+        "mean": 134.8315430491248,
+        "sample_sd": 10.325096760634917
+      },
+      "ratio_of_means_GBps": 134.2908079278517
+    },
+    "Decode8": {
+      "n": 3,
+      "read_bytes": {
+        "mean": 15146801578.666666,
+        "sample_sd": 297756.4583704833
+      },
+      "write_bytes": {
+        "mean": 3175850.6666666665,
+        "sample_sd": 513567.2386643577
+      },
+      "duration_ns": {
+        "mean": 151115925.33333334,
+        "sample_sd": 44839738.70070472
+      },
+      "same_run_GBps": {
+        "mean": 107.39309816112947,
+        "sample_sd": 36.378712472614865
+      },
+      "ratio_of_means_GBps": 100.25400960167056
+    },
+    "Decode16": {
+      "n": 3,
+      "read_bytes": {
+        "mean": 15147591082.666666,
+        "sample_sd": 179180.90564938367
+      },
+      "write_bytes": {
+        "mean": 3155840,
+        "sample_sd": 536399.5893212447
+      },
+      "duration_ns": {
+        "mean": 127655616,
+        "sample_sd": 1795969.4028930448
+      },
+      "same_run_GBps": {
+        "mean": 118.70036231462488,
+        "sample_sd": 1.6879074321211518
+      },
+      "ratio_of_means_GBps": 118.68453106416146
+    },
+    "Decode32": {
+      "n": 3,
+      "read_bytes": {
+        "mean": 15149904554.666666,
+        "sample_sd": 223471.7367125725
+      },
+      "write_bytes": {
+        "mean": 3844309.3333333335,
+        "sample_sd": 22245.624228897992
+      },
+      "duration_ns": {
+        "mean": 141670218.66666666,
+        "sample_sd": 23706393.97912971
+      },
+      "same_run_GBps": {
+        "mean": 109.21657613150516,
+        "sample_sd": 20.1875705024763
+      },
+      "ratio_of_means_GBps": 106.96495711392235
+    }
+  },
+  "NCU_status": "PASS_CAPTURE_CLOSURE_NOT_MODEL_QUALIFICATION",
+  "native_model_admitted": false,
+  "remaining_native_qualification": [
+    "actual new static launch/SASS/ABI metadata (capture running)",
+    "raw kernel arguments and typed tensor-object bindings",
+    "dynamic native program/memory witnesses for new shapes and holdout checks",
+    "native address/template adaptation and full-stage compute coverage",
+    "same-scope NCU R/W/time comparison without substituted older program data"
+  ],
+  "existing_replay_test_scope": "old P32/D2 selected Decode2 fragment only",
+  "static_observer_status": "ONE_GiB_REVISION_GPU_CAPTURE_RUNNING",
+  "static_observer_binary_sha256": "b1d18fe9777f2a82702a770df92497bfe2b54b66f8c1331d7bcae42f467e4cf7",
+  "NCU_pilot_receipt": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-pilot-r1/controller.json",
+  "NCU_receipt": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/controller.json",
+  "NCU_receipt_sha256": "3336480564452a9a0179ec7c90545547871bfebb8c0926eea22e51c0c1646947",
+  "NCU_samples": 18,
+  "NCU_independent_groups": 3,
+  "NCU_measurement_notes": [
+    "Each scope is an independent full-workflow run; preceding phases run unprofiled for selected decode.",
+    "NCU app-range B/time is not unprofiled inference bandwidth; durations vary and are not fitted to simulation.",
+    "Full minus Prefill must not be labeled measured Decode traffic."
+  ]
+}

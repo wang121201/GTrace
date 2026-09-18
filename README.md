@@ -12,6 +12,12 @@
 
 现在可在这条 direct 路径导出 CTA 组计算 profile，再用 `replay.py --mode stage-overlap` 执行阶段级计算/访存重叠。地址流不变，计算成本取原 SourceNode 的静态资源需求，运行时跳过 warp/DAG 调度；窗口、计算尾部、kernel 屏障及近似范围见 [阶段重叠说明](docs/stage-overlap.md)。自动 profile 当前限九类原生 binding，不覆盖完整 1138-call 流程。
 
+阶段回放现在支持配置独立的 GDDR6、HBM 和原生 HBF controller/NAND 后端，并输出阶段、kernel、CTA 组的读写与带宽。HBF 的请求字节、4 KB 页介质流量、控制器 HBM 流量和最终持久化尾部独立计数；它们不能混为同一个带宽。见 [多后端阶段报告](docs/multi-backend-stage.md)。
+
+新目标为当前 SGLang native 的 **B1 / BF16 / 32 层 / P1024 / D32**，同源硬件采集包见 [采集说明](capture/p1024d32/README.md)。33 阶段输入与自然 CUDA event 已采集；正式 NCU 已完成 3 组 × 6 范围（Full、Prefill、D1、D8、D16、D32），保存原始报告、CSV 和来源校验记录。不同范围来自独立运行，不能用 Full−Prefill 推导 Decode 流量；NCU 时间与自然运行时间分别报告。
+
+输入采集、NCU 测量与新形状 TileGen 地址模型的资格检查是不同步骤；**完整 P1024/D32 TileGen 尚未准入**，新 attention/GEMM/merge kernel 的参数、原生动态证据、地址绑定及阶段/容量适配见 [准入审计](docs/native-p1024d32-admission.md)。状态与正式 NCU 汇总见 [进度记录](validation/native-p1024d32-progress.json)，结果文档见 [阶段后端与新负载报告](/Users/wgs/Documents/Codex/2026-09-17/zhi/outputs/tilegen-stage-backends-20260918/index.html)。
+
 ## 独立分支与实现
 
 - 基线提交 `0e21251f126510744d1b319f043e7e6b2dae5e1f`：抽取 22 个翻译单元、171 个实际源码依赖（约 4.19 MB），展开原 VFS overlay。原工作目录未修改，B8 候选仍在另一个仓库。
@@ -32,7 +38,7 @@
 | `--mode cosim-fast` | C 原 hybrid 路径与 fine fallback | **显式近似时序档**：q16、memory-phase16、epoch8、independent drain；不宣称与全 fine 周期相同 |
 
 direct 与 cosim 共用地址规则，**过 cache 流量不保证逐条相同**：跳过计算和在途请求会改变跨 warp/CTA 顺序、MSHR 合并及 LRU。需要实际调度顺序的地址流时使用 `cosim --trace`。
-硬件时序尚未校准；原有 estimated-address、依赖资格等限制保留。本次没有做 NCU 拟合或新 GPU 采样。
+硬件时序尚未校准；原有 estimated-address、依赖资格等限制保留。后端和阶段模型没有使用 NCU 流量或带宽拟合系数；P1024/D32 新采集的执行状态以独立收据为准。
 
 ## 构建与使用
 
