@@ -25,6 +25,7 @@ python3 validation/render-multi-backend-report.py \
   --input-root build/multi-backend-validation-r3 \
   --discovery-root /Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1 \
   --ncu-root /Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1 \
+  --observer-root /Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/observer-r2 \
   --output /Users/wgs/Documents/Codex/2026-09-17/zhi/outputs/tilegen-stage-backends-20260918/index.html
 ```
 
@@ -86,9 +87,9 @@ Discovery 状态为 `PASS_CAPTURE_CLOSURE_NOT_MODEL_QUALIFICATION`，完整来�
 - 37 个 metadata 文件大小与 SHA 全部匹配文件清单；manifest SHA 匹配 controller；两子流程退出成功、owned processes drained、GPU quiescent。
 - 模型配置和 4 个权重 shard 内容 SHA 展示 controller 已记录的身份；本地报告没有再次读取远端大权重。
 
-未收集完整动态指令 / memory trace；native scope ABI、decoded SASS identity 和完整 tilegraph 尚未建立。P1024D32 native TileGen 模型尚未准入，不能从这些 metadata 自动推导精确 memory / compute 程序。
+初次 discovery 没有 native scope ABI 或 decoded SASS identity；后续 observer r2 已补齐静态 launch / decoded SASS / argument-size layout census。仍未收集完整动态指令 / memory trace、raw argument values 或 typed pointer binding，完整 tilegraph 尚未建立。P1024D32 native TileGen 模型尚未准入，不能从这些 metadata 自动推导精确 memory / compute 程序。
 
-正式 NCU 三组现已完成并导入，18 个 scope 样本全部 PASS，逐项 report/CSV/source/host closure 已通过。仅对应的 Full、Prefill、D1、D8、D16、D32 scope 展示结果；其余 Decode 的 NCU 仍为 N/A，所有新 TileGen 和 R/W 误差列仍为 N/A，不填入旧 P32D2 或三个 MLP kernel 片段数值。静态 observer 首轮因 metadata 配额退出，进程与 GPU 清理成功；独立 r2 仍在进行，partial code 不作为完整模型资格。报告不记录认证或权限配置细节。
+正式 NCU 三组现已完成并导入，18 个 scope 样本全部 PASS，逐项 report/CSV/source/host closure 已通过。仅对应的 Full、Prefill、D1、D8、D16、D32 scope 展示结果；其余 Decode 的 NCU 仍为 N/A，所有新 TileGen 和 R/W 误差列仍为 N/A，不填入旧 P32D2 或三个 MLP kernel 片段数值。静态 observer 首轮因 metadata 配额退出并完成清理；独立 r2 现已成功闭合静态 census，仍不作为完整动态模型资格。报告不记录认证或权限配置细节。
 
 ## 正式 NCU 三组的可选接入
 
@@ -105,6 +106,8 @@ NCU duration 与非 NCU CUDA event 的阶段和必须单独列示。Pilot 曾呈
 HTML 已加入 NCU Read/Write 四个独立面板（Full/Prefill 与 Decode 分开；Read 用 GB，Full/Prefill Write 用 GB，Decode Write 用 MB），以及 NCU 时间 / 同 run B/time 对照图。NCU 误差线只来自正式 group 1/2/3 的样本标准差；CUDA event 只有一次，只画单点，不生成三组误差条。主表 mean 与 SD 使用相同单位，两位小数；SD 显示 0.00 不代表原始数据无变化，精确值见 CSV。
 
 正式三组 Full：Read 507.18 GB、Write 5.83 GB，duration 3489.19 ± 233.74 ms；Prefill：Read 22.45 GB、Write 5.79 GB，duration 217.12 ± 3.06 ms。Decode8 duration 为 151.12 ± 44.84 ms，CV 29.67%；逐次 `(R+W)/duration` 为 107.39 ± 36.38 GB/s。该时间/BW 离散以及相对非 NCU event 的差异尚未被因果分解，不能用于校准无干扰推理时间。采集 elapsed 不是 CPU user+sys；本页只将 replay receipts 中真实记录的 user+sys 称为 CPU 分钟。
+
+独立诊断见 `validation/ncu-timing-diagnostic.json`：18 份正式 NCU host finish 的 `natural_cuda_event_ms` 均为 null，driver 只在 validate 模式创建 CUDA events，因此没有同 run event 可分解时间差。profiling 运行的主机边界区间也更长，差异不只是 CSV 格式/单位问题，但这个单调 host 时钟区间不是 GPU 时间，不能作为 bandwidth 分母，也不能单独确定 profiling、状态和测量边界各自贡献。
 
 ## 独立理论 read 对照
 
@@ -127,4 +130,16 @@ renderer 从参数/shape 重算上述数字并检查闭合，只在正式 NCU �
 2. 新 SGLang P1024D32 discovery 与真实 NCU 正式三组均已完成，18 样本按独立 receipt 接入。
 3. 新 native TileGen 尚未准入；第 2 步完成不等于第 3 步完成。
 
-具体缺口见 `docs/native-p1024d32-admission.md` 和 `validation/native-p1024d32-admission.json` 的 53 项证据 pin：新 attention Decode grid [9,8,1] 对旧 [1,8,1]；新 CUTLASS / Ampere GEMM、PersistentVariableLengthMergeStates 目前只有符号文本差异，未建立 SASS 同一性。需新 raw arguments、native witness、独立 heldout、bindings、phase 适配，不能只修改 P/epoch。trace 单文件硬上限 64 GiB；HBF 多离散 sparse seed 上限 1,048,576 页，整模实际规模仍须预检。
+早期缺口见 `docs/native-p1024d32-admission.md` 和 `validation/native-p1024d32-admission.json` 的 53 项证据 pin：新 attention Decode grid [9,8,1] 对旧 [1,8,1]；新 CUTLASS / Ampere GEMM、PersistentVariableLengthMergeStates 最初由符号文本差异发现。后续 r2 静态 census 及其独立审计补充 decoded SASS / ABI layout 身份；静态相同不等于动态地址、控制和绑定已经合格。需新 raw arguments、native witness、独立 heldout、bindings、phase 适配，不能只修改 P/epoch。trace 单文件硬上限 64 GiB；HBF 多离散 sparse seed 上限 1,048,576 页，整模实际规模仍须预检。
+
+## Observer r2 静态 census
+
+`work/p1024d32-capture/observer-r2/controller.json` 状态 `PASS_NATIVE_METADATA_CENSUS_ONLY`。Prefill 408 measured launches；每 Decode 397，32 个 Decode 共 12,704；总 measured 13,112。整个 process before/return 共 26,374，包括测量 epoch 外的 warmup/setup 等。330 inspected functions、282 unique decoded code hashes 属于整个静态检查范围，不能当作 measured kernel 家族数。
+
+renderer 校验 controller 对 native-census 的 SHA、build receipt / binary SHA、observer finish SHA、六 journals 的字节长度 / SHA、33 phase 计数和 launch before/return 闭合；workload contract 与 discovery 同源，native SGLang Python source SHA 一致。静态 code hash 是 NVBit decoded instruction rows 的 hash，不是 cubin 文件 hash。ABI 仅记录 argument sizes / parameter layout，没有 raw values 或 typed pointer bindings。
+
+无动态指令 instrumentation、动态 memory addresses、PC 执行 witness 或实际 SM placement；完整 callback coverage 与同进程 CUPTI crosscheck 仍未证明。13,112 与旧 profiler 计数相等不是这两者的独立同进程证明。静态 census 不会把 `native_model_admitted=false` 升级为 true。独立复核与旧工作流比较保存在 `validation/native-p1024d32-census-audit.json`。
+
+独立审计现已 PASS：measured 范围为 33 decoded code hashes / 32 symbols（不同于 process 全范围 330 functions / 282 hashes）；其中 29 个 code hash 与旧 measured 工作流相同，4 个为新 code。10,679 个 launches 的 code / ABI sizes / grid / block / static+dynamic shared / registers / local bytes / launch attributes / CUDA API 与旧候选完全匹配；1,281 个同 code+ABI 但 launch 配置不同；1,152 个新 code launches。上述三类之和闭合为 13,112。
+
+10,679 只是静态复用候选，不代表 raw arguments、tensor 内容、循环控制、mask 或动态地址相同。4 个新 code 包含 Prefill 的 128 个 GEMM launches（1 个 CUTLASS、2 种 Ampere GEMM），以及 Decode 的 1,024 个 MergeStates launches；符号分类是名称分组，不是动态语义证明。报告 importer 校验独立审计对 controller/census/finish/manifest/六 journals 的 pins、measured code/symbol 计数与比较账本后才展示。

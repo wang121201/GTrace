@@ -1,5 +1,7 @@
 # Native P1024D32：已采元数据，尚未准入模型
 
+后续进展（2026-09-19）：正式 NCU 三组与原生静态 observer 均已采集完成；33 阶段、13,112 次 measured launch 的静态 SASS / 参数尺寸 ABI 已闭合，详见 [新 census 独立审计](../validation/native-p1024d32-census-audit.md) 和 [当前进度](../validation/native-p1024d32-progress.json)。**以下是采集完成前的审计快照**，其中“待采静态代码”按当时证据陈述；当前仍缺真实参数值、typed binding、动态访存证据与完整阶段模型适配。后续 host 参数采集的最小接口见 [实施说明](native-p1024d32-argument-capture.md)。
+
 静读审计，未采 GPU、未跑模拟、未改生产代码。源码 HEAD `09d0953958a3`；完整路径、行号与 SHA 见 [机器记录](/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/native-p1024d32-admission.json)。**剩余工作包含原生输入、模板与容量适配，不能归结为 NCU 权限。**
 
 当前 `manifest.json` 为 COMPLETE：Llama3-8B、BF16、B1、32 层、P1024/D32、KV pool1280、FlashInfer/eager，固定 token 不反馈；D1 context1025，D32 context1056。元数据明确 `native_scope_abi_enabled=false`、`instruction_memory_trace_collected=false`、`tilegraph_complete=false`，backend-private tensors 不完整。metadata driver 的 `weight_content_hashes_complete=false` 仅描述该 driver：外层 [controller](/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/controller.json) 已记录 config/index 与四个 safetensors 共6文件的完整内容 SHA，且与此 manifest/input contract 闭合；**权重哈希缺失不是当前阻塞项**（本次未重读远端权重）。13112 是 torch.profiler 的 kernel 事件，旧1138是固定 NVBit/ABI registry，**不作同口径数量比较**。这批 profiler 事件没有 code SHA，不能据符号同名认定 SASS 相同。

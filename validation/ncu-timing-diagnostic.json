@@ -1,0 +1,1059 @@
+{
+  "schema": "NCU_TIMING_DIAGNOSTIC_V1",
+  "status": "COMPLETE_SAME_RUN_CUDA_EVENT_TIMINGS_NOT_CAPTURED",
+  "qualification": "DIAGNOSTIC_ONLY_NOT_PERFORMANCE_CALIBRATION",
+  "controller": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/controller.json",
+    "bytes": 29828,
+    "sha256": "3336480564452a9a0179ec7c90545547871bfebb8c0926eea22e51c0c1646947"
+  },
+  "native_driver": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/p1024d32/native_ncu_driver.py",
+    "bytes": 10051,
+    "sha256": "f944fd786274a629476131730d39e2b4c65b55036f3f244acbdbd931dfe6a70f"
+  },
+  "baseline_finish": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/discovery-r1/validate/host/process-2553204/finish.json",
+    "bytes": 74942,
+    "sha256": "54668a6953078b60a9a65bccb874f9a1224adf5f245ae2ccaffef84a12730109"
+  },
+  "checks": {
+    "sample_count": 18,
+    "finish_receipts_with_33_phase_sequence": 18,
+    "finish_receipts_with_cuda_event_timings": 0,
+    "one_matching_host_receipt_per_ncu_action": true,
+    "same_input_contract_and_driver_sha_as_discovery": true,
+    "csv_hash_and_pid_and_ns_duration_match_controller": true
+  },
+  "source_evidence": {
+    "capture_event_disabled": "native_ncu_driver.py:132-133 creates event pairs only for mode=validate; :181-182 emits null in capture",
+    "host_interval": "native_ncu_driver.py:36-48 journals immediately before and after profiler APIs; :139-155 synchronizes phases. Difference between start-return and stop-before is host elapsed time, not GPU event duration."
+  },
+  "interpretation": [
+    "All 18 formal NCU captures have natural_cuda_event_ms=null; no same-run comparison is possible for either profiled or non-profiled phases.",
+    "The discovery validate run has 33 CUDA-event measurements and is a different run. Its full value below is a sum of those intervals, not an independent Full ROI measurement.",
+    "The host start-return to stop-before interval provides a second clock measurement of the selected profiling scope, but includes host activity/gaps and synchronization. It must not replace gpu__time_duration.sum as the NCU bandwidth denominator.",
+    "NCU durations and these host intervals are both higher than independent validate event values. This describes a difference in capture executions/measurement scopes; it does not identify profiling overhead, CPU scheduling, GPU clocks, boundary behavior, or cache effects as the sole cause.",
+    "ProfilerStart/Stop API host durations are reported separately; do not add them to NCU duration or use them as GPU compute/service time.",
+    "There are no timing data for non-profiled phases in these capture receipts; profiler boundary journals only contain four entries for the selected scope. No per-phase times are inferred from the full process wall time.",
+    "No GPU capture or simulation was run, and no reporter/source file was changed."
+  ],
+  "baseline_natural_cuda_event_ms": {
+    "Prefill": 195.42323303222656,
+    "Decode1": 47.84025573730469,
+    "Decode2": 47.01465606689453,
+    "Decode3": 46.934017181396484,
+    "Decode4": 46.94425582885742,
+    "Decode5": 46.95859146118164,
+    "Decode6": 47.318016052246094,
+    "Decode7": 46.928062438964844,
+    "Decode8": 46.94937515258789,
+    "Decode9": 46.94425582885742,
+    "Decode10": 46.934017181396484,
+    "Decode11": 47.017982482910156,
+    "Decode12": 46.9483528137207,
+    "Decode13": 47.02105712890625,
+    "Decode14": 46.91865539550781,
+    "Decode15": 46.92787170410156,
+    "Decode16": 46.97065734863281,
+    "Decode17": 46.98204803466797,
+    "Decode18": 46.96985626220703,
+    "Decode19": 46.95552062988281,
+    "Decode20": 46.92793655395508,
+    "Decode21": 47.115264892578125,
+    "Decode22": 46.97395324707031,
+    "Decode23": 46.97795104980469,
+    "Decode24": 48.568321228027344,
+    "Decode25": 49.32710266113281,
+    "Decode26": 47.100929260253906,
+    "Decode27": 46.915584564208984,
+    "Decode28": 46.97907257080078,
+    "Decode29": 46.96063995361328,
+    "Decode30": 46.94937515258789,
+    "Decode31": 46.97087860107422,
+    "Decode32": 46.93299102783203
+  },
+  "baseline_event_sum_ms": 1703.6007385253906,
+  "scope_summary": [
+    {
+      "scope": "full",
+      "independent_baseline_ms": 1703.6007385253906,
+      "independent_baseline_kind": "sum_of_33_separate_cuda_event_intervals_not_full_roi",
+      "ncu_duration_ms": {
+        "n": 3,
+        "mean": 3489.1902506666665,
+        "sample_sd": 233.74048311366576,
+        "min": 3259.404032,
+        "max": 3726.693856
+      },
+      "host_start_return_to_stop_before_ms": {
+        "n": 3,
+        "mean": 3485.2341786666666,
+        "sample_sd": 232.38129941069695,
+        "min": 3256.817552,
+        "max": 3721.386954
+      },
+      "host_profiler_start_api_ms": {
+        "n": 3,
+        "mean": 3056.224656,
+        "sample_sd": 732.2039999163324,
+        "min": 2216.282484,
+        "max": 3559.835196
+      },
+      "host_profiler_stop_api_ms": {
+        "n": 3,
+        "mean": 3645.5676643333336,
+        "sample_sd": 696.8904992832973,
+        "min": 3080.419907,
+        "max": 4424.238688
+      },
+      "ncu_minus_host_active_interval_ms": {
+        "n": 3,
+        "mean": 3.9560719999997978,
+        "sample_sd": 1.3603080437914865,
+        "min": 2.5864799999999377,
+        "max": 5.306901999999809
+      },
+      "ncu_over_host_active_interval": {
+        "n": 3,
+        "mean": 1.001121081461492,
+        "sample_sd": 0.0003165109276379367,
+        "min": 1.0007941740544881,
+        "max": 1.001426054872981
+      },
+      "cross_run_ncu_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 2.048126753975731,
+        "sample_sd": 0.1372037930178334,
+        "min": 1.9132440825432417,
+        "max": 2.187539469621131
+      },
+      "cross_run_host_active_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 2.0458045713712414,
+        "sample_sd": 0.13640596306141686,
+        "min": 1.9117258394822303,
+        "max": 2.1844243606170144
+      }
+    },
+    {
+      "scope": "Prefill",
+      "independent_baseline_ms": 195.42323303222656,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "ncu_duration_ms": {
+        "n": 3,
+        "mean": 217.12293333333332,
+        "sample_sd": 3.0550513145002025,
+        "min": 213.919584,
+        "max": 220.00416
+      },
+      "host_start_return_to_stop_before_ms": {
+        "n": 3,
+        "mean": 216.36867833333332,
+        "sample_sd": 3.064712035811258,
+        "min": 213.116617,
+        "max": 219.203234
+      },
+      "host_profiler_start_api_ms": {
+        "n": 3,
+        "mean": 2688.2698273333335,
+        "sample_sd": 117.88561328258177,
+        "min": 2558.281632,
+        "max": 2788.254204
+      },
+      "host_profiler_stop_api_ms": {
+        "n": 3,
+        "mean": 588.3555876666667,
+        "sample_sd": 29.639409775004463,
+        "min": 562.923238,
+        "max": 620.905857
+      },
+      "ncu_minus_host_active_interval_ms": {
+        "n": 3,
+        "mean": 0.7542550000000006,
+        "sample_sd": 0.0826104045323574,
+        "min": 0.6588720000000023,
+        "max": 0.8029669999999953
+      },
+      "ncu_over_host_active_interval": {
+        "n": 3,
+        "mean": 1.0034869373507125,
+        "sample_sd": 0.0003918529687287802,
+        "min": 1.0030392711742184,
+        "max": 1.0037677352958356
+      },
+      "cross_run_ncu_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 1.111039511343712,
+        "sample_sd": 0.01563299955229177,
+        "min": 1.09464765617056,
+        "max": 1.1257830329913736
+      },
+      "cross_run_host_active_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 1.1071799139545129,
+        "sample_sd": 0.01568243441815272,
+        "min": 1.0905387946624323,
+        "max": 1.1216846154819882
+      }
+    },
+    {
+      "scope": "Decode1",
+      "independent_baseline_ms": 47.84025573730469,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "ncu_duration_ms": {
+        "n": 3,
+        "mean": 112.91701333333333,
+        "sample_sd": 8.876343194148665,
+        "min": 105.410304,
+        "max": 122.71408
+      },
+      "host_start_return_to_stop_before_ms": {
+        "n": 3,
+        "mean": 107.37285533333333,
+        "sample_sd": 8.923716851530944,
+        "min": 99.82158,
+        "max": 117.220264
+      },
+      "host_profiler_start_api_ms": {
+        "n": 3,
+        "mean": 3112.0423746666665,
+        "sample_sd": 612.5417221446063,
+        "min": 2416.440653,
+        "max": 3570.798384
+      },
+      "host_profiler_stop_api_ms": {
+        "n": 3,
+        "mean": 511.14070566666663,
+        "sample_sd": 19.578027446251106,
+        "min": 494.988902,
+        "max": 532.914731
+      },
+      "ncu_minus_host_active_interval_ms": {
+        "n": 3,
+        "mean": 5.544157999999996,
+        "sample_sd": 0.04771691259920486,
+        "min": 5.493815999999995,
+        "max": 5.588723999999999
+      },
+      "ncu_over_host_active_interval": {
+        "n": 3,
+        "mean": 1.051890837644966,
+        "sample_sd": 0.004629980498684486,
+        "min": 1.046867459708161,
+        "max": 1.055987132241345
+      },
+      "cross_run_ncu_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 2.3602928452843392,
+        "sample_sd": 0.1855412990032807,
+        "min": 2.2033808635726744,
+        "max": 2.565079933389873
+      },
+      "cross_run_host_active_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 2.244403874488625,
+        "sample_sd": 0.18653154574532177,
+        "min": 2.0865603342116232,
+        "max": 2.4502432563000376
+      }
+    },
+    {
+      "scope": "Decode8",
+      "independent_baseline_ms": 46.94937515258789,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "ncu_duration_ms": {
+        "n": 3,
+        "mean": 151.11592533333334,
+        "sample_sd": 44.83973870070473,
+        "min": 101.92384,
+        "max": 189.701472
+      },
+      "host_start_return_to_stop_before_ms": {
+        "n": 3,
+        "mean": 149.83779966666668,
+        "sample_sd": 44.71996221072304,
+        "min": 100.531022,
+        "max": 187.776755
+      },
+      "host_profiler_start_api_ms": {
+        "n": 3,
+        "mean": 2561.313252,
+        "sample_sd": 1768.729136799393,
+        "min": 964.999922,
+        "max": 4462.756178
+      },
+      "host_profiler_stop_api_ms": {
+        "n": 3,
+        "mean": 483.73725033333335,
+        "sample_sd": 20.079272645000763,
+        "min": 460.960103,
+        "max": 498.877938
+      },
+      "ncu_minus_host_active_interval_ms": {
+        "n": 3,
+        "mean": 1.2781256666666632,
+        "sample_sd": 0.7109105094175552,
+        "min": 0.5168419999999969,
+        "max": 1.924716999999987
+      },
+      "ncu_over_host_active_interval": {
+        "n": 3,
+        "mean": 1.0091035803539952,
+        "sample_sd": 0.005416033687845136,
+        "min": 1.0032061040650306,
+        "max": 1.0138546089783111
+      },
+      "cross_run_ncu_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 3.2186993935957355,
+        "sample_sd": 0.9550657182331664,
+        "min": 2.1709307028845912,
+        "max": 4.0405537109591005
+      },
+      "cross_run_host_active_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 3.191475907393572,
+        "sample_sd": 0.952514534333649,
+        "min": 2.141264322970625,
+        "max": 3.999558128084045
+      }
+    },
+    {
+      "scope": "Decode16",
+      "independent_baseline_ms": 46.97065734863281,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "ncu_duration_ms": {
+        "n": 3,
+        "mean": 127.65561600000001,
+        "sample_sd": 1.7959694028930497,
+        "min": 125.596,
+        "max": 128.895168
+      },
+      "host_start_return_to_stop_before_ms": {
+        "n": 3,
+        "mean": 122.266443,
+        "sample_sd": 1.9870202066000775,
+        "min": 120.93361,
+        "max": 124.550239
+      },
+      "host_profiler_start_api_ms": {
+        "n": 3,
+        "mean": 2097.037938666667,
+        "sample_sd": 1338.1310349988414,
+        "min": 1037.828601,
+        "max": 3600.886597
+      },
+      "host_profiler_stop_api_ms": {
+        "n": 3,
+        "mean": 509.96854033333335,
+        "sample_sd": 17.494664181449743,
+        "min": 493.300814,
+        "max": 528.186909
+      },
+      "ncu_minus_host_active_interval_ms": {
+        "n": 3,
+        "mean": 5.389173000000009,
+        "sample_sd": 1.5419461234676852,
+        "min": 4.344929000000008,
+        "max": 7.160200000000017
+      },
+      "ncu_over_host_active_interval": {
+        "n": 3,
+        "mean": 1.044153191716503,
+        "sample_sd": 0.01300615899170462,
+        "min": 1.03488495112402,
+        "max": 1.0590213219285785
+      },
+      "cross_run_ncu_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 2.717773674157782,
+        "sample_sd": 0.0382359861298666,
+        "min": 2.6739246816961093,
+        "max": 2.744163596504399
+      },
+      "cross_run_host_active_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 2.603038788503539,
+        "sample_sd": 0.042303436203834796,
+        "min": 2.5746629241823897,
+        "max": 2.6516605478936377
+      }
+    },
+    {
+      "scope": "Decode32",
+      "independent_baseline_ms": 46.93299102783203,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "ncu_duration_ms": {
+        "n": 3,
+        "mean": 141.67021866666667,
+        "sample_sd": 23.70639397912971,
+        "min": 114.3736,
+        "max": 157.097312
+      },
+      "host_start_return_to_stop_before_ms": {
+        "n": 3,
+        "mean": 135.27822866666668,
+        "sample_sd": 21.20033753851114,
+        "min": 111.067088,
+        "max": 150.517457
+      },
+      "host_profiler_start_api_ms": {
+        "n": 3,
+        "mean": 6638.9200353333335,
+        "sample_sd": 1162.5710480865139,
+        "min": 5454.829956,
+        "max": 7778.705392
+      },
+      "host_profiler_stop_api_ms": {
+        "n": 3,
+        "mean": 475.6862976666667,
+        "sample_sd": 23.37559105134513,
+        "min": 453.704174,
+        "max": 500.242312
+      },
+      "ncu_minus_host_active_interval_ms": {
+        "n": 3,
+        "mean": 6.391989999999993,
+        "sample_sd": 2.995966358662761,
+        "min": 3.306511999999998,
+        "max": 9.289603
+      },
+      "ncu_over_host_active_interval": {
+        "n": 3,
+        "mean": 1.0459615213399527,
+        "sample_sd": 0.01742340388529329,
+        "min": 1.0297704032719395,
+        "max": 1.0643992646079978
+      },
+      "cross_run_ncu_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 3.0185636066248986,
+        "sample_sd": 0.5051115102609042,
+        "min": 2.4369552737897013,
+        "max": 3.347268276740315
+      },
+      "cross_run_host_active_over_baseline_event_ratio": {
+        "n": 3,
+        "mean": 2.882369644552261,
+        "sample_sd": 0.4517150318832012,
+        "min": 2.3665035099539127,
+        "max": 3.2070714800755122
+      }
+    }
+  ],
+  "samples": [
+    {
+      "group": 1,
+      "scope": "full",
+      "process_id": 2557738,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-full/host/process-2557738/finish.json",
+        "bytes": 73945,
+        "sha256": "dc197463193b7e0faeff717317a48e968654d4675cdabfccfb66f88cc4c79e74"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-full/host/process-2557738/boundary-journal.jsonl",
+        "bytes": 476,
+        "sha256": "9d26a6915f6e4077861cfdd2ca3148a50182d037c08ae26725cb109d78b3b1eb"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-full/import/stdout.log",
+        "bytes": 11228,
+        "sha256": "f2559abfb722a1badb9943aec6f3ae252f85986657696a802fc2ee24fa9e89a8"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 3481472864,
+      "ncu_duration_ms": 3481.472864,
+      "host_profiler_start_api_ms": 3392.556288,
+      "host_start_return_to_stop_before_ms": 3477.49803,
+      "host_profiler_stop_api_ms": 3432.044398,
+      "ncu_minus_host_active_interval_ms": 3.974833999999646,
+      "ncu_over_host_active_interval": 1.0011430154570065,
+      "independent_baseline_ms": 1703.6007385253906,
+      "independent_baseline_kind": "sum_of_33_separate_cuda_event_intervals_not_full_roi",
+      "cross_run_ncu_over_baseline_event_ratio": 2.043596709762821,
+      "cross_run_host_active_over_baseline_event_ratio": 2.041263514014479
+    },
+    {
+      "group": 1,
+      "scope": "Prefill",
+      "process_id": 2557912,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Prefill/host/process-2557912/finish.json",
+        "bytes": 73947,
+        "sha256": "16234903d5d6a5b3242f3b42097634a1830fea05b4d4b62cad1c02d530b9feb9"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Prefill/host/process-2557912/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "a4ad7a2acea13a6b979199b714485084e6a7d4f57f1b5aea0b18655936d27f56"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Prefill/import/stdout.log",
+        "bytes": 11226,
+        "sha256": "8db35f28f5c6b3bbd6bc9bd83726c4254824df8e1c74d82a8d936fe33fcbedcf"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 217445056,
+      "ncu_duration_ms": 217.445056,
+      "host_profiler_start_api_ms": 2788.254204,
+      "host_start_return_to_stop_before_ms": 216.786184,
+      "host_profiler_stop_api_ms": 562.923238,
+      "ncu_minus_host_active_interval_ms": 0.6588720000000023,
+      "ncu_over_host_active_interval": 1.0030392711742184,
+      "independent_baseline_ms": 195.42323303222656,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 1.112687844869202,
+      "cross_run_host_active_over_baseline_event_ratio": 1.1093163317191184
+    },
+    {
+      "group": 1,
+      "scope": "Decode1",
+      "process_id": 2558084,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode1/host/process-2558084/finish.json",
+        "bytes": 73947,
+        "sha256": "b33c7ba90a07a435ffb3537e1abe4a09eeebf5d62dd7eaf62ed374cc6d78e6db"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode1/host/process-2558084/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "8dcf7febb01922927cb96dc9f188b752db9843a439e3a5c114a33d9b0b9995c6"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode1/import/stdout.log",
+        "bytes": 11223,
+        "sha256": "099c472f7d9e2958094d95305fa5727dd1dc0c56b5fa5de0e81b8e5d62dcab89"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 110626656,
+      "ncu_duration_ms": 110.626656,
+      "host_profiler_start_api_ms": 3348.888087,
+      "host_start_return_to_stop_before_ms": 105.076722,
+      "host_profiler_stop_api_ms": 532.914731,
+      "ncu_minus_host_active_interval_ms": 5.549933999999993,
+      "ncu_over_host_active_interval": 1.0528179209853918,
+      "independent_baseline_ms": 47.84025573730469,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 2.312417738890471,
+      "cross_run_host_active_over_baseline_event_ratio": 2.1964080329542153
+    },
+    {
+      "group": 1,
+      "scope": "Decode8",
+      "process_id": 2558257,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode8/host/process-2558257/finish.json",
+        "bytes": 73947,
+        "sha256": "96efca0e181c99709a41a8c897d8d3028f707bb303c250e184a7536a909f3dc9"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode8/host/process-2558257/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "a361bb9015726c6a622757df0925f91477d597af3b7acf752ce0f218ad5f7bbd"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode8/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "1844930e435af3654a59dd23df6ddff2b145c1771313a32c7fd435ae416b750e"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 161722464,
+      "ncu_duration_ms": 161.722464,
+      "host_profiler_start_api_ms": 2256.183656,
+      "host_start_return_to_stop_before_ms": 161.205622,
+      "host_profiler_stop_api_ms": 491.37371,
+      "ncu_minus_host_active_interval_ms": 0.5168419999999969,
+      "ncu_over_host_active_interval": 1.0032061040650306,
+      "independent_baseline_ms": 46.94937515258789,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 3.4446137669435144,
+      "cross_run_host_active_over_baseline_event_ratio": 3.433605271126046
+    },
+    {
+      "group": 1,
+      "scope": "Decode16",
+      "process_id": 2558478,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode16/host/process-2558478/finish.json",
+        "bytes": 73950,
+        "sha256": "4b52d87d796e49a81422e94534dd99d35a7c2f739136dc71ad2511372fd46067"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode16/host/process-2558478/boundary-journal.jsonl",
+        "bytes": 478,
+        "sha256": "3da1c173e1d41a4f3e261399edd3a760fe134b82e22255ff495fb042a0bba989"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode16/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "e0e300623bd3a38afa5b00eac1d050cc075a22983d6a9cc508920002dff789ba"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 128895168,
+      "ncu_duration_ms": 128.895168,
+      "host_profiler_start_api_ms": 1037.828601,
+      "host_start_return_to_stop_before_ms": 124.550239,
+      "host_profiler_stop_api_ms": 508.417898,
+      "ncu_minus_host_active_interval_ms": 4.344929000000008,
+      "ncu_over_host_active_interval": 1.03488495112402,
+      "independent_baseline_ms": 46.97065734863281,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 2.744163596504399,
+      "cross_run_host_active_over_baseline_event_ratio": 2.6516605478936377
+    },
+    {
+      "group": 1,
+      "scope": "Decode32",
+      "process_id": 2558649,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode32/host/process-2558649/finish.json",
+        "bytes": 73950,
+        "sha256": "21744bbe7140954f6de41bd1d836d7429efddd22f9a80c63253130573a3c7f5d"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode32/host/process-2558649/boundary-journal.jsonl",
+        "bytes": 478,
+        "sha256": "206699713430b092b7413c1a7a583b8f1b3687db21a4991feb64a8e2d0cdee77"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-1-Decode32/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "c3157d74f1d5e74f3ab4bdceae4fb968d9ac89dc97da614a8547443e6cfb627a"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 153539744,
+      "ncu_duration_ms": 153.539744,
+      "host_profiler_start_api_ms": 5454.829956,
+      "host_start_return_to_stop_before_ms": 144.250141,
+      "host_profiler_stop_api_ms": 473.112407,
+      "ncu_minus_host_active_interval_ms": 9.289603,
+      "ncu_over_host_active_interval": 1.0643992646079978,
+      "independent_baseline_ms": 46.93299102783203,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 3.27146726934468,
+      "cross_run_host_active_over_baseline_event_ratio": 3.0735339436273583
+    },
+    {
+      "group": 2,
+      "scope": "full",
+      "process_id": 2558824,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-full/host/process-2558824/finish.json",
+        "bytes": 73945,
+        "sha256": "36eecdd3e21fadce4710344ba2919ad29eed15c9008aa0f383df1f5df5598e33"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-full/host/process-2558824/boundary-journal.jsonl",
+        "bytes": 476,
+        "sha256": "f6890318fc5cdd1bb864a745dfac7bc164a388dbbed286d60cd290754d9cb05a"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-full/import/stdout.log",
+        "bytes": 11228,
+        "sha256": "5237a776b861d80fff02b3af05360f89883f24cfba0e8e720dbf8cd48e47e336"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 3259404032,
+      "ncu_duration_ms": 3259.404032,
+      "host_profiler_start_api_ms": 3559.835196,
+      "host_start_return_to_stop_before_ms": 3256.817552,
+      "host_profiler_stop_api_ms": 4424.238688,
+      "ncu_minus_host_active_interval_ms": 2.5864799999999377,
+      "ncu_over_host_active_interval": 1.0007941740544881,
+      "independent_baseline_ms": 1703.6007385253906,
+      "independent_baseline_kind": "sum_of_33_separate_cuda_event_intervals_not_full_roi",
+      "cross_run_ncu_over_baseline_event_ratio": 1.9132440825432417,
+      "cross_run_host_active_over_baseline_event_ratio": 1.9117258394822303
+    },
+    {
+      "group": 2,
+      "scope": "Prefill",
+      "process_id": 2559001,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Prefill/host/process-2559001/finish.json",
+        "bytes": 73947,
+        "sha256": "cac04686d339eabb41d01d71a1632d0ba4de442cad0de93bdb5145552466ddeb"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Prefill/host/process-2559001/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "3c45ca60d2b6adeb5dd175f7fd58b8dfcb333faa0f770d0c74e1741e0c658db8"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Prefill/import/stdout.log",
+        "bytes": 11226,
+        "sha256": "4b2163d5095f779677bcb6cbec2679fba2e540a23d4927fa609ddecde9b6fe97"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 220004160,
+      "ncu_duration_ms": 220.00416,
+      "host_profiler_start_api_ms": 2718.273646,
+      "host_start_return_to_stop_before_ms": 219.203234,
+      "host_profiler_stop_api_ms": 581.237668,
+      "ncu_minus_host_active_interval_ms": 0.800926000000004,
+      "ncu_over_host_active_interval": 1.0036538055820836,
+      "independent_baseline_ms": 195.42323303222656,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 1.1257830329913736,
+      "cross_run_host_active_over_baseline_event_ratio": 1.1216846154819882
+    },
+    {
+      "group": 2,
+      "scope": "Decode1",
+      "process_id": 2559259,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode1/host/process-2559259/finish.json",
+        "bytes": 73947,
+        "sha256": "960c96de43a4662f3bee42f009aa7668f1b52baaf2c20b63296eb016685cc958"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode1/host/process-2559259/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "3ba7433a074a8034bd1197ffc9122e6cc4986ba836b33af75b28cfed4fdf9f7f"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode1/import/stdout.log",
+        "bytes": 11223,
+        "sha256": "a21ce3d3cd0befb3c67360170e3d22acf63899c6684dffa11fbdd436cd55ca08"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 122714080,
+      "ncu_duration_ms": 122.71408,
+      "host_profiler_start_api_ms": 2416.440653,
+      "host_start_return_to_stop_before_ms": 117.220264,
+      "host_profiler_stop_api_ms": 505.518484,
+      "ncu_minus_host_active_interval_ms": 5.493815999999995,
+      "ncu_over_host_active_interval": 1.046867459708161,
+      "independent_baseline_ms": 47.84025573730469,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 2.565079933389873,
+      "cross_run_host_active_over_baseline_event_ratio": 2.4502432563000376
+    },
+    {
+      "group": 2,
+      "scope": "Decode8",
+      "process_id": 2559510,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode8/host/process-2559510/finish.json",
+        "bytes": 73947,
+        "sha256": "3111d00f5c4f34c722d1cb86e43eb840cbf2442b846ffce35099d4334624a911"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode8/host/process-2559510/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "ecc6f5e0bda5416f196b5a1796b7fd2e948af8d0f8c847cb1610ddec0c3eac0b"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode8/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "c9f3d278da5e5fe24d8f0070df88d7ce955bafb6da2c25f408e3dd6a20915db9"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 189701472,
+      "ncu_duration_ms": 189.701472,
+      "host_profiler_start_api_ms": 964.999922,
+      "host_start_return_to_stop_before_ms": 187.776755,
+      "host_profiler_stop_api_ms": 460.960103,
+      "ncu_minus_host_active_interval_ms": 1.924716999999987,
+      "ncu_over_host_active_interval": 1.0102500280186437,
+      "independent_baseline_ms": 46.94937515258789,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 4.0405537109591005,
+      "cross_run_host_active_over_baseline_event_ratio": 3.999558128084045
+    },
+    {
+      "group": 2,
+      "scope": "Decode16",
+      "process_id": 2559680,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode16/host/process-2559680/finish.json",
+        "bytes": 73950,
+        "sha256": "e401083f4ea7354f0752470fb12e0c9fa3ccfeb20743796ca5644ca39711e514"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode16/host/process-2559680/boundary-journal.jsonl",
+        "bytes": 478,
+        "sha256": "1522721fa070624885c522032104c0affa975fd826d1c227af8552bc4e0103b1"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode16/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "195da68927449b87f55f41ce7f6c0914975b14a751159c4f7d41d0ee04f9d485"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 125596000,
+      "ncu_duration_ms": 125.596,
+      "host_profiler_start_api_ms": 3600.886597,
+      "host_start_return_to_stop_before_ms": 120.93361,
+      "host_profiler_stop_api_ms": 493.300814,
+      "ncu_minus_host_active_interval_ms": 4.662390000000002,
+      "ncu_over_host_active_interval": 1.0385533020969109,
+      "independent_baseline_ms": 46.97065734863281,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 2.6739246816961093,
+      "cross_run_host_active_over_baseline_event_ratio": 2.5746629241823897
+    },
+    {
+      "group": 2,
+      "scope": "Decode32",
+      "process_id": 2559853,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode32/host/process-2559853/finish.json",
+        "bytes": 73950,
+        "sha256": "350b9db596bbf6772313d1d1d62d48d1cba5464cefea5406ff2d63f964b5b99c"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode32/host/process-2559853/boundary-journal.jsonl",
+        "bytes": 478,
+        "sha256": "eccf833f85695a7af82a0a80815a04d7b04c6589983900bd5db35a8465714d41"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-2-Decode32/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "c193608cffe533fe49f9fe74360df669bb16bc83219ee33af69f76e2938b3e3a"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 157097312,
+      "ncu_duration_ms": 157.097312,
+      "host_profiler_start_api_ms": 6683.224758,
+      "host_start_return_to_stop_before_ms": 150.517457,
+      "host_profiler_stop_api_ms": 453.704174,
+      "ncu_minus_host_active_interval_ms": 6.579854999999981,
+      "ncu_over_host_active_interval": 1.0437148961399207,
+      "independent_baseline_ms": 46.93299102783203,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 3.347268276740315,
+      "cross_run_host_active_over_baseline_event_ratio": 3.2070714800755122
+    },
+    {
+      "group": 3,
+      "scope": "full",
+      "process_id": 2560029,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-full/host/process-2560029/finish.json",
+        "bytes": 73945,
+        "sha256": "9975c1a37c64db4a14542bd7f7d81e1c9fb21d8041eb6a28c7c670ffc320dd3e"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-full/host/process-2560029/boundary-journal.jsonl",
+        "bytes": 476,
+        "sha256": "f9a853aaefa1c6568295c8946d6e7d1778668d27fecf74b720cdc62a10a46e72"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-full/import/stdout.log",
+        "bytes": 11228,
+        "sha256": "9f96bf1d65cb6cbc6dfda5ee9673f603a8500e9abbd23b66fba66ed2d20bba32"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 3726693856,
+      "ncu_duration_ms": 3726.693856,
+      "host_profiler_start_api_ms": 2216.282484,
+      "host_start_return_to_stop_before_ms": 3721.386954,
+      "host_profiler_stop_api_ms": 3080.419907,
+      "ncu_minus_host_active_interval_ms": 5.306901999999809,
+      "ncu_over_host_active_interval": 1.001426054872981,
+      "independent_baseline_ms": 1703.6007385253906,
+      "independent_baseline_kind": "sum_of_33_separate_cuda_event_intervals_not_full_roi",
+      "cross_run_ncu_over_baseline_event_ratio": 2.187539469621131,
+      "cross_run_host_active_over_baseline_event_ratio": 2.1844243606170144
+    },
+    {
+      "group": 3,
+      "scope": "Prefill",
+      "process_id": 2560208,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Prefill/host/process-2560208/finish.json",
+        "bytes": 73947,
+        "sha256": "42f304d8d03adcedff8c2787599b6f003b3dfb838ade0198d0103c7a1bb41888"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Prefill/host/process-2560208/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "8559686a2c147afd0423dab15c795aae2e6259493776419893d94f5ec95b2b20"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Prefill/import/stdout.log",
+        "bytes": 11226,
+        "sha256": "e509b4182759099a895f3aaf31b5a9e47d25efcf7aa4a2d732e71c396574037b"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 213919584,
+      "ncu_duration_ms": 213.919584,
+      "host_profiler_start_api_ms": 2558.281632,
+      "host_start_return_to_stop_before_ms": 213.116617,
+      "host_profiler_stop_api_ms": 620.905857,
+      "ncu_minus_host_active_interval_ms": 0.8029669999999953,
+      "ncu_over_host_active_interval": 1.0037677352958356,
+      "independent_baseline_ms": 195.42323303222656,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 1.09464765617056,
+      "cross_run_host_active_over_baseline_event_ratio": 1.0905387946624323
+    },
+    {
+      "group": 3,
+      "scope": "Decode1",
+      "process_id": 2560381,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode1/host/process-2560381/finish.json",
+        "bytes": 73947,
+        "sha256": "f403beaac4f49626dcc64ed4aabe9fde5466ce9c296ce757709e57d87479ac6c"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode1/host/process-2560381/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "0ef38cdff85698a056505df29e73a3d67088d24e356caad847a0005258c97bfb"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode1/import/stdout.log",
+        "bytes": 11223,
+        "sha256": "2b03131f0558a239e388c0c38df68abb3d7e322eed6eab3a0e3a38eb13cb5b41"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 105410304,
+      "ncu_duration_ms": 105.410304,
+      "host_profiler_start_api_ms": 3570.798384,
+      "host_start_return_to_stop_before_ms": 99.82158,
+      "host_profiler_stop_api_ms": 494.988902,
+      "ncu_minus_host_active_interval_ms": 5.588723999999999,
+      "ncu_over_host_active_interval": 1.055987132241345,
+      "independent_baseline_ms": 47.84025573730469,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 2.2033808635726744,
+      "cross_run_host_active_over_baseline_event_ratio": 2.0865603342116232
+    },
+    {
+      "group": 3,
+      "scope": "Decode8",
+      "process_id": 2560554,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode8/host/process-2560554/finish.json",
+        "bytes": 73947,
+        "sha256": "7e59805081eb1d1971211801beed5ec9bc7b52f01c5b477b3e8dd395e0d921d6"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode8/host/process-2560554/boundary-journal.jsonl",
+        "bytes": 474,
+        "sha256": "2f5eb9f448e78069e6809c315a570ace1e13e437774db3b24478b1bd3b1abe13"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode8/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "e8d68d7fbab44c39142a28ea897b789b91a61f87461c997633fd66a1e7d4b3b1"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 101923840,
+      "ncu_duration_ms": 101.92384,
+      "host_profiler_start_api_ms": 4462.756178,
+      "host_start_return_to_stop_before_ms": 100.531022,
+      "host_profiler_stop_api_ms": 498.877938,
+      "ncu_minus_host_active_interval_ms": 1.3928180000000054,
+      "ncu_over_host_active_interval": 1.0138546089783111,
+      "independent_baseline_ms": 46.94937515258789,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 2.1709307028845912,
+      "cross_run_host_active_over_baseline_event_ratio": 2.141264322970625
+    },
+    {
+      "group": 3,
+      "scope": "Decode16",
+      "process_id": 2560729,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode16/host/process-2560729/finish.json",
+        "bytes": 73950,
+        "sha256": "3ca5e9afe9e6701777cbb82ddeff48f90269b99476242e0165b8d1795e402cfb"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode16/host/process-2560729/boundary-journal.jsonl",
+        "bytes": 478,
+        "sha256": "00089c084ec609796e9abae7bcd5a0aab8d52886bdb58572ec0ef455f5fe6dbe"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode16/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "48184fd5725dd2231e5c825f1b36f5cd59885e93d0da57f9a11718a9950a8730"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 128475680,
+      "ncu_duration_ms": 128.47568,
+      "host_profiler_start_api_ms": 1652.398618,
+      "host_start_return_to_stop_before_ms": 121.31548,
+      "host_profiler_stop_api_ms": 528.186909,
+      "ncu_minus_host_active_interval_ms": 7.160200000000017,
+      "ncu_over_host_active_interval": 1.0590213219285785,
+      "independent_baseline_ms": 46.97065734863281,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 2.7352327442728366,
+      "cross_run_host_active_over_baseline_event_ratio": 2.5827928934345894
+    },
+    {
+      "group": 3,
+      "scope": "Decode32",
+      "process_id": 2560900,
+      "finish_receipt": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode32/host/process-2560900/finish.json",
+        "bytes": 73950,
+        "sha256": "d16a6251b19a1e96a7dca3be31b552831d98792e0ed25bfd5af356216e43a308"
+      },
+      "boundary_journal": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode32/host/process-2560900/boundary-journal.jsonl",
+        "bytes": 478,
+        "sha256": "9f930887bf1fba06232b70c4dff32e56bb4ff39d03b080e580af4d3e65708f66"
+      },
+      "csv": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/ncu-three-groups-r1/group-3-Decode32/import/stdout.log",
+        "bytes": 11222,
+        "sha256": "b5cfff9b5d570d0649d44bee9f8e7d3007687de2e96c78130f61e4e88b97ebf9"
+      },
+      "natural_cuda_event_ms": null,
+      "same_run_profiled_scope_event_comparison": null,
+      "same_run_unprofiled_phase_comparison": null,
+      "ncu_duration_ns": 114373600,
+      "ncu_duration_ms": 114.3736,
+      "host_profiler_start_api_ms": 7778.705392,
+      "host_start_return_to_stop_before_ms": 111.067088,
+      "host_profiler_stop_api_ms": 500.242312,
+      "ncu_minus_host_active_interval_ms": 3.306511999999998,
+      "ncu_over_host_active_interval": 1.0297704032719395,
+      "independent_baseline_ms": 46.93299102783203,
+      "independent_baseline_kind": "same_phase_cuda_event_from_separate_validate_run",
+      "cross_run_ncu_over_baseline_event_ratio": 2.4369552737897013,
+      "cross_run_host_active_over_baseline_event_ratio": 2.3665035099539127
+    }
+  ]
+}

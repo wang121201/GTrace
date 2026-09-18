@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """Render audited, already-completed multi-backend replay results; no simulation.
 
 Only Python's standard library is required. All plotted values come from receipts.
@@ -14,6 +15,7 @@ import io
 import json
 import math
 import statistics
+from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
@@ -281,7 +283,7 @@ def read_ncu(root, capture):
     scopes = ['full', 'Prefill', 'Decode1', 'Decode8', 'Decode16', 'Decode32']
     assert controller['scopes'] == scopes
     assert len(controller['samples']) == 3 * len(scopes)
-    seen, samples = set(), []
+    seen, samples, hosts_with_cuda_events = set(), [], 0
     keys = ('dram__bytes_read.sum', 'dram__bytes_write.sum', 'gpu__time_duration.sum')
     for sample in controller['samples']:
         group, roi = sample['group'], sample['roi']
@@ -317,6 +319,7 @@ def read_ncu(root, capture):
         pids = set()
         for host_path in hosts:
             host = load(host_path)
+            hosts_with_cuda_events += bool(host.get('natural_cuda_event_ms'))
             assert host['status'] == 'PASS_NATIVE_WORKFLOW_AND_ROI'
             assert host['input_contract'] == controller['input_contract'] and host['roi'] == roi
             assert host['natural_phases'] == controller['input_contract']['phases']
@@ -333,7 +336,7 @@ def read_ncu(root, capture):
                         'bandwidth': (read + write) / ns, 'host_replays': sample['host_replays'],
                         'csv': imported, 'report': report, 'csv_sha256': sample['csv_sha256']})
     return {'ready': True, 'root': root, 'controller': controller, 'samples': samples, 'scopes': scopes,
-            'status': controller['status']}
+            'status': controller['status'], 'hosts_with_cuda_events': hosts_with_cuda_events}
 
 
 def ncu_section(ncu, capture):
@@ -365,6 +368,12 @@ def ncu_section(ncu, capture):
     time_mean,time_sd=ncu_stats(ncu,variable_scope,'ns',1e6)
     bw_mean,bw_sd=ncu_stats(ncu,variable_scope,'bandwidth')
     parts.append(f'<p class="note warn">时间与带宽离散明显：{e(variable_scope)} 的 duration 为 {f(time_mean)} ± {f(time_sd)} ms，CV = {f(time_sd/time_mean*100)}%；逐次带宽为 {f(bw_mean)} ± {f(bw_sd)} GB/s。n=3 不足以解释波动来源；这些 app-range 时间不能作为无干扰推理时间的校准目标。Read/Write 计数与时间波动应分开审视。</p>')
+    diagnostic_path = REPO/'validation/ncu-timing-diagnostic.json'
+    if diagnostic_path.exists():
+        diagnostic=load(diagnostic_path)
+        assert diagnostic['status']=='COMPLETE_SAME_RUN_CUDA_EVENT_TIMINGS_NOT_CAPTURED'
+        assert ncu['hosts_with_cuda_events']==0
+        parts.append('<p>18 份正式 NCU host finish 的 natural_cuda_event_ms 均为 null，<strong>没有同 run CUDA event</strong> 可用于拆分这个时间差。profiling 运行中的主机边界区间也比独立 discovery 慢，表明差异不只是 CSV 格式或单位问题；但该 host 区间不是 GPU 时间，不能替代带宽分母。详见 '+link(diagnostic_path,'独立 NCU 计时诊断')+'；尚不能分解 profiling、运行状态和边界的各自贡献。</p>')
     parts.append('<figure>' + ncu_timing_chart(ncu, capture) + '<figcaption>图 6 · NCU 为正式三组 mean ± sample SD；灰色 CUDA event 仅一次，无误差条，Full 灰点为 33 段 event 和。图中计时口径独立，不能据其比值直接认定 profiling overhead 或推理加速。横轴均为对数刻度。</figcaption></figure>')
     parts.append('<details><summary>各组原始样本与 CSV（18 次 scope 采样）</summary>')
     parts.append(table(['组', 'Scope', 'Read', 'Write', 'duration ms', 'R+W / duration GB/s', 'host replays', '来源'], [
@@ -459,13 +468,97 @@ def theoretical_read_section(capture,ncu):
     return '\n'.join(parts)
 
 
-def discovery_section(capture, ncu):
+def read_observer(root,capture):
+    controller_path=root/'controller.json'
+    if not controller_path.exists():return {'ready':False,'root':root}
+    controller=load(controller_path)
+    if controller.get('status')!='PASS_NATIVE_METADATA_CENSUS_ONLY':return {'ready':False,'root':root}
+    census=load(root/'native-census.json')
+    assert census['status']=='PASS_NATIVE_METADATA_CENSUS_ONLY'
+    assert sha(root/'native-census.json')==controller['native_census_sha256']
+    assert census['input_contract_sha256']==capture['controller']['input_contract']['sha256']
+    assert controller['workload_package']==capture['controller']['package']
+    assert controller['workload_manifest_sha256']==capture['controller']['package']['manifest_sha256']
+    assert sha(root/'build/build.json')==controller['build']['receipt_sha256']
+    binary=controller['build']['binary']
+    assert (root/'build/observer.so').stat().st_size==binary['bytes'] and sha(root/'build/observer.so')==binary['sha256']
+    pid, ticks=census['process']['pid'],census['process']['start_ticks']
+    process_root=root/f'observer/process-{pid}-{ticks}'
+    finish=load(process_root/'finish.json')
+    assert sha(process_root/'finish.json')==census['observer_finish_sha256']
+    assert finish['status']=='PASS_METADATA_OBSERVER_CLOSED_NOT_TRACE'
+    assert finish['launch_before_count']==finish['launch_return_count']==census['total_launches']
+    assert finish['launch_error_count']==finish['unsupported_dispatch_count']==finish['unknown_launch_attribute_count']==0
+    assert finish['epoch_begin_count']==finish['epoch_end_count']==33 and finish['active_epoch']==0
+    assert finish['function_count']==census['inspected_functions']
+    for row in census['journals']:
+        path=process_root/row['name']
+        assert path.stat().st_size==row['bytes'] and sha(path)==row['sha256'],row['name']
+    assert len(census['journals'])==6
+    expected={'Prefill':408,**{f'Decode{i}':397 for i in range(1,33)}}
+    assert dict(Counter(x['phase'] for x in census['calls']))==census['phase_counts']==controller['phase_counts']==expected
+    assert len(census['calls'])==census['measured_launches']==controller['measured_launches']==sum(expected.values())
+    assert len({x['source_launch_key'] for x in census['calls']})==census['measured_launches']
+    qualification=census['qualification']
+    assert qualification['decoded_static_SASS_hashes_verified'] and qualification['argument_size_layout_only']
+    assert not any(qualification[k] for k in ['raw_argument_values_captured','typed_pointer_binding','dynamic_memory_addresses','dynamic_program_execution','native_model_admitted'])
+    manifest=load(root/'native/artifacts/manifest.json')
+    assert manifest['input_contract']==capture['controller']['input_contract']
+    assert manifest['native_source_files']==capture['manifest']['native_source_files'] and manifest['native_source_unchanged']
+    assert manifest['coverage']['native_scope_abi_enabled'] is True
+    process=load(root/'native/process.json')
+    assert process['returncode']==0 and process['owned_processes_drained'] and process['gpu_quiescent']
+    audit_path=REPO/'validation/native-p1024d32-census-audit.json'
+    audit=load(audit_path)
+    assert audit['schema']=='INDEPENDENT_P1024D32_NATIVE_CENSUS_AUDIT_V1'
+    assert audit['status']=='PASS_METADATA_CENSUS_AUDIT_ONLY' and not audit['qualification']['native_model_admitted']
+    assert audit['source']['controller_sha256']==sha(controller_path)
+    assert audit['source']['census_sha256']==controller['native_census_sha256']
+    assert audit['source']['finish_sha256']==census['observer_finish_sha256']
+    assert audit['source']['journals']==census['journals']
+    assert audit['source']['manifest_sha256']==sha(root/'native/artifacts/manifest.json')
+    assert audit['measured_launches']==census['measured_launches'] and audit['phase_counts']==expected
+    assert audit['measured_kernel_code_hashes']==len({x['code_sha256'] for x in census['calls']})
+    assert audit['measured_symbols']==len({x['function_name'] for x in census['calls']})
+    assert sum(audit['comparison']['status_totals'].values())==census['measured_launches']
+    assert audit['comparison']['candidate_is_not_argument_value_or_dynamic_address_equivalence']
+    return {'ready':True,'root':root,'controller':controller,'census':census,'finish':finish,'process_root':process_root,'audit':audit}
+
+
+def observer_section(observer):
+    if not observer['ready']:
+        return '<p>静态 observer 尚待闭合；不能把 partial code 当作完整静态 census 或模型准入。</p>'
+    census,root=observer['census'],observer['root']
+    parts=['<h3 id="native-static-census">Observer r2：静态 census 已闭合，动态模型尚未建立</h3>',
+           '<p class="note"><strong>PASS_NATIVE_METADATA_CENSUS_ONLY。</strong>Prefill 408 个 measured launches；每个 Decode 397 个，32 次共 12,704 个；合计 13,112 个。33 个测量 epoch 的 launch before / return 和静态元数据已闭合。此运行未使用 torch.profiler 或 NCU，也未做动态指令 instrumentation。</p>']
+    parts.append(table(['范围','计数 / 证据','含义'],[
+        ['measured workload','408 + 32 × 397 = 13,112 launches','有 phase、grid/block、resource、decoded SASS hash、argument size/layout identity；不是动态 PC/memory 地址 trace。'],
+        ['整个 process',f'{census["total_launches"]:,} launch before / return；{observer["finish"]["unbound_launch_count"]:,} 个在测量 epoch 外','包括 warmup / setup 等，不与 measured launches 混用。'],
+        ['静态检查总范围',f'{census["inspected_functions"]:,} inspected functions；{census["unique_decoded_code_hashes"]:,} unique decoded code hashes','属于整个检查范围，不能当作 measured kernel 家族数；hash 是 decoded SASS rows，不是 cubin 文件 hash。'],
+        ['ABI 已采部分','argument sizes 与 parameter-layout hash','未采 raw argument values，尚无 typed pointer bindings；ABI layout census 不等于完整参数绑定。'],
+        ['仍缺','dynamic PC/masks/memory/shared/barrier witness，私有对象完整身份、新 templates/bindings/phase支持','完整 callback coverage 和同进程 CUPTI crosscheck 尚未证明，native_model_admitted=false。'],
+    ],'text'))
+    parts.append('<p>r1 因 metadata 配额退出的记录保留；r2 独立运行已成功，六 journals、census、observer binary / finish SHA 与 33 phase 数量通过校验。13,112 恰与先前 profiler 计数一致，不等于同进程独立交叉验证了所有 callback。</p>')
+    parts.append('<p>'+link(root/'controller.json','observer r2 controller')+' · '+link(root/'native-census.json','完整 native census')+' · '+link(observer['process_root']/'finish.json','observer finish')+' · '+link(root/'build/build.json','build 身份')+'</p>')
+    audit_path=REPO/'validation/native-p1024d32-census-audit.json'
+    audit=observer['audit'];comparison=audit['comparison'];totals=comparison['status_totals']
+    parts.append(f'<p>独立审计在 measured 范围确认 <strong>{audit["measured_kernel_code_hashes"]} 个 decoded code hashes / {audit["measured_symbols"]} 个符号</strong>；其中 {comparison["shared_measured_code_hashes"]} 个 code hash 在旧 measured 工作流出现，{comparison["new_measured_code_hashes"]} 个是新 code hash。下表只比较静态身份与 launch 配置，不表示原模板已经可用。</p>')
+    parts.append(table(['与旧工作流比较','新 measured launches','资格边界'],[
+        ['code + ABI sizes + launch 配置完全匹配候选',f(totals['exact_code_ABI_launch_configuration_candidate'],0),'10,679 个静态复用候选；未比较 raw values、tensor shape 内容、动态控制或地址，不能直接准入。'],
+        ['相同 code + ABI sizes，launch 配置改变',f(totals['same_code_ABI_changed_launch_configuration'],0),'grid/block/resource/API 等静态配置至少一项改变，需对应新 shape / control witness。'],
+        ['新 decoded code',f(totals['new_code'],0),'Prefill 128 个新 GEMM launches；Decode 合计 1,024 个 MergeStates launches；需完整新输入与验证。'],
+    ],'text'))
+    parts.append('<p>“launch 配置”包含 grid、block、static/dynamic shared、registers、local bytes、launch attributes、CUDA API；即使这些都相同，context 长度或指针所指对象改变仍可能改变动态访问。四个新 code 包括一个 CUTLASS GEMM、两种 Ampere GEMM 和一个 MergeStates；名称分类只作说明，不替代 code hash。'+link(audit_path,'独立六 journal / epoch / 旧工作流对比审计')+'</p>')
+    return '\n'.join(parts)
+
+
+def discovery_section(capture, ncu, observer):
     root, c, m, finish = capture['root'], capture['controller'], capture['manifest'], capture['finish']
     contract = c['input_contract']
     artifact = root / 'metadata/artifacts'
     ncu_status = 'NCU 正式三组 PASS，结果见本节末表。' if ncu['ready'] else 'NCU pilot / 正式采集进行中，尚无完整三组结果。'
     parts = ['<h2 id="capture-status">7. 新目标：原生 SGLang B1 / P1024 / D32</h2>',
-             '<div class="note" id="capture-status-placeholder"><strong>Discovery 已完成：</strong>PASS_CAPTURE_CLOSURE_NOT_MODEL_QUALIFICATION。33 阶段 input / position / sequence / KV slot 控制值闭合，原生代码身份一致。' + ncu_status + ' P1024D32 native TileGen 模型尚未准入，ABI / SASS / 动态 witness 仍待闭合。</div>',
+             '<div class="note" id="capture-status-placeholder"><strong>Discovery 已完成：</strong>PASS_CAPTURE_CLOSURE_NOT_MODEL_QUALIFICATION。33 阶段 input / position / sequence / KV slot 控制值闭合，原生代码身份一致。' + ncu_status + (' 静态 launch / decoded SASS / ABI layout census 已闭合；' if observer['ready'] else ' 静态 census 待闭合；') + 'P1024D32 native TileGen 模型尚未准入，raw arguments / 动态 witness / bindings 仍待完成。</div>',
              '<p>这是一个独立于上方三 kernel 回放片段的新工作负载。模型是 Meta-Llama-3-8B-Instruct，32 层 BF16、FlashInfer、native eager，B1 / P1024 / D32，KV pool 1,280 token、page size 1。固定 prompt ID 为 1000–2023；Decode 输入交替 944 / 291，保留 native sampling 但输出不反馈。CUDA graph、torch compile、radix cache 和 overlap schedule 均关闭；warmup 一次。数值正确性仍为 NOT_ASSESSED。</p>',
              '<p><strong>本节时间来自一次非 NCU validate 运行的 CUDA event。</strong>阶段内包含 host launch gap，不能当作 kernel busy sum 或 NCU gpu__time_duration.sum。另一次带 module hook / torch.profiler 的 metadata 运行只提供结构诊断，其 instrumented_elapsed_seconds 和 profiler 时间不作为性能基线；两次运行的冻结输入和 source SHA 相同。</p>',
              '<figure>' + discovery_chart(capture) + '<figcaption>图 4 · 33 阶段 CUDA event 实测，n=1，无重复测量置信区间。这里没有计算访存带宽。</figcaption></figure>']
@@ -492,9 +585,9 @@ def discovery_section(capture, ncu):
         ['KV 对象', f'{len(m["kv_pool"]["buffers"]):,} 个 K/V buffers，共 {f(kv_bytes/1e6)} MB；每个 [1281, 8, 128] BF16；request page table [1, 8196] int32', 'pool capacity 1280 加 sentinel slot；实际 append slots 从 1 连续到 1056。'],
         ['module / root', f'{capture["module_count"]:,} 个 module-call records；{capture["root_count"]:,} 个 storage-root records；33 阶段 JSON', 'Python 弱引用 lifetime 观测，backend-private allocations 不完整。'],
         ['profiler census', f'{capture["event_count"]:,} 个 torch.profiler metadata events，其中 kernel_count={capture["kernel_count"]:,}', '包含观测辅助；per-kernel phase join 未闭合、完整 CUDA API census 未建立，不与 native1138 直接同口径比较。'],
-        ['缺失输入', 'native scope ABI=false；decoded SASS identity=false；instruction-memory trace=false；tilegraph_complete=false', '静态 observer / 动态 witness 尚需采集与独立资格验证；不能驱动合格的 P1024D32 native TileGen。'],
+        ['discovery 本身的边界', '这次 torch.profiler metadata 未采 native ABI / decoded SASS，instruction-memory trace=false；tilegraph_complete=false', '后续 observer r2 已补静态 census（见下文）；动态 witness 与完整绑定尚未完成，不能驱动合格的 P1024D32 native TileGen。'],
     ], 'text'))
-    parts.append('<p>结构 discovery 已完成，不代表原生模型精度准入。静态 observer 仍在进行中：首轮因 metadata 配额退出，进程 / GPU 清理成功，后续独立运行调整有界配额；partial code 不能视为完整 ABI / SASS 资格。没有把 torch.profiler 的 kernel 名称或时间自动转换成 compute / memory 程序，也没有从对象总大小推测 NCU 字节。</p>')
+    parts.append('<p>结构 discovery 已完成，不代表原生模型精度准入。后续静态 observer 的已采字段和缺口在下文单列；没有把 torch.profiler 的 kernel 名称或时间自动转换成 compute / memory 程序，也没有从对象总大小推测 NCU 字节。</p>')
     parts.append('<p>证据：' + link(root/'controller.json','controller 闭合 receipt')+' · '+link(capture['finish_path'],'自然 CUDA event / control receipt')+' · '+link(artifact/'manifest.json','完整 metadata manifest')+' · '+link(artifact/'files.sha256.json','37 个元数据文件 SHA')+' · '+link(artifact/'kernel_launches.json','torch.profiler metadata')+' · '+link(artifact/'module_calls.json','module calls')+' · '+link(artifact/'tensor_roots.json','tensor roots')+'</p>')
     identities = {'input_contract_sha256': contract['sha256'], 'controller_sha256': sha(root/'controller.json'),
                   'natural_receipt_sha256': sha(capture['finish_path']), 'metadata_manifest_sha256': c['metadata_manifest_sha256'],
@@ -505,14 +598,16 @@ def discovery_section(capture, ncu):
     parts.append('<details><summary>冻结身份：契约、采集源码及模型文件 SHA</summary><pre>'+e(json.dumps(identities,ensure_ascii=False,indent=2))+'</pre></details>')
     parts.append(ncu_section(ncu, capture))
     parts.append(theoretical_read_section(capture,ncu))
-    parts.append('<h3>新 native 模型仍未准入</h3><p>新 Decode attention grid 为 [9,8,1]，旧源为 [1,8,1]；还出现新的 CUTLASS / Ampere GEMM 和 PersistentVariableLengthMergeStates 符号。这里是 profiler symbol 文本比较，尚不是 SASS 身份比较，不能仅改 P 或 epoch 套入旧绑定。完整 8B P1024D32 simulation 仍需要新 shape 的 raw arguments、完整 native witness、独立 heldout、bindings 及 phase 支持。</p><p>容量也尚待证明：trace 单文件硬上限 64 GiB；HBF 多离散 range 的 sparse seed 上限为 1,048,576 页（4 GiB payload），新工作负载实际 trace 规模尚未测得。不能只调大命令参数就宣称整模可运行。</p><p>'+link(REPO/'docs/native-p1024d32-admission.md','原生 P1024D32 准入审计')+' · '+link(REPO/'validation/native-p1024d32-admission.json','53 项证据 SHA 与具体缺口')+'。审计中的 metadata weight_content_hashes_complete=false 对应内层 manifest；外层 discovery controller 另行记录了四个权重 shard 的内容 SHA。无论权重身份如何，动态访存 / 计算模型资格仍未建立。</p>')
+    parts.append(observer_section(observer))
+    parts.append('<h3>新 native 模型仍未准入</h3><p>新 Decode attention grid 为 [9,8,1]，旧源为 [1,8,1]；新 CUTLASS / Ampere GEMM 与 PersistentVariableLengthMergeStates 首先由 profiler symbol 文本比较发现。后续静态 census 提供 decoded code / ABI layout 身份，具体与旧工作流差异见独立审计；静态身份也不能证明动态访问可套入旧绑定。完整 8B P1024D32 simulation 仍需要新 shape 的 raw arguments、完整 native witness、独立 heldout、bindings 及 phase 支持。</p><p>容量也尚待证明：trace 单文件硬上限 64 GiB；HBF 多离散 range 的 sparse seed 上限为 1,048,576 页（4 GiB payload），新工作负载实际 trace 规模尚未测得。不能只调大命令参数就宣称整模可运行。</p><p>'+link(REPO/'docs/native-p1024d32-admission.md','原生 P1024D32 准入审计')+' · '+link(REPO/'validation/native-p1024d32-admission.json','53 项证据 SHA 与具体缺口')+'。这份早期审计的 metadata weight_content_hashes_complete=false 对应内层 manifest；外层 discovery controller 另行记录了四个权重 shard 的内容 SHA。静态 census 后续补齐的身份以上方独立审计为准，动态访存 / 计算模型资格仍未建立。</p>')
     return '\n'.join(parts)
 
 
-def render(root, output, discovery_root, ncu_root):
+def render(root, output, discovery_root, ncu_root, observer_root):
     runs = verify(root)
     capture = verify_discovery(discovery_root)
     ncu = read_ncu(ncu_root, capture)
+    observer=read_observer(observer_root,capture)
     admission = load(REPO/'validation/native-p1024d32-admission.json')
     assert admission['new_workload_admitted'] is False, 'update report qualification before claiming model admission'
     g, hbf = runs['gddr6'][0], runs['hbf'][0]
@@ -531,7 +626,7 @@ def render(root, output, discovery_root, ncu_root):
              table(['工作阶段','已完成 / 当前状态','本页数据范围'],[
                  ['1 · 多后端回放','完成：GDDR6 numeric overlay / HBM / HBF 账本闭合','旧冻结 Decode2 三个 MLP kernel 的 512/1/512 CTA 片段；非新 P1024D32 模拟。'],
                  ['2 · 真实 SGLang / NCU','Discovery 已完成；'+('NCU 正式三组完成。' if ncu['ready'] else 'NCU 正式三组进行中。'),'新 B1/P1024/D32、32 层 BF16；独立真实采集。'],
-                 ['3 · 新 native TileGen','未准入；NCU 完成也不会自动改变这一状态。','新 ABI/SASS/witness、shape 模板、bindings、phase 与容量适配待闭合；TileGen 对照保持 N/A。'],
+                 ['3 · 新 native TileGen','未准入；NCU 完成也不会自动改变这一状态。',('静态 ABI layout / decoded SASS census 已闭合；' if observer['ready'] else '静态 census 待闭合；')+'raw args、动态 witness、shape 模板、bindings、phase 与容量适配待完成；TileGen 对照保持 N/A。'],
              ],'text'),
              '<div class="cards">']
     for name in NAMES:
@@ -593,14 +688,14 @@ def render(root, output, discovery_root, ncu_root):
     upstream = REPO / 'source/work/hbfsim-latest/upstream/src'
     parts += ['<p>代码证据：'+link(REPO/'source/hbf_replay_backend.h','HBF adapter / EOF drain')+' · '+link(upstream/'host/hbf_controller.cpp','HbfController foreground read（4414–4439）、mapping merge（5990 / 6181）')+' · '+link(upstream/'physical/hbf/hbf_device.cpp','HbfDevice time-aware page cache（99–155）')+' · '+link(REPO/'source/stage_replay.h','stage 调度与时间口径')+'</p>',
               '<p>'+link(REPO/'validation/render-multi-backend-report.py','本报告 renderer')+' · '+link(REPO/'docs/multi-backend-stage.md','复现说明')+' · '+link(root/'gddr6/source-result.json','原 direct source result')+' · '+link(root/'gddr6/source-run-receipt.json','direct CPU receipt')+'</p>',
-              discovery_section(capture, ncu),
+              discovery_section(capture, ncu, observer),
               '<p class="foot muted">静态报告由冻结 JSON 生成，图为内嵌 SVG；刷新报告不触发模拟、GPU 采样或参数拟合。单位：GB / MB 十进制，GiB 二进制；运行成本以分钟展示。</p></main></html>']
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text('\n'.join(parts))
     return {'output': str(output), 'bytes': output.stat().st_size, 'verified_backends': list(runs), 'figures': 6 if ncu['ready'] else 4,
             'logical_bytes': common, 'hbf_read_amplification': physical['read_payload_amplification'],
             'verified_discovery_phases': len(capture['rows']), 'verified_discovery_metadata_files': len(capture['files']),
-            'formal_NCU_ready': ncu['ready']}
+            'formal_NCU_ready': ncu['ready'], 'native_static_census_ready':observer['ready']}
 
 
 def main():
@@ -608,9 +703,10 @@ def main():
     parser.add_argument('--input-root', type=Path, default=REPO/'build/multi-backend-validation-r3')
     parser.add_argument('--discovery-root', type=Path, default=REPO.parents[2]/'work/p1024d32-capture/discovery-r1')
     parser.add_argument('--ncu-root', type=Path, default=REPO.parents[2]/'work/p1024d32-capture/ncu-three-groups-r1')
+    parser.add_argument('--observer-root', type=Path, default=REPO.parents[2]/'work/p1024d32-capture/observer-r2')
     parser.add_argument('--output', type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
-    print(json.dumps(render(args.input_root.resolve(), args.output.resolve(), args.discovery_root.resolve(), args.ncu_root.resolve()), ensure_ascii=False))
+    print(json.dumps(render(args.input_root.resolve(), args.output.resolve(), args.discovery_root.resolve(), args.ncu_root.resolve(), args.observer_root.resolve()), ensure_ascii=False))
 
 
 if __name__ == '__main__':
