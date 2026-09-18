@@ -1,0 +1,29 @@
+{
+  "status": "PASS_EXACT_SIMULATION_HOST_PREFLIGHT_ONLY",
+  "mode": "cosim-fast",
+  "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+  "calls": 3,
+  "binaries": [
+    "9dfae43302518855b702f0f189a4cdddc281f6185c330bee4ce4ddab21cea8be",
+    "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb"
+  ],
+  "result_sha256": [
+    "78dad9a7c17bd225be715d6120e74683c552c57b9157f0c1dc9629e7c6ef33fa",
+    "c214b30c868274c0f250bcfeaf0aa8c55cdf09b2378f43df2ed50c7cadc87f59"
+  ],
+  "CPU_minutes": [
+    0.9024570666666667,
+    0.48166498333333335
+  ],
+  "CPU_speedup": 1.8736198351419844,
+  "elapsed_minutes": [
+    0.9073218701333334,
+    0.48321962500000004
+  ],
+  "typed_preflight_families": [
+    7,
+    0
+  ],
+  "compared": "workflow; all per-kernel execution except host_engine_seconds/host_stage_seconds/host_partition_registration_seconds; dirty ledger; memory backend",
+  "scope": "Selected-source subset. Does not establish full1138 speedup."
+}

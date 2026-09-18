@@ -1,0 +1,28 @@
+{
+  "schema": "TILEGEN_TRACE_COSIM_INTEGRATION_PROVENANCE_V1",
+  "branch": "codex/tilegen-trace-cosim-20260918-r1",
+  "baseline_commit": "0e21251f126510744d1b319f043e7e6b2dae5e1f",
+  "source_baseline": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-native-r1/compile-plan.json",
+    "bytes": 469453,
+    "sha256": "a9e2e2e995c6955b91e6d17e9e7a5e95b4dcbfcd6e214ddddf7b4c0cdafaffb0"
+  },
+  "formal_A_same_native_lineage": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/users-wgs-documents-codex-2026-09/tilegen/releases/tilegen-v1.0.0/MANIFEST.json",
+    "bytes": 91017,
+    "sha256": "eb7e17fb7fd4f4e6748706df8653c9ee35da6a2568606357481b8c38bfbde2ca"
+  },
+  "batch_size": 1,
+  "batch8_merged": false,
+  "original_workspaces_modified": false,
+  "integration": "One effective native runtime source closure. Shared Model/Prepared/native memory projection and trace format; direct functional cache order and scheduled cosimulation remain explicitly distinct execution modes.",
+  "write_policy": {
+    "request_bytes": 32,
+    "read_fill_RFO_bytes": 128,
+    "final_dirty_flush": false,
+    "pending_parent_bound": "4(B+1)"
+  },
+  "validation_scope": "Bounded real-source kernel family coverage, per-instruction source projection, backend on/off invariance, larger decode subset. Full1138 grids not rerun.",
+  "legacy_source_note": "Historical included runners retain WB_request_count*128 in unused renamed main paths. Current canonical_full::run uses actual byte counters.",
+  "license_note": "provenance/LICENSE-PROVENANCE.md"
+}

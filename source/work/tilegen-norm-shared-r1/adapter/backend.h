@@ -2,6 +2,7 @@
 // Diagnostic outer GPU memory path. The selected inner backend owns native
 // command service and burst credits; this layer retains original GPU delivery.
 #include "../../tilegen-hbf-drain-native-r1/native_backend.h"
+#include "../../../native_trace.h"
 #include <array>
 #include <deque>
 
@@ -71,6 +72,8 @@ class MemoryPathBackend final:public g::L2DramCompletionBackend {
     U next_inner_=0,last_issue_=0,last_call_=0,request_available_ps_=0,response_available_ps_=0;
     U native_retry_delay_ps_=0;
     bool called_=false,failed_=false;
+    native_trace::Writer* trace_sink_=nullptr;
+    U trace_context_=native_trace::unknown;
     static bool write(const g::L2DramRequest& r){
         need(r.cause==g::L2DramRequestCause::FILL_READ||r.cause==g::L2DramRequestCause::DIRTY_WRITEBACK,"unknown outer memory cause");
         return r.cause==g::L2DramRequestCause::DIRTY_WRITEBACK;
@@ -108,6 +111,20 @@ class MemoryPathBackend final:public g::L2DramCompletionBackend {
         add(path_stats_.native_admission_wait_ps,x.native_arrival_ps-x.request_ready_ps);
         add(native_retry_delay_ps_,x.native_arrival_ps-x.original.issue_time_ps);
         path_stats_.peak_physical_live=std::max<U>(path_stats_.peak_physical_live,inner_to_outer_.size());
+        if(trace_sink_){
+            // This point is reached exactly once after successful physical
+            // admission. inner_request() rewrites issue time, so retain original.
+            const auto& r=x.original;native_trace::Record record;
+            record.request_id=r.request_id;record.source_sequence=r.source_sequence;
+            record.issue_cycle=r.issue_cycle;record.issue_ps=r.issue_time_ps;
+            record.admission_cycle=cycle;record.admission_ps=x.native_arrival_ps;
+            record.source_matrix_id=static_cast<U>(r.key.matrix_id);record.source_line_address=r.key.line_addr;
+            record.service_address=r.address;record.bytes=r.bytes;
+            record.node_id=static_cast<U>(r.node_id);record.sm_id=static_cast<U>(r.sm_id);
+            record.l2_subpartition_id=static_cast<U>(r.l2_subpartition_id);
+            record.cause=write(r)?native_trace::Cause::DirtyWriteback:native_trace::Cause::ReadFillOrRfo;
+            record.call_index=trace_context_;trace_sink_->append(record);
+        }
     }
     void admit_ingress(U cycle){
         const U through=clock_.poll_ps(cycle);
@@ -194,6 +211,18 @@ class MemoryPathBackend final:public g::L2DramCompletionBackend {
 public:
     MemoryPathBackend(Clock clock,p::hbm::HbmConfig config,PathConfig path,U physical_max_live=4096,U credits_per_pc=32,NativeServicePolicy service_policy={}):
         clock_(clock),path_(path),inner_(clock,config,physical_max_live,credits_per_pc,service_policy.quantum,service_policy.drain){path_.validate();}
+    void set_trace_sink(native_trace::Writer* sink){
+        need(!failed_&&path_stats_.outer_accepted==0,"trace sink must be selected before first request");
+        need(!sink||(sink->mode()==native_trace::Mode::NativeCosim&&sink->count()==0),"native backend requires fresh native trace sink");
+        trace_sink_=sink;
+    }
+    void set_trace_context(U call_index){
+        need(!failed_&&call_index!=native_trace::unknown,"valid trace kernel context required");
+        need(live_.empty()&&ingress_.empty()&&inner_to_outer_.empty()&&response_due_.empty()&&inner_.queue_depth()==0,
+             "trace context requires drained kernel boundary");
+        need(trace_context_==native_trace::unknown||call_index>=trace_context_,"trace kernel context regressed");
+        trace_context_=call_index;
+    }
     U issue_cycle_to_ps(U cycle)const override{return clock_.issue_ps(cycle);}
     void enqueue(const g::L2DramRequest& r)override{need(try_enqueue(r,r.issue_cycle),"outer legacy enqueue requires retries");}
     bool try_enqueue(const g::L2DramRequest& r,U cycle)override{

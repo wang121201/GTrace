@@ -1,0 +1,179 @@
+{
+  "run-receipt.json": {
+    "status": "PASS",
+    "exit_code": 0,
+    "wall_seconds": 86.01031020900001,
+    "user_seconds": 83.650141,
+    "system_seconds": 1.571415,
+    "child_peak_RSS_bytes": 2165653504,
+    "input": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/validation-inputs/families.input",
+    "input_sha256": "4d0069e0c3e24e477e72712994910432b0d8fcb750164db7151ce3c6c0d0ed2b",
+    "binary": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/direct-projection/direct-projection",
+    "binary_sha256": "ac3f4ead84803b0858d5844c13fdfa6f20a3b9b667e4f572526753d84ce92a3a",
+    "test_cpp_sha256": "2612c7fc5d268294e3ba97dd46fd82a35aa4ffb35696ab25e858c20ff78b62c8",
+    "GPU_executed": false,
+    "HBFSIM_executed": false
+  },
+  "build-receipt.json": {
+    "status": "BUILD_PASS_NOT_RUN",
+    "GPU_executed": false,
+    "commands": [
+      [
+        "clang++",
+        "-std=c++20",
+        "-O2",
+        "-pthread",
+        "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+        "-c",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/direct_projection.cpp",
+        "-o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/direct-projection/test.o"
+      ],
+      [
+        "clang++",
+        "-pthread",
+        "-flto=thin",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/direct-projection/test.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/01.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/02.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/03.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/04.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/05.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/06.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/07.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/08.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/09.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/10.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/11.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/12.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/13.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/14.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/15.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/16.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/17.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/18.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/19.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/20.o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/release-r2/21.o",
+        "-lz",
+        "-o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/direct-projection/direct-projection"
+      ]
+    ],
+    "compile": {
+      "exit_code": 0,
+      "wall_seconds": 20.510464125
+    },
+    "link": {
+      "exit_code": 0,
+      "wall_seconds": 2.2517907500000014
+    }
+  },
+  "result.json": {
+    "GPU_or_HBFSIM_executed": false,
+    "comparison": "instruction direction, bypass, matrix, subop partition, lane provenance, exact address and width in order",
+    "families": [
+      {
+        "CTA": 0,
+        "family": "PlainNorm",
+        "memory_instructions": 64,
+        "ordered_exact_projection_sha256": "b6857f395ea7e676615e75a520b575ab82341479d7efc3d8e533a71dbef79051",
+        "ranges": 64,
+        "source_bytes": 32768,
+        "source_launch_key": "epoch-1-launch-15",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      },
+      {
+        "CTA": 0,
+        "family": "P28QKV",
+        "memory_instructions": 2608,
+        "ordered_exact_projection_sha256": "f5bc86e835336804be72fe45a05aec15741ab5cd3c580912f9e463d30cf344d8",
+        "ranges": 82944,
+        "source_bytes": 1318912,
+        "source_launch_key": "epoch-1-launch-16",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      },
+      {
+        "CTA": 0,
+        "family": "Rotary",
+        "memory_instructions": 32,
+        "ordered_exact_projection_sha256": "288a8f0aaf47dea0c1a47321338ba25c7ae45a4f61c11fac415cf1b7e758244f",
+        "ranges": 1024,
+        "source_bytes": 15360,
+        "source_launch_key": "epoch-1-launch-17",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      },
+      {
+        "CTA": 0,
+        "family": "GEMMO",
+        "memory_instructions": 2616,
+        "ordered_exact_projection_sha256": "2c53af431effbe95a8a11839df861c0347e09284351a8b2e1b1510445ede7e72",
+        "ranges": 82944,
+        "source_bytes": 1318912,
+        "source_launch_key": "epoch-1-launch-22",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      },
+      {
+        "CTA": 0,
+        "family": "FusedNorm",
+        "memory_instructions": 80,
+        "ordered_exact_projection_sha256": "f3fbca06bd0a3635594eb9049874ab96fba07703ea5a15ff9aa6dc8251231697",
+        "ranges": 80,
+        "source_bytes": 40960,
+        "source_launch_key": "epoch-1-launch-23",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      },
+      {
+        "CTA": 0,
+        "family": "GEMMGate",
+        "memory_instructions": 2612,
+        "ordered_exact_projection_sha256": "ec039c1fa74b67f7280969958bae5ddb0f839ad50b9e1a8f8c7b8700fd9de018",
+        "ranges": 82944,
+        "source_bytes": 1318912,
+        "source_launch_key": "epoch-1-launch-24",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      },
+      {
+        "CTA": 0,
+        "family": "SiLU",
+        "memory_instructions": 744,
+        "ordered_exact_projection_sha256": "de0a653eb8a6518a0c0da0a28726456ddc19033d6713ecef960d6b00f8aa8a63",
+        "ranges": 744,
+        "source_bytes": 122880,
+        "source_launch_key": "epoch-1-launch-25",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      },
+      {
+        "CTA": 0,
+        "family": "GEMMDown",
+        "memory_instructions": 9008,
+        "ordered_exact_projection_sha256": "ccc1e5a8f43af9ebc4385ec4fb2a35df1c4e80d79521057c5a594e365d0d0b58",
+        "ranges": 287744,
+        "source_bytes": 4595712,
+        "source_launch_key": "epoch-1-launch-26",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      },
+      {
+        "CTA": 0,
+        "family": "GEMV",
+        "memory_instructions": 2052,
+        "ordered_exact_projection_sha256": "b1cb38dfab95c2e0ac89a5bfe5c392e79b1fb0ca6445f5716a36e4e02411a8fb",
+        "ranges": 4100,
+        "source_bytes": 131088,
+        "source_launch_key": "epoch-1-launch-405",
+        "status": "PASS_EXACT_RANGE_SEQUENCE"
+      }
+    ],
+    "host_seconds": 85.325740792,
+    "node_ids_compared": false,
+    "scope": "first CTA of first selected launch for each native binding family",
+    "status": "PASS_ALL_NINE_NATIVE_BINDINGS_MATCH_ORIGINAL_FINE_BUILDERS",
+    "transport_control_sha256": "aab0bfe0fce5e805829a29a608cb15aa0a5b18de1d1064b918d897de3c825b70"
+  }
+}

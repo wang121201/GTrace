@@ -1,0 +1,32 @@
+{
+  "status": "PASS_BUILD_ONLY_NO_SIMULATION",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "compiler": "clang++",
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.5.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+  "flags": [
+    "-std=c++20",
+    "-O3",
+    "-Wall",
+    "-Wextra",
+    "-pthread",
+    "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+    "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+    "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+    "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+    "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+    "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+    "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+    "-mcpu=native",
+    "-flto=thin"
+  ],
+  "sources_unchanged": true,
+  "binary": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/final/tilegen_native",
+    "bytes": 3938880,
+    "sha256": "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb"
+  },
+  "wall_seconds": 35.518686834,
+  "full_receipt": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/final/build-receipt.json",
+  "full_receipt_sha256": "33a77e7062f7d08f989e033877274b4898d8e39877bebea6f981f25cafc92a96",
+  "source_files": 174
+}

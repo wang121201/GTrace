@@ -1,0 +1,37 @@
+{
+  "result.json": {
+    "checks": [
+      "native_L1_read_filter",
+      "native_L1_write_no_allocate",
+      "128B_fill_RFO",
+      "individual_dirty32_sparse_and_adjacent",
+      "no_final_flush",
+      "dirty_conservation",
+      "broadcast_source_multiplicity",
+      "explicit_range_rejection",
+      "unknown_timestamps"
+    ],
+    "status": "PASS_FUNCTIONAL_DIRECT_CACHE_SMOKE"
+  },
+  "receipt.json": {
+    "compile_exit_code": 0,
+    "compile_wall_seconds": 1.473060292,
+    "compile_command": [
+      "clang++",
+      "-std=c++20",
+      "-O2",
+      "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+      "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+      "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/direct_cache_smoke.cpp",
+      "-o",
+      "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/direct-cache-smoke/test"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "source_sha256": {
+      "tests/direct_cache_smoke.cpp": "e7def4bf355a1b3ff66f4344657568addc6e6600d8848efb779bb2cf041b4324",
+      "source/direct_cache.h": "48c2917215406352a1fb1ed063a380f5baa09ff3f7e6ff9e9fa63f22d2a905ca",
+      "source/direct_native.h": "1f9d7cb0bc9209e5abb43d802037e00067787c6afc90235fcd2cded6b8ee7ad0"
+    }
+  }
+}

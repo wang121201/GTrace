@@ -1,0 +1,40 @@
+{
+  "status": "PASS_SAME_BINARY_TRACE_ON_OFF_EXACT",
+  "compared": "complete per-kernel execution excluding host_engine_seconds; workflow, dirty-sector ledger and memory_backend exact",
+  "calls": 20,
+  "trace": {
+    "context_sha256": "aab0bfe0fce5e805829a29a608cb15aa0a5b18de1d1064b918d897de3c825b70",
+    "file_bytes": 9829376,
+    "file_sha256": "72dee20c9d4b46c4fb454791add7165453b1933d25de9e5f3750b679cdbda9a1",
+    "mode": "NATIVE_COSIM_ADMITTED_REQUESTS",
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/qualification-r2/families-cosim-on/dram.tgn",
+    "read_bytes": 8737024,
+    "read_cause_scope": "LOAD_FILL_AND_STORE_RFO_NOT_DISTINGUISHED_BY_NATIVE_REQUEST_TYPE",
+    "read_requests": 68258,
+    "record_bytes": 144,
+    "record_sha256": "df3ea9f03b43e9230a99b7744da0033d10d78f12e49d5ef2c0891f4d3dbe7145",
+    "records": 68258,
+    "request_payload_fnv1a64": 3974637164638079397,
+    "schema": "TILEGEN_NATIVE_TRACE_RECEIPT_V1",
+    "service_address_scope": "ADDRESS_SUBMITTED_TO_NATIVE_MEMORY_SERVICE_OR_DECLARED_DIRECT_NAMESPACE",
+    "source_address_scope": "SOURCE_OR_CANONICAL_LINE_KEY_NOT_HARDWARE_PHYSICAL_ADDRESS",
+    "status": "PASS_CLOSED_TRACE_READBACK",
+    "unknown_u64": 18446744073709551615,
+    "write_bytes": 0,
+    "write_requests": 0
+  },
+  "binary_sha256": "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+  "input_sha256": "4d0069e0c3e24e477e72712994910432b0d8fcb750164db7151ce3c6c0d0ed2b",
+  "result_sha256": [
+    "a6cd5ca474744ddfcf520d12ad1fa221b0bd349f1a027c769a22b04c869bf7e1",
+    "bb3f56e14ed94fb8709b1da23e1c654a18e1ef90a1b01702de29562000e13996"
+  ],
+  "CPU_minutes": [
+    1.24008465,
+    1.2009144333333335
+  ],
+  "elapsed_minutes": [
+    1.2484081881833333,
+    1.2037925777833332
+  ]
+}

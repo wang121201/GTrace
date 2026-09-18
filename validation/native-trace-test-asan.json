@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "checks": 18981,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "leak_sanitizer": false,
+  "full_result_path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/native-trace-test-asan.json",
+  "full_result_sha256": "556ce1007b360e39478d2ac69db4a1f1737df06490ff07b478f23e44c52b92ae"
+}

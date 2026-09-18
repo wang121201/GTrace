@@ -1,0 +1,147 @@
+{
+  "schema": "TILEGEN_CPU_UNIT_TESTS_V1",
+  "status": "PASS",
+  "compiler": "/usr/bin/clang++",
+  "standard": "c++20",
+  "optimization": "O2",
+  "dirty_sector_mode": 2,
+  "sanitize": "address,undefined",
+  "leak_detection": false,
+  "sanitizer_scope": "ASan/UBSan only; LeakSanitizer not run",
+  "CPU_only": true,
+  "GPU_or_model_workflow_executed": false,
+  "parallel_test_limit": 2,
+  "elapsed_seconds": 17.429966875,
+  "source_tree_unchanged": true,
+  "source_manifest": "source-sha256.json",
+  "source_manifest_sha256": "3750eaf21c1d9b0b5ebb14b65095737a9609796f7b5aa9fdd0af95ad33eca2dd",
+  "source_scope": "Entire repo/source tree, selected three test sources, this runner and build-config.json",
+  "tests": {
+    "dirty32_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+          "-g",
+          "-fsanitize=address,undefined",
+          "-fno-omit-frame-pointer",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/dirty32_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/unit-runner-asan-r1/dirty32_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 4.73899
+      },
+      "binary_sha256": "0367f2cf81b37bbceaae4715e89bd33ea05f91eb987932f3bd71b32069807b63",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/unit-runner-asan-r1/dirty32_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.44133837499999995
+      },
+      "checks": 27775
+    },
+    "direct_cache_smoke": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+          "-g",
+          "-fsanitize=address,undefined",
+          "-fno-omit-frame-pointer",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/direct_cache_smoke.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/unit-runner-asan-r1/direct_cache_smoke"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 3.987894417
+      },
+      "binary_sha256": "0375e78a38cbba14bb948b4d57f50488a7fe5f35c389d72e8c2140eb1306f5c1",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/unit-runner-asan-r1/direct_cache_smoke"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.4265612920000006
+      },
+      "checks": [
+        "native_L1_read_filter",
+        "native_L1_write_no_allocate",
+        "128B_fill_RFO",
+        "individual_dirty32_sparse_and_adjacent",
+        "no_final_flush",
+        "dirty_conservation",
+        "broadcast_source_multiplicity",
+        "explicit_range_rejection",
+        "unknown_timestamps"
+      ]
+    },
+    "native_trace_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+          "-g",
+          "-fsanitize=address,undefined",
+          "-fno-omit-frame-pointer",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/native_trace_test.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/unit-runner-asan-r1/native_trace_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 12.504678667
+      },
+      "binary_sha256": "0526bc4153802bb5f9c634e339e63678d10f9ddce9dfba480a66e3129b6104d9",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/unit-runner-asan-r1/native_trace_test",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/unit-runner-asan-r1/trace-fixture"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.4824271660000008
+      },
+      "checks": 18981
+    }
+  }
+}

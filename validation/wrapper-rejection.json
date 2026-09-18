@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "empty_success",
+      "wrapper_returncode": 1,
+      "receipt": {
+        "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+        "argv": [
+          "/usr/bin/true",
+          "--mode=cosim"
+        ],
+        "mode": "cosim",
+        "binary_sha256": "a73efca930c2adb1f52eef0d1d3b17d375ee40290fc796653c91c33abf381938",
+        "input_sha256": "4508e0a687568e5806cf9027a17c3acd4520916e0b62b7b7f86e348e48b9a0b8",
+        "batch_size": 1,
+        "CPU_only": true,
+        "GPU_sampling": false,
+        "status": "FAILED",
+        "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "returncode": 0,
+        "elapsed_seconds": 0.003072584000000003,
+        "elapsed_minutes": 5.1209733333333386e-05,
+        "CPU_seconds": 0.001376,
+        "CPU_minutes": 2.2933333333333333e-05,
+        "result_verification_seconds": 0.00022324999999999776,
+        "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+      }
+    },
+    {
+      "case": "spawn_error",
+      "wrapper_returncode": 1,
+      "receipt": {
+        "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+        "argv": [
+          "/private/var/folders/t5/g4_ch4hn24786rmvdpxl3gn00000gn/T/tilegen-wrapper-o9ysaxjx/nonexecutable",
+          "--mode=cosim"
+        ],
+        "mode": "cosim",
+        "binary_sha256": "e524d1fcfe08ba279972d56198a886cb998a1c8904719f2926cb97e552e77e46",
+        "input_sha256": "4508e0a687568e5806cf9027a17c3acd4520916e0b62b7b7f86e348e48b9a0b8",
+        "batch_size": 1,
+        "CPU_only": true,
+        "GPU_sampling": false,
+        "status": "FAILED",
+        "error": "PermissionError: [Errno 13] Permission denied: '/private/var/folders/t5/g4_ch4hn24786rmvdpxl3gn00000gn/T/tilegen-wrapper-o9ysaxjx/nonexecutable'",
+        "returncode": null,
+        "elapsed_seconds": 0.0012161249999999985,
+        "elapsed_minutes": 2.0268749999999974e-05,
+        "CPU_seconds": 0.00028399999999999996,
+        "CPU_minutes": 4.733333333333333e-06,
+        "result_verification_seconds": 0,
+        "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+      }
+    },
+    {
+      "case": "array_json_success",
+      "wrapper_returncode": 1,
+      "receipt": {
+        "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+        "argv": [
+          "/private/var/folders/t5/g4_ch4hn24786rmvdpxl3gn00000gn/T/tilegen-wrapper-container-415gctv2/array-success",
+          "--mode=cosim"
+        ],
+        "mode": "cosim",
+        "binary_sha256": "dd0fde16840451c0a9cf444b79ab06fcb877b7ec1d5f4d812df3bbce00b2855e",
+        "input_sha256": "270b744f0677a4762c31e8b8b0d11c06b2bd5835020fa9a8278c264faedb8e54",
+        "batch_size": 1,
+        "CPU_only": true,
+        "GPU_sampling": false,
+        "status": "FAILED",
+        "error": "ValueError: engine result must be a JSON object",
+        "returncode": 0,
+        "elapsed_seconds": 0.785976625,
+        "elapsed_minutes": 0.013099610416666666,
+        "CPU_seconds": 0.004457,
+        "CPU_minutes": 7.428333333333333e-05,
+        "result_verification_seconds": 0.0002702499999999164,
+        "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+      }
+    }
+  ]
+}

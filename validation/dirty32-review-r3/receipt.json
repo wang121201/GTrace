@@ -1,0 +1,97 @@
+{
+  "results": [
+    {
+      "mode": 0,
+      "build_returncode": 0,
+      "command": [
+        "clang++",
+        "-std=c++20",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-DTILEGEN_DIRTY_SECTOR_MODE=0",
+        "-Isource/work/tilegen-full-r1/core-native-copy-r2/include",
+        "-Isource/work/tilegen-evaluation-r1/driver",
+        "-Isource/work/tilegen-norm-shared-r1/adapter",
+        "-Isource/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+        "-Isource/work/hbfsim-latest/upstream/src",
+        "-Isource/work/gddr6-support/hbf_coupling",
+        "tests/dirty32_test.cpp",
+        "-o",
+        "validation/dirty32-review-r3/mode0"
+      ],
+      "run_returncode": 0,
+      "stdout_tail": [
+        "completion_burst_B8_epoch8 360 1408 1280 11 10 11620275211438847907 20746044124586696",
+        "PASS mode=0 checks=10581"
+      ],
+      "stderr": "",
+      "wall_seconds": 4.413465458899736
+    },
+    {
+      "mode": 1,
+      "build_returncode": 0,
+      "command": [
+        "clang++",
+        "-std=c++20",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-DTILEGEN_DIRTY_SECTOR_MODE=1",
+        "-Isource/work/tilegen-full-r1/core-native-copy-r2/include",
+        "-Isource/work/tilegen-evaluation-r1/driver",
+        "-Isource/work/tilegen-norm-shared-r1/adapter",
+        "-Isource/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+        "-Isource/work/hbfsim-latest/upstream/src",
+        "-Isource/work/gddr6-support/hbf_coupling",
+        "tests/dirty32_test.cpp",
+        "-o",
+        "validation/dirty32-review-r3/mode1"
+      ],
+      "run_returncode": 0,
+      "stdout_tail": [
+        "completion_burst_B8_epoch8 360 1408 1280 11 10 11620275211438847907 20746044124586696",
+        "PASS mode=1 checks=20965"
+      ],
+      "stderr": "",
+      "wall_seconds": 4.757762875058688
+    },
+    {
+      "mode": 2,
+      "build_returncode": 0,
+      "command": [
+        "clang++",
+        "-std=c++20",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+        "-Isource/work/tilegen-full-r1/core-native-copy-r2/include",
+        "-Isource/work/tilegen-evaluation-r1/driver",
+        "-Isource/work/tilegen-norm-shared-r1/adapter",
+        "-Isource/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+        "-Isource/work/hbfsim-latest/upstream/src",
+        "-Isource/work/gddr6-support/hbf_coupling",
+        "tests/dirty32_test.cpp",
+        "-o",
+        "validation/dirty32-review-r3/mode2"
+      ],
+      "run_returncode": 0,
+      "stdout_tail": [
+        "completion_burst_B8_epoch8 408 1408 1280 11 40 17864953918549601923 16479850530404128973",
+        "PASS mode=2 checks=27775"
+      ],
+      "stderr": "",
+      "wall_seconds": 4.217457625083625
+    }
+  ],
+  "source_sha256": {
+    "tests/dirty32_test.cpp": "b003ff79ee098aa21cb13cbda1a05f885cd35d1f3ced05b340e3cb5e4604f87e",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h": "32d9729ce2d8ca86d6c1e0188a215b34f3ddf056d5707659dd0190376219e2b5",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/dirty_sector_eval.h": "48a6a78f91a6dead97dd51a671888f55898ac4f882849abfc213157a0b9dc4bd"
+  },
+  "mode0_mode1_counter_and_order_rows_equal": true
+}

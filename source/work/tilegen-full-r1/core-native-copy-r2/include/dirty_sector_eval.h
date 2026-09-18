@@ -29,7 +29,7 @@ struct DirtySectorEvalStatistics {
     bool dirty_sector_ledger_closed=false, writeback_byte_ledger_closed=false;
     std::array<std::uint64_t,5> store_mask_popcounts{}, eviction_popcounts{}, writeback_run_lengths{};
     std::array<std::uint64_t,16> eviction_masks{};
-    std::array<std::uint64_t,3> eviction_run_counts{};
+    std::array<std::uint64_t,5> eviction_run_counts{};
 };
 inline unsigned sector_popcount(std::uint8_t mask) {
     unsigned count=0;

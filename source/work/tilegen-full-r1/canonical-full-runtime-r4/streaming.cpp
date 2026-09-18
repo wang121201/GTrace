@@ -28,6 +28,8 @@
 #include "../../tilegen-hybrid-cache-r1/tiny_context.h"
 #include "../../tilegen-hybrid-full-r1/options.h"
 #include "../../tilegen-hybrid-cache-r1/progress_summary.h"
+#include "../../../native_trace.h"
+namespace unified_trace { inline native_trace::Writer* writer=nullptr; }
 namespace hbf_drain_cli {
 inline sg_hbf::NativeServicePolicy policy;
 inline bool parse(const std::string& value){
@@ -49,16 +51,19 @@ J run(const J& in,compressed_frame::Cache&frames,bool validate,bool eager,bool e
  std::vector<std::unique_ptr<Prepared>> prepared;for(const auto& t:model.calls){try{prepared.push_back(std::make_unique<Prepared>(model,t,eager));}catch(const std::exception&e){throw std::runtime_error("Prepared "+t.family+" "+t.call->at("source_launch_key").get<std::string>()+": "+e.what());}}std::cerr<<"FULL_RUNTIME_STAGE prepared"<<std::endl;
  p::need(!oracle,"mixed adapter has no new address oracle mode; immutable family generators already checked");
  U selected_nodes=0;for(const auto&k:prepared)selected_nodes+=k->total_nodes;p::need(!full||(prepared.size()==1138&&model.available.size()==1138&&model.prefix==0&&!eager&&events),"full workflow requires all1138 in sealed actual order, full grids and event mode");p::need(validate||full||(prepared.size()<=64&&selected_nodes<=15000000),"bounded integration cap without explicit full-workflow mode");
- const auto max_cycles=g::Cycle(p::natural(in.at("max_kernel_cycles"),2000000000));p::need(max_cycles>0,"positive max cycles");for(const auto&k:prepared)if(is_helper(k->family)){const auto&h=model.helpers->at(k->call.at("source_launch_key"));p::need(k->total_nodes==h.census(k->executed).nodes&&k->warps==h.warps&&k->resident==h.resident&&k->expected_read==h.census(k->executed).read&&k->expected_write==h.census(k->executed).write,"Helper Prepared exact typed model/resource closure");}auto cfg=g::make_rtx4000_ada_footprint_reference_config();cfg.silence_mode=true;cfg.workload_type=g::WorkloadType::Llama3Elementwise;Mapper mapper;coupling::Runtime memory(in,cfg,mapper,hbf_drain_cli::policy);p::need(bool(memory.backend),"external backend required");
+ const auto max_cycles=g::Cycle(p::natural(in.at("max_kernel_cycles"),2000000000));p::need(max_cycles>0,"positive max cycles");for(const auto&k:prepared)if(is_helper(k->family)){const auto&h=model.helpers->at(k->call.at("source_launch_key"));p::need(k->total_nodes==h.census(k->executed).nodes&&k->warps==h.warps&&k->resident==h.resident&&k->expected_read==h.census(k->executed).read&&k->expected_write==h.census(k->executed).write,"Helper Prepared exact typed model/resource closure");}auto cfg=g::make_rtx4000_ada_footprint_reference_config();cfg.silence_mode=true;cfg.workload_type=g::WorkloadType::Llama3Elementwise;Mapper mapper;coupling::Runtime memory(in,cfg,mapper,hbf_drain_cli::policy);p::need(bool(memory.backend),"external backend required");if(unified_trace::writer)memory.backend->set_trace_sink(unified_trace::writer);
  U omitted=0,prior=0;J gaps=J::array();for(const auto&t:model.calls){const auto*c=t.call;U launch=p::natural(c->at("native_launch_binding").at("native_launch_id"));if(prior){omitted+=launch-prior-1;gaps.push_back({{"after_native_launch_id",prior},{"before_native_launch_id",launch},{"omitted_launches",launch-prior-1}});}prior=launch;}
  J result={{"schema","CANONICAL_FULL_RUNTIME_COMPRESSED_RESULT_V4"},{"status",validate?"VALIDATED_NOT_EXECUTED":"MODELED_BOUNDED_SUBSEQUENCE_EXECUTED"},{"scope","EXPLICIT_REGISTERED_MODEL_ROUTES_BOUNDED_SELECTED_EXECUTION_UNMODELED_HELPERS_REJECTED"},{"estimated_compute",true},{"estimated_address",true},{"native_target_qualified",false},{"implicit_descriptor_dependencies_complete",false},{"IndexPut_semantics",{{"indexed_cbank_values_observed",false},{"branch_value_semantics_proved",false},{"constant_cache_timing_modeled",false}}},{"PrefillCopy_semantics",{{"observed_parameter_bytes_match_source",true},{"full_functor_bytes_source_transfer_qualified",false},{"branch_value_semantics_proved",false},{"constant_cache_timing_modeled",false}}},{"full_LLM_state",false},{"complete_SGLang_phase",false},{"full_LLM_time_ns",nullptr},{"full_LLM_bandwidth_GBps",nullptr},{"same_scope_NCU_measurement_available",false},{"hardware_error_percent",nullptr},{"selected_source_count",prepared.size()},{"canonical_total_omitted_calls",1138-prepared.size()},{"all_registered_calls_executed",false},{"registered_calls",model.available.size()},{"unsupported_calls",1138-model.available.size()},{"full_workflow_requested",full},{"prepared_node_count",selected_nodes},{"prepared_CTA_count",[&]{U n=0;for(const auto&k:prepared)n+=k->executed;return n;}()},{"source_launch_id_gap",omitted},{"source_launch_gaps",gaps},{"source_process",model.workflow.at("process")},{"workflow_file",seals().at("workflow_file")},{"family_template_scope","Frozen family model loaders/builders, original source VA never executed"},{"materialization",eager?"bounded_eager_reference":"resident_CTA"},{"event_mode",events},{"aggregate_observations",observe},{"event_hash_namespace",prepared.size()==1?"NONE_SINGLE_SOURCE":"KERNEL_INDEX_PREFIX"},{"cache_history_scope","initial cold plus only selected modeled calls; omitted native launches would change actual cache state"},{"cache_identity_qualification",{{"physical_model_key","same current PID/context raw 128B VA lines"},{"logical_objects_are_distinct_metadata",true},{"allocator_lifetime_proven",false},{"physical_address_reuse_proven",false},{"VA_reuse_assumed_for_selected_sequence_model",true},{"actual_cross_phase_cache_state_recovered",false}}},{"boundary_policy",{{"quiescence_per_kernel",true},{"L2_reset",false},{"backend_reset",false},{"final_dirty_flush",false},{"native_async_store_overlap_modeled",false}}},{"L1_policy",{{"mode",g::per_sm_l1_mode_name(cfg.per_sm_l1.mode)},{"persistence",g::per_sm_l1_persistence_name(cfg.per_sm_l1.persistence)}}},{"pipeline",J::array()}};
  for(const auto& k:prepared){try{J objects;const J views=object_views(k->call);for(const auto& item:views.items()){const auto&role=item.key();const auto&o=item.value();objects[role]={{"logical_identity",o.at("logical_identity")},{"pointer",o.at("pointer")},{"bytes",o.contains("bytes")?o.at("bytes"):o.at("span_bytes")},{"root_id",o.contains("root")?o.at("root").at("id"):J(nullptr)}};}result["pipeline"].push_back({{"family",k->family},{"source_launch_key",k->call.at("source_launch_key")},{"native_launch_binding",k->call.at("native_launch_binding")},{"phase",k->call.at("phase")},{"layer",k->call.at("layer")},{"target_function_id",k->call.at("function_id")},{"objects",objects},{"executed_ctas",k->executed},{"full_declared_target_grid",k->executed==p::natural(k->call.at("grid")[0])*p::natural(k->call.at("grid")[1])*p::natural(k->call.at("grid")[2])},{"estimated_compute",true},{"estimated_address",true},{"graph_budget",k->budget},{"warp_placement",placement_receipt(int(k->executed),k->warps,k->resident)}});}catch(const std::exception&e){throw std::runtime_error("Pipeline metadata "+k->family+" "+k->call.at("source_launch_key").get<std::string>()+": "+e.what());}}
  auto shared_l2=tiny_full::make_l2(cfg,memory);g::Cycle shared_cycle=0;hybrid_full::FineContext session(cfg,*shared_l2,shared_cycle);hybrid_full::TinyContext tiny_context(cfg,*shared_l2,memory,shared_cycle);hybrid_full::Bindings tiny_bindings(model,frames,*memory.mapper);hybrid_full::options.validate(model);U tiny_call_count=0;J routes=J::array();const double model_setup_seconds=std::chrono::duration<double>(Clock::now()-start).count();frame_bridge::Active<GemmCatalog>active([&]{return session.is_quiescent();});J frame_validation=J::array();std::weak_ptr<const GemmCatalog>prior_owner;U frozen_encoded_bytes=frames.receipt().at("encoded_payload_bytes").get<U>();const auto*session_l2=&session.l2();const auto*backend_identity=memory.backend.get();
- for(const std::string f:{"P28QKV","GEMMO","GEMMGate","GEMMDown","AttentionPrefill","AttentionDecode1","AttentionDecode2"}){auto it=std::find_if(model.available.begin(),model.available.end(),[&](const auto&v){return v.second.family==f;});p::need(it!=model.available.end(),"all seven framed source routes");const auto&t=it->second;U count=is_attention(f)?8:p::natural(t.call->at("grid")[0]);active.select(t.call->at("source_launch_key"),[&]{return frames.with_decoded(f,[&](const std::string&raw){return std::make_shared<const GemmCatalog>(t,count,raw);});});auto lease=active.lease();frame_validation.push_back({{"family",f},{"nodes",lease->nodes},{"typed_edges",lease->edges},{"ranges",lease->ranges},{"current_child_peak_RSS_bytes",prefill_gemm::peak_rss()}});}
- result["helper_class_validation"]=model.helpers->receipt();result["frame_validation"]=frame_validation;result["compressed_frame_cache"]=frames.receipt();result["compressed_frame_cache"]["active_typed_GEMM_or_Attention_models_max"]=1;result["compressed_frame_cache"]["retained_JSON_DOM_copies_for_GEMM"]=0;result["host_capacity"]={{"current_child_peak_RSS_bytes",prefill_gemm::peak_rss()},{"SourceBundle_DOM_copies_per_source",1},{"registered_source_encoded_bytes",seals().at("registered_pool").at("encoded_source_bytes")}};
+ // Verify every compressed frame, but build typed preflight models only when selected.
+ // Keep preflight ownership separate: its full CTA count must never be reused
+ // by an execution Active whose selected prefix can have a different count.
+ for(const std::string f:{"P28QKV","GEMMO","GEMMGate","GEMMDown","AttentionPrefill","AttentionDecode1","AttentionDecode2"}){if(!validate&&std::none_of(prepared.begin(),prepared.end(),[&](const auto& k){return k->family==f;})){frames.with_decoded(f,[](const std::string&){return 0;});continue;}auto it=std::find_if(model.available.begin(),model.available.end(),[&](const auto&v){return v.second.family==f;});p::need(it!=model.available.end(),"all seven framed source routes");const auto&t=it->second;U count=is_attention(f)?8:p::natural(t.call->at("grid")[0]);auto lease=frames.with_decoded(f,[&](const std::string&raw){return std::make_shared<const GemmCatalog>(t,count,raw);});frame_validation.push_back({{"family",f},{"nodes",lease->nodes},{"typed_edges",lease->edges},{"ranges",lease->ranges},{"current_child_peak_RSS_bytes",prefill_gemm::peak_rss()}});}
+ result["helper_class_validation"]=model.helpers->receipt();result["frame_validation"]=frame_validation;result["frame_validation_scope"]=validate?"all_seven_framed_families":"selected_framed_families; all_eight_frame_payloads_and_decoded_SHA_verified";result["compressed_frame_cache"]=frames.receipt();result["compressed_frame_cache"]["active_typed_GEMM_or_Attention_models_max"]=1;result["compressed_frame_cache"]["retained_JSON_DOM_copies_for_GEMM"]=0;result["host_capacity"]={{"current_child_peak_RSS_bytes",prefill_gemm::peak_rss()},{"SourceBundle_DOM_copies_per_source",1},{"registered_source_encoded_bytes",seals().at("registered_pool").at("encoded_source_bytes")}};
  if(validate){model.finish();result["source_pool"]=model.receipt();result["large_frame_typed_constructions"]=active.constructions;result["runtime_instances"]=1;result["continuous_sessions"]=1;return result;}
 tiny_runtime::sp_event_mode=events;const auto initial=session.statistics();g::Cycle previous=0,sum_windows=0,sum_kernel=0,sum_drain=0;U sum_r=0,sum_w=0,prior_r=0,prior_w=0;tiny_sha::Sha256 workflow_digest;double engine_total=0;
- auto execute_one=[&](std::size_t index){const auto& k=*prepared[index];std::cerr<<J({{"progress_started_call",index+1},{"progress_completed_calls",index},{"total_calls",prepared.size()},{"family",k.family},{"source_launch_key",k.call.at("source_launch_key")},{"total_CTAs",k.executed},{"continuous_cycle",session.cycle()}}).dump()<<std::endl;
+ auto execute_one=[&](std::size_t index){memory.backend->set_trace_context(index);const auto& k=*prepared[index];std::cerr<<J({{"progress_started_call",index+1},{"progress_completed_calls",index},{"total_calls",prepared.size()},{"family",k.family},{"source_launch_key",k.call.at("source_launch_key")},{"total_CTAs",k.executed},{"continuous_cycle",session.cycle()}}).dump()<<std::endl;
   const bool use_tiny=hybrid_full::options.use_tiny(k.family,k.call.at("source_launch_key").get<std::string>());
   routes.push_back({{"index",index},{"source_launch_key",k.call.at("source_launch_key")},{"family",k.family},{"route",use_tiny?"tiny":"fine"}});
   if(use_tiny){
@@ -137,4 +142,84 @@ tiny_runtime::sp_event_mode=events;const auto initial=session.statistics();g::Cy
 }
 
 } // namespace canonical_full
-int main(int argc,char**argv){const auto hybrid_process_start=std::chrono::steady_clock::now();GTSim::retry_host::prefix_enabled=true;GTSim::retry_host::ready_front_enabled=true;try{bool validate=false,eager=false,events=true,full=false;for(int i=1;i<argc;++i){std::string a=argv[i];if(a=="--validate-only")validate=true;else if(a=="--eager-reference")eager=true;else if(a=="--event-off")events=false;else if(a=="--full-workflow")full=true;else if(hbf_drain_cli::parse(a)){}else if(hybrid_full::options.parse(a)){}else native_program::need(false,"unknown option");}nlohmann::json result;{auto transport=compressed_frame::read_control(std::cin);auto control=transport.at("decoded_control");compressed_frame::Cache frames(transport.at("frames"));for(std::uint64_t i=0;i<transport.at("frames").size();++i)frames.read_one(std::cin);frames.finish(std::cin);native_program::need(frames.size()==8,"exact eight compressed frames");std::map<std::string,nlohmann::json>expected;for(const auto&q:control.at("frames"))native_program::need(expected.emplace(q.at("key"),q).second,"unique decoded declaration");native_program::need(expected.size()==8,"eight decoded declarations");for(const auto&q:frames.decoded_manifest())native_program::need(expected.at(q.at("key"))==q,"exact original decoded SHA/length");for(const std::string k:{"P28QKV","GEMMO","GEMMGate","GEMMDown","AttentionPrefill","AttentionDecode1","AttentionDecode2","Helpers"})native_program::need(frames.contains(k),"closed compressed frame key domain");result=canonical_full::run(control,frames,validate,eager,events,false,full);result["transport_control_sha256"]=tiny_sha::sha256(transport.dump());}result["hybrid_pre_output_CPP_seconds"]=std::chrono::duration<double>(std::chrono::steady_clock::now()-hybrid_process_start).count();std::cout<<result.dump()<<'\n';return 0;}catch(const std::exception&e){std::cerr<<nlohmann::json({{"status","REJECTED"},{"reason",e.what()}}).dump()<<'\n';return 2;}}
+#include "../../../direct_native.h"
+#ifndef TILEGEN_NO_EXECUTABLE_MAIN
+int main(int argc,char**argv) {
+ const auto process_start=std::chrono::steady_clock::now();
+ GTSim::retry_host::prefix_enabled=true;GTSim::retry_host::ready_front_enabled=true;
+ try {
+  bool validate=false,eager=false,events=true,full=false;
+  std::string mode="cosim",trace_path;
+  std::uint64_t trace_cap=native_trace::default_max_bytes;
+  for(int i=1;i<argc;++i) {
+   const std::string a=argv[i];
+   if(a=="--help") {
+    std::cout<<"TileGen native B1: --mode=cosim|cosim-fast|direct --trace=PATH --max-trace-bytes=N --full-workflow\n"
+             <<"cosim preserves native compute dependencies; cosim-fast is the explicitly approximate hybrid profile.\n"
+             <<"direct uses the same native addresses with deterministic functional cache order, without timing.\n";
+    return 0;
+   }
+   if(a.rfind("--mode=",0)==0)mode=a.substr(7);
+  }
+  native_program::need(mode=="cosim"||mode=="cosim-fast"||mode=="direct","unknown mode");
+  hybrid_full::options.all_fine=mode!="cosim-fast";
+  if(mode=="cosim-fast") {
+   hybrid_full::options.phase_width=16;hybrid_full::options.memory_epoch=8;
+   hbf_drain_cli::policy.drain=sg_hbf::DrainMode::Independent;
+  }
+  for(int i=1;i<argc;++i) {
+   const std::string a=argv[i];
+   if(a.rfind("--mode=",0)==0)continue;
+   if(a.rfind("--trace=",0)==0)trace_path=a.substr(8);
+   else if(a.rfind("--max-trace-bytes=",0)==0) {
+    const auto value=a.substr(18);std::size_t used=0;
+    native_program::need(!value.empty()&&value[0]!='-',"positive trace byte limit");
+    trace_cap=std::stoull(value,&used);native_program::need(used==value.size(),"integer trace byte limit");
+   }
+   else if(a=="--validate-only")validate=true;
+   else if(a=="--eager-reference")eager=true;
+   else if(a=="--event-off")events=false;
+   else if(a=="--full-workflow")full=true;
+   else if(hbf_drain_cli::parse(a)){}
+   else if(hybrid_full::options.parse(a)){}
+   else native_program::need(false,"unknown option");
+  }
+  native_program::need(mode!="direct"||(!validate&&!eager&&events&&!trace_path.empty()),"direct requires trace path and functional execution");
+  native_program::need(!validate||trace_path.empty(),"validate-only cannot save an execution trace");
+  nlohmann::json result;
+  {
+   auto transport=compressed_frame::read_control(std::cin);auto control=transport.at("decoded_control");
+   compressed_frame::Cache frames(transport.at("frames"));
+   for(std::uint64_t i=0;i<transport.at("frames").size();++i)frames.read_one(std::cin);
+   frames.finish(std::cin);native_program::need(frames.size()==8,"exact eight compressed frames");
+   std::map<std::string,nlohmann::json>expected;
+   for(const auto&q:control.at("frames"))native_program::need(expected.emplace(q.at("key"),q).second,"unique decoded declaration");
+   native_program::need(expected.size()==8,"eight decoded declarations");
+   for(const auto&q:frames.decoded_manifest())native_program::need(expected.at(q.at("key"))==q,"exact original decoded SHA/length");
+   for(const std::string k:{"P28QKV","GEMMO","GEMMGate","GEMMDown","AttentionPrefill","AttentionDecode1","AttentionDecode2","Helpers"})
+    native_program::need(frames.contains(k),"closed compressed frame key domain");
+   const auto context_sha=tiny_sha::sha256(transport.dump());
+   std::unique_ptr<native_trace::Writer> writer;
+   if(!trace_path.empty())writer=std::make_unique<native_trace::Writer>(trace_path,
+      mode=="direct"?native_trace::Mode::FunctionalDirect:native_trace::Mode::NativeCosim,context_sha,trace_cap);
+   unified_trace::writer=writer.get();
+   result=mode=="direct"?direct_native::run(control,frames,full,*writer):canonical_full::run(control,frames,validate,eager,events,false,full);
+   unified_trace::writer=nullptr;
+   if(writer) {
+    const auto receipt=writer->finish();
+    const auto& ledger=result.at(mode=="direct"?"cache":"workflow");
+    native_program::need(receipt.read_bytes==ledger.at("DRAM_read_bytes")&&
+      receipt.write_bytes==ledger.at("DRAM_write_bytes"),"exported/cache byte conservation");
+    result["trace"]=receipt.to_json();result["full_selected_trace_saved"]=true;result["full_trace_saved"]=full;
+   }
+   result["transport_control_sha256"]=context_sha;
+   result["mode"]=mode;result["batch_size"]=1;result["writeback_request_bytes"]=32;
+   result["version"]="tilegen-trace-cosim-20260918-r1";
+   result["precision"]={{"native_memory_rules",true},{"compute_dependencies_executed",!validate&&mode!="direct"},
+      {"functional_order_matches_cosim",false},{"hybrid_timing_approximation",mode=="cosim-fast"}};
+  }
+  result["hybrid_pre_output_CPP_seconds"]=std::chrono::duration<double>(std::chrono::steady_clock::now()-process_start).count();
+  std::cout<<result.dump()<<'\n';return 0;
+ }catch(const std::exception&e){std::cerr<<nlohmann::json({{"status","REJECTED"},{"reason",e.what()}}).dump()<<'\n';return 2;}
+}
+#endif

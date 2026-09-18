@@ -1198,9 +1198,9 @@ public:
                 dram_backend->admission_capacity() > 4096)
                 throw std::invalid_argument("sector writeback requires finite external backend capacity<=4096");
             // One rejected fill plus the remaining admitted fills can each
-            // generate at most two disjoint dirty runs. No frontend service
+            // generate at most four independent 32B writes. No frontend service
             // resumes until this FIFO empties. This also bounds resident IDs.
-            pending_dram_capacity_ = 2 * (dram_backend->admission_capacity() + 1);
+            pending_dram_capacity_ = 4 * (dram_backend->admission_capacity() + 1);
         }
         if (dram_backend == nullptr) {
             owned_dram_backend = std::make_unique<DRAMModel>(
@@ -1964,8 +1964,8 @@ private:
     // Only IDs are retained here; the canonical request lives in the existing
     // outstanding map. With an external backend bound B, pausing service on
     // the first rejection bounds the baseline FIFO by B+1. Sector mode
-    // creates at most two contiguous dirty runs per victim and enforces the
-    // conservative 2*(B+1) bound. It is not an unbounded ingress.
+    // creates at most four individual32B writes per victim and enforces the
+    // conservative 4*(B+1) bound. It is not an unbounded ingress.
     std::deque<std::uint64_t> pending_dram_requests;
     std::size_t pending_dram_capacity_ = 0;
     DirtySectorEvalStatistics dirty_sector_stats_;
@@ -2431,19 +2431,17 @@ private:
                         ++dirty_sector_stats_.eviction_popcounts.at(sector_popcount(mask));
                     }
                     if constexpr (kTilegenDirtySectorMode == 2) {
-                        // Retain a single128B parent for mask15. Sparse masks
-                        // emit maximal contiguous dirty runs, never spanning a
-                        // clean sector. Four bits have at most two such runs.
+                        // Each dirty sector is one 32B backend request, including
+                        // a fully dirty line. Completion keys retain the parent
+                        // line identity while service addresses include offsets.
                         unsigned runs = 0;
-                        for (unsigned first = 0; first < 4;) {
-                            if (!(mask & (1U << first))) { ++first; continue; }
-                            unsigned end = first + 1;
-                            while (end < 4 && (mask & (1U << end))) ++end;
+                        for (unsigned first = 0; first < 4; ++first) {
+                            if (!(mask & (1U << first))) continue;
                             enqueue_dram_request(victim, current_cycle,
                                 L2DramRequestCause::DIRTY_WRITEBACK,
-                                completion_context, first * 32, (end - first) * 32);
-                            ++dirty_sector_stats_.writeback_run_lengths.at(end - first);
-                            ++runs; first = end;
+                                completion_context, first * 32, 32);
+                            ++dirty_sector_stats_.writeback_run_lengths.at(1);
+                            ++runs;
                         }
                         ++dirty_sector_stats_.eviction_run_counts.at(runs);
                     } else {
@@ -2517,7 +2515,7 @@ private:
         if (!pending_dram_requests.empty() || !dram_backend->try_enqueue(request, issue_cycle)) {
             if constexpr (kTilegenDirtySectorMode == 2) {
                 if (pending_dram_requests.size() >= pending_dram_capacity_)
-                    throw std::logic_error("sector writeback pending FIFO exceeded finite2(B+1) bound");
+                    throw std::logic_error("sector writeback pending FIFO exceeded finite4(B+1) bound");
             }
             pending_dram_requests.push_back(request.request_id);
             ++dram_admission_rejections_;

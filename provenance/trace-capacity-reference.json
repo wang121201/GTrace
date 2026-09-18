@@ -1,0 +1,26 @@
+{
+  "scope": "Old full1138 R/W held fixed; only storage capacity planning, not new-model measurement or traffic guarantee.",
+  "formula": "224 + 144 * (read_bytes/128 + write_bytes/32)",
+  "references": [
+    {
+      "name": "strict",
+      "source": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-accelerated-full-r1/campaign-r1/result.json",
+      "sha256": "edf4cc76a8cc546df70fe9c3f2657e9fa394b34fc89ea95f2a030d57d135ea34",
+      "read_bytes": 45291616384,
+      "write_bytes": 158626272,
+      "new_record_count": 358797824,
+      "estimated_file_bytes": 51666886880,
+      "estimated_GiB": 48.11853811144829
+    },
+    {
+      "name": "fast",
+      "source": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-full-r1/full-r1/result.json",
+      "sha256": "bed24b6d913d060fbf9ccdd5a5ab69f3fa49acd4db6d8e45e5880f03655b5e35",
+      "read_bytes": 45291581568,
+      "write_bytes": 158668608,
+      "new_record_count": 358798875,
+      "estimated_file_bytes": 51667038224,
+      "estimated_GiB": 48.11867906153202
+    }
+  ]
+}

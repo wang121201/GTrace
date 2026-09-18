@@ -18,6 +18,10 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def source_pins():
+    return {str(p.relative_to(ROOT)): sha(p) for p in sorted((ROOT/'source').rglob('*')) if p.is_file()}
+
+
 def build(args):
     config = json.loads((ROOT / 'build-config.json').read_text())
     out = args.output.resolve()
@@ -37,6 +41,7 @@ def build(args):
                    jobs=args.jobs, build_config_sha256=sha(ROOT / 'build-config.json'),
                    steps=[])
     began = time.monotonic()
+    receipt['source_pins'] = source_pins()
 
     def invoke(name, command):
         started = time.monotonic()
@@ -79,6 +84,9 @@ def build(args):
                 raise RuntimeError('link failed; inspect link.stderr')
             receipt.update(status='PASS_BUILD_ONLY_NO_SIMULATION',
                            binary=dict(path=str(executable), bytes=executable.stat().st_size, sha256=sha(executable)))
+        receipt['sources_unchanged'] = source_pins() == receipt['source_pins']
+        if not receipt['sources_unchanged']:
+            raise RuntimeError('source changed during build; rebuild before using this binary')
     except BaseException as error:
         receipt.update(status='FAIL_BUILD', error=type(error).__name__ + ': ' + str(error))
     finally:
