@@ -23,7 +23,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input', type=Path, required=True, help='Sealed compressed eight-frame transport')
     parser.add_argument('--output', type=Path, required=True, help='New result directory')
-    parser.add_argument('--binary', type=Path, default=ROOT/'build/final/tilegen_native')
+    parser.add_argument('--binary', type=Path, default=ROOT/'build/shared-frontend-r2/tilegen_native')
     parser.add_argument('--mode', choices=('direct', 'cosim', 'cosim-fast'), default='cosim')
     parser.add_argument('--trace', action='store_true', help='Export admitted cosim DRAM requests; direct always exports')
     parser.add_argument('--max-trace-bytes', type=int, default=8 << 30)

@@ -1,6 +1,6 @@
 #pragma once
 #include "source_support.h"
-#include "../tilegen-full-r1/canonical-gemv-host-r2/prepared_address.h"
+#include "../tilegen-full-r1/canonical-gemv-host-r2/prepared_memory.h"
 #include <unordered_set>
 
 namespace packet_binding {
@@ -20,13 +20,13 @@ struct CallBinding {
     const canonical_gemv::Model& model;
     const J& call;
     const SourceBundle& source;
-    canonical_gemv::PreparedAddress addresses;
+    canonical_gemv::PreparedMemory memory_plan;
     const coupling::ServiceMapper& mapper;
     U ctas;
 
     CallBinding(const canonical_gemv::Model& m,const J& c,
                 const coupling::ServiceMapper& map)
-        : model(m),call(c),source(m.source(c)),addresses(m,c),mapper(map),
+        : model(m),call(c),source(m.source(c)),memory_plan(m,c,map),mapper(map),
           ctas(m.prefix ? m.prefix : p::natural(c.at("grid")[0])) {}
 
     const native_register::Node& node(U member) const {
@@ -47,19 +47,14 @@ struct CallBinding {
             p::need(r.op==n.op,"packet memory direction");
             out.logical_bytes=p::multiply(r.lanes.size(),U(r.width));
             if (r.lanes.empty()) { out.zero_lane_compute=true;return out; }
-            sub.requested_bytes=out.logical_bytes;
-            for (const auto& lane:r.lanes) sub.source_member_ordinals.push_back(lane.lane);
-            const auto& plan=source.range_plan.records.at(n.memory);
+            sub=memory_plan.materialize(n.memory,cta);
             std::unordered_set<U> seen;
-            for (const auto& group:plan) {
-                const auto& lane=r.lanes.at(group.first);
-                const U va=addresses.address(lane,group.bytes,cta);
-                sub.ranges.push_back({group.count==1?lane.lane:-1,va,group.bytes});
-                p::need(group.bytes>0&&va<=UINT64_MAX-(group.bytes-1),"packet source range overflow");
-                const U last=(va+group.bytes-1)/128*128;
+            for (const auto& range:sub.ranges) {
+                const U va=range.offset_bytes;
+                const U last=(va+range.byte_count-1)/128*128;
                 for (U line=va/128*128;;line+=128) {
-                    // Same mapping check for every original range intersection.
-                    const g::CacheLineKey key{1,line};(void)mapper.map(key);
+                    // Mapping was checked by the shared pre-cache materializer.
+                    const g::CacheLineKey key{1,line};
                     // Original coalescer: first occurrence in range order.
                     if (seen.insert(line).second) out.lines.push_back(key);
                     if (line==last) break;

@@ -1,0 +1,872 @@
+{
+  "status": "PASS_SHARED_FRONTEND_EXACT_B1",
+  "baseline_commit": "ad8afa309a1d95e420c09b71877e27858bf4c9f6",
+  "branch": "codex/tilegen-trace-cosim-20260918-r1",
+  "binary": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-r2/tilegen_native",
+    "bytes": 3957344,
+    "sha256": "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644"
+  },
+  "build_receipt_sha256": "0810d355f4c89a9f1b5f61861160843fabe132122acbe75088aa46ee51817c67",
+  "production_source_files": 176,
+  "source_tree_unchanged_since_build": true,
+  "batch_size": 1,
+  "writeback_request_bytes": 32,
+  "read_fill_and_RFO_bytes": 128,
+  "benchmark": {
+    "status": "PASS_PAIRED_EXACT_NATIVE_COSIM",
+    "mode": "cosim",
+    "GPU_executed": false,
+    "benchmark_execution": "serial; alternating baseline/candidate order",
+    "repeats": 3,
+    "rows": [
+      {
+        "variant": "baseline",
+        "repeat": 1,
+        "directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/paired-final/baseline-1",
+        "receipt": {
+          "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/final/tilegen_native",
+            "--mode=cosim"
+          ],
+          "mode": "cosim",
+          "binary_sha256": "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+          "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+          "batch_size": 1,
+          "CPU_only": true,
+          "GPU_sampling": false,
+          "status": "PASS",
+          "returncode": 0,
+          "elapsed_seconds": 46.614607125,
+          "elapsed_minutes": 0.7769101187499999,
+          "CPU_seconds": 46.40169,
+          "CPU_minutes": 0.7733615,
+          "result_verification_seconds": 0.0006930839999981231,
+          "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+        },
+        "engine_seconds": 23.48494675,
+        "frontend": [
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "variant": "candidate",
+        "repeat": 1,
+        "directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/paired-final/candidate-1",
+        "receipt": {
+          "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-r2/tilegen_native",
+            "--mode=cosim"
+          ],
+          "mode": "cosim",
+          "binary_sha256": "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644",
+          "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+          "batch_size": 1,
+          "CPU_only": true,
+          "GPU_sampling": false,
+          "status": "PASS",
+          "returncode": 0,
+          "elapsed_seconds": 47.001582667,
+          "elapsed_minutes": 0.7833597111166667,
+          "CPU_seconds": 45.96764,
+          "CPU_minutes": 0.7661273333333334,
+          "result_verification_seconds": 0.0007714999999990368,
+          "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+        },
+        "engine_seconds": 21.786314499999996,
+        "frontend": [
+          {
+            "available": true,
+            "build": 0.22388329599999976,
+            "retire": 0.4120605820000001,
+            "retire_hash": 0.36673044399999977,
+            "retire_invariant": 0.045300158,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          },
+          {
+            "available": true,
+            "build": 0.001974834,
+            "retire": 0.002270917,
+            "retire_hash": 0.0021185,
+            "retire_invariant": 0.000152375,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          },
+          {
+            "available": true,
+            "build": 0.6889057040000004,
+            "retire": 1.5842432119999998,
+            "retire_hash": 1.378234635000001,
+            "retire_invariant": 0.2059680500000001,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "repeat": 2,
+        "directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/paired-final/candidate-2",
+        "receipt": {
+          "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-r2/tilegen_native",
+            "--mode=cosim"
+          ],
+          "mode": "cosim",
+          "binary_sha256": "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644",
+          "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+          "batch_size": 1,
+          "CPU_only": true,
+          "GPU_sampling": false,
+          "status": "PASS",
+          "returncode": 0,
+          "elapsed_seconds": 46.060770125000005,
+          "elapsed_minutes": 0.7676795020833335,
+          "CPU_seconds": 45.90165,
+          "CPU_minutes": 0.7650275,
+          "result_verification_seconds": 0.0008761249999977849,
+          "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+        },
+        "engine_seconds": 21.676676541,
+        "frontend": [
+          {
+            "available": true,
+            "build": 0.22032488399999986,
+            "retire": 0.40713630600000056,
+            "retire_hash": 0.36268688400000004,
+            "retire_invariant": 0.04442314800000001,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          },
+          {
+            "available": true,
+            "build": 0.001901042,
+            "retire": 0.002080083,
+            "retire_hash": 0.001953333,
+            "retire_invariant": 0.000126708,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          },
+          {
+            "available": true,
+            "build": 0.6689493380000007,
+            "retire": 1.561632984,
+            "retire_hash": 1.3619361209999998,
+            "retire_invariant": 0.19966416200000006,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          }
+        ]
+      },
+      {
+        "variant": "baseline",
+        "repeat": 2,
+        "directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/paired-final/baseline-2",
+        "receipt": {
+          "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/final/tilegen_native",
+            "--mode=cosim"
+          ],
+          "mode": "cosim",
+          "binary_sha256": "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+          "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+          "batch_size": 1,
+          "CPU_only": true,
+          "GPU_sampling": false,
+          "status": "PASS",
+          "returncode": 0,
+          "elapsed_seconds": 45.43954325,
+          "elapsed_minutes": 0.7573257208333334,
+          "CPU_seconds": 45.270318,
+          "CPU_minutes": 0.7545053,
+          "result_verification_seconds": 0.0007667080000004489,
+          "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+        },
+        "engine_seconds": 22.367962166999998,
+        "frontend": [
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "variant": "baseline",
+        "repeat": 3,
+        "directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/paired-final/baseline-3",
+        "receipt": {
+          "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/final/tilegen_native",
+            "--mode=cosim"
+          ],
+          "mode": "cosim",
+          "binary_sha256": "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+          "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+          "batch_size": 1,
+          "CPU_only": true,
+          "GPU_sampling": false,
+          "status": "PASS",
+          "returncode": 0,
+          "elapsed_seconds": 46.862230125,
+          "elapsed_minutes": 0.7810371687500001,
+          "CPU_seconds": 46.625681,
+          "CPU_minutes": 0.7770946833333333,
+          "result_verification_seconds": 0.0007311249999943925,
+          "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+        },
+        "engine_seconds": 23.603537334000002,
+        "frontend": [
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "variant": "candidate",
+        "repeat": 3,
+        "directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/paired-final/candidate-3",
+        "receipt": {
+          "schema": "TILEGEN_TRACE_COSIM_RUN_V1",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-r2/tilegen_native",
+            "--mode=cosim"
+          ],
+          "mode": "cosim",
+          "binary_sha256": "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644",
+          "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+          "batch_size": 1,
+          "CPU_only": true,
+          "GPU_sampling": false,
+          "status": "PASS",
+          "returncode": 0,
+          "elapsed_seconds": 46.696451417,
+          "elapsed_minutes": 0.7782741902833333,
+          "CPU_seconds": 46.442836,
+          "CPU_minutes": 0.7740472666666667,
+          "result_verification_seconds": 0.0008295410000016545,
+          "timing_scope": "Child start through process exit including stdin transport and output; excludes input hashing and compilation."
+        },
+        "engine_seconds": 22.143177917,
+        "frontend": [
+          {
+            "available": true,
+            "build": 0.2218476399999998,
+            "retire": 0.4105635740000002,
+            "retire_hash": 0.36637186799999943,
+            "retire_invariant": 0.04416641300000003,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          },
+          {
+            "available": true,
+            "build": 0.00194925,
+            "retire": 0.00244425,
+            "retire_hash": 0.002263584,
+            "retire_invariant": 0.000180625,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          },
+          {
+            "available": true,
+            "build": 0.6888453700000002,
+            "retire": 1.5777650169999993,
+            "retire_hash": 1.3721042199999993,
+            "retire_invariant": 0.20562462500000006,
+            "scope": "Existing per-call Builder wall seconds; retire includes invariant and hash sub-timers. Excludes constructor/model setup, scheduler/HBFSIM and graph destruction; not additive with host_engine_seconds."
+          }
+        ]
+      }
+    ],
+    "comparisons": [
+      {
+        "status": "PASS_EXACT_SIMULATION_SHARED_FRONTEND",
+        "mode": "cosim",
+        "calls": 3,
+        "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+        "binary_sha256": [
+          "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+          "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644"
+        ],
+        "result_sha256": [
+          "4ef90dd98e7ff2846cad6f80e2efbbb384d2925543c74d89b8fc93c6b2d2a853",
+          "3ce0fecc3e8f768531388eb9659fe8f546fcae8db9c5329584e2fcc8f9db7a12"
+        ],
+        "CPU_minutes": [
+          0.7733615,
+          0.7661273333333334
+        ],
+        "elapsed_minutes": [
+          0.7769101187499999,
+          0.7833597111166667
+        ],
+        "CPU_speedup": 1.009442512167255,
+        "compared": "workflow; all per-node retire hashes, kernel cycles, ordered L2 events, traffic, overlap, scheduler counters, dirty ledger, HBFSIM statistics; only existing host timer fields excluded from execution",
+        "full_trace_bytes_equal": null,
+        "trace_sha256": null,
+        "scope": "Same selected workload only; not full1138 or hardware equivalence."
+      },
+      {
+        "status": "PASS_EXACT_SIMULATION_SHARED_FRONTEND",
+        "mode": "cosim",
+        "calls": 3,
+        "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+        "binary_sha256": [
+          "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+          "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644"
+        ],
+        "result_sha256": [
+          "4b29b952b4779b3facfb7ceb1309015d498ac3feee694e59e880e55081043636",
+          "195b34503d44cb12c8a2e0f3c4fc2cc9ac209204ade0234ee905a627acaf4b15"
+        ],
+        "CPU_minutes": [
+          0.7545053,
+          0.7650275
+        ],
+        "elapsed_minutes": [
+          0.7573257208333334,
+          0.7676795020833335
+        ],
+        "CPU_speedup": 0.986245984621468,
+        "compared": "workflow; all per-node retire hashes, kernel cycles, ordered L2 events, traffic, overlap, scheduler counters, dirty ledger, HBFSIM statistics; only existing host timer fields excluded from execution",
+        "full_trace_bytes_equal": null,
+        "trace_sha256": null,
+        "scope": "Same selected workload only; not full1138 or hardware equivalence."
+      },
+      {
+        "status": "PASS_EXACT_SIMULATION_SHARED_FRONTEND",
+        "mode": "cosim",
+        "calls": 3,
+        "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+        "binary_sha256": [
+          "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+          "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644"
+        ],
+        "result_sha256": [
+          "63737130e10894394bcff843e3f6481594ee77d553633c37e6125d04e0c63d8d",
+          "9f4355e5606989bd71c64cc3188a021d996887067b121d686c48eabc0a7ea3fa"
+        ],
+        "CPU_minutes": [
+          0.7770946833333333,
+          0.7740472666666667
+        ],
+        "elapsed_minutes": [
+          0.7810371687500001,
+          0.7782741902833333
+        ],
+        "CPU_speedup": 1.00393699041118,
+        "compared": "workflow; all per-node retire hashes, kernel cycles, ordered L2 events, traffic, overlap, scheduler counters, dirty ledger, HBFSIM statistics; only existing host timer fields excluded from execution",
+        "full_trace_bytes_equal": null,
+        "trace_sha256": null,
+        "scope": "Same selected workload only; not full1138 or hardware equivalence."
+      }
+    ],
+    "current": "candidate-3",
+    "medians": {
+      "baseline": {
+        "CPU_minutes": 0.7733615,
+        "elapsed_minutes": 0.7769101187499999,
+        "engine_seconds": 23.48494675
+      },
+      "candidate": {
+        "CPU_minutes": 0.7661273333333334,
+        "elapsed_minutes": 0.7782741902833333,
+        "engine_seconds": 21.786314499999996
+      }
+    },
+    "CPU_speedup": 1.009442512167255,
+    "engine_speedup": 1.077967856839669
+  },
+  "native_frontend_wall_seconds": {
+    "build": 0.91264226,
+    "retire": 1.9907728409999994,
+    "retire_hash": 1.7407396719999988,
+    "retire_invariant": 0.2499716630000001
+  },
+  "materializer_only_intermediate": {
+    "medians": {
+      "baseline": {
+        "CPU_minutes": 0.7833727666666666,
+        "elapsed_minutes": 0.7872711798666666,
+        "engine_seconds": 23.934358833
+      },
+      "candidate": {
+        "CPU_minutes": 0.77359585,
+        "elapsed_minutes": 0.7764175222166667,
+        "engine_seconds": 23.335604376
+      }
+    },
+    "CPU_speedup": 1.012638274451274,
+    "engine_speedup": 1.0256584079568902,
+    "receipt": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/paired/summary.json",
+    "receipt_sha256": "b7e97904cd95fd8f39ff3dc96f9941253ce60ad00a15509beae45741ec1c851f",
+    "scope": "Ablation before host CTA-validation changes; not the delivered binary."
+  },
+  "workflow": {
+    "DRAM_GBps": 141.6238874364377,
+    "DRAM_read_bytes": 75595776,
+    "DRAM_write_bytes": 4864,
+    "clock": {
+      "period_ps_denominator": 22433277391728507,
+      "period_ps_numerator": 10000000000000000000,
+      "source": "frozen model profile; not current GPU measured clock"
+    },
+    "counter_delta": {
+      "accepted_reads": 2343241,
+      "accepted_transactions": 2347753,
+      "accepted_writes": 4512,
+      "cache_inserts": 590592,
+      "clean_evictions": 262874,
+      "dirty_evictions": 38,
+      "dram_fill_bytes": 75595776,
+      "dram_fill_completed_bytes": 75595776,
+      "dram_fill_completions": 590592,
+      "dram_fill_requests": 590592,
+      "dram_writeback_bytes": 4864,
+      "dram_writeback_completed_bytes": 4864,
+      "dram_writeback_completions": 152,
+      "dram_writeback_requests": 152,
+      "fill_completions": 590592,
+      "l1_bypassed_transactions": 0,
+      "l1_evictions": 646084,
+      "l1_filtered_reads": 16887,
+      "l1_flushed_lines": 0,
+      "l1_kernel_flushes": 0,
+      "l1_read_hits": 16887,
+      "l1_read_misses": 2343241,
+      "l1_write_hits": 0,
+      "l1_write_misses": 4512,
+      "pre_l1_reads": 2360128,
+      "pre_l1_transactions": 2364640,
+      "pre_l1_writes": 4512,
+      "processed_reads": 2343241,
+      "processed_transactions": 2347753,
+      "processed_writes": 4512,
+      "read_hits": 1221786,
+      "read_miss_allocates": 590304,
+      "read_pending_fill_merges": 531151,
+      "write_hits": 3998,
+      "write_miss_allocates": 288,
+      "write_pending_fill_merges": 226
+    },
+    "drain_cycles_sum": 0,
+    "end_is_quiescent": true,
+    "kernel_cycles_sum": 1197517,
+    "kernel_prefixed_node_sha256": "fb60a9c1b2e14a30b303f8fd1ffdab457e1f83ea136d352062300070c95d075d",
+    "time_ns": 533812.772467006,
+    "window_cycles": 1197517
+  },
+  "comparisons": {
+    "families-cosim": {
+      "status": "PASS_EXACT_SIMULATION_SHARED_FRONTEND",
+      "mode": "cosim",
+      "calls": 20,
+      "input_sha256": "4d0069e0c3e24e477e72712994910432b0d8fcb750164db7151ce3c6c0d0ed2b",
+      "binary_sha256": [
+        "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+        "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644"
+      ],
+      "result_sha256": [
+        "bb3f56e14ed94fb8709b1da23e1c654a18e1ef90a1b01702de29562000e13996",
+        "8a183ac8aea849132123b7bdd624dce33dc3b0243390ba26acdf2b587deb59ba"
+      ],
+      "CPU_minutes": [
+        1.2009144333333335,
+        1.239738
+      ],
+      "elapsed_minutes": [
+        1.2037925777833332,
+        1.2438535743
+      ],
+      "CPU_speedup": 0.9686840552869505,
+      "compared": "workflow; all per-node retire hashes, kernel cycles, ordered L2 events, traffic, overlap, scheduler counters, dirty ledger, HBFSIM statistics; only existing host timer fields excluded from execution",
+      "full_trace_bytes_equal": true,
+      "trace_sha256": "72dee20c9d4b46c4fb454791add7165453b1933d25de9e5f3750b679cdbda9a1",
+      "scope": "Same selected workload only; not full1138 or hardware equivalence."
+    },
+    "families-direct": {
+      "status": "PASS_EXACT_SIMULATION_SHARED_FRONTEND",
+      "mode": "direct",
+      "calls": 20,
+      "input_sha256": "4d0069e0c3e24e477e72712994910432b0d8fcb750164db7151ce3c6c0d0ed2b",
+      "binary_sha256": [
+        "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+        "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644"
+      ],
+      "result_sha256": [
+        "1c4db42c299ec32b3668d14a56192cbe6d99622f4fa11d1d66ccc393c1b6b9c7",
+        "14bb1d680f78a3398b70f4ac2e879bbdea4896f747417ecc5ee0239ccb2b7825"
+      ],
+      "CPU_minutes": [
+        0.78607385,
+        0.80324725
+      ],
+      "elapsed_minutes": [
+        0.7970085847333334,
+        0.8059976090333333
+      ],
+      "CPU_speedup": 0.9786200326238279,
+      "compared": "full functional-cache ledger and per-call results excluding host_seconds",
+      "full_trace_bytes_equal": true,
+      "trace_sha256": "56147d8d6988c1eb69358ad32cb1452415fee47ed985b3b9a7714586bf00a252",
+      "scope": "Same selected workload only; not full1138 or hardware equivalence."
+    },
+    "decode-direct": {
+      "status": "PASS_EXACT_SIMULATION_SHARED_FRONTEND",
+      "mode": "direct",
+      "calls": 3,
+      "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+      "binary_sha256": [
+        "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+        "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644"
+      ],
+      "result_sha256": [
+        "0acbc7ba29d90ac0cc87ed77e2dc87f03975aee2a2f0a56213cb6755d3ffed0e",
+        "1593d2b228fd258525835c6244b5cc0f9fec8f2adaabc0cb4e7de6d2fa777672"
+      ],
+      "CPU_minutes": [
+        0.4201334666666667,
+        0.4183697333333333
+      ],
+      "elapsed_minutes": [
+        0.42194344166666664,
+        0.4204712006833333
+      ],
+      "CPU_speedup": 1.0042157287987372,
+      "compared": "full functional-cache ledger and per-call results excluding host_seconds",
+      "full_trace_bytes_equal": true,
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "scope": "Same selected workload only; not full1138 or hardware equivalence."
+    },
+    "decode-fast": {
+      "status": "PASS_EXACT_SIMULATION_SHARED_FRONTEND",
+      "mode": "cosim-fast",
+      "calls": 3,
+      "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+      "binary_sha256": [
+        "ef7150b433fe815e21921477fd9686fedf33ca50b289451b9539b6a83ab3e6bb",
+        "60c0d76d03fc61832a408ae0809ff139773d34a1aa4fe9407785d19df8787644"
+      ],
+      "result_sha256": [
+        "c214b30c868274c0f250bcfeaf0aa8c55cdf09b2378f43df2ed50c7cadc87f59",
+        "3bb56434b7a5b92e1458a4c41c6259118077246ba17b9c522f635ba899fb188c"
+      ],
+      "CPU_minutes": [
+        0.48166498333333335,
+        0.4897660833333333
+      ],
+      "elapsed_minutes": [
+        0.48321962500000004,
+        0.4920643868166667
+      ],
+      "CPU_speedup": 0.9834592466165396,
+      "compared": "workflow; all per-node retire hashes, kernel cycles, ordered L2 events, traffic, overlap, scheduler counters, dirty ledger, HBFSIM statistics; only existing host timer fields excluded from execution; SiLU source.addresses implementation-description prose separately validated",
+      "full_trace_bytes_equal": null,
+      "trace_sha256": null,
+      "scope": "Same selected workload only; not full1138 or hardware equivalence."
+    }
+  },
+  "original_formulas": {
+    "GPU_executed": false,
+    "HBFSIM_executed": false,
+    "all_silu_full_grid_boundaries": {
+      "CTAs": 158,
+      "additional_full_grid_CTAs": 30,
+      "calls": 96,
+      "lane_formula_checks": 3761664,
+      "mapper_checks": 0,
+      "memory_instructions": 117552,
+      "negative_checks": 192,
+      "ordered_subops_sha256": "c15bc76e8cd6c3f281407a0a33cba5f3e2e1dfa2298137a24073c16fd94db463",
+      "phase_call_counts": {
+        "Decode1": 32,
+        "Decode2": 32,
+        "Prefill": 32
+      },
+      "ranges": 117552,
+      "scope": "Every loaded SiLU model call: full-grid first/last CTA, plus all32 CTAs of the first Prefill call; all744 records and32 lanes",
+      "source_bytes": 19415040,
+      "source_ordinals": 117552,
+      "status": "PASS_EXACT_ORIGINAL_FORMULA_AND_DOMAIN_REJECTION"
+    },
+    "host_wall_seconds": 27.082160875,
+    "input_bytes": 23986057,
+    "input_sha256": "f12231642ddb7583c41c74796e9bedeaaf1fb952b87448ded1a3189fda6fff61",
+    "schema": "TILEGEN_PREPARED_MEMORY_ORIGINAL_FORMULA_TEST_V1",
+    "scope": "All selected GEMV/SiLU CTAs and original memory instructions; no cache, DAG scheduling or simulation",
+    "selected_calls": [
+      {
+        "CTAs": 512,
+        "family": "GEMV",
+        "full_grid_CTAs": 7168,
+        "json_reference_first_last_CTA": {
+          "CTAs": 2,
+          "lane_formula_checks": 0,
+          "mapper_checks": 2056,
+          "memory_instructions": 2056,
+          "negative_checks": 0,
+          "ordered_subops_sha256": "41456a2b847797dcd76fbb617258e4b7272c7052860341229b66dd343cd349f4",
+          "ranges": 2056,
+          "source_bytes": 131088,
+          "source_ordinals": 65544
+        },
+        "lane_formula_checks": 0,
+        "mapper_checks": 526336,
+        "memory_instructions": 526336,
+        "negative_checks": 1,
+        "ordered_subops_sha256": "856cff4ede3d615c79e9c0ee54fe6896161d18ce28d6962ca4a9034d46c75d06",
+        "ranges": 526336,
+        "selected_CTAs": 512,
+        "source_bytes": 33558528,
+        "source_launch_key": "epoch-3-launch-28",
+        "source_ordinals": 16779264,
+        "status": "PASS_EXACT_ORIGINAL_FORMULA"
+      },
+      {
+        "CTAs": 1,
+        "family": "SiLU",
+        "full_grid_CTAs": 1,
+        "json_reference_first_last_CTA": null,
+        "lane_formula_checks": 23808,
+        "mapper_checks": 0,
+        "memory_instructions": 744,
+        "negative_checks": 2,
+        "ordered_subops_sha256": "a454f6c82255074b87e9696b166ab88f3be5197f66106cff2ce11db67460e328",
+        "ranges": 744,
+        "selected_CTAs": 1,
+        "source_bytes": 122880,
+        "source_launch_key": "epoch-3-launch-29",
+        "source_ordinals": 744,
+        "status": "PASS_EXACT_ORIGINAL_FORMULA"
+      },
+      {
+        "CTAs": 512,
+        "family": "GEMV",
+        "full_grid_CTAs": 1024,
+        "json_reference_first_last_CTA": {
+          "CTAs": 2,
+          "lane_formula_checks": 0,
+          "mapper_checks": 7176,
+          "memory_instructions": 7176,
+          "negative_checks": 0,
+          "ordered_subops_sha256": "018442672d4a59a643344ff19dcb43bdfcc5dccc56534b04268c2f3b5a6f09b0",
+          "ranges": 7176,
+          "source_bytes": 458768,
+          "source_ordinals": 229384
+        },
+        "lane_formula_checks": 0,
+        "mapper_checks": 1837056,
+        "memory_instructions": 1837056,
+        "negative_checks": 1,
+        "ordered_subops_sha256": "3116ee02b18480343c91985a334ef0a4e551530ad052e0e23dcee1bb09902fa6",
+        "ranges": 1837056,
+        "selected_CTAs": 512,
+        "source_bytes": 117444608,
+        "source_launch_key": "epoch-3-launch-30",
+        "source_ordinals": 58722304,
+        "status": "PASS_EXACT_ORIGINAL_FORMULA"
+      }
+    ],
+    "status": "PASS_GEMV_SILU_SHARED_MATERIALIZERS_MATCH_ORIGINAL_FORMULAS",
+    "transport_control_sha256": "75a975fff7f03fbe44e51f0b97ac6f55dc3f07120a7a8704aa1f49dd6435a94c"
+  },
+  "original_formulas_receipt_sha256": "92bc8c9594aa781ec715ad42adf9e9e70fbd961dd8ae1bee355398aa53878fd6",
+  "unit_tests": {
+    "schema": "TILEGEN_CPU_UNIT_TESTS_V1",
+    "status": "PASS",
+    "compiler": "/usr/bin/clang++",
+    "standard": "c++20",
+    "optimization": "O2",
+    "dirty_sector_mode": 2,
+    "sanitize": "address,undefined",
+    "leak_detection": false,
+    "sanitizer_scope": "ASan/UBSan only; LeakSanitizer not run",
+    "CPU_only": true,
+    "GPU_or_model_workflow_executed": false,
+    "parallel_test_limit": 2,
+    "elapsed_seconds": 16.574537375,
+    "source_tree_unchanged": true,
+    "source_manifest": "source-sha256.json",
+    "source_manifest_sha256": "24dbcabb5f0e0f3b341aab3bc2677992ed54a22ea92512104bbe191cabc57950",
+    "source_scope": "Entire repo/source tree, all selected test sources, this runner and build-config.json",
+    "tests": {
+      "dirty32_test": {
+        "status": "PASS",
+        "compile": {
+          "argv": [
+            "/usr/bin/clang++",
+            "-std=c++20",
+            "-O2",
+            "-Wall",
+            "-Wextra",
+            "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+            "-g",
+            "-fsanitize=address,undefined",
+            "-fno-omit-frame-pointer",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/dirty32_test.cpp",
+            "-o",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/dirty32_test"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 4.195967250000001
+        },
+        "binary_sha256": "7d8dab422d77fdaa0d267de1cfd5c91c575b23232abef5d4780f20843b2f27fc",
+        "run": {
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/dirty32_test"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 0.7160684589999997
+        },
+        "checks": 27775
+      },
+      "direct_cache_smoke": {
+        "status": "PASS",
+        "compile": {
+          "argv": [
+            "/usr/bin/clang++",
+            "-std=c++20",
+            "-O2",
+            "-Wall",
+            "-Wextra",
+            "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+            "-g",
+            "-fsanitize=address,undefined",
+            "-fno-omit-frame-pointer",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/direct_cache_smoke.cpp",
+            "-o",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/direct_cache_smoke"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 3.602849375
+        },
+        "binary_sha256": "98a939fd165eec33123ea67d0b0a8125fd2fc8c3e96a7bd1a159a648284407f4",
+        "run": {
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/direct_cache_smoke"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 1.0002722499999996
+        },
+        "checks": [
+          "native_L1_read_filter",
+          "native_L1_write_no_allocate",
+          "128B_fill_RFO",
+          "individual_dirty32_sparse_and_adjacent",
+          "no_final_flush",
+          "dirty_conservation",
+          "broadcast_source_multiplicity",
+          "explicit_range_rejection",
+          "unknown_timestamps"
+        ]
+      },
+      "native_trace_test": {
+        "status": "PASS",
+        "compile": {
+          "argv": [
+            "/usr/bin/clang++",
+            "-std=c++20",
+            "-O2",
+            "-Wall",
+            "-Wextra",
+            "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+            "-g",
+            "-fsanitize=address,undefined",
+            "-fno-omit-frame-pointer",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/native_trace_test.cpp",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+            "-o",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/native_trace_test"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 11.475050125
+        },
+        "binary_sha256": "27e586dde70bd274a461f2055f4bbafd280432767862c6a40f92069a7b5c1961",
+        "run": {
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/native_trace_test",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/trace-fixture"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 0.4839444999999998
+        },
+        "checks": 18981
+      },
+      "cta_validation_test": {
+        "status": "PASS",
+        "compile": {
+          "argv": [
+            "/usr/bin/clang++",
+            "-std=c++20",
+            "-O2",
+            "-Wall",
+            "-Wextra",
+            "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+            "-g",
+            "-fsanitize=address,undefined",
+            "-fno-omit-frame-pointer",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/cta_validation_test.cpp",
+            "-o",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/cta_validation_test"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 4.862850374999999
+        },
+        "binary_sha256": "c72da30e34f9f474e58e3130938107377a7fb360987818af96ff237c02c81f34",
+        "run": {
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/shared-frontend-validation/units/cta_validation_test"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 0.5943570420000004
+        },
+        "checks": 11530
+      }
+    }
+  },
+  "gate_test": {
+    "status": "PASS_CTA_VALIDATION_EQUIVALENCE",
+    "checks": 11530,
+    "cases": 2330,
+    "GPU_executed": false,
+    "HBFSIM_executed": false
+  },
+  "limitations": [
+    "No full1138 rerun, no B8, no new NCU or GPU sampling, no XMU deployment.",
+    "Benchmark is a cold selected Decode2 layer1 GEMV/SiLU/GEMV subsequence, 512+1+512 CTA; not one full decode token.",
+    "Three serial alternating pairs. Engine is host wall time; complete child CPU is user+sys. Compilation/preparation excluded.",
+    "Other functional regression checks may run concurrently; their times are not used as speedup benchmarks.",
+    "CPU ranges overlap and median elapsed does not improve; no stable end-to-end speedup is established.",
+    "GEMV/SiLU share pre-cache materializers. Functional direct and fine cosim still have different cache order.",
+    "Original estimated-address, modeled-compute and incomplete implicit-dependency qualifications remain."
+  ]
+}

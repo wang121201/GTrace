@@ -1,5 +1,7 @@
 # 融合分支验证结果
 
+本页保留初次集成提交 `ad8afa3` 的验收记录。后续 cache 前访存模板共用、等价 CTA 校验优化及最新测试见 [共享前端报告](shared-frontend.md)。
+
 分支 `codex/tilegen-trace-cosim-20260918-r1`；B1，32 B 写回；B8 未合并。
 
 ## 实测运行时间与流量

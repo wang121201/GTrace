@@ -1,6 +1,6 @@
 #pragma once
 #include "../tilegen-tiny-full-r1/source.h"
-#include "../tilegen-full-r1/canonical-silu-driver-r1/model_plan.h"
+#include "../tilegen-full-r1/canonical-silu-driver-r1/prepared_memory.h"
 
 namespace tiny_full {
 // Model and mapper outlive this provider. The already-validated original
@@ -10,6 +10,7 @@ class SiluBinding final : public KernelBinding {
     J call_;
     const SourceBundle& source_;
     const coupling::ServiceMapper& mapper_;
+    canonical_silu::PreparedMemory prepared_memory_;
     U count_;
     std::vector<SourceNode> nodes_;
     J evidence_;
@@ -22,7 +23,7 @@ class SiluBinding final : public KernelBinding {
 public:
     SiluBinding(const canonical_silu::Model& model,const J& call,U count,
                 const coupling::ServiceMapper& mapper)
-        :model_(model),call_(call),source_(model.source()),mapper_(mapper),count_(count) {
+        :model_(model),call_(call),source_(model.source()),mapper_(mapper),prepared_memory_(model,call_),count_(count) {
         bool found=false;
         for(const auto* candidate:model_.calls)
             if(candidate->at("source_launch_key")==call_.at("source_launch_key")) {
@@ -96,7 +97,7 @@ public:
             {"memory_source_pin",source_.input.at("program_file")},
             {"original_model_validation_preserved",true},{"per_CTA_DAGNode_allocation",false},
             {"native_hardware_timing_qualified",false},{"implicit_register_dependencies_complete",false},
-            {"full_trace_saved",false},{"addresses","original canonical_silu::Model::address plus original contiguous-lane verification"}};
+            {"full_trace_saved",false},{"addresses","shared canonical_silu::PreparedMemory; original Model::address endpoint and full-grid extent guards"}};
     }
     SiluBinding(const SiluBinding&)=delete;
     SiluBinding& operator=(const SiluBinding&)=delete;
@@ -120,14 +121,8 @@ public:
         out.path=kind==Kind::Global?Path::DirectGlobal:Path::Shared;
         g::ExplicitMemorySubop sub;
         if(kind==Kind::Global) {
-            const auto& mem=source_.program.body(0).records.at(n.memory);
-            const auto& formula=model_.records.at(n.memory);sub.requested_bytes=32*U(mem.width);
-            const U va=model_.address(call_,cta,formula,0);
-            for(int lane=0;lane<32;++lane)
-                p::need(model_.address(call_,cta,formula,lane)==va+U(lane*mem.width),
-                        "exact modeled contiguous lane order");
-            // These ordinals are intentionally [-1], not all32 lane IDs.
-            sub.ranges.push_back({-1,va,sub.requested_bytes});sub.source_member_ordinals.push_back(-1);
+            sub=prepared_memory_.materialize(cta,U(n.memory));
+            const U va=sub.ranges.front().offset_bytes;
             const U last=(va+sub.requested_bytes-1)/128*128;
             for(U line=va/128*128;;line+=128) {
                 const g::CacheLineKey key{1,line};(void)mapper_.map(key);

@@ -6,6 +6,8 @@
 同一套 Model、Prepared、binding / Builder 提供快速缓存后地址流和 HBFSIM cosimulation。
 所有写回请求均为 **32 B**；读填充及 store RFO 仍为 **128 B**。
 
+最新衔接：GEMV、SiLU 的 direct binding 与精确 cosim Builder 已共用 cache 前 `PreparedMemory`，并减少等价 CTA 校验的主机分配。三组配对测试中引擎执行窗口为 **1.08×**，完整子进程 CPU 时间基本持平；不能据此声称端到端明显提速。实现、验收和范围见 [共享前端报告](docs/shared-frontend.md)。
+
 ## 独立分支与实现
 
 - 基线提交 `0e21251f126510744d1b319f043e7e6b2dae5e1f`：抽取 22 个翻译单元、171 个实际源码依赖（约 4.19 MB），展开原 VFS overlay。原工作目录未修改，B8 候选仍在另一个仓库。
@@ -31,7 +33,7 @@ direct 与 cosim 共用地址规则，**过 cache 流量不保证逐条相同**�
 要求 C++20、zlib、Python 3。默认直接 clang 构建，无须 CMake。
 
 ```sh
-python3 build.py --output build/final --jobs 2 --native --thin-lto
+python3 build.py --output build/shared-frontend-r2 --jobs 2 --native --thin-lto
 python3 run.py --input /absolute/path/workload.input --output build/direct-run --mode direct
 python3 run.py --input /absolute/path/workload.input --output build/cosim-run --mode cosim --trace
 python3 run.py --input /absolute/path/workload.input --output build/fast-run --mode cosim-fast
@@ -50,7 +52,9 @@ python3 run.py --input /absolute/path/workload.input --output build/fast-run --m
 full 导出需显式设置 `--max-trace-bytes 68719476736`（64 GiB 上限）并准备空间。
 超配额会失败并保留 `.partial`，只有读回校验完成才发布正式文件。两种模式都不做最终 dirty flush。
 
-## 验证
+## 初次融合验收
+
+以下为 `ad8afa3` 集成基线的记录。最新源码的独立原公式检查、CTA 校验负测、20-family trace 精确回归及配对性能结果见 [共享前端报告](docs/shared-frontend.md) 和 `validation/shared-frontend.json`。
 
 - 32 B：15 种 dirty mask、跨行/重复/部分写、6 种容量、step/epoch1/4/8 背压；ASan/UBSan 三模式共 59,321 项检查，每 tick 核验 dirty-sector/byte 守恒。
 - Trace：18,981 项检查；后端开关前后完成序列、周期、读写及物理统计一致，覆盖重试、损坏、截断、配额和文件发布。
@@ -65,7 +69,8 @@ full 导出需显式设置 `--max-trace-bytes 68719476736`（64 GiB 上限）并
 python3 tests/run_unit_tests.py --output build/unit-tests
 python3 tests/run_unit_tests.py --output build/unit-tests-asan --sanitize address,undefined
 python3 tests/prepare_inputs.py --source-runtime /absolute/path/canonical-full-runtime-r4 --output build/validation-inputs
-python3 tests/run_direct_projection.py --build build/final --input build/validation-inputs/families.input --output build/projection
+python3 tests/run_direct_projection.py --build build/shared-frontend-r2 --input build/validation-inputs/families.input --output build/projection
+python3 tests/run_direct_projection.py --test prepared-memory --build build/shared-frontend-r2 --input build/validation-inputs/decode-512.input --output build/prepared-memory-check
 ```
 
 准备脚本复用原封存的 CPU lowering，记录准备时间和输入 SHA，不进行 GPU 采样。

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare nine native bindings against original fine builders, using frozen input."""
+"""Run native binding or independent prepared-memory checks on frozen input."""
 import argparse
 import hashlib
 import json
@@ -24,7 +24,11 @@ def main():
     parser.add_argument('--build', type=Path, required=True, help='Completed native build with 01..21.o')
     parser.add_argument('--input', type=Path, required=True, help='Frozen compressed transport covering nine families')
     parser.add_argument('--output', type=Path, required=True, help='Fresh directory for executable and receipts')
+    parser.add_argument('--test', choices=('bindings', 'prepared-memory'), default='bindings')
     args = parser.parse_args()
+    test_source = ROOT/'tests'/('direct_projection.cpp' if args.test == 'bindings' else 'prepared_memory_test.cpp')
+    expected_status = ('PASS_ALL_NINE_NATIVE_BINDINGS_MATCH_ORIGINAL_FINE_BUILDERS' if args.test == 'bindings'
+                       else 'PASS_GEMV_SILU_SHARED_MATERIALIZERS_MATCH_ORIGINAL_FORMULAS')
     build, source, out = args.build.resolve(), args.input.resolve(), args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     config = json.loads((ROOT / 'build-config.json').read_text())
@@ -41,7 +45,7 @@ def main():
     binary, obj = out / 'direct-projection', out / 'test.o'
     commands = [
         ('compile', [compiler, *flags, '-MMD', '-MF', str(out / 'test.d'), '-c',
-                     str(ROOT / 'tests/direct_projection.cpp'), '-o', str(obj)]),
+                     str(test_source), '-o', str(obj)]),
         ('link', [compiler, *flags, str(obj),
                   *(str(build / f'{i:02d}.o') for i in range(1, len(config['translation_units']))),
                   *('-l' + x for x in config['libraries']), '-o', str(binary)]),
@@ -52,7 +56,7 @@ def main():
                    input=str(source), input_sha256=sha(source),
                    original_build_receipt=str(build / 'build-receipt.json'),
                    original_build_receipt_sha256=sha(build / 'build-receipt.json'),
-                   test_source_sha256=sha(ROOT / 'tests/direct_projection.cpp'), steps=[])
+                   test=args.test, test_source=str(test_source), test_source_sha256=sha(test_source), steps=[])
     try:
         for name, command in commands:
             before = resource.getrusage(resource.RUSAGE_CHILDREN)
@@ -74,9 +78,9 @@ def main():
             if sha(ROOT/path) != expected:
                 raise RuntimeError('source changed during projection test: '+path)
         result = json.loads((out / 'run.stdout').read_text())
-        if result['status'] != 'PASS_ALL_NINE_NATIVE_BINDINGS_MATCH_ORIGINAL_FINE_BUILDERS':
+        if result['status'] != expected_status:
             raise RuntimeError('exact projection comparison did not pass')
-        receipt.update(status='PASS_ALL_NINE_NATIVE_BINDINGS_MATCH_ORIGINAL_FINE_BUILDERS',
+        receipt.update(status=expected_status,
                        binary_sha256=sha(binary), result_sha256=sha(out / 'run.stdout'))
     except Exception as error:
         receipt.update(status='FAIL', error=str(error))

@@ -4,6 +4,8 @@
 #include "gpu.h"
 #include "cta_sparse_slots.h"
 #include "cta_warp_placement.h"
+#include <algorithm>
+#include <array>
 #include <functional>
 #include <limits>
 #include <map>
@@ -11,6 +13,8 @@
 #include <set>
 #include <stdexcept>
 #include <string>
+#include <string_view>
+#include <unordered_set>
 #include <vector>
 
 namespace GTSim {
@@ -324,15 +328,21 @@ public:
         const auto& span=spec_.spans.at(c);
         require(owned.size()==static_cast<std::size_t>(span.node_count),"CTA node count");
         const int first=span.first_node;
-        std::set<std::string> names;
+        // The owner keeps every name alive throughout this read-only gate.
+        std::unordered_set<std::string_view> names;names.reserve(owned.size());
+        std::array<int,32> warp_tokens{};
+        for(int local=0;local<spec_.warps_per_cta;++local)warp_tokens[local]=warp_token(c,local);
+        // A per-node generation preserves the shared completion/issue duplicate
+        // domain without allocating a tree for each node. Check bounds first.
+        std::vector<int> edge_generation(span.node_count,-1);
         std::size_t ranges=0;
         // Validate the ENTIRE CTA before installing any pointer/ready entry.
         for(int i=0;i<span.node_count;++i) {
             auto* n=owned[i].get();
             require(n && n->id==first+i && n->thread_block_id==c &&
                     n->sm_id==c%spec_.sm_count,"CTA global identity/placement");
-            bool valid_warp=false;
-            for(int local=0;local<spec_.warps_per_cta;++local) valid_warp|=n->warp_id==warp_token(c,local);
+            const auto warp_end=warp_tokens.begin()+spec_.warps_per_cta;
+            const bool valid_warp=std::find(warp_tokens.begin(),warp_end,n->warp_id)!=warp_end;
             require(valid_warp,"CTA scheduler warp token identity");
             require(names.insert(n->name).second,"CTA duplicate node name");
             require(n->op_type==OpType::LD_DRAM2REG || n->op_type==OpType::ST_REG2DRAM ||
@@ -409,9 +419,14 @@ public:
                     n->peer_cta_id==-1 && n->target_sm_id==-1,"F1 unsupported group/remote coupling");
             require(!n->finished && n->start==-1 && n->end==-1 &&
                     n->children.empty() && n->issue_children.empty(),"CTA not fresh source node");
-            std::set<int> edges;
-            for(int dep:n->depends_on)require(dep>=first && dep<n->id && edges.insert(dep).second,"CTA nonlocal/non-topological/duplicate completion dependency");
-            for(int dep:n->issue_depends_on)require(dep>=first && dep<n->id && edges.insert(dep).second,"CTA nonlocal/non-topological/duplicate issue dependency");
+            const auto unique_edge=[&](int dep) {
+                if(dep<first||dep>=n->id)return false;
+                auto& generation=edge_generation[dep-first];
+                if(generation==i)return false;
+                generation=i;return true;
+            };
+            for(int dep:n->depends_on)require(unique_edge(dep),"CTA nonlocal/non-topological/duplicate completion dependency");
+            for(int dep:n->issue_depends_on)require(unique_edge(dep),"CTA nonlocal/non-topological/duplicate issue dependency");
             for(const auto& sub:n->explicit_memory_subops) {
                 require(sub.ranges.size()<=limits_.max_explicit_ranges_per_cta-ranges,
                         "CTA explicit range budget exceeded");

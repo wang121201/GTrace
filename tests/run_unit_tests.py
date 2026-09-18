@@ -12,7 +12,7 @@ import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-TESTS = ('dirty32_test', 'direct_cache_smoke', 'native_trace_test')
+TESTS = ('dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test')
 HBF = ('hbm/hbm_device.cpp', 'resource_calendar.cpp', 'gap_calendar.cpp', 'address_heatmap.cpp')
 
 
@@ -93,7 +93,9 @@ def main():
                     row['checks'] = int(match.group(1))
                 else:
                     result = json.loads(text)
-                    expected = 'PASS' if name == 'native_trace_test' else 'PASS_FUNCTIONAL_DIRECT_CACHE_SMOKE'
+                    expected = {'native_trace_test':'PASS',
+                                'direct_cache_smoke':'PASS_FUNCTIONAL_DIRECT_CACHE_SMOKE',
+                                'cta_validation_test':'PASS_CTA_VALIDATION_EQUIVALENCE'}[name]
                     if result.get('status') != expected:
                         raise ValueError('missing unit-test success status')
                     row['checks'] = result.get('checks')
@@ -114,7 +116,7 @@ def main():
         CPU_only=True, GPU_or_model_workflow_executed=False, parallel_test_limit=2,
         elapsed_seconds=time.monotonic()-started, source_tree_unchanged=unchanged,
         source_manifest='source-sha256.json', source_manifest_sha256=sha(out/'source-sha256.json'),
-        source_scope='Entire repo/source tree, selected three test sources, this runner and build-config.json', tests=rows)
+        source_scope='Entire repo/source tree, all selected test sources, this runner and build-config.json', tests=rows)
     (out/'summary.json').write_text(json.dumps(summary, indent=2)+'\n')
     print(json.dumps(summary, indent=2))
     return 0 if summary['status'] == 'PASS' else 1

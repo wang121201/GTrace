@@ -1,10 +1,10 @@
 #pragma once
-#include "model_plan.h"
+#include "prepared_memory.h"
 namespace canonical_silu {
 using namespace native_sequence;
 struct ModeledBuilder:Builder {
- const Model& model;const J& call;tiny_sha::Sha256 address_digest;
- ModeledBuilder(const Model& m,const J& c,const SourceBundle& s,const coupling::ServiceMapper& map,U count):Builder(s.program,s.registers,map,count,s.range_plan),model(m),call(c){}
+ const Model& model;const J& call;PreparedMemory prepared_memory;tiny_sha::Sha256 address_digest;
+ ModeledBuilder(const Model& m,const J& c,const SourceBundle& s,const coupling::ServiceMapper& map,U count):Builder(s.program,s.registers,map,count,s.range_plan),model(m),call(c),prepared_memory(m,c){}
     g::CtaGraphStore::Owned build(int c){
         HostTimer timer(build_seconds);
         const auto& body=program.body(0);g::CtaGraphStore::Owned nodes;nodes.reserve(registers.nodes.size());
@@ -21,11 +21,8 @@ struct ModeledBuilder:Builder {
             if(r.kind=="barrier")n->setup_latency=0;
             if(r.kind=="global"&&!body.records[r.memory].lanes.empty()){
                 const auto& mem=body.records[r.memory];n->matrix_id=1;n->memory_access_granularity_bytes=1;n->memory_coalesce_bytes=128;
-                g::ExplicitMemorySubop sub;
-                const auto& formula=model.records.at(r.memory);sub.requested_bytes=32*U(mem.width);
-                const U va=model.address(call,U(c),formula,0);
-                for(int lane=0;lane<32;++lane)p::need(model.address(call,U(c),formula,lane)==va+U(lane*mem.width),"exact modeled contiguous lane order");
-                sub.ranges.push_back({-1,va,sub.requested_bytes});sub.source_member_ordinals.push_back(-1);
+                auto sub=prepared_memory.materialize(U(c),U(r.memory));
+                const U va=sub.ranges.front().offset_bytes;
                 const U last=(va+sub.requested_bytes-1)/128*128;
                 for(U line=va/128*128;;line+=128){(void)mapper.map(g::CacheLineKey{1,line});if(line==last)break;}
                 address_digest.add(std::to_string(c)+":"+std::to_string(r.memory)+":"+std::to_string(va)+":"+std::to_string(sub.requested_bytes)+"\n");
