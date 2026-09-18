@@ -1,0 +1,12 @@
+{
+  "schema": "SGLANG_PD_LOCAL_CPU_PREFLIGHT_V1",
+  "status": "PASS_LOCAL_CPU_ONLY",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "test_incomplete_and_unknown_range (test_capture.BoundaryTest) ... ok\ntest_native_scope_decode32 (test_capture.BoundaryTest) ... ok\ntest_ranges_preserve_whole_workflow (test_capture.BoundaryTest) ... ok\ntest_actual_control_gate (test_capture.ContractTest) ... ok\ntest_default_and_legacy_contract (test_capture.ContractTest) ... ok\ntest_no_shared_mutable_contract (test_capture.ContractTest) ... ok\ntest_shape_rejections (test_capture.ContractTest) ... ok\ntest_exact_integer_bytes_and_same_window (test_capture.CounterTest) ... ok\ntest_reject_bad_ranges_units_and_values (test_capture.CounterTest) ... ok\ntest_descendants_and_reused_pid (test_capture.OwnershipTest) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.004s\n\nOK\n",
+  "python": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "GPU_executed": false,
+  "remote_executed": false,
+  "source_AST_checked": true,
+  "packages_imported_on_GPU_host_not_locally": true
+}

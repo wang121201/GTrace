@@ -1,0 +1,8 @@
+{
+  "status": "PASS_CPU_NATIVE_OBSERVER_CLOSURE",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "test_all_33_and_exact_new_keys (test_observer.ObserverTests) ... ok\ntest_hash_epoch_static_and_pair_rejections (test_observer.ObserverTests) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.026s\n\nOK\n",
+  "GPU_executed": false,
+  "remote_executed": false
+}

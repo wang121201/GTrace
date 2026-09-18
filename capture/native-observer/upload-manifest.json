@@ -1,0 +1,31 @@
+{
+  "schema": "SGLANG_PD_OBSERVER_UPLOAD_V1",
+  "remote_directory": "/home/xmu/nvidiagds/codex-runs/tilegen-stage-p1024d32-20260918-zhi/observer",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2764,
+      "sha256": "d75d24f9da8d3413690db170c8594417dc8c0eee614d546ee36dcea891efa395"
+    },
+    {
+      "path": "cpu-preflight.json",
+      "bytes": 408,
+      "sha256": "b729172ef2c7e8505ebbcd2cb4f337943eb8ee8490d3497a2543356dad82d65d"
+    },
+    {
+      "path": "prepare_package.py",
+      "bytes": 1486,
+      "sha256": "58804999dec3724f500b94781e4ed49264a758c7106504f3ce7dbec60069d558"
+    },
+    {
+      "path": "run_observer.py",
+      "bytes": 16351,
+      "sha256": "9e4daec59d96256e297b6ed9937ad6144406f5248c4848f63d7a38f2b1d9667a"
+    },
+    {
+      "path": "test_observer.py",
+      "bytes": 5595,
+      "sha256": "9c1b40f8cea7388b6d7bdeac850e541eda081c5de5405552102deca6b7865805"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "SGLANG_PD_CAPTURE_UPLOAD_V1",
+  "status": "LOCAL_CPU_READY_NO_GPU_EXECUTION",
+  "remote_directory": "/home/xmu/nvidiagds/codex-runs/tilegen-stage-p1024d32-20260918-zhi/capture",
+  "immutable_source_files": true,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7393,
+      "sha256": "bca088f4ed2a02ac9f388f8239a6b7a0b21407bad4950ab4032dc1b5722403e3"
+    },
+    {
+      "path": "cpu-preflight.json",
+      "bytes": 1150,
+      "sha256": "3d889d7f2e6d54ab345171ee774fa81e84d501352735fa4057cb197885a77a6a"
+    },
+    {
+      "path": "native-source-reference.json",
+      "bytes": 2637,
+      "sha256": "74c51b7846c378d6b181d0f195acadc8ae6edaa89c0796c51952bbd24945ba14"
+    },
+    {
+      "path": "native_ncu_driver.py",
+      "bytes": 10051,
+      "sha256": "f944fd786274a629476131730d39e2b4c65b55036f3f244acbdbd931dfe6a70f"
+    },
+    {
+      "path": "origin.json",
+      "bytes": 1126,
+      "sha256": "e60abe48e00e4ea5e5609186f4353d2f237959a9fb034b646595ab216facee43"
+    },
+    {
+      "path": "prepare_package.py",
+      "bytes": 1999,
+      "sha256": "3da0c5ec19e3f9418d37cb031bb5371606082c135fe20f19f0ebc3383f50e609"
+    },
+    {
+      "path": "run_capture.py",
+      "bytes": 20024,
+      "sha256": "420380eb813d46a50e07d2ea2ba787432b5f85f1700d0ff8d483fda19723fea0"
+    },
+    {
+      "path": "sglang_driver.py",
+      "bytes": 23082,
+      "sha256": "eda586e0fd864d23ea8eafffe3bbb3d6d178f16e02c404de5170d2d481b87130"
+    },
+    {
+      "path": "test_capture.py",
+      "bytes": 6053,
+      "sha256": "b3bff437abefafa7d18d926f2b6887264ad05385692b779453f0b855f08fcd86"
+    },
+    {
+      "path": "workload.py",
+      "bytes": 4227,
+      "sha256": "2a351587af5a714986b8b62e6b70c136e01cd289fc107c23193c5ed87c1d702e"
+    }
+  ]
+}

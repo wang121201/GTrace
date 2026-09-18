@@ -1,0 +1,26 @@
+{
+  "schema": "SGLANG_PD_CAPTURE_ORIGINS_V1",
+  "original_files_unchanged": true,
+  "sources": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/outputs/sglang-native-input-r10/sources/sglang_driver.py",
+      "bytes": 22901,
+      "sha256": "117706cc3dff425749078ecede21674af6ccd4d855d1731f7a7330c224edaf30"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/sglang-timing/ncu_run/native_ncu_driver.py",
+      "bytes": 9756,
+      "sha256": "e5e93a3788055d8ad917ea4000176c916ad2e9c99dea1988a9ad729d10731ebe"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/sglang-timing/ncu_run/run_native_ncu.py",
+      "bytes": 8908,
+      "sha256": "1cc907f2d8be262eeb6812f17f7a512829b12e375b765622aed8316b52d03264"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/llm-threeway-r1/hardware/ncu-resume/model-identity.json",
+      "bytes": 3374,
+      "sha256": "d8ae75c60ff9629a0906d2215379f2663953d1c4e0e2ec1954033b20ba142e5a"
+    }
+  ]
+}
