@@ -12,7 +12,7 @@ import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-TESTS = ('dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test', 'trace_replay_test', 'stage_replay_test', 'direct_phase_profile_test')
+TESTS = ('dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test', 'trace_replay_test', 'stage_replay_test', 'direct_phase_profile_test', 'replay_phase_report_test', 'replay_backend_test')
 HBF = ('hbm/hbm_device.cpp', 'resource_calendar.cpp', 'gap_calendar.cpp', 'address_heatmap.cpp')
 
 
@@ -70,7 +70,10 @@ def main():
 
     def test(name):
         sources = [ROOT/'tests'/(name+'.cpp')]
-        if name in ('native_trace_test', 'trace_replay_test', 'stage_replay_test'):
+        if name == 'replay_backend_test':
+            replay_config = json.loads((ROOT/'replay-build-config.json').read_text())
+            sources += [ROOT/p for p in replay_config['translation_units'] if '/hbfsim-latest/' in p]
+        elif name in ('native_trace_test', 'trace_replay_test', 'stage_replay_test'):
             sources += [ROOT/'source/work/hbfsim-latest/upstream/src/physical'/p for p in HBF]
         executable = out/name
         build = command([compiler]+flags+[str(p) for p in sources]+['-o', str(executable)], out, name+'.compile', env, 180)
@@ -98,7 +101,8 @@ def main():
                                 'cta_validation_test':'PASS_CTA_VALIDATION_EQUIVALENCE',
                                 'trace_replay_test':'PASS_TRACE_REPLAY_EXACT_TICK_REFERENCE',
                                 'stage_replay_test':'PASS_STAGE_REPLAY_EXACT_TICK_REFERENCE',
-                                'direct_phase_profile_test':'PASS_DIRECT_PHASE_PROFILE'}[name]
+                                'direct_phase_profile_test':'PASS_DIRECT_PHASE_PROFILE',
+                                'replay_phase_report_test':'PASS', 'replay_backend_test':'PASS'}[name]
                     if result.get('status') != expected:
                         raise ValueError('missing unit-test success status')
                     row['checks'] = result.get('checks')

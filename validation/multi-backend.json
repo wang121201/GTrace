@@ -1,0 +1,88 @@
+{
+  "schema": "TILEGEN_MULTI_BACKEND_VALIDATION_V1",
+  "status": "PASS_BOUNDED_NATIVE_TRACE_NOT_FULL_WORKLOAD",
+  "branch": "codex/tilegen-trace-cosim-20260918-r1",
+  "workload_scope": "B1 native P32/D2 source, Decode2 selected layer-1 GEMV512/SiLU1/GEMV512 CTA prefix; not full Decode or P1024/D32",
+  "build": "build/multi-backend-r3",
+  "tests": {
+    "unit": {
+      "path": "build/multi-backend-unit-r1/summary.json",
+      "sha256": "d76dff6945dcee7a72174c67589ea7b9269b3b29041101e91f5555779d765cd5",
+      "status": "PASS"
+    },
+    "CLI": {
+      "path": "build/multi-backend-cli-r2/summary.json",
+      "sha256": "8fa43862ce30ebc28bec8a1c3a9b6336609167d3c66cee439e8a0a2c952e932e",
+      "status": "PASS"
+    },
+    "sanitizers": {
+      "path": "build/multi-backend-asan-r1/summary.json",
+      "sha256": "8409291a6f62f7e2053eef829c19510c0777c935fc067a4deb2142a40e9b2d73",
+      "status": "PASS"
+    }
+  },
+  "backends": {
+    "gddr6": {
+      "run_directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/multi-backend-validation-r3/gddr6",
+      "result_sha256": "721138a238c7ef3fe92b4081633e7148af5b0ac8178e273599d95682660c24b9",
+      "receipt_sha256": "4ee1ce310865f1af7cdfca131f292123411ed2e124c3794aea37148f19d304f9",
+      "binary_sha256": "807128398c3e379126b2cb2de60f2b3999a849d7e7ab79e0014a2987af5ea2b8",
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "CPU_seconds": 1.3496890000000001,
+      "CPU_minutes": 0.02249481666666667,
+      "elapsed_seconds": 1.977049458,
+      "elapsed_minutes": 0.0329508243,
+      "read_bytes": 75595776,
+      "write_bytes": 33920,
+      "makespan_ns": 227875.30821889042,
+      "stage_makespan_ns": 227875.30821889042,
+      "persistence_tail_ns": 0.0,
+      "aggregate_bandwidth_GBps": 331.89070194192476,
+      "physical_payload_read_bytes": 75595776,
+      "physical_payload_write_bytes": 33920,
+      "exact_regression_against_r2": true
+    },
+    "hbm": {
+      "run_directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/multi-backend-validation-r3/hbm",
+      "result_sha256": "502c0434b8771e2e340ce86c6b8f6e53b92d6b8fb81b204bede0de2a5c260187",
+      "receipt_sha256": "c8c3dec331b9e95720c672436a76ea5d45d3b2e789fd3b3d94c93eb024e5e5f8",
+      "binary_sha256": "807128398c3e379126b2cb2de60f2b3999a849d7e7ab79e0014a2987af5ea2b8",
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "CPU_seconds": 1.6054089999999999,
+      "CPU_minutes": 0.026756816666666666,
+      "elapsed_seconds": 1.648028583,
+      "elapsed_minutes": 0.02746714305,
+      "read_bytes": 75595776,
+      "write_bytes": 33920,
+      "makespan_ns": 48106.65785276269,
+      "stage_makespan_ns": 48106.65785276269,
+      "persistence_tail_ns": 0.0,
+      "aggregate_bandwidth_GBps": 1572.1253434706587,
+      "physical_payload_read_bytes": 75595776,
+      "physical_payload_write_bytes": 33920,
+      "exact_regression_against_r2": true
+    },
+    "hbf": {
+      "run_directory": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/multi-backend-validation-r3/hbf",
+      "result_sha256": "d86bf8fbf49fa11c3c69e2c5f893edaa548588d25d0d0156f43d1e3c1cd889e4",
+      "receipt_sha256": "46f08ce45bce02419393b44289ce1aa77ef6190f97e0033e70b88b870fd6320c",
+      "binary_sha256": "807128398c3e379126b2cb2de60f2b3999a849d7e7ab79e0014a2987af5ea2b8",
+      "trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "CPU_seconds": 2.392683,
+      "CPU_minutes": 0.03987805,
+      "elapsed_seconds": 2.41023625,
+      "elapsed_minutes": 0.040170604166666665,
+      "read_bytes": 75595776,
+      "write_bytes": 33920,
+      "makespan_ns": 74945705.01855929,
+      "stage_makespan_ns": 74789484.42097099,
+      "persistence_tail_ns": 156220.59758830324,
+      "aggregate_bandwidth_GBps": 1.009126486718236,
+      "physical_payload_read_bytes": 2417844224,
+      "physical_payload_write_bytes": 53248,
+      "exact_regression_against_r2": true
+    }
+  },
+  "no_NCU_fit": true,
+  "P1024D32_native_model_admitted": false
+}

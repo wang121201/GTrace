@@ -32,8 +32,13 @@ def main():
     parser.add_argument('--source-run', type=Path, required=True, help='Successful direct run containing result.json, run-receipt.json, dram.tgn')
     parser.add_argument('--input', type=Path, required=True, help='Original sealed transport; only control JSON is decoded')
     parser.add_argument('--output', type=Path, required=True, help='Fresh output directory')
-    parser.add_argument('--binary', type=Path, default=ROOT/'build/replay-r2/tilegen_replay')
+    parser.add_argument('--binary', type=Path, default=ROOT/'build/multi-backend-r3/tilegen_replay')
     parser.add_argument('--mode', choices=('memory-only', 'stage-overlap'), default='memory-only')
+    parser.add_argument('--backend', choices=('source-gddr6', 'gddr6', 'hbm', 'hbf'), default='source-gddr6')
+    parser.add_argument('--backend-config', type=Path, help='Explicit target HBFSIM system configuration; source control remains sealed')
+    parser.add_argument('--hbf-max-live', type=int, default=512, help='HBF logical parent credits, not DRAM burst credits')
+    parser.add_argument('--max-hbf-seed-pages', type=int, default=8_388_608,
+                        help='Bound on initial HBF touched logical pages; 4096 B/page')
     parser.add_argument('--prefetch-stages', type=int, choices=(1, 2, 4, 8), default=2,
                         help='Stage mode: maximum memory/compute-incomplete stages; 1 disables cross-stage overlap')
     parser.add_argument('--drain', choices=('global', 'independent'), default='global')
@@ -43,6 +48,11 @@ def main():
     args = parser.parse_args()
     if not 224 <= args.max_trace_bytes <= 64 << 30 or not 0 < args.max_cycles <= (1 << 63)-1 or args.timeout_seconds <= 0:
         parser.error('invalid trace/cycle/time budget')
+    if ((args.backend == 'source-gddr6') != (args.backend_config is None)
+            or not 1 <= args.hbf_max_live <= 512 or not 1 <= args.max_hbf_seed_pages <= 8_388_608):
+        parser.error('target backend requires --backend-config; source-gddr6 uses sealed source config; invalid HBF budget')
+    if args.backend == 'hbf' and args.mode != 'stage-overlap':
+        parser.error('HBF logical replay currently requires stage-overlap and its explicit phase profile')
     binary, source, original, out = (p.resolve() for p in (args.binary, args.source_run, args.input, args.output))
     staged = args.mode == 'stage-overlap'
     mode = 'stage-overlap-replay' if staged else 'memory-only-replay'
@@ -52,12 +62,13 @@ def main():
                    mode=mode, CPU_only=True, GPU_sampling=False,
                    compute_scheduled=staged, GPU_stall_scheduled=False,
                    prefetch_stages=args.prefetch_stages if staged else None,
+                   backend=args.backend,
                    hardware_timing_calibrated=False)
     child_began = child_finished = before = after = None
     code = None
     try:
         if not binary.is_file():
-            raise ValueError('build replay binary first: python3 build.py --replay --output build/replay-r2 --native --thin-lto')
+            raise ValueError('build replay binary first: python3 build.py --replay --output build/multi-backend-r3 --native --thin-lto')
         def snapshot(name, raw):
             path = out/name
             path.write_bytes(raw)
@@ -102,6 +113,12 @@ def main():
             source_run_receipt=snapshot('source-run-receipt.json', run_bytes),
             native_config=snapshot('native-memory.cfg', bounded(declared_cfg, 1 << 20)),
             max_trace_bytes=args.max_trace_bytes, max_cycles=args.max_cycles, drain=args.drain)
+        spec['backend'] = args.backend
+        if args.backend_config:
+            spec['target_config'] = snapshot('target-memory.cfg', bounded(args.backend_config.resolve(), 1 << 20))
+        if args.backend == 'hbf':
+            spec.update(hbf_max_live=args.hbf_max_live, max_hbf_seed_pages=args.max_hbf_seed_pages,
+                        hbf_seed_policy='ALL_TOUCHED_SERVICE_PAGES_INITIALLY_RESIDENT_MUTABLE')
         spec_path = out/'replay-input.json'
         spec_path.write_text(json.dumps(spec, indent=2)+'\n')
         argv = [str(binary), str(spec_path)]
@@ -134,6 +151,8 @@ def main():
                        or replay.get('window_stages') != args.prefetch_stages
                        or replay.get('stage_ledger_closed') is not True):
             raise ValueError('stage replay did not preserve the declared phase profile/barriers')
+        if replay.get('target_backend', {}).get('kind') != args.backend:
+            raise ValueError('replay target backend identity differs')
         (out/'result.json.partial').rename(out/'result.json')
         receipt.update(status='PASS', result_sha256=sha(out/'result.json'))
     except subprocess.TimeoutExpired:

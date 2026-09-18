@@ -1,5 +1,7 @@
 #include "trace_replay.h"
 #include "stage_replay.h"
+#include "hbf_replay_backend.h"
+#include "replay_phase_report.h"
 #include "work/tilegen-norm-shared-r1/adapter/integration.h"
 #include <fstream>
 #include <iostream>
@@ -23,11 +25,45 @@ std::string verified(const J& spec,const char* name,U cap){
 struct Identity final:GTSim::L2DramAddressMapper{
     U map(const GTSim::CacheLineKey& k)const override{need(k.matrix_id==1,"expected process VA root 1");return k.line_addr;}
 };
+bool declares_option(const std::string& bytes,const std::string& option){
+    std::istringstream stream(bytes);std::string line;
+    while(std::getline(stream,line)){
+        const auto begin=line.find_first_not_of(" \t\r");
+        if(begin==std::string::npos||line[begin]=='#')continue;
+        const auto equal=line.find('=',begin);if(equal==std::string::npos)continue;
+        const auto end=line.find_last_not_of(" \t\r",equal-1);
+        if(end!=std::string::npos&&line.substr(begin,end-begin+1)==option)return true;
+    }return false;
+}
+void check_target_family(const hbfsim::physical::hbm::HbmConfig& cfg,
+                         const std::string& kind,const std::string& bytes){
+    const auto& d=cfg.device;
+    // HbmDevice::standard is a fixed core identity even for the GDDR overlay.
+    // Gate the supported interface organizations, not that static string.
+    if(kind=="gddr6")need(d.pseudo_channels_per_channel==1&&d.channel_width_bits==16&&d.burst_length==16,
+        "gddr6 target requires the supported x16/1-PC/BL16 numeric overlay organization");
+    if(kind=="hbm")need(d.pseudo_channels_per_channel==2&&d.channel_width_bits==64&&d.burst_length==8,
+        "hbm target requires the supported x64/2-PC/BL8 HBM organization");
+    if(kind=="hbf")need(declares_option(bytes,"hbf-standard"),
+        "hbf target config must explicitly declare hbf-standard; implicit default HBF is not a target identity");
+}
+J target_identity(const hbfsim::physical::hbm::HbmConfig& cfg,const std::string& kind,const std::string& path){
+    const J resolved=coupling::native_identity(cfg,path);J out;
+    for(const auto* key:{"resolved_device","resolved_timing","resolved_controller","derived","address_mapping_scheme"})out[key]=resolved.at(key);
+    out["kind"]=kind;out["native_config_file"]=path;out["raw_core_standard"]=std::string(cfg.standard);
+    out["raw_core_type"]="hbfsim::physical::hbm::HbmDevice";
+    out["qualification"]="EXPLICIT_UNCALIBRATED_MEMORY_CONFIGURATION";
+    out["identity_policy"]="explicit requested family plus supported interface organization; raw core standard is preserved, not a JEDEC conformance qualification";
+    out["hardware_timing_calibrated"]=false;return out;
+}
 J run(const J& spec){
     need(spec.at("schema")=="TILEGEN_TRACE_REPLAY_INPUT_V1","unknown replay input schema");
     const auto mode=spec.value("mode",std::string("memory-only-replay"));
     need(mode=="memory-only-replay"||mode=="stage-overlap-replay","unknown replay mode");
     const bool staged=mode=="stage-overlap-replay";
+    const auto backend=spec.value("backend",std::string("source-gddr6"));
+    need(backend=="source-gddr6"||backend=="gddr6"||backend=="hbm"||backend=="hbf","unknown target backend");
+    need(backend!="hbf"||staged,"HBF logical backend requires explicit stage mode");
     const auto transport=J::parse(verified(spec,"control",1<<20));
     const auto source_bytes=verified(spec,"source_result",128<<20);
     const auto source=J::parse(source_bytes);
@@ -50,6 +86,16 @@ J run(const J& spec){
     const auto cfg=sg_hbf::native_config_file(config_path);
     need(read_file(config_path,1<<20)==config_bytes,"native config changed while resolving");
     coupling::match_reference(profile.at("gddr6"),cfg);
+    auto target_cfg=cfg;hbfsim::app::SystemConfig target_system;
+    std::string target_path=config_path,target_bytes=config_bytes;
+    if(backend!="source-gddr6"){
+        target_bytes=verified(spec,"target_config",1<<20);
+        target_path=spec.at("target_config").at("path").get<std::string>();
+        hbfsim::app::SystemConfigBuilder builder;builder.apply_file(target_path);target_system=builder.resolve();
+        need(read_file(target_path,1<<20)==target_bytes,"target config changed while resolving");
+        target_cfg=target_system.hbm;
+        check_target_family(target_cfg,backend,target_bytes);
+    }else need(!spec.contains("target_config"),"source backend cannot override sealed native config");
     const auto& cj=profile.at("clock");
     sg_hbf::Clock clock(coupling::natural(cj.at("period_ps_numerator")),coupling::natural(cj.at("period_ps_denominator")));
     const auto drain_name=spec.at("drain").get<std::string>();
@@ -85,19 +131,47 @@ J run(const J& spec){
     }
     std::unique_ptr<trace_replay::Replay> memory;
     std::unique_ptr<stage_replay::Replay> stages;
-    if(staged)stages=std::make_unique<stage_replay::Replay>(clock,cfg,phases,
+    J seed_receipt=nullptr;
+    auto check_record=[&](const native_trace::Record& record){
+        need(record.source_matrix_id==1&&record.call_index<call_count,"trace source/call context differs");
+        const U base=mapper.map({1,record.source_line_address});
+        need(record.service_address>=base&&record.service_address-base<128&&
+            record.bytes<=128-(record.service_address-base),"trace service address differs from declared source map");
+    };
+    if(backend=="hbf"){
+        need(spec.at("hbf_seed_policy")=="ALL_TOUCHED_SERVICE_PAGES_INITIALLY_RESIDENT_MUTABLE","explicit HBF initial image policy required");
+        need(target_system.hbf.device.page_size_bytes==4096,"HBF replay requires native 4096 B logical pages");
+        const U page_slots=(cfg.device.capacity_bytes+4095)/4096,limit=coupling::natural(spec.at("max_hbf_seed_pages"));
+        need(page_slots<=8388608&&limit>0&&limit<=8388608,"HBF prepass bitmap/seed page bound exceeded");
+        std::vector<bool> touched(std::size_t(page_slots),false);U count=0;
+        const auto prepass=native_trace::validate(spec.at("trace_file").get<std::string>(),expected.at("file_sha256"),
+            coupling::natural(spec.at("max_trace_bytes")),[&](const native_trace::Record& record){
+                check_record(record);const U page=record.service_address/4096;
+                need(page<page_slots&&record.bytes<=4096-record.service_address%4096,"HBF source request crosses seed page");
+                if(!touched[std::size_t(page)]){need(count<limit,"HBF seed page budget exceeded");touched[std::size_t(page)]=true;++count;}
+            });
+        std::vector<hbf_replay_backend::PageRange> ranges;J rows=J::array();
+        for(U page=0;page<page_slots;){if(!touched[std::size_t(page)]){++page;continue;}
+            const U first=page;while(page<page_slots&&touched[std::size_t(page)])++page;
+            ranges.push_back({first,page-first});rows.push_back({{"first_lpn",first},{"page_count",page-first}});
+        }
+        seed_receipt={{"policy",spec.at("hbf_seed_policy")},{"page_size_bytes",4096},{"pages",count},
+            {"ranges",rows},{"range_sha256",tiny_sha::sha256(rows.dump())},{"trace_sha256",prepass.file_sha256},
+            {"logical_address_mapping","unchanged packed source service byte address reinterpreted as HBF logical address"},
+            {"qualification","all touched pages initially provisioned; allocation lifetime and real initial contents not recovered; no preload time charged"}};
+        auto target=std::make_unique<hbf_replay_backend::Backend>(clock,target_system,ranges,coupling::natural(spec.at("hbf_max_live")));
+        stages=std::make_unique<stage_replay::Replay>(clock,std::move(target),phases,
+            coupling::natural(spec.at("prefetch_stages")),coupling::natural(spec.at("max_cycles")));
+    }else if(staged)stages=std::make_unique<stage_replay::Replay>(clock,target_cfg,phases,
         coupling::natural(spec.at("prefetch_stages")),coupling::natural(profile.at("max_live")),
         coupling::natural(profile.at("credits_per_pc")),drain,coupling::natural(spec.at("max_cycles")));
-    else memory=std::make_unique<trace_replay::Replay>(clock,cfg,coupling::natural(profile.at("max_live")),
+    else memory=std::make_unique<trace_replay::Replay>(clock,target_cfg,coupling::natural(profile.at("max_live")),
         coupling::natural(profile.at("credits_per_pc")),drain,coupling::natural(spec.at("max_cycles")),call_count);
     // Validation is streaming. All simulation state is private and provisional
     // until whole-file SHA, footer, per-call census and final drain pass.
     const auto trace=native_trace::validate(spec.at("trace_file").get<std::string>(),expected.at("file_sha256"),
         coupling::natural(spec.at("max_trace_bytes")),[&](const native_trace::Record& record){
-        need(record.source_matrix_id==1&&record.call_index<call_count,"trace source/call context differs");
-        const U base=mapper.map({1,record.source_line_address});
-        need(record.service_address>=base&&record.service_address-base<128&&
-            record.bytes<=128-(record.service_address-base),"trace service address differs from declared source map");
+        check_record(record);
         if(stages)stages->accept(record);else memory->accept(record);
     });
     const auto checked=trace.to_json();
@@ -119,6 +193,16 @@ J run(const J& spec){
     need(std::all_of(seen_calls.begin(),seen_calls.end(),[](bool seen){return seen;}),"source nonempty call missing in replay");
     out["trace"]=checked;out["input_manifest"]=spec;out["batch_size"]=1;
     out["memory_model"]=coupling::native_identity(cfg,config_path);
+    out["memory_model_scope"]="sealed source GDDR6/cache/address-map profile; execution target is target_backend";
+    out["target_backend"]=target_identity(target_cfg,backend,target_path);
+    out["target_backend"]["config_sha256"]=tiny_sha::sha256(target_bytes);
+    if(backend=="hbf"){
+        // Its typed native physical/FTL snapshot is supplied by the backend.
+        out["target_backend"]["raw_core_type"]="hbfsim::host::HbfController + physical::hbf::HbfDevice";
+        out["target_backend"]["raw_core_standard"]=std::string(target_system.hbf.device.standard);
+        out["target_backend"]["HBM_parameters_scope"]="attached controller buffer only; not the HBF media geometry";
+        out["hbf_initial_image"]=seed_receipt;
+    }
     out["native_config_sha256"]=tiny_sha::sha256(config_bytes);
     out["source_declared_config_file"]=profile.at("native_hbfsim_config_file");
     out["original_direct_config_bytes_were_pinned"]=false;
@@ -127,7 +211,7 @@ J run(const J& spec){
     out["selected_source_count"]=call_count;out["selected_CTAs"]=source.at("selected_CTAs");
     out["qualification"]=staged?"EXPLICIT_UNCALIBRATED_STAGE_APPROXIMATION":
         "MEMORY_ONLY_SATURATED_REPLAY_NOT_INFERENCE_LATENCY_OR_HARDWARE_CALIBRATION";
-    if(staged){out["phase_profile"]=phases;out["phase_profile_sha256"]=tiny_sha::sha256(phases.dump());}
+    if(staged){out["phase_profile"]=phases;out["phase_profile_sha256"]=tiny_sha::sha256(phases.dump());replay_phase_report::annotate(out,source);}
     return out;
 }
 }

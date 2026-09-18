@@ -1,7 +1,7 @@
 #pragma once
 // Explicit stage approximation over an unchanged, already post-cache trace.
 // This is not a GPU instruction/DAG simulator and never reconstructs a cache.
-#include "trace_replay.h"
+#include "replay_backend.h"
 #include <vector>
 
 namespace stage_replay {
@@ -34,7 +34,7 @@ class Replay {
         U first_admission=unknown,last_admission=0,first_completion=unknown,last_completion=0;
     };
     sg_hbf::Clock clock_;
-    sg_hbf::HbfCreditBackend backend_;
+    std::unique_ptr<replay_backend::Backend> backend_;
     U window_,max_cycles_,cycle_=0,expected_records_=0;
     U next_open_=0,next_compute_=0,input_stage_=0,running_=unknown;
     U peak_active_=0,peak_metadata_=0,advance_calls_=0,safe_completion_jumps_=0,compute_event_jumps_=0;
@@ -136,18 +136,17 @@ class Replay {
             if(completion_observer_)completion_observer_(completion,cycle_);
             live_.erase(it);
         }
-        require(live_.size()==backend_.queue_depth(),"stage bounded metadata/backend lifetime mismatch");
+        require(live_.size()==backend_->queue_depth(),"stage bounded metadata/backend lifetime mismatch");
     }
     void advance() {
         require(cycle_<max_cycles_,"stage replay cycle budget exhausted");
         U next=unknown;
         const U compute_end=running_==unknown?unknown:stages_.at(running_).compute_finish;
-        const auto& admission=backend_.admission_statistics();
-        const U due=backend_.next_completion_cycle();
-        if(backend_.queue_depth()) {
+        const U due=backend_->next_completion_cycle();
+        if(backend_->queue_depth()) {
             // Unknown native schedules may produce an earlier command or
             // credit return. Never jump merely because one completion is known.
-            if(admission.accepted!=admission.native_completions_posted)next=cycle_+1;
+            if(!backend_->all_live_schedules_known())next=cycle_+1;
             else {require(due!=unknown,"posted native requests lack a completion event");next=due;}
         }
         next=std::min(next,compute_end);
@@ -164,14 +163,22 @@ class Replay {
         cycle_=next;++advance_calls_;
         // When empty this advances the shared frontier across compute only.
         // HbfCreditBackend requires refresh off; no hidden idle work is lost.
-        completions(backend_.step(cycle_));settle();
+        completions(backend_->step(cycle_));settle();
     }
 
 public:
     Replay(sg_hbf::Clock clock,const p::hbm::HbmConfig& config,const J& phase_profile,
            U window=2,U max_live=4096,U credits=32,sg_hbf::DrainMode drain=sg_hbf::DrainMode::Global,
            U max_cycles=2000000000ULL)
-        :clock_(clock),backend_(clock,config,max_live,credits,1,drain),window_(window),max_cycles_(max_cycles) {
+        :Replay(clock,std::make_unique<replay_backend::HbmBackend>(clock,config,max_live,credits,drain),
+                phase_profile,window,max_cycles){}
+    Replay(sg_hbf::Clock clock,std::unique_ptr<replay_backend::Backend> backend,const J& phase_profile,
+           U window=2,U max_cycles=2000000000ULL)
+        :clock_(clock),backend_(std::move(backend)),window_(window),max_cycles_(max_cycles) {
+        require(bool(backend_),"stage replay requires a backend");
+        const auto backend_clock=backend_->clock();
+        require(backend_clock.ps_numerator==clock_.ps_numerator&&backend_clock.cycle_denominator==clock_.cycle_denominator,
+                "stage replay/backend clocks differ");
         require(window==1||window==2||window==4||window==8,"stage window must be 1,2,4,8");
         require(max_cycles>0&&max_cycles<=U(INT64_MAX),"stage replay requires a positive signed cycle budget");
         require(phase_profile.is_object()&&phase_profile.contains("stages")&&phase_profile.at("stages").is_array(),
@@ -239,10 +246,10 @@ public:
             request.l2_subpartition_id=trace_replay::source_id<std::int32_t>(record.l2_subpartition_id);
             const bool write=record.cause==native_trace::Cause::DirtyWriteback;
             request.cause=write?g::L2DramRequestCause::DIRTY_WRITEBACK:g::L2DramRequestCause::FILL_READ;
-            while(!backend_.try_enqueue(request,cycle_))advance();
+            while(!backend_->try_enqueue(request,cycle_))advance();
             require(live_.emplace(record.request_id,Live{input_stage_,stage.open,write,request.key}).second,
                     "duplicate stage replay live request");
-            require(live_.size()<=backend_.max_live(),"stage metadata exceeded native parent credits");
+            require(live_.size()<=backend_->max_live(),"stage metadata exceeded native parent credits");
             peak_metadata_=std::max(peak_metadata_,U(live_.size()));
             auto& call=calls_.at(plan.call_index);++stage.admitted;++call.requests;
             if(write){++stage.write_requests;++call.write_requests;
@@ -260,22 +267,29 @@ public:
         try {
             require(source_.value.records==expected_records_,"trace ended before all stage requests arrived");
             start();
-            while(next_compute_<stages_.size()||backend_.queue_depth())advance();
+            while(next_compute_<stages_.size()||backend_->queue_depth())advance();
             require(next_open_==stages_.size()&&running_==unknown&&live_.empty(),"stage replay did not close");
-            backend_.finalize();
-            const auto& source=source_.value;const auto& admission=backend_.admission_statistics();
-            const auto& stats=backend_.statistics();const auto physical=backend_.physical_statistics();
+            const U stage_makespan=cycle_;
+            const U drained_cycle=backend_->drain_cycle(cycle_);
+            require(drained_cycle>=cycle_&&drained_cycle<=max_cycles_,"backend maintenance drain exceeds cycle budget or regressed");
+            cycle_=drained_cycle;
+            backend_->finalize();
+            const auto snapshot=backend_->snapshot();
+            const auto& source=source_.value;const auto& admission=snapshot.admission;
+            const auto& stats=snapshot.traffic;
             require(admission.accepted==source.records&&admission.completed==source.records&&
                 admission.actual_request_shape_fnv1a64==source.request_payload_fnv1a64,
                 "stage trace/native ordered request identity/hash differs");
             require(stats.fill_requests==source.read_requests&&stats.writeback_requests==source.write_requests&&
-                stats.fill_bytes==source.read_bytes&&stats.writeback_bytes==source.write_bytes&&
-                physical.read_bytes==source.read_bytes&&physical.write_bytes==source.write_bytes,
-                "stage trace/native/physical byte conservation differs");
+                stats.fill_bytes==source.read_bytes&&stats.writeback_bytes==source.write_bytes,
+                "stage trace/native host byte conservation differs");
+            if(snapshot.source_bytes_equal_physical)
+                require(snapshot.physical_read_bytes==source.read_bytes&&snapshot.physical_write_bytes==source.write_bytes,
+                        "byte-preserving backend physical/source byte conservation differs");
             require(compute_busy_==planned_compute_&&overlap_<=compute_busy_&&overlap_<=native_outstanding_&&
                     compute_busy_<=cycle_&&native_outstanding_<=cycle_,"stage interval accounting did not close");
             const U occupied_union=native_trace::add(compute_busy_-overlap_,native_outstanding_);
-            require(occupied_union<=cycle_,"stage occupancy union exceeds makespan");
+            require(occupied_union<=stage_makespan,"stage occupancy union exceeds pre-drain makespan");
             J rows=J::array(),call_rows=J::array();U stage_requests=0,stage_read=0,stage_write=0;
             for(const auto& stage:stages_) {
                 const auto& plan=stage.plan;
@@ -316,10 +330,9 @@ public:
                 call_read==source.read_bytes&&stage_write==source.write_bytes&&call_write==source.write_bytes,
                 "stage/call/source aggregate ledger differs");
             const U bytes=native_trace::add(source.read_bytes,source.write_bytes);
-            const double memory_span=source.records?physical.finish_ns-physical.first_arrival_ns:0.0;
+            const double memory_span=source.records?snapshot.finish_ns-snapshot.first_arrival_ns:0.0;
             const double makespan=cycles_ns(cycle_);
             require(std::isfinite(memory_span)&&memory_span>=0&&(!source.records||memory_span>0),"stage native memory span invalid");
-            const auto service=backend_.service_diagnostics();
             J out={{"schema","HBFSIM_POST_CACHE_STAGE_OVERLAP_REPLAY_V1"},{"status","PASS_CLOSED_STAGE_OVERLAP_REPLAY"},
                 {"mode","stage-overlap-replay"},{"qualification","EXPLICIT_UNCALIBRATED_STAGE_APPROXIMATION"},
                 {"input_mode","FUNCTIONAL_DIRECT_DETERMINISTIC_ORDER"},{"requests",source.records},
@@ -337,12 +350,16 @@ public:
                 {"writeback_record_bytes",32},{"read_record_bytes",128},{"window_stages",window_},{"peak_active_stages",peak_active_},
                 {"clock",{{"period_ps_numerator",clock_.ps_numerator},{"period_ps_denominator",clock_.cycle_denominator}}},
                 {"replay_cycles",cycle_},{"makespan_cycles",cycle_},{"makespan_ns",makespan},{"max_cycles",max_cycles_},
+                {"stage_makespan_cycles",stage_makespan},{"stage_makespan_ns",cycles_ns(stage_makespan)},
+                {"persistence_tail_cycles",cycle_-stage_makespan},{"persistence_tail_ns",cycles_ns(cycle_-stage_makespan)},
                 {"last_admission_cycle",source.records?J(last_admission_):J(nullptr)},
                 {"tail_cycles_after_last_admission",source.records?J(cycle_-last_admission_):J(nullptr)},
                 {"completion_poll_time_ps",clock_.poll_ps(cycle_)},{"native_last_completion_ps",admission.last_completion_ps},
-                {"physical_time_ns",memory_span},{"memory_active_span_ns",memory_span},{"physical",trace_replay::physical_json(physical)},
-                {"memory_span_definition","native physical finish_ns minus first_arrival_ns; includes gaps between requests, excludes final compute tail"},
-                {"bandwidth_denominator","stage makespan from cycle zero through all native completions and final compute"},
+                {"physical_time_ns",memory_span},{"memory_active_span_ns",memory_span},{"physical",snapshot.physical},
+                {"backend_kind",snapshot.kind},{"source_bytes_equal_physical",snapshot.source_bytes_equal_physical},
+                {"physical_payload_read_bytes",snapshot.physical_read_bytes},{"physical_payload_write_bytes",snapshot.physical_write_bytes},
+                {"memory_span_definition","native reported finish_ns minus first_arrival_ns; includes idle gaps and any final HBF maintenance barrier"},
+                {"bandwidth_denominator","makespan from cycle zero through all source completions, final compute, and backend EOF maintenance drain"},
                 {"bandwidth_unit","decimal GB/s = bytes / ns"},
                 {"aggregate_bandwidth_GBps",makespan>0?J(double(bytes)/makespan):J(nullptr)},
                 {"read_bandwidth_GBps",makespan>0?J(double(source.read_bytes)/makespan):J(nullptr)},
@@ -352,24 +369,20 @@ public:
                 {"compute_native_outstanding_overlap_cycles",overlap_},{"compute_busy_ns",cycles_ns(compute_busy_)},
                 {"native_outstanding_ns",cycles_ns(native_outstanding_)},{"compute_native_outstanding_overlap_ns",cycles_ns(overlap_)},
                 {"compute_only_cycles",compute_busy_-overlap_},{"memory_only_cycles",native_outstanding_-overlap_},
-                {"both_idle_cycles",cycle_-occupied_union},
+                {"both_idle_cycles",stage_makespan-occupied_union},
                 {"overlap_definition","union of half-open replay-cycle intervals with compute active and at least one admitted native request not yet delivered; proxy, not physical bus overlap"},
                 {"accepted",admission.accepted},{"completed",admission.completed},
                 {"native_completions_posted",admission.native_completions_posted},
-                {"native_enqueue_execution_checks",admission.native_enqueue_execution_checks},
-                {"native_enqueue_service_violations",admission.native_enqueue_service_violations},
-                {"max_live",backend_.max_live()},{"credits_per_channel_bursts",backend_.credits_per_pc()},
+                {"max_live",backend_->max_live()},
                 {"peak_live_requests",admission.peak_live},{"peak_live_metadata",peak_metadata_},
-                {"peak_reserved_bursts",admission.peak_reserved_bursts},{"peak_channel_burst_credits",admission.peak_pseudo_channel_credits},
                 {"blocked_admission_attempts",admission.blocked},{"advance_calls",advance_calls_},
                 {"safe_completion_jumps",safe_completion_jumps_},{"compute_event_jumps",compute_event_jumps_},
-                {"service_quantum",1},{"drain_mode",service.drain==sg_hbf::DrainMode::Global?"global":"independent"},
-                {"independent_fast_drains",service.independent_fast_drains},{"fallback_global_drains",service.fallback_global_drains},
                 {"stages",std::move(rows)},{"calls",std::move(call_rows)},
                 {"call_time_scope","explicit stage approximation with serial cross-call barriers; not measured GPU kernel latency"},
-                {"final_live_requests",0},{"final_reserved_bursts",0},{"final_active_stages",0},
+                {"final_live_requests",0},{"final_active_stages",0},
                 {"byte_ledger_closed",true},{"request_ledger_closed",true},{"stage_ledger_closed",true},
                 {"host_seconds",std::chrono::duration<double>(std::chrono::steady_clock::now()-began_).count()}};
+            out.update(snapshot.diagnostics);
             finished_=true;return out;
         }catch(...){failed_=true;throw;}
     }
