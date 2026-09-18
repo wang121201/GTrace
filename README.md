@@ -8,6 +8,8 @@
 
 最新衔接：GEMV、SiLU 的 direct binding 与精确 cosim Builder 已共用 cache 前 `PreparedMemory`，并减少等价 CTA 校验的主机分配。三组配对测试中引擎执行窗口为 **1.08×**，完整子进程 CPU 时间基本持平；不能据此声称端到端明显提速。实现、验收和范围见 [共享前端报告](docs/shared-frontend.md)。
 
+最新增加：已有 direct trace 可通过独立 `replay.py` 直接回放到 HBFSIM，跳过计算和 GPU stall，保留内存队列/时序。Decode 有界子集的 591,652 条请求回放 CPU **0.022 分钟**；完整生成与回放合计约 **0.440 分钟**，与保留计算依赖的 cosim 口径不同。见 [纯访存回放说明](docs/memory-only-replay.md)。
+
 ## 独立分支与实现
 
 - 基线提交 `0e21251f126510744d1b319f043e7e6b2dae5e1f`：抽取 22 个翻译单元、171 个实际源码依赖（约 4.19 MB），展开原 VFS overlay。原工作目录未修改，B8 候选仍在另一个仓库。
@@ -21,6 +23,7 @@
 
 | 参数 | 执行方式 | 时序范围 |
 |---|---|---|
+| `replay.py` | 已有 direct cache 后 trace → HBFSIM；不重新建模/cache | 全部请求就绪，按原序尽快填充有限内存队列；无计算/依赖/GPU stall |
 | `--mode direct` | 原生地址；9 类免逐 CTA DAG，11 类单 CTA 投影；功能 L1/L2 | 固定 call / CTA / member 顺序；立即完成；不运行计算调度或 HBFSIM，时间字段未知 |
 | `--mode cosim`（默认） | 原生计算/依赖图、已有精确主机加速、GTSim L1/L2、HBFSIM | 保留计算、访存停顿及重叠，有限队列/准入 |
 | `--mode cosim-fast` | C 原 hybrid 路径与 fine fallback | **显式近似时序档**：q16、memory-phase16、epoch8、independent drain；不宣称与全 fine 周期相同 |

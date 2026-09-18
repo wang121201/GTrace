@@ -1,0 +1,38 @@
+{
+  "schema": "TILEGEN_NATIVE_BUILD_CONFIG_V1",
+  "compiler": "clang++",
+  "standard": "c++20",
+  "definitions": [
+    "TILEGEN_DIRTY_SECTOR_MODE=2"
+  ],
+  "include_directories": [
+    "source/work/tilegen-full-r1/core-native-copy-r2/include",
+    "source/work/tilegen-evaluation-r1/driver",
+    "source/work/tilegen-norm-shared-r1/adapter",
+    "source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+    "source/work/hbfsim-latest/upstream/src",
+    "source/work/gddr6-support/hbf_coupling"
+  ],
+  "translation_units": [
+    "source/trace_replay_main.cpp",
+    "source/work/hbfsim-latest/upstream/src/app/system_config.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp",
+    "source/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp"
+  ],
+  "libraries": [
+    "z"
+  ],
+  "executable": "tilegen_replay"
+}

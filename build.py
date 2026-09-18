@@ -23,7 +23,8 @@ def source_pins():
 
 
 def build(args):
-    config = json.loads((ROOT / 'build-config.json').read_text())
+    config_path = ROOT / ('replay-build-config.json' if args.replay else 'build-config.json')
+    config = json.loads(config_path.read_text())
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     compiler = args.compiler or os.environ.get('CXX', config['compiler'])
@@ -38,7 +39,7 @@ def build(args):
     receipt = dict(schema='TILEGEN_NATIVE_BUILD_RECEIPT_V1', status='BUILDING',
                    CPU_only=True, simulation_executed=False, GPU_executed=False,
                    platform=platform.platform(), compiler=compiler, flags=flags,
-                   jobs=args.jobs, build_config_sha256=sha(ROOT / 'build-config.json'),
+                   jobs=args.jobs, build_config_sha256=sha(config_path), build_config=str(config_path),
                    steps=[])
     began = time.monotonic()
     receipt['source_pins'] = source_pins()
@@ -99,6 +100,7 @@ def build(args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True, help='Fresh build directory')
+    parser.add_argument('--replay', action='store_true', help='Build standalone post-cache HBFSIM replay without GPU simulator objects')
     parser.add_argument('--compiler', help='C++20 compiler executable, defaults to CXX or clang++')
     parser.add_argument('--jobs', type=int, choices=(1,2), default=2)
     parser.add_argument('--optimization', choices=('0','1','2','3'), default='3')

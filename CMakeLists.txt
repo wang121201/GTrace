@@ -40,18 +40,31 @@ target_compile_definitions(tilegen_native PRIVATE TILEGEN_DIRTY_SECTOR_MODE=2)
 target_compile_options(tilegen_native PRIVATE -Wall -Wextra)
 target_link_libraries(tilegen_native PRIVATE ZLIB::ZLIB Threads::Threads)
 
+# The replay executable links the existing HBFSIM sources, but no GPU simulator TUs.
+get_target_property(TILEGEN_INCLUDES tilegen_native INCLUDE_DIRECTORIES)
+get_target_property(TILEGEN_SOURCES tilegen_native SOURCES)
+set(REPLAY_HBFSIM_SOURCES ${TILEGEN_SOURCES})
+list(FILTER REPLAY_HBFSIM_SOURCES INCLUDE REGEX "/hbfsim-latest/")
+add_executable(tilegen_replay source/trace_replay_main.cpp ${REPLAY_HBFSIM_SOURCES})
+target_include_directories(tilegen_replay PRIVATE ${TILEGEN_INCLUDES})
+target_compile_definitions(tilegen_replay PRIVATE TILEGEN_DIRTY_SECTOR_MODE=2)
+target_compile_options(tilegen_replay PRIVATE -Wall -Wextra)
+target_link_libraries(tilegen_replay PRIVATE ZLIB::ZLIB Threads::Threads)
+
 include(CTest)
 if(BUILD_TESTING)
   get_target_property(TILEGEN_INCLUDES tilegen_native INCLUDE_DIRECTORIES)
-  foreach(TEST_NAME dirty32_test direct_cache_smoke native_trace_test cta_validation_test)
+  foreach(TEST_NAME dirty32_test direct_cache_smoke native_trace_test cta_validation_test trace_replay_test)
     add_executable(${TEST_NAME} tests/${TEST_NAME}.cpp)
     target_include_directories(${TEST_NAME} PRIVATE source ${TILEGEN_INCLUDES})
     target_compile_definitions(${TEST_NAME} PRIVATE TILEGEN_DIRTY_SECTOR_MODE=2)
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} "${CMAKE_CURRENT_BINARY_DIR}/${TEST_NAME}-artifacts")
   endforeach()
-  target_sources(native_trace_test PRIVATE
+  foreach(HBF_TEST native_trace_test trace_replay_test)
+  target_sources(${HBF_TEST} PRIVATE
     source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp
     source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp
     source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp
     source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp)
+  endforeach()
 endif()

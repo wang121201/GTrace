@@ -1,0 +1,147 @@
+{
+  "schema": "TILEGEN_MEMORY_ONLY_REPLAY_VALIDATION_V1",
+  "status": "PASS_BOUNDED_MEMORY_ONLY_REPLAY",
+  "branch": "codex/tilegen-trace-cosim-20260918-r1",
+  "parent_commit": "2bad7b3bb88c3f36d0e662e77541074f14c92b93",
+  "CPU_only": true,
+  "GPU_sampling": false,
+  "B8": false,
+  "full_workflow_executed": false,
+  "baseline_modes_modified": false,
+  "build": {
+    "path": "build/replay-r2/build-receipt.json",
+    "sha256": "510a083d1c22d47400d1d36b90977c7039f233f4edbea7c57998defb19b48c9b",
+    "binary": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/replay-r2/tilegen_replay",
+      "bytes": 537712,
+      "sha256": "2036c0f527e07bc92723e2baa6614a2131cb8184029e06aa31bbf7f736067397"
+    },
+    "sources_unchanged_at_validation": true
+  },
+  "unit_tests": {
+    "normal": {
+      "status": "PASS",
+      "path": "build/replay-unit-r1/summary.json",
+      "sha256": "b54afee972e370f67c55d04cdbace645e82e1e50e4d895cfd256bbf949fb5809",
+      "replay_checks": 11677
+    },
+    "asan_ubsan": {
+      "status": "PASS",
+      "path": "build/replay-unit-asan-r1/summary.json",
+      "sha256": "f13a0443b60983868202b2435b70bd9cf1d0d4a88d17c4c97b1eebf8e49df502",
+      "replay_checks": 11677
+    }
+  },
+  "actual_trace_runs": [
+    {
+      "name": "families-global",
+      "result_file": "build/replay-validation/families-global/result.json",
+      "result_sha256": "0b4e25079333cca764b0337ee355a3d24e08907a9ea2e0fcb7fc9b08e07efc6c",
+      "run_receipt_file": "build/replay-validation/families-global/run-receipt.json",
+      "run_receipt_sha256": "43a655ac08906dbecdc31739a59d24bb9f98984a7a6be30186bf9933992ff3fb",
+      "binary_sha256": "2036c0f527e07bc92723e2baa6614a2131cb8184029e06aa31bbf7f736067397",
+      "input_trace_sha256": "56147d8d6988c1eb69358ad32cb1452415fee47ed985b3b9a7714586bf00a252",
+      "CPU_minutes": 0.0059510833333333325,
+      "elapsed_minutes": 0.019258811816666666,
+      "metrics": {
+        "requests": 68258,
+        "read_requests": 68258,
+        "write_requests": 0,
+        "read_bytes": 8737024,
+        "write_bytes": 0,
+        "physical_time_ns": 61102.22222222222,
+        "aggregate_bandwidth_GBps": 142.99028222286879,
+        "read_bandwidth_GBps": 142.99028222286879,
+        "write_bandwidth_GBps": 0.0,
+        "replay_cycles": 137073,
+        "peak_live_requests": 78,
+        "request_payload_fnv1a64": 10578915612836014445,
+        "native_config_sha256": "b0b1098dd31828b92c11a8ec9d8eca8b61ccae5a2389e1f8612aba967a41a1ca",
+        "byte_ledger_closed": true,
+        "request_ledger_closed": true,
+        "selected_CTAs": 20,
+        "selected_source_count": 20
+      }
+    },
+    {
+      "name": "decode-global",
+      "result_file": "build/replay-validation/decode-global/result.json",
+      "result_sha256": "2cc9e3e85a441817c596e92c2e4d3043869fa1133b4125169499c4df4ace8f6d",
+      "run_receipt_file": "build/replay-validation/decode-global/run-receipt.json",
+      "run_receipt_sha256": "67ea5d2590d447eb9c654784a17944e9b817a52bea83e6e2c0dc556813ff3de9",
+      "binary_sha256": "2036c0f527e07bc92723e2baa6614a2131cb8184029e06aa31bbf7f736067397",
+      "input_trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "CPU_minutes": 0.021610383333333334,
+      "elapsed_minutes": 0.021949632650000002,
+      "metrics": {
+        "requests": 591652,
+        "read_requests": 590592,
+        "write_requests": 1060,
+        "read_bytes": 75595776,
+        "write_bytes": 33920,
+        "physical_time_ns": 225053.3333333333,
+        "aggregate_bandwidth_GBps": 336.052325374726,
+        "read_bandwidth_GBps": 335.90160554535225,
+        "write_bandwidth_GBps": 0.1507198293737781,
+        "replay_cycles": 504869,
+        "peak_live_requests": 191,
+        "request_payload_fnv1a64": 1371834365176850156,
+        "native_config_sha256": "b0b1098dd31828b92c11a8ec9d8eca8b61ccae5a2389e1f8612aba967a41a1ca",
+        "byte_ledger_closed": true,
+        "request_ledger_closed": true,
+        "selected_CTAs": 1025,
+        "selected_source_count": 3
+      }
+    },
+    {
+      "name": "decode-independent",
+      "result_file": "build/replay-validation/decode-independent/result.json",
+      "result_sha256": "b2418cd09445618b8b1861dbb9a1f8e0c7a635e765db15c39206848e82350b18",
+      "run_receipt_file": "build/replay-validation/decode-independent/run-receipt.json",
+      "run_receipt_sha256": "5c90ee30b93ba98b1b74b044c39341386c02fd1b2ec5ec17a00c2bc4a1f644dc",
+      "binary_sha256": "2036c0f527e07bc92723e2baa6614a2131cb8184029e06aa31bbf7f736067397",
+      "input_trace_sha256": "85ab4dad94a031e2e44b127d3198adee8c74bb7ab64998d000c25373609fa686",
+      "CPU_minutes": 0.01781185,
+      "elapsed_minutes": 0.018253832633333335,
+      "metrics": {
+        "requests": 591652,
+        "read_requests": 590592,
+        "write_requests": 1060,
+        "read_bytes": 75595776,
+        "write_bytes": 33920,
+        "physical_time_ns": 225053.3333333333,
+        "aggregate_bandwidth_GBps": 336.052325374726,
+        "read_bandwidth_GBps": 335.90160554535225,
+        "write_bandwidth_GBps": 0.1507198293737781,
+        "replay_cycles": 504869,
+        "peak_live_requests": 191,
+        "request_payload_fnv1a64": 1371834365176850156,
+        "native_config_sha256": "b0b1098dd31828b92c11a8ec9d8eca8b61ccae5a2389e1f8612aba967a41a1ca",
+        "byte_ledger_closed": true,
+        "request_ledger_closed": true,
+        "selected_CTAs": 1025,
+        "selected_source_count": 3
+      }
+    }
+  ],
+  "decode_global_independent_exact": {
+    "requests": true,
+    "read_bytes": true,
+    "write_bytes": true,
+    "request_payload_fnv1a64": true,
+    "physical": true,
+    "replay_cycles": true,
+    "calls": true
+  },
+  "scope": "Existing direct post-cache trace, all-ready FIFO finite-credit injection, no compute/GPU stalls/cache/kernel barriers. Uncalibrated native memory model; not cosim-equivalent inference latency.",
+  "timing_scope": "Single replay measurements; direct generation quoted from prior runs. Do not infer stable speedup or full workload throughput.",
+  "input_provenance_scope": "Original transport SHA/context and full trace checks; current cfg snapshot SHA/resolved identity; historical cfg bytes were not pinned by original direct receipt.",
+  "cli_tests": {
+    "path": "build/replay-cli-r1/summary.json",
+    "sha256": "17db3cd42421a2de06de646715cf13c9531838c91ad3d46c2c19993ceb5fe158",
+    "status": "PASS_TRACE_REPLAY_CLI_BINDING_AND_FAILURE_PUBLICATION",
+    "positive_cases": 2,
+    "negative_cases": 15,
+    "original_files_unchanged": true
+  }
+}
