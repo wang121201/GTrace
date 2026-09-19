@@ -1,0 +1,51 @@
+{
+  "schema": "NATIVE_TYPED_PARAMETER_CPU_TESTS_V1",
+  "status": "PASS",
+  "tests": 15,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "CPU_user_system_seconds": 0.04583699999999999,
+  "elapsed_seconds": 0.12030874999999999,
+  "source_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/decode.py",
+      "bytes": 25316,
+      "sha256": "d664df9624ded754c6f055421286ae18efa267d4c28816b1d031b93db124c85f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/test_decoder.py",
+      "bytes": 13197,
+      "sha256": "e8e637510c2c2780860a7c64db63e7abc1677359ec6003217a0a2a47984d98d7"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/build_catalog.py",
+      "bytes": 4207,
+      "sha256": "1be00bd2e32a4b5f3947145ed6acc1ee8b805f95197a4a02b3c619656f0aa2e8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/freeze_regression.py",
+      "bytes": 2872,
+      "sha256": "9eaad2b2d43618ebe00f01d5726b940258eee04c00e2162d84829ed8697320b1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/validate_legacy.py",
+      "bytes": 3809,
+      "sha256": "69ec6e3053eef809d175207e310ac71859eb1e2874d6a524fff65f6b2d7e6c1c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/template_catalog.json",
+      "bytes": 48029,
+      "sha256": "233b5ea04146b6c3835467d0813553aa553174299771c4ab8ae9a9a84fc9fdb2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/regression_inputs.json",
+      "bytes": 103565,
+      "sha256": "867e05bd340335d33bd937d611e543ae5b2fd95fe01bf6a831b731fc7414d0cf"
+    }
+  ],
+  "log": "test_bad_catalog_pin (test_decoder.DecoderTests) ... ok\ntest_bad_sha_transport_boundaries_and_process_rejected (test_decoder.DecoderTests) ... ok\ntest_cli_publishes_only_final_complete_json (test_decoder.DecoderTests) ... ok\ntest_end_to_end_census_and_tamper (test_decoder.DecoderTests) ... ok\ntest_gemv_alias_and_alignment (test_decoder.DecoderTests) ... ok\ntest_gemv_all_120_nonpointer_bytes_are_checked (test_decoder.DecoderTests) ... ok\ntest_missing_failed_or_wrong_controller_rejected (test_decoder.DecoderTests) ... ok\ntest_native_identity_and_geometry_join_rejected (test_decoder.DecoderTests) ... ok\ntest_norm_same_abi_different_code_different_roles (test_decoder.DecoderTests) ... ok\ntest_real_captured_independent_typed_oracle (test_decoder.DecoderTests) ... ok\ntest_rotary_new_phase_is_preserved_and_positions_unknown (test_decoder.DecoderTests) ... ok\ntest_scalar_and_alias_rejections (test_decoder.DecoderTests) ... ok\ntest_unknown_code_and_changed_geometry_are_explicit (test_decoder.DecoderTests) ... ok\ntest_unselected_journal_and_artifact_tamper_rejected (test_decoder.DecoderTests) ... ok\ntest_valid_raw_bytes_but_wrong_abi_rejected (test_decoder.DecoderTests) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.120s\n\nOK\n",
+  "GPU_used": false,
+  "SSH_used": false,
+  "native_model_admitted": false
+}

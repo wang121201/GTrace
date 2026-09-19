@@ -1,0 +1,90 @@
+{
+  "schema": "SG_NVBIT_NATIVE_ARGUMENT_MANIFEST_V1",
+  "revision": "native-arguments-r1",
+  "status": "TESTED_SOURCE_REQUIRES_REMOTE_NVCC_BUILD",
+  "build_inputs": {
+    "argument-plan.json": {
+      "bytes": 30110194,
+      "sha256": "c109636a9064917d630feb1213108209831a1b24a5ae8f8452be298f5757d9e5"
+    },
+    "argument_capture.h": {
+      "bytes": 10688,
+      "sha256": "7c142f196f785594cc6eacfdd94876b7f175eb7e4eed1574bcdcee3532dbcb8e"
+    },
+    "argument_plan.h": {
+      "bytes": 568405,
+      "sha256": "b37500d486f6c09c7e511445399f2b86a1321c527d3a91189a1d0f8823abca38"
+    },
+    "argument_runtime.inc": {
+      "bytes": 1522,
+      "sha256": "ebcd3265de86145d67bc1390a7352589d44ab2f93723e54fe845751d792b2765"
+    },
+    "build.py": {
+      "bytes": 4647,
+      "sha256": "6e2603a4189d46b5e68bd49318426f364201b21f22993fce90bd9699cdd77d6e"
+    },
+    "observer.cu": {
+      "bytes": 37494,
+      "sha256": "f0338a315cb4ba74a98bb0d6673147aba0a42ccf989f58536c4612a53a52731a"
+    }
+  },
+  "nvbit_headers": {
+    "cuda.h": {
+      "bytes": 1145929,
+      "sha256": "b7dd24919990c4ebce0b311163eb330a55227335e7e23ef2af4f0800fd3ab620"
+    },
+    "generated_cuda_meta.h": {
+      "bytes": 106473,
+      "sha256": "8ebecd97c4796c801fa58d55e2dcbd7abd5d676342f8687f47221881050abe90"
+    },
+    "instr_types.h": {
+      "bytes": 4943,
+      "sha256": "97250d4ecef29ec6de03d7a2da9af154fadec9d9bcc6798de1c1fd754a482473"
+    },
+    "nvbit.h": {
+      "bytes": 17410,
+      "sha256": "70348229ac8324e0b498fe546b980e5541a78481bbe3c62c4d67c429508b9773"
+    },
+    "nvbit_reg_rw.h": {
+      "bytes": 3534,
+      "sha256": "79854c7a13af635005694edabf99b8da28f90d54b550400e7115667f727e7fe5"
+    },
+    "nvbit_tool.h": {
+      "bytes": 3118,
+      "sha256": "c027a4442277d3a0721cae8af9356ac41ebc719905a55569bb83834fcdbb4bf5"
+    },
+    "tools_cuda_api_meta.h": {
+      "bytes": 75170,
+      "sha256": "1be7ecc9daf8d2cd1ffee2fdb6771bc9585759e162ab317504d5d2fe8ecee4c6"
+    },
+    "utils/channel.hpp": {
+      "bytes": 8265,
+      "sha256": "0db6353681fbb45c891b30104d3848c177fae724239471cc24e4dba576952ac4"
+    },
+    "utils/utils.h": {
+      "bytes": 5244,
+      "sha256": "49922ad83b16e98e6bfe61ca1e3091eb627a2150c59183e723c45b46a180c9e7"
+    }
+  },
+  "reference_observer": {
+    "controller_sha256": "6adaeaf53cfa0ac987f88a8d313fd1f265d7ef94ee768e1c1e5852f264a32be9",
+    "census_sha256": "13519d63d76807dc13168c21b48d45810a3772b79c57be23ed1e2b75631367de",
+    "package_sha256": "36098fdf38aa6437af9c555af8db430a0accfbc4a8b752d41c2956002eb452ff"
+  },
+  "argument_plan_sha256": "c109636a9064917d630feb1213108209831a1b24a5ae8f8452be298f5757d9e5",
+  "limits": {
+    "launches": 13112,
+    "arguments": 58905,
+    "raw_bytes": 3975666,
+    "max_arguments": 18,
+    "max_argument_bytes": 1240,
+    "max_launch_bytes": 1248,
+    "max_row_bytes": 16384,
+    "max_file_bytes": 33554432
+  },
+  "max_metadata_bytes": 1073741824,
+  "dynamic_instrumentation": false,
+  "dynamic_memory_addresses": false,
+  "typed_pointer_binding": false,
+  "native_model_admitted": false
+}

@@ -1,0 +1,111 @@
+{
+  "schema": "SGLANG_PD_NATIVE_ARGUMENT_UPLOAD_V1",
+  "remote_directory": "/home/xmu/nvidiagds/codex-runs/tilegen-stage-p1024d32-20260918-zhi/native-arguments-r1",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3962,
+      "sha256": "d1250c7172c3cdeaf60facff856801573c69e1ce2952238caf8459ae1409f404"
+    },
+    {
+      "path": "argument-plan.json",
+      "bytes": 30110194,
+      "sha256": "c109636a9064917d630feb1213108209831a1b24a5ae8f8452be298f5757d9e5"
+    },
+    {
+      "path": "argument_callback_test.cpp",
+      "bytes": 8827,
+      "sha256": "0ec6006db4d1ffa575a7bd07d5105d1c7a13a346d5e5b3cc16debc3e7943aa23"
+    },
+    {
+      "path": "argument_capture.h",
+      "bytes": 10688,
+      "sha256": "7c142f196f785594cc6eacfdd94876b7f175eb7e4eed1574bcdcee3532dbcb8e"
+    },
+    {
+      "path": "argument_capture_test.cpp",
+      "bytes": 8190,
+      "sha256": "cacfbdf915eae065c2223ee05a695715a982fa6396fa196828513f43a2f14a15"
+    },
+    {
+      "path": "argument_plan.h",
+      "bytes": 568405,
+      "sha256": "b37500d486f6c09c7e511445399f2b86a1321c527d3a91189a1d0f8823abca38"
+    },
+    {
+      "path": "argument_runtime.inc",
+      "bytes": 1522,
+      "sha256": "ebcd3265de86145d67bc1390a7352589d44ab2f93723e54fe845751d792b2765"
+    },
+    {
+      "path": "build.py",
+      "bytes": 4647,
+      "sha256": "6e2603a4189d46b5e68bd49318426f364201b21f22993fce90bd9699cdd77d6e"
+    },
+    {
+      "path": "build_controlled.py",
+      "bytes": 3498,
+      "sha256": "e60bc407b42917bfe4216e5004aa7dd507bfaa67e986d0391750a9d24b4bb9e9"
+    },
+    {
+      "path": "consumer.py",
+      "bytes": 23111,
+      "sha256": "495f437de166cf4a05b4e7e37ed85b7266bfa6eeb2efc72b48dd3884d368c832"
+    },
+    {
+      "path": "cpu-preflight.json",
+      "bytes": 18693,
+      "sha256": "6a742a5dfb16537256f9494c8e3e0fe45a2c03d2809fb2ad955fc9d3ff5a8120"
+    },
+    {
+      "path": "make_argument_plan.py",
+      "bytes": 14384,
+      "sha256": "cbacd17cf804482c14b4297502a8986c0f655fdffb00b3d6c6a6c1ab6705b67d"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 3052,
+      "sha256": "57025552211deda81e4a038ab76a680bb2aaaaa596163fe19d6147a775104faa"
+    },
+    {
+      "path": "observer-arguments.diff",
+      "bytes": 16842,
+      "sha256": "c3cfa89aa2c689b2dc8e6d0cb9ddba482dba9b904d529f6b398bad2b20000a9f"
+    },
+    {
+      "path": "observer.cu",
+      "bytes": 37494,
+      "sha256": "f0338a315cb4ba74a98bb0d6673147aba0a42ccf989f58536c4612a53a52731a"
+    },
+    {
+      "path": "prepare_package.py",
+      "bytes": 4787,
+      "sha256": "18eb2951f1057140c9b866d3d5a84ea518101e78d18172ddcecb1e7ea4e98218"
+    },
+    {
+      "path": "producer-origin.json",
+      "bytes": 510,
+      "sha256": "228efef31677e9910ee2c8f5b0c3133e57ff40826fed0a8286a8a49cf95fd769"
+    },
+    {
+      "path": "run_arguments.py",
+      "bytes": 8636,
+      "sha256": "3210dd79318b40c567abddb987c6774251dc262176c5d00ea972bbee0d9a05f3"
+    },
+    {
+      "path": "support.py",
+      "bytes": 2267,
+      "sha256": "88116d12c9264985c037e771ff7c6c0d9b48630706eaae1774496b41b65b5481"
+    },
+    {
+      "path": "test_arguments.py",
+      "bytes": 15629,
+      "sha256": "91ae175e83a549018f4bfc87575e12d0500bf03285f40bde3cc1d5df44a82d54"
+    },
+    {
+      "path": "test_producer.py",
+      "bytes": 7658,
+      "sha256": "389f874edd24204934f27b013fc5674dff19e22690a4837aa842723838314c42"
+    }
+  ]
+}

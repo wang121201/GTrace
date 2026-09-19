@@ -1,0 +1,66 @@
+{
+  "schema": "NATIVE_TYPED_PARAMETER_LEGACY_REGRESSION_V1",
+  "status": "PASS_646_REAL_CAPTURED_CALLS_TYPED_ONLY",
+  "cases": 646,
+  "family_counts": {
+    "GEMV": 259,
+    "PlainNorm": 3,
+    "FusedNorm": 192,
+    "SiLU": 96,
+    "Rotary": 96
+  },
+  "input_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/captured-allargs-norm-r1/observer/process-1925216-857625100/launch-arguments.jsonl",
+      "bytes": 2372422,
+      "sha256": "4bca5ca01cb317b747b974e7bec80af07c72831b2e716613ac92d5d3d76b6d56"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+      "bytes": 2866054,
+      "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/plan.json",
+      "bytes": 51826,
+      "sha256": "f7ab9cfc7eccc258ae6b6678d2716ebd67adf763bf338cbdd68c648d30450781"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/plan.json",
+      "bytes": 2500757,
+      "sha256": "5e87903d8c9d341529f8d65e3d462e95df0ae36af7feda0bda1de2a7c8f73226"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/plan.json",
+      "bytes": 880871,
+      "sha256": "cde8cac6c0fabc6691b2bd4800a315b911efecf329ae556f8f523687dc793c79"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/plan.json",
+      "bytes": 1373822,
+      "sha256": "36203e764eb65d2e32271f516275cd73cb8c836163fa6ea93ac0af4449cdd516"
+    }
+  ],
+  "catalog": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/template_catalog.json",
+    "bytes": 48029,
+    "sha256": "233b5ea04146b6c3835467d0813553aa553174299771c4ab8ae9a9a84fc9fdb2"
+  },
+  "source_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/validate_legacy.py",
+      "bytes": 3809,
+      "sha256": "69ec6e3053eef809d175207e310ac71859eb1e2874d6a524fff65f6b2d7e6c1c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/native_transfer/decode.py",
+      "bytes": 25316,
+      "sha256": "d664df9624ded754c6f055421286ae18efa267d4c28816b1d031b93db124c85f"
+    }
+  ],
+  "elapsed_seconds": 0.10868133299999999,
+  "CPU_user_system_seconds": 0.108171,
+  "GPU_used": false,
+  "device_memory_dereferenced": false,
+  "native_model_admitted": false
+}

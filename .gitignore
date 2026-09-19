@@ -19,3 +19,5 @@ validation/**/*.stderr
 validation/**/*.log
 validation/dirty32-review/
 validation/dirty32-review-r2/
+capture/native-arguments-r1/argument-plan.json
+capture/native-arguments-r1/argument_plan.h

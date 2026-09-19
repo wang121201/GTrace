@@ -1,0 +1,3266 @@
+{
+  "examples": [
+    {
+      "argument_line_sha256": "bd80904a7e56c29e28d9e86655509bb50d1efdcfb45f9bc40d1809b40d8a329a",
+      "expected_parameters": {
+        "input": 133704464657408,
+        "output": 133689123543040,
+        "weight": 133688071290880
+      },
+      "expected_word_vector": [
+        2919235584,
+        31126,
+        0,
+        0,
+        2132732928,
+        31130,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        4096,
+        128256,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        16,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "dynamic_shared_bytes": 544,
+        "function_id": 24,
+        "grid": [
+          16032,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1693,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Prefill",
+        "registers": 162,
+        "source_launch_key": "epoch-1-launch-405",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000ae96790000000000000000000000ec1e7f9a79000000000000000000000018b8ec9679000000000000000000000018b8ec9679000000000000000000000010000000f501000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000001000000000000000",
+            "sha256": "bdaafd75dc176dbe8b7f7694a1cdb2d7564812dfdef72d04c688fb8c95ac0049",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 1,
+        "epoch_launch_ordinal": 405,
+        "function_id": 24,
+        "layer": -1,
+        "module_call_id": 387,
+        "module_kernel_ordinal": 5,
+        "module_scope": "logits_processor",
+        "native_launch_binding": {
+          "native_launch_id": 1693,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-1-launch-405"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Prefill",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 405,
+        "source_launch_key": "epoch-1-launch-405",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "ca05d5376ff3fb6146dfcf06c34be52315556616926d6515de9cb6cf6e15d5f1",
+      "expected_parameters": {
+        "input": 133704464665600,
+        "output": 133704464673792,
+        "weight": 133704412299264
+      },
+      "expected_word_vector": [
+        2080374784,
+        31130,
+        0,
+        0,
+        2132741120,
+        31130,
+        0,
+        0,
+        2132749312,
+        31130,
+        0,
+        0,
+        2132749312,
+        31130,
+        0,
+        0,
+        4096,
+        6144,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        16,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          16,
+          4,
+          1
+        ],
+        "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+        "context_id": 1,
+        "dynamic_shared_bytes": 272,
+        "function_id": 64,
+        "grid": [
+          1536,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1706,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "registers": 168,
+        "source_launch_key": "epoch-2-launch-10",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0000007c9a7900000000000000000000000c1f7f9a7900000000000000000000002c1f7f9a7900000000000000000000002c1f7f9a790000000000000000000000100000001800000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000001000000000000000",
+            "sha256": "6cec5f1fff66f12440e2cca87bba2a2dd5bf4b63210920515196eea9eeccf180",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 10,
+        "function_id": 64,
+        "layer": 0,
+        "module_call_id": 393,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.self_attn.qkv_proj",
+        "native_launch_binding": {
+          "native_launch_id": 1706,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-10"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 418,
+        "source_launch_key": "epoch-2-launch-10",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "51918b910a3a7213c56663896693109b131e4203182b3196b4c0ddafd39720c7",
+      "expected_parameters": {
+        "input": 133704464686080,
+        "output": 133704464694272,
+        "weight": 133704378744832
+      },
+      "expected_word_vector": [
+        2046820352,
+        31130,
+        0,
+        0,
+        2132761600,
+        31130,
+        0,
+        0,
+        2132769792,
+        31130,
+        0,
+        0,
+        2132769792,
+        31130,
+        0,
+        0,
+        4096,
+        4096,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        16,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          16,
+          4,
+          1
+        ],
+        "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+        "context_id": 1,
+        "dynamic_shared_bytes": 272,
+        "function_id": 64,
+        "grid": [
+          1024,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1711,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "registers": 168,
+        "source_launch_key": "epoch-2-launch-15",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0000007a9a7900000000000000000000005c1f7f9a7900000000000000000000007c1f7f9a7900000000000000000000007c1f7f9a790000000000000000000000100000001000000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000001000000000000000",
+            "sha256": "977c88e535a7e11c4db40fa74adb9517af44a62ee2df4192b4abd4f5820707b1",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 15,
+        "function_id": 64,
+        "layer": 0,
+        "module_call_id": 396,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.self_attn.o_proj",
+        "native_launch_binding": {
+          "native_launch_id": 1711,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-15"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 423,
+        "source_launch_key": "epoch-2-launch-15",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "7ada29537c62b28fa99e0975f41b83930db83e479ade7cfb5d76d7cd9b497581",
+      "expected_parameters": {
+        "input": 133704464694272,
+        "output": 133689123543040,
+        "weight": 133703707656192
+      },
+      "expected_word_vector": [
+        1375731712,
+        31130,
+        0,
+        0,
+        2132769792,
+        31130,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        4096,
+        28672,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        32,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          32,
+          4,
+          1
+        ],
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "dynamic_shared_bytes": 528,
+        "function_id": 24,
+        "grid": [
+          7168,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1713,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "registers": 162,
+        "source_launch_key": "epoch-2-launch-17",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000529a7900000000000000000000007c1f7f9a79000000000000000000000018b8ec9679000000000000000000000018b8ec96790000000000000000000000100000007000000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000002000000000000000",
+            "sha256": "b9d50c95ceee44b7608420f39ce992eae5bbb85ab9fa43aae0943dd35d49d15e",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 17,
+        "function_id": 24,
+        "layer": 0,
+        "module_call_id": 399,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.mlp.gate_up_proj",
+        "native_launch_binding": {
+          "native_launch_id": 1713,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-17"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 425,
+        "source_launch_key": "epoch-2-launch-17",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "7afdd061e9eb30bde3a8a762d197980909b2a9b005cf58316a49f8db910c0a81",
+      "expected_parameters": {
+        "input": 133704464665600,
+        "output": 133704464702464,
+        "weight": 133708304613376
+      },
+      "expected_word_vector": [
+        1677721600,
+        31131,
+        0,
+        0,
+        2132741120,
+        31130,
+        0,
+        0,
+        2132777984,
+        31130,
+        0,
+        0,
+        2132777984,
+        31130,
+        0,
+        0,
+        14336,
+        4096,
+        14336,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        32,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          32,
+          4,
+          1
+        ],
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "dynamic_shared_bytes": 528,
+        "function_id": 24,
+        "grid": [
+          1024,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1715,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "registers": 162,
+        "source_launch_key": "epoch-2-launch-19",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000649b7900000000000000000000000c1f7f9a7900000000000000000000009c1f7f9a7900000000000000000000009c1f7f9a790000000000000000000000380000001000000038000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000002000000000000000",
+            "sha256": "d521e73d2934f6a9ddc2c21fdafb9dbd6560c8000d2ecc591f26faee28f909ea",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 19,
+        "function_id": 24,
+        "layer": 0,
+        "module_call_id": 401,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.mlp.down_proj",
+        "native_launch_binding": {
+          "native_launch_id": 1715,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-19"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 427,
+        "source_launch_key": "epoch-2-launch-19",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "c92e5e3361b6c25415356c93582aae4f63a713e4085742e9995b1cb63b9dda44",
+      "expected_parameters": {
+        "input": 133704464665600,
+        "output": 133689123543040,
+        "weight": 133688071290880
+      },
+      "expected_word_vector": [
+        2919235584,
+        31126,
+        0,
+        0,
+        2132741120,
+        31130,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        4096,
+        128256,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        16,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "dynamic_shared_bytes": 544,
+        "function_id": 24,
+        "grid": [
+          16032,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2058,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "registers": 162,
+        "source_launch_key": "epoch-2-launch-362",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000ae967900000000000000000000000c1f7f9a79000000000000000000000018b8ec9679000000000000000000000018b8ec9679000000000000000000000010000000f501000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000001000000000000000",
+            "sha256": "e90dc7e065c596ac03812310e2f4802506754de9022978aa2f2041b870765bc2",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 362,
+        "function_id": 24,
+        "layer": -1,
+        "module_call_id": 775,
+        "module_kernel_ordinal": 0,
+        "module_scope": "logits_processor",
+        "native_launch_binding": {
+          "native_launch_id": 2058,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-362"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 770,
+        "source_launch_key": "epoch-2-launch-362",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "c05151b698f84e28b280fe4a4cd30d425cfe16c2d62c1cc30d8570e8f3b5644c",
+      "expected_parameters": {
+        "input": 133704464665600,
+        "output": 133704464673792,
+        "weight": 133704412299264
+      },
+      "expected_word_vector": [
+        2080374784,
+        31130,
+        0,
+        0,
+        2132741120,
+        31130,
+        0,
+        0,
+        2132749312,
+        31130,
+        0,
+        0,
+        2132749312,
+        31130,
+        0,
+        0,
+        4096,
+        6144,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        16,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          16,
+          4,
+          1
+        ],
+        "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+        "context_id": 1,
+        "dynamic_shared_bytes": 272,
+        "function_id": 64,
+        "grid": [
+          1536,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2071,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "registers": 168,
+        "source_launch_key": "epoch-3-launch-10",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0000007c9a7900000000000000000000000c1f7f9a7900000000000000000000002c1f7f9a7900000000000000000000002c1f7f9a790000000000000000000000100000001800000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000001000000000000000",
+            "sha256": "6cec5f1fff66f12440e2cca87bba2a2dd5bf4b63210920515196eea9eeccf180",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 10,
+        "function_id": 64,
+        "layer": 0,
+        "module_call_id": 781,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.self_attn.qkv_proj",
+        "native_launch_binding": {
+          "native_launch_id": 2071,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-10"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 783,
+        "source_launch_key": "epoch-3-launch-10",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "ee977f7348ad8ea0dab3329a86501611753d771b67aa6e18c31701cb3d2b16d2",
+      "expected_parameters": {
+        "input": 133704464686080,
+        "output": 133704464694272,
+        "weight": 133704378744832
+      },
+      "expected_word_vector": [
+        2046820352,
+        31130,
+        0,
+        0,
+        2132761600,
+        31130,
+        0,
+        0,
+        2132769792,
+        31130,
+        0,
+        0,
+        2132769792,
+        31130,
+        0,
+        0,
+        4096,
+        4096,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        16,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          16,
+          4,
+          1
+        ],
+        "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+        "context_id": 1,
+        "dynamic_shared_bytes": 272,
+        "function_id": 64,
+        "grid": [
+          1024,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2076,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "registers": 168,
+        "source_launch_key": "epoch-3-launch-15",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0000007a9a7900000000000000000000005c1f7f9a7900000000000000000000007c1f7f9a7900000000000000000000007c1f7f9a790000000000000000000000100000001000000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000001000000000000000",
+            "sha256": "977c88e535a7e11c4db40fa74adb9517af44a62ee2df4192b4abd4f5820707b1",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 15,
+        "function_id": 64,
+        "layer": 0,
+        "module_call_id": 784,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.self_attn.o_proj",
+        "native_launch_binding": {
+          "native_launch_id": 2076,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-15"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 788,
+        "source_launch_key": "epoch-3-launch-15",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "1350c8e9fcbc34173e2ed016113503b7a0616b0146779d738a9ccd3c203cee13",
+      "expected_parameters": {
+        "input": 133704464694272,
+        "output": 133689123543040,
+        "weight": 133703707656192
+      },
+      "expected_word_vector": [
+        1375731712,
+        31130,
+        0,
+        0,
+        2132769792,
+        31130,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        4096,
+        28672,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        32,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          32,
+          4,
+          1
+        ],
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "dynamic_shared_bytes": 528,
+        "function_id": 24,
+        "grid": [
+          7168,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2078,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "registers": 162,
+        "source_launch_key": "epoch-3-launch-17",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000529a7900000000000000000000007c1f7f9a79000000000000000000000018b8ec9679000000000000000000000018b8ec96790000000000000000000000100000007000000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000002000000000000000",
+            "sha256": "b9d50c95ceee44b7608420f39ce992eae5bbb85ab9fa43aae0943dd35d49d15e",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 17,
+        "function_id": 24,
+        "layer": 0,
+        "module_call_id": 787,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.mlp.gate_up_proj",
+        "native_launch_binding": {
+          "native_launch_id": 2078,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-17"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 790,
+        "source_launch_key": "epoch-3-launch-17",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "6f7753faa21c5eac4bfe7f27941dfef1ede820259961400639ab9686f7b92485",
+      "expected_parameters": {
+        "input": 133704464665600,
+        "output": 133704464702464,
+        "weight": 133708304613376
+      },
+      "expected_word_vector": [
+        1677721600,
+        31131,
+        0,
+        0,
+        2132741120,
+        31130,
+        0,
+        0,
+        2132777984,
+        31130,
+        0,
+        0,
+        2132777984,
+        31130,
+        0,
+        0,
+        14336,
+        4096,
+        14336,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        32,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          32,
+          4,
+          1
+        ],
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "dynamic_shared_bytes": 528,
+        "function_id": 24,
+        "grid": [
+          1024,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2080,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "registers": 162,
+        "source_launch_key": "epoch-3-launch-19",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000649b7900000000000000000000000c1f7f9a7900000000000000000000009c1f7f9a7900000000000000000000009c1f7f9a790000000000000000000000380000001000000038000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000002000000000000000",
+            "sha256": "d521e73d2934f6a9ddc2c21fdafb9dbd6560c8000d2ecc591f26faee28f909ea",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 19,
+        "function_id": 24,
+        "layer": 0,
+        "module_call_id": 789,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.mlp.down_proj",
+        "native_launch_binding": {
+          "native_launch_id": 2080,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-19"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 792,
+        "source_launch_key": "epoch-3-launch-19",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "e9ca05da190f449eecff55663b0aa99ef91dfc942e9f6df1abba2ad67e321d75",
+      "expected_parameters": {
+        "input": 133704464665600,
+        "output": 133689123543040,
+        "weight": 133688071290880
+      },
+      "expected_word_vector": [
+        2919235584,
+        31126,
+        0,
+        0,
+        2132741120,
+        31130,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        3971487744,
+        31126,
+        0,
+        0,
+        4096,
+        128256,
+        4096,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1065353216,
+        0,
+        0,
+        0,
+        0,
+        64,
+        16,
+        0
+      ],
+      "family": "GEMV",
+      "launch": {
+        "argument_sizes": [
+          152
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "dynamic_shared_bytes": 544,
+        "function_id": 24,
+        "grid": [
+          16032,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2423,
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "registers": 162,
+        "source_launch_key": "epoch-3-launch-362",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2866054,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+        "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000ae967900000000000000000000000c1f7f9a79000000000000000000000018b8ec9679000000000000000000000018b8ec9679000000000000000000000010000000f501000010000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000803f00000000000000000000000000000000400000001000000000000000",
+            "sha256": "e90dc7e065c596ac03812310e2f4802506754de9022978aa2f2041b870765bc2",
+            "size_bytes": 152
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 362,
+        "function_id": 24,
+        "layer": -1,
+        "module_call_id": 1163,
+        "module_kernel_ordinal": 0,
+        "module_scope": "logits_processor",
+        "native_launch_binding": {
+          "native_launch_id": 2423,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-362"
+        },
+        "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 1135,
+        "source_launch_key": "epoch-3-launch-362",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "0c6d95a2f63bdc1a7450028ff3a866687d53aae65fa591d7d83f459e664fbfcb",
+      "expected_parameters": {
+        "eps_bits": 925353388,
+        "hidden_size": 4096,
+        "input": 133689123543040,
+        "input_stride_elements": 4096,
+        "output": 133689127737344,
+        "output_stride_elements": 4096,
+        "weight": 133704462630912,
+        "weight_bias_bits": 0
+      },
+      "expected_word_vector": null,
+      "family": "PlainNorm",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "block": [
+          32,
+          16,
+          1
+        ],
+        "code_sha256": "9e454eeba78627283ab6d4a1981f56cd9341e035a68ccf6018da542e409d3c4b",
+        "context_id": 1,
+        "dynamic_shared_bytes": 64,
+        "function_id": 12,
+        "grid": [
+          32,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1303,
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Prefill",
+        "registers": 37,
+        "source_launch_key": "epoch-1-launch-15",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 51826,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/plan.json",
+        "sha256": "f7ab9cfc7eccc258ae6b6678d2716ebd67adf763bf338cbdd68c648d30450781"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018b8ec96790000",
+            "sha256": "05f4c058bbe1be14a148e14ac79459f53da796a71629b2de4cf5e0192761fd4d",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0000007f9a790000",
+            "sha256": "4414dacc7c4b60de02877d7159ba3924df4959a34281a9e310bb2399f7db5ec1",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018f8ec96790000",
+            "sha256": "ab408a222576a74ebe044bd2cab7ddaa0ff6f3124dc1640879b8687ec0abeba8",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00000000",
+            "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "acc52737",
+            "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "9e454eeba78627283ab6d4a1981f56cd9341e035a68ccf6018da542e409d3c4b",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernelEx",
+        "device_memory_dereferenced": false,
+        "epoch_id": 1,
+        "epoch_launch_ordinal": 15,
+        "function_id": 12,
+        "layer": 0,
+        "module_call_id": 3,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.input_layernorm",
+        "native_launch_binding": {
+          "native_launch_id": 1303,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-1-launch-15"
+        },
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Prefill",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 15,
+        "source_launch_key": "epoch-1-launch-15",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "d51f5e1bbffb9b832c22354d4b0b797dcf87c97fbbffddaf73636788a6e637cd",
+      "expected_parameters": {
+        "eps_bits": 925353388,
+        "hidden_size": 4096,
+        "input": 133704464657408,
+        "input_stride_elements": 4096,
+        "output": 133704464665600,
+        "output_stride_elements": 4096,
+        "weight": 133704462630912,
+        "weight_bias_bits": 0
+      },
+      "expected_word_vector": null,
+      "family": "PlainNorm",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "block": [
+          32,
+          16,
+          1
+        ],
+        "code_sha256": "9e454eeba78627283ab6d4a1981f56cd9341e035a68ccf6018da542e409d3c4b",
+        "context_id": 1,
+        "dynamic_shared_bytes": 64,
+        "function_id": 12,
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1705,
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Decode1",
+        "registers": 37,
+        "source_launch_key": "epoch-2-launch-9",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 51826,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/plan.json",
+        "sha256": "f7ab9cfc7eccc258ae6b6678d2716ebd67adf763bf338cbdd68c648d30450781"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00ec1e7f9a790000",
+            "sha256": "0615a552afca2f3e742ea3eaedf39a29414db1b297d90b6d9ff3928b42a1b669",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0000007f9a790000",
+            "sha256": "4414dacc7c4b60de02877d7159ba3924df4959a34281a9e310bb2399f7db5ec1",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000c1f7f9a790000",
+            "sha256": "217085e852f07156aedede7a786b226f129d6f9c04d81942f49625b47a9b8be1",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00000000",
+            "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "acc52737",
+            "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "9e454eeba78627283ab6d4a1981f56cd9341e035a68ccf6018da542e409d3c4b",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernelEx",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 9,
+        "function_id": 12,
+        "layer": 0,
+        "module_call_id": 391,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.input_layernorm",
+        "native_launch_binding": {
+          "native_launch_id": 1705,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-9"
+        },
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 417,
+        "source_launch_key": "epoch-2-launch-9",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "e4de47246eba1788745a1743fc12c1a386c7fe48eba13aef621e41fdef795cec",
+      "expected_parameters": {
+        "eps_bits": 925353388,
+        "hidden_size": 4096,
+        "input": 133704464657408,
+        "input_stride_elements": 4096,
+        "output": 133704464665600,
+        "output_stride_elements": 4096,
+        "weight": 133704462630912,
+        "weight_bias_bits": 0
+      },
+      "expected_word_vector": null,
+      "family": "PlainNorm",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "block": [
+          32,
+          16,
+          1
+        ],
+        "code_sha256": "9e454eeba78627283ab6d4a1981f56cd9341e035a68ccf6018da542e409d3c4b",
+        "context_id": 1,
+        "dynamic_shared_bytes": 64,
+        "function_id": 12,
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2070,
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Decode2",
+        "registers": 37,
+        "source_launch_key": "epoch-3-launch-9",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 51826,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/plan.json",
+        "sha256": "f7ab9cfc7eccc258ae6b6678d2716ebd67adf763bf338cbdd68c648d30450781"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00ec1e7f9a790000",
+            "sha256": "0615a552afca2f3e742ea3eaedf39a29414db1b297d90b6d9ff3928b42a1b669",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0000007f9a790000",
+            "sha256": "4414dacc7c4b60de02877d7159ba3924df4959a34281a9e310bb2399f7db5ec1",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000c1f7f9a790000",
+            "sha256": "217085e852f07156aedede7a786b226f129d6f9c04d81942f49625b47a9b8be1",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00000000",
+            "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "acc52737",
+            "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "9e454eeba78627283ab6d4a1981f56cd9341e035a68ccf6018da542e409d3c4b",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernelEx",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 9,
+        "function_id": 12,
+        "layer": 0,
+        "module_call_id": 779,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.input_layernorm",
+        "native_launch_binding": {
+          "native_launch_id": 2070,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-9"
+        },
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 782,
+        "source_launch_key": "epoch-3-launch-9",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "28f3f2b932f22a7bd2c1f0c3c654c7385351da947e5f9a21b9f1a0363cde0050",
+      "expected_parameters": {
+        "d": 4096,
+        "eps_bits": 925353388,
+        "input": 133689131931648,
+        "input_stride": 4096,
+        "residual": 133689123543040,
+        "residual_stride": 4096,
+        "weight": 133704462639104,
+        "weight_bias_bits": 0
+      },
+      "expected_word_vector": null,
+      "family": "FusedNorm",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "block": [
+          32,
+          16,
+          1
+        ],
+        "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+        "context_id": 1,
+        "dynamic_shared_bytes": 16448,
+        "function_id": 19,
+        "grid": [
+          32,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1311,
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Prefill",
+        "registers": 37,
+        "source_launch_key": "epoch-1-launch-23",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2500757,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/plan.json",
+        "sha256": "5e87903d8c9d341529f8d65e3d462e95df0ae36af7feda0bda1de2a7c8f73226"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "001838ed96790000",
+            "sha256": "ddc1d642a027e89cfd7137d0733180c341ec07450b488115028d4779a9ea81dc",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018b8ec96790000",
+            "sha256": "05f4c058bbe1be14a148e14ac79459f53da796a71629b2de4cf5e0192761fd4d",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0020007f9a790000",
+            "sha256": "a60306c315297f5433e599ac3cb72e3c02506e9eb2c87fd074a326fc8bab00be",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00000000",
+            "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "acc52737",
+            "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernelEx",
+        "device_memory_dereferenced": false,
+        "epoch_id": 1,
+        "epoch_launch_ordinal": 23,
+        "function_id": 19,
+        "layer": 0,
+        "module_call_id": 9,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.post_attention_layernorm",
+        "native_launch_binding": {
+          "native_launch_id": 1311,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-1-launch-23"
+        },
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Prefill",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 23,
+        "source_launch_key": "epoch-1-launch-23",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "0f2f2c9179fc955511c236d5dcc8ad0580c061d7dde20bf8fc0173908cfd919a",
+      "expected_parameters": {
+        "d": 4096,
+        "eps_bits": 925353388,
+        "input": 133704464694272,
+        "input_stride": 4096,
+        "residual": 133704464657408,
+        "residual_stride": 4096,
+        "weight": 133704462639104,
+        "weight_bias_bits": 0
+      },
+      "expected_word_vector": null,
+      "family": "FusedNorm",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "block": [
+          32,
+          16,
+          1
+        ],
+        "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+        "context_id": 1,
+        "dynamic_shared_bytes": 16448,
+        "function_id": 19,
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1712,
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Decode1",
+        "registers": 37,
+        "source_launch_key": "epoch-2-launch-16",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2500757,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/plan.json",
+        "sha256": "5e87903d8c9d341529f8d65e3d462e95df0ae36af7feda0bda1de2a7c8f73226"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "007c1f7f9a790000",
+            "sha256": "b8a594692bfbccbe8c0236861cddbcf5973693795598ec5e4c7e8e76455e604b",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00ec1e7f9a790000",
+            "sha256": "0615a552afca2f3e742ea3eaedf39a29414db1b297d90b6d9ff3928b42a1b669",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0020007f9a790000",
+            "sha256": "a60306c315297f5433e599ac3cb72e3c02506e9eb2c87fd074a326fc8bab00be",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00000000",
+            "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "acc52737",
+            "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernelEx",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 16,
+        "function_id": 19,
+        "layer": 0,
+        "module_call_id": 397,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.post_attention_layernorm",
+        "native_launch_binding": {
+          "native_launch_id": 1712,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-16"
+        },
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 424,
+        "source_launch_key": "epoch-2-launch-16",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "9dcd8d3fb8f011980147fa1dec55e6432945c93edfa6be44db61cee764c827c1",
+      "expected_parameters": {
+        "d": 4096,
+        "eps_bits": 925353388,
+        "input": 133704464694272,
+        "input_stride": 4096,
+        "residual": 133704464657408,
+        "residual_stride": 4096,
+        "weight": 133704462639104,
+        "weight_bias_bits": 0
+      },
+      "expected_word_vector": null,
+      "family": "FusedNorm",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "block": [
+          32,
+          16,
+          1
+        ],
+        "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+        "context_id": 1,
+        "dynamic_shared_bytes": 16448,
+        "function_id": 19,
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2077,
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Decode2",
+        "registers": 37,
+        "source_launch_key": "epoch-3-launch-16",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 2500757,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/plan.json",
+        "sha256": "5e87903d8c9d341529f8d65e3d462e95df0ae36af7feda0bda1de2a7c8f73226"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "007c1f7f9a790000",
+            "sha256": "b8a594692bfbccbe8c0236861cddbcf5973693795598ec5e4c7e8e76455e604b",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00ec1e7f9a790000",
+            "sha256": "0615a552afca2f3e742ea3eaedf39a29414db1b297d90b6d9ff3928b42a1b669",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0020007f9a790000",
+            "sha256": "a60306c315297f5433e599ac3cb72e3c02506e9eb2c87fd074a326fc8bab00be",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00100000",
+            "sha256": "2385b2772b668a99005ca6136ff00311e78c8c8a97b302c9548fe08fe808dd3d",
+            "size_bytes": 4
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00000000",
+            "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "acc52737",
+            "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernelEx",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 16,
+        "function_id": 19,
+        "layer": 0,
+        "module_call_id": 785,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.post_attention_layernorm",
+        "native_launch_binding": {
+          "native_launch_id": 2077,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-16"
+        },
+        "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 789,
+        "source_launch_key": "epoch-3-launch-16",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "cc1fadb3585c78bae65c0249495da8defdcb6f390c19a468a582d8825a3abfd1",
+      "expected_parameters": {
+        "d": 14336,
+        "input": 133705549086720,
+        "out": 133689601167360
+      },
+      "expected_word_vector": null,
+      "family": "SiLU",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          4
+        ],
+        "block": [
+          1024,
+          1,
+          1
+        ],
+        "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+        "context_id": 1,
+        "dynamic_shared_bytes": 0,
+        "function_id": 21,
+        "grid": [
+          32,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1313,
+        "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+        "phase": "Prefill",
+        "registers": 40,
+        "source_launch_key": "epoch-1-launch-25",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 880871,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/plan.json",
+        "sha256": "cde8cac6c0fabc6691b2bd4800a315b911efecf329ae556f8f523687dc793c79"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0010300997790000",
+            "sha256": "b6a38ec665d6177161e8c82f01f89b5da5234f24c234356a299c56ebeb4b9add",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0000c2bf9a790000",
+            "sha256": "f7eac9de208495f4c5618c94b4d6c7fd066bd3c944c626b8c97d1c50fd5f51c9",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00380000",
+            "sha256": "6685876f5b35e09a6bcfb6b7c4ff0cd07bd2bf8d35370b4cc4fc3b109553edf2",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 1,
+        "epoch_launch_ordinal": 25,
+        "function_id": 21,
+        "layer": 0,
+        "module_call_id": 12,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.mlp.act_fn",
+        "native_launch_binding": {
+          "native_launch_id": 1313,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-1-launch-25"
+        },
+        "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+        "phase": "Prefill",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 25,
+        "source_launch_key": "epoch-1-launch-25",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "31c50b4e726c599832f876a674253136da10c693d5016d8798e7e5acf60bdc1d",
+      "expected_parameters": {
+        "d": 14336,
+        "input": 133689123543040,
+        "out": 133704464665600
+      },
+      "expected_word_vector": null,
+      "family": "SiLU",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          4
+        ],
+        "block": [
+          1024,
+          1,
+          1
+        ],
+        "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+        "context_id": 1,
+        "dynamic_shared_bytes": 0,
+        "function_id": 21,
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1714,
+        "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+        "phase": "Decode1",
+        "registers": 40,
+        "source_launch_key": "epoch-2-launch-18",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 880871,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/plan.json",
+        "sha256": "cde8cac6c0fabc6691b2bd4800a315b911efecf329ae556f8f523687dc793c79"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000c1f7f9a790000",
+            "sha256": "217085e852f07156aedede7a786b226f129d6f9c04d81942f49625b47a9b8be1",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018b8ec96790000",
+            "sha256": "05f4c058bbe1be14a148e14ac79459f53da796a71629b2de4cf5e0192761fd4d",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00380000",
+            "sha256": "6685876f5b35e09a6bcfb6b7c4ff0cd07bd2bf8d35370b4cc4fc3b109553edf2",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 18,
+        "function_id": 21,
+        "layer": 0,
+        "module_call_id": 400,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.mlp.act_fn",
+        "native_launch_binding": {
+          "native_launch_id": 1714,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-18"
+        },
+        "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 426,
+        "source_launch_key": "epoch-2-launch-18",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "51bb17c5ee24cf27fbd292a79c5729c5c062bf2a0ffbffc383bff51f74c71dec",
+      "expected_parameters": {
+        "d": 14336,
+        "input": 133689123543040,
+        "out": 133704464665600
+      },
+      "expected_word_vector": null,
+      "family": "SiLU",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          4
+        ],
+        "block": [
+          1024,
+          1,
+          1
+        ],
+        "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+        "context_id": 1,
+        "dynamic_shared_bytes": 0,
+        "function_id": 21,
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2079,
+        "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+        "phase": "Decode2",
+        "registers": 40,
+        "source_launch_key": "epoch-3-launch-18",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 880871,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/plan.json",
+        "sha256": "cde8cac6c0fabc6691b2bd4800a315b911efecf329ae556f8f523687dc793c79"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000c1f7f9a790000",
+            "sha256": "217085e852f07156aedede7a786b226f129d6f9c04d81942f49625b47a9b8be1",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018b8ec96790000",
+            "sha256": "05f4c058bbe1be14a148e14ac79459f53da796a71629b2de4cf5e0192761fd4d",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00380000",
+            "sha256": "6685876f5b35e09a6bcfb6b7c4ff0cd07bd2bf8d35370b4cc4fc3b109553edf2",
+            "size_bytes": 4
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 18,
+        "function_id": 21,
+        "layer": 0,
+        "module_call_id": 788,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.mlp.act_fn",
+        "native_launch_binding": {
+          "native_launch_id": 2079,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-18"
+        },
+        "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 791,
+        "source_launch_key": "epoch-3-launch-18",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "34e9216c773804b01d5b48162e896db3e633a8a3bb6d8e94d83894189887ea94",
+      "expected_parameters": {
+        "cos_sin_cache": 133705536372736,
+        "k": 133689129842688,
+        "k_rope": 133689129842688,
+        "k_rope_stride_h": 128,
+        "k_rope_stride_n": 6144,
+        "k_stride_h": 128,
+        "k_stride_n": 6144,
+        "nnz": 32,
+        "num_kv_heads": 8,
+        "num_qo_heads": 32,
+        "pos_ids": 133704464655360,
+        "q": 133689129834496,
+        "q_rope": 133689129834496,
+        "q_rope_stride_h": 128,
+        "q_rope_stride_n": 6144,
+        "q_stride_h": 128,
+        "q_stride_n": 6144,
+        "rotary_dim": 128
+      },
+      "expected_word_vector": null,
+      "family": "Rotary",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+        "context_id": 1,
+        "dynamic_shared_bytes": 0,
+        "function_id": 14,
+        "grid": [
+          4,
+          40,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1305,
+        "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+        "phase": "Prefill",
+        "registers": 40,
+        "source_launch_key": "epoch-1-launch-17",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 1373822,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/plan.json",
+        "sha256": "36203e764eb65d2e32271f516275cd73cb8c836163fa6ea93ac0af4449cdd516"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "001818ed96790000",
+            "sha256": "52695afc112ccfb69e7771de54e9d007d7d4bbe0e5a507abec58b9955bfecdc9",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "003818ed96790000",
+            "sha256": "c439da8ed915a766371f8a96da2ef9e1b1b8727c607ad948c4fdef7c6fc21671",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "001818ed96790000",
+            "sha256": "52695afc112ccfb69e7771de54e9d007d7d4bbe0e5a507abec58b9955bfecdc9",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "003818ed96790000",
+            "sha256": "c439da8ed915a766371f8a96da2ef9e1b1b8727c607ad948c4fdef7c6fc21671",
+            "size_bytes": 8
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000bf9a790000",
+            "sha256": "ebd796b43629884c8dd729b3e468971c76ca10914f6fe1908710c4c3445d5ccf",
+            "size_bytes": 8
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00e41e7f9a790000",
+            "sha256": "01f4e2352877d53288875d98f7ce0a6405a40c8c32491312f84aebc58f2b886c",
+            "size_bytes": 8
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "20000000",
+            "sha256": "8d71b3faab8201459ad37ef499beb336ba88bdcfa0f51ee6f0a46ec3192d750a",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "20000000",
+            "sha256": "8d71b3faab8201459ad37ef499beb336ba88bdcfa0f51ee6f0a46ec3192d750a",
+            "size_bytes": 4
+          },
+          {
+            "index": 8,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "08000000",
+            "sha256": "dc765660b06ee03dd16fd7ca5b957e8c805161ac2c4af28c5a100ab2ab432ca1",
+            "size_bytes": 4
+          },
+          {
+            "index": 9,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "80000000",
+            "sha256": "50c8ba3a6170f0a2fb6736ece8a603576ef6309a35e810911599bc6211b554a9",
+            "size_bytes": 4
+          },
+          {
+            "index": 10,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018000000000000",
+            "sha256": "031c60adfb474131774f63470a61a16493dd9eb02f4e03e7c756c13b7193e645",
+            "size_bytes": 8
+          },
+          {
+            "index": 11,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 12,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018000000000000",
+            "sha256": "031c60adfb474131774f63470a61a16493dd9eb02f4e03e7c756c13b7193e645",
+            "size_bytes": 8
+          },
+          {
+            "index": 13,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 14,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018000000000000",
+            "sha256": "031c60adfb474131774f63470a61a16493dd9eb02f4e03e7c756c13b7193e645",
+            "size_bytes": 8
+          },
+          {
+            "index": 15,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 16,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0018000000000000",
+            "sha256": "031c60adfb474131774f63470a61a16493dd9eb02f4e03e7c756c13b7193e645",
+            "size_bytes": 8
+          },
+          {
+            "index": 17,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 1,
+        "epoch_launch_ordinal": 17,
+        "function_id": 14,
+        "layer": 0,
+        "module_call_id": 6,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.self_attn.rotary_emb",
+        "native_launch_binding": {
+          "native_launch_id": 1305,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-1-launch-17"
+        },
+        "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+        "phase": "Prefill",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 17,
+        "source_launch_key": "epoch-1-launch-17",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "05fec8dd5d423f1dbf71685f6f579b040ee7bb9fe375ddd0dabfcee650ffb719",
+      "expected_parameters": {
+        "cos_sin_cache": 133705536372736,
+        "k": 133704464681984,
+        "k_rope": 133704464681984,
+        "k_rope_stride_h": 128,
+        "k_rope_stride_n": 1024,
+        "k_stride_h": 128,
+        "k_stride_n": 1024,
+        "nnz": 1,
+        "num_kv_heads": 8,
+        "num_qo_heads": 32,
+        "pos_ids": 133704464654336,
+        "q": 133704464673792,
+        "q_rope": 133704464673792,
+        "q_rope_stride_h": 128,
+        "q_rope_stride_n": 4096,
+        "q_stride_h": 128,
+        "q_stride_n": 4096,
+        "rotary_dim": 128
+      },
+      "expected_word_vector": null,
+      "family": "Rotary",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+        "context_id": 1,
+        "dynamic_shared_bytes": 0,
+        "function_id": 14,
+        "grid": [
+          1,
+          40,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 1707,
+        "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+        "phase": "Decode1",
+        "registers": 40,
+        "source_launch_key": "epoch-2-launch-11",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 1373822,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/plan.json",
+        "sha256": "36203e764eb65d2e32271f516275cd73cb8c836163fa6ea93ac0af4449cdd516"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "002c1f7f9a790000",
+            "sha256": "cadf52ca2a420a0ca27554d19ce50576e59a624c99c785fbf9142e60383de702",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "004c1f7f9a790000",
+            "sha256": "ccb4d44a83497f26aaaa199d3835e5ecfd0284d83c9d30d02c1f62e8607b162c",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "002c1f7f9a790000",
+            "sha256": "cadf52ca2a420a0ca27554d19ce50576e59a624c99c785fbf9142e60383de702",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "004c1f7f9a790000",
+            "sha256": "ccb4d44a83497f26aaaa199d3835e5ecfd0284d83c9d30d02c1f62e8607b162c",
+            "size_bytes": 8
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000bf9a790000",
+            "sha256": "ebd796b43629884c8dd729b3e468971c76ca10914f6fe1908710c4c3445d5ccf",
+            "size_bytes": 8
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00e01e7f9a790000",
+            "sha256": "e961f543b053c3e748e1d91c670199ec1a3fc86611599ca338c3d3019ddef5c5",
+            "size_bytes": 8
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "01000000",
+            "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "20000000",
+            "sha256": "8d71b3faab8201459ad37ef499beb336ba88bdcfa0f51ee6f0a46ec3192d750a",
+            "size_bytes": 4
+          },
+          {
+            "index": 8,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "08000000",
+            "sha256": "dc765660b06ee03dd16fd7ca5b957e8c805161ac2c4af28c5a100ab2ab432ca1",
+            "size_bytes": 4
+          },
+          {
+            "index": 9,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "80000000",
+            "sha256": "50c8ba3a6170f0a2fb6736ece8a603576ef6309a35e810911599bc6211b554a9",
+            "size_bytes": 4
+          },
+          {
+            "index": 10,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0010000000000000",
+            "sha256": "a02ae51509464de11084e34346a86574191b861de2cb5cf064661b459c9bc9e4",
+            "size_bytes": 8
+          },
+          {
+            "index": 11,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 12,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0004000000000000",
+            "sha256": "fef02424157f106b48d04276276c15ebba9c516e6024d4f82ea2f648af3e09c8",
+            "size_bytes": 8
+          },
+          {
+            "index": 13,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 14,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0010000000000000",
+            "sha256": "a02ae51509464de11084e34346a86574191b861de2cb5cf064661b459c9bc9e4",
+            "size_bytes": 8
+          },
+          {
+            "index": 15,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 16,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0004000000000000",
+            "sha256": "fef02424157f106b48d04276276c15ebba9c516e6024d4f82ea2f648af3e09c8",
+            "size_bytes": 8
+          },
+          {
+            "index": 17,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 2,
+        "epoch_launch_ordinal": 11,
+        "function_id": 14,
+        "layer": 0,
+        "module_call_id": 394,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.self_attn.rotary_emb",
+        "native_launch_binding": {
+          "native_launch_id": 1707,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-2-launch-11"
+        },
+        "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+        "phase": "Decode1",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 419,
+        "source_launch_key": "epoch-2-launch-11",
+        "stream_u64": 0
+      }
+    },
+    {
+      "argument_line_sha256": "f593f2e2e9dcc79934bf7370a679391ea0494206c18f18761840927b0bbacfa5",
+      "expected_parameters": {
+        "cos_sin_cache": 133705536372736,
+        "k": 133704464681984,
+        "k_rope": 133704464681984,
+        "k_rope_stride_h": 128,
+        "k_rope_stride_n": 1024,
+        "k_stride_h": 128,
+        "k_stride_n": 1024,
+        "nnz": 1,
+        "num_kv_heads": 8,
+        "num_qo_heads": 32,
+        "pos_ids": 133704464653824,
+        "q": 133704464673792,
+        "q_rope": 133704464673792,
+        "q_rope_stride_h": 128,
+        "q_rope_stride_n": 4096,
+        "q_stride_h": 128,
+        "q_stride_n": 4096,
+        "rotary_dim": 128
+      },
+      "expected_word_vector": null,
+      "family": "Rotary",
+      "launch": {
+        "argument_sizes": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "block": [
+          16,
+          8,
+          1
+        ],
+        "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+        "context_id": 1,
+        "dynamic_shared_bytes": 0,
+        "function_id": 14,
+        "grid": [
+          1,
+          40,
+          1
+        ],
+        "local_bytes_per_thread": 0,
+        "native_launch_id": 2072,
+        "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+        "phase": "Decode2",
+        "registers": 40,
+        "source_launch_key": "epoch-3-launch-11",
+        "static_shared_bytes": 0,
+        "stream_u64": 0
+      },
+      "plan_pin": {
+        "bytes": 1373822,
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/plan.json",
+        "sha256": "36203e764eb65d2e32271f516275cd73cb8c836163fa6ea93ac0af4449cdd516"
+      },
+      "process": {
+        "pid": 1925216,
+        "start_ticks": 857625100
+      },
+      "raw_record": {
+        "argument_transport": "kernelParams",
+        "arguments": [
+          {
+            "index": 0,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "002c1f7f9a790000",
+            "sha256": "cadf52ca2a420a0ca27554d19ce50576e59a624c99c785fbf9142e60383de702",
+            "size_bytes": 8
+          },
+          {
+            "index": 1,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "004c1f7f9a790000",
+            "sha256": "ccb4d44a83497f26aaaa199d3835e5ecfd0284d83c9d30d02c1f62e8607b162c",
+            "size_bytes": 8
+          },
+          {
+            "index": 2,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "002c1f7f9a790000",
+            "sha256": "cadf52ca2a420a0ca27554d19ce50576e59a624c99c785fbf9142e60383de702",
+            "size_bytes": 8
+          },
+          {
+            "index": 3,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "004c1f7f9a790000",
+            "sha256": "ccb4d44a83497f26aaaa199d3835e5ecfd0284d83c9d30d02c1f62e8607b162c",
+            "size_bytes": 8
+          },
+          {
+            "index": 4,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "000000bf9a790000",
+            "sha256": "ebd796b43629884c8dd729b3e468971c76ca10914f6fe1908710c4c3445d5ccf",
+            "size_bytes": 8
+          },
+          {
+            "index": 5,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "00de1e7f9a790000",
+            "sha256": "70a57f8bb4194b497352a97e55e8781c2252efc1bf7d0090e6859d36a6ade8a1",
+            "size_bytes": 8
+          },
+          {
+            "index": 6,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "01000000",
+            "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450",
+            "size_bytes": 4
+          },
+          {
+            "index": 7,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "20000000",
+            "sha256": "8d71b3faab8201459ad37ef499beb336ba88bdcfa0f51ee6f0a46ec3192d750a",
+            "size_bytes": 4
+          },
+          {
+            "index": 8,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "08000000",
+            "sha256": "dc765660b06ee03dd16fd7ca5b957e8c805161ac2c4af28c5a100ab2ab432ca1",
+            "size_bytes": 4
+          },
+          {
+            "index": 9,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "80000000",
+            "sha256": "50c8ba3a6170f0a2fb6736ece8a603576ef6309a35e810911599bc6211b554a9",
+            "size_bytes": 4
+          },
+          {
+            "index": 10,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0010000000000000",
+            "sha256": "a02ae51509464de11084e34346a86574191b861de2cb5cf064661b459c9bc9e4",
+            "size_bytes": 8
+          },
+          {
+            "index": 11,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 12,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0004000000000000",
+            "sha256": "fef02424157f106b48d04276276c15ebba9c516e6024d4f82ea2f648af3e09c8",
+            "size_bytes": 8
+          },
+          {
+            "index": 13,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 14,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0010000000000000",
+            "sha256": "a02ae51509464de11084e34346a86574191b861de2cb5cf064661b459c9bc9e4",
+            "size_bytes": 8
+          },
+          {
+            "index": 15,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          },
+          {
+            "index": 16,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "0004000000000000",
+            "sha256": "fef02424157f106b48d04276276c15ebba9c516e6024d4f82ea2f648af3e09c8",
+            "size_bytes": 8
+          },
+          {
+            "index": 17,
+            "parameter_buffer_offset": null,
+            "raw_bytes_hex": "8000000000000000",
+            "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+            "size_bytes": 8
+          }
+        ],
+        "capture_before_original_launch": true,
+        "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+        "context_id": 1,
+        "cuda_api": "cuLaunchKernel",
+        "device_memory_dereferenced": false,
+        "epoch_id": 3,
+        "epoch_launch_ordinal": 11,
+        "function_id": 14,
+        "layer": 0,
+        "module_call_id": 782,
+        "module_kernel_ordinal": 0,
+        "module_scope": "model.layers.0.self_attn.rotary_emb",
+        "native_launch_binding": {
+          "native_launch_id": 2072,
+          "process": {
+            "pid": 1925216,
+            "start_ticks": 857625100
+          },
+          "source_launch_key": "epoch-3-launch-11"
+        },
+        "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+        "phase": "Decode2",
+        "schema": "SG_NATIVE_ALL1138_ARGUMENT_VECTOR_V1",
+        "sequence": 784,
+        "source_launch_key": "epoch-3-launch-11",
+        "stream_u64": 0
+      }
+    }
+  ],
+  "provenance": "Raw captured host bytes compared with independently existing typed Model plans",
+  "schema": "REAL_CAPTURED_TYPED_PARAMETER_REGRESSION_V1",
+  "source_pins": [
+    {
+      "bytes": 2372422,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/captured-allargs-norm-r1/observer/process-1925216-857625100/launch-arguments.jsonl",
+      "sha256": "4bca5ca01cb317b747b974e7bec80af07c72831b2e716613ac92d5d3d76b6d56"
+    },
+    {
+      "bytes": 2866054,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+      "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+    },
+    {
+      "bytes": 51826,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/plan.json",
+      "sha256": "f7ab9cfc7eccc258ae6b6678d2716ebd67adf763bf338cbdd68c648d30450781"
+    },
+    {
+      "bytes": 2500757,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/plan.json",
+      "sha256": "5e87903d8c9d341529f8d65e3d462e95df0ae36af7feda0bda1de2a7c8f73226"
+    },
+    {
+      "bytes": 880871,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/plan.json",
+      "sha256": "cde8cac6c0fabc6691b2bd4800a315b911efecf329ae556f8f523687dc793c79"
+    },
+    {
+      "bytes": 1373822,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/plan.json",
+      "sha256": "36203e764eb65d2e32271f516275cd73cb8c836163fa6ea93ac0af4449cdd516"
+    }
+  ]
+}

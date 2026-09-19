@@ -552,6 +552,57 @@ def observer_section(observer):
     return '\n'.join(parts)
 
 
+def argument_preparation_section():
+    root = REPO / 'capture/native-arguments-r1'
+    if not (root / 'cpu-preflight.json').is_file():
+        return ''
+    upload = load(root / 'upload-manifest.json')
+    for row in upload['files']:
+        path = root / row['path']
+        assert path.parent == root and path.is_file() and not path.is_symlink()
+        assert path.stat().st_size == row['bytes'] and sha(path) == row['sha256']
+    preflight = load(root / 'cpu-preflight.json')
+    assert preflight['status'] == 'PASS_CPU_ONLY_ARGUMENT_PACKAGE'
+    assert not any(preflight[k] for k in ('GPU_executed', 'NVCC_executed', 'remote_executed'))
+    for kind in ('producer', 'consumer'):
+        receipt = preflight[kind]['receipt']
+        assert sha(receipt['path']) == receipt['sha256']
+        for pin in preflight[kind]['result']['inputs']:
+            assert Path(pin['path']).stat().st_size == pin['bytes'] and sha(pin['path']) == pin['sha256']
+    plan = load(root / 'argument-plan.json')
+    manifest = load(root / 'manifest.json')
+    assert sha(root / 'argument-plan.json') == manifest['argument_plan_sha256']
+    assert not plan['raw_argument_values_captured'] and not manifest['native_model_admitted']
+    limit = plan['limits']
+    decoder = load(REPO / 'native_transfer/cpu-tests.json')
+    legacy = load(REPO / 'native_transfer/legacy-regression.json')
+    assert decoder['status'] == 'PASS' and legacy['status'] == 'PASS_646_REAL_CAPTURED_CALLS_TYPED_ONLY'
+    for result in (decoder, legacy):
+        assert not result['GPU_used'] and not result['native_model_admitted']
+        for pin in result['source_pins']:
+            assert Path(pin['path']).stat().st_size == pin['bytes'] and sha(pin['path']) == pin['sha256']
+    producer = preflight['producer']['result']
+    consumer = preflight['consumer']['result']
+    rows = [
+        ['采集计划', f'{limit["launches"]:,} launches / {limit["arguments"]:,} 参数；预期 {payload(limit["raw_bytes"])} 原始参数字节', '来自真实静态 ABI 的预期数量；参数内容尚待新 GPU 运行采集。'],
+        ['host producer', f'{producer["ledger"]["checks"]} 项 ledger 检查；4 种 CUDA callback API、6 类拒绝案例与完整计划测试通过', 'ASan / UBSan 的 CPU mock；不表示远端 NVCC 构建或 GPU 采集完成。'],
+        ['独立 consumer', f'{consumer["test_count"]} 项 CPU 测试通过；真实 source journals 可重建相同计划与 header', '逐参数字节、SHA、launch before/return、七 journals 和配额闭合；不采 device 指针指向的数据。'],
+        ['typed decoder', f'{decoder["tests"]} 组 CPU 测试；旧真实语料 {sum(legacy["family_counts"].values())} calls 全部对照通过', '5 族：GEMV / PlainNorm / FusedNorm / SiLU / RoPE；旧语料回归不代表新参数适配已验证。'],
+        ['远端运行 / CPU 分钟', 'N/A · 新参数采集尚待运行', 'controller 将分别记录本进程 CPU、等待子进程 CPU、wall 时间；这些不是推理延迟。'],
+        ['完整新 TileGen / NCU 对比', 'N/A · native model 未准入', '仍需新实测参数、对象绑定、动态 witness、其余 kernel、phase 与容量适配。'],
+    ]
+    return '\n'.join([
+        '<h3 id="native-argument-preparation">参数输入实现：本地测试完成，真实采集待执行</h3>',
+        '<p>新增采集器保持原 SGLang workload 与静态 observer，复制每次 CUDA launch 的 host 参数。PlainNorm 与 FusedNorm 以 code + ABI 区分字段；RoPE 的 position 内容仍为未知。GEMV 和 SiLU 的新参数入口正在复用既有地址生成逻辑。</p>',
+        table(['步骤', '已完成 / 当前状态', '口径'], rows, 'text'),
+        '<p>代码分支仍为 <code>codex/tilegen-trace-cosim-20260918-r1</code>；B8 暂停，写回仍为 32 B。生成计划与 header 从封存证据再生；Git 保留实现、校验收据及 SHA，避免将约 30 MB 的生成数据当作代码改动。</p>',
+        '<p>' + link(root / 'cpu-preflight.json', '参数采集 CPU 测试封存') + ' · ' +
+        link(REPO / 'native_transfer/legacy-regression.json', '旧真实参数 646 calls 回归') + ' · ' +
+        link(REPO / 'docs/native-p1024d32-implementation-status.md', '当前实现状态与剩余工作') + ' · ' +
+        link(REPO / 'docs/native-p1024d32-binding-plan.md', '各类地址绑定适配边界') + '</p>',
+    ])
+
+
 def discovery_section(capture, ncu, observer):
     root, c, m, finish = capture['root'], capture['controller'], capture['manifest'], capture['finish']
     contract = c['input_contract']
@@ -599,6 +650,7 @@ def discovery_section(capture, ncu, observer):
     parts.append(ncu_section(ncu, capture))
     parts.append(theoretical_read_section(capture,ncu))
     parts.append(observer_section(observer))
+    parts.append(argument_preparation_section())
     parts.append('<h3>新 native 模型仍未准入</h3><p>新 Decode attention grid 为 [9,8,1]，旧源为 [1,8,1]；新 CUTLASS / Ampere GEMM 与 PersistentVariableLengthMergeStates 首先由 profiler symbol 文本比较发现。后续静态 census 提供 decoded code / ABI layout 身份，具体与旧工作流差异见独立审计；静态身份也不能证明动态访问可套入旧绑定。完整 8B P1024D32 simulation 仍需要新 shape 的 raw arguments、完整 native witness、独立 heldout、bindings 及 phase 支持。</p><p>容量也尚待证明：trace 单文件硬上限 64 GiB；HBF 多离散 range 的 sparse seed 上限为 1,048,576 页（4 GiB payload），新工作负载实际 trace 规模尚未测得。不能只调大命令参数就宣称整模可运行。</p><p>'+link(REPO/'docs/native-p1024d32-admission.md','原生 P1024D32 准入审计')+' · '+link(REPO/'validation/native-p1024d32-admission.json','53 项证据 SHA 与具体缺口')+'。这份早期审计的 metadata weight_content_hashes_complete=false 对应内层 manifest；外层 discovery controller 另行记录了四个权重 shard 的内容 SHA。静态 census 后续补齐的身份以上方独立审计为准，动态访存 / 计算模型资格仍未建立。</p>')
     return '\n'.join(parts)
 

@@ -1,0 +1,1749 @@
+{
+  "families": [
+    {
+      "family": "GEMV",
+      "fields": [],
+      "pointer_names": [
+        "weight",
+        "input",
+        "output"
+      ],
+      "templates": [
+        {
+          "K": 4096,
+          "N": 128256,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            2382364672,
+            29488,
+            0,
+            0,
+            1595862016,
+            29492,
+            0,
+            0,
+            3434616832,
+            29488,
+            0,
+            0,
+            3434616832,
+            29488,
+            0,
+            0,
+            4096,
+            128256,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            16,
+            0
+          ],
+          "block": [
+            16,
+            8,
+            1
+          ],
+          "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+          "grid": [
+            16032,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 544,
+            "local_bytes_per_thread": 0,
+            "registers": 162,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-1-launch-405",
+          "template_phase": "Prefill",
+          "template_pin": {
+            "bytes": 4944,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/epoch-1-launch-405-template.json",
+            "sha256": "26be4554a1b012ff55ac55f443738875be86453c6b68cbdbcbd4ca438f0e7c27"
+          }
+        },
+        {
+          "K": 4096,
+          "N": 6144,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            2919235584,
+            29645,
+            0,
+            0,
+            3810499584,
+            29645,
+            0,
+            0,
+            3810507776,
+            29645,
+            0,
+            0,
+            3810507776,
+            29645,
+            0,
+            0,
+            4096,
+            6144,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            16,
+            0
+          ],
+          "block": [
+            16,
+            4,
+            1
+          ],
+          "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+          "grid": [
+            1536,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 272,
+            "local_bytes_per_thread": 0,
+            "registers": 168,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-2-launch-21",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 4598,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-2-launch-21-template.json",
+            "sha256": "68c755119c485830f96f8514f4a7e3e8ca2bb47a7784fd558ee54fe40538132b"
+          }
+        },
+        {
+          "K": 4096,
+          "N": 4096,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            805306368,
+            30325,
+            0,
+            0,
+            1662979072,
+            30325,
+            0,
+            0,
+            1662987264,
+            30325,
+            0,
+            0,
+            1662987264,
+            30325,
+            0,
+            0,
+            4096,
+            4096,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            16,
+            0
+          ],
+          "block": [
+            16,
+            4,
+            1
+          ],
+          "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 272,
+            "local_bytes_per_thread": 0,
+            "registers": 168,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-2-launch-26",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 4599,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-2-launch-26-template.json",
+            "sha256": "71d705a9974f5eec2fcfe829db1a5bdc506664b007223b3ee7b7d0169a756646"
+          }
+        },
+        {
+          "K": 4096,
+          "N": 28672,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            1979711488,
+            32174,
+            0,
+            0,
+            3072273408,
+            32174,
+            0,
+            0,
+            616044544,
+            32171,
+            0,
+            0,
+            616044544,
+            32171,
+            0,
+            0,
+            4096,
+            28672,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            32,
+            0
+          ],
+          "block": [
+            32,
+            4,
+            1
+          ],
+          "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+          "grid": [
+            7168,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 528,
+            "local_bytes_per_thread": 0,
+            "registers": 162,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-2-launch-28",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 4613,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-2-launch-28-template.json",
+            "sha256": "c1cb8c59ffdc4f67b9856550457c99ec6cb35e1c6a4ef726ef77fcc25d39decc"
+          }
+        },
+        {
+          "K": 14336,
+          "N": 4096,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            3422552064,
+            31987,
+            0,
+            0,
+            2193160192,
+            31984,
+            0,
+            0,
+            354356224,
+            31988,
+            0,
+            0,
+            354356224,
+            31988,
+            0,
+            0,
+            14336,
+            4096,
+            14336,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            32,
+            0
+          ],
+          "block": [
+            32,
+            4,
+            1
+          ],
+          "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 528,
+            "local_bytes_per_thread": 0,
+            "registers": 162,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-2-launch-30",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 4616,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-2-launch-30-template.json",
+            "sha256": "17504aeb141863183a7cf8a9b369de0064482a314f470ca796d601f46f1544bd"
+          }
+        },
+        {
+          "K": 4096,
+          "N": 128256,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            2382364672,
+            29488,
+            0,
+            0,
+            1595870208,
+            29492,
+            0,
+            0,
+            3434616832,
+            29488,
+            0,
+            0,
+            3434616832,
+            29488,
+            0,
+            0,
+            4096,
+            128256,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            16,
+            0
+          ],
+          "block": [
+            16,
+            8,
+            1
+          ],
+          "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+          "grid": [
+            16032,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 544,
+            "local_bytes_per_thread": 0,
+            "registers": 162,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-2-launch-362",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 4944,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/epoch-2-launch-362-template.json",
+            "sha256": "7f883055bb3de15ed2fa54ba1ed0dc96c52abacdb883b088aceeb92fa2900c97"
+          }
+        },
+        {
+          "K": 4096,
+          "N": 6144,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            2919235584,
+            29645,
+            0,
+            0,
+            3810499584,
+            29645,
+            0,
+            0,
+            3810507776,
+            29645,
+            0,
+            0,
+            3810507776,
+            29645,
+            0,
+            0,
+            4096,
+            6144,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            16,
+            0
+          ],
+          "block": [
+            16,
+            4,
+            1
+          ],
+          "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+          "grid": [
+            1536,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 272,
+            "local_bytes_per_thread": 0,
+            "registers": 168,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-3-launch-21",
+          "template_phase": "Decode2",
+          "template_pin": {
+            "bytes": 4598,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-3-launch-21-template.json",
+            "sha256": "d1bd68d82bac0c821d8ce1aed3fea6ceff704b594eb917ac0c167248567d27ff"
+          }
+        },
+        {
+          "K": 4096,
+          "N": 4096,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            805306368,
+            30325,
+            0,
+            0,
+            1662979072,
+            30325,
+            0,
+            0,
+            1662987264,
+            30325,
+            0,
+            0,
+            1662987264,
+            30325,
+            0,
+            0,
+            4096,
+            4096,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            16,
+            0
+          ],
+          "block": [
+            16,
+            4,
+            1
+          ],
+          "code_sha256": "a67f8d265deb5e1402037e2c45c1a28c7dc5c343e97e493dd24f0727b4ac50ed",
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 272,
+            "local_bytes_per_thread": 0,
+            "registers": 168,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-3-launch-26",
+          "template_phase": "Decode2",
+          "template_pin": {
+            "bytes": 4599,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-3-launch-26-template.json",
+            "sha256": "d3009b03547788266d4471c80d1317c860d4e204ec24972d7355eaaae23effc9"
+          }
+        },
+        {
+          "K": 4096,
+          "N": 28672,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            1979711488,
+            32174,
+            0,
+            0,
+            3072273408,
+            32174,
+            0,
+            0,
+            616044544,
+            32171,
+            0,
+            0,
+            616044544,
+            32171,
+            0,
+            0,
+            4096,
+            28672,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            32,
+            0
+          ],
+          "block": [
+            32,
+            4,
+            1
+          ],
+          "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+          "grid": [
+            7168,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 528,
+            "local_bytes_per_thread": 0,
+            "registers": 162,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-3-launch-28",
+          "template_phase": "Decode2",
+          "template_pin": {
+            "bytes": 4613,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-3-launch-28-template.json",
+            "sha256": "6468ed3e996523ed79243631b37bb93512cc833ca89a9f754218536ac9955bbd"
+          }
+        },
+        {
+          "K": 14336,
+          "N": 4096,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            3422552064,
+            31987,
+            0,
+            0,
+            2193160192,
+            31984,
+            0,
+            0,
+            354356224,
+            31988,
+            0,
+            0,
+            354356224,
+            31988,
+            0,
+            0,
+            14336,
+            4096,
+            14336,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            32,
+            0
+          ],
+          "block": [
+            32,
+            4,
+            1
+          ],
+          "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 528,
+            "local_bytes_per_thread": 0,
+            "registers": 162,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-3-launch-30",
+          "template_phase": "Decode2",
+          "template_pin": {
+            "bytes": 4616,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-3-launch-30-template.json",
+            "sha256": "822a9c7a4439a17f929e81ff93a5ab4266a7886d19e015de525756fca763f345"
+          }
+        },
+        {
+          "K": 4096,
+          "N": 128256,
+          "argument_sizes": [
+            152
+          ],
+          "argument_words": [
+            1509949440,
+            29106,
+            0,
+            0,
+            723454976,
+            29110,
+            0,
+            0,
+            2562201600,
+            29106,
+            0,
+            0,
+            2562201600,
+            29106,
+            0,
+            0,
+            4096,
+            128256,
+            4096,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1065353216,
+            0,
+            0,
+            0,
+            0,
+            64,
+            16,
+            0
+          ],
+          "block": [
+            16,
+            8,
+            1
+          ],
+          "code_sha256": "31af276ca5f2a53c3d67f65622dcee3ec8662093c79ce0dd6fed10ce5acd00d5",
+          "grid": [
+            16032,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "fcf180e1a3f8b10b4ce71512b6ed5e0c6788a87819a4ef2343769feeb41efac5",
+          "pointer_alignment_mod128": {
+            "input": 0,
+            "output": 0,
+            "weight": 0
+          },
+          "resources": {
+            "dynamic_shared_bytes": 544,
+            "local_bytes_per_thread": 0,
+            "registers": 162,
+            "static_shared_bytes": 0
+          },
+          "template_id": "epoch-3-launch-362",
+          "template_phase": "Decode2",
+          "template_pin": {
+            "bytes": 4942,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/epoch-3-launch-362-template.json",
+            "sha256": "76a114865d67780acd4e2976adf8bc2cfd0b430823b99153ca098b87785f031c"
+          }
+        }
+      ]
+    },
+    {
+      "family": "PlainNorm",
+      "fields": [
+        {
+          "bytes": 8,
+          "index": 0,
+          "name": "input"
+        },
+        {
+          "bytes": 8,
+          "index": 1,
+          "name": "weight"
+        },
+        {
+          "bytes": 8,
+          "index": 2,
+          "name": "output"
+        },
+        {
+          "bytes": 4,
+          "index": 3,
+          "name": "hidden_size"
+        },
+        {
+          "bytes": 4,
+          "index": 4,
+          "name": "input_stride_elements"
+        },
+        {
+          "bytes": 4,
+          "index": 5,
+          "name": "output_stride_elements"
+        },
+        {
+          "bytes": 4,
+          "index": 6,
+          "name": "weight_bias_bits"
+        },
+        {
+          "bytes": 4,
+          "index": 7,
+          "name": "eps_bits"
+        }
+      ],
+      "pointer_names": [
+        "input",
+        "weight",
+        "output"
+      ],
+      "templates": [
+        {
+          "argument_sizes": [
+            8,
+            8,
+            8,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "block": [
+            32,
+            16,
+            1
+          ],
+          "code_sha256": "9e454eeba78627283ab6d4a1981f56cd9341e035a68ccf6018da542e409d3c4b",
+          "grid": [
+            32,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+          "resources": {
+            "dynamic_shared_bytes": 64,
+            "local_bytes_per_thread": 0,
+            "registers": 37,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "eps_bits": 925353388,
+            "hidden_size": 4096,
+            "input_stride_elements": 4096,
+            "output_stride_elements": 4096,
+            "weight_bias_bits": 0
+          },
+          "template_id": "PlainNorm:Prefill",
+          "template_phase": "Prefill",
+          "template_pin": {
+            "bytes": 11101,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/Prefill-template.json",
+            "sha256": "cca7c32bcbaa3dc0b28e9253b1f5f48b8bf15c0e1cfc2082b2c045d9212817ef"
+          }
+        },
+        {
+          "argument_sizes": [
+            8,
+            8,
+            8,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "block": [
+            32,
+            16,
+            1
+          ],
+          "code_sha256": "9e454eeba78627283ab6d4a1981f56cd9341e035a68ccf6018da542e409d3c4b",
+          "grid": [
+            1,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+          "resources": {
+            "dynamic_shared_bytes": 64,
+            "local_bytes_per_thread": 0,
+            "registers": 37,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "eps_bits": 925353388,
+            "hidden_size": 4096,
+            "input_stride_elements": 4096,
+            "output_stride_elements": 4096,
+            "weight_bias_bits": 0
+          },
+          "template_id": "PlainNorm:Decode1",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 11099,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/Decode1-template.json",
+            "sha256": "e07ea070c51b81eab01da220005acd14c119bd4b376b2c46c6c21ff371795d94"
+          }
+        }
+      ]
+    },
+    {
+      "family": "FusedNorm",
+      "fields": [
+        {
+          "bytes": 8,
+          "index": 0,
+          "name": "input"
+        },
+        {
+          "bytes": 8,
+          "index": 1,
+          "name": "residual"
+        },
+        {
+          "bytes": 8,
+          "index": 2,
+          "name": "weight"
+        },
+        {
+          "bytes": 4,
+          "index": 3,
+          "name": "d"
+        },
+        {
+          "bytes": 4,
+          "index": 4,
+          "name": "input_stride"
+        },
+        {
+          "bytes": 4,
+          "index": 5,
+          "name": "residual_stride"
+        },
+        {
+          "bytes": 4,
+          "index": 6,
+          "name": "weight_bias_bits"
+        },
+        {
+          "bytes": 4,
+          "index": 7,
+          "name": "eps_bits"
+        }
+      ],
+      "pointer_names": [
+        "input",
+        "residual",
+        "weight"
+      ],
+      "templates": [
+        {
+          "argument_sizes": [
+            8,
+            8,
+            8,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "block": [
+            32,
+            16,
+            1
+          ],
+          "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+          "grid": [
+            32,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+          "resources": {
+            "dynamic_shared_bytes": 16448,
+            "local_bytes_per_thread": 0,
+            "registers": 37,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "d": 4096,
+            "eps_bits": 925353388,
+            "input_stride": 4096,
+            "residual_stride": 4096,
+            "weight_bias_bits": 0
+          },
+          "template_id": "FusedNorm:Prefill",
+          "template_phase": "Prefill",
+          "template_pin": {
+            "bytes": 14337,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/template-Prefill.json",
+            "sha256": "57300ec2a3769e8ebd1abda2a0153ac62f52af2cfcb2d804b71786558b67eaf3"
+          }
+        },
+        {
+          "argument_sizes": [
+            8,
+            8,
+            8,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "block": [
+            32,
+            16,
+            1
+          ],
+          "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+          "grid": [
+            1,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+          "resources": {
+            "dynamic_shared_bytes": 16448,
+            "local_bytes_per_thread": 0,
+            "registers": 37,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "d": 4096,
+            "eps_bits": 925353388,
+            "input_stride": 4096,
+            "residual_stride": 4096,
+            "weight_bias_bits": 0
+          },
+          "template_id": "FusedNorm:Decode1",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 14336,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/template-Decode1.json",
+            "sha256": "df27798bb3cf80d30adb0c46f740ff677154bd5557369462be45699f21b07dea"
+          }
+        },
+        {
+          "argument_sizes": [
+            8,
+            8,
+            8,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "block": [
+            32,
+            16,
+            1
+          ],
+          "code_sha256": "67ff27904f52b965a4bee00841447a6ac9c1c3ab900057f03c85ba1c7c5b14ec",
+          "grid": [
+            1,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "ec6387eadebc86b3d2982d4d5cdfed7ed04dfb886baaf4d3c33ab60f87b6f2ea",
+          "resources": {
+            "dynamic_shared_bytes": 16448,
+            "local_bytes_per_thread": 0,
+            "registers": 37,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "d": 4096,
+            "eps_bits": 925353388,
+            "input_stride": 4096,
+            "residual_stride": 4096,
+            "weight_bias_bits": 0
+          },
+          "template_id": "FusedNorm:Decode2",
+          "template_phase": "Decode2",
+          "template_pin": {
+            "bytes": 14336,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/template-Decode2.json",
+            "sha256": "53c4e25c10a96abe889fbf6d50f78ce0b2eccc11bf43389bb5eda90f582166bc"
+          }
+        }
+      ]
+    },
+    {
+      "family": "SiLU",
+      "fields": [
+        {
+          "bytes": 8,
+          "index": 0,
+          "name": "out"
+        },
+        {
+          "bytes": 8,
+          "index": 1,
+          "name": "input"
+        },
+        {
+          "bytes": 4,
+          "index": 2,
+          "name": "d"
+        }
+      ],
+      "pointer_names": [
+        "out",
+        "input"
+      ],
+      "templates": [
+        {
+          "argument_sizes": [
+            8,
+            8,
+            4
+          ],
+          "block": [
+            1024,
+            1,
+            1
+          ],
+          "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+          "grid": [
+            32,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+          "resources": {
+            "dynamic_shared_bytes": 0,
+            "local_bytes_per_thread": 0,
+            "registers": 40,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "d": 14336
+          },
+          "template_id": "SiLU:Prefill",
+          "template_phase": "Prefill",
+          "template_pin": {
+            "bytes": 155958,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/template.json",
+            "sha256": "47c5d3a34ceddff4ca39574ae6e8c7ba5d14f0f9ec4ed7c8ba7f380919ec1624"
+          }
+        },
+        {
+          "argument_sizes": [
+            8,
+            8,
+            4
+          ],
+          "block": [
+            1024,
+            1,
+            1
+          ],
+          "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+          "grid": [
+            1,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+          "resources": {
+            "dynamic_shared_bytes": 0,
+            "local_bytes_per_thread": 0,
+            "registers": 40,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "d": 14336
+          },
+          "template_id": "SiLU:Decode1",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 155958,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/template.json",
+            "sha256": "47c5d3a34ceddff4ca39574ae6e8c7ba5d14f0f9ec4ed7c8ba7f380919ec1624"
+          }
+        },
+        {
+          "argument_sizes": [
+            8,
+            8,
+            4
+          ],
+          "block": [
+            1024,
+            1,
+            1
+          ],
+          "code_sha256": "4436ef4bfd326904110d15f7fed5f2929b4b5ee9685d5c00ac5a5a862df2480b",
+          "grid": [
+            1,
+            1,
+            1
+          ],
+          "parameter_layout_sha256": "154dcc7c7113a7cfe92c2c0c66ade3f67585fad33735b50bf6c796336eee0f42",
+          "resources": {
+            "dynamic_shared_bytes": 0,
+            "local_bytes_per_thread": 0,
+            "registers": 40,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "d": 14336
+          },
+          "template_id": "SiLU:Decode2",
+          "template_phase": "Decode2",
+          "template_pin": {
+            "bytes": 155958,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/template.json",
+            "sha256": "47c5d3a34ceddff4ca39574ae6e8c7ba5d14f0f9ec4ed7c8ba7f380919ec1624"
+          }
+        }
+      ]
+    },
+    {
+      "family": "Rotary",
+      "fields": [
+        {
+          "bytes": 8,
+          "index": 0,
+          "name": "q"
+        },
+        {
+          "bytes": 8,
+          "index": 1,
+          "name": "k"
+        },
+        {
+          "bytes": 8,
+          "index": 2,
+          "name": "q_rope"
+        },
+        {
+          "bytes": 8,
+          "index": 3,
+          "name": "k_rope"
+        },
+        {
+          "bytes": 8,
+          "index": 4,
+          "name": "cos_sin_cache"
+        },
+        {
+          "bytes": 8,
+          "index": 5,
+          "name": "pos_ids"
+        },
+        {
+          "bytes": 4,
+          "index": 6,
+          "name": "nnz"
+        },
+        {
+          "bytes": 4,
+          "index": 7,
+          "name": "num_qo_heads"
+        },
+        {
+          "bytes": 4,
+          "index": 8,
+          "name": "num_kv_heads"
+        },
+        {
+          "bytes": 4,
+          "index": 9,
+          "name": "rotary_dim"
+        },
+        {
+          "bytes": 8,
+          "index": 10,
+          "name": "q_stride_n"
+        },
+        {
+          "bytes": 8,
+          "index": 11,
+          "name": "q_stride_h"
+        },
+        {
+          "bytes": 8,
+          "index": 12,
+          "name": "k_stride_n"
+        },
+        {
+          "bytes": 8,
+          "index": 13,
+          "name": "k_stride_h"
+        },
+        {
+          "bytes": 8,
+          "index": 14,
+          "name": "q_rope_stride_n"
+        },
+        {
+          "bytes": 8,
+          "index": 15,
+          "name": "q_rope_stride_h"
+        },
+        {
+          "bytes": 8,
+          "index": 16,
+          "name": "k_rope_stride_n"
+        },
+        {
+          "bytes": 8,
+          "index": 17,
+          "name": "k_rope_stride_h"
+        }
+      ],
+      "pointer_names": [
+        "q",
+        "k",
+        "q_rope",
+        "k_rope",
+        "cos_sin_cache",
+        "pos_ids"
+      ],
+      "templates": [
+        {
+          "argument_sizes": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            4,
+            4,
+            4,
+            4,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "block": [
+            16,
+            8,
+            1
+          ],
+          "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+          "grid": [
+            4,
+            40,
+            1
+          ],
+          "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+          "resources": {
+            "dynamic_shared_bytes": 0,
+            "local_bytes_per_thread": 0,
+            "registers": 40,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "k_rope_stride_h": 128,
+            "k_rope_stride_n": 6144,
+            "k_stride_h": 128,
+            "k_stride_n": 6144,
+            "nnz": 32,
+            "num_kv_heads": 8,
+            "num_qo_heads": 32,
+            "q_rope_stride_h": 128,
+            "q_rope_stride_n": 6144,
+            "q_stride_h": 128,
+            "q_stride_n": 6144,
+            "rotary_dim": 128
+          },
+          "template_id": "Rotary:Prefill",
+          "template_phase": "Prefill",
+          "template_pin": {
+            "bytes": 4572,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/template.json",
+            "sha256": "20db93d3d2a73d5bc1415618ef0bc7a6c2a37250ef609ce802813d7dd7144663"
+          }
+        },
+        {
+          "argument_sizes": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            4,
+            4,
+            4,
+            4,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "block": [
+            16,
+            8,
+            1
+          ],
+          "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+          "grid": [
+            1,
+            40,
+            1
+          ],
+          "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+          "resources": {
+            "dynamic_shared_bytes": 0,
+            "local_bytes_per_thread": 0,
+            "registers": 40,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "k_rope_stride_h": 128,
+            "k_rope_stride_n": 1024,
+            "k_stride_h": 128,
+            "k_stride_n": 1024,
+            "nnz": 1,
+            "num_kv_heads": 8,
+            "num_qo_heads": 32,
+            "q_rope_stride_h": 128,
+            "q_rope_stride_n": 4096,
+            "q_stride_h": 128,
+            "q_stride_n": 4096,
+            "rotary_dim": 128
+          },
+          "template_id": "Rotary:Decode1",
+          "template_phase": "Decode1",
+          "template_pin": {
+            "bytes": 4572,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/template.json",
+            "sha256": "20db93d3d2a73d5bc1415618ef0bc7a6c2a37250ef609ce802813d7dd7144663"
+          }
+        },
+        {
+          "argument_sizes": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            4,
+            4,
+            4,
+            4,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "block": [
+            16,
+            8,
+            1
+          ],
+          "code_sha256": "eaa90e892c238932c4bc56c618a125d2ceff1f6e252a324917cc7d97127039ca",
+          "grid": [
+            1,
+            40,
+            1
+          ],
+          "parameter_layout_sha256": "3d7111af550c0f41ae0303cba69304b4b914394494ede2fee973d83dbaad55d7",
+          "resources": {
+            "dynamic_shared_bytes": 0,
+            "local_bytes_per_thread": 0,
+            "registers": 40,
+            "static_shared_bytes": 0
+          },
+          "scalars": {
+            "k_rope_stride_h": 128,
+            "k_rope_stride_n": 1024,
+            "k_stride_h": 128,
+            "k_stride_n": 1024,
+            "nnz": 1,
+            "num_kv_heads": 8,
+            "num_qo_heads": 32,
+            "q_rope_stride_h": 128,
+            "q_rope_stride_n": 4096,
+            "q_stride_h": 128,
+            "q_stride_n": 4096,
+            "rotary_dim": 128
+          },
+          "template_id": "Rotary:Decode2",
+          "template_phase": "Decode2",
+          "template_pin": {
+            "bytes": 4572,
+            "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/template.json",
+            "sha256": "20db93d3d2a73d5bc1415618ef0bc7a6c2a37250ef609ce802813d7dd7144663"
+          }
+        }
+      ]
+    }
+  ],
+  "qualification": "SEALED_SOURCE_PARAMETER_SHAPES_ONLY_NOT_TARGET_TRANSFER",
+  "schema": "NATIVE_HOST_ARGUMENT_DECODER_CATALOG_V1",
+  "source_pins": [
+    {
+      "bytes": 2866054,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/plan.json",
+      "sha256": "049af7ff56a78113d0fb9c707ec08df13903e55eb5bc0fd0e9f20f5b2fd21da1"
+    },
+    {
+      "bytes": 6702,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/model.py",
+      "sha256": "916612c49ca201537db1424e24c32b65382cf03b7e94533144a956fe5e7a78f3"
+    },
+    {
+      "bytes": 4944,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/epoch-1-launch-405-template.json",
+      "sha256": "26be4554a1b012ff55ac55f443738875be86453c6b68cbdbcbd4ca438f0e7c27"
+    },
+    {
+      "bytes": 4598,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-2-launch-21-template.json",
+      "sha256": "68c755119c485830f96f8514f4a7e3e8ca2bb47a7784fd558ee54fe40538132b"
+    },
+    {
+      "bytes": 4599,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-2-launch-26-template.json",
+      "sha256": "71d705a9974f5eec2fcfe829db1a5bdc506664b007223b3ee7b7d0169a756646"
+    },
+    {
+      "bytes": 4613,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-2-launch-28-template.json",
+      "sha256": "c1cb8c59ffdc4f67b9856550457c99ec6cb35e1c6a4ef726ef77fcc25d39decc"
+    },
+    {
+      "bytes": 4616,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-2-launch-30-template.json",
+      "sha256": "17504aeb141863183a7cf8a9b369de0064482a314f470ca796d601f46f1544bd"
+    },
+    {
+      "bytes": 4944,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/epoch-2-launch-362-template.json",
+      "sha256": "7f883055bb3de15ed2fa54ba1ed0dc96c52abacdb883b088aceeb92fa2900c97"
+    },
+    {
+      "bytes": 4598,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-3-launch-21-template.json",
+      "sha256": "d1bd68d82bac0c821d8ce1aed3fea6ceff704b594eb917ac0c167248567d27ff"
+    },
+    {
+      "bytes": 4599,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-3-launch-26-template.json",
+      "sha256": "d3009b03547788266d4471c80d1317c860d4e204ec24972d7355eaaae23effc9"
+    },
+    {
+      "bytes": 4613,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-3-launch-28-template.json",
+      "sha256": "6468ed3e996523ed79243631b37bb93512cc833ca89a9f754218536ac9955bbd"
+    },
+    {
+      "bytes": 4616,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r1/epoch-3-launch-30-template.json",
+      "sha256": "822a9c7a4439a17f929e81ff93a5ab4266a7886d19e015de525756fca763f345"
+    },
+    {
+      "bytes": 4942,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-gemv-model-r2/epoch-3-launch-362-template.json",
+      "sha256": "76a114865d67780acd4e2976adf8bc2cfd0b430823b99153ca098b87785f031c"
+    },
+    {
+      "bytes": 51826,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/plan.json",
+      "sha256": "f7ab9cfc7eccc258ae6b6678d2716ebd67adf763bf338cbdd68c648d30450781"
+    },
+    {
+      "bytes": 2938,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/model.py",
+      "sha256": "e6f7b55d56705f988ec75d2056bcc69703b1f43742d200477c48669631a1b4e0"
+    },
+    {
+      "bytes": 11101,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/Prefill-template.json",
+      "sha256": "cca7c32bcbaa3dc0b28e9253b1f5f48b8bf15c0e1cfc2082b2c045d9212817ef"
+    },
+    {
+      "bytes": 11099,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-norm-model-r1/Decode1-template.json",
+      "sha256": "e07ea070c51b81eab01da220005acd14c119bd4b376b2c46c6c21ff371795d94"
+    },
+    {
+      "bytes": 2500757,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/plan.json",
+      "sha256": "5e87903d8c9d341529f8d65e3d462e95df0ae36af7feda0bda1de2a7c8f73226"
+    },
+    {
+      "bytes": 8840,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/model.py",
+      "sha256": "3754643ad20c70b1d530481bd2ae6707fd674c928ecccea171b10f6008b38f0d"
+    },
+    {
+      "bytes": 14337,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/template-Prefill.json",
+      "sha256": "57300ec2a3769e8ebd1abda2a0153ac62f52af2cfcb2d804b71786558b67eaf3"
+    },
+    {
+      "bytes": 14336,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/template-Decode1.json",
+      "sha256": "df27798bb3cf80d30adb0c46f740ff677154bd5557369462be45699f21b07dea"
+    },
+    {
+      "bytes": 14336,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-fusednorm-model-r1/template-Decode2.json",
+      "sha256": "53c4e25c10a96abe889fbf6d50f78ce0b2eccc11bf43389bb5eda90f582166bc"
+    },
+    {
+      "bytes": 880871,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/plan.json",
+      "sha256": "cde8cac6c0fabc6691b2bd4800a315b911efecf329ae556f8f523687dc793c79"
+    },
+    {
+      "bytes": 9405,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/model.py",
+      "sha256": "c21cc027550a425d80c569d2904f44176896f09d1045d51a2a457a69481db6d8"
+    },
+    {
+      "bytes": 155958,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/template.json",
+      "sha256": "47c5d3a34ceddff4ca39574ae6e8c7ba5d14f0f9ec4ed7c8ba7f380919ec1624"
+    },
+    {
+      "bytes": 1373822,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/plan.json",
+      "sha256": "36203e764eb65d2e32271f516275cd73cb8c836163fa6ea93ac0af4449cdd516"
+    },
+    {
+      "bytes": 7282,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/model.py",
+      "sha256": "7b8eedcff35a2143d24a81ede9035d913e2283be9b7ee2a1727d4863fc1011ed"
+    },
+    {
+      "bytes": 4572,
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-rotary-model-r1/template.json",
+      "sha256": "20db93d3d2a73d5bc1415618ef0bc7a6c2a37250ef609ce802813d7dd7144663"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# A unified diff preserves one leading context space on blank context lines.
+capture/native-arguments-r1/observer-arguments.diff -whitespace

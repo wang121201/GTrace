@@ -1,0 +1,382 @@
+{
+  "status": "PASS_CPU_ONLY_ARGUMENT_PACKAGE",
+  "GPU_executed": false,
+  "NVCC_executed": false,
+  "remote_executed": false,
+  "producer": {
+    "receipt": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/receipt.json",
+      "bytes": 13929,
+      "sha256": "d22d1d05555ec2b7e75df2b2684579d5027a7dad5dbfa078cc7f9c4a8f9e443b"
+    },
+    "result": {
+      "status": "PASS_CPU_ONLY_ARGUMENT_PRODUCER",
+      "GPU_executed": false,
+      "dynamic_instrumentation": false,
+      "sanitizer": "address,undefined",
+      "sanitizer_leak_detection": false,
+      "ledger": {
+        "status": "PASS_HOST_ARGUMENT_CAPTURE",
+        "checks": 104,
+        "GPU_executed": false
+      },
+      "actual_callback": {
+        "status": "PASS_ACTUAL_ARGUMENT_CALLBACK",
+        "launches": 13112,
+        "arguments": 58905,
+        "raw_bytes": 3975666,
+        "serialized_bytes": 30436724,
+        "max_row_bytes": 4029,
+        "GPU_executed": false
+      },
+      "inputs": [
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument_capture.h",
+          "bytes": 10688,
+          "sha256": "7c142f196f785594cc6eacfdd94876b7f175eb7e4eed1574bcdcee3532dbcb8e"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument_runtime.inc",
+          "bytes": 1522,
+          "sha256": "ebcd3265de86145d67bc1390a7352589d44ab2f93723e54fe845751d792b2765"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument_plan.h",
+          "bytes": 568405,
+          "sha256": "b37500d486f6c09c7e511445399f2b86a1321c527d3a91189a1d0f8823abca38"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument-plan.json",
+          "bytes": 30110194,
+          "sha256": "c109636a9064917d630feb1213108209831a1b24a5ae8f8452be298f5757d9e5"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/observer.cu",
+          "bytes": 37494,
+          "sha256": "f0338a315cb4ba74a98bb0d6673147aba0a42ccf989f58536c4612a53a52731a"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument_capture_test.cpp",
+          "bytes": 8190,
+          "sha256": "cacfbdf915eae065c2223ee05a695715a982fa6396fa196828513f43a2f14a15"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument_callback_test.cpp",
+          "bytes": 8827,
+          "sha256": "0ec6006db4d1ffa575a7bd07d5105d1c7a13a346d5e5b3cc16debc3e7943aa23"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/test_producer.py",
+          "bytes": 7658,
+          "sha256": "389f874edd24204934f27b013fc5674dff19e22690a4837aa842723838314c42"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/sglang-integration/nvbit_headers/generated_cuda_meta.h",
+          "bytes": 106473,
+          "sha256": "8ebecd97c4796c801fa58d55e2dcbd7abd5d676342f8687f47221881050abe90"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/sglang-integration/nvbit_headers/cuda.h",
+          "bytes": 1145929,
+          "sha256": "b7dd24919990c4ebce0b311163eb330a55227335e7e23ef2af4f0800fd3ab620"
+        }
+      ],
+      "steps": [
+        {
+          "name": "argument_capture_test-compile",
+          "argv": [
+            "/usr/bin/clang++",
+            "-std=c++11",
+            "-O0",
+            "-g0",
+            "-Wno-deprecated-declarations",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2",
+            "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/sglang-integration/nvbit_headers",
+            "-fsanitize=address,undefined",
+            "-fno-omit-frame-pointer",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument_capture_test.cpp",
+            "-o",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_capture_test"
+          ],
+          "seconds": 0.722961041,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_capture_test-compile.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_capture_test-compile.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "argument_callback_test-compile",
+          "argv": [
+            "/usr/bin/clang++",
+            "-std=c++11",
+            "-O0",
+            "-g0",
+            "-Wno-deprecated-declarations",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1",
+            "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2",
+            "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/sglang-integration/nvbit_headers",
+            "-fsanitize=address,undefined",
+            "-fno-omit-frame-pointer",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument_callback_test.cpp",
+            "-o",
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test"
+          ],
+          "seconds": 3.592726084,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test-compile.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test-compile.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "ledger",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_capture_test"
+          ],
+          "seconds": 0.8331691250000004,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/ledger.stdout",
+            "bytes": 74,
+            "sha256": "e74bc6b7d7f27fb42e3e8f1ed9a60278dee84cf61aad61eee73c6e292d7d8f6e"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/ledger.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "four-api",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test",
+            "four-api"
+          ],
+          "seconds": 0.6193699589999992,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/four-api.stdout",
+            "bytes": 604,
+            "sha256": "d018b386010564dcb005ea728cda31e33d68ca531af61cfabf0c36fb2382052c"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/four-api.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "packed",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test",
+            "packed"
+          ],
+          "seconds": 0.1315917080000002,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/packed.stdout",
+            "bytes": 103,
+            "sha256": "bbbeb289a2d03adc614b174cd80c913962aa558b7af93da9dd975081edbb15df"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/packed.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "null_function",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test",
+            "null_function"
+          ],
+          "seconds": 0.1269657079999993,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/null_function.stdout",
+            "bytes": 73,
+            "sha256": "4a605ba6ceb88c147af84e6c06ace82af1009bc9aea96a896f42959b0d525b74"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/null_function.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "null_config",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test",
+            "null_config"
+          ],
+          "seconds": 0.13170120799999996,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/null_config.stdout",
+            "bytes": 67,
+            "sha256": "ad4a43602169b8383c8e48d50ff44a51ed43777d7015e3cc44e478145f053dec"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/null_config.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "bad_api",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test",
+            "bad_api"
+          ],
+          "seconds": 0.12807562500000014,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/bad_api.stdout",
+            "bytes": 93,
+            "sha256": "aac3d0ee52cca00b34b63e41788b135c626547411283dead0145fd9d0dbe2690"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/bad_api.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "resource_failure",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test",
+            "resource_failure"
+          ],
+          "seconds": 0.13250291700000005,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/resource_failure.stdout",
+            "bytes": 90,
+            "sha256": "043d1286e06a8de9135fb743b6f63c7dde7d49514e6c856316c909a5e546a80c"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/resource_failure.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "journal_cap",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test",
+            "journal_cap"
+          ],
+          "seconds": 0.12816991700000013,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/journal_cap.stdout",
+            "bytes": 85,
+            "sha256": "c93beab54475b5f2ec2b2293a32bd6752e56aca845d8c379d6ee263d9146b31e"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/journal_cap.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "actual-full-plan",
+          "argv": [
+            "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/argument_callback_test",
+            "full"
+          ],
+          "seconds": 2.3465518750000003,
+          "returncode": 0,
+          "stdout": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/actual-full-plan.stdout",
+            "bytes": 43412511,
+            "sha256": "d49e0104fd73d88fbb0f89c6905191327231bd7cacf47c8f36230988dfad32fc"
+          },
+          "stderr": {
+            "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2/actual-full-plan.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "output": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-producer-r2"
+    }
+  },
+  "consumer": {
+    "receipt": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-python-r1/receipt.json",
+      "bytes": 2597,
+      "sha256": "c06ecee28b25bc1d83c5e702f8afe0115d762bae267e90c42e61ab0435701e44"
+    },
+    "result": {
+      "schema": "SG_NATIVE_ARGUMENT_PYTHON_CPU_TEST_V1",
+      "status": "PASS_CPU_ONLY_ARGUMENT_CONSUMER",
+      "GPU_run": false,
+      "synthetic_fixtures": true,
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-B",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/test_arguments.py"
+      ],
+      "returncode": 0,
+      "test_count": 35,
+      "wall_seconds": 0.838101875,
+      "inputs": [
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/consumer.py",
+          "bytes": 23111,
+          "sha256": "495f437de166cf4a05b4e7e37ed85b7266bfa6eeb2efc72b48dd3884d368c832"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/make_argument_plan.py",
+          "bytes": 14384,
+          "sha256": "cbacd17cf804482c14b4297502a8986c0f655fdffb00b3d6c6a6c1ab6705b67d"
+        },
+        {
+          "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/test_arguments.py",
+          "bytes": 15629,
+          "sha256": "91ae175e83a549018f4bfc87575e12d0500bf03285f40bde3cc1d5df44a82d54"
+        }
+      ],
+      "stdout": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-python-r1/stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-arguments-python-r1/stderr.log",
+        "bytes": 2090,
+        "sha256": "7274a674a99f6897145ee0a7a31fbaf5bf067e9f80be68063fb26490003bba38"
+      },
+      "generated_plan": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument-plan.json",
+        "bytes": 30110194,
+        "sha256": "c109636a9064917d630feb1213108209831a1b24a5ae8f8452be298f5757d9e5"
+      },
+      "generated_header": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-arguments-r1/argument_plan.h",
+        "bytes": 568405,
+        "sha256": "b37500d486f6c09c7e511445399f2b86a1321c527d3a91189a1d0f8823abca38"
+      },
+      "real_source_regeneration": {
+        "status": "PASS_FINAL_GENERATOR_REPRODUCES_PLAN_AND_HEADER",
+        "source": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/p1024d32-capture/observer-r2",
+        "scope": "Final generator reran full source journal/static/artifact closure; raw JSON/header reproduced byte-for-byte. No argument bytes were collected from GPU."
+      }
+    }
+  }
+}

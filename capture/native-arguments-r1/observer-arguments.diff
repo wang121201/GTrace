@@ -1,0 +1,113 @@
+--- native-observer-r2/observer.cu
++++ native-arguments-r1/observer.cu
+@@ -1,4 +1,4 @@
+-// Metadata-only derivative of the pinned HyFiSS NVBit callback/static-inspection
++// Host-argument derivative of the pinned HyFiSS NVBit callback/static-inspection
+ // implementation in reference/memory_tracer.original.cu. No dynamic insertion,
+ // channel, memory-address packets, allocation, synchronization, or custom kernel.
+ // NVBit's required unchanged nvbit_tool.h provides its own loader support code.
+@@ -26,6 +26,7 @@
+ #include <unistd.h>
+ #include <vector>
+ 
++#include "argument_plan.h"
+ #include "nvbit.h"
+ #ifndef SG_OBSERVER_CPU_TEST
+ #include "nvbit_tool.h"
+@@ -107,7 +108,8 @@
+   uint64_t cap=DEFAULT_CAP,total=0,context_next=1,function_next=1,module_next=1,active_epoch=0,epoch_begun=0,epoch_ended=0,unbound_launches=0;
+   uint64_t allocation_next=1,allocation_calls=0,unparsed_allocation_calls=0;
+   int dir=-1;string path;
+-  File launch_file,scope_file,function_file,instruction_file,lifecycle_file,allocation_file;
++  File launch_file,scope_file,function_file,instruction_file,lifecycle_file,allocation_file,argument_file;
++  sgargs::Ledger argument_ledger{sgargs::make_plan(),sgargs::make_limits()};
+   std::map<uint64_t,Context> contexts;
+   std::map<std::pair<uint64_t,uint64_t>,uint64_t> modules;
+   std::map<std::tuple<uint64_t,uint64_t,uint64_t>,Function> functions;
+@@ -133,7 +135,7 @@
+     struct stat st{};need(fstat(parent,&st)==0&&S_ISDIR(st.st_mode)&&st.st_uid==getuid(),"output root owner/type");
+     string sub="process-"+number(owner)+"-"+number(ticks);need(mkdirat(parent,sub.c_str(),0755)==0,"fresh process output directory");
+     dir=openat(parent,sub.c_str(),O_RDONLY|O_DIRECTORY|O_NOFOLLOW|O_CLOEXEC);close(parent);need(dir>=0,"process output open");path=string(real)+"/"+sub;
+-    launch_file.open(dir,"launch-journal.jsonl");scope_file.open(dir,"scope-journal.jsonl");function_file.open(dir,"functions.jsonl");instruction_file.open(dir,"static-instructions.jsonl");lifecycle_file.open(dir,"lifecycle.jsonl");allocation_file.open(dir,"allocation-journal.jsonl");enabled=true;
++    launch_file.open(dir,"launch-journal.jsonl");scope_file.open(dir,"scope-journal.jsonl");function_file.open(dir,"functions.jsonl");instruction_file.open(dir,"static-instructions.jsonl");lifecycle_file.open(dir,"lifecycle.jsonl");allocation_file.open(dir,"allocation-journal.jsonl");argument_file.open(dir,"launch-arguments.jsonl");enabled=true;
+     emit(lifecycle_file,prefix("observer_init")+",\"nvbit_version\":"+quote(NVBIT_VERSION)+",\"nvbit_cuda_header_version\":"+number(CUDA_VERSION)+",\"dynamic_instrumentation\":false,\"code_hash_kind\":\"sha256_nvbit_decoded_instruction_rows_v1\",\"module_binary_hash_available\":false,\"max_total_bytes\":"+number(cap)+"}\n");
+   }
+   void finish(const string &why);
+@@ -209,16 +211,22 @@
+   s.functions[key]=d;return d;
+ }
+ 
+-string launch_body(CUcontext ctx,nvbit_api_cuda_t cbid,void *params) {
++#include "argument_runtime.inc"
++
++string launch_body(CUcontext ctx,nvbit_api_cuda_t cbid,void *params,uint64_t native_id,const string& api) {
+   State &s=state();need(params,"launch params null");CUfunction f=nullptr;CUstream stream=nullptr;
+-  unsigned gx=0,gy=0,gz=0,bx=0,by=0,bz=0,shared=0;string attrs="[]";
+-  if(direct(cbid)) {
+-    const auto &p=*static_cast<const cuLaunchKernel_params*>(params);f=p.f;stream=p.hStream;
++  unsigned gx=0,gy=0,gz=0,bx=0,by=0,bz=0,shared=0;string attrs="[]";void**kernel_params=nullptr;void**extra=nullptr;
++  if(cbid==API_CUDA_cuLaunchKernel) {
++    const auto &p=*static_cast<const cuLaunchKernel_params*>(params);f=p.f;stream=p.hStream;kernel_params=p.kernelParams;extra=p.extra;
++    gx=p.gridDimX;gy=p.gridDimY;gz=p.gridDimZ;bx=p.blockDimX;by=p.blockDimY;bz=p.blockDimZ;shared=p.sharedMemBytes;
++  } else if(cbid==API_CUDA_cuLaunchKernel_ptsz) {
++    const auto &p=*static_cast<const cuLaunchKernel_ptsz_params*>(params);f=p.f;stream=p.hStream;kernel_params=p.kernelParams;extra=p.extra;
+     gx=p.gridDimX;gy=p.gridDimY;gz=p.gridDimZ;bx=p.blockDimX;by=p.blockDimY;bz=p.blockDimZ;shared=p.sharedMemBytes;
+   } else {
+     const CUlaunchConfig *c=nullptr;
+-    if(cbid==API_CUDA_cuLaunchKernelEx){const auto &p=*static_cast<const cuLaunchKernelEx_params*>(params);f=p.f;c=p.config;}
+-    else {const auto &p=*static_cast<const cuLaunchKernelEx_ptsz_params*>(params);f=p.f;c=p.config;}
++    if(cbid==API_CUDA_cuLaunchKernelEx){const auto &p=*static_cast<const cuLaunchKernelEx_params*>(params);f=p.f;c=p.config;kernel_params=p.kernelParams;extra=p.extra;}
++    else if(cbid==API_CUDA_cuLaunchKernelEx_ptsz){const auto &p=*static_cast<const cuLaunchKernelEx_ptsz_params*>(params);f=p.f;c=p.config;kernel_params=p.kernelParams;extra=p.extra;}
++    else throw std::runtime_error("argument unsupported launch callback API");
+     need(c,"Ex config null");stream=c->hStream;gx=c->gridDimX;gy=c->gridDimY;gz=c->gridDimZ;bx=c->blockDimX;by=c->blockDimY;bz=c->blockDimZ;shared=c->sharedMemBytes;attrs=attributes(*c);
+   }
+   need(f,"launch function null");Internal internal;Function d;uint64_t cid=s.context(ctx);
+@@ -243,8 +251,10 @@
+   int nr=0,ss=0,ls=0,bv=0,pv=0;CUresult rr=cuFuncGetAttribute(&nr,CU_FUNC_ATTRIBUTE_NUM_REGS,f);
+   CUresult sr=cuFuncGetAttribute(&ss,CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES,f),lr=cuFuncGetAttribute(&ls,CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES,f);
+   CUresult br=cuFuncGetAttribute(&bv,CU_FUNC_ATTRIBUTE_BINARY_VERSION,f),pr=cuFuncGetAttribute(&pv,CU_FUNC_ATTRIBUTE_PTX_VERSION,f);
++  if(inspected)need(rr==CUDA_SUCCESS&&sr==CUDA_SUCCESS&&lr==CUDA_SUCCESS&&nr>=0&&ss>=0&&ls>=0,"argument native resource query failed");
++  const string argument_ref=capture_native_arguments(native_id,d,cid,ptr(stream),api,gx,gy,gz,bx,by,bz,shared,ss,nr,ls,attrs,kernel_params,extra);
+   s.launch_threads.insert(tid());s.streams.insert(ptr(stream));if(s.active_epoch){s.epoch_threads.insert(tid());s.epoch_streams.insert(ptr(stream));}
+-  return ",\"metadata_supported\":true,\"context_id\":"+number(cid)+",\"context_handle_u64\":"+number(ptr(ctx))+",\"function_id\":"+number(d.id)+",\"related_function_ids\":"+uarray(ids)+",\"function_name\":"+quote(d.name)+",\"code_sha256\":"+code_json+",\"static_inspection_performed\":"+(inspected?"true":"false")+",\"code_sha256_kind\":\"sha256_nvbit_decoded_instruction_rows_v1\",\"module_handle_u64\":"+number(d.module)+",\"module_epoch\":"+number(d.module_epoch)+",\"module_binary_sha256\":null,\"stream_u64\":"+number(ptr(stream))+",\"grid\":"+dims(gx,gy,gz)+",\"block\":"+dims(bx,by,bz)+",\"dynamic_shared_bytes\":"+number(shared)+",\"static_shared_bytes\":"+(sr==CUDA_SUCCESS?signed_number(ss):"null")+",\"registers\":"+(rr==CUDA_SUCCESS?signed_number(nr):"null")+",\"local_bytes_per_thread\":"+(lr==CUDA_SUCCESS?signed_number(ls):"null")+",\"binary_version\":"+(br==CUDA_SUCCESS?signed_number(bv):"null")+",\"ptx_version\":"+(pr==CUDA_SUCCESS?signed_number(pv):"null")+",\"attribute_query_results\":["+signed_number(rr)+","+signed_number(sr)+","+signed_number(lr)+","+signed_number(br)+","+signed_number(pr)+"],\"launch_attributes\":"+attrs+",\"argument_sizes\":"+uarray(d.args)+",\"parameter_layout_sha256\":"+layout_json+",\"parameter_values_captured\":false";
++  return ",\"metadata_supported\":true,\"context_id\":"+number(cid)+",\"context_handle_u64\":"+number(ptr(ctx))+",\"function_id\":"+number(d.id)+",\"related_function_ids\":"+uarray(ids)+",\"function_name\":"+quote(d.name)+",\"code_sha256\":"+code_json+",\"static_inspection_performed\":"+(inspected?"true":"false")+",\"code_sha256_kind\":\"sha256_nvbit_decoded_instruction_rows_v1\",\"module_handle_u64\":"+number(d.module)+",\"module_epoch\":"+number(d.module_epoch)+",\"module_binary_sha256\":null,\"stream_u64\":"+number(ptr(stream))+",\"grid\":"+dims(gx,gy,gz)+",\"block\":"+dims(bx,by,bz)+",\"dynamic_shared_bytes\":"+number(shared)+",\"static_shared_bytes\":"+(sr==CUDA_SUCCESS?signed_number(ss):"null")+",\"registers\":"+(rr==CUDA_SUCCESS?signed_number(nr):"null")+",\"local_bytes_per_thread\":"+(lr==CUDA_SUCCESS?signed_number(ls):"null")+",\"binary_version\":"+(br==CUDA_SUCCESS?signed_number(bv):"null")+",\"ptx_version\":"+(pr==CUDA_SUCCESS?signed_number(pv):"null")+",\"attribute_query_results\":["+signed_number(rr)+","+signed_number(sr)+","+signed_number(lr)+","+signed_number(br)+","+signed_number(pr)+"],\"launch_attributes\":"+attrs+",\"argument_sizes\":"+uarray(d.args)+",\"parameter_layout_sha256\":"+layout_json+",\"parameter_values_captured\":"+(argument_ref.empty()?"false":"true")+argument_ref;
+ }
+ 
+ bool allocation_api(const string &api) {
+@@ -285,13 +295,13 @@
+   if(!enabled||finished||getpid()!=owner)return;finished=true;
+   uint64_t open_contexts=0;for(const auto &c:contexts)if(!c.second.closed)++open_contexts;
+   bool closed=launches==returned&&open_contexts==0&&active_epoch==0&&epoch_begun==epoch_ended;
+-  bool pass=closed&&errors.empty()&&failed_launches==0&&unsupported==0&&graph_nodes==0&&unknown_attrs==0&&internal_dispatches.load()==0;
+-  string inventory="[";File *files[]={&launch_file,&scope_file,&function_file,&instruction_file,&lifecycle_file,&allocation_file};
+-  for(unsigned i=0;i<6;++i){if(i)inventory+=',';File &f=*files[i];inventory+="{\"name\":"+quote(f.name)+",\"bytes\":"+number(f.bytes)+",\"sha256\":"+quote(f.digest())+"}";}inventory+=']';
++  bool pass=closed&&argument_ledger.closed()&&errors.empty()&&failed_launches==0&&unsupported==0&&graph_nodes==0&&unknown_attrs==0&&internal_dispatches.load()==0;
++  string inventory="[";File *files[]={&launch_file,&scope_file,&function_file,&instruction_file,&lifecycle_file,&allocation_file,&argument_file};
++  for(unsigned i=0;i<7;++i){if(i)inventory+=',';File &f=*files[i];inventory+="{\"name\":"+quote(f.name)+",\"bytes\":"+number(f.bytes)+",\"sha256\":"+quote(f.digest())+"}";}inventory+=']';
+   string apis="{";for(auto it=api_counts.begin();it!=api_counts.end();++it){if(it!=api_counts.begin())apis+=',';apis+=quote(it->first)+":{\"before\":"+number(it->second.before)+",\"return\":"+number(it->second.returned)+",\"errors\":"+number(it->second.errors)+"}";}apis+='}';
+   string es="[";for(size_t i=0;i<errors.size();++i){if(i)es+=',';es+=quote(errors[i]);}es+=']';
+-  string out="{\"schema\":\"sg_nvbit_observer_finish_v1\",\"status\":"+quote(pass?"PASS_METADATA_OBSERVER_CLOSED_NOT_TRACE":"FAIL_OR_UNSUPPORTED_METADATA_OBSERVER")+",\"reason\":"+quote(why)+",\"pid\":"+number(owner)+",\"start_ticks\":"+number(ticks)+",\"output\":"+quote(path)+",\"launch_before_count\":"+number(launches)+",\"launch_return_count\":"+number(returned)+",\"launch_error_count\":"+number(failed_launches)+",\"unsupported_dispatch_count\":"+number(unsupported)+",\"graph_node_callback_count\":"+number(graph_nodes)+",\"unknown_launch_attribute_count\":"+number(unknown_attrs)+",\"unbound_launch_count\":"+number(unbound_launches)+",\"context_count\":"+number(contexts.size())+",\"open_context_count\":"+number(open_contexts)+",\"epoch_begin_count\":"+number(epoch_begun)+",\"epoch_end_count\":"+number(epoch_ended)+",\"active_epoch\":"+number(active_epoch)+",\"function_count\":"+number(functions.size())+",\"observed_launch_thread_count\":"+number(launch_threads.size())+",\"observed_stream_count\":"+number(streams.size())+",\"marked_epoch_thread_count\":"+number(epoch_threads.size())+",\"marked_epoch_stream_count\":"+number(epoch_streams.size())+",\"internal_inspection_callback_count\":"+number(internal_callbacks.load())+",\"internal_inspection_dispatch_count\":"+number(internal_dispatches.load())+",\"metadata_bytes_before_finish\":"+number(total)+",\"max_total_bytes\":"+number(cap)+",\"api_counts\":"+apis+",\"errors\":"+es+",\"files\":"+inventory+",\"dynamic_instrumentation\":false,\"memory_addresses_captured\":false,\"actual_sm_placement_captured\":false,\"kernel_argument_values_captured\":false,\"module_binary_hash_available\":false,\"static_code_hash_is_decoded_sass_not_cubin\":true,\"device_synchronization_inserted\":false,\"gpu_memory_allocated_by_observer\":false,\"native_callback_completeness_independently_proven\":false,\"template_or_gtsim_admission\":false}\n";
+-  out.pop_back();out.pop_back();out+=",\"allocation_API_calls\":"+number(allocation_calls)+",\"unparsed_allocation_API_calls\":"+number(unparsed_allocation_calls)+",\"complete_allocator_coverage\":false}\n";
++  string out="{\"schema\":\"sg_nvbit_observer_finish_v1\",\"status\":"+quote(pass?"PASS_NATIVE_ARGUMENT_OBSERVER_CLOSED_NOT_TRACE":"FAIL_OR_UNSUPPORTED_NATIVE_ARGUMENT_OBSERVER")+",\"reason\":"+quote(why)+",\"pid\":"+number(owner)+",\"start_ticks\":"+number(ticks)+",\"output\":"+quote(path)+",\"launch_before_count\":"+number(launches)+",\"launch_return_count\":"+number(returned)+",\"launch_error_count\":"+number(failed_launches)+",\"unsupported_dispatch_count\":"+number(unsupported)+",\"graph_node_callback_count\":"+number(graph_nodes)+",\"unknown_launch_attribute_count\":"+number(unknown_attrs)+",\"unbound_launch_count\":"+number(unbound_launches)+",\"context_count\":"+number(contexts.size())+",\"open_context_count\":"+number(open_contexts)+",\"epoch_begin_count\":"+number(epoch_begun)+",\"epoch_end_count\":"+number(epoch_ended)+",\"active_epoch\":"+number(active_epoch)+",\"function_count\":"+number(functions.size())+",\"observed_launch_thread_count\":"+number(launch_threads.size())+",\"observed_stream_count\":"+number(streams.size())+",\"marked_epoch_thread_count\":"+number(epoch_threads.size())+",\"marked_epoch_stream_count\":"+number(epoch_streams.size())+",\"internal_inspection_callback_count\":"+number(internal_callbacks.load())+",\"internal_inspection_dispatch_count\":"+number(internal_dispatches.load())+",\"metadata_bytes_before_finish\":"+number(total)+",\"max_total_bytes\":"+number(cap)+",\"api_counts\":"+apis+",\"errors\":"+es+",\"files\":"+inventory+",\"dynamic_instrumentation\":false,\"memory_addresses_captured\":false,\"actual_sm_placement_captured\":false,\"kernel_argument_values_captured\":true,\"kernel_argument_capture_scope\":\"sealed_measured_host_parameter_vectors_only\",\"device_memory_dereferenced\":false,\"typed_objects_or_relocation_qualified\":false,\"module_binary_hash_available\":false,\"static_code_hash_is_decoded_sass_not_cubin\":true,\"device_synchronization_inserted\":false,\"gpu_memory_allocated_by_observer\":false,\"native_callback_completeness_independently_proven\":false,\"template_or_gtsim_admission\":false}\n";
++  out.pop_back();out.pop_back();out+=",\"argument_sideband_plan_sha256\":"+quote(sgargs::ARGUMENT_PLAN_SHA)+",\"argument_sideband_closed\":"+string(argument_ledger.closed()?"true":"false")+",\"argument_sideband_entries\":"+number(argument_ledger.entries())+",\"argument_sideband_returns\":"+number(argument_ledger.returns())+",\"argument_sideband_argument_count\":"+number(argument_ledger.arguments())+",\"argument_sideband_raw_bytes\":"+number(argument_ledger.raw_bytes());out+=",\"allocation_API_calls\":"+number(allocation_calls)+",\"unparsed_allocation_API_calls\":"+number(unparsed_allocation_calls)+",\"complete_allocator_coverage\":false}\n";
+   need(out.size()<=RESERVED_FINISH&&total+out.size()<=cap,"finish reserve cap");File finish_file;finish_file.open(dir,"finish.json");finish_file.write(out);::close(finish_file.fd);
+   for(File *f:files){need(::close(f->fd)==0,"metadata close failure");f->fd=-1;}::close(dir);dir=-1;
+ }
+@@ -351,14 +361,15 @@
+     if(!is_exit) {
+       need(s.launches<MAX_LAUNCHES&&pending.size()<8,"launch census or nesting cap");Pending p;p.id=s.launches++;p.cbid=int(cbid);p.api=api;
+       string specific;
+-      if(direct(cbid)||extended(cbid))specific=launch_body(ctx,cbid,params);
+-      else {++s.unsupported;specific=",\"metadata_supported\":false,\"unsupported_reason\":\"unparsed_kernel_dispatch_API_not_silently_omitted\",\"context_handle_u64\":"+number(ptr(ctx))+",\"geometry\":null";}
++      if(direct(cbid)||extended(cbid))specific=launch_body(ctx,cbid,params,p.id,api);
++      else {++s.unsupported;throw std::runtime_error("argument unsupported kernel dispatch API");}
+       if(!scope.bound)++s.unbound_launches;
+       p.body=",\"launch_id\":"+number(p.id)+",\"cuda_api\":"+quote(api)+",\"cbid\":"+signed_number(int(cbid))+s.scope_fields()+specific;
+       s.emit(s.launch_file,s.prefix("launch")+",\"edge\":\"before\""+p.body+"}\n");pending.push_back(p);
+     } else {
+       need(!pending.empty()&&pending.back().cbid==int(cbid)&&pending.back().api==api,"launch return lacks exact same-thread entry");Pending p=pending.back();pending.pop_back();++s.returned;
+       if(!status||*status!=CUDA_SUCCESS)++s.failed_launches;
++      s.argument_ledger.complete(p.id,status&&*status==CUDA_SUCCESS);
+       s.emit(s.launch_file,s.prefix("launch")+",\"edge\":\"return\""+p.body+",\"cuda_status\":"+(status?signed_number(int(*status)):"null")+"}\n");
+     }
+   }catch(const std::exception&e){fatal(e.what());}

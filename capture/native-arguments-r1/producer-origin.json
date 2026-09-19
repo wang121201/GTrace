@@ -1,0 +1,9 @@
+{
+  "schema": "HOST_ARGUMENT_PRODUCER_ORIGIN_V1",
+  "old_source": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/capture/native-observer-r2/observer.cu",
+  "old_source_sha256": "e136fb1e82380bd9d09b0e69f4452a5e9007319ea3352047f7a22de8b22beba5",
+  "new_source_sha256": "f0338a315cb4ba74a98bb0d6673147aba0a42ccf989f58536c4612a53a52731a",
+  "diff_sha256": "c3cfa89aa2c689b2dc8e6d0cb9ddba482dba9b904d529f6b398bad2b20000a9f",
+  "original_source_modified": false,
+  "GPU_executed": false
+}

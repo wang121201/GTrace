@@ -1,5 +1,7 @@
 # Native P1024/D32 host argument capture: next implementation contract
 
+Implementation update: the host producer, generated plan, independent consumer and CPU tests are now implemented in `capture/native-arguments-r1/`. Remote build/capture is pending. See [implementation status](native-p1024d32-implementation-status.md); the design snapshot below is retained as the implementation contract, not the latest progress report.
+
 Status: design only, 2026-09-19; observer-r2 has now passed independent metadata census audit. See `validation/native-p1024d32-census-audit.json` and its Markdown companion. This document does not admit P1024/D32 to TileGen and does not introduce a new executable or change a frozen capture package.
 
 The completed run contains **13,112 measured launches = Prefill 408 + 32 × Decode 397**, 33 measured kernel decoded-code hashes and 32 symbols. The larger static population (330 functions / 282 hashes) includes related functions. Exact old-workflow comparison finds 29 shared measured hashes and four new ones: CUTLASS GEMM (64 Prefill calls), two Ampere GEMM variants (32 calls each), and MergeStates (32 calls per Decode, 1024 total). There are 10,679 old code/ABI/launch-configuration matches, 1281 old code/ABI matches with changed launch configuration, and 1152 new-code calls. These are metadata reuse candidates, not dynamic-address equivalence.
