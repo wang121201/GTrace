@@ -1,5 +1,7 @@
 # P1024/D32 原生地址绑定最小实施方案
 
+实现更新：GEMV 与 SiLU 的 typed 地址入口已完成旧语料 CPU 对照；公共 materializer 被复用，原 Model 验收未放宽。它们仍是候选入口，尚未接入新工作负载的完整 factory；见 [当前实现状态](native-p1024d32-implementation-status.md)。以下保留原实施方案快照。
+
 状态：**只读设计，尚未实现、尚未为新模型准入**。审查基线 `6ccfcc5a42851351371ef728c1013c999d271dee`；证据快照来自 observer-r2 与独立静态审计。机器可读字段、逐族代码 SHA、参数大小、47 项证据 SHA 见 [native-p1024d32-binding-plan.json](/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/validation/native-p1024d32-binding-plan.json)。
 
 ## 1. 结论与适配边界

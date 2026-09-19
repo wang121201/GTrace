@@ -1,0 +1,11 @@
+{
+  "status": "PASS_STATIC_REPORT_QA",
+  "report": "/Users/wgs/Documents/Codex/2026-09-17/zhi/outputs/tilegen-stage-backends-20260918/index.html",
+  "report_sha256": "fe9b7ccbe05d188ff46cd75dafb8a4b20fcbe2728348101a6324313b4a76de0b",
+  "renderer_sha256": "1ffa0a90ae7229a62c869bcf1f7a767a9021d2a41cb30b0bdad2b583e0d589cd",
+  "embedded_figures": 6,
+  "verified_file_links": 90,
+  "unique_file_links": 90,
+  "screenshot_review_performed": false,
+  "simulation_or_GPU_run": false
+}

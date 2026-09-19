@@ -583,21 +583,33 @@ def argument_preparation_section():
             assert Path(pin['path']).stat().st_size == pin['bytes'] and sha(pin['path']) == pin['sha256']
     producer = preflight['producer']['result']
     consumer = preflight['consumer']['result']
+    gemv = load(REPO / 'validation/gemv-typed-binding.json')
+    silu = load(REPO / 'validation/silu-typed-binding.json')
+    assert gemv['status'] == 'PASS_11_SEALED_TEMPLATES_TYPED_ADDRESSES_MATCH_OLD_BINDING'
+    assert silu['status'] == 'PASS'
+    for result, pin_key in ((gemv, 'source_pins'), (silu, 'sources')):
+        assert not result['GPU_executed'] and not result['HBFSIM_executed']
+        for pin in result[pin_key]:
+            assert Path(pin['path']).stat().st_size == pin['bytes'] and sha(pin['path']) == pin['sha256']
     rows = [
         ['采集计划', f'{limit["launches"]:,} launches / {limit["arguments"]:,} 参数；预期 {payload(limit["raw_bytes"])} 原始参数字节', '来自真实静态 ABI 的预期数量；参数内容尚待新 GPU 运行采集。'],
         ['host producer', f'{producer["ledger"]["checks"]} 项 ledger 检查；4 种 CUDA callback API、6 类拒绝案例与完整计划测试通过', 'ASan / UBSan 的 CPU mock；不表示远端 NVCC 构建或 GPU 采集完成。'],
         ['独立 consumer', f'{consumer["test_count"]} 项 CPU 测试通过；真实 source journals 可重建相同计划与 header', '逐参数字节、SHA、launch before/return、七 journals 和配额闭合；不采 device 指针指向的数据。'],
         ['typed decoder', f'{decoder["tests"]} 组 CPU 测试；旧真实语料 {sum(legacy["family_counts"].values())} calls 全部对照通过', '5 族：GEMV / PlainNorm / FusedNorm / SiLU / RoPE；旧语料回归不代表新参数适配已验证。'],
+        ['GEMV 参数入口', f'11 模板首/中/末 CTA；{gemv["result"]["lane_formula_checks"]:,} lane 地址与旧绑定一致', '已完成 CPU 对照；复用原生 Program 地址公式及 PreparedMemory。新捕获资格、root 和动态 witness 仍未验证。'],
+        ['SiLU 参数入口', f'旧路径 {silu["result"]["legacy_lane_oracle_checks"]:,} lane；typed 路径 {silu["result"]["typed_lane_addresses_equal"]:,} lane 对照一致', 'ASan/UBSan 通过；typed 只支持单 CTA Decode，未扩大 Prefill 形状域。'],
         ['远端运行 / CPU 分钟', 'N/A · 新参数采集尚待运行', 'controller 将分别记录本进程 CPU、等待子进程 CPU、wall 时间；这些不是推理延迟。'],
         ['完整新 TileGen / NCU 对比', 'N/A · native model 未准入', '仍需新实测参数、对象绑定、动态 witness、其余 kernel、phase 与容量适配。'],
     ]
     return '\n'.join([
         '<h3 id="native-argument-preparation">参数输入实现：本地测试完成，真实采集待执行</h3>',
-        '<p>新增采集器保持原 SGLang workload 与静态 observer，复制每次 CUDA launch 的 host 参数。PlainNorm 与 FusedNorm 以 code + ABI 区分字段；RoPE 的 position 内容仍为未知。GEMV 和 SiLU 的新参数入口正在复用既有地址生成逻辑。</p>',
+        '<p>新增采集器保持原 SGLang workload 与静态 observer，复制每次 CUDA launch 的 host 参数。PlainNorm 与 FusedNorm 以 code + ABI 区分字段；RoPE 的 position 内容仍为未知。GEMV 和 SiLU 的新参数入口已复用既有地址生成逻辑并通过旧语料 CPU 对照，尚未接入新工作负载的完整运行入口。</p>',
         table(['步骤', '已完成 / 当前状态', '口径'], rows, 'text'),
         '<p>代码分支仍为 <code>codex/tilegen-trace-cosim-20260918-r1</code>；B8 暂停，写回仍为 32 B。生成计划与 header 从封存证据再生；Git 保留实现、校验收据及 SHA，避免将约 30 MB 的生成数据当作代码改动。</p>',
         '<p>' + link(root / 'cpu-preflight.json', '参数采集 CPU 测试封存') + ' · ' +
         link(REPO / 'native_transfer/legacy-regression.json', '旧真实参数 646 calls 回归') + ' · ' +
+        link(REPO / 'validation/gemv-typed-binding.json', 'GEMV 地址对照') + ' · ' +
+        link(REPO / 'validation/silu-typed-binding.json', 'SiLU 地址对照') + ' · ' +
         link(REPO / 'docs/native-p1024d32-implementation-status.md', '当前实现状态与剩余工作') + ' · ' +
         link(REPO / 'docs/native-p1024d32-binding-plan.md', '各类地址绑定适配边界') + '</p>',
     ])

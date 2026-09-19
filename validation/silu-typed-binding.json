@@ -1,0 +1,165 @@
+{
+  "status": "PASS",
+  "schema": "SILU_TYPED_BINDING_CPU_TEST_V1",
+  "CPU_only": true,
+  "GPU_executed": false,
+  "HBFSIM_executed": false,
+  "sanitizer": "address,undefined",
+  "leak_detection": false,
+  "sources": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/streaming.cpp",
+      "bytes": 30882,
+      "sha256": "261b77ca09a9445ef149aad5f8417424f5ea1b21bb22956eb71d6476fac8e550"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/silu_typed_binding_test.cpp",
+      "bytes": 9287,
+      "sha256": "1511291da15141402c6b27c34e5238a8751c888a0fb73d9005ac58e283f50bce"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/run_silu_typed_binding_test.py",
+      "bytes": 5546,
+      "sha256": "10b7ad7df71f0bb2eb2bb49719a47db1cdaa565b96b1db9fe2abfb3f09c29c18"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build-config.json",
+      "bytes": 2243,
+      "sha256": "f8498abb3f423f4f764933201e3b4d018f876c7719ec7917ca6fcf55524674ae"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/native_typed_identity.h",
+      "bytes": 656,
+      "sha256": "9ec7743fe9881bb9a6800cc41b91fc1dbc2af9fa8f3847fdab22dbab7aace55e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-silu-driver-r1/prepared_memory.h",
+      "bytes": 5518,
+      "sha256": "2b5e71795602bc02aa39504de4032d82a731234a84c6e771f8be16bb57f2bedb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-silu-driver-r1/typed_binding.h",
+      "bytes": 8206,
+      "sha256": "46c5415c5cd37d5550f9206d53eae02db48f81f365905d95a382f7e43f7d6ba1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-silu-driver-r1/model_plan.h",
+      "bytes": 8981,
+      "sha256": "2c320342e02967352acf1062ad6d41514b312a0cd681b495206c6a49002df743"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/canonical-silu-driver-r1/sealed_inputs.h",
+      "bytes": 3339,
+      "sha256": "422466c135bdba2e33e2efef48b61e34b53616873e4ee504fb28d3b7f574f786"
+    }
+  ],
+  "original_evidence": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/plan.json",
+      "bytes": 880871,
+      "sha256": "cde8cac6c0fabc6691b2bd4800a315b911efecf329ae556f8f523687dc793c79"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/template.json",
+      "bytes": 155958,
+      "sha256": "47c5d3a34ceddff4ca39574ae6e8c7ba5d14f0f9ec4ed7c8ba7f380919ec1624"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/captured-silu-decode-r1/postprocess/programs/epoch-2-launch-29.json",
+      "bytes": 501036,
+      "sha256": "d1d3a806ab7a4e250d6e11b43a83cac2c90047fc4ddc145979de41162d0117b0"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/compute-silu-r1/epoch-2-launch-29-registers.json",
+      "bytes": 3106964,
+      "sha256": "e93897e60260cef7785769fec90667295d3ea51ca26750ba40825d7501c26e2b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/manifest.json",
+      "bytes": 2561,
+      "sha256": "2bb86277851b3ab23d354ac0de4e61cc37884313c03ef36a5b1365d4c789e0b9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1/canonical-silu-model-r1/model.py",
+      "bytes": 9405,
+      "sha256": "c21cc027550a425d80c569d2904f44176896f09d1045d51a2a457a69481db6d8"
+    }
+  ],
+  "fixture": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/silu-typed-binding-final-cpu/all96-envelope.json",
+    "bytes": 4508,
+    "sha256": "50ac5675fb450324a13f0e7c0ea8b2c4317934ddf8d8a3f8a40114010c0d74f9"
+  },
+  "binary": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/silu-typed-binding-final-cpu/silu_typed_binding_test",
+    "bytes": 3058696,
+    "sha256": "8cd7165ebefc0719b914a2d26b871a06630fb028413e58642977eab9edd2ce04"
+  },
+  "steps": [
+    {
+      "name": "compile",
+      "argv": [
+        "/usr/bin/clang++",
+        "-std=c++20",
+        "-O2",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-evaluation-r1/driver",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/tilegen-norm-shared-r1/adapter",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/hbfsim-latest/upstream/src",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/source/work/gddr6-support/hbf_coupling",
+        "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/silu-typed-binding-final-cpu",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/tests/silu_typed_binding_test.cpp",
+        "-o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/silu-typed-binding-final-cpu/silu_typed_binding_test"
+      ],
+      "returncode": 0,
+      "seconds": 13.758179875,
+      "cpu_user_seconds": 13.259739,
+      "cpu_system_seconds": 0.484008,
+      "cpu_seconds": 13.743746999999999
+    },
+    {
+      "name": "run",
+      "argv": [
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/silu-typed-binding-final-cpu/silu_typed_binding_test",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/silu-typed-binding-final-cpu/all96-envelope.json"
+      ],
+      "returncode": 0,
+      "seconds": 23.410468791999996,
+      "cpu_user_seconds": 22.213055,
+      "cpu_system_seconds": 0.43829399999999996,
+      "cpu_seconds": 22.651349
+    }
+  ],
+  "result": {
+    "GPU_executed": false,
+    "HBFSIM_executed": false,
+    "dynamic_memory_witness": false,
+    "legacy_CTAs": 1088,
+    "legacy_calls": 96,
+    "legacy_lane_oracle_checks": 25903104,
+    "legacy_memory_records": 809472,
+    "legacy_ordered_lane_sha256": "199b88b6124e1517656396928bba87a245b355e4a9e903898b999377d4a102e9",
+    "legacy_phase_counts": {
+      "Decode1": 32,
+      "Decode2": 32,
+      "Prefill": 32
+    },
+    "native_model_admitted": false,
+    "negative_checks": 255,
+    "new_phase_test_is_synthetic_identity_only": true,
+    "status": "PASS_SILU_TYPED_MEMORY_CANDIDATE",
+    "typed_decode_calls": 64,
+    "typed_lane_addresses_equal": 1523712,
+    "typed_memory_records": 47616,
+    "typed_ordered_records_sha256": "01964db3400bde2b5201c9e6f142e6f54986f36372bb3e95145ed4aa7c1ba95c"
+  }
+}

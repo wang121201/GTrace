@@ -1,0 +1,19 @@
+{
+  "status": "PASS_BUILD_ONLY_NO_SIMULATION",
+  "receipt": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-typed-adapters-r2/build-receipt.json",
+    "bytes": 65660,
+    "sha256": "1ae1979ad4af945dd66fceaf3c107dfc5652ed459a3f9a5221daa3b20c1d7584"
+  },
+  "binary": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo/build/native-typed-adapters-r2/tilegen_native",
+    "bytes": 5624160,
+    "sha256": "bfeee0fbf6be5215194ed602e0fa812797949bae8bd6feff3a6bd95cb4d1e2b4"
+  },
+  "source_files_verified": 186,
+  "sources_unchanged": true,
+  "wall_seconds": 37.036593917,
+  "simulation_executed": false,
+  "GPU_executed": false,
+  "scope": "Full CPU native engine compile/link; no new native workload admission or performance run."
+}

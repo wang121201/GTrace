@@ -10,15 +10,12 @@ class PreparedMemory {
         g::ExplicitMemorySubop shape;
         std::vector<const p::Lane*> lanes;
     };
-    const Model& model_;
-    const J& call_;
+    const Model* model_=nullptr;
+    const J* call_=nullptr;
     PreparedAddress addresses_;
     const coupling::ServiceMapper& mapper_;
     std::vector<Instruction> instructions_;
-public:
-    PreparedMemory(const Model& model,const J& call,const coupling::ServiceMapper& mapper)
-        :model_(model),call_(call),addresses_(model,call),mapper_(mapper) {
-        const auto& source=model.source(call);
+    void compile_instructions(const SourceBundle& source) {
         const auto& records=source.program.body(0).records;
         instructions_.reserve(records.size());
         for(std::size_t i=0;i<records.size();++i) {
@@ -36,14 +33,27 @@ public:
             instructions_.push_back(std::move(prepared));
         }
     }
+public:
+    PreparedMemory(const Model& model,const J& call,const coupling::ServiceMapper& mapper)
+        :model_(&model),call_(&call),addresses_(model,call),mapper_(mapper) {
+        compile_instructions(model.source(call));
+    }
+    PreparedMemory(const typed::Binding& binding,const coupling::ServiceMapper& mapper)
+        :addresses_(binding),mapper_(mapper) {
+        compile_instructions(binding.source());
+    }
     g::ExplicitMemorySubop materialize(std::size_t record,U cta) const {
+        // A typed target has no legacy Model JSON oracle. Never silently use
+        // another call's oracle or relax its source/phase admission to get one.
+        if(!model_)p::need(!host_address::json_reference&&cta<addresses_.program.ctas,
+                          "typed GEMV CTA domain / unavailable legacy JSON oracle");
         const auto& instruction=instructions_.at(record);
         // Copy each vector once instead of rebuilding its lane/range shape
         // through repeated capacity growth for every resident CTA.
         auto sub=instruction.shape;
         for(std::size_t i=0;i<sub.ranges.size();++i) {
             auto& range=sub.ranges[i];const auto& lane=*instruction.lanes[i];
-            const U va=host_address::json_reference?model_.address(call_,lane,range.byte_count,cta)
+            const U va=host_address::json_reference?model_->address(*call_,lane,range.byte_count,cta)
                 :addresses_.address(lane,range.byte_count,cta);
             range.offset_bytes=va;
             p::need(range.byte_count>0&&va<=UINT64_MAX-(range.byte_count-1),"prepared GEMV range overflow");

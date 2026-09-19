@@ -28,6 +28,9 @@ The 30.1 MB generated plan and 568 KB compiled header remain local generated art
 - Consumer: 35 CPU tests pass; the final generator reproduces the exact plan/header from the real source journals and static evidence.
 - Typed decoder: 15 CPU tests pass. All 646 applicable calls from the old real argument corpus agree with its independently typed models (GEMV 259, PlainNorm 3, FusedNorm 192, SiLU 96, Rotary 96).
 - Independent code review checked the shared norm ABI, GEMV epilogue alias and nonpointer bytes, RoPE positions, and the successful-controller/census requirement. No additional defect was found after the controller publication-order fix.
+- GEMV typed adapter: 11 sealed templates, each at first/middle/last CTA, match the old JSON address oracle and packet binding across 58,476 records / 1,867,944 lane addresses; 486 negative cases pass. See `validation/gemv-typed-binding.json`.
+- SiLU typed adapter: all 96 old calls / 1,088 CTAs match the old address oracle across 25,903,104 lane addresses. Its new single-CTA path matches all 64 old Decode calls / 1,523,712 lane addresses; 255 rejection checks pass under ASan/UBSan. See `validation/silu-typed-binding.json`.
+- The complete CPU native engine compiles with the final source identities unchanged: `build/native-typed-adapters-r2/build-receipt.json`. This is a build check, not a new simulation or benchmark. The r1 build was rejected by its source-identity guard during a concurrent source correction; only r2 is qualified for use.
 
 CPU tests and old-corpus regressions do not establish a new P1024/D32 dynamic memory witness. The decoder preserves real phase labels, reports unsupported calls explicitly and keeps all model-admission flags false. RoPE position contents remain unknown until separately observed.
 
@@ -35,6 +38,6 @@ CPU tests and old-corpus regressions do not establish a new P1024/D32 dynamic me
 
 The new package has not yet been built with remote NVCC or run on a GPU. Its remote destination is a fresh `native-arguments-r1` directory under the existing XMU task. Upload awaits explicit destination authorization requested after automatic approval review rejected the transfer. No source payload was transferred by the rejected call.
 
-Local GEMV and SiLU typed address-provider adapters are being implemented and tested against the original bindings. They reuse the existing materializer; they do not put new calls into the old sealed `Model`. Actual new argument capture, same-run object/root bindings, source-transfer witnesses, remaining kernel families, phase coverage and streaming capacity still precede a full native P1024/D32 result. The static five-family priority covers 8,257 calls, not all 13,112.
+Local GEMV and SiLU typed address-provider adapters are complete as CPU-validated candidates. They reuse the existing materializer and a small shared identity header; they do not put new calls into the old sealed `Model` or into the live whole-workload factory. Actual new argument capture, same-run object/root bindings, source-transfer witnesses, remaining kernel families, phase coverage and streaming capacity still precede a full native P1024/D32 result. The static five-family priority covers 8,257 calls, not all 13,112; GEMV and SiLU are only two of those five families.
 
 Capture runtime will be reported in minutes using measured controller user+system CPU, waited-child user+system CPU, and elapsed wall time separately. No simulated bandwidth or GPU inference latency will be inferred from those capture costs.
