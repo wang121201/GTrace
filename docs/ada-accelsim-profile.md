@@ -76,6 +76,8 @@ L2_set = ((partition_address >> 7) ^ (partition_address >> 17)) & 1023
 
 要求 Python 3、可用 C++20 编译器；默认使用 `build-config.json` 中的 clang++。这些命令只运行 CPU，不采集 GPU 或 NCU。
 
+`ada_profile.py` 和 `tests/run_unit_tests.py` 可使用 `--compiler g++` 显式选择已安装的 C++20 工具链，实际编译器路径记录在收据中。XMU 默认 clang14 误选不完整的 GCC12 安装，无法找到 `cstdint`；已确认完整 GCC11 标准库存在，远端验证选择 g++11，不改变架构参数。
+
 从仓库根目录运行，输出目录必须尚不存在：
 
 ```sh

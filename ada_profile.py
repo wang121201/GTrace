@@ -6,14 +6,16 @@ ROOT=pathlib.Path(__file__).resolve().parent
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- a=argparse.ArgumentParser(description=__doc__);a.add_argument('--input',type=pathlib.Path,required=True);a.add_argument('--output',type=pathlib.Path,required=True);a.add_argument('--emit-trace',action='store_true');a.add_argument('--binary',type=pathlib.Path);args=a.parse_args();out=args.output.resolve();src=args.input.resolve()
+ a=argparse.ArgumentParser(description=__doc__);a.add_argument('--input',type=pathlib.Path,required=True);a.add_argument('--output',type=pathlib.Path,required=True);a.add_argument('--emit-trace',action='store_true');a.add_argument('--binary',type=pathlib.Path);a.add_argument('--compiler',help='C++20 compiler override; recorded in receipt');args=a.parse_args();out=args.output.resolve();src=args.input.resolve()
  if not src.is_file():a.error('input does not exist')
  if out.exists():a.error('choose a new output directory')
  subprocess.run([sys.executable,str(ROOT/'tools/import_ada_tuner.py'),'--check'],check=True,stdout=subprocess.DEVNULL)
  out.mkdir(parents=True);config=json.loads((ROOT/'build-config.json').read_text());before={str(p.relative_to(ROOT)):sha(p)for p in sorted((ROOT/'source').rglob('*'))if p.is_file()};receipt={'schema':'GTSIM_ADA_RUN_RECEIPT_V1','input_sha256':sha(src),'profile_sha256':sha(ROOT/'configs/rtx4000-ada-accelsim-v1/profile.json'),'source_sha256':before,'CPU_units':'minutes user+system','mode':'functional cache only'}
  binary=args.binary.resolve()if args.binary else out/'ada_cache_replay'
  if not args.binary:
-  argv=[shutil.which(config['compiler']),'-std=c++20','-O2','-Wall','-Wextra','-DTILEGEN_DIRTY_SECTOR_MODE=2']+['-I'+str(ROOT/p)for p in ['source']+config['include_directories']]+[str(ROOT/'source/ada_cache_replay.cpp'),'-o',str(binary)]
+  compiler=shutil.which(args.compiler or config['compiler'])
+  if not compiler:a.error('C++20 compiler not found')
+  argv=[compiler,'-std=c++20','-O2','-Wall','-Wextra','-DTILEGEN_DIRTY_SECTOR_MODE=2']+['-I'+str(ROOT/p)for p in ['source']+config['include_directories']]+[str(ROOT/'source/ada_cache_replay.cpp'),'-o',str(binary)]
   now=time.monotonic();b=subprocess.run(argv,capture_output=True,text=True);receipt['compile']={'argv':argv,'returncode':b.returncode,'wall_minutes':(time.monotonic()-now)/60};(out/'compile.stderr').write_text(b.stderr)
   if b.returncode:(out/'receipt.json').write_text(json.dumps(receipt,indent=2));raise SystemExit(b.returncode)
  if not binary.is_file():raise SystemExit('binary missing')

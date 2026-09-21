@@ -48,9 +48,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=ROOT/'build/unit-tests', help='New output directory; never overwritten')
     parser.add_argument('--sanitize', choices=('address,undefined',), help='ASan+UBSan; leak detection explicitly disabled')
+    parser.add_argument('--compiler', help='C++20 compiler override; recorded in receipt')
     args = parser.parse_args()
     config = json.loads((ROOT/'build-config.json').read_text())
-    compiler = shutil.which(config['compiler'])
+    compiler = shutil.which(args.compiler or config['compiler'])
     if not compiler or config['standard'] != 'c++20' or 'TILEGEN_DIRTY_SECTOR_MODE=2' not in config['definitions']:
         parser.error('configured compiler, C++20 and dirty-sector mode 2 are required')
     out = args.output.resolve()
