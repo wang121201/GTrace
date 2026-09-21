@@ -2,6 +2,8 @@
 
 分支：`codex/tilegen-trace-cosim-20260918-r1`。B8 合并暂停，本分支固定 B1。
 
+当前缓存结构档为 `TILEGEN_PAPER_ADA_GEOMETRY_R1`：三个入口共用 L1 **32 KiB/SM、64 ways、4 sets、128 B line、store bypass、kernel-flush**；L2 **40 MiB、20 logical slices ×1024 sets ×16 ways、128 B line、32 B dirty**，使用封存 PAPER_ADA 的 quotient/XOR 索引和组内 LRU。完整配置写入每次结果的 `cache_configuration`。这统一结构和生命周期，尚未统一 MemGen 的 sector/known-byte 有效性和 lazy write allocation；TileGen仍为128 B fill/RFO，写回每请求32 B。此档不表示硬件精度已校准。历史报告的64 KiB/全相联结果保持原样。
+
 以 C 最新原生运行时为唯一源码基线，复用 A 正式版与 C 同源的原生访存规则。
 同一套 Model、Prepared、binding / Builder 提供快速缓存后地址流和 HBFSIM cosimulation。
 所有写回请求均为 **32 B**；读填充及 store RFO 仍为 **128 B**。
@@ -45,7 +47,7 @@ direct 与 cosim 共用地址规则，**过 cache 流量不保证逐条相同**�
 要求 C++20、zlib、Python 3。默认直接 clang 构建，无须 CMake。
 
 ```sh
-python3 build.py --output build/shared-frontend-r2 --jobs 2 --native --thin-lto
+python3 build.py --output build/cache-alignment-r1 --jobs 2 --native --thin-lto
 python3 run.py --input /absolute/path/workload.input --output build/direct-run --mode direct
 python3 run.py --input /absolute/path/workload.input --output build/cosim-run --mode cosim --trace
 python3 run.py --input /absolute/path/workload.input --output build/fast-run --mode cosim-fast

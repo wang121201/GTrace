@@ -41,7 +41,8 @@ std::unique_ptr<L2Cache> make_session_l2(
         config.memory_model_semantics,
         config.per_sm_l1,
         completion_backend,
-        dram_address_mapper);
+        dram_address_mapper,
+        config.l2_geometry);
 }
 
 } // namespace

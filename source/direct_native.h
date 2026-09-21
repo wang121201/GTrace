@@ -1,4 +1,5 @@
 #pragma once
+#include "cache_profile.h"
 // Include after the original full-workflow Model, Prepared and hybrid Bindings.
 // This consumes their native memory rules. It never invokes a scheduler or
 // submits requests to HBFSIM. Unsupported bindings retain the exact fine Builder
@@ -119,7 +120,7 @@ inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace:
     require(!cfg.l2_bypass_cache&&cfg.l2_line_size_bytes==128,"direct cache supports pinned native cache policy");
     FunctionalCache cache(cfg.per_sm_l1,U(cfg.l2_cache_size_bytes),
         [&](int matrix,U line){return mapper.map(g::CacheLineKey{matrix,line});},
-        [&](const native_trace::Record& record){writer.append(record);});
+        [&](const native_trace::Record& record){writer.append(record);},cfg.l2_geometry);
     hybrid_full::Bindings bindings(model,frames,mapper);
     J rows=J::array();U fast_calls=0,fallback_calls=0,peak_fallback_nodes=0;
     const auto engine_started=std::chrono::steady_clock::now();
@@ -198,7 +199,7 @@ inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace:
         {"estimated_address",true},{"hardware_timing_calibrated",false},
         {"cache_completion_policy","serial immediate completion; no in-flight MSHR merging or latency"},
         {"cache_identity","same process/context source virtual128B lines; original packed service map"},
-        {"cache_replacement","fully_associative_LRU"},{"L2_bytes",cfg.l2_cache_size_bytes},
+        {"cache_replacement","PAPER_ADA_group_local_LRU"},{"L2_bytes",cfg.l2_cache_size_bytes},
         {"L1_policy",{{"implementation","original PerSmL1Cache"},{"mode",g::per_sm_l1_mode_name(cfg.per_sm_l1.mode)},
             {"persistence",g::per_sm_l1_persistence_name(cfg.per_sm_l1.persistence)},
             {"SMS",cfg.num_sms},{"bytes_per_SM",cfg.per_sm_l1.capacity_bytes_per_sm},{"ways",cfg.per_sm_l1.ways}}},
@@ -209,6 +210,7 @@ inline J run(const J& in,compressed_frame::Cache& frames,bool full,native_trace:
         {"compressed_frame_cache",frames.receipt()},{"source_pool",model.receipt()},
         {"host_engine_seconds",engine_seconds},
         {"host_total_seconds",std::chrono::duration<double>(std::chrono::steady_clock::now()-started).count()}};
+    result["cache_configuration"]=native_cache::profile(cfg);
     if(phase_ctas)result["phase_profile"]=std::move(phase_profile);
     return result;
 }

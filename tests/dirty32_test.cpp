@@ -55,9 +55,10 @@ struct Rig {
             s.l2_total_rate={128,1};s.l2_write_rate={128,1};}
         return s;
     }
-    Rig(int lines=1,U cap=8,U latency=7,unsigned span=0):backend(cap,latency),
+    Rig(int lines=1,U cap=8,U latency=7,unsigned span=0,
+        const g::L2GeometryConfig& geometry=g::L2GeometryConfig()):backend(cap,latency),
         cache(lines*128,128,1,128,128,32,false,128,7,1000,1000,
-              semantics(span),g::PerSmL1Config(),&backend,&mapper),epoch_span(span){}
+              semantics(span),g::PerSmL1Config(),&backend,&mapper,geometry),epoch_span(span){}
     g::DAGNode node(bool write,const std::vector<std::pair<U,U>>& spans){
         g::DAGNode n(next_id++,"direct","LS",write?"st.reg2dram":"ld.dram2reg",0,{},0,{});
         n.sm_id=0;n.matrix_id=3;
@@ -229,6 +230,21 @@ void rejects(){
     x=r.node(true,{{UINT64_MAX-1,2}});
     check(g::explicit_store_sector_mask(x,3,UINT64_MAX-127,0,stats)==8,"inclusive final address handled without overflow");
 }
-int main(){try{coverage_tests();rewrite_and_pending();offsets();subops();backpressure();completion_burst();rejects();
+void grouped_geometry(){
+    // Independently construct17 addresses in PAPER slice0/set0; another slice
+    // must not evict this set even though the global cache has ample space.
+    auto address=[](U k){U index=128*1025*k;return ((index>>8)*20<<8)|(index&255);};
+    Rig r(40*1024*1024/128,8,7,0,g::L2GeometryConfig::paper_ada_l2_v1());
+    r.access(true,{{65,1}},0);r.drain();
+    for(U k=1;k<16;++k){U a=address(k);r.access(false,{{a,4}},a);r.drain();}
+    r.access(false,{{256,4}},256);r.drain();
+    check(r.writes().empty(),"another PAPER slice cannot evict dirty set0");
+    U a=address(16);r.access(false,{{a,4}},a);r.drain();
+    const auto writes=r.writes();
+    check(writes.size()==1&&writes[0].key.line_addr==0,"17th colliding fill evicts set-local LRU below total capacity");
+    if constexpr(g::kTilegenDirtySectorMode==2)
+        check(writes[0].bytes==32&&writes[0].address==4096+64,"grouped victim preserves sparse dirty32");
+}
+int main(){try{coverage_tests();rewrite_and_pending();offsets();subops();backpressure();completion_burst();rejects();grouped_geometry();
     std::cout<<"PASS mode="<<g::kTilegenDirtySectorMode<<" checks="<<checks<<'\n';return 0;
 }catch(const std::exception&e){std::cerr<<"FAIL: "<<e.what()<<'\n';return 1;}}

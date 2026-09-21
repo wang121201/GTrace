@@ -59,6 +59,9 @@ struct PerSmL1Config {
     std::uint64_t capacity_bytes_per_sm = 64ULL * 1024ULL;
     std::uint32_t ways = 8;
     std::uint32_t line_bytes = 128;
+    // PAPER_ADA stores bypass L1 without updating its replacement state.
+    // False retains the historical write-through/no-allocate model.
+    bool store_bypass = false;
     // Integer model value derived from the 7.062-cycle dependent-load L1
     // candidate in MEMORY_FOOTPRINT_RESULTS.md.  It is uncalibrated.
     int hit_latency_cycles = 7;
@@ -202,7 +205,8 @@ public:
         ++retry_host::counts.l1_classify_calls;
         // BYPASS is a strict compatibility path: legacy direct-key tests may
         // use abstract, non-byte-aligned keys which never enter modeled L1.
-        if (config_.mode == PerSmL1Mode::BYPASS || access.bypass_l1) {
+        if (config_.mode == PerSmL1Mode::BYPASS || access.bypass_l1 ||
+            (config_.store_bypass && access.is_write)) {
             return PerSmL1Outcome::BYPASS;
         }
         if (access.canonical_line % config_.line_bytes != 0) {

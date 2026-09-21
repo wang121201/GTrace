@@ -125,6 +125,7 @@ struct SimulatorConfig {
     // L2 cache configuration
     int l2_cache_size_bytes;
     int l2_line_size_bytes;
+    L2GeometryConfig l2_geometry;
     int l2_hit_latency_cycles;
     int l2_miss_penalty_cycles;
     int l2_bandwidth_bytes_per_cycle;
@@ -407,7 +408,8 @@ inline SimulatorConfig make_rtx4000_ada_footprint_reference_config() {
     cfg.architecture_profile_name = "gtsim-native-rtx4000-ada";
     cfg.architecture_parameter_source =
         "R77/R84 admitted Ada memory fields plus explicit uncalibrated "
-        "footprint-reference scheduler/pipeline/queue/L1 assumptions";
+        "footprint-reference scheduler/pipeline/queue assumptions; "
+        "PAPER_ADA_L2_V1_WORKFLOW_1 cache geometry/lifetime";
     cfg.architecture_profile_runnable = true;
 
     // Observed schedule contract for the certified Ada BF16 GEMM is four
@@ -438,6 +440,7 @@ inline SimulatorConfig make_rtx4000_ada_footprint_reference_config() {
     // R77/R84 admitted cache and DRAM model fields.
     cfg.l2_cache_size_bytes = 40 * 1024 * 1024;
     cfg.l2_line_size_bytes = 128;
+    cfg.l2_geometry = L2GeometryConfig::paper_ada_l2_v1();
     cfg.l2_hit_latency_cycles = 272;
     cfg.l2_miss_penalty_cycles = 604;
     cfg.l2_bandwidth_bytes_per_cycle = 711;
@@ -478,11 +481,12 @@ inline SimulatorConfig make_rtx4000_ada_footprint_reference_config() {
 
     cfg.per_sm_l1.mode = PerSmL1Mode::MODELED_SET_ASSOCIATIVE;
     cfg.per_sm_l1.persistence =
-        PerSmL1Persistence::CROSS_KERNEL_PERSISTENT;
+        PerSmL1Persistence::KERNEL_FLUSH;
     cfg.per_sm_l1.num_sms = kRtx4000AdaNumSms;
-    cfg.per_sm_l1.capacity_bytes_per_sm = 64ULL * 1024ULL;
-    cfg.per_sm_l1.ways = 8;
+    cfg.per_sm_l1.capacity_bytes_per_sm = 32ULL * 1024ULL;
+    cfg.per_sm_l1.ways = 64;
     cfg.per_sm_l1.line_bytes = 128;
+    cfg.per_sm_l1.store_bypass = true;
     cfg.per_sm_l1.hit_latency_cycles = 7;
     return cfg;
 }
@@ -653,7 +657,8 @@ public:
                                 config.block_schedule_latency_cycles,
                                 shared_l2,
                                 config.memory_model_semantics,
-                                config.per_sm_l1);
+                                config.per_sm_l1,
+                                config.l2_geometry);
 
         try {
         for (auto* sm_inst : simulated_gpu->sms) {

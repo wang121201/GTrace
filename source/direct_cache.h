@@ -4,6 +4,7 @@
 #include "native_trace.h"
 #include "work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h"
 #include "work/tilegen-full-r1/core-native-copy-r2/include/dirty_sector_eval.h"
+#include "cache_geometry.h"
 #include <functional>
 #include <list>
 #include <unordered_map>
@@ -36,7 +37,7 @@ class FunctionalCache {
     struct Entry { std::uint8_t dirty; std::list<CacheKey>::iterator position; };
     g::PerSmL1Cache l1_;
     U max_lines_;
-    std::list<CacheKey> lru_;
+    g::L2GroupedLru<CacheKey> lru_;
     std::unordered_map<CacheKey,Entry,CacheKeyHash> l2_;
     std::function<U(int,U)> map_;
     std::function<void(const native_trace::Record&)> emit_;
@@ -69,7 +70,7 @@ class FunctionalCache {
         if (!decision.forwarded_to_l2) return;
         auto found=l2_.find(key);
         if(found!=l2_.end()) {
-            ++hits_;lru_.splice(lru_.begin(),lru_,found->second.position);
+            ++hits_;lru_.touch(key.line,found->second.position);
             if(write) {
                 const auto created=g::sector_popcount(std::uint8_t(mask&~found->second.dirty));
                 dirty_.dirty_sector_creations+=created;resident_dirty_sectors_+=created;
@@ -79,8 +80,8 @@ class FunctionalCache {
         } else {
             // Native L2 issues fill/RFO before selecting a victim on completion.
             emit(key,0,128,false,context);
-            if(l2_.size()==max_lines_) {
-                const auto victim=lru_.back();auto prior=l2_.find(victim);
+            if(const auto* selected=lru_.victim(key.line)) {
+                const auto victim=*selected;auto prior=l2_.find(victim);
                 require(prior!=l2_.end(),"direct LRU victim missing");
                 const auto bits=prior->second.dirty;
                 if(bits) {
@@ -93,9 +94,9 @@ class FunctionalCache {
                     }
                     ++dirty_.eviction_run_counts.at(sectors);
                 } else ++clean_evictions_;
-                l2_.erase(prior);lru_.pop_back();
+                lru_.erase(victim.line,prior->second.position);l2_.erase(prior);
             }
-            lru_.push_front(key);l2_.emplace(key,Entry{mask,lru_.begin()});
+            auto position=lru_.insert_mru(key.line,key);l2_.emplace(key,Entry{mask,position});
             dirty_.dirty_sector_creations+=g::sector_popcount(mask);
             if(mask){++resident_dirty_lines_;resident_dirty_sectors_+=g::sector_popcount(mask);}
         }
@@ -105,8 +106,10 @@ class FunctionalCache {
 public:
     FunctionalCache(const g::PerSmL1Config& l1,U l2_bytes,
                     std::function<U(int,U)> mapper,
-                    std::function<void(const native_trace::Record&)> output)
-        :l1_(l1),max_lines_(l2_bytes/128),map_(std::move(mapper)),emit_(std::move(output)) {
+                    std::function<void(const native_trace::Record&)> output,
+                    const g::L2GeometryConfig& geometry = g::L2GeometryConfig())
+        :l1_(l1),max_lines_(l2_bytes/128),lru_(geometry,l2_bytes,128),
+         map_(std::move(mapper)),emit_(std::move(output)) {
         require(l2_bytes>0&&l2_bytes%128==0,"direct L2 requires positive128B capacity");
         require(l1.line_bytes==128,"direct L1 requires native128B lines");
         l2_.reserve(std::size_t(max_lines_));
@@ -148,6 +151,7 @@ public:
         for(const auto& [key,entry]:l2_)if(entry.dirty){++resident_lines;resident_sectors+=g::sector_popcount(entry.dirty);}
         require(resident_lines==resident_dirty_lines_&&resident_sectors==resident_dirty_sectors_,
                 "direct independent resident dirty gauge audit failed");
+        require(lru_.size()==l2_.size()&&l2_.size()<=max_lines_,"direct group/tag capacity ledger failed");
     }
     J snapshot() const {
         require(dirty_.dirty_sector_creations==resident_dirty_sectors_+dirty_.evicted_dirty_sectors,

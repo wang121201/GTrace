@@ -5,6 +5,7 @@
 #include "dag_node.h"
 #include "model_semantics.h"
 #include "per_sm_l1.h"
+#include "cache_geometry.h"
 #include "p32_observation.h"
 #include "dirty_sector_eval.h"
 #include <algorithm>
@@ -1170,7 +1171,8 @@ public:
             const MemoryModelSemantics& model_semantics = MemoryModelSemantics(),
             const PerSmL1Config& l1_config = PerSmL1Config(),
             L2DramCompletionBackend* completion_backend = nullptr,
-            const L2DramAddressMapper* dram_address_mapper = nullptr)
+            const L2DramAddressMapper* dram_address_mapper = nullptr,
+            const L2GeometryConfig& l2_geometry = L2GeometryConfig())
         : line_size_bytes(line_size_bytes),
           hit_latency_cycles(hit_latency_cycles),
           l2_bandwidth_bytes_per_cycle(l2_bandwidth_bytes_per_cycle),
@@ -1180,6 +1182,7 @@ public:
           max_lines(static_cast<size_t>(cache_size_bytes / line_size_bytes)),
           model_semantics_(model_semantics),
           l1_cache_(l1_config),
+          lru_list(l2_geometry,cache_size_bytes,line_size_bytes),
           owned_dram_backend(nullptr),
           dram_backend(completion_backend),
           dram_address_mapper(dram_address_mapper),
@@ -1950,7 +1953,7 @@ private:
     ExactRationalByteBudget exact_l2_total_budget_;
     ExactRationalByteBudget exact_l2_write_budget_;
 
-    std::list<CacheLineKey> lru_list;
+    L2GroupedLru<CacheLineKey> lru_list;
     std::unordered_map<CacheLineKey, CacheLineState, CacheLineKeyHash> cache;
     std::unordered_map<CacheLineKey, MSHREntry, CacheLineKeyHash> mshr;
     std::deque<Transaction> l2_queue_read;
@@ -2398,9 +2401,7 @@ private:
     void touch_lru(const CacheLineKey& key) {
         auto it = cache.find(key);
         if (it == cache.end()) return;
-        lru_list.erase(it->second.lru_it);
-        lru_list.push_front(key);
-        it->second.lru_it = lru_list.begin();
+        lru_list.touch(key.line_addr,it->second.lru_it);
     }
 
     InsertResult insert_line(const CacheLineKey& key, std::uint8_t dirty,
@@ -2414,11 +2415,11 @@ private:
             return result;
         }
 
-        if (cache.size() >= max_lines && !lru_list.empty()) {
-            CacheLineKey victim = lru_list.back();
-            lru_list.pop_back();
+        if (const auto* selected = lru_list.victim(key.line_addr)) {
+            CacheLineKey victim = *selected;
             auto victim_it = cache.find(victim);
             if (victim_it != cache.end()) {
+                lru_list.erase(victim.line_addr,victim_it->second.lru_it);
                 result.eviction_kind = victim_it->second.dirty
                                            ? L2EvictionKind::DIRTY
                                            : L2EvictionKind::CLEAN;
@@ -2464,8 +2465,8 @@ private:
             }
         }
 
-        lru_list.push_front(key);
-        cache.emplace(key, CacheLineState{dirty, lru_list.begin()});
+        auto position = lru_list.insert_mru(key.line_addr,key);
+        cache.emplace(key, CacheLineState{dirty, position});
         result.inserted = true;
         statistics_.cache_inserts += 1;
         update_peak(statistics_.peak_resident_lines, cache.size());

@@ -18,7 +18,8 @@ std::unique_ptr<g::L2Cache> make_l2(const g::SimulatorConfig& cfg,coupling::Runt
         cfg.l2_hit_latency_cycles,cfg.l2_bandwidth_bytes_per_cycle,
         cfg.l2_write_bandwidth_bytes_per_cycle,cfg.l2_queue_depth,cfg.l2_bypass_cache,
         0,cfg.l2_miss_penalty_cycles,cfg.core_frequency_mhz,cfg.dram_frequency_mhz,
-        cfg.memory_model_semantics,cfg.per_sm_l1,memory.backend.get(),memory.mapper.get());
+        cfg.memory_model_semantics,cfg.per_sm_l1,memory.backend.get(),memory.mapper.get(),
+        cfg.l2_geometry);
 }
 J runtime_stats(const rt::Stats& s) {
     J out;

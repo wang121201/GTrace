@@ -12,7 +12,7 @@ import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-TESTS = ('dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test', 'trace_replay_test', 'stage_replay_test', 'direct_phase_profile_test', 'replay_phase_report_test', 'replay_backend_test')
+TESTS = ('cache_geometry_test', 'dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test', 'trace_replay_test', 'stage_replay_test', 'direct_phase_profile_test', 'replay_phase_report_test', 'replay_backend_test')
 HBF = ('hbm/hbm_device.cpp', 'resource_calendar.cpp', 'gap_calendar.cpp', 'address_heatmap.cpp')
 
 
@@ -96,7 +96,8 @@ def main():
                     row['checks'] = int(match.group(1))
                 else:
                     result = json.loads(text)
-                    expected = {'native_trace_test':'PASS',
+                    expected = {'cache_geometry_test':'PASS_CACHE_GEOMETRY',
+                                'native_trace_test':'PASS',
                                 'direct_cache_smoke':'PASS_FUNCTIONAL_DIRECT_CACHE_SMOKE',
                                 'cta_validation_test':'PASS_CTA_VALIDATION_EQUIVALENCE',
                                 'trace_replay_test':'PASS_TRACE_REPLAY_EXACT_TICK_REFERENCE',

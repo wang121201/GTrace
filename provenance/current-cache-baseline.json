@@ -1,0 +1,74 @@
+{
+  "source": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/tilegen-trace-cosim/repo",
+  "head": "5db5ee28f0a06f4c97b041a87987635c8f62f84b",
+  "carried_worktree_changes": [
+    {
+      "path": "README.md",
+      "sha256": "db8bfeefbaedb54832913e242bf0041f548af53b060769b24e286b247f3c79d0"
+    },
+    {
+      "path": "run.py",
+      "sha256": "fd3ba9de63165fec5f8eddf9282dcedf22a02710d5e5b34630c5eb6dad5c7908"
+    },
+    {
+      "path": "source/direct_cache.h",
+      "sha256": "b22540db86331561bfc2f7b0fa3a82098f7625435c26bcb228757a8ea1e08f5d"
+    },
+    {
+      "path": "source/direct_native.h",
+      "sha256": "3e4f969dc6ffefb8ef7c251e3c29b4d654b7fadc0ddb6a8ad8ab27c8d19df3f6"
+    },
+    {
+      "path": "source/work/tilegen-full-r1/canonical-full-runtime-r4/streaming.cpp",
+      "sha256": "821690f3b67f3478b602825a93837a2cb318c517fd463b6c3224c47ee6506d14"
+    },
+    {
+      "path": "source/work/tilegen-full-r1/core-native-copy-r2/include/gpu.h",
+      "sha256": "97429c86043b316c9dfba2eed266f55c5146ca81af41af015b4b7610863d9dcd"
+    },
+    {
+      "path": "source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h",
+      "sha256": "a00961b92b98ec3fff55be91d3ab2c4ff479d5f1c97e116eada1d10622e88949"
+    },
+    {
+      "path": "source/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+      "sha256": "ea9c09d2dc9b041e4ca7150670cf8ce5b91302e10a41e99d1272875d50b4f89d"
+    },
+    {
+      "path": "source/work/tilegen-full-r1/core-native-copy-r2/include/simulator.h",
+      "sha256": "046b4772f006c58423055c9aba0ce6e6523f651799ae7e763e7ac7188c88a281"
+    },
+    {
+      "path": "source/work/tilegen-full-r1/core-native-copy-r2/src/simulator_session.cpp",
+      "sha256": "f1b32bbb305d247996a6141ab65460656f67e72f31b2f4035fa70745698ced8f"
+    },
+    {
+      "path": "source/work/tilegen-tiny-full-r1/reporting.h",
+      "sha256": "d8b6c7613fd4da02cf99b8873574edb7e75edbb664d729388ada46661912ef96"
+    },
+    {
+      "path": "tests/direct_cache_smoke.cpp",
+      "sha256": "f244c5492dfcbda684028cf81c8207dd808546bb797ca9f9a692200a186f6b99"
+    },
+    {
+      "path": "tests/dirty32_test.cpp",
+      "sha256": "0805320fa39d08a394cabe5dc22fd1c546f6463786c4453462b385f17cbfa53a"
+    },
+    {
+      "path": "tests/run_unit_tests.py",
+      "sha256": "3b11bcaeb8fbb56c36e078dccbce338ee2914d7efeee6e3e72a28b792e39bae9"
+    },
+    {
+      "path": "source/cache_profile.h",
+      "sha256": "2c662570ccc1cbc9efd4a82305795d4eeb71e6f621c4befe2db7bf385f61494b"
+    },
+    {
+      "path": "source/work/tilegen-full-r1/core-native-copy-r2/include/cache_geometry.h",
+      "sha256": "0988531de62efb33c9b7ccc51507439470dd94093b3b71abf51e4fe81b342241"
+    },
+    {
+      "path": "tests/cache_geometry_test.cpp",
+      "sha256": "be5771aff91b0649ae9a67bb60116dcc002519f0ec20a2d6178a5dba0d4520bf"
+    }
+  ]
+}

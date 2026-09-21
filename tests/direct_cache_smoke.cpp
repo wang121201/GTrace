@@ -57,8 +57,20 @@ int main() {
     catch(const std::exception&){rejected=true;}
     require(rejected,"mismatched byte provenance must reject");
     cache.verify_resident_ledger();second.verify_resident_ledger();broadcast.verify_resident_ledger();
+    records.clear();g::PerSmL1Config bypass;
+    FunctionalCache grouped(bypass,40ULL*1024*1024,mapper,sink,g::L2GeometryConfig::paper_ada_l2_v1());
+    auto collision=[](U k){U index=128*1025*k;return ((index>>8)*20<<8)|(index&255);};
+    grouped.begin_kernel();grouped.instruction(1,true,false,{range(65,1)},context);
+    for(U k=1;k<16;++k)grouped.instruction(1,false,false,{range(collision(k),4)},context);
+    grouped.instruction(1,false,false,{range(256,4)},context);
+    require(grouped.snapshot().at("DRAM_write_bytes")==0,"other PAPER group preserves dirty set0");
+    grouped.instruction(1,false,false,{range(collision(16),4)},context);
+    require(grouped.snapshot().at("DRAM_write_bytes")==32&&records.back().service_address==4096+64,
+        "grouped Direct evicts correct sparse sector below total capacity");
+    grouped.verify_resident_ledger();
     std::cout<<J({{"status","PASS_FUNCTIONAL_DIRECT_CACHE_SMOKE"},
         {"checks",{"native_L1_read_filter","native_L1_write_no_allocate","128B_fill_RFO",
                    "individual_dirty32_sparse_and_adjacent","no_final_flush","dirty_conservation",
-                   "broadcast_source_multiplicity","explicit_range_rejection","unknown_timestamps"}}}).dump()<<'\n';
+                   "broadcast_source_multiplicity","explicit_range_rejection","unknown_timestamps",
+                   "PAPER_group_conflict_and_independence"}}}).dump()<<'\n';
 }

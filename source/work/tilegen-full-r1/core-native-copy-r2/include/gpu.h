@@ -98,7 +98,8 @@ public:
         L2Cache* shared_l2 = nullptr,
         const MemoryModelSemantics& memory_model_semantics =
             MemoryModelSemantics(),
-        const PerSmL1Config& per_sm_l1 = PerSmL1Config())
+        const PerSmL1Config& per_sm_l1 = PerSmL1Config(),
+        const L2GeometryConfig& l2_geometry = L2GeometryConfig())
         : l2(nullptr), owns_l2(false), noc(nullptr),
           num_sms(num_streaming_multiprocessors) {
 
@@ -135,7 +136,7 @@ public:
                              l2_bypass_cache,
                              dram_bandwidth_bytes_per_cycle, dram_latency_cycles,
                              core_freq_mhz, dram_freq_mhz,
-                             memory_model_semantics, per_sm_l1);
+                             memory_model_semantics, per_sm_l1, nullptr, nullptr, l2_geometry);
             owns_l2 = true;
         }
         node_id_to_sp = nullptr;
