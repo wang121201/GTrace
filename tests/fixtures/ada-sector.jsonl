@@ -1,0 +1,44 @@
+{"type": "kernel", "name": "sector-and-channels", "threads_per_cta": 64, "registers_per_thread": 32, "shared_bytes_per_cta": 0, "grid_ctas": 96}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "write", "ranges": [{"lane": 0, "address": 0, "bytes": 4}]}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "write", "ranges": [{"lane": 0, "address": 4, "bytes": 28}]}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 0, "bytes": 4}]}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 32, "bytes": 4}]}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 32, "bytes": 4}]}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 0, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 128, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 256, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 384, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 512, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 640, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 768, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 896, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 1024, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 1152, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 1280, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 1408, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 1536, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 1664, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 1792, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 1920, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 2048, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 2176, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 2304, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 2432, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 2624000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 5248000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 7872000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 10496000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 13120000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 15744000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 18368000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 20992000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 23616000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 26240000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 28864000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 31488000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 34112000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 36736000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 39360000, "bytes": 4}], "bypass_l1": true}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 41984000, "bytes": 4}], "bypass_l1": true}
+{"type": "kernel", "name": "shared-carveout-retains-L2", "threads_per_cta": 128, "registers_per_thread": 32, "shared_bytes_per_cta": 102400, "grid_ctas": 48}
+{"type": "memory", "allocation_id": 0, "cta": 0, "warp": 0, "op": "read", "ranges": [{"lane": 0, "address": 41984000, "bytes": 4}], "bypass_l1": true}

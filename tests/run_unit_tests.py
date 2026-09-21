@@ -12,7 +12,7 @@ import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-TESTS = ('cache_geometry_test', 'dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test', 'trace_replay_test', 'stage_replay_test', 'direct_phase_profile_test', 'replay_phase_report_test', 'replay_backend_test')
+TESTS = ('ada_address_mapping_test', 'ada_l1_test', 'ada_direct_cache_test', 'ada_profile_test', 'ada_fine_partition_test', 'cache_geometry_test', 'dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test', 'trace_replay_test', 'stage_replay_test', 'direct_phase_profile_test', 'replay_phase_report_test', 'replay_backend_test')
 HBF = ('hbm/hbm_device.cpp', 'resource_calendar.cpp', 'gap_calendar.cpp', 'address_heatmap.cpp')
 
 
@@ -84,6 +84,8 @@ def main():
         argv = [str(executable)]
         if name == 'native_trace_test':
             argv += [str(out/'trace-fixture')]
+        elif name == 'ada_address_mapping_test':
+            argv += [str(ROOT/'configs/rtx4000-ada-accelsim-v1/source/gpgpusim.config')]
         run = command(argv, out, name+'.run', env, 30)
         row['run'] = run
         if run['returncode'] == 0:
@@ -96,7 +98,12 @@ def main():
                     row['checks'] = int(match.group(1))
                 else:
                     result = json.loads(text)
-                    expected = {'cache_geometry_test':'PASS_CACHE_GEOMETRY',
+                    expected = {'ada_address_mapping_test':'PASS_ADA_ADDRESS_MAPPING',
+                                'ada_l1_test':'PASS_ADA_L1',
+                                'ada_direct_cache_test':'PASS_ADA_FUNCTIONAL_DIRECT_CACHE',
+                                'ada_profile_test':'PASS_ADA_PROFILE',
+                                'ada_fine_partition_test':'PASS_ADA_FINE_PARTITION',
+                                'cache_geometry_test':'PASS_CACHE_GEOMETRY',
                                 'native_trace_test':'PASS',
                                 'direct_cache_smoke':'PASS_FUNCTIONAL_DIRECT_CACHE_SMOKE',
                                 'cta_validation_test':'PASS_CTA_VALIDATION_EQUIVALENCE',

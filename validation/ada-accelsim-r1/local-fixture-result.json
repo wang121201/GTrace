@@ -1,0 +1,449 @@
+{
+  "HBFSIM_executed": false,
+  "L2_cross_kernel": true,
+  "NCU_accuracy_tested": false,
+  "SM_assignment": "explicit sm if supplied, otherwise declared CTA modulo 48; not observed hardware scheduling",
+  "SM_count": 48,
+  "bandwidth_GBps": null,
+  "cache": {
+    "DRAM_read_bytes": 1152,
+    "DRAM_read_requests": 36,
+    "DRAM_write_bytes": 32,
+    "DRAM_write_requests": 1,
+    "L1_bypass": 37,
+    "L1_capacity_reconfigurations": 1,
+    "L1_evictions": 0,
+    "L1_pre_reads": 40,
+    "L1_pre_writes": 2,
+    "L1_read_hits": 2,
+    "L1_read_misses": 1,
+    "L1_unmodeled_reservation_stalls": 0,
+    "L1_write_hits": 1,
+    "L1_write_misses": 1,
+    "L2_capacity_lines": 327680,
+    "L2_clean_evictions": 0,
+    "L2_hits": 3,
+    "L2_lazy_store_sector_allocations": 1,
+    "L2_resident_lines": 35,
+    "L2_sector_merge_reads": 0,
+    "L2_sector_read_misses": 36,
+    "accelsim_sector_lazy_mode": true,
+    "dirty_sector_creations": 1,
+    "dirty_sector_ledger_closed": true,
+    "evicted_dirty_sectors": 1,
+    "eviction_masks": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "eviction_popcounts": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "eviction_run_counts": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "resident_dirty_lines": 0,
+    "resident_dirty_sectors": 0,
+    "source_memory_instructions": 42,
+    "source_projection_fnv1a64": 10731420518666791218,
+    "source_ranges": 42,
+    "source_read_bytes": 160,
+    "source_write_bytes": 32,
+    "store_mask_popcounts": [
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    "trace_records": 37,
+    "writeback_byte_ledger_closed": true,
+    "writeback_run_lengths": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "compute_executed": false,
+  "compute_subpartitions_per_SM": 4,
+  "configuration": "accelsim-rtx4000-ada-v1",
+  "final_flush": false,
+  "initial_cache": "cold",
+  "kernel_count": 2,
+  "memory_channels": 10,
+  "memory_subpartitions": 20,
+  "partitions": [
+    {
+      "channel": 0,
+      "memory_subpartition": 0,
+      "read_bytes": 544,
+      "write_bytes": 32
+    },
+    {
+      "channel": 0,
+      "memory_subpartition": 1,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 1,
+      "memory_subpartition": 2,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 1,
+      "memory_subpartition": 3,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 2,
+      "memory_subpartition": 4,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 2,
+      "memory_subpartition": 5,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 3,
+      "memory_subpartition": 6,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 3,
+      "memory_subpartition": 7,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 4,
+      "memory_subpartition": 8,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 4,
+      "memory_subpartition": 9,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 5,
+      "memory_subpartition": 10,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 5,
+      "memory_subpartition": 11,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 6,
+      "memory_subpartition": 12,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 6,
+      "memory_subpartition": 13,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 7,
+      "memory_subpartition": 14,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 7,
+      "memory_subpartition": 15,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 8,
+      "memory_subpartition": 16,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 8,
+      "memory_subpartition": 17,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 9,
+      "memory_subpartition": 18,
+      "read_bytes": 32,
+      "write_bytes": 0
+    },
+    {
+      "channel": 9,
+      "memory_subpartition": 19,
+      "read_bytes": 32,
+      "write_bytes": 0
+    }
+  ],
+  "phases": [
+    {
+      "L1_bytes_per_sm": 131072,
+      "L1_sets": 4,
+      "L1_ways": 256,
+      "cache_end": {
+        "DRAM_read_bytes": 1152,
+        "DRAM_read_requests": 36,
+        "DRAM_write_bytes": 32,
+        "DRAM_write_requests": 1,
+        "L1_bypass": 36,
+        "L1_capacity_reconfigurations": 0,
+        "L1_evictions": 0,
+        "L1_pre_reads": 39,
+        "L1_pre_writes": 2,
+        "L1_read_hits": 2,
+        "L1_read_misses": 1,
+        "L1_unmodeled_reservation_stalls": 0,
+        "L1_write_hits": 1,
+        "L1_write_misses": 1,
+        "L2_capacity_lines": 327680,
+        "L2_clean_evictions": 0,
+        "L2_hits": 2,
+        "L2_lazy_store_sector_allocations": 1,
+        "L2_resident_lines": 35,
+        "L2_sector_merge_reads": 0,
+        "L2_sector_read_misses": 36,
+        "accelsim_sector_lazy_mode": true,
+        "dirty_sector_creations": 1,
+        "dirty_sector_ledger_closed": true,
+        "evicted_dirty_sectors": 1,
+        "eviction_masks": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "eviction_popcounts": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "eviction_run_counts": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "resident_dirty_lines": 0,
+        "resident_dirty_sectors": 0,
+        "source_memory_instructions": 41,
+        "source_projection_fnv1a64": 13350942678438180157,
+        "source_ranges": 41,
+        "source_read_bytes": 156,
+        "source_write_bytes": 32,
+        "store_mask_popcounts": [
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "trace_records": 37,
+        "writeback_byte_ledger_closed": true,
+        "writeback_run_lengths": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "index": 0,
+      "launch_resources": {
+        "grid_ctas": 96,
+        "name": "sector-and-channels",
+        "registers_per_thread": 32,
+        "shared_bytes_per_cta": 0,
+        "threads_per_cta": 64,
+        "type": "kernel"
+      },
+      "name": "sector-and-channels",
+      "resident_ctas_per_sm": 2,
+      "shared_carveout_bytes": 0,
+      "traffic": {
+        "DRAM_read_bytes": 1152,
+        "DRAM_read_requests": 36,
+        "DRAM_write_bytes": 32,
+        "DRAM_write_requests": 1,
+        "L1_unmodeled_reservation_stalls": 0,
+        "source_memory_instructions": 41,
+        "source_read_bytes": 156,
+        "source_write_bytes": 32
+      }
+    },
+    {
+      "L1_bytes_per_sm": 28672,
+      "L1_sets": 4,
+      "L1_ways": 56,
+      "cache_end": {
+        "DRAM_read_bytes": 1152,
+        "DRAM_read_requests": 36,
+        "DRAM_write_bytes": 32,
+        "DRAM_write_requests": 1,
+        "L1_bypass": 37,
+        "L1_capacity_reconfigurations": 1,
+        "L1_evictions": 0,
+        "L1_pre_reads": 40,
+        "L1_pre_writes": 2,
+        "L1_read_hits": 2,
+        "L1_read_misses": 1,
+        "L1_unmodeled_reservation_stalls": 0,
+        "L1_write_hits": 1,
+        "L1_write_misses": 1,
+        "L2_capacity_lines": 327680,
+        "L2_clean_evictions": 0,
+        "L2_hits": 3,
+        "L2_lazy_store_sector_allocations": 1,
+        "L2_resident_lines": 35,
+        "L2_sector_merge_reads": 0,
+        "L2_sector_read_misses": 36,
+        "accelsim_sector_lazy_mode": true,
+        "dirty_sector_creations": 1,
+        "dirty_sector_ledger_closed": true,
+        "evicted_dirty_sectors": 1,
+        "eviction_masks": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "eviction_popcounts": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "eviction_run_counts": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "resident_dirty_lines": 0,
+        "resident_dirty_sectors": 0,
+        "source_memory_instructions": 42,
+        "source_projection_fnv1a64": 10731420518666791218,
+        "source_ranges": 42,
+        "source_read_bytes": 160,
+        "source_write_bytes": 32,
+        "store_mask_popcounts": [
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "trace_records": 37,
+        "writeback_byte_ledger_closed": true,
+        "writeback_run_lengths": [
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "index": 1,
+      "launch_resources": {
+        "grid_ctas": 48,
+        "name": "shared-carveout-retains-L2",
+        "registers_per_thread": 32,
+        "shared_bytes_per_cta": 102400,
+        "threads_per_cta": 128,
+        "type": "kernel"
+      },
+      "name": "shared-carveout-retains-L2",
+      "resident_ctas_per_sm": 1,
+      "shared_carveout_bytes": 102400,
+      "traffic": {
+        "DRAM_read_bytes": 0,
+        "DRAM_read_requests": 0,
+        "DRAM_write_bytes": 0,
+        "DRAM_write_requests": 0,
+        "L1_unmodeled_reservation_stalls": 0,
+        "source_memory_instructions": 1,
+        "source_read_bytes": 4,
+        "source_write_bytes": 0
+      }
+    }
+  ],
+  "reservation_approximation_observed": false,
+  "schema": "GTSIM_ADA_FUNCTIONAL_REPLAY_V1",
+  "simulated_latency_ns": null,
+  "source_input": "explicit instruction/subop byte ranges; arbitrary input is not automatically native-qualified",
+  "source_instructions": 42,
+  "status": "COMPLETED_FUNCTIONAL_ONLY",
+  "timing_equivalence_to_AccelSim": false,
+  "trace_format": "GTSIM_ADA_POSTCACHE_SECTOR_V1; JSONL, not legacy TGCSIM01 read128",
+  "unmodeled": "inflight MSHR/merge, reservation retry timing, queues, interconnect, hardware replacement order, host memcpy/memset lifecycle and in-kernel membar invalidation"
+}

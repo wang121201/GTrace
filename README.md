@@ -89,3 +89,7 @@ python3 tests/run_direct_projection.py --test prepared-memory --build build/shar
 
 准备脚本复用原封存的 CPU lowering，记录准备时间和输入 SHA，不进行 GPU 采样。
 该准备器沿用上游 Darwin 内存监控，数据准备仍依赖当前本机封存目录。
+
+## 新增：XMU Accel-Sim Ada 配置入口
+
+`ada_profile.py` 提供独立的 adaptive L1 / 32 B sector / lazy-write 功能缓存回放；配置来源、运行示例及与 structure-only GTSim 适配器的区别见 [Ada Accel-Sim 配置说明](docs/ada-accelsim-profile.md)。该入口不表示旧 cosim 已完整实现 Accel-Sim 时序，也未完成本配置的 NCU 精度验收。

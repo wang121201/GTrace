@@ -1,0 +1,571 @@
+{
+  "schema": "TILEGEN_CPU_UNIT_TESTS_V1",
+  "status": "PASS",
+  "compiler": "/usr/bin/clang++",
+  "standard": "c++20",
+  "optimization": "O2",
+  "dirty_sector_mode": 2,
+  "sanitize": null,
+  "leak_detection": null,
+  "sanitizer_scope": "none",
+  "CPU_only": true,
+  "GPU_or_model_workflow_executed": false,
+  "parallel_test_limit": 2,
+  "elapsed_seconds": 38.418408917,
+  "source_tree_unchanged": true,
+  "source_manifest": "source-sha256.json",
+  "source_manifest_sha256": "722e0ae84df96ca969a329296020cbb7a86509a757d9420bfdeb504399c3ebef",
+  "source_scope": "Entire repo/source tree, all selected test sources, this runner and build-config.json",
+  "tests": {
+    "ada_address_mapping_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/ada_address_mapping_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_address_mapping_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.6120535
+      },
+      "binary_sha256": "a06e8d453c3cbd088f7d1186ed7a87b60da1fd3459b5750c36e773a5f719ed62",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_address_mapping_test",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/configs/rtx4000-ada-accelsim-v1/source/gpgpusim.config"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.9984309160000001
+      },
+      "checks": 1820265
+    },
+    "ada_l1_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/ada_l1_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_l1_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.938949
+      },
+      "binary_sha256": "ff3c724b7809110fe2b785c2079ff1c7d0c6c5ec80c4e562d82bf44d03204279",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_l1_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.8193039999999999
+      },
+      "checks": 97
+    },
+    "ada_direct_cache_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/ada_direct_cache_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_direct_cache_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 1.799497542
+      },
+      "binary_sha256": "e40282e3280db208b719f7d11d3387b5607468e66a9bf62742a431641398a673",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_direct_cache_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.3387437499999999
+      },
+      "checks": 23
+    },
+    "ada_profile_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/ada_profile_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_profile_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 1.8585772500000002
+      },
+      "binary_sha256": "4b3b67b467936ae2196892847b2e97c920ce260feb600b7445e0c208195d905e",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_profile_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.39555258400000026
+      },
+      "checks": 141
+    },
+    "ada_fine_partition_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/ada_fine_partition_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_fine_partition_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 1.6307095
+      },
+      "binary_sha256": "4b5e54546957318a72c59dabfb921b0efaa92013254abc32dc08b4b58f90be56",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/ada_fine_partition_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.22964987499999978
+      },
+      "checks": 812
+    },
+    "cache_geometry_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/cache_geometry_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/cache_geometry_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 1.0860570840000001
+      },
+      "binary_sha256": "7bb68e86384a9920417366ae2d751538b804a06af9eda166524badd748b65c02",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/cache_geometry_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.24141645800000067
+      },
+      "checks": 227156
+    },
+    "dirty32_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/dirty32_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/dirty32_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 1.7341280829999999
+      },
+      "binary_sha256": "0e7f88a0077c1762bfa05f18471ebf017bf92a720179f11642e10b42641d5627",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/dirty32_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.23733441699999958
+      },
+      "checks": 28392
+    },
+    "direct_cache_smoke": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/direct_cache_smoke.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/direct_cache_smoke"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 1.6914758330000002
+      },
+      "binary_sha256": "c5af1396e707a2b37f9b27a2112bf69931c5e32f8a92057b6656f32db716add9",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/direct_cache_smoke"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.3501752499999995
+      },
+      "checks": [
+        "native_L1_read_filter",
+        "native_L1_write_no_allocate",
+        "128B_fill_RFO",
+        "individual_dirty32_sparse_and_adjacent",
+        "no_final_flush",
+        "dirty_conservation",
+        "broadcast_source_multiplicity",
+        "explicit_range_rejection",
+        "unknown_timestamps",
+        "PAPER_group_conflict_and_independence"
+      ]
+    },
+    "native_trace_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/native_trace_test.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/native_trace_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 5.453005167
+      },
+      "binary_sha256": "cad78f75e1a5256bfff884b3759c7e66f70e40dd522bbf0bb298e5af715a80bb",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/native_trace_test",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/trace-fixture"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.2885834170000017
+      },
+      "checks": 18981
+    },
+    "cta_validation_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/cta_validation_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/cta_validation_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 3.2392412090000002
+      },
+      "binary_sha256": "5d803ae30dae2e9cfe50e6b90ce184ea90ce57a72a8a7a6709403aaee516eff4",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/cta_validation_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.2950526250000003
+      },
+      "checks": 11530
+    },
+    "trace_replay_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/trace_replay_test.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/trace_replay_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 5.895802666999998
+      },
+      "binary_sha256": "d38c36e0fc792de4b256b8c0a89ee65da08570b3378a75545d93d48acd574461",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/trace_replay_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.2404935419999994
+      },
+      "checks": 11677
+    },
+    "stage_replay_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/stage_replay_test.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/stage_replay_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 6.169135875
+      },
+      "binary_sha256": "ba1845104083e89dfd59c988065fef9d274816b0cd6a8d662ec793cc45347a6b",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/stage_replay_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.28830558299999964
+      },
+      "checks": 4428
+    },
+    "direct_phase_profile_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/direct_phase_profile_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/direct_phase_profile_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 3.1427402499999992
+      },
+      "binary_sha256": "c3e70079b364f00a0033a9772e80016c97ecccfe12e46c2365f659920d39cbb2",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/direct_phase_profile_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.23581462499999972
+      },
+      "checks": 25
+    },
+    "replay_phase_report_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/replay_phase_report_test.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/replay_phase_report_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 1.6442705419999974
+      },
+      "binary_sha256": "3b1238bd1c61650d34bcdbcb2aeec21731ac5d9373e0e75a8ce1109c05d0c705",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/replay_phase_report_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.24259779100000145
+      },
+      "checks": 27
+    },
+    "replay_backend_test": {
+      "status": "PASS",
+      "compile": {
+        "argv": [
+          "/usr/bin/clang++",
+          "-std=c++20",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-evaluation-r1/driver",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/tilegen-norm-shared-r1/adapter",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src",
+          "-I/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/gddr6-support/hbf_coupling",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/tests/replay_backend_test.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/app/system_config.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/source/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp",
+          "-o",
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/replay_backend_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 17.3850385
+      },
+      "binary_sha256": "ac8ffb9c38316a45d1959bc3d46dc711de3c4d4826f5d552e8aeed96bd107790",
+      "run": {
+        "argv": [
+          "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260921-r1/repo/build/ada-unit-r2/replay_backend_test"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.28989545900000024
+      },
+      "checks": 3842
+    }
+  }
+}

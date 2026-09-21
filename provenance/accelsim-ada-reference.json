@@ -1,0 +1,66 @@
+{
+  "root": "/home/xmu/nvidiagds/simulators/accelsim2.0",
+  "framework_commit": "d930ad6d02c09bb56867132583735aba0389cff4",
+  "gpgpusim_commit": "91880c53383d5a6a6742bfb1be2c5f34e39c7871",
+  "files": [
+    {
+      "path": "util/tuner/NVIDIA_RTX_4000_Ada_Generation/gpgpusim.config",
+      "bytes": 5417,
+      "sha256": "e09511b9d168632e975422b19a9557ff5ed4482ace160fa428f9c70455f5a891"
+    },
+    {
+      "path": "util/tuner/NVIDIA_RTX_4000_Ada_Generation/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/addrdec.cc",
+      "bytes": 24628,
+      "sha256": "de15bbe5c7a6e18827da26d743cfa5bce6a002d9a8a4342d23794b9104cedb8e"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/addrdec.h",
+      "bytes": 3683,
+      "sha256": "2cb34e959b8949113e21ba9e26cd272696be8a5004013f8d91678bab9627fe6f"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/gpu-cache.cc",
+      "bytes": 87442,
+      "sha256": "0a8bded03d50b69049f65c4cfd59f277b160a2d8165672d66c18ec2cda86a8e6"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/gpu-cache.h",
+      "bytes": 69194,
+      "sha256": "bbb0039de60ceffb21ce4a7e8e7cf20393f87c9cb0569374bfae45cb2110831d"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/shader.cc",
+      "bytes": 238942,
+      "sha256": "3aab5226073e2a33fe33a69f49d07b24953b24c27ec18f4c3f234e27e2d502b8"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/shader.h",
+      "bytes": 124713,
+      "sha256": "50e348eca4ea046861c9b887a380806845d7e49e4375252f4d5a26c5471c1d5c"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/gpu-sim.cc",
+      "bytes": 119841,
+      "sha256": "3c14f58e19092e95df6c633611c7a9307c687d52a6b8f8fea09109f67e4a9658"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/hashing.h",
+      "bytes": 907,
+      "sha256": "0143ce5661521cf990cc3293147a3cd5d711f22c19c68144299fc721f6724936"
+    },
+    {
+      "path": "gpu-simulator/gpgpu-sim/src/gpgpu-sim/hashing.cc",
+      "bytes": 6181,
+      "sha256": "14746fbbc84b1928c9346368af3c4ca12df64c6f405057fb11f95af9f817eec2"
+    }
+  ],
+  "file_identity_is_authoritative": true,
+  "framework_worktree_clean": false,
+  "tuner_directory_tracked": false,
+  "note": "Pinned XMU tuner files are local configuration artifacts; upstream commit alone does not identify them."
+}

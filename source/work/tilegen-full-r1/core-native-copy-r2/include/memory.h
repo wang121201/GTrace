@@ -2505,7 +2505,13 @@ private:
         request.bytes = request_bytes ? request_bytes : static_cast<std::uint32_t>(line_size_bytes);
         request.node_id = context.node_id;
         request.sm_id = context.sm_id;
-        request.l2_subpartition_id = context.l2_subpartition_id;
+        // The transaction keeps its SM-local origin. Only the Ada backend
+        // request uses a memory destination, decoded from this request's key
+        // (the victim key for writeback), before service-address remapping.
+        request.l2_subpartition_id = lru_list.geometry().config().mode ==
+                L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE
+            ? static_cast<std::int32_t>(AdaAddressMapping::sub_partition(key.line_addr))
+            : context.l2_subpartition_id;
         request.cause = cause;
         const auto inserted = outstanding_dram_requests.emplace(
             request.request_id, request);

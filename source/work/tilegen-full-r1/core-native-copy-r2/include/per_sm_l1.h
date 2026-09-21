@@ -2,6 +2,7 @@
 #define PER_SM_L1_H
 
 #include <algorithm>
+#include <array>
 #include <cstddef>
 #include <cstdint>
 #include <limits>
@@ -65,6 +66,13 @@ struct PerSmL1Config {
     // Integer model value derived from the 7.062-cycle dependent-load L1
     // candidate in MEMORY_FOOTPRINT_RESULTS.md.  It is uncalibrated.
     int hit_latency_cycles = 7;
+    // Opt-in functional sector model. Legacy callers retain whole-line
+    // readiness and write-through/no-allocate behavior byte-for-byte.
+    bool sector32 = false;
+    bool write_allocate = false;
+    // AccelSim's modified-line victim protection, per SM, as a percent of
+    // total capacity (not resident lines). WT modified data needs no L1 WB.
+    std::uint32_t dirty_protection_percent = 0;
 };
 
 struct PerSmL1Access {
@@ -74,6 +82,12 @@ struct PerSmL1Access {
     bool is_write = false;
     int node_id = -1;
     bool bypass_l1 = false; // per-request cache operator; no allocation or hit filtering
+    // A zero mask retains the old whole-line request convention. In sector
+    // mode explicit bits 0..3 select 32 B sectors within this 128 B line.
+    std::uint8_t sector_mask = 0;
+    // Store byte coverage in each selected sector. Zero means unknown/no
+    // known bytes, NEVER a complete sector. Ignored by the legacy model.
+    std::array<std::uint32_t,4> known_byte_masks{};
 };
 
 // Each forwarded modeled read owns a separate delivery obligation. Multiple
@@ -87,6 +101,7 @@ struct ReadFillTicket {
     std::uint64_t canonical_line = 0;
     std::uint64_t generation = 0;
     std::uint64_t ticket_id = 0;
+    std::uint8_t sector_mask = 0; // zero only in legacy whole-line mode
 };
 
 struct ReadinessLine {
@@ -97,6 +112,10 @@ struct ReadinessLine {
     int allocation_id = -1;
     std::uint64_t canonical_line = 0;
     std::uint64_t generation = 0;
+    std::uint8_t readable_sector_mask = 0;
+    std::array<std::uint32_t,4> known_byte_masks{};
+    bool modified = false;
+    std::uint8_t resident_sector_mask = 0;
 };
 
 struct ReadinessStatistics {
@@ -112,6 +131,8 @@ struct ReadinessStatistics {
     std::uint64_t occupied_lines = 0;
     std::uint64_t ready_lines = 0;
     std::uint64_t pending_lines = 0;
+    std::uint64_t sector_readiness_promotions = 0;
+    std::uint64_t store_readiness_promotions = 0;
 };
 
 struct PerSmL1Decision {
@@ -121,6 +142,10 @@ struct PerSmL1Decision {
     bool allocated = false;
     bool evicted = false;
     ReadFillTicket read_ticket;
+    std::uint8_t forwarded_sector_mask = 0;
+    // Functional fall-through: downstream still serves this request, but no
+    // L1 reservation was available. This does NOT simulate reservation stalls.
+    bool reservation_failed = false;
 };
 
 struct PerSmL1SmStatistics {
@@ -156,6 +181,9 @@ struct PerSmL1Statistics {
     std::uint64_t final_resident_lines = 0;
     std::uint64_t decision_order_fnv1a64 = 14695981039346656037ULL;
     std::vector<PerSmL1SmStatistics> per_sm;
+    std::uint64_t unmodeled_reservation_stalls = 0;
+    std::uint64_t capacity_reconfigurations = 0;
+    std::uint64_t capacity_reconfiguration_flushed_lines = 0;
 };
 
 struct L1ReadMissMemo {
@@ -163,6 +191,8 @@ struct L1ReadMissMemo {
     std::uint64_t line=0,epoch=0;
     int sm=-1,allocation=-1;
     bool valid=false;
+    std::uint8_t sector_mask=0;
+    std::uint64_t layout_epoch=0;
 };
 
 class PerSmL1Cache {
@@ -172,7 +202,11 @@ public:
         if (config_.num_sms == 0 || config_.line_bytes == 0 ||
             config_.capacity_bytes_per_sm == 0 || config_.ways == 0 ||
             config_.hit_latency_cycles < 0 ||
-            config_.capacity_bytes_per_sm % config_.line_bytes != 0) {
+            config_.capacity_bytes_per_sm % config_.line_bytes != 0 ||
+            config_.dirty_protection_percent > 100 ||
+            (config_.sector32 && config_.line_bytes != 128) ||
+            (!config_.sector32 && (config_.write_allocate ||
+                                  config_.dirty_protection_percent != 0))) {
             throw std::invalid_argument("invalid per-SM L1 configuration");
         }
         capacity_lines_per_sm_ =
@@ -190,6 +224,7 @@ public:
         lines_.resize(static_cast<std::size_t>(capacity_lines_per_sm_) *
                       config_.num_sms);
         resident_per_sm_.assign(config_.num_sms, 0);
+        modified_per_sm_.assign(config_.num_sms, 0);
         ready_promotion_epochs_.assign(static_cast<std::size_t>(num_sets_)*config_.num_sms,0);
         ready_promotion_epochs_sm_.assign(config_.num_sms,0);
         statistics_.per_sm.resize(config_.num_sms);
@@ -201,8 +236,48 @@ public:
     const PerSmL1Config& config() const { return config_; }
     std::uint64_t host_ready_epoch(int sm) const { return ready_promotion_epochs_sm_.at(sm); }
 
+    // Quiescent kernel-boundary reconfiguration. Callers select the adaptive
+    // partition; this method does not guess occupancy/shared-memory usage.
+    // It invalidates tags without a writeback and preserves cumulative stats.
+    void configure_capacity_bytes_per_sm(std::uint64_t bytes, std::uint32_t ways) {
+        if (bytes == config_.capacity_bytes_per_sm && ways == config_.ways) return;
+        if (!live_tickets_.empty())
+            throw std::logic_error("L1 capacity reconfiguration requires no live read tickets");
+        if (!bytes || !ways || bytes % config_.line_bytes ||
+            (bytes / config_.line_bytes) % ways)
+            throw std::invalid_argument("invalid L1 adaptive capacity/ways");
+        const auto count = bytes / config_.line_bytes;
+        if (count > std::numeric_limits<std::size_t>::max() / config_.num_sms ||
+            layout_epoch_ == std::numeric_limits<std::uint64_t>::max())
+            throw std::overflow_error("L1 capacity reconfiguration overflow");
+        for (const auto e : ready_promotion_epochs_sm_)
+            if (e == std::numeric_limits<std::uint64_t>::max())
+                throw std::overflow_error("L1 host SM ready-promotion epoch overflow");
+        // Allocate before mutating the current cache, so allocation failure is
+        // harmless. Every outstanding read was explicitly ruled out above.
+        std::vector<Line> replacement(static_cast<std::size_t>(count) * config_.num_sms);
+        std::vector<std::uint64_t> epochs(static_cast<std::size_t>(count / ways) * config_.num_sms, 0);
+        statistics_.capacity_reconfiguration_flushed_lines += total_resident_;
+        ++statistics_.capacity_reconfigurations;
+        ++layout_epoch_;
+        for (auto& e : ready_promotion_epochs_sm_) ++e;
+        lines_.swap(replacement);
+        ready_promotion_epochs_.swap(epochs);
+        std::fill(resident_per_sm_.begin(), resident_per_sm_.end(), 0);
+        std::fill(modified_per_sm_.begin(), modified_per_sm_.end(), 0);
+        total_resident_ = ready_lines_ = 0;
+        capacity_lines_per_sm_ = count;
+        num_sets_ = count / ways;
+        config_.capacity_bytes_per_sm = bytes;
+        config_.ways = ways;
+    }
+    void configure_capacity_bytes_per_sm(std::uint64_t bytes) {
+        configure_capacity_bytes_per_sm(bytes, config_.ways);
+    }
+
     PerSmL1Outcome classify(const PerSmL1Access& access) const {
         ++retry_host::counts.l1_classify_calls;
+        validate_sector_access(access);
         // BYPASS is a strict compatibility path: legacy direct-key tests may
         // use abstract, non-byte-aligned keys which never enter modeled L1.
         if (config_.mode == PerSmL1Mode::BYPASS || access.bypass_l1 ||
@@ -215,12 +290,13 @@ public:
         validate_modeled_sm(access.sm_id);
         const auto location = locate(access);
         if (access.is_write) {
-            return location.hit_way < config_.ways
+            return location.hit_way < config_.ways && (!config_.sector32 ||
+                       (lines_[location.base + location.hit_way].resident_sector_mask & request_mask(access)) == request_mask(access))
                        ? PerSmL1Outcome::WRITE_HIT
                        : PerSmL1Outcome::WRITE_MISS;
         }
         return location.hit_way < config_.ways &&
-                       lines_[location.base + location.hit_way].ready
+                       read_ready(lines_[location.base + location.hit_way], access)
                    ? PerSmL1Outcome::READ_HIT
                    : PerSmL1Outcome::READ_MISS;
     }
@@ -229,7 +305,7 @@ public:
     // rejection. No positive hit/victim/LRU state survives across calls.
     bool same_negative_read(const PerSmL1Access& a,const L1ReadMissMemo& memo) const {
         if(a.bypass_l1 || a.is_write || config_.mode!=PerSmL1Mode::MODELED_SET_ASSOCIATIVE || !memo.valid)return false;
-        if(memo.owner!=this || memo.sm!=a.sm_id || memo.allocation!=a.allocation_id || memo.line!=a.canonical_line){++retry_host::counts.memo_identity_rechecks;return false;}
+        if(memo.owner!=this || memo.sm!=a.sm_id || memo.allocation!=a.allocation_id || memo.line!=a.canonical_line || memo.sector_mask!=request_mask(a) || memo.layout_epoch!=layout_epoch_){++retry_host::counts.memo_identity_rechecks;return false;}
         const auto set=(a.canonical_line/config_.line_bytes)%num_sets_;
         const auto epoch=ready_promotion_epochs_[std::size_t(a.sm_id)*num_sets_+set];
         if(memo.epoch!=epoch){++retry_host::counts.memo_epoch_rechecks;return false;}
@@ -240,6 +316,7 @@ public:
         // Called only after original classify successfully validated this key.
         const auto set=(a.canonical_line/config_.line_bytes)%num_sets_;
         memo={this,a.canonical_line,ready_promotion_epochs_[std::size_t(a.sm_id)*num_sets_+set],a.sm_id,a.allocation_id,true};
+        memo.sector_mask=request_mask(a);memo.layout_epoch=layout_epoch_;
         ++retry_host::counts.memo_negative_records;
     }
 
@@ -248,6 +325,7 @@ public:
         PerSmL1Decision decision;
         decision.outcome = classified;
         decision.forwarded_to_l2 = classified != PerSmL1Outcome::READ_HIT;
+        decision.forwarded_sector_mask = decision.forwarded_to_l2 ? request_mask(access) : 0;
 
         ++statistics_.pre_l1_transactions;
         if (access.is_write) {
@@ -283,17 +361,28 @@ public:
                 next_generation_ == std::numeric_limits<std::uint64_t>::max())
                 throw std::overflow_error("per-SM L1 reservation generation overflow");
         }
+        if (access.is_write && config_.write_allocate && before.hit_way == config_.ways &&
+            next_generation_ == std::numeric_limits<std::uint64_t>::max())
+            throw std::overflow_error("per-SM L1 reservation generation overflow");
         ++use_clock_;
 
         if (before.hit_way < config_.ways) {
             auto& line = lines_[before.base + before.hit_way];
             line.last_use = use_clock_;
             if (access.is_write) {
-                ++statistics_.write_hits;
                 ++statistics_.l2_input_transactions;
-                if (sm_stats != nullptr) ++sm_stats->write_hits;
-                if (!line.ready) ++readiness_.write_hits_on_pending;
-            } else if (line.ready) {
+                if (classified == PerSmL1Outcome::WRITE_HIT) {
+                    ++statistics_.write_hits;
+                    if (sm_stats != nullptr) ++sm_stats->write_hits;
+                    if (!line.ready) ++readiness_.write_hits_on_pending;
+                } else {
+                    ++statistics_.write_misses;
+                    if (sm_stats != nullptr) ++sm_stats->write_misses;
+                }
+                if (config_.sector32 &&
+                    (classified == PerSmL1Outcome::WRITE_HIT || config_.write_allocate))
+                    apply_store(line, access, before.set_index);
+            } else if (classified == PerSmL1Outcome::READ_HIT) {
                 ++statistics_.read_hits;
                 ++statistics_.filtered_reads;
                 if (sm_stats != nullptr) {
@@ -307,8 +396,12 @@ public:
                 ++statistics_.l2_input_transactions;
                 ++readiness_.pending_tag_reads;
                 if (sm_stats != nullptr) ++sm_stats->read_misses;
+                decision.forwarded_sector_mask = missing_mask(line, access);
                 decision.read_ticket = issue_read_ticket(access, before.set_index,
-                                                        before.hit_way, line.generation);
+                                                        before.hit_way, line.generation,
+                                                        decision.forwarded_sector_mask);
+                ++line.pending_read_tickets;
+                line.resident_sector_mask |= decision.forwarded_sector_mask;
             }
             append_decision(access, decision);
             return decision;
@@ -318,34 +411,54 @@ public:
             ++statistics_.write_misses;
             ++statistics_.l2_input_transactions;
             if (sm_stats != nullptr) ++sm_stats->write_misses;
-            append_decision(access, decision);
-            return decision;
+            if (!config_.write_allocate) {
+                append_decision(access, decision);
+                return decision;
+            }
+        } else {
+            ++statistics_.read_misses;
+            ++statistics_.l2_input_transactions;
+            if (sm_stats != nullptr) ++sm_stats->read_misses;
         }
-
-        ++statistics_.read_misses;
-        ++statistics_.l2_input_transactions;
-        if (sm_stats != nullptr) ++sm_stats->read_misses;
         const std::size_t chosen = before.empty_way < config_.ways
                                        ? before.empty_way
                                        : before.victim_way;
+        if (chosen == config_.ways) {
+            // Timing reservation failure is not implemented in the functional
+            // interface. Forward without allocation; never evict a protected
+            // dirty/pending line merely to make progress.
+            decision.reservation_failed = true;
+            ++statistics_.unmodeled_reservation_stalls;
+            append_decision(access, decision);
+            return decision;
+        }
         auto& line = lines_[before.base + chosen];
         if (line.occupied) {
             decision.evicted = true;
             ++statistics_.evictions;
             if (sm_stats != nullptr) ++sm_stats->evictions;
             if (line.ready) --ready_lines_;
+            if (line.modified) --modified_per_sm_[access.sm_id];
         } else {
             ++resident_per_sm_[static_cast<std::size_t>(access.sm_id)];
             ++total_resident_;
         }
+        line = Line{};
         line.allocation_id = access.allocation_id;
         line.canonical_line = access.canonical_line;
         line.last_use = use_clock_;
         line.occupied = true;
         line.ready = false;
         line.generation = next_generation_++;
-        decision.read_ticket = issue_read_ticket(access, before.set_index,
-                                                chosen, line.generation);
+        if (access.is_write) {
+            apply_store(line, access, before.set_index);
+        } else {
+            decision.read_ticket = issue_read_ticket(access, before.set_index,
+                                                    chosen, line.generation,
+                                                    decision.forwarded_sector_mask);
+            ++line.pending_read_tickets;
+            line.resident_sector_mask |= decision.forwarded_sector_mask;
+        }
         decision.allocated = true;
         statistics_.peak_resident_lines =
             std::max(statistics_.peak_resident_lines, total_resident_);
@@ -403,6 +516,10 @@ public:
             result.allocation_id = line.allocation_id;
             result.canonical_line = line.canonical_line;
             result.generation = line.generation;
+            result.readable_sector_mask = line.readable_sector_mask;
+            result.known_byte_masks = line.known_byte_masks;
+            result.modified = line.modified;
+            result.resident_sector_mask = line.resident_sector_mask;
         }
         return result;
     }
@@ -427,12 +544,16 @@ public:
             ++readiness_.stale_tickets;
             return false;
         }
-        if (!line.ready) {
-            auto& epoch=ready_promotion_epochs_[std::size_t(ticket.sm_id)*num_sets_+ticket.set_index];
-            if(epoch==std::numeric_limits<std::uint64_t>::max())throw std::overflow_error("L1 host ready-promotion epoch overflow");
-            auto& sm_epoch=ready_promotion_epochs_sm_.at(ticket.sm_id);
-            if(sm_epoch==std::numeric_limits<std::uint64_t>::max())throw std::overflow_error("L1 host SM ready-promotion epoch overflow");
-            ++epoch;++sm_epoch;
+        if (!line.pending_read_tickets)
+            throw std::logic_error("L1 pending read accounting underflow");
+        --line.pending_read_tickets;
+        if (config_.sector32) {
+            for (unsigned sector = 0; sector < 4; ++sector)
+                if (ticket.sector_mask & (1u << sector))
+                    line.known_byte_masks[sector] = UINT32_MAX;
+            promote_sectors(line, ticket.sector_mask, ticket.sm_id, ticket.set_index, false);
+        } else if (!line.ready) {
+            promote_epoch(ticket.sm_id, ticket.set_index);
             line.ready = true;
             ++ready_lines_;
             ++readiness_.ready_transitions;
@@ -449,6 +570,11 @@ private:
         bool occupied = false;
         bool ready = false;
         std::uint64_t generation = 0;
+        std::uint8_t readable_sector_mask = 0;
+        std::array<std::uint32_t,4> known_byte_masks{};
+        bool modified = false;
+        std::uint64_t pending_read_tickets = 0;
+        std::uint8_t resident_sector_mask = 0;
     };
 
     struct Location {
@@ -466,6 +592,68 @@ private:
         }
     }
 
+    std::uint8_t request_mask(const PerSmL1Access& access) const {
+        return config_.sector32 ? (access.sector_mask ? access.sector_mask : 15) : 0;
+    }
+    void validate_sector_access(const PerSmL1Access& access) const {
+        if (!config_.sector32) return;
+        if (access.sector_mask & 0xf0)
+            throw std::invalid_argument("L1 sector mask exceeds 128 B line");
+        const auto requested = request_mask(access);
+        for (unsigned s = 0; s < 4; ++s)
+            if (access.known_byte_masks[s] && !(requested & (1u << s)))
+                throw std::invalid_argument("L1 known bytes outside requested sectors");
+    }
+    bool read_ready(const Line& line, const PerSmL1Access& access) const {
+        return config_.sector32
+            ? (line.readable_sector_mask & request_mask(access)) == request_mask(access)
+            : line.ready;
+    }
+    std::uint8_t missing_mask(const Line& line, const PerSmL1Access& access) const {
+        return config_.sector32 ? request_mask(access) & ~line.readable_sector_mask : 0;
+    }
+    void promote_epoch(int sm, std::uint32_t set) {
+        auto& epoch = ready_promotion_epochs_[std::size_t(sm) * num_sets_ + set];
+        auto& sm_epoch = ready_promotion_epochs_sm_.at(sm);
+        if (epoch == std::numeric_limits<std::uint64_t>::max() ||
+            sm_epoch == std::numeric_limits<std::uint64_t>::max())
+            throw std::overflow_error("L1 host ready-promotion epoch overflow");
+        ++epoch;
+        ++sm_epoch;
+    }
+    void promote_sectors(Line& line, std::uint8_t mask, int sm,
+                         std::uint32_t set, bool from_store) {
+        const auto added = static_cast<std::uint8_t>(mask & ~line.readable_sector_mask);
+        if (!added) return;
+        promote_epoch(sm, set);
+        line.readable_sector_mask |= added;
+        for (unsigned s = 0; s < 4; ++s) {
+            if (!(added & (1u << s))) continue;
+            ++readiness_.sector_readiness_promotions;
+            if (from_store) ++readiness_.store_readiness_promotions;
+        }
+        // Historical line-ready counters now mean all four sectors readable.
+        if (!line.ready && line.readable_sector_mask == 15) {
+            line.ready = true;
+            ++ready_lines_;
+            ++readiness_.ready_transitions;
+        }
+    }
+    void apply_store(Line& line, const PerSmL1Access& access, std::uint32_t set) {
+        line.resident_sector_mask |= request_mask(access);
+        if (!line.modified) {
+            line.modified = true;
+            ++modified_per_sm_[access.sm_id];
+        }
+        std::uint8_t known_sectors = 0;
+        for (unsigned s = 0; s < 4; ++s) {
+            line.known_byte_masks[s] |= access.known_byte_masks[s];
+            if (line.known_byte_masks[s] == UINT32_MAX)
+                known_sectors |= (1u << s);
+        }
+        promote_sectors(line, known_sectors, access.sm_id, set, true);
+    }
+
     Location locate(const PerSmL1Access& access) const {
         ++retry_host::counts.l1_locate_calls;
         validate_modeled_sm(access.sm_id);
@@ -477,7 +665,7 @@ private:
                       static_cast<std::size_t>(result.set_index) * config_.ways;
         result.hit_way = config_.ways;
         result.empty_way = config_.ways;
-        result.victim_way = 0;
+        result.victim_way = config_.ways;
         std::uint64_t oldest = std::numeric_limits<std::uint64_t>::max();
         for (std::size_t way = 0; way < config_.ways; ++way) {
             const auto& line = lines_[result.base + way];
@@ -490,6 +678,13 @@ private:
                 result.hit_way = way;
                 break;
             }
+            // The source policy protects modified lines while the per-SM
+            // modified fraction is below its threshold. A WT eviction does
+            // not emit another store. Sector reservations are ineligible too.
+            const bool protected_dirty = config_.dirty_protection_percent && line.modified &&
+                static_cast<long double>(modified_per_sm_[access.sm_id]) * 100.0L <
+                    static_cast<long double>(capacity_lines_per_sm_) * config_.dirty_protection_percent;
+            if ((config_.sector32 && line.pending_read_tickets) || protected_dirty) continue;
             if (line.last_use < oldest) {
                 oldest = line.last_use;
                 result.victim_way = way;
@@ -504,9 +699,15 @@ private:
             if (!line.occupied) continue;
             line.occupied = false;
             line.ready = false;
+            line.readable_sector_mask = 0;
+            line.known_byte_masks = {};
+            line.modified = false;
+            line.pending_read_tickets = 0;
+            line.resident_sector_mask = 0;
             ++flushed;
         }
         std::fill(resident_per_sm_.begin(), resident_per_sm_.end(), 0);
+        std::fill(modified_per_sm_.begin(), modified_per_sm_.end(), 0);
         total_resident_ = 0;
         ready_lines_ = 0;
         ++statistics_.kernel_flushes;
@@ -524,11 +725,13 @@ private:
     static bool same_ticket(const ReadFillTicket& a, const ReadFillTicket& b) {
         return a.valid == b.valid && a.sm_id == b.sm_id && a.allocation_id == b.allocation_id &&
                a.set_index == b.set_index && a.way == b.way && a.canonical_line == b.canonical_line &&
-               a.generation == b.generation && a.ticket_id == b.ticket_id;
+               a.generation == b.generation && a.ticket_id == b.ticket_id &&
+               a.sector_mask == b.sector_mask;
     }
 
     ReadFillTicket issue_read_ticket(const PerSmL1Access& access, std::uint32_t set,
-                                    std::size_t way, std::uint64_t generation) {
+                                    std::size_t way, std::uint64_t generation,
+                                    std::uint8_t sector_mask) {
         ReadFillTicket result;
         result.valid = true;
         result.sm_id = access.sm_id;
@@ -538,6 +741,7 @@ private:
         result.canonical_line = access.canonical_line;
         result.generation = generation;
         result.ticket_id = next_ticket_id_++;
+        result.sector_mask = sector_mask;
         const auto inserted = live_tickets_.emplace(result.ticket_id, result);
         if (!inserted.second) throw std::logic_error("duplicate L1 read ticket allocation");
         ++readiness_.issued_tickets;
@@ -564,6 +768,13 @@ private:
         for (const auto value : values) {
             append_u64(statistics_.decision_order_fnv1a64, value);
         }
+        if (config_.sector32) {
+            append_u64(statistics_.decision_order_fnv1a64, request_mask(access));
+            for (const auto mask : access.known_byte_masks)
+                append_u64(statistics_.decision_order_fnv1a64, mask);
+            append_u64(statistics_.decision_order_fnv1a64, decision.forwarded_sector_mask);
+            append_u64(statistics_.decision_order_fnv1a64, decision.reservation_failed);
+        }
     }
 
     PerSmL1Config config_;
@@ -571,6 +782,7 @@ private:
     std::uint64_t num_sets_ = 0;
     std::vector<Line> lines_;
     std::vector<std::uint64_t> resident_per_sm_;
+    std::vector<std::uint64_t> modified_per_sm_;
     std::uint64_t total_resident_ = 0;
     std::uint64_t ready_lines_ = 0;
     std::uint64_t next_generation_ = 1;
@@ -580,6 +792,7 @@ private:
     std::uint64_t use_clock_ = 0;
     std::uint64_t next_sequence_ = 0;
     bool saw_kernel_ = false;
+    std::uint64_t layout_epoch_ = 0;
     PerSmL1Statistics statistics_;
 };
 
