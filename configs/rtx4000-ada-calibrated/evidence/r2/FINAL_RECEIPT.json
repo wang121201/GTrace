@@ -1,0 +1,14 @@
+{
+  "status": "COMPLETED_WITH_PARTIALLY_VALIDATED_CANDIDATES",
+  "gpu_released": true,
+  "hardware_ncu_kernels": 546,
+  "native_numeric_checks": 330,
+  "simulator_completed_jobs": 222,
+  "configurations": 7,
+  "no_full_traffic_match_claim": true,
+  "subagents": {
+    "started": 0,
+    "completed": 0,
+    "active": 0
+  }
+}

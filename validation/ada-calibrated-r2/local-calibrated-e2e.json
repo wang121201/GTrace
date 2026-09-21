@@ -1,0 +1,2666 @@
+{
+  "artifacts": {
+    "adaptive_observed_102400.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "adaptive_observed_102400.stdout": {
+      "bytes": 163,
+      "sha256": "a28cc56d13f4c03ec0dafc4e5cb5cf046cccd1ffe6de82c79e11da43e8952a58"
+    },
+    "adaptive_observed_102400/postcache.requests.jsonl": {
+      "bytes": 241,
+      "sha256": "b2d956793e2d0bcecbfb40451f24b69e442ae9c64ac434d46f1d689543e31367"
+    },
+    "adaptive_observed_102400/receipt.json": {
+      "bytes": 29396,
+      "sha256": "cd79387222443588ea9cecc3f79bc9ca802e030e6517d6c1a55e3711a3b6e892"
+    },
+    "adaptive_observed_102400/result.json": {
+      "bytes": 7916,
+      "sha256": "3699ee61b1712a8816d7a11ed3d9c80bc3815e53672e7eccf81b4c12dd0acd56"
+    },
+    "adaptive_observed_102400/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "adaptive_observed_32768.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "adaptive_observed_32768.stdout": {
+      "bytes": 163,
+      "sha256": "d6483fe9db7479dd05581a8aa5341c1ef193d2c692f124eb95ae54944bd34f22"
+    },
+    "adaptive_observed_32768/postcache.requests.jsonl": {
+      "bytes": 241,
+      "sha256": "b2d956793e2d0bcecbfb40451f24b69e442ae9c64ac434d46f1d689543e31367"
+    },
+    "adaptive_observed_32768/receipt.json": {
+      "bytes": 29393,
+      "sha256": "c2badba5db7d22ce8118f70d70ec7583c2d759f85084e3d0c885b138dd2632f7"
+    },
+    "adaptive_observed_32768/result.json": {
+      "bytes": 7914,
+      "sha256": "3220ee53ce7ed8a5c77ba58dd6e57c57a5033ec2630b99bd9b2ef10a9405b764"
+    },
+    "adaptive_observed_32768/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "adaptive_observed_65536.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "adaptive_observed_65536.stdout": {
+      "bytes": 163,
+      "sha256": "bda418add1931cc9055e7be6ef7ad484379e8403ea54f7f480ca2fd403a40bc4"
+    },
+    "adaptive_observed_65536/postcache.requests.jsonl": {
+      "bytes": 241,
+      "sha256": "b2d956793e2d0bcecbfb40451f24b69e442ae9c64ac434d46f1d689543e31367"
+    },
+    "adaptive_observed_65536/receipt.json": {
+      "bytes": 29393,
+      "sha256": "c6d89c56db5e456c16d3ce31ec6761ca8e0ae93ed69b2eda6b41e7f269fac153"
+    },
+    "adaptive_observed_65536/result.json": {
+      "bytes": 7914,
+      "sha256": "c9b72431c14061f4b313aa151aaf73d4bf01603f18da1fc645ed4fd845afe3dd"
+    },
+    "adaptive_observed_65536/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "capacity_r2-adaptive.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "capacity_r2-adaptive.stdout": {
+      "bytes": 162,
+      "sha256": "ab1934dc32da9d4dcc3eca1bb6963f5027421e23be50a7bc3cc37a4d4565c48a"
+    },
+    "capacity_r2-adaptive/postcache.requests.jsonl": {
+      "bytes": 48504,
+      "sha256": "59016572de75ca0ad578788b3122e545bb3922cfb202fb79feee2ead8dc4de8e"
+    },
+    "capacity_r2-adaptive/receipt.json": {
+      "bytes": 29386,
+      "sha256": "e4a5ff51715ba51e11172783531a62ced68e0edd9687b7fefa0656c0582a017c"
+    },
+    "capacity_r2-adaptive/result.json": {
+      "bytes": 7958,
+      "sha256": "4887efbbd16b4beb12b27306795152917e035c42426179b1c422d6032217c3b8"
+    },
+    "capacity_r2-adaptive/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "capacity_tuner-v1.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "capacity_tuner-v1.stdout": {
+      "bytes": 160,
+      "sha256": "71e7a9c1f72544281be14ae95318bd8316f5fb9fb28458d4b88d5fa794014326"
+    },
+    "capacity_tuner-v1/postcache.requests.jsonl": {
+      "bytes": 48504,
+      "sha256": "59016572de75ca0ad578788b3122e545bb3922cfb202fb79feee2ead8dc4de8e"
+    },
+    "capacity_tuner-v1/receipt.json": {
+      "bytes": 29372,
+      "sha256": "c61e137ec373447bfcf39e916920cf7d9aba82fd558705a02cf35437147378cf"
+    },
+    "capacity_tuner-v1/result.json": {
+      "bytes": 7945,
+      "sha256": "da28e3c406f1d481c712e5e483ab00cd1cd97b6ef1104907167f8de8900bc201"
+    },
+    "capacity_tuner-v1/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "default_r2.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "default_r2.stdout": {
+      "bytes": 163,
+      "sha256": "33e2c1bf6a4f0cdc270afd95f092f6464a5143323c8695725ae8b771ea831d96"
+    },
+    "default_r2/postcache.requests.jsonl": {
+      "bytes": 9272,
+      "sha256": "af2cf0b4a6786b83f5004d9f1cadb9fda6456089a531f9a63b21b87d2e885147"
+    },
+    "default_r2/receipt.json": {
+      "bytes": 29367,
+      "sha256": "eb7367266f6f082a158cc07a606f8a419a67994a988da0b664198669badf00a1"
+    },
+    "default_r2/result.json": {
+      "bytes": 10740,
+      "sha256": "284c3e2e1ea18d4a65b1eed1119c20af9a384b8b4b1a09292521814ac5dee2ad"
+    },
+    "default_r2/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "explicit_v1.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "explicit_v1.stdout": {
+      "bytes": 160,
+      "sha256": "539f3db2294e39e847fb85bba0ed79a0734949f0114b50b843603deb85446e75"
+    },
+    "explicit_v1/postcache.requests.jsonl": {
+      "bytes": 9272,
+      "sha256": "af2cf0b4a6786b83f5004d9f1cadb9fda6456089a531f9a63b21b87d2e885147"
+    },
+    "explicit_v1/receipt.json": {
+      "bytes": 29360,
+      "sha256": "6751652957cfd35c5b406764cadb883a8ce6c4611faad419c168c01345c2c7ed"
+    },
+    "explicit_v1/result.json": {
+      "bytes": 10728,
+      "sha256": "6bcee0687458b9293bbb4029d75031ba9261219d66598ec6f830d143cc7fc783"
+    },
+    "explicit_v1/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "fifo_hit_order.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "fifo_hit_order.stdout": {
+      "bytes": 168,
+      "sha256": "f9d02fc3c33f732f8a398b892e3f17fffdb5420a1f84ec3e7e7b380302062fad"
+    },
+    "fifo_hit_order/postcache.requests.jsonl": {
+      "bytes": 3243,
+      "sha256": "4614af7e7109a42a0e62af31c2e12c9b95e7d657a349174fd42dab65ac1aaeb7"
+    },
+    "fifo_hit_order/receipt.json": {
+      "bytes": 29390,
+      "sha256": "16d024d9631ece0de96a02e82ee00d0b71f2bd9b9a4af43c2ad94f986d7f2379"
+    },
+    "fifo_hit_order/result.json": {
+      "bytes": 7974,
+      "sha256": "a5c2eefe3979350a511c57d6866d32f1693f2b5280a36d32cfbaa2d91657d515"
+    },
+    "fifo_hit_order/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "importer_pristine.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "importer_pristine.stdout": {
+      "bytes": 29,
+      "sha256": "c35cbaea2a6e7ebdbc76b1dc15cd5995c516a5f20074b6bf6aa8caf90bb074ab"
+    },
+    "importer_reject_profile_rop.stderr": {
+      "bytes": 55,
+      "sha256": "8e899edae98d192816af53beff357a957e3c1cba2157a18dfe9afbecad1af466"
+    },
+    "importer_reject_profile_rop.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "importer_reject_source_comment.stderr": {
+      "bytes": 921,
+      "sha256": "bfb1e9a7857c04e9e030b7e6bfcb09addd7f93c71aec9cf53a2260d6b656beb9"
+    },
+    "importer_reject_source_comment.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "importer_restored.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "importer_restored.stdout": {
+      "bytes": 29,
+      "sha256": "c35cbaea2a6e7ebdbc76b1dc15cd5995c516a5f20074b6bf6aa8caf90bb074ab"
+    },
+    "inputs/adaptive_observed_102400.jsonl": {
+      "bytes": 322,
+      "sha256": "eba7860424ca76df9c98e8d0117131fb02de8b6815716dd75cbc937d3c5e9224"
+    },
+    "inputs/adaptive_observed_32768.jsonl": {
+      "bytes": 321,
+      "sha256": "be28ea7891e24939bdf385ccd1fab5577fbd564aa9dc1acfbdeae902b939d59b"
+    },
+    "inputs/adaptive_observed_65536.jsonl": {
+      "bytes": 321,
+      "sha256": "9ad85e9b148f28861c3fc3f5e5687149d33c604416c0f9c2ad847e8c9272e0a5"
+    },
+    "inputs/capacity_r2-adaptive.jsonl": {
+      "bytes": 57997,
+      "sha256": "bbddc91d36f45dbc8fd33550ecca6c86091fae5900732fc075d616381041ed83"
+    },
+    "inputs/capacity_tuner-v1.jsonl": {
+      "bytes": 57997,
+      "sha256": "bbddc91d36f45dbc8fd33550ecca6c86091fae5900732fc075d616381041ed83"
+    },
+    "inputs/default_r2.jsonl": {
+      "bytes": 6427,
+      "sha256": "ef5af630a7b17588211d452ec183529632b96367b8a1862a005daa92b4a0bc45"
+    },
+    "inputs/explicit_v1.jsonl": {
+      "bytes": 6427,
+      "sha256": "ef5af630a7b17588211d452ec183529632b96367b8a1862a005daa92b4a0bc45"
+    },
+    "inputs/fifo_hit_order.jsonl": {
+      "bytes": 2429,
+      "sha256": "10ea9b791f78fe89262ccbebb1c267cc88ea62e12e0042dcfbb926465c587f25"
+    },
+    "inputs/observed_r2-shared100.jsonl": {
+      "bytes": 326,
+      "sha256": "5923f2942175a3109af9c5df62e968e9beb39ec7408131ac5ab50e92cabd09b9"
+    },
+    "inputs/observed_r2-shared64.jsonl": {
+      "bytes": 324,
+      "sha256": "b6695bf444179a0e15ea355927db1c368ca3e546cf782f80232aad1b55ebe6d1"
+    },
+    "inputs/observed_r3-fifo-shared100.jsonl": {
+      "bytes": 331,
+      "sha256": "4b3585d60af811b3daacde83f4e70c182a29c3b65c14269a2368203ea14a4817"
+    },
+    "inputs/observed_r3-fifo-shared64.jsonl": {
+      "bytes": 329,
+      "sha256": "c9c5e8c85234ff24e5495cd9783a99b3608c77ba8dbe44608bd45e4010c4e83a"
+    },
+    "inputs/original-sector-fixture.jsonl": {
+      "bytes": 6427,
+      "sha256": "583659010814f0da0a77de20901ddb399ac4ae3b5bb270221e8032007e01cd32"
+    },
+    "inputs/reject_fixed_resources_exceed_observation.jsonl": {
+      "bytes": 338,
+      "sha256": "c3a222314b1e17fb91e32e41ebd4fabf2057bee80e86afcc1925348cb9fc26d2"
+    },
+    "inputs/reject_mismatch_r2-shared100.jsonl": {
+      "bytes": 330,
+      "sha256": "9cc967984cb804702fb8af28b0d29058be8f81eb776376e07fc373a2ec4e15b7"
+    },
+    "inputs/reject_mismatch_r2-shared64.jsonl": {
+      "bytes": 330,
+      "sha256": "9cc967984cb804702fb8af28b0d29058be8f81eb776376e07fc373a2ec4e15b7"
+    },
+    "inputs/reject_mismatch_r3-fifo-shared100.jsonl": {
+      "bytes": 330,
+      "sha256": "9cc967984cb804702fb8af28b0d29058be8f81eb776376e07fc373a2ec4e15b7"
+    },
+    "inputs/reject_mismatch_r3-fifo-shared32.jsonl": {
+      "bytes": 330,
+      "sha256": "4dc0f41651cb95ce0548a014bd4aa22ffec70f59d704d7e847785b5e2cb72670"
+    },
+    "inputs/reject_mismatch_r3-fifo-shared64.jsonl": {
+      "bytes": 330,
+      "sha256": "9cc967984cb804702fb8af28b0d29058be8f81eb776376e07fc373a2ec4e15b7"
+    },
+    "inputs/reject_missing_r2-shared100.jsonl": {
+      "bytes": 286,
+      "sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0"
+    },
+    "inputs/reject_missing_r2-shared64.jsonl": {
+      "bytes": 286,
+      "sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0"
+    },
+    "inputs/reject_missing_r3-fifo-shared100.jsonl": {
+      "bytes": 286,
+      "sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0"
+    },
+    "inputs/reject_missing_r3-fifo-shared32.jsonl": {
+      "bytes": 286,
+      "sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0"
+    },
+    "inputs/reject_missing_r3-fifo-shared64.jsonl": {
+      "bytes": 286,
+      "sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0"
+    },
+    "inputs/reject_resources_exceed_observation.jsonl": {
+      "bytes": 332,
+      "sha256": "9f68d697d724ce85cf294811d2c9ac443fc59bb8c5ff7eff3ad32c9deff9ce92"
+    },
+    "inputs/reject_unsupported_observation.jsonl": {
+      "bytes": 324,
+      "sha256": "ba0db955bbd6fe654c38cd425a001c705425f901a3af993ac1635c9d6505b5f7"
+    },
+    "inputs/reject_unsupported_profile.jsonl": {
+      "bytes": 287,
+      "sha256": "5ccf93546a68f4f5b0499506c24a68caa301531f1fe3f01c37b44f88829b0605"
+    },
+    "isolated-importer/configs/rtx4000-ada-accelsim-v1/profile.json": {
+      "bytes": 8999,
+      "sha256": "54e2f5c749da7a3a40f59f773fd9bef888867d89e382f4c27718613d06ea7db3"
+    },
+    "isolated-importer/configs/rtx4000-ada-accelsim-v1/source/gpgpusim.config": {
+      "bytes": 5417,
+      "sha256": "e09511b9d168632e975422b19a9557ff5ed4482ace160fa428f9c70455f5a891"
+    },
+    "isolated-importer/configs/rtx4000-ada-accelsim-v1/source/trace.config": {
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/evidence/r2/FINAL_RECEIPT.json": {
+      "bytes": 323,
+      "sha256": "feb09a843f3e5439e296d92da04ec882fa527a2313529dc8cce79cf8ed4d6ac5"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/evidence/r2/README.md": {
+      "bytes": 9402,
+      "sha256": "7d9576ad7e6955366f89f6bf03e70509c2dd32e190b64e781733f3e9de98460f"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/evidence/r2/parameter_contract.json": {
+      "bytes": 6125,
+      "sha256": "34407d1ada01d0019396f39f9440351c73737ab211352d2c0f636d55fad2424c"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/evidence/r3/FINAL_RECEIPT.json": {
+      "bytes": 410,
+      "sha256": "4c24ab1edb6b94e0a5cbf98d9217e00ef833747946c5708fcc95ce006a173a74"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/evidence/r3/README.md": {
+      "bytes": 10393,
+      "sha256": "728248b754cfaad49719f278ac3567e06180b35a6fdd78c72292f7e814295657"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/evidence/r3/experiment_contract.json": {
+      "bytes": 2008,
+      "sha256": "b214d60051168ab5055fea1171c09c8c4c84e90ccb745d85f0041f51e7b17c63"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/evidence/r3/selected_accelsim_mapping.json": {
+      "bytes": 1722,
+      "sha256": "adb09de138f5d1a20a60519081d184d5c5bcd1744a2c63ec64b16f1eca660915"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/evidence/r3/selected_reference_models.json": {
+      "bytes": 27358,
+      "sha256": "34ac49adbf83236611eee5f54a1b93dd483ee2d8cb10faf88309c02324808891"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-adaptive/profile.json": {
+      "bytes": 10280,
+      "sha256": "e678ba95254f14585dce8915d3a13f80f314f53534766e68e4fa247b847043f0"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-adaptive/source/gpgpusim.config": {
+      "bytes": 5511,
+      "sha256": "dabaf5334ea681c419e5ea8d820ead7c03246dea059b0ca812d163c7968ac79c"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-adaptive/source/trace.config": {
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-shared100/profile.json": {
+      "bytes": 10212,
+      "sha256": "613079d4f494fe8ca903525025b2586f00b3b66e3d0743dcf3274e039913116f"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-shared100/source/gpgpusim.config": {
+      "bytes": 5505,
+      "sha256": "36c280a2f7c43f7b8ea2a4b8a15988760fdc5244f32b8a4893727f57f24abaae"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-shared100/source/trace.config": {
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-shared64/profile.json": {
+      "bytes": 10204,
+      "sha256": "c97b29f69290260e7053885326a9252c19c72a855e1fef67534152bcb36c94e2"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-shared64/source/gpgpusim.config": {
+      "bytes": 5504,
+      "sha256": "3c11c042edc312548d2ca1732d9c196a779826dd212b2f5c9cf1a413c4baf65a"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r2-shared64/source/trace.config": {
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared100/profile.json": {
+      "bytes": 10556,
+      "sha256": "bc01f9af905a36112ea607da64179e2a1dc9d8840ebab030cd82d5a6b44107b0"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared100/source/gpgpusim.config": {
+      "bytes": 5639,
+      "sha256": "70e9f6f4b541a77bfd803ba97f98bae10c3fa9aa46daa01b718a26c407061264"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared100/source/trace.config": {
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared32/profile.json": {
+      "bytes": 10554,
+      "sha256": "4a9d4973b0f98f664fea4fa7b8122c1dd78337826409297d4ba0086e7b8ac82f"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared32/source/gpgpusim.config": {
+      "bytes": 5640,
+      "sha256": "7f7f970a6e6acbfea15aa2e652d1133048be716d215fcf0e31385dffb25adc4c"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared32/source/trace.config": {
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared64/profile.json": {
+      "bytes": 10551,
+      "sha256": "1d9d361cfccd4e667d12c5fa56e554372e3789b4a73e6b2c9021cd1f141dc4eb"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared64/source/gpgpusim.config": {
+      "bytes": 5639,
+      "sha256": "d47ce630e89bffaf4b6174007db5f466c2b62cc431d75204947b3a04974c45f3"
+    },
+    "isolated-importer/configs/rtx4000-ada-calibrated/r3-fifo-shared64/source/trace.config": {
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "isolated-importer/tools/ada_profile_registry.py": {
+      "bytes": 1310,
+      "sha256": "a1972a7920d01c060f990577e3d0b4b0b477c2fc380640d0ef2c63e2d7f22e9a"
+    },
+    "isolated-importer/tools/import_ada_calibrations.py": {
+      "bytes": 4151,
+      "sha256": "8252bfdb20670bfacda6df440eff1d267df3b7e6c73e385ba861e458ebb1c8b0"
+    },
+    "isolated-importer/tools/import_ada_tuner.py": {
+      "bytes": 4718,
+      "sha256": "cd74e39f518724c7e07e08d3e9b1e1e6112151d45cfce56fd2fe3602c82cb97a"
+    },
+    "observed_r2-shared100.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observed_r2-shared100.stdout": {
+      "bytes": 163,
+      "sha256": "b1085987fb8a5633b64e3008053beacea2cf4293ee55e359da9d4aafef39d9f2"
+    },
+    "observed_r2-shared100/receipt.json": {
+      "bytes": 29235,
+      "sha256": "93fd7ed5bc915fe2919bc5218c45bf01daef8359551f5f8acf992e1d93d1d2be"
+    },
+    "observed_r2-shared100/result.json": {
+      "bytes": 7838,
+      "sha256": "fbb596ec4608ad0c4df4b031986c6867b8c931488c044c78e6860a04f469fc53"
+    },
+    "observed_r2-shared100/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observed_r2-shared64.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observed_r2-shared64.stdout": {
+      "bytes": 162,
+      "sha256": "333be7dfd415fe22b8dcef7bf963e86e23e623cddbc0e303d9248ec9350acf4b"
+    },
+    "observed_r2-shared64/receipt.json": {
+      "bytes": 29231,
+      "sha256": "4dc358d019d0746521975dd97a046ee49da6baa0878721a72d98539becf1ca35"
+    },
+    "observed_r2-shared64/result.json": {
+      "bytes": 7833,
+      "sha256": "d7c92a52ae4cd92b51b32b64cbe7846aa475463a4f387e940f3cb88c6be961d7"
+    },
+    "observed_r2-shared64/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observed_r3-fifo-shared100.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observed_r3-fifo-shared100.stdout": {
+      "bytes": 168,
+      "sha256": "aa0b8d6db8b9dc1a5c4a842a20c37911b3a026ef3bcbc41c1dd379130af27885"
+    },
+    "observed_r3-fifo-shared100/receipt.json": {
+      "bytes": 29255,
+      "sha256": "b1da9823dd86500e983c6d5ba063a57674b0927f1c27751274f590597d8f7a5e"
+    },
+    "observed_r3-fifo-shared100/result.json": {
+      "bytes": 7843,
+      "sha256": "9c131918572d841f1f5438d31af8f29b2eeb16161a387ac32b71fba4807c27e8"
+    },
+    "observed_r3-fifo-shared100/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observed_r3-fifo-shared64.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observed_r3-fifo-shared64.stdout": {
+      "bytes": 167,
+      "sha256": "d29e821ce53faa627fdf1bf6330247028b434fccdaee7d3f507a49641ed810bb"
+    },
+    "observed_r3-fifo-shared64/receipt.json": {
+      "bytes": 29251,
+      "sha256": "0b9b30578080581db6ed3e4c672eb266beda520aa15a4cbf5914bbba6ff79471"
+    },
+    "observed_r3-fifo-shared64/result.json": {
+      "bytes": 7837,
+      "sha256": "204a7e26d59e8c508c12024b3eb5ea9df92dc809a0b8db3974a2feac610296c6"
+    },
+    "observed_r3-fifo-shared64/run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_fixed_resources_exceed_observation.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_fixed_resources_exceed_observation.stdout": {
+      "bytes": 150,
+      "sha256": "8a3295ea05438a13c1369d0d1b67bde4a6aa4a0c081f4f4b80fe709100ce5288"
+    },
+    "reject_fixed_resources_exceed_observation/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_fixed_resources_exceed_observation/receipt.json": {
+      "bytes": 29294,
+      "sha256": "823b309a1a01c4c46a6953e48755893f956502e3996c3ffc417c790804cdc761"
+    },
+    "reject_fixed_resources_exceed_observation/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_fixed_resources_exceed_observation/run.stderr": {
+      "bytes": 57,
+      "sha256": "754b1337aa073f608ad88e278daaaf2f61d7a9b7ec93ded998c4623772f8be13"
+    },
+    "reject_mismatch_r2-shared100.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r2-shared100.stdout": {
+      "bytes": 153,
+      "sha256": "bba4a63d2ad9262ab2d14a00623c9dff25418ff2df3f8b0f39505db3462c6172"
+    },
+    "reject_mismatch_r2-shared100/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r2-shared100/receipt.json": {
+      "bytes": 29272,
+      "sha256": "01e79323bc17d39ad84cb489f3129bdbb6ccd8b37123dc116a05fa3ad3a08e2a"
+    },
+    "reject_mismatch_r2-shared100/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r2-shared100/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_mismatch_r2-shared64.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r2-shared64.stdout": {
+      "bytes": 152,
+      "sha256": "1a8142817f65d7c06c44fed78555d6d022d0dab252754504552906f7e2714030"
+    },
+    "reject_mismatch_r2-shared64/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r2-shared64/receipt.json": {
+      "bytes": 29268,
+      "sha256": "4d3c91472042993ba6653638a1d1ac425de80ad10ad401802f7a886152c2a8c8"
+    },
+    "reject_mismatch_r2-shared64/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r2-shared64/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_mismatch_r3-fifo-shared100.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared100.stdout": {
+      "bytes": 147,
+      "sha256": "0a3b33f409d2a293538385a589edfae3acaa2cb315e90325f39e13bf97468f32"
+    },
+    "reject_mismatch_r3-fifo-shared100/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared100/receipt.json": {
+      "bytes": 29281,
+      "sha256": "be4eb2f9e405fb7eb7d1ae140b02e941b20e96d916f403b964560daed04f0a39"
+    },
+    "reject_mismatch_r3-fifo-shared100/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared100/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_mismatch_r3-fifo-shared32.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared32.stdout": {
+      "bytes": 156,
+      "sha256": "9133097137d02344d548c9f95e6193b127368cadedbc339508b9da0024303db3"
+    },
+    "reject_mismatch_r3-fifo-shared32/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared32/receipt.json": {
+      "bytes": 29287,
+      "sha256": "de4fade423a96f3657c07a0f743aeae4a9cf638d7d5822ae0f605259ba184f06"
+    },
+    "reject_mismatch_r3-fifo-shared32/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared32/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_mismatch_r3-fifo-shared64.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared64.stdout": {
+      "bytes": 156,
+      "sha256": "6d9c0501d76074026fb1d4604b0db906e09f630bc709b3c98930000c078da9d6"
+    },
+    "reject_mismatch_r3-fifo-shared64/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared64/receipt.json": {
+      "bytes": 29287,
+      "sha256": "0535a3e3ba6e836b4c7165376e84dd9d35cb055d5c5cc2b3d2f08349607260f5"
+    },
+    "reject_mismatch_r3-fifo-shared64/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_mismatch_r3-fifo-shared64/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_missing_r2-shared100.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r2-shared100.stdout": {
+      "bytes": 152,
+      "sha256": "1ad431343cd3e84c343282243dc9d027025ac7e98b74490ebd60ab2878af8859"
+    },
+    "reject_missing_r2-shared100/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r2-shared100/receipt.json": {
+      "bytes": 29269,
+      "sha256": "c4572b47f48f01d509f42bfaa417d790f5d2ff55de27988dc51d4fe6eb79524e"
+    },
+    "reject_missing_r2-shared100/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r2-shared100/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_missing_r2-shared64.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r2-shared64.stdout": {
+      "bytes": 151,
+      "sha256": "1ac183e5c324b6a5a26e9363493fb9ccd8375b9e1cf15c80f0c6b6d667e70988"
+    },
+    "reject_missing_r2-shared64/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r2-shared64/receipt.json": {
+      "bytes": 29265,
+      "sha256": "fbf90bb4b50bb33ca24121bdc075358923aa9a452a001621b971e75741757ea9"
+    },
+    "reject_missing_r2-shared64/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r2-shared64/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_missing_r3-fifo-shared100.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared100.stdout": {
+      "bytes": 145,
+      "sha256": "491b0485f1d85bdfff490cd536138d6ac52206668603cae8bd0415a081400816"
+    },
+    "reject_missing_r3-fifo-shared100/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared100/receipt.json": {
+      "bytes": 29277,
+      "sha256": "20beb5662c64944cfeca3e749be61bd2492e2396590b585be79c23ff7729e74b"
+    },
+    "reject_missing_r3-fifo-shared100/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared100/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_missing_r3-fifo-shared32.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared32.stdout": {
+      "bytes": 157,
+      "sha256": "2b0ac1ddf21f097f5a00fa6e3d36563cb5b928bc2e4ede6c090247be02da8217"
+    },
+    "reject_missing_r3-fifo-shared32/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared32/receipt.json": {
+      "bytes": 29286,
+      "sha256": "4d0fa2289e95ade4df933673d3f482fea62ec906f9e64e6eecae1d20cc19a572"
+    },
+    "reject_missing_r3-fifo-shared32/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared32/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_missing_r3-fifo-shared64.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared64.stdout": {
+      "bytes": 157,
+      "sha256": "f6b6570e679ecb034b56bed7be1e04e62c8ad90cea46e38ab964a7040d586d5f"
+    },
+    "reject_missing_r3-fifo-shared64/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared64/receipt.json": {
+      "bytes": 29286,
+      "sha256": "cb2adb139f572035ed9eae7f23e47a982180e3aafd9ff5fcb3273be0e0f89a20"
+    },
+    "reject_missing_r3-fifo-shared64/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_missing_r3-fifo-shared64/run.stderr": {
+      "bytes": 63,
+      "sha256": "814040fe97a78980ff213a4501f58f04d97ac513ac24d2fc2650be61743caf0b"
+    },
+    "reject_resources_exceed_observation.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_resources_exceed_observation.stdout": {
+      "bytes": 151,
+      "sha256": "def6191bc11c64d9436c1b5ec873debb964d02f12f5cfddcc52734c7ee60a987"
+    },
+    "reject_resources_exceed_observation/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_resources_exceed_observation/receipt.json": {
+      "bytes": 29283,
+      "sha256": "694de7d5487c57b47a7a54ba1fe66383a029766a870b70877aee740bac8abac1"
+    },
+    "reject_resources_exceed_observation/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_resources_exceed_observation/run.stderr": {
+      "bytes": 57,
+      "sha256": "754b1337aa073f608ad88e278daaaf2f61d7a9b7ec93ded998c4623772f8be13"
+    },
+    "reject_unsupported_observation.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_unsupported_observation.stdout": {
+      "bytes": 152,
+      "sha256": "fa243529ef53eb4e97566ea0f22416505104fda8587b11370e45d0e546861ebd"
+    },
+    "reject_unsupported_observation/postcache.requests.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_unsupported_observation/receipt.json": {
+      "bytes": 29274,
+      "sha256": "2370a1218fff910e2ef5f6d2e21d968d2906a51c5f25c77964d1df7df37aa52e"
+    },
+    "reject_unsupported_observation/result.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_unsupported_observation/run.stderr": {
+      "bytes": 74,
+      "sha256": "7bf7850b2dcb4692a3478a023dc6dbbc8a07f1b40e77aefcad394d0efcf2e872"
+    },
+    "reject_unsupported_profile.stderr": {
+      "bytes": 478,
+      "sha256": "808c287e7929120a8dff9130dcee565fe0dda1aae4946aebd1f3267b5020216f"
+    },
+    "reject_unsupported_profile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "binary": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+  "binary_sha256": "902aaeebb9af558152c9f71c74c1a0146d55042a694a5c66940a716c63724536",
+  "check_count": 192,
+  "checks": [
+    {
+      "id": "default_r2.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.trace",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.fixture_bytes",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 98304,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 192,
+        "resolved_profile": "r2-adaptive"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 98304,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 192,
+        "resolved_profile": "r2-adaptive"
+      },
+      "id": "default_r2.first_layout",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 28672,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 56,
+        "resolved_profile": "r2-adaptive"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 28672,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 56,
+        "resolved_profile": "r2-adaptive"
+      },
+      "id": "default_r2.second_layout",
+      "status": "PASS"
+    },
+    {
+      "id": "default_r2.phase_L2_retained",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.trace",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.fixture_bytes",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 131072,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 256,
+        "resolved_profile": "tuner-v1"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 131072,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 256,
+        "resolved_profile": "tuner-v1"
+      },
+      "id": "explicit_v1.first_layout",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 28672,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 56,
+        "resolved_profile": "tuner-v1"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 28672,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 56,
+        "resolved_profile": "tuner-v1"
+      },
+      "id": "explicit_v1.second_layout",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit_v1.phase_L2_retained",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_tuner-v1.trace",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "DRAM_read_bytes": 6176,
+        "DRAM_write_bytes": 0,
+        "L1_read_hits": 193,
+        "L1_read_misses": 193,
+        "L2_hits": 0,
+        "source_read_bytes": 1544,
+        "source_write_bytes": 0
+      },
+      "expected": {
+        "DRAM_read_bytes": 6176,
+        "DRAM_write_bytes": 0,
+        "L1_read_hits": 193,
+        "L1_read_misses": 193,
+        "L2_hits": 0,
+        "source_read_bytes": 1544,
+        "source_write_bytes": 0
+      },
+      "id": "capacity_tuner-v1.actual_accesses",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity_r2-adaptive.trace",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "DRAM_read_bytes": 6176,
+        "DRAM_write_bytes": 0,
+        "L1_read_hits": 0,
+        "L1_read_misses": 386,
+        "L2_hits": 193,
+        "source_read_bytes": 1544,
+        "source_write_bytes": 0
+      },
+      "expected": {
+        "DRAM_read_bytes": 6176,
+        "DRAM_write_bytes": 0,
+        "L1_read_hits": 0,
+        "L1_read_misses": 386,
+        "L2_hits": 193,
+        "source_read_bytes": 1544,
+        "source_write_bytes": 0
+      },
+      "id": "capacity_r2-adaptive.actual_accesses",
+      "status": "PASS"
+    },
+    {
+      "id": "capacity.same_compulsory_DRAM",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo_hit_order.trace",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 98304,
+        "L1_replacement": "FIFO",
+        "L1_sets": 64,
+        "L1_ways": 12,
+        "resolved_profile": "r3-fifo-shared32"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 98304,
+        "L1_replacement": "FIFO",
+        "L1_sets": 64,
+        "L1_ways": 12,
+        "resolved_profile": "r3-fifo-shared32"
+      },
+      "id": "fifo.layout",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "DRAM_read_bytes": 416,
+        "DRAM_write_bytes": 0,
+        "L1_read_hits": 1,
+        "L1_read_misses": 14,
+        "L2_hits": 1,
+        "source_read_bytes": 60
+      },
+      "expected": {
+        "DRAM_read_bytes": 416,
+        "DRAM_write_bytes": 0,
+        "L1_read_hits": 1,
+        "L1_read_misses": 14,
+        "L2_hits": 1,
+        "source_read_bytes": 60
+      },
+      "id": "fifo.evicted_oldest_despite_hit",
+      "status": "PASS"
+    },
+    {
+      "id": "fifo.explicit_experimental",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared64.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared64.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared64.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared64.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared64.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared64.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared64.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared64.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 65536,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 128,
+        "resolved_profile": "r2-shared64"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 65536,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 128,
+        "resolved_profile": "r2-shared64"
+      },
+      "id": "r2-shared64.layout",
+      "status": "PASS"
+    },
+    {
+      "id": "r2-shared64.observed_source",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared100.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared100.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared100.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared100.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared100.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared100.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared100.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r2-shared100.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 28672,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 56,
+        "resolved_profile": "r2-shared100"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 28672,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 56,
+        "resolved_profile": "r2-shared100"
+      },
+      "id": "r2-shared100.layout",
+      "status": "PASS"
+    },
+    {
+      "id": "r2-shared100.observed_source",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared64.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared64.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared64.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared64.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared64.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared64.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared64.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared64.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 65536,
+        "L1_replacement": "FIFO",
+        "L1_sets": 64,
+        "L1_ways": 8,
+        "resolved_profile": "r3-fifo-shared64"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 65536,
+        "L1_replacement": "FIFO",
+        "L1_sets": 64,
+        "L1_ways": 8,
+        "resolved_profile": "r3-fifo-shared64"
+      },
+      "id": "r3-fifo-shared64.layout",
+      "status": "PASS"
+    },
+    {
+      "id": "r3-fifo-shared64.observed_source",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared100.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared100.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared100.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared100.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared100.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared100.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared100.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "observed_r3-fifo-shared100.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 24576,
+        "L1_replacement": "FIFO",
+        "L1_sets": 64,
+        "L1_ways": 3,
+        "resolved_profile": "r3-fifo-shared100"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 24576,
+        "L1_replacement": "FIFO",
+        "L1_sets": 64,
+        "L1_ways": 3,
+        "resolved_profile": "r3-fifo-shared100"
+      },
+      "id": "r3-fifo-shared100.layout",
+      "status": "PASS"
+    },
+    {
+      "id": "r3-fifo-shared100.observed_source",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_32768.trace",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 98304,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 192,
+        "resolved_profile": "r2-adaptive"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 98304,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 192,
+        "resolved_profile": "r2-adaptive"
+      },
+      "id": "adaptive.resolve.32768",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_65536.trace",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 65536,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 128,
+        "resolved_profile": "r2-shared64"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 65536,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 128,
+        "resolved_profile": "r2-shared64"
+      },
+      "id": "adaptive.resolve.65536",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.exit",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.wrapper_receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.raw_cli_profile",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.identity",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.resolved_pins",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.functional_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "adaptive_observed_102400.trace",
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "L1_bytes_per_sm": 28672,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 56,
+        "resolved_profile": "r2-shared100"
+      },
+      "expected": {
+        "L1_bytes_per_sm": 28672,
+        "L1_replacement": "LRU",
+        "L1_sets": 4,
+        "L1_ways": 56,
+        "resolved_profile": "r2-shared100"
+      },
+      "id": "adaptive.resolve.102400",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r2-shared64.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r2-shared64.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r2-shared64.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r2-shared64.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r2-shared64.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r2-shared64.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r2-shared64.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r2-shared64.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r2-shared100.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r2-shared100.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r2-shared100.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r2-shared100.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r2-shared100.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r2-shared100.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r2-shared100.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r2-shared100.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared32.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared32.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared32.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared32.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared32.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared32.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared32.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared32.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared64.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared64.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared64.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared64.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared64.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared64.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared64.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared64.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared100.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared100.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared100.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_r3-fifo-shared100.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared100.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared100.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared100.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_mismatch_r3-fifo-shared100.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unsupported_observation.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unsupported_observation.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unsupported_observation.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unsupported_observation.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_resources_exceed_observation.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_resources_exceed_observation.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_resources_exceed_observation.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_resources_exceed_observation.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_fixed_resources_exceed_observation.exit",
+      "returncode": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_fixed_resources_exceed_observation.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_fixed_resources_exceed_observation.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_fixed_resources_exceed_observation.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unsupported_profile.exit",
+      "returncode": 2,
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unsupported_profile.not_success",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unsupported_profile.no_success_report",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unsupported_profile.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "importer_pristine",
+      "status": "PASS"
+    },
+    {
+      "id": "importer_reject_source_comment",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.rop_control",
+      "status": "PASS"
+    },
+    {
+      "id": "importer_reject_profile_rop",
+      "status": "PASS"
+    },
+    {
+      "id": "importer_restored",
+      "status": "PASS"
+    },
+    {
+      "id": "original_sources_unchanged",
+      "status": "PASS"
+    },
+    {
+      "id": "binary_unchanged",
+      "status": "PASS"
+    }
+  ],
+  "error": null,
+  "schema": "GTSIM_ADA_CALIBRATED_E2E_V1",
+  "scope": "Bounded CPU functional cache CLI checks; no GPU, NCU, latency or bandwidth qualification",
+  "source_pins": {
+    "ada_profile.py": "0e93df6d0140fe98252c92715e27132b2284b7e037c77fa4061e70e0f5ad31e4",
+    "configs/hbf-one-stack-stage.cfg": "8b5bc12a4a3a8e25b5a10ca4b45d12693159d754a8698bc431bdd55f6fcd2088",
+    "configs/hbm-one-stack-stage.cfg": "21003b7f53e22456b32429080222f768d6c10dbdc10d56acfde09032692b25db",
+    "configs/rtx4000-ada-accelsim-v1/profile.json": "54e2f5c749da7a3a40f59f773fd9bef888867d89e382f4c27718613d06ea7db3",
+    "configs/rtx4000-ada-accelsim-v1/source/gpgpusim.config": "e09511b9d168632e975422b19a9557ff5ed4482ace160fa428f9c70455f5a891",
+    "configs/rtx4000-ada-accelsim-v1/source/trace.config": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b",
+    "configs/rtx4000-ada-calibrated/evidence/r2/FINAL_RECEIPT.json": "feb09a843f3e5439e296d92da04ec882fa527a2313529dc8cce79cf8ed4d6ac5",
+    "configs/rtx4000-ada-calibrated/evidence/r2/README.md": "7d9576ad7e6955366f89f6bf03e70509c2dd32e190b64e781733f3e9de98460f",
+    "configs/rtx4000-ada-calibrated/evidence/r2/parameter_contract.json": "34407d1ada01d0019396f39f9440351c73737ab211352d2c0f636d55fad2424c",
+    "configs/rtx4000-ada-calibrated/evidence/r3/FINAL_RECEIPT.json": "4c24ab1edb6b94e0a5cbf98d9217e00ef833747946c5708fcc95ce006a173a74",
+    "configs/rtx4000-ada-calibrated/evidence/r3/README.md": "728248b754cfaad49719f278ac3567e06180b35a6fdd78c72292f7e814295657",
+    "configs/rtx4000-ada-calibrated/evidence/r3/experiment_contract.json": "b214d60051168ab5055fea1171c09c8c4c84e90ccb745d85f0041f51e7b17c63",
+    "configs/rtx4000-ada-calibrated/evidence/r3/selected_accelsim_mapping.json": "adb09de138f5d1a20a60519081d184d5c5bcd1744a2c63ec64b16f1eca660915",
+    "configs/rtx4000-ada-calibrated/evidence/r3/selected_reference_models.json": "34ac49adbf83236611eee5f54a1b93dd483ee2d8cb10faf88309c02324808891",
+    "configs/rtx4000-ada-calibrated/r2-adaptive/profile.json": "e678ba95254f14585dce8915d3a13f80f314f53534766e68e4fa247b847043f0",
+    "configs/rtx4000-ada-calibrated/r2-adaptive/source/gpgpusim.config": "dabaf5334ea681c419e5ea8d820ead7c03246dea059b0ca812d163c7968ac79c",
+    "configs/rtx4000-ada-calibrated/r2-adaptive/source/trace.config": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b",
+    "configs/rtx4000-ada-calibrated/r2-shared100/profile.json": "613079d4f494fe8ca903525025b2586f00b3b66e3d0743dcf3274e039913116f",
+    "configs/rtx4000-ada-calibrated/r2-shared100/source/gpgpusim.config": "36c280a2f7c43f7b8ea2a4b8a15988760fdc5244f32b8a4893727f57f24abaae",
+    "configs/rtx4000-ada-calibrated/r2-shared100/source/trace.config": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b",
+    "configs/rtx4000-ada-calibrated/r2-shared64/profile.json": "c97b29f69290260e7053885326a9252c19c72a855e1fef67534152bcb36c94e2",
+    "configs/rtx4000-ada-calibrated/r2-shared64/source/gpgpusim.config": "3c11c042edc312548d2ca1732d9c196a779826dd212b2f5c9cf1a413c4baf65a",
+    "configs/rtx4000-ada-calibrated/r2-shared64/source/trace.config": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared100/profile.json": "bc01f9af905a36112ea607da64179e2a1dc9d8840ebab030cd82d5a6b44107b0",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared100/source/gpgpusim.config": "70e9f6f4b541a77bfd803ba97f98bae10c3fa9aa46daa01b718a26c407061264",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared100/source/trace.config": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared32/profile.json": "4a9d4973b0f98f664fea4fa7b8122c1dd78337826409297d4ba0086e7b8ac82f",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared32/source/gpgpusim.config": "7f7f970a6e6acbfea15aa2e652d1133048be716d215fcf0e31385dffb25adc4c",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared32/source/trace.config": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared64/profile.json": "1d9d361cfccd4e667d12c5fa56e554372e3789b4a73e6b2c9021cd1f141dc4eb",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared64/source/gpgpusim.config": "d47ce630e89bffaf4b6174007db5f466c2b62cc431d75204947b3a04974c45f3",
+    "configs/rtx4000-ada-calibrated/r3-fifo-shared64/source/trace.config": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b",
+    "source/ada_cache_replay.cpp": "e93f85c1ec013d85eefd85af5ec79eb8ba71a44985b7c255a6209eababb1213d",
+    "source/ada_gtsim_structure.h": "8afea09795b035280eed6d0826076cde6708c426644e2ee52289d26a14b07ab2",
+    "source/cache_profile.h": "2c662570ccc1cbc9efd4a82305795d4eeb71e6f621c4befe2db7bf385f61494b",
+    "source/direct_cache.h": "57a3b51240f78f89893123361ec482ea672302763d2266a2efce614ac2f535b5",
+    "source/direct_native.h": "3e4f969dc6ffefb8ef7c251e3c29b4d654b7fadc0ddb6a8ad8ab27c8d19df3f6",
+    "source/direct_phase_profile.h": "f900695da12c410049214717072a9ae389d66e524a7a6f3c9b50352622a90e1e",
+    "source/hbf_replay_backend.h": "56d55fa34495deda5d4cc6b5aaba6280e6d45d1d43041c5061fa021dffcef6d2",
+    "source/native_trace.h": "d70f51a166b36c4d8cad78cf45ac3fe68820ebfb53cec35a662cb9d3ee2a4453",
+    "source/native_typed_identity.h": "9ec7743fe9881bb9a6800cc41b91fc1dbc2af9fa8f3847fdab22dbab7aace55e",
+    "source/replay_backend.h": "22cd39fa871c14b56d7e366287f99a5025942c4902b654ff9f193f2b18a1ed3b",
+    "source/replay_phase_report.h": "3361cafb9f3d4a171011c14d97e04b24e217ffd6214002c5b027c453fb0fbdef",
+    "source/stage_replay.h": "12db9a0a4a6884bbb6478384d34c57c4230b91c38f613f87074dd1031a9e88aa",
+    "source/trace_replay.h": "bb457dca97705e558c4b2c8ec69eca1d082f7bb80a5eb2e07a442ff182490042",
+    "source/trace_replay_main.cpp": "1b246e665f34749b062645be1c556d3a925b869053e7ba862fcb19549687f132",
+    "source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party/nlohmann/json.hpp": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6",
+    "source/work/gddr6-support/hbf_coupling/prepared/directed_time.h": "19ded7e38869c90539112e86f277899c757e7934d4230a44a50d3262372ea55e",
+    "source/work/hbfsim-latest/upstream/src/app/system_config.cpp": "de9c57e37a9e3f5d26e3f278ce1d7096ee9150cd8b20ef4ed60055d61867283f",
+    "source/work/hbfsim-latest/upstream/src/app/system_config.hpp": "0b6dd8a106b69626ebc82ff95308b7405f798e029e8113ed97b60493044541ff",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_config.hpp": "d3b63ff8b39e01aceb1a08b0c36b4c41df0b2802071b16f6fa1404cb75ca47f4",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp": "a82e9e7e5eb64ee19fe3f06621e28829ecbb7f57715886141dd17fe2ff775fde",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_controller.hpp": "8dc09d6266598d16c6f1370dc463d2cae11d37b213aea77ef778ffe6742fdc23",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp": "0f273817f4d74de7b6a883e96ba77c02204c0022066aabf729d4f1b46f3fadf9",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp": "a4dcc5582b3df298c025cb015cd546228b10b3066a7a2ef3d8eba0ef5afc8cc8",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.hpp": "b549ea2ef24026964329738f87846e9ce036a48455c9ca0d74c7895de68e4536",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp": "1dbda009daf3032055ae0c31088ceb6f7b5b4b7f0c69bb093077a10d378bc9d4",
+    "source/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp": "400fd6cc863f00101d5bc6b21e8170a6318b16a60f4b70492efe9c466bfd7119",
+    "source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp": "2761e80808fb056e45839d528475dd59a0169bac67beb9c78a5eb3d8fd8d007d",
+    "source/work/hbfsim-latest/upstream/src/physical/address_heatmap.hpp": "ed782f559c914a3bb9abe92242d69e8e116d5e66572e5d09b4beaa0f8118417f",
+    "source/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp": "5f5080bbdd9843e790292ef62b2fa39b4f39a6e4f2fcdc3c0a8dde7e818d0bda",
+    "source/work/hbfsim-latest/upstream/src/physical/base_die_link.hpp": "fe6f1117fadcb99f345e937269486d1f91025d262e900b00b4a205436e21475e",
+    "source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp": "5fbc0d1a89cd48a2f42d122b68158707e46486708104d9caa610c2a863e817ed",
+    "source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.hpp": "e250874eb71bdeaa4fab12ddd285bcaa4ea2b7dcb95a21610a7ed5c973af499f",
+    "source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp": "187867e0db28bf830161eb5b4a10b17aacce4b2e7413a656830e1a1b21e7015a",
+    "source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.hpp": "1ec89f1df9005bad19ecd53b3f7713bacd1f2ffe42e947f8a766ec706abb9701",
+    "source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp": "7bf8c2c7defbc878b67cf3066dafca48853d8d6b7864bf32dfd64a1c96811c0a",
+    "source/work/hbfsim-latest/upstream/src/physical/gap_calendar.hpp": "bad943adc9e4631d94c30fa1b51f25c665579e16094d542104729218ebed9670",
+    "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_config.hpp": "9241a41f135d49aea00ed50e845ca8c3847c1a8a978aa4b0e8a69af597cf939b",
+    "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp": "7e2ec124c6f86804253536b53a257fc81e13b46ca12be584cc62d362e185cca4",
+    "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.hpp": "1358813578eb719c405ea4b4da27b794ba17c70a345e7c20a49c0d525544043b",
+    "source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_standard.hpp": "f9a1b25aed6d4a1601e500d35fb27dc5b172070d773760cf97f8f2aeffecb27b",
+    "source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_config.hpp": "f7e233096b3efad2cfa2c2dd8f58e0e1bf3a2b783e19469d4256a6fec97e5d5e",
+    "source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp": "b2d62d09f75a7dfa0b760fce56ea76159c96e747ddfa1775e8190dbc393604d8",
+    "source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.hpp": "ba20fc2f59e40434b0ec622dffe79acfa77881cd65c9b63629a3b41ea0d817e9",
+    "source/work/hbfsim-latest/upstream/src/physical/physical_types.hpp": "e91bb6097d86582aa44fbd4561cf4cf22327e8b74bd778e786861abd9ede6337",
+    "source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp": "822cc3e37b3a4f6b6545c63914e4d0b7ad5c82cbf17b4d264c34d4e8aea3ef91",
+    "source/work/hbfsim-latest/upstream/src/physical/resource_calendar.hpp": "96556c2bfd0ed394f7718272047afe501ab8d3557772cd1afe6e64e5e0603449",
+    "source/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp": "69b2abc988083a159bf310764b622e2e1cecc115ce7b0cd82079fd442bbac04d",
+    "source/work/hbfsim-latest/upstream/src/physical/simulation_session.hpp": "edb47687ba947a4c73097480129e918e7f8cdb4f0fd2f715528fbcf052951a0a",
+    "source/work/tilegen-evaluation-r1/driver/backend_reporting.h": "9432f90a4ba44dd212d4aaebd9e70f7ebddedbe2733f62f3bb775561d368e092",
+    "source/work/tilegen-full-r1/canonical-full-runtime-r4/attention_support.h": "b2a1a1063da9462480c405eea1fc8b5f3e7cd91f08417d69e77022007b89807e",
+    "source/work/tilegen-full-r1/canonical-full-runtime-r4/frame_bridge.h": "0f754902660febdad7e2b9c3eb2167782e6f6cc39f5c40741ca7c2d87e633830",
+    "source/work/tilegen-full-r1/canonical-full-runtime-r4/helper_class_gate.h": "833c2aa7aa582445f1c2e945da43eec712dbf0d6cc38078014f82ec63c4c0d9e",
+    "source/work/tilegen-full-r1/canonical-full-runtime-r4/helper_support.h": "4db736b32d88f230e3fa432db99cb16562f9614d9b3e10b660d896a3b50e0488",
+    "source/work/tilegen-full-r1/canonical-full-runtime-r4/legacy_prepared.h": "3a6e131280fa3a67b04f003583e4218634b74f9449db6f4c83b844cd96d73c2d",
+    "source/work/tilegen-full-r1/canonical-full-runtime-r4/model_dispatch.h": "86ec0c1b4d2c6cf50cbd6a4e83acfa6c0be7ebe20e06e3f290acedadf43ac5d4",
+    "source/work/tilegen-full-r1/canonical-full-runtime-r4/sealed_inputs.h": "29c41aba4320d9d6e795ee957fb5e5e05609b2697fc355811d558e2d83fc95c9",
+    "source/work/tilegen-full-r1/canonical-full-runtime-r4/streaming.cpp": "821690f3b67f3478b602825a93837a2cb318c517fd463b6c3224c47ee6506d14",
+    "source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/model_plan.h": "9e3ca30e1cf20ad3811c33d17967dbcbfb47392d3e10a773646960504129eb9f",
+    "source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/modeled_builder.h": "00cdeb37c566ea1264b91b42dd482ebe552e2ece96955488a182202302a1057f",
+    "source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/sealed_inputs.h": "20009af6159f671be927c80e36205d34ab9ad06e18742afdce0854c3af0d1288",
+    "source/work/tilegen-full-r1/canonical-gemv-driver-r2/model_plan.h": "0385b93c436d637388c76b64e62309a6b1866a504dbfdb523956d0a151e99a11",
+    "source/work/tilegen-full-r1/canonical-gemv-driver-r2/sealed_inputs.h": "9f42a5b783463df432acf07137b72d6e5543455b7f7465ec10205ad7bcebdccf",
+    "source/work/tilegen-full-r1/canonical-gemv-host-r2/modeled_builder.h": "858f9bb27e05f344572f38aff80ed7908b72cedea700b48a2e664da3a9e9e923",
+    "source/work/tilegen-full-r1/canonical-gemv-host-r2/prepared_address.h": "f0c27981159978e6b492c2614649867742a557b683f510d878c8aad651aff1ca",
+    "source/work/tilegen-full-r1/canonical-gemv-host-r2/prepared_memory.h": "231059f4bd8bebe134633d83fc95a287579fb23f0d514804cfd9a60c902dc643",
+    "source/work/tilegen-full-r1/canonical-gemv-host-r2/typed_binding.h": "aed5161b81f17686fefc18fc9b5f37a7aeaeac6fa2ff323c0ae1cf0d875adb50",
+    "source/work/tilegen-full-r1/canonical-indexput-driver-r2/model_plan.h": "480c2febb3f5d2739044b9cf9db93cd2f00e2ad7a508e37f6c7f658f61633a45",
+    "source/work/tilegen-full-r1/canonical-indexput-driver-r2/modeled_builder.h": "2ed970e392ba957eaa9919a9aa0eb273f8b096728324eb6ce143533629655c91",
+    "source/work/tilegen-full-r1/canonical-indexput-driver-r2/sealed_inputs.h": "96b653f3ce1982c76ee553775b9fe7ac8a3e863f4678cc5555210f42c3907248",
+    "source/work/tilegen-full-r1/canonical-indexput-driver-r2/source_adapter.h": "c17521d9cd834362bb3c0e91f8a25dea0769a606c21b05f7a1e3a381c2e3ec3c",
+    "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/copy_adapter_support.h": "72f2797010f246953e7b028abb9d204a8211a868fdd35205a9937762769591ae",
+    "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/index_adapter_support.h": "dbf13ecd90acfbca659583d5377dfdb6b6926a59b794d1b33f1848ea9f2f1c33",
+    "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/mixed_seals.h": "9638560e4f24135066a0f4b5de74b55e5af329b6dcf8d878b3d262ab0c96850d",
+    "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/model_dispatch.h": "df1d883df3e36f9aa21d946243c267e30aa917c737ebc6e0ae83b56d1d8a5105",
+    "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/p28_support.h": "483e31097b7f78ccfdbd82bffe94c2cec672af0bc166776da88d764e8203f208",
+    "source/work/tilegen-full-r1/canonical-mixed643-driver-r1/rotary_class_support.h": "37a538cb2850f96f203c3c6d9d23a24b79095d8ace123cce5836370d4ab29515",
+    "source/work/tilegen-full-r1/canonical-norm-driver-r1/model_plan.h": "b3e3cbdaaabbbd3bc6b52de64862d1ac0478ab9bc7f6b34e3d588d0209c76a9f",
+    "source/work/tilegen-full-r1/canonical-norm-driver-r1/modeled_builder.h": "d221da9aa3f2d56004e025d49a92dc262851d3ad68a5f26c05c2cbef0a9d394a",
+    "source/work/tilegen-full-r1/canonical-norm-driver-r1/sealed_inputs.h": "68b30498d4f52d812a2a95d9583289dde85f1a762cf7ce8372cc5703f05ad460",
+    "source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/model_plan.h": "18b48de275b3e4cdb1d96af65bcda567ec653f77f9b47a4c2c133148713571bd",
+    "source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/modeled_builder.h": "617a8ecca7ee7070efc46584c36f140a4048ed5c90943b6071e6f6011d554b04",
+    "source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/sealed_inputs.h": "17dce883a3b6534f4db728c47e77a17ef9cc83ea1649fb4d82271dfa0a03b536",
+    "source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/source_adapter.h": "6e8ff0aaf4d78f5d1ca26d88e008bf7e9123ec1640bead2a2079547934ebf5ed",
+    "source/work/tilegen-full-r1/canonical-rotary-driver-r1/model_plan.h": "ef1940f2a0159ae1a44a618160d0ab125fdaa451dd15317bdae8b5e3419d3ab5",
+    "source/work/tilegen-full-r1/canonical-rotary-driver-r1/modeled_builder.h": "0a295d6e02bf896b53f5f0b1f6c458864165689c79c2410e19081c62b9609bc7",
+    "source/work/tilegen-full-r1/canonical-rotary-driver-r1/sealed_inputs.h": "25d6fe3b2f738c538a1cf7888c750301877165e312e27714669598e9bdedd09b",
+    "source/work/tilegen-full-r1/canonical-silu-driver-r1/model_plan.h": "2c320342e02967352acf1062ad6d41514b312a0cd681b495206c6a49002df743",
+    "source/work/tilegen-full-r1/canonical-silu-driver-r1/modeled_builder.h": "8d2968c8f9a0482d0b8a691b05978e7491ee68e3ec5c8023b64da8173793c02c",
+    "source/work/tilegen-full-r1/canonical-silu-driver-r1/prepared_memory.h": "2b5e71795602bc02aa39504de4032d82a731234a84c6e771f8be16bb57f2bedb",
+    "source/work/tilegen-full-r1/canonical-silu-driver-r1/sealed_inputs.h": "422466c135bdba2e33e2efef48b61e34b53616873e4ee504fb28d3b7f574f786",
+    "source/work/tilegen-full-r1/canonical-silu-driver-r1/typed_binding.h": "46c5415c5cd37d5550f9206d53eae02db48f81f365905d95a382f7e43f7d6ba1",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/ada_address_mapping.h": "1dedfe56368be08dd3ba3bdc13690c11c383a8ebb2e25aa60c1d1f4c433d6068",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/ada_calibrated_profile.h": "384fd50c6c3ac151f48a9a9d4de8fb74e2d604bac5e4173727b93116e9fbe6f3",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/ada_tuner_profile.h": "508d634c718b1f8825aa5640424abf4522d3b3338c4e5e434f3ddc6c8d05afbb",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/bulk_copy.h": "18c592bc52d3a228506565c2723413f61ddcda393d74ab63b031f223becaaab2",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/cache_geometry.h": "56c12322ec545e3f5da3ac9d31ffa805d7d2bc9b93bb6784c23a05ee01d48aae",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/cta_graph_store.h": "2744b759949319b27a81b186cbb8ed2b91ec57415f02d5c0a2f445c03a0ec18b",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/cta_sparse_slots.h": "c5b41229b86c27eacea78b5b1adaf9d1c9ad91a2387a35fb1d5eb482e741b773",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/cta_warp_placement.h": "6701357f8b553f85dd5e89a8ce590ca8ccce92f06113d09eaa8299fd44d8944c",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/cycle.h": "d097deac2c86a7922aa0f9ec87299d8decb7cd18d9556c7146a3c9a1c9e2ff14",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/cycle_overlap.h": "31ee18bed6e9ec5fcda38a424e903fea9396b756bc4a06c22f3a6dab05b38a15",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/dag_node.h": "50e6823eda5db331cc3ae73294505614192c3e8968413046339c3560251b8778",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/dirty_sector_eval.h": "48a6a78f91a6dead97dd51a671888f55898ac4f882849abfc213157a0b9dc4bd",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/gpu.h": "97429c86043b316c9dfba2eed266f55c5146ca81af41af015b4b7610863d9dcd",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/host_issue_certificate.h": "407f356115039dce7fd4eb9f323b4cccdd87bbecb6bae64810192ca67ee0f95d",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/host_pipeline_front.h": "e168311c217b73ea3ae03262e9e5b08abb6ed076eaaaa2a9079d4d4421353a89",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/lazy_ready_queue.h": "bf1d3c6ef672e822b373b7e895d1d72f18b8ac95ff1b2e6c4eb2b6e694982424",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h": "441ccbcc0a72f417d0d2ea14dca5e7d1fa7ed77735cfcb17f7987b891f5e9564",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/model_semantics.h": "5c023882e4f9afc5400b87bdc855721da6a90605b749ea5aca9700c86a7d5bb4",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/noc.h": "7492b96dc52c2df2aef2c84b9977a0c5382b1dc96d2f3c381917148d44054ad3",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/p32_observation.h": "4bbe1d4a05413bf3b1d126046a4ec9a204c537a6ef7d302e56ecfdc8bc9d265b",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/p32_request_mask.h": "f27a9a65a3e07c00d44f9f0cb85e0ea7fe0b5291de7eca3f697096d0a2d1ad08",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h": "8bb940c73d51912795fa5ce746adc8adf66905445611bd5a6442dab443311b05",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/pipeline.h": "387d564fb07a31a897ebd615a03328bffbb452b082c86c42d5e1aae445a0d05f",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/retry_host_memo.h": "33418c9addbb05490dc1653d127ca5edfae7d2e78dbbf59135933f45ef25c182",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/retry_prefix.h": "080a2292e311242d0d31a1ad2adb9988ef3e7d7ed0e831c4d040f0a760130ecc",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/rtx4000_ada_profile_readiness.h": "0090492b9b818fb6f54775fd7482097400ffa3ca36ca0e29dae93e0c881edb12",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/scheduler.h": "bbd7dbbd0b4afe38a85e8b5e40c8e9931fd9a8a66e74dd0c576031de2e169f70",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/scheduler_observer.h": "edacc13d5f4100a41d4a4e4d971751b279e7171c9cedf1795411cf9283203b7f",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/sector_observer.h": "b77ea82709a8a18a30df98c1f4f7c0721e0031573b8771fba132fa448f5723cb",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/session_mode.h": "2db9324c9bee66f22095ac10fee5e67a06eadef1332fc976f9d1309ad4e9a6d9",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/simulator.h": "046b4772f006c58423055c9aba0ce6e6523f651799ae7e763e7ac7188c88a281",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/simulator_session.h": "963c78fcd5d5a75f361b6014ae80ed4ea860db28893d0f9b9df78cba4ee9dbaf",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/sm.h": "62ef1392dee51ff9ce878527454b05c8c64c7d6387a12a6f7ff5f3cf4c48e460",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/subpartition.h": "464ccfb69e3827ad1c373777bfc6fb8c18bd020f43ac1cbb7bf041e479dffe83",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/tma.h": "2f3d4437b0e308f3d1d1c38b6f561f29ecbede02e99a3e066fb8159169725840",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include/tmem.h": "269d6d44a860d1a9ce529d9e67503f41a6af4171d1e5f0c741d95c7bcfa970eb",
+    "source/work/tilegen-full-r1/core-native-copy-r2/src/gpu.cpp": "2191fdc6c6b39a3c4b7a5140af5825a5795e0990eaef7c81b872460233dbba6b",
+    "source/work/tilegen-full-r1/core-native-copy-r2/src/scheduler.cpp": "82a817f5a741f8e1f7176c8ad7b4d929ff34d9bccb95bf4389ed7c4eb4cd83de",
+    "source/work/tilegen-full-r1/core-native-copy-r2/src/simulator.cpp": "6356a82e99ba3e445124e09cd7baeac9ea8842f3942d0760ed34576153176256",
+    "source/work/tilegen-full-r1/core-native-copy-r2/src/simulator_session.cpp": "f1b32bbb305d247996a6141ab65460656f67e72f31b2f4035fa70745698ced8f",
+    "source/work/tilegen-full-r1/core-native-copy-r2/src/sm.cpp": "c44537914573ff063a219876510b57b74bf80f1e6a43f19fdcb9e9ff66f8c5d1",
+    "source/work/tilegen-full-r1/core-native-copy-r2/src/subpartition.cpp": "0bef9d7123d38b4b493cb3c157871d80e8426ee37de3f12aa5d522d9448c9129",
+    "source/work/tilegen-full-r1/driver-attention-r1/model.h": "fd4548442cdd5ef9f55f6f054990961ae7e689f97e9f0d612a6ae612dfc4cb1c",
+    "source/work/tilegen-full-r1/driver-attention-r1/phase_seals.h": "905fe49041bfa70df4112d2330f024cb02d96034ae8314331db9732e1866b1b6",
+    "source/work/tilegen-full-r1/driver-gemm-p28-r2/statistics.h": "7644b93e31cf264ef466848f97d3f92882f3072186a3dd4b19a97b7e77bd9c2e",
+    "source/work/tilegen-full-r1/driver-gemm-p28-r2/streaming.cpp": "27f97defc3128e37514192916a82e6c8538513e952d32fd80093d3e1791c068d",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_catalog.h": "dd0bdbeef224d65b2924a195a2bfebfdf2bbd24eee1169b53c6b945923c8dfc1",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_qualified.h": "b001efa03d6b39ed552318741cfeaaf16067c368b9a405faaf7e83a5a9e2da43",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/builder.h": "06df72e65713545eb413385da77bcc71842ae0c3d03acf4eeee8e9034ad08631",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/counters.h": "66ccc8347bb262c13493e774ce21a95665ee74c3e7c945e07c04f0f757cbe753",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/family_admission.h": "d496e773f2ee8e6e141c7049a1f2d1ed8d472583ca3df2e1190f6097bcaf9b59",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_admission.h": "6831c8ac2b120d8464054b9fd71bba41042a7acd6334d24c6d7b56d8cd56833e",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_model_sources.h": "a3405bc12986a6ab5ee80883cdd1f2d8d3750e1327f04fa27a341e3bb5218382",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/l2_event_audit.h": "72860c4d4d1575e04168fce8dd226ec5c0167769b12738e91941aff063e18f99",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/linear31_admission.h": "5d5271d35caf3aa6d0fe702ca7c3706a6d6dbc1f32008aa232f67b89684d958f",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/native_memory_program.h": "9fef1c4ca114f83202b3b71eeff11ff4f2a44224bd0f78ea5460b509998cbeb4",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_admission.h": "5f00d0b671064b2dc36867b8c5d1a19a106e34e8d0eb888cb64a92d8dd690dd2",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_model_sources.h": "a2decb7eee381275a46808c6407ef8931003264694595bf15f10b66fce43944b",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/range_plan.h": "dcd5e11890c4b135a6fd0976f875c0b940cfb6898d1e72c20eb6bd1e2ef69350",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/register_program.h": "2feb2bfd5b30865a2d1de9e0945be187a4ce166013e41308e12ec03592569b05",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/semantic_hash.h": "6c5a1aa7bfd6cd2124d3fb48802c56804b331b5933e0634d5341550c4c6ac35f",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/sha256.h": "48f2bcb813d93c1fa509cc255e4d1cea2c2a5293ebb1c68e6692f581e62d8bf8",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_admission.h": "6477bc58d46e330cd41eedc2d3811d826d9e4e45aad6d728721b128f3d349562",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_catalog.h": "27b7e5856218b005d2cca2434704b912e503452f677aabbf497d011a9c555da1",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_qualified.h": "90479bd60318a5d333be231f32c73a5f423a830cb34861c4d045240ce49e246f",
+    "source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/streaming.cpp": "261b77ca09a9445ef149aad5f8417424f5ea1b21bb22956eb71d6476fac8e550",
+    "source/work/tilegen-full-r1/driver-pooled-hash-bulk-r1/sha256.h": "71482a5bba470590a9727b85b65faf81bce8a6bd092cbc6741690673aa9fca72",
+    "source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/role_profiles.h": "677cc879b0b2d8529f8597bc451ec0ae8ebce75e6f14a1890d87b7bf493eeb9e",
+    "source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/statistics.h": "7644b93e31cf264ef466848f97d3f92882f3072186a3dd4b19a97b7e77bd9c2e",
+    "source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/streaming.cpp": "f23887eb33b74d82e2dde4301704103f467ad3a84231ab7699b086b0ff4a73b8",
+    "source/work/tilegen-full-r1/observation-output-compact-r1/compact_cycle_overlap.h": "300646c4f07aded8a75960a76739f309e3e1968effe7716f93cb05392e12508e",
+    "source/work/tilegen-full-r1/runtime-compressed-frame-r1/compressed_frame.h": "2e3fbd8c543ec88040f30f5c8b0614d4163d4329d68eefa1affdd19c64063c8b",
+    "source/work/tilegen-hbf-drain-native-r1/native_backend.h": "c38dd92110316b10d701203caf61ec6c7d1fc08334d47ab632365b0256935d27",
+    "source/work/tilegen-hybrid-cache-r1/bindings.h": "eaf18045a2e1fc98b57c7189f16d97317b0844653f810c12f3d9bcc542218c6b",
+    "source/work/tilegen-hybrid-cache-r1/prefill_binding.h": "ded832585cdd20155f24be39eaf5f3a584c2dc2aecf1f63fa3b54014595ce650",
+    "source/work/tilegen-hybrid-cache-r1/progress_summary.h": "acb9b7f7f57e4c8eef3a596d7b83875153b3c1c80c77346c1bb97a0aef2b3ce0",
+    "source/work/tilegen-hybrid-cache-r1/tiny_context.h": "60aaf8390d0b99f8742fc2d0325c88c1afa4084e9c182c522b0c4341ab6bf6c1",
+    "source/work/tilegen-hybrid-full-r1/fine_context.h": "a1ac94ed36f932d1b34e07bb13b823733cd98e42df68977a22e8aa8de7dad2b4",
+    "source/work/tilegen-hybrid-full-r1/options.h": "5d45e185c89a0509fd543e5000ede895c8bd72bbe30e82e0c67a1e4bdaf2db50",
+    "source/work/tilegen-memory-epoch-native-r1/ada_source.h": "5710aa9d3729a8e39a17019d8887e8eb1fb69d03369d43d8c58a770a46b2d488",
+    "source/work/tilegen-memory-epoch-native-r1/port.h": "fb191a41ba0d98f00e6d89a3ea1dc6d7400b0964def58cbdc48ace43f5811d4e",
+    "source/work/tilegen-memory-phase-runtime-r1/phase_plan.h": "772dc174beb5fa2fa1b285219647b8e401b3f7e3442ba4c4b43dac45aae48058",
+    "source/work/tilegen-norm-shared-r1/adapter/backend.h": "051de2ad41dd151115df94e466ff483c8ffec59b9b522f84c409ae1d1ef2da3e",
+    "source/work/tilegen-norm-shared-r1/adapter/integration.h": "a5fd5bff945110af9d247d790e0ca4d7ab33edb2be675ae3fa03bf6d66c53825",
+    "source/work/tilegen-packet-integration-r1/binding.h": "94b9b048bf5e461bbde052879162690d4fcc38b9e879d22e806ce4c4bfb29580",
+    "source/work/tilegen-packet-integration-r1/source_support.h": "21d7858b1857b371a14c041da04f20d0dd78ebd85283a941fbb769cdd1577f10",
+    "source/work/tilegen-packet-runtime-r1/runtime.h": "3f963370f3ffae24b276ee007771a4ff7b4a519a6317ddf9db0f206d8e82118a",
+    "source/work/tilegen-prefill-compute-native-r1/pref_support/compiled_program.h": "c8906e5cc4a65cf3366ccc6366c3712a75f0f43530e5946283e317e1e61e3928",
+    "source/work/tilegen-prefill-compute-native-r1/pref_support/engine.h": "230ad3fa9cbc5a3aa587ebf68cf41abb0dc5b81cbccd95748e7092ff939bc216",
+    "source/work/tilegen-prefill-compute-native-r1/pref_support/selector.h": "e83f0a48303026afbbea44d24d0c39b96ad736d3b5edb3b41ce8eb64956f801b",
+    "source/work/tilegen-prefill-compute-native-r1/prefill_setup.h": "d5db90b38ab00f27b43fcc21a026f1187f9f4b5aeef7b40fdc9c3bcb9fa915db",
+    "source/work/tilegen-prefill-compute-phase-r1/runtime-recurrence-r1/resource_recurrence.h": "4016e5bcb7f49969db7314bd4a00247dfc04ec0d917463f65bac79af91127f8d",
+    "source/work/tilegen-prefill-compute-phase-r1/segment_plan.h": "591a0c0b47d58d86691f0b2fa9c154d98f0d8fed83d608562dcacaa9d956dc37",
+    "source/work/tilegen-tiny-basic-r1/gemv_binding.h": "89bf8767d1faad7dcefc372602426afede68d44be4baf4e6869e198708aed6c2",
+    "source/work/tilegen-tiny-basic-r1/silu_binding.h": "bf6cb9ea4c26796a136cdf149f8d607d220d84b65608e5cf67db9a7df98e0c72",
+    "source/work/tilegen-tiny-full-r1/import.h": "08deb8be5e3b673ac0f6ea141596aa9f84aa6d1fda4139b55bb9895416048301",
+    "source/work/tilegen-tiny-full-r1/prefill_seals.h": "d1f50413e8d1e6efb77045da946471a1272ab67b2b13b4313ba6a16233a25fe6",
+    "source/work/tilegen-tiny-full-r1/prefill_support.h": "f9aa47f59a9359ab7ed7823b5d377f20b394b4b5f4b8b014e964294d99fd2700",
+    "source/work/tilegen-tiny-full-r1/reporting.h": "d8b6c7613fd4da02cf99b8873574edb7e75edbb664d729388ada46661912ef96",
+    "source/work/tilegen-tiny-full-r1/source.h": "6f9e19a86707038ce3ae9146f785c670bb121b20227cf3f4c5367c28ef3ffc1b",
+    "source/work/tilegen-tiny-norm-r1/norm_binding.h": "e8749999774c6946026c9842b71b93b8e499721470c4950a99b2c2f444806f27",
+    "source/work/tilegen-tiny-rotary-r1/rotary_binding.h": "a316f4e594a8c4e305995ea4b96b5712ee3ee6e21f18befd587df8c64ae560d3",
+    "tests/ada_calibrated_e2e_test.py": "5747e505872282944216af02f51c0706806f0b2966eb1ae03e232fb96b1b9da9",
+    "tests/fixtures/ada-sector.jsonl": "583659010814f0da0a77de20901ddb399ac4ae3b5bb270221e8032007e01cd32",
+    "tools/ada_profile_registry.py": "a1972a7920d01c060f990577e3d0b4b0b477c2fc380640d0ef2c63e2d7f22e9a",
+    "tools/import_ada_calibrations.py": "8252bfdb20670bfacda6df440eff1d267df3b7e6c73e385ba861e458ebb1c8b0",
+    "tools/import_ada_tuner.py": "cd74e39f518724c7e07e08d3e9b1e1e6112151d45cfce56fd2fe3602c82cb97a"
+  },
+  "status": "PASS_ADA_CALIBRATED_WRAPPER_E2E",
+  "subprocesses": [
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/default_r2.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/default_r2",
+        "--emit-trace"
+      ],
+      "expected_rejection": false,
+      "id": "default_r2",
+      "input_sha256": "ef5af630a7b17588211d452ec183529632b96367b8a1862a005daa92b4a0bc45",
+      "returncode": 0,
+      "wall_minutes": 0.001564306933333333
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/explicit_v1.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/explicit_v1",
+        "--profile",
+        "tuner-v1",
+        "--emit-trace"
+      ],
+      "expected_rejection": false,
+      "id": "explicit_v1",
+      "input_sha256": "ef5af630a7b17588211d452ec183529632b96367b8a1862a005daa92b4a0bc45",
+      "returncode": 0,
+      "wall_minutes": 0.001556018066666667
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/capacity_tuner-v1.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/capacity_tuner-v1",
+        "--profile",
+        "tuner-v1",
+        "--emit-trace"
+      ],
+      "expected_rejection": false,
+      "id": "capacity_tuner-v1",
+      "input_sha256": "bbddc91d36f45dbc8fd33550ecca6c86091fae5900732fc075d616381041ed83",
+      "returncode": 0,
+      "wall_minutes": 0.0015817750000000005
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/capacity_r2-adaptive.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/capacity_r2-adaptive",
+        "--profile",
+        "r2-adaptive",
+        "--emit-trace"
+      ],
+      "expected_rejection": false,
+      "id": "capacity_r2-adaptive",
+      "input_sha256": "bbddc91d36f45dbc8fd33550ecca6c86091fae5900732fc075d616381041ed83",
+      "returncode": 0,
+      "wall_minutes": 0.0015541062499999998
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/fifo_hit_order.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/fifo_hit_order",
+        "--profile",
+        "r3-fifo-shared32",
+        "--emit-trace"
+      ],
+      "expected_rejection": false,
+      "id": "fifo_hit_order",
+      "input_sha256": "10ea9b791f78fe89262ccbebb1c267cc88ea62e12e0042dcfbb926465c587f25",
+      "returncode": 0,
+      "wall_minutes": 0.0015321826333333335
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/observed_r2-shared64.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/observed_r2-shared64",
+        "--profile",
+        "r2-shared64"
+      ],
+      "expected_rejection": false,
+      "id": "observed_r2-shared64",
+      "input_sha256": "b6695bf444179a0e15ea355927db1c368ca3e546cf782f80232aad1b55ebe6d1",
+      "returncode": 0,
+      "wall_minutes": 0.0015577270833333323
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/observed_r2-shared100.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/observed_r2-shared100",
+        "--profile",
+        "r2-shared100"
+      ],
+      "expected_rejection": false,
+      "id": "observed_r2-shared100",
+      "input_sha256": "5923f2942175a3109af9c5df62e968e9beb39ec7408131ac5ab50e92cabd09b9",
+      "returncode": 0,
+      "wall_minutes": 0.0014393979166666662
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/observed_r3-fifo-shared64.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/observed_r3-fifo-shared64",
+        "--profile",
+        "r3-fifo-shared64"
+      ],
+      "expected_rejection": false,
+      "id": "observed_r3-fifo-shared64",
+      "input_sha256": "c9c5e8c85234ff24e5495cd9783a99b3608c77ba8dbe44608bd45e4010c4e83a",
+      "returncode": 0,
+      "wall_minutes": 0.0014202583333333334
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/observed_r3-fifo-shared100.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/observed_r3-fifo-shared100",
+        "--profile",
+        "r3-fifo-shared100"
+      ],
+      "expected_rejection": false,
+      "id": "observed_r3-fifo-shared100",
+      "input_sha256": "4b3585d60af811b3daacde83f4e70c182a29c3b65c14269a2368203ea14a4817",
+      "returncode": 0,
+      "wall_minutes": 0.001435934033333334
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/adaptive_observed_32768.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/adaptive_observed_32768",
+        "--emit-trace"
+      ],
+      "expected_rejection": false,
+      "id": "adaptive_observed_32768",
+      "input_sha256": "be28ea7891e24939bdf385ccd1fab5577fbd564aa9dc1acfbdeae902b939d59b",
+      "returncode": 0,
+      "wall_minutes": 0.0014648229166666674
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/adaptive_observed_65536.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/adaptive_observed_65536",
+        "--emit-trace"
+      ],
+      "expected_rejection": false,
+      "id": "adaptive_observed_65536",
+      "input_sha256": "9ad85e9b148f28861c3fc3f5e5687149d33c604416c0f9c2ad847e8c9272e0a5",
+      "returncode": 0,
+      "wall_minutes": 0.0015012125000000006
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/adaptive_observed_102400.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/adaptive_observed_102400",
+        "--emit-trace"
+      ],
+      "expected_rejection": false,
+      "id": "adaptive_observed_102400",
+      "input_sha256": "eba7860424ca76df9c98e8d0117131fb02de8b6815716dd75cbc937d3c5e9224",
+      "returncode": 0,
+      "wall_minutes": 0.0014224312499999967
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_missing_r2-shared64.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_missing_r2-shared64",
+        "--profile",
+        "r2-shared64",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_missing_r2-shared64",
+      "input_sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0",
+      "returncode": 1,
+      "wall_minutes": 0.0014120569499999995
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_mismatch_r2-shared64.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_mismatch_r2-shared64",
+        "--profile",
+        "r2-shared64",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_mismatch_r2-shared64",
+      "input_sha256": "9cc967984cb804702fb8af28b0d29058be8f81eb776376e07fc373a2ec4e15b7",
+      "returncode": 1,
+      "wall_minutes": 0.0013972076333333306
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_missing_r2-shared100.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_missing_r2-shared100",
+        "--profile",
+        "r2-shared100",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_missing_r2-shared100",
+      "input_sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0",
+      "returncode": 1,
+      "wall_minutes": 0.0014140666666666653
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_mismatch_r2-shared100.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_mismatch_r2-shared100",
+        "--profile",
+        "r2-shared100",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_mismatch_r2-shared100",
+      "input_sha256": "9cc967984cb804702fb8af28b0d29058be8f81eb776376e07fc373a2ec4e15b7",
+      "returncode": 1,
+      "wall_minutes": 0.001547060416666668
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_missing_r3-fifo-shared32.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_missing_r3-fifo-shared32",
+        "--profile",
+        "r3-fifo-shared32",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_missing_r3-fifo-shared32",
+      "input_sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0",
+      "returncode": 1,
+      "wall_minutes": 0.001605998616666667
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_mismatch_r3-fifo-shared32.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_mismatch_r3-fifo-shared32",
+        "--profile",
+        "r3-fifo-shared32",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_mismatch_r3-fifo-shared32",
+      "input_sha256": "4dc0f41651cb95ce0548a014bd4aa22ffec70f59d704d7e847785b5e2cb72670",
+      "returncode": 1,
+      "wall_minutes": 0.0016469882000000027
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_missing_r3-fifo-shared64.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_missing_r3-fifo-shared64",
+        "--profile",
+        "r3-fifo-shared64",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_missing_r3-fifo-shared64",
+      "input_sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0",
+      "returncode": 1,
+      "wall_minutes": 0.0016365284833333327
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_mismatch_r3-fifo-shared64.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_mismatch_r3-fifo-shared64",
+        "--profile",
+        "r3-fifo-shared64",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_mismatch_r3-fifo-shared64",
+      "input_sha256": "9cc967984cb804702fb8af28b0d29058be8f81eb776376e07fc373a2ec4e15b7",
+      "returncode": 1,
+      "wall_minutes": 0.0015537076499999988
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_missing_r3-fifo-shared100.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_missing_r3-fifo-shared100",
+        "--profile",
+        "r3-fifo-shared100",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_missing_r3-fifo-shared100",
+      "input_sha256": "a73bba481c807803a5eba40cdd3e2de83213c62473cf3b43a376b7eae63fb8f0",
+      "returncode": 1,
+      "wall_minutes": 0.0015104374999999985
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_mismatch_r3-fifo-shared100.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_mismatch_r3-fifo-shared100",
+        "--profile",
+        "r3-fifo-shared100",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_mismatch_r3-fifo-shared100",
+      "input_sha256": "9cc967984cb804702fb8af28b0d29058be8f81eb776376e07fc373a2ec4e15b7",
+      "returncode": 1,
+      "wall_minutes": 0.0015032590333333299
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_unsupported_observation.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_unsupported_observation",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_unsupported_observation",
+      "input_sha256": "ba0db955bbd6fe654c38cd425a001c705425f901a3af993ac1635c9d6505b5f7",
+      "returncode": 1,
+      "wall_minutes": 0.001512150000000001
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_resources_exceed_observation.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_resources_exceed_observation",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_resources_exceed_observation",
+      "input_sha256": "9f68d697d724ce85cf294811d2c9ac443fc59bb8c5ff7eff3ad32c9deff9ce92",
+      "returncode": 1,
+      "wall_minutes": 0.001507106949999996
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_fixed_resources_exceed_observation.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_fixed_resources_exceed_observation",
+        "--profile",
+        "r2-shared64",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_fixed_resources_exceed_observation",
+      "input_sha256": "c3a222314b1e17fb91e32e41ebd4fabf2057bee80e86afcc1925348cb9fc26d2",
+      "returncode": 1,
+      "wall_minutes": 0.0015096888999999983
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/ada_profile.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-fixture-final/ada_cache_replay",
+        "--input",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/inputs/reject_unsupported_profile.jsonl",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/reject_unsupported_profile",
+        "--profile",
+        "r3-fifo-shared28",
+        "--emit-trace"
+      ],
+      "expected_rejection": true,
+      "id": "reject_unsupported_profile",
+      "input_sha256": "5ccf93546a68f4f5b0499506c24a68caa301531f1fe3f01c37b44f88829b0605",
+      "returncode": 2,
+      "wall_minutes": 0.0005267381833333306
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/isolated-importer/tools/import_ada_calibrations.py",
+        "--check"
+      ],
+      "expected_rejection": false,
+      "id": "importer_pristine",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/isolated-importer/tools/import_ada_calibrations.py",
+        "--check"
+      ],
+      "expected_rejection": true,
+      "id": "importer_reject_source_comment",
+      "returncode": 1
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/isolated-importer/tools/import_ada_calibrations.py",
+        "--check"
+      ],
+      "expected_rejection": true,
+      "id": "importer_reject_profile_rop",
+      "returncode": 1
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-alignment-20260922-r2/repo/build/calibrated-e2e-final/isolated-importer/tools/import_ada_calibrations.py",
+        "--check"
+      ],
+      "expected_rejection": false,
+      "id": "importer_restored",
+      "returncode": 0
+    }
+  ],
+  "test_sha256": "5747e505872282944216af02f51c0706806f0b2966eb1ae03e232fb96b1b9da9"
+}

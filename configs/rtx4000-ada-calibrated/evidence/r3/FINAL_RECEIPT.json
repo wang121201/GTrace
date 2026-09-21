@@ -1,0 +1,19 @@
+{
+  "status": "COMPLETED_CANDIDATES_NOT_PROMOTED",
+  "ncu_kernels": 1500,
+  "native_checks": 1500,
+  "additional_export_numeric_checks": 300,
+  "new_configurations": 3,
+  "model_grid": 108,
+  "full_simulator_completed_jobs": 10,
+  "hardware_conditions": 300,
+  "train": 48,
+  "heldout": 240,
+  "controls": 12,
+  "gpu_released": true,
+  "subagents": {
+    "started": 0,
+    "completed": 0,
+    "active": 0
+  }
+}

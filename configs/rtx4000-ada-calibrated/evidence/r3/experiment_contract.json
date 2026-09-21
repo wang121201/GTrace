@@ -1,0 +1,84 @@
+{
+  "round": "r3",
+  "scope": "serial address-dependent global reads; isolates replacement/allocation from overlapping misses",
+  "hardware_conditions": 300,
+  "split": {
+    "train": 48,
+    "heldout": 240,
+    "cg_controls": 12,
+    "training_rule": "cg=0, order=forward, offset=0; all other ca conditions held out"
+  },
+  "repeat_counts": {
+    "native": 5,
+    "ncu": 5
+  },
+  "orders": {
+    "0": "forward cycle",
+    "1": "one fixed xorshift-permuted cycle",
+    "2": "alternate forward/reverse each of eight passes"
+  },
+  "strides_bytes": [
+    32,
+    128
+  ],
+  "allocation_offsets_bytes": [
+    0,
+    4096
+  ],
+  "reference_candidate_grid": {
+    "policies": [
+      "LRU",
+      "FIFO",
+      "RANDOM"
+    ],
+    "allocation_units_bytes": [
+      32,
+      128
+    ],
+    "set_counts": [
+      4,
+      16,
+      64
+    ],
+    "set_index": [
+      "linear",
+      "xor"
+    ],
+    "capacity_scale": [
+      0.875,
+      1.0,
+      1.125
+    ],
+    "random_seeds": [
+      11,
+      29,
+      47
+    ]
+  },
+  "selection": "minimize aggregate training L2-read WAPE; choose before inspecting heldout; report all heldout and each profile, no dropped unstable rows",
+  "candidate_model_scope": "standalone serial effective cache replay; not integrated into Accel-Sim or memgen; no cycle/timing or writeback claims",
+  "upstream_lru_crosscheck_cases": [
+    24,
+    48,
+    120,
+    144,
+    216,
+    240
+  ],
+  "sources": {
+    "collector_sha256": "bd03c55d7929295eb2fbe7ea1e10c5c5b50d7f58875a85a9b53015454d71f0e3",
+    "simulator_sha256": "c78bbf898fa217d0d1cd2d8a54f66e2bf9420d1b80ebf12b7c4ee8aadeb5f89e"
+  },
+  "baseline_parameter_changes": {
+    "shmem_options": "0,8,16,32,64,100 -> 32,64,100",
+    "additional_l2_cycles": "238 -> 239"
+  },
+  "status": "COMPLETED_NOT_PROMOTED",
+  "summary": "../analysis/summary_r3.json",
+  "validation": {
+    "baseline_accelsim_equivalence": 6,
+    "exported_candidate_equivalence": 4,
+    "serial_trace_address_matches": 94208,
+    "gpu_released": true
+  }
+}

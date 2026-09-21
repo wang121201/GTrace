@@ -1,5 +1,5 @@
 #include "direct_cache.h"
-#include "ada_tuner_profile.h"
+#include "ada_calibrated_profile.h"
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -12,9 +12,10 @@ static U natural(const J& x,const char* field){
 }
 static unsigned u32(const J&j,const char*k){U n=natural(j,k);if(n>UINT32_MAX)throw std::invalid_argument(k);return unsigned(n);}
 int main(int argc,char**argv){try{
- if(argc<2||argc>3)throw std::invalid_argument("usage: ada_cache_replay source.jsonl [postcache.requests.jsonl]");
+ if(argc<2||argc>4)throw std::invalid_argument("usage: ada_cache_replay source.jsonl [postcache.requests.jsonl|-] [profile]");
+ const auto selected=g::parse_ada_cache_profile(argc==4?argv[3]:"r2-adaptive");
  std::ifstream in(argv[1]);if(!in)throw std::runtime_error("cannot read input");
- std::ofstream trace;if(argc==3){std::ifstream exists(argv[2]);if(exists.good())throw std::runtime_error("trace output already exists");trace.open(argv[2]);if(!trace)throw std::runtime_error("cannot create trace");}
+ std::ofstream trace;if(argc>=3 && std::string(argv[2])!="-"){std::ifstream exists(argv[2]);if(exists.good())throw std::runtime_error("trace output already exists");trace.open(argv[2]);if(!trace)throw std::runtime_error("cannot create trace");}
  std::unique_ptr<direct_native::FunctionalCache> cache;J phases=J::array(),before;g::AdaKernelResources resources{};J current;
  U kernel_count=0,instructions=0;bool active=false;std::array<U,20> read{},write{};std::string line;U line_number=0;
  auto snapshot_phase=[&]{if(!active)return;auto after=cache->snapshot();J delta;for(const char*k:{"source_read_bytes","source_write_bytes","source_memory_instructions","DRAM_read_bytes","DRAM_write_bytes","DRAM_read_requests","DRAM_write_requests","L1_unmodeled_reservation_stalls"})delta[k]=after.at(k).get<U>()-before.at(k).get<U>();current["traffic"]=delta;current["cache_end"]=after;phases.push_back(current);};
@@ -23,10 +24,11 @@ int main(int argc,char**argv){try{
  while(std::getline(in,line)){
   ++line_number;if(line.empty())continue;auto j=J::parse(line);const auto type=j.at("type").get<std::string>();
   if(type=="kernel"){
-   snapshot_phase();resources={u32(j,"threads_per_cta"),u32(j,"registers_per_thread"),u32(j,"shared_bytes_per_cta"),natural(j,"grid_ctas")};auto a=g::AdaTunerProfile::allocate(resources);
-   if(!cache)cache=std::make_unique<direct_native::FunctionalCache>(g::AdaTunerProfile::l1(a),g::AdaTunerProfile::l2_bytes,[](int,U address){return address;},emit,g::AdaTunerProfile::l2_geometry());
+   snapshot_phase();resources={u32(j,"threads_per_cta"),u32(j,"registers_per_thread"),u32(j,"shared_bytes_per_cta"),natural(j,"grid_ctas")};std::optional<std::uint32_t> observed; if(j.contains("observed_shared_carveout_bytes"))observed=u32(j,"observed_shared_carveout_bytes");
+   auto resolved=g::resolve_ada_cache_profile(selected,observed);auto a=g::AdaCalibratedProfile::allocate(resources,selected,observed);auto l1=g::AdaCalibratedProfile::l1(a,resolved);
+   if(!cache)cache=std::make_unique<direct_native::FunctionalCache>(l1,g::AdaTunerProfile::l2_bytes,[](int,U address){return address;},emit,g::AdaTunerProfile::l2_geometry());
    else cache->reconfigure_l1(a.l1_bytes,a.l1_ways);
-   cache->begin_kernel();before=cache->snapshot();current={{"name",j.at("name")},{"index",kernel_count++},{"launch_resources",j},{"resident_ctas_per_sm",a.resident_ctas_per_sm},{"shared_carveout_bytes",a.shared_carveout_bytes},{"L1_bytes_per_sm",a.l1_bytes},{"L1_ways",a.l1_ways},{"L1_sets",4}};active=true;
+   cache->begin_kernel();before=cache->snapshot();current={{"name",j.at("name")},{"index",kernel_count++},{"launch_resources",j},{"resident_ctas_per_sm",a.resident_ctas_per_sm},{"shared_carveout_bytes",a.shared_carveout_bytes},{"L1_bytes_per_sm",a.l1_bytes},{"L1_ways",a.l1_ways},{"L1_sets",a.l1_bytes/(a.l1_ways*128)},{"L1_replacement",g::per_sm_l1_replacement_name(l1.replacement)},{"resolved_profile",g::ada_cache_profile_name(resolved)},{"carveout_source",observed?"observed_shared_carveout_bytes":"resource_rule_not_observed"}};active=true;
   }else if(type=="memory"){
    if(!active)throw std::invalid_argument("memory before kernel");
    U cta=natural(j,"cta"),warp=natural(j,"warp"),matrix=natural(j,"allocation_id");if(cta>=resources.grid_ctas||warp>=(resources.threads_per_cta+31)/32||matrix>INT32_MAX)throw std::invalid_argument("source identity exceeds launch contract");
@@ -46,7 +48,9 @@ int main(int argc,char**argv){try{
  if(!cache)throw std::invalid_argument("input has no kernel");snapshot_phase();cache->verify_resident_ledger();auto totals=cache->snapshot();J partitions=J::array();U rs=0,ws=0;
  for(unsigned p=0;p<20;++p){rs+=read[p];ws+=write[p];partitions.push_back({{"channel",p/2},{"memory_subpartition",p},{"read_bytes",read[p]},{"write_bytes",write[p]}});}
  if(rs!=totals.at("DRAM_read_bytes").get<U>()||ws!=totals.at("DRAM_write_bytes").get<U>())throw std::logic_error("partition byte conservation failed");
- J report={{"schema","GTSIM_ADA_FUNCTIONAL_REPLAY_V1"},{"status","COMPLETED_FUNCTIONAL_ONLY"},{"configuration","accelsim-rtx4000-ada-v1"},{"source_input","explicit instruction/subop byte ranges; arbitrary input is not automatically native-qualified"},{"SM_count",48},{"compute_subpartitions_per_SM",4},{"memory_channels",10},{"memory_subpartitions",20},{"kernel_count",kernel_count},{"source_instructions",instructions},{"phases",phases},{"cache",totals},{"partitions",partitions},{"compute_executed",false},{"HBFSIM_executed",false},{"simulated_latency_ns",nullptr},{"bandwidth_GBps",nullptr},{"NCU_accuracy_tested",false},{"timing_equivalence_to_AccelSim",false},{"SM_assignment","explicit sm if supplied, otherwise declared CTA modulo 48; not observed hardware scheduling"},{"initial_cache","cold"},{"L2_cross_kernel",true},{"final_flush",false},{"unmodeled","inflight MSHR/merge, reservation retry timing, queues, interconnect, hardware replacement order, host memcpy/memset lifecycle and in-kernel membar invalidation"}};
+ J report={{"schema","GTSIM_ADA_FUNCTIONAL_REPLAY_V1"},{"status","COMPLETED_FUNCTIONAL_ONLY"},{"configuration",g::ada_cache_profile_name(selected)},{"source_input","explicit instruction/subop byte ranges; arbitrary input is not automatically native-qualified"},{"SM_count",48},{"compute_subpartitions_per_SM",4},{"memory_channels",10},{"memory_subpartitions",20},{"kernel_count",kernel_count},{"source_instructions",instructions},{"phases",phases},{"cache",totals},{"partitions",partitions},{"compute_executed",false},{"HBFSIM_executed",false},{"simulated_latency_ns",nullptr},{"bandwidth_GBps",nullptr},{"NCU_accuracy_tested",false},{"timing_equivalence_to_AccelSim",false},{"SM_assignment","explicit sm if supplied, otherwise declared CTA modulo 48; not observed hardware scheduling"},{"initial_cache","cold"},{"L2_cross_kernel",true},{"final_flush",false},{"unmodeled","inflight MSHR/merge, reservation retry timing, queues, interconnect, hardware replacement order, host memcpy/memset lifecycle and in-kernel membar invalidation"}};
+ report["reference_latency_cycles"]={{"L1_base",34},{"L2_additional",selected==g::AdaCacheProfile::TUNER_V1?238:239},{"DRAM_additional",324},{"executed",false}};
+ report["calibration_status"]=std::string(g::ada_cache_profile_name(selected)).rfind("r3-",0)==0?"EXPERIMENTAL_NOT_PROMOTED":"PARTIALLY_VALIDATED_OR_ORIGINAL_REFERENCE";
  report["reservation_approximation_observed"]=totals.at("L1_unmodeled_reservation_stalls").get<U>()!=0;
  if(trace.is_open()){trace.flush();if(!trace)throw std::runtime_error("trace write failed");report["trace_format"]="GTSIM_ADA_POSTCACHE_SECTOR_V1; JSONL, not legacy TGCSIM01 read128";}
  std::cout<<report.dump(2)<<'\n';return 0;

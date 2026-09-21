@@ -12,7 +12,7 @@ import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-TESTS = ('ada_address_mapping_test', 'ada_l1_test', 'ada_direct_cache_test', 'ada_profile_test', 'ada_fine_partition_test', 'cache_geometry_test', 'dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test', 'trace_replay_test', 'stage_replay_test', 'direct_phase_profile_test', 'replay_phase_report_test', 'replay_backend_test')
+TESTS = ('ada_l1_policy_test', 'ada_calibrated_profile_test', 'ada_calibrated_timing_test', 'ada_address_mapping_test', 'ada_l1_test', 'ada_direct_cache_test', 'ada_profile_test', 'ada_fine_partition_test', 'cache_geometry_test', 'dirty32_test', 'direct_cache_smoke', 'native_trace_test', 'cta_validation_test', 'trace_replay_test', 'stage_replay_test', 'direct_phase_profile_test', 'replay_phase_report_test', 'replay_backend_test')
 HBF = ('hbm/hbm_device.cpp', 'resource_calendar.cpp', 'gap_calendar.cpp', 'address_heatmap.cpp')
 
 
@@ -99,7 +99,10 @@ def main():
                     row['checks'] = int(match.group(1))
                 else:
                     result = json.loads(text)
-                    expected = {'ada_address_mapping_test':'PASS_ADA_ADDRESS_MAPPING',
+                    expected = {'ada_l1_policy_test':'PASS_ADA_L1_POLICY',
+                                'ada_calibrated_profile_test':'PASS_ADA_CALIBRATED_PROFILE',
+                                'ada_calibrated_timing_test':'PASS_ADA_CALIBRATED_TIMING',
+                                'ada_address_mapping_test':'PASS_ADA_ADDRESS_MAPPING',
                                 'ada_l1_test':'PASS_ADA_L1',
                                 'ada_direct_cache_test':'PASS_ADA_FUNCTIONAL_DIRECT_CACHE',
                                 'ada_profile_test':'PASS_ADA_PROFILE',

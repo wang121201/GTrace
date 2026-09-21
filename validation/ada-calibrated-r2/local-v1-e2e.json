@@ -1,0 +1,700 @@
+{
+  "check_count": 139,
+  "checks": [
+    {
+      "id": "fixture.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.counts",
+      "status": "PASS"
+    },
+    {
+      "DRAM_read_bytes": 1152,
+      "DRAM_write_bytes": 32,
+      "id": "fixture.bytes",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.events",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.trace_order",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.trace_no_timing",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.partitions",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.partition_conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.adaptive",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.retains_L2",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.lazy_partial_completion",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.dirty_conservation",
+      "status": "PASS"
+    },
+    {
+      "id": "fixture.scope",
+      "status": "PASS"
+    },
+    {
+      "id": "no_final_flush.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "no_final_flush.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "no_final_flush.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "no_final_flush.resident_dirty",
+      "status": "PASS"
+    },
+    {
+      "id": "partial_merge.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "partial_merge.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "partial_merge.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "partial_merge.real_fill",
+      "status": "PASS"
+    },
+    {
+      "id": "partial_merge.retains_dirty",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_threads_per_cta.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_threads_per_cta.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_threads_per_cta.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_threads_per_cta.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_threads_per_cta.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_registers_per_thread.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_registers_per_thread.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_registers_per_thread.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_registers_per_thread.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_registers_per_thread.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_shared_bytes_per_cta.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_shared_bytes_per_cta.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_shared_bytes_per_cta.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_shared_bytes_per_cta.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_shared_bytes_per_cta.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_grid_ctas.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_grid_ctas.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_grid_ctas.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_grid_ctas.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_grid_ctas.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_threads.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_threads.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_threads.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_threads.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_threads.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_grid.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_grid.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_grid.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_grid.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_grid.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_registers.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_registers.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_registers.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_registers.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_registers.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_bytes.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_bytes.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_bytes.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_bytes.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_zero_bytes.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_bytes.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_bytes.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_bytes.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_bytes.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_bytes.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_address.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_address.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_address.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_address.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_negative_address.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_float_address.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_float_address.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_float_address.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_float_address.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_float_address.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bool_address.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bool_address.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bool_address.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bool_address.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bool_address.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_lane32.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_lane32.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_lane32.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_lane32.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_lane32.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_address_overflow.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_address_overflow.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_address_overflow.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_address_overflow.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_address_overflow.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_empty_ranges.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_empty_ranges.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_empty_ranges.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_empty_ranges.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_empty_ranges.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_grid.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_grid.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_grid.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_grid.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_grid.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_warp.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_warp.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_warp.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_warp.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_warp.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_SM.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_SM.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_SM.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_SM.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_out_of_SM.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bad_allocation.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bad_allocation.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bad_allocation.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bad_allocation.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_bad_allocation.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_operation.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_operation.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_operation.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_operation.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_unknown_operation.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_memory_before_kernel.exit",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_memory_before_kernel.receipt",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_memory_before_kernel.pins",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_memory_before_kernel.no_success_result",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_memory_before_kernel.diagnostic",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.pristine",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.tuner_value.mutation_present",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.tuner_value.rejected",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.trace_value.mutation_present",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.trace_value.rejected",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.profile_claim.mutation_present",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.profile_claim.rejected",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.byte_pin_rejected",
+      "status": "PASS"
+    },
+    {
+      "id": "importer.restored_control",
+      "status": "PASS"
+    },
+    {
+      "id": "original_inputs_unchanged",
+      "status": "PASS"
+    }
+  ],
+  "error": null,
+  "pins": {
+    "ada_profile.py": "0e93df6d0140fe98252c92715e27132b2284b7e037c77fa4061e70e0f5ad31e4",
+    "binary": "902aaeebb9af558152c9f71c74c1a0146d55042a694a5c66940a716c63724536",
+    "configs/rtx4000-ada-accelsim-v1/profile.json": "54e2f5c749da7a3a40f59f773fd9bef888867d89e382f4c27718613d06ea7db3",
+    "configs/rtx4000-ada-accelsim-v1/source/gpgpusim.config": "e09511b9d168632e975422b19a9557ff5ed4482ace160fa428f9c70455f5a891",
+    "configs/rtx4000-ada-accelsim-v1/source/trace.config": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b",
+    "tests/fixtures/ada-sector.jsonl": "583659010814f0da0a77de20901ddb399ac4ae3b5bb270221e8032007e01cd32",
+    "tools/import_ada_tuner.py": "cd74e39f518724c7e07e08d3e9b1e1e6112151d45cfce56fd2fe3602c82cb97a"
+  },
+  "schema": "GTSIM_ADA_PROFILE_E2E_TEST_V1",
+  "scope": "CPU functional replay only; no timing/GPU/NCU qualification",
+  "status": "PASS_ADA_PROFILE_E2E",
+  "subprocesses": [
+    {
+      "id": "fixture",
+      "returncode": 0
+    },
+    {
+      "id": "no_final_flush",
+      "returncode": 0
+    },
+    {
+      "id": "partial_merge",
+      "returncode": 0
+    },
+    {
+      "id": "reject_missing_threads_per_cta",
+      "returncode": 1
+    },
+    {
+      "id": "reject_missing_registers_per_thread",
+      "returncode": 1
+    },
+    {
+      "id": "reject_missing_shared_bytes_per_cta",
+      "returncode": 1
+    },
+    {
+      "id": "reject_missing_grid_ctas",
+      "returncode": 1
+    },
+    {
+      "id": "reject_zero_threads",
+      "returncode": 1
+    },
+    {
+      "id": "reject_zero_grid",
+      "returncode": 1
+    },
+    {
+      "id": "reject_unknown_registers",
+      "returncode": 1
+    },
+    {
+      "id": "reject_zero_bytes",
+      "returncode": 1
+    },
+    {
+      "id": "reject_negative_bytes",
+      "returncode": 1
+    },
+    {
+      "id": "reject_negative_address",
+      "returncode": 1
+    },
+    {
+      "id": "reject_float_address",
+      "returncode": 1
+    },
+    {
+      "id": "reject_bool_address",
+      "returncode": 1
+    },
+    {
+      "id": "reject_lane32",
+      "returncode": 1
+    },
+    {
+      "id": "reject_address_overflow",
+      "returncode": 1
+    },
+    {
+      "id": "reject_empty_ranges",
+      "returncode": 1
+    },
+    {
+      "id": "reject_out_of_grid",
+      "returncode": 1
+    },
+    {
+      "id": "reject_out_of_warp",
+      "returncode": 1
+    },
+    {
+      "id": "reject_out_of_SM",
+      "returncode": 1
+    },
+    {
+      "id": "reject_bad_allocation",
+      "returncode": 1
+    },
+    {
+      "id": "reject_unknown_operation",
+      "returncode": 1
+    },
+    {
+      "id": "reject_memory_before_kernel",
+      "returncode": 1
+    },
+    {
+      "id": "importer_pristine",
+      "returncode": 0
+    },
+    {
+      "id": "importer_tuner_value",
+      "returncode": 1
+    },
+    {
+      "id": "importer_trace_value",
+      "returncode": 1
+    },
+    {
+      "id": "importer_profile_claim",
+      "returncode": 1
+    },
+    {
+      "id": "importer_pin_whitespace",
+      "returncode": 1
+    },
+    {
+      "id": "importer_restored",
+      "returncode": 0
+    }
+  ],
+  "test_sha256": "c11599d71df6d60f5bd69f8ef8ce360c6717e8e52a4772639a434172060722d6",
+  "timing_fields": "Measured CPU/wall are in child run receipts, not this deterministic receipt"
+}

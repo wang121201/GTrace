@@ -1,0 +1,915 @@
+{
+  "status": "FROZEN_BEFORE_HELDOUT_SCORING",
+  "train_conditions": 48,
+  "selection_rule": "minimum training L2-read WAPE; lexicographic ID breaks exact ties",
+  "selected": {
+    "best_overall": "FIFO_u128_s64_h0_c1000",
+    "r2_lru_baseline": "LRU_u128_s4_h0_c1000",
+    "best_LRU": "LRU_u128_s64_h0_c1000",
+    "best_FIFO": "FIFO_u128_s64_h0_c1000",
+    "best_RANDOM": "RANDOM_u128_s64_h0_c875"
+  },
+  "selected_parameters": {
+    "best_overall": {
+      "policy": "FIFO",
+      "allocation_unit_bytes": 128,
+      "sets": 64,
+      "set_hash": "linear",
+      "capacity_scale": 1.0
+    },
+    "r2_lru_baseline": {
+      "policy": "LRU",
+      "allocation_unit_bytes": 128,
+      "sets": 4,
+      "set_hash": "linear",
+      "capacity_scale": 1.0
+    },
+    "best_LRU": {
+      "policy": "LRU",
+      "allocation_unit_bytes": 128,
+      "sets": 64,
+      "set_hash": "linear",
+      "capacity_scale": 1.0
+    },
+    "best_FIFO": {
+      "policy": "FIFO",
+      "allocation_unit_bytes": 128,
+      "sets": 64,
+      "set_hash": "linear",
+      "capacity_scale": 1.0
+    },
+    "best_RANDOM": {
+      "policy": "RANDOM",
+      "allocation_unit_bytes": 128,
+      "sets": 64,
+      "set_hash": "linear",
+      "capacity_scale": 0.875
+    }
+  },
+  "ranking": [
+    {
+      "config_id": "FIFO_u128_s64_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 15.477171901213499,
+      "mape_percent": 17.076143375535118,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u128_s64_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 15.477171901213499,
+      "mape_percent": 17.076143375535118,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u128_s64_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 15.477171901213499,
+      "mape_percent": 17.076143375535118,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u128_s64_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 15.477171901213499,
+      "mape_percent": 17.076143375535118,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u128_s16_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u128_s16_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u128_s4_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u128_s4_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u32_s16_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u32_s4_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u32_s64_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u128_s16_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u128_s16_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u128_s4_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u128_s4_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u32_s16_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u32_s4_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u32_s64_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 16.53445305909034,
+      "mape_percent": 19.952007955076432,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u128_s64_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 24.701436760408413,
+      "mape_percent": 20.802988209683235,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u128_s64_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 24.701436760408413,
+      "mape_percent": 20.802988209683235,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u128_s64_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 24.701436760408413,
+      "mape_percent": 20.802988209683235,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u128_s64_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 24.701436760408413,
+      "mape_percent": 20.802988209683235,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u128_s16_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u128_s16_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u128_s4_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u128_s4_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u32_s16_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u32_s4_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u32_s64_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u128_s16_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u128_s16_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u128_s4_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u128_s4_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u32_s16_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u32_s4_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u32_s64_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 25.758717918285253,
+      "mape_percent": 23.678852789224553,
+      "within_2pct_or_2_sectors": 23,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u128_s64_h0_c875",
+      "conditions": 48,
+      "wape_percent": 26.029453748761,
+      "mape_percent": 49.146446095779346,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u128_s64_h1_c875",
+      "conditions": 48,
+      "wape_percent": 26.029453748761,
+      "mape_percent": 49.146446095779346,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u128_s64_h0_c875",
+      "conditions": 48,
+      "wape_percent": 26.029453748761,
+      "mape_percent": 49.146446095779346,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u128_s64_h1_c875",
+      "conditions": 48,
+      "wape_percent": 26.029453748761,
+      "mape_percent": 49.146446095779346,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u128_s16_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u128_s16_h1_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u128_s4_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u128_s4_h1_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u32_s16_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u32_s4_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u32_s64_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u128_s16_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u128_s16_h1_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u128_s4_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u128_s4_h1_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u32_s16_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u32_s4_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u32_s64_h0_c875",
+      "conditions": 48,
+      "wape_percent": 27.107264637858748,
+      "mape_percent": 51.87518047267535,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u32_s16_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 27.447929865305717,
+      "mape_percent": 34.37429329866092,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u32_s4_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 27.447929865305717,
+      "mape_percent": 34.37429329866092,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "FIFO_u32_s64_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 27.447929865305717,
+      "mape_percent": 34.37429329866092,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u32_s16_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 27.447929865305717,
+      "mape_percent": 34.37429329866092,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u32_s4_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 27.447929865305717,
+      "mape_percent": 34.37429329866092,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "LRU_u32_s64_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 27.447929865305717,
+      "mape_percent": 34.37429329866092,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 8896.0
+    },
+    {
+      "config_id": "RANDOM_u128_s64_h0_c875",
+      "conditions": 48,
+      "wape_percent": 30.147589520855313,
+      "mape_percent": 23.659529014627388,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 10298.666666666668
+    },
+    {
+      "config_id": "RANDOM_u128_s64_h1_c875",
+      "conditions": 48,
+      "wape_percent": 30.167905400709348,
+      "mape_percent": 23.807115572713506,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 10164.0
+    },
+    {
+      "config_id": "RANDOM_u128_s16_h0_c875",
+      "conditions": 48,
+      "wape_percent": 33.3489444831159,
+      "mape_percent": 23.50128795281547,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 11570.666666666668
+    },
+    {
+      "config_id": "RANDOM_u128_s16_h1_c875",
+      "conditions": 48,
+      "wape_percent": 33.37941830289694,
+      "mape_percent": 23.488192247711286,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 11628.0
+    },
+    {
+      "config_id": "RANDOM_u32_s64_h0_c875",
+      "conditions": 48,
+      "wape_percent": 33.435768138071,
+      "mape_percent": 23.549637225132564,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 11601.0
+    },
+    {
+      "config_id": "RANDOM_u32_s16_h0_c875",
+      "conditions": 48,
+      "wape_percent": 33.98237223182772,
+      "mape_percent": 24.31385613721583,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 11679.333333333332
+    },
+    {
+      "config_id": "RANDOM_u128_s4_h1_c875",
+      "conditions": 48,
+      "wape_percent": 34.00653743628565,
+      "mape_percent": 24.297920194560145,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 11556.0
+    },
+    {
+      "config_id": "RANDOM_u128_s4_h0_c875",
+      "conditions": 48,
+      "wape_percent": 34.03968439815275,
+      "mape_percent": 24.368582158478986,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 11620.0
+    },
+    {
+      "config_id": "RANDOM_u32_s4_h0_c875",
+      "conditions": 48,
+      "wape_percent": 34.06278034577627,
+      "mape_percent": 24.384426519446976,
+      "within_2pct_or_2_sectors": 16,
+      "max_absolute_sectors": 11750.333333333332
+    },
+    {
+      "config_id": "FIFO_u32_s16_h1_c875",
+      "conditions": 48,
+      "wape_percent": 35.86511966587862,
+      "mape_percent": 50.39705313466172,
+      "within_2pct_or_2_sectors": 20,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u32_s4_h1_c875",
+      "conditions": 48,
+      "wape_percent": 35.86511966587862,
+      "mape_percent": 50.39705313466172,
+      "within_2pct_or_2_sectors": 20,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u32_s64_h1_c875",
+      "conditions": 48,
+      "wape_percent": 35.86511966587862,
+      "mape_percent": 50.39705313466172,
+      "within_2pct_or_2_sectors": 20,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u32_s16_h1_c875",
+      "conditions": 48,
+      "wape_percent": 35.86511966587862,
+      "mape_percent": 50.39705313466172,
+      "within_2pct_or_2_sectors": 20,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u32_s4_h1_c875",
+      "conditions": 48,
+      "wape_percent": 35.86511966587862,
+      "mape_percent": 50.39705313466172,
+      "within_2pct_or_2_sectors": 20,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "LRU_u32_s64_h1_c875",
+      "conditions": 48,
+      "wape_percent": 35.86511966587862,
+      "mape_percent": 50.39705313466172,
+      "within_2pct_or_2_sectors": 20,
+      "max_absolute_sectors": 19712.0
+    },
+    {
+      "config_id": "FIFO_u32_s16_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 36.14740347016613,
+      "mape_percent": 37.273066570066504,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u32_s4_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 36.14740347016613,
+      "mape_percent": 37.273066570066504,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "FIFO_u32_s64_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 36.14740347016613,
+      "mape_percent": 37.273066570066504,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u32_s16_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 36.14740347016613,
+      "mape_percent": 37.273066570066504,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u32_s4_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 36.14740347016613,
+      "mape_percent": 37.273066570066504,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "LRU_u32_s64_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 36.14740347016613,
+      "mape_percent": 37.273066570066504,
+      "within_2pct_or_2_sectors": 21,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "RANDOM_u32_s64_h1_c875",
+      "conditions": 48,
+      "wape_percent": 42.80106797372623,
+      "mape_percent": 37.754786114520236,
+      "within_2pct_or_2_sectors": 17,
+      "max_absolute_sectors": 11584.666666666668
+    },
+    {
+      "config_id": "RANDOM_u32_s16_h1_c875",
+      "conditions": 48,
+      "wape_percent": 43.2366832080699,
+      "mape_percent": 38.119004423702734,
+      "within_2pct_or_2_sectors": 17,
+      "max_absolute_sectors": 11616.0
+    },
+    {
+      "config_id": "RANDOM_u32_s4_h1_c875",
+      "conditions": 48,
+      "wape_percent": 43.278598075979254,
+      "mape_percent": 38.142731836006014,
+      "within_2pct_or_2_sectors": 17,
+      "max_absolute_sectors": 11684.333333333332
+    },
+    {
+      "config_id": "RANDOM_u128_s64_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 46.97234581049133,
+      "mape_percent": 29.48634629739102,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16256.0
+    },
+    {
+      "config_id": "RANDOM_u128_s64_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 47.091567947529434,
+      "mape_percent": 29.58263783321966,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16240.0
+    },
+    {
+      "config_id": "RANDOM_u128_s16_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 50.22716361447302,
+      "mape_percent": 34.390799175431695,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16321.333333333332
+    },
+    {
+      "config_id": "RANDOM_u32_s64_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 50.24363016972314,
+      "mape_percent": 34.41996249460457,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16307.666666666668
+    },
+    {
+      "config_id": "RANDOM_u128_s16_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 50.285972740366276,
+      "mape_percent": 34.42021417145715,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16333.333333333332
+    },
+    {
+      "config_id": "RANDOM_u128_s4_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 50.30789250547192,
+      "mape_percent": 34.4718486573176,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16324.0
+    },
+    {
+      "config_id": "RANDOM_u128_s4_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 50.406798762655995,
+      "mape_percent": 34.507330610434515,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16337.333333333332
+    },
+    {
+      "config_id": "RANDOM_u32_s4_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 50.45619842840629,
+      "mape_percent": 34.558680276469964,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16338.666666666668
+    },
+    {
+      "config_id": "RANDOM_u32_s16_h0_c1000",
+      "conditions": 48,
+      "wape_percent": 50.468494882002176,
+      "mape_percent": 34.54023651085236,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16333.666666666668
+    },
+    {
+      "config_id": "RANDOM_u32_s64_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 56.24323026766707,
+      "mape_percent": 42.99866230259657,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16326.0
+    },
+    {
+      "config_id": "RANDOM_u32_s16_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 56.423079267216906,
+      "mape_percent": 43.08078758771538,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16388.0
+    },
+    {
+      "config_id": "RANDOM_u32_s4_h1_c1000",
+      "conditions": 48,
+      "wape_percent": 56.426607814770485,
+      "mape_percent": 43.09111436164256,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 16331.333333333332
+    },
+    {
+      "config_id": "RANDOM_u128_s64_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 57.25966581446897,
+      "mape_percent": 34.61524702503942,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "RANDOM_u128_s64_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 57.37888795150707,
+      "mape_percent": 34.70556520167158,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 19768.0
+    },
+    {
+      "config_id": "RANDOM_u128_s16_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 63.23788077572444,
+      "mape_percent": 41.48343719166286,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20289.333333333336
+    },
+    {
+      "config_id": "RANDOM_u32_s64_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 63.26835459550548,
+      "mape_percent": 41.50488383891202,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20320.0
+    },
+    {
+      "config_id": "RANDOM_u128_s16_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 63.341598688663446,
+      "mape_percent": 41.53664847013256,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20444.0
+    },
+    {
+      "config_id": "RANDOM_u32_s16_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 64.04901901031727,
+      "mape_percent": 42.59223320336141,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20292.333333333336
+    },
+    {
+      "config_id": "RANDOM_u128_s4_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 64.07938590441488,
+      "mape_percent": 42.60569968145936,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20405.333333333336
+    },
+    {
+      "config_id": "RANDOM_u32_s4_h0_c1125",
+      "conditions": 48,
+      "wape_percent": 64.08537374268762,
+      "mape_percent": 42.602257301146395,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20325.0
+    },
+    {
+      "config_id": "RANDOM_u128_s4_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 64.1184137788713,
+      "mape_percent": 42.61731294835833,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20434.666666666664
+    },
+    {
+      "config_id": "RANDOM_u32_s64_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 66.68366785033399,
+      "mape_percent": 46.383967817063414,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20307.0
+    },
+    {
+      "config_id": "RANDOM_u32_s16_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 67.29667279350832,
+      "mape_percent": 46.91393826864611,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20330.0
+    },
+    {
+      "config_id": "RANDOM_u32_s4_h1_c1125",
+      "conditions": 48,
+      "wape_percent": 67.32393884278609,
+      "mape_percent": 46.93181495455295,
+      "within_2pct_or_2_sectors": 18,
+      "max_absolute_sectors": 20307.0
+    }
+  ]
+}

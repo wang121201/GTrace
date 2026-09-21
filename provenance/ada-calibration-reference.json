@@ -1,0 +1,198 @@
+{
+  "remote_root": "/home/xmu/nvidiagds/codex-runs",
+  "files": [
+    {
+      "path": "r2/configs/00_tuner_baseline/gpgpusim.config",
+      "bytes": 5518,
+      "sha256": "3028a2938fddad22e40558ce42182b7343cc1d883a107b8f5747248f55f87912"
+    },
+    {
+      "path": "r2/configs/00_tuner_baseline/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r2/configs/01_measured_adaptive/gpgpusim.config",
+      "bytes": 5511,
+      "sha256": "dabaf5334ea681c419e5ea8d820ead7c03246dea059b0ca812d163c7968ac79c"
+    },
+    {
+      "path": "r2/configs/01_measured_adaptive/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r2/configs/02_shared64/gpgpusim.config",
+      "bytes": 5504,
+      "sha256": "3c11c042edc312548d2ca1732d9c196a779826dd212b2f5c9cf1a413c4baf65a"
+    },
+    {
+      "path": "r2/configs/02_shared64/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r2/configs/03_shared100/gpgpusim.config",
+      "bytes": 5505,
+      "sha256": "36c280a2f7c43f7b8ea2a4b8a15988760fdc5244f32b8a4893727f57f24abaae"
+    },
+    {
+      "path": "r2/configs/03_shared100/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r2/configs/04_l1_fifo/gpgpusim.config",
+      "bytes": 5511,
+      "sha256": "6c57b51801a5c662c08672618005e60821d690345f50129f1b1e6d2036ae63c0"
+    },
+    {
+      "path": "r2/configs/04_l1_fifo/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r2/configs/05_l1_mshr96/gpgpusim.config",
+      "bytes": 5510,
+      "sha256": "8f5a10f65c35204cb5e5182b855ec1ebf42e0fafa9addbbece4557df0b05f1a3"
+    },
+    {
+      "path": "r2/configs/05_l1_mshr96/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r2/configs/06_l1_mshr768/gpgpusim.config",
+      "bytes": 5511,
+      "sha256": "4ff3b3ad9ba9b59e190bff59a06548e38af4598932b1c563388fa88a13f49e12"
+    },
+    {
+      "path": "r2/configs/06_l1_mshr768/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r2/configs/README.md",
+      "bytes": 9402,
+      "sha256": "7d9576ad7e6955366f89f6bf03e70509c2dd32e190b64e781733f3e9de98460f"
+    },
+    {
+      "path": "r2/configs/parameter_contract.json",
+      "bytes": 6125,
+      "sha256": "34407d1ada01d0019396f39f9440351c73737ab211352d2c0f636d55fad2424c"
+    },
+    {
+      "path": "r2/FINAL_RECEIPT.json",
+      "bytes": 323,
+      "sha256": "feb09a843f3e5439e296d92da04ec882fa527a2313529dc8cce79cf8ed4d6ac5"
+    },
+    {
+      "path": "r2/analysis/summary_r2.json",
+      "bytes": 42296,
+      "sha256": "cb0e4c248e1ad044436de8bef3d3e479034b063efc3f37c994e4b48c40a0634f"
+    },
+    {
+      "path": "r3/configs/01_measured_adaptive/gpgpusim.config",
+      "bytes": 5511,
+      "sha256": "dabaf5334ea681c419e5ea8d820ead7c03246dea059b0ca812d163c7968ac79c"
+    },
+    {
+      "path": "r3/configs/01_measured_adaptive/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r3/configs/02_shared64/gpgpusim.config",
+      "bytes": 5504,
+      "sha256": "3c11c042edc312548d2ca1732d9c196a779826dd212b2f5c9cf1a413c4baf65a"
+    },
+    {
+      "path": "r3/configs/02_shared64/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r3/configs/03_shared100/gpgpusim.config",
+      "bytes": 5505,
+      "sha256": "36c280a2f7c43f7b8ea2a4b8a15988760fdc5244f32b8a4893727f57f24abaae"
+    },
+    {
+      "path": "r3/configs/03_shared100/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r3/configs/07_fifo_static_shared32/gpgpusim.config",
+      "bytes": 5640,
+      "sha256": "7f7f970a6e6acbfea15aa2e652d1133048be716d215fcf0e31385dffb25adc4c"
+    },
+    {
+      "path": "r3/configs/07_fifo_static_shared32/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r3/configs/08_fifo_static_shared64/gpgpusim.config",
+      "bytes": 5639,
+      "sha256": "d47ce630e89bffaf4b6174007db5f466c2b62cc431d75204947b3a04974c45f3"
+    },
+    {
+      "path": "r3/configs/08_fifo_static_shared64/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r3/configs/09_fifo_static_shared100/gpgpusim.config",
+      "bytes": 5639,
+      "sha256": "70e9f6f4b541a77bfd803ba97f98bae10c3fa9aa46daa01b718a26c407061264"
+    },
+    {
+      "path": "r3/configs/09_fifo_static_shared100/trace.config",
+      "bytes": 749,
+      "sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    {
+      "path": "r3/configs/README.md",
+      "bytes": 10393,
+      "sha256": "728248b754cfaad49719f278ac3567e06180b35a6fdd78c72292f7e814295657"
+    },
+    {
+      "path": "r3/configs/experiment_contract.json",
+      "bytes": 2008,
+      "sha256": "b214d60051168ab5055fea1171c09c8c4c84e90ccb745d85f0041f51e7b17c63"
+    },
+    {
+      "path": "r3/configs/reference_grid.tsv",
+      "bytes": 7968,
+      "sha256": "958fd019e54312436b97fb185f991ce1158fe987dbe71c3ffd7ad7037fc47fe6"
+    },
+    {
+      "path": "r3/configs/selected_accelsim_mapping.json",
+      "bytes": 1722,
+      "sha256": "adb09de138f5d1a20a60519081d184d5c5bcd1744a2c63ec64b16f1eca660915"
+    },
+    {
+      "path": "r3/configs/selected_reference_grid.tsv",
+      "bytes": 267,
+      "sha256": "7a8158722f1c4e94a780753a2fa56fdcaa7c992f3915ebe3ca488392d9c8d403"
+    },
+    {
+      "path": "r3/configs/selected_reference_models.json",
+      "bytes": 27358,
+      "sha256": "34ac49adbf83236611eee5f54a1b93dd483ee2d8cb10faf88309c02324808891"
+    },
+    {
+      "path": "r3/FINAL_RECEIPT.json",
+      "bytes": 410,
+      "sha256": "4c24ab1edb6b94e0a5cbf98d9217e00ef833747946c5708fcc95ce006a173a74"
+    },
+    {
+      "path": "r3/analysis/summary_r3.json",
+      "bytes": 15032,
+      "sha256": "e6b3279d15b41ed044dfa7e21069ad46846967705fbe055f015d67536ab5dcf4"
+    }
+  ],
+  "selected_default": "r2-adaptive",
+  "selection_reason": "r2 source calls 01_measured_adaptive default_candidate; r3 FINAL_RECEIPT states COMPLETED_CANDIDATES_NOT_PROMOTED",
+  "base_implementation_commit": "441d353648ce719348930c64fff9ba79f2897d62"
+}

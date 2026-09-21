@@ -1,0 +1,41 @@
+{
+  "source_model": "FIFO_u128_s64_h0_c1000",
+  "status": "EXPERIMENTAL_NOT_PROMOTED",
+  "semantics": "explicit static L1 capacity; unified-size zero disables geometry expansion, not physical unified-cache absence",
+  "rounding": "reference model floors whole ways: nominal 28 KiB becomes 24 KiB with 64 sets x 128 bytes. Keep this explicit; adaptive upstream rounds to nearest and would yield 32 KiB instead.",
+  "variants": {
+    "07_fifo_static_shared32": {
+      "required_observed_shared_kib": 32,
+      "modeled_l1_bytes": 98304,
+      "changes_from_r2_default": {
+        "-gpgpu_adaptive_cache_config": "0",
+        "-gpgpu_unified_l1d_size": "0",
+        "-gpgpu_cache:dl1": "S:64:128:12,F:T:m:L:L,A:384:48,16:0,32"
+      },
+      "mshr_entries": 384,
+      "config_sha256": "7f7f970a6e6acbfea15aa2e652d1133048be716d215fcf0e31385dffb25adc4c"
+    },
+    "08_fifo_static_shared64": {
+      "required_observed_shared_kib": 64,
+      "modeled_l1_bytes": 65536,
+      "changes_from_r2_default": {
+        "-gpgpu_adaptive_cache_config": "0",
+        "-gpgpu_unified_l1d_size": "0",
+        "-gpgpu_cache:dl1": "S:64:128:8,F:T:m:L:L,A:384:48,16:0,32"
+      },
+      "mshr_entries": 384,
+      "config_sha256": "d47ce630e89bffaf4b6174007db5f466c2b62cc431d75204947b3a04974c45f3"
+    },
+    "09_fifo_static_shared100": {
+      "required_observed_shared_kib": 100,
+      "modeled_l1_bytes": 24576,
+      "changes_from_r2_default": {
+        "-gpgpu_adaptive_cache_config": "0",
+        "-gpgpu_unified_l1d_size": "0",
+        "-gpgpu_cache:dl1": "S:64:128:3,F:T:m:L:L,A:384:48,16:0,32"
+      },
+      "mshr_entries": 384,
+      "config_sha256": "70e9f6f4b541a77bfd803ba97f98bae10c3fa9aa46daa01b718a26c407061264"
+    }
+  }
+}

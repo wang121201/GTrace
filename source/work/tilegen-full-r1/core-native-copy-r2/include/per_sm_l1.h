@@ -26,6 +26,11 @@ enum class PerSmL1Persistence : std::uint8_t {
     CROSS_KERNEL_PERSISTENT = 1,
 };
 
+enum class PerSmL1ReplacementPolicy : std::uint8_t {
+    LRU = 0,
+    FIFO = 1,
+};
+
 enum class PerSmL1Outcome : std::uint8_t {
     BYPASS = 0,
     READ_HIT = 1,
@@ -52,6 +57,14 @@ inline const char* per_sm_l1_persistence_name(PerSmL1Persistence value) {
     return "UNKNOWN";
 }
 
+inline const char* per_sm_l1_replacement_name(PerSmL1ReplacementPolicy value) {
+    switch (value) {
+        case PerSmL1ReplacementPolicy::LRU: return "LRU";
+        case PerSmL1ReplacementPolicy::FIFO: return "FIFO";
+    }
+    return "UNKNOWN";
+}
+
 struct PerSmL1Config {
     PerSmL1Mode mode = PerSmL1Mode::BYPASS;
     PerSmL1Persistence persistence =
@@ -73,6 +86,8 @@ struct PerSmL1Config {
     // AccelSim's modified-line victim protection, per SM, as a percent of
     // total capacity (not resident lines). WT modified data needs no L1 WB.
     std::uint32_t dirty_protection_percent = 0;
+    // FIFO is an explicit experiment option; default LRU remains unchanged.
+    PerSmL1ReplacementPolicy replacement = PerSmL1ReplacementPolicy::LRU;
 };
 
 struct PerSmL1Access {
@@ -204,6 +219,8 @@ public:
             config_.hit_latency_cycles < 0 ||
             config_.capacity_bytes_per_sm % config_.line_bytes != 0 ||
             config_.dirty_protection_percent > 100 ||
+            (config_.replacement != PerSmL1ReplacementPolicy::LRU &&
+             config_.replacement != PerSmL1ReplacementPolicy::FIFO) ||
             (config_.sector32 && config_.line_bytes != 128) ||
             (!config_.sector32 && (config_.write_allocate ||
                                   config_.dirty_protection_percent != 0))) {
@@ -368,7 +385,11 @@ public:
 
         if (before.hit_way < config_.ways) {
             auto& line = lines_[before.base + before.hit_way];
-            line.last_use = use_clock_;
+            // Under FIFO this timestamp is the whole-line insertion age.
+            // Neither hits nor allocation of another sector in this tag may
+            // reorder it. Delivery completion also leaves it untouched.
+            if (config_.replacement == PerSmL1ReplacementPolicy::LRU)
+                line.last_use = use_clock_;
             if (access.is_write) {
                 ++statistics_.l2_input_transactions;
                 if (classified == PerSmL1Outcome::WRITE_HIT) {
@@ -566,6 +587,7 @@ private:
     struct Line {
         int allocation_id = -1;
         std::uint64_t canonical_line = 0;
+        // Last access for LRU; whole-line insertion timestamp for FIFO.
         std::uint64_t last_use = 0;
         bool occupied = false;
         bool ready = false;

@@ -93,3 +93,7 @@ python3 tests/run_direct_projection.py --test prepared-memory --build build/shar
 ## 新增：XMU Accel-Sim Ada 配置入口
 
 `ada_profile.py` 提供独立的 adaptive L1 / 32 B sector / lazy-write 功能缓存回放；配置来源、运行示例及与 structure-only GTSim 适配器的区别见 [Ada Accel-Sim 配置说明](docs/ada-accelsim-profile.md)。该入口不表示旧 cosim 已完整实现 Accel-Sim 时序，也未完成本配置的 NCU 精度验收。
+
+### Ada 校准配置 r2 / r3
+
+当前新增功能入口 `ada_profile.py` 默认使用 `r2-adaptive`，保留 `--profile tuner-v1`；r3 FIFO静态配置仅显式实验选择。详见 [校准配置、实际shared绑定与运行说明](docs/ada-calibrated-profile.md)。原 `run.py` direct/cosim默认未变。

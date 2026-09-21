@@ -1,5 +1,7 @@
 # 按 XMU Accel-Sim tuner 对齐的 RTX 4000 Ada 配置
 
+本页记录历史 tuner-v1。在新 r2 工作树中复现本页需显式 `--profile tuner-v1`；当前默认及校准版本见 [r2/r3说明](ada-calibrated-profile.md)。
+
 新增 `accelsim-rtx4000-ada-v1`：将 XMU tuner 的 SM 资源、缓存几何和地址映射明确导入，并提供可运行的 **32 B sector 功能缓存回放**。它用于检查相同访存输入经过这套缓存规则后产生多少读写请求；目前没有完成 Accel-Sim 全部周期级机制，也没有取得本配置相对真实 NCU 的模型精度结果。
 
 原 `run.py --mode direct/cosim/cosim-fast` 的历史 PAPER_ADA 结果及含义保留。新增功能入口是 `ada_profile.py`；不能将本页的 sector 行为直接归给所有旧入口。
@@ -82,7 +84,7 @@ L2_set = ((partition_address >> 7) ^ (partition_address >> 17)) & 1023
 
 ```sh
 python3 tools/import_ada_tuner.py --check
-python3 ada_profile.py \
+python3 ada_profile.py --profile tuner-v1 \
   --input tests/fixtures/ada-sector.jsonl \
   --output build/ada-example-r1 \
   --emit-trace

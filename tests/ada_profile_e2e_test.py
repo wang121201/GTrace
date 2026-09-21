@@ -63,7 +63,7 @@ def main():
             source.write_text(''.join(json.dumps(r, sort_keys=True) + '\n' for r in rows))
         target = out / name
         p = command(name, [sys.executable, str(ROOT / 'ada_profile.py'),
-                          '--binary', str(binary), '--input', str(source),
+                          '--binary', str(binary), '--profile', 'tuner-v1', '--input', str(source),
                           '--output', str(target), '--emit-trace'])
         receipt = json.loads((target / 'receipt.json').read_text())
         check(name + '.exit', (p.returncode != 0) if reject else (p.returncode == 0))

@@ -1,0 +1,126 @@
+{
+  "schema": "rtx4000_ada_calibration_candidate_v2",
+  "baseline": "00_tuner_baseline",
+  "default_candidate": "01_measured_adaptive",
+  "promotion_status": "PARTIALLY_VALIDATED_CANDIDATE_NOT_FULL_TRAFFIC_MATCH",
+  "gpu_uuid": "GPU-53a2015e-19cf-83d7-cbc8-fac96aab7d38",
+  "r1_evidence": "/home/xmu/nvidiagds/codex-runs/rtx4000-ada-cache-calibration-20260922-r1",
+  "measured_constraints": {
+    "sector_bytes": 32,
+    "l2_capacity_bytes": 41943040,
+    "sm_count": 48,
+    "unified_l1_shared_bytes": 131072,
+    "observed_shared_partition_kib": [
+      32,
+      64,
+      100
+    ],
+    "l1_pointer_chase_cycles": 34.0044,
+    "l2_pointer_chase_cycles": 272.68445,
+    "dram_pointer_chase_cycles": 596.228
+  },
+  "latency_model": {
+    "l1_base_cycles": 34,
+    "additional_l2_cycles": 239,
+    "additional_dram_cycles": 324,
+    "derivation": "round(272.68445-34.0044), round(596.228-272.68445); total pointer-chase values are not additional stage delays",
+    "scope": "unlocked-clock diagnostic; timing not validated by traffic agreement"
+  },
+  "conditional_profiles": {
+    "01_measured_adaptive": "minimum 32 KiB; cannot infer CUDA preferred carveout from SASS trace alone",
+    "02_shared64": "requires NCU-observed 64 KiB shared partition and <=64 KiB aggregate CTA shared allocation",
+    "03_shared100": "requires NCU-observed 100 KiB shared partition"
+  },
+  "unidentified_model_assumptions": {
+    "l1_sets": 4,
+    "l1_replacement": "LRU",
+    "l1_mshr_entries": 384,
+    "l1_mshr_merge": 48,
+    "l2_ways": 16,
+    "l2_replacement": "LRU",
+    "l2_mshr_entries": 192,
+    "l2_mshr_merge": 4,
+    "memory_controllers": 10,
+    "l2_subpartitions_per_controller": 2,
+    "partition_indexing": 0,
+    "l2_set_index": "XOR",
+    "all_other_baseline_options": "inherited; not calibrated by this experiment"
+  },
+  "excluded_parameter": {
+    "unconditional_l2_dirty_budget": "rejected by r1 first-case/order controls; 19.963 MiB conditional fit is not a hardware capacity or deployable global constant"
+  },
+  "variants": {
+    "00_tuner_baseline": {
+      "changes": {},
+      "config_sha256": "3028a2938fddad22e40558ce42182b7343cc1d883a107b8f5747248f55f87912",
+      "trace_config_sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "01_measured_adaptive": {
+      "changes": {
+        "-gpgpu_shmem_option": "32,64,100",
+        "-gpgpu_l2_rop_latency": "239"
+      },
+      "config_sha256": "dabaf5334ea681c419e5ea8d820ead7c03246dea059b0ca812d163c7968ac79c",
+      "trace_config_sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "02_shared64": {
+      "changes": {
+        "-gpgpu_shmem_option": "64",
+        "-gpgpu_l2_rop_latency": "239"
+      },
+      "config_sha256": "3c11c042edc312548d2ca1732d9c196a779826dd212b2f5c9cf1a413c4baf65a",
+      "trace_config_sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "03_shared100": {
+      "changes": {
+        "-gpgpu_shmem_option": "100",
+        "-gpgpu_l2_rop_latency": "239"
+      },
+      "config_sha256": "36c280a2f7c43f7b8ea2a4b8a15988760fdc5244f32b8a4893727f57f24abaae",
+      "trace_config_sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "04_l1_fifo": {
+      "changes": {
+        "-gpgpu_shmem_option": "32,64,100",
+        "-gpgpu_l2_rop_latency": "239",
+        "-gpgpu_cache:dl1": "S:4:128:64,F:T:m:L:L,A:384:48,16:0,32"
+      },
+      "config_sha256": "6c57b51801a5c662c08672618005e60821d690345f50129f1b1e6d2036ae63c0",
+      "trace_config_sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "05_l1_mshr96": {
+      "changes": {
+        "-gpgpu_shmem_option": "32,64,100",
+        "-gpgpu_l2_rop_latency": "239",
+        "-gpgpu_cache:dl1": "S:4:128:64,L:T:m:L:L,A:96:48,16:0,32"
+      },
+      "config_sha256": "8f5a10f65c35204cb5e5182b855ec1ebf42e0fafa9addbbece4557df0b05f1a3",
+      "trace_config_sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    },
+    "06_l1_mshr768": {
+      "changes": {
+        "-gpgpu_shmem_option": "32,64,100",
+        "-gpgpu_l2_rop_latency": "239",
+        "-gpgpu_cache:dl1": "S:4:128:64,L:T:m:L:L,A:768:48,16:0,32"
+      },
+      "config_sha256": "4ff3b3ad9ba9b59e190bff59a06548e38af4598932b1c563388fa88a13f49e12",
+      "trace_config_sha256": "c4e4d8e85e9049af5694afca10b031fae4eafcdd06f0dbd3d8042d7195db890b"
+    }
+  },
+  "preregistered_tests": {
+    "heldout": "48 new capacity conditions: 3 preferred carveouts x 8 irregular working sets x 2 scan orders, 8 passes; 18 hot-refresh conditions: 3 carveouts x 3 hot sizes x 2 refresh modes",
+    "ncu_repeats": 5,
+    "native_repeats": 5,
+    "stability_rule": "range <= max(2 raw counter units,0.02*median), each counter group separately",
+    "promote_rule": "report baseline and candidate error across all declared rows, including unstable boundaries; no automatic physical-MSHR inference"
+  },
+  "provenance": {
+    "framework_head": "d930ad6d02c09bb56867132583735aba0389cff4",
+    "simulator_head": "91880c53383d5a6a6742bfb1be2c5f34e39c7871",
+    "simulator_binary_sha256": "c78bbf898fa217d0d1cd2d8a54f66e2bf9420d1b80ebf12b7c4ee8aadeb5f89e",
+    "source_status": " M gpu-simulator/trace-driven/trace_driven.cc\n M util/job_launching/configs/define-standard-cfgs.yml\n M util/tracer_nvbit/tracer_tool/tracer_tool.cu\n M util/tuner/run_all.sh\n?? experiments/\n?? gpgpu_inst_stats.txt\n?? gpu-simulator/ISA_Def/ada_opcode.h\n?? gpu-simulator/configs/tested-cfgs/NVIDIA_RTX_4000_Ada_Generation/\n?? gpu-simulator/configs/tested-cfgs/SM89_RTX4000_ADA/\n?? perf_counter.csv.gz\n?? perf_counter_2026-09-21_19-35-26.csv.gz\n?? util/tuner/NVIDIA_RTX_4000_Ada_Generation/\n?? util/tuner/gpu-app-collection-partial/\n?? util/tuner/stats.txt\n",
+    "baseline_config_sha256": "e09511b9d168632e975422b19a9557ff5ed4482ace160fa428f9c70455f5a891"
+  },
+  "r2_validation_summary": "../analysis/summary_r2.json",
+  "limitations": "cold global read microbenchmarks; cache hit boundary and runtime not fully calibrated; no physical MSHR or replacement identification"
+}
