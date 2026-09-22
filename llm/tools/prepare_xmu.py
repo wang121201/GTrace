@@ -34,13 +34,16 @@ def save(p, value):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--root', type=Path, required=True)
+    ap.add_argument('--cases', nargs='+', choices=['qwen', 'llama'], default=['qwen', 'llama'])
     ap.add_argument('--resources-directory', type=Path)
     ap.add_argument('--assumed-shared-bytes', type=int, choices=[32768, 65536, 102400])
     a = ap.parse_args()
     assert bool(a.resources_directory) != bool(a.assumed_shared_bytes), 'explicit observed metadata OR declared sensitivity profile required'
     root = a.root.resolve()
     assert root.name.startswith('gtsim-ada-r4-llm-20260922-') and root.parent == Path('/home/xmu/nvidiagds/codex-runs')
-    repo, build = root/'repo', root/'build'
+    assert len(set(a.cases)) == len(a.cases), 'unique cases required'
+    preparation = '-'.join(a.cases)
+    repo, build = root/'repo', root/('build-'+preparation)
     build.mkdir(exist_ok=False)
     source = repo/'source'
     runner = repo/'llm/executor-r1'
@@ -58,6 +61,8 @@ def main():
     code = [pin(p) for p in sorted(repo.rglob('*')) if p.is_file()]
     prepared = []
     for case, c in CASES.items():
+        if case not in a.cases:
+            continue
         original = json.loads(c['spec'].read_text())
         for row in original['sources']:
             assert pin(row['path']) == row, 'sealed input changed: '+row['path']
@@ -100,7 +105,7 @@ def main():
             save(spec_path, spec)
             prepared.append(dict(case=case, profile=profile, spec=pin(spec_path), expected_kernels=c['expected'],
                                  cpu=spec['cpu'], observed_launch_resources=bool(a.resources_directory)))
-    save(root/'prepare-result.json', dict(status='PASS_PAIRED_LLM_PREFLIGHT_NOT_EXECUTED',
+    save(root/('prepare-result-'+preparation+'.json'), dict(status='PASS_PAIRED_LLM_PREFLIGHT_NOT_EXECUTED',
          compile_wall_minutes=compile_minutes, binary=pin(binary), command=cmd, cases=prepared,
          compute_stall_cosimulation=False, old_inputs_modified=False))
     print(json.dumps(dict(status='PASS_PAIRED_LLM_PREFLIGHT_NOT_EXECUTED', cases=len(prepared), compile_wall_minutes=compile_minutes)))
