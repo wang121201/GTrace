@@ -26,7 +26,7 @@ inline GTSim::PerSmL1Config config(unsigned shared){
 }
 inline J description(const GTSim::PerSmL1Config& c,unsigned shared,const std::string& origin){return {{"profile",profile()},{"bytes_per_SM",c.capacity_bytes_per_sm},{"SMs",c.num_sms},{"sets",c.capacity_bytes_per_sm/(c.line_bytes*c.ways)},{"ways",c.ways},{"line_bytes",128},{"validity_bytes",32},{"store_bypass",true},{"write_allocate",false},{"persistence","KERNEL_FLUSH"},{"replacement",GTSim::per_sm_l1_replacement_name(c.replacement)},{"hash",GTSim::per_sm_l1_hash_name(c.hash_policy)},{"shared_carveout_bytes",shared},{"shared_carveout_origin",origin},{"shared_is_per_CTA_dynamic_bytes",false},{"shared_capacity_qualification",profile()=="legacy32"?"legacy32_not_adaptive":(shared==8192||shared==16384)?"uncalibrated_extrapolation_8_16KiB":"original_serial_read_calibrated_bin_extrapolated_to_LLM"},{"scope","functional serial caller order; CTA mod48 modeled SM; r4 read-filter model extrapolation; stores preserve original bypass"}};}
 struct Ticket {bool valid=false;llm_legacy_l1::ReadFillTicket legacy;GTSim::ReadFillTicket current;};
-struct Decision {bool forwarded_to_l2=true;Ticket read_ticket;};
+struct Decision {bool forwarded_to_l2=true;Ticket read_ticket;std::uint8_t forwarded_sector_mask=0;};
 class Adapter {
  struct Allocation {U base,bytes,generation;int id;};
  GTSim::PerSmL1Config config_;std::unique_ptr<llm_legacy_l1::PerSmL1Cache> legacy_;std::unique_ptr<GTSim::PerSmL1Cache> current_;
@@ -61,20 +61,20 @@ public:
   if(legacy_)legacy_->begin_kernel();else{auto c=llm_l1::config(shared_);current_->configure_capacity_bytes_per_sm(c.capacity_bytes_per_sm,c.ways);config_=c;current_->begin_kernel();}
  }
  Decision access(const GTSim::PerSmL1Access& input){
-  if(legacy_){const auto d=legacy_->access({input.sm_id,input.allocation_id,input.canonical_line,input.is_write,input.node_id,input.bypass_l1,input.sector_mask});Decision out;out.forwarded_to_l2=d.forwarded_to_l2;out.read_ticket.valid=d.read_ticket.valid;out.read_ticket.legacy=d.read_ticket;return out;}
+  if(legacy_){const auto d=legacy_->access({input.sm_id,input.allocation_id,input.canonical_line,input.is_write,input.node_id,input.bypass_l1,input.sector_mask});Decision out;out.forwarded_to_l2=d.forwarded_to_l2;out.read_ticket.valid=d.read_ticket.valid;out.read_ticket.legacy=d.read_ticket;out.forwarded_sector_mask=d.forwarded_to_l2?(input.is_write?input.sector_mask:d.forwarded_read_sector_mask):0;return out;}
   const unsigned count=pop(input.sector_mask);need(count>0,"explicit L1 sector mask");auto& requested=input.is_write?sectors_.write_sector_requests:sectors_.read_sector_requests;requested+=count;
   if(input.bypass_l1||(config_.store_bypass&&input.is_write)){
    ++bypasses_;++sectors_.pre_l1_transactions;++sectors_.bypassed_transactions;++sectors_.l2_input_transactions;
    ++(input.is_write?sectors_.pre_l1_writes:sectors_.pre_l1_reads);
    (input.is_write?sectors_.bypassed_write_sector_requests:sectors_.bypassed_read_sector_requests)+=count;
    (input.is_write?sectors_.write_sector_misses:sectors_.read_sector_misses)+=count;
-   (input.is_write?sectors_.forwarded_write_sector_requests:sectors_.forwarded_read_sector_requests)+=count;return {};
+   (input.is_write?sectors_.forwarded_write_sector_requests:sectors_.forwarded_read_sector_requests)+=count;Decision out;out.forwarded_sector_mask=input.sector_mask;return out;
   }
   auto a=input;const auto& allocation=resolve(a.canonical_line,a.sector_mask);a.allocation_id=allocation.id;
   if(config_.hash_policy==GTSim::PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2)a.allocation_relative_byte_offset=a.canonical_line-allocation.base;
   const auto d=current_->access(a);const auto forwarded=pop(d.forwarded_sector_mask);
   sectors_.forwarded_read_sector_requests+=forwarded;sectors_.read_sector_misses+=forwarded;sectors_.read_sector_hits+=count-forwarded;
-  Decision out;out.forwarded_to_l2=d.forwarded_to_l2;out.read_ticket.valid=d.read_ticket.valid;out.read_ticket.current=d.read_ticket;return out;
+  Decision out;out.forwarded_to_l2=d.forwarded_to_l2;out.read_ticket.valid=d.read_ticket.valid;out.read_ticket.current=d.read_ticket;out.forwarded_sector_mask=d.forwarded_sector_mask;return out;
  }
  bool complete_read(const Ticket& t){return legacy_?legacy_->complete_read(t.legacy):current_->complete_read(t.current);}
  U live_read_tickets()const{return legacy_?legacy_->live_read_tickets():current_->live_read_tickets();}
