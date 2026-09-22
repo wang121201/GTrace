@@ -4,6 +4,7 @@ from pathlib import Path
 import tempfile
 import types
 import unittest
+from unittest.mock import patch
 
 from test_producer_contract import load, NEW
 
@@ -63,6 +64,22 @@ class LengthAdmission(unittest.TestCase):
             g.value['phases']=[p for p in g.value['phases'] if p['phase']!='Warmup/Decode4']
             with self.assertRaisesRegex(ValueError,'complete contract-derived phase order'):
                 self.module.preflight(g,e)
+
+    def test_serial_qkv_cannot_bypass_current_source_initialization_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            g, e = self.fixture(Path(tmp), 256, 2)
+            entry = e['kernel:1']
+            entry['requires_explicit_execution_schedule'] = True
+            entry['binding']['schema'] = 'CURRENT_QWEN_P256_P512_QKV_SERIAL_SOURCE_BINDING_V1'
+            def fail(current_entry, current_graph):
+                self.assertIs(current_entry, entry)
+                self.assertIs(current_graph, g)
+                raise ValueError('source initialization witness rejected')
+            builder = types.SimpleNamespace(build_command=fail)
+            with patch.object(self.module, 'load_module', return_value=builder) as loader:
+                with self.assertRaisesRegex(ValueError, 'source initialization witness rejected'):
+                    self.module.preflight(g, e)
+                self.assertTrue(str(loader.call_args.args[0]).endswith('fast-prefill-sweep-r1/command_builder.py'))
 
 
 if __name__=='__main__':

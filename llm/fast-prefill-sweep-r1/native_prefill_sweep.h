@@ -2,10 +2,14 @@
 #include "runner.h"
 #include "../fast-prefill-r2/native_prefill.h"
 #include "contracts.h"
+#include "gate_source.h"
+#include "o_prefill.h"
+#include "down_source.h"
+#include "qkv_source.h"
 namespace native_prefill_sweep {
 using namespace source_cache;
 inline const J& contracts(){static const J c=J::parse(prefill_sweep_contracts);return c;}
-template<class Sink> void generate(const J& command,const Sink& sink){
+template<class Sink> void generate_p64(const J& command,const Sink& sink){
  need(command.at("type")=="qwen_prefill_sweep_program_v1","Prefill sweep command type");
  const auto variant=command.at("variant").get<std::string>();need(contracts().contains(variant),"unsupported finite Prefill sweep variant");
  const auto& c=contracts().at(variant);const auto& b=command.at("binding");need(command.at("source_contract")==c,"finite source contract differs");
@@ -49,6 +53,36 @@ template<class Sink> void generate(const J& command,const Sink& sink){
    e.operation="WRITE";e.width=8;for(U call=0;call<4;++call)for(U j=0;j<2;++j){e.pc=j?0x2d70:0x2d60;for(U lane=0;lane<32;++lane)e.addresses[lane]=Y+2*((32*(warp/2)+lane/8+8*call+4*j)*N+64*id+32*(warp%2)+4*(lane%8));sink(e,py);}
   }
  }
+}
+// One command format for separately qualified finite source programs. The cache
+// implementation is shared; source instructions remain distinct for each code.
+inline J binding_shape(const J& b,const J& c){
+ if(c.contains("shape_fields")){J shape=J::array();for(const auto& f:c.at("shape_fields"))shape.push_back(b.at(f.get<std::string>()));return shape;}
+ return b.at("shape");
+}
+template<class Sink> void generate(const J& command,const Sink& sink){
+ need(command.at("type")=="qwen_prefill_sweep_program_v1","Prefill sweep command type");
+ const auto variant=command.at("variant").get<std::string>();need(contracts().contains(variant),"unsupported finite Prefill sweep variant");
+ const auto& c=contracts().at(variant);const auto& b=command.at("binding");
+ need(command.at("source_contract")==c,"finite source contract differs");
+ if(variant.rfind("P64_",0)==0){generate_p64(command,sink);return;}
+ need(b.at("schema")==c.at("schema")&&b.at("code_sha256")==c.at("code"),"current binding schema/code differs");
+ need(binding_shape(b,c)==c.at("shape")&&b.at("grid")==c.at("grid")&&b.at("block")==c.at("block"),"current finite shape/geometry differs");
+ if(c.contains("binding_requirements"))for(auto it=c.at("binding_requirements").begin();it!=c.at("binding_requirements").end();++it)need(b.contains(it.key())&&b.at(it.key())==it.value(),"finite source binding requirement");
+ auto ctas=native_prefill::cta_order(command,product(c.at("grid")));
+ if(variant=="P256_gate"||variant=="P512_gate")native_prefill_sweep_gate::generate(b,ctas,sink);
+ else if(variant=="P256_o"||variant=="P512_o")qwen_o_prefill::generate(b,ctas,sink);
+ else if(variant=="P256_down"||variant=="P512_down")native_prefill_sweep_down::generate(b,ctas,sink);
+ else if(variant=="P256_qkv"||variant=="P512_qkv"){
+  need(command.at("requires_explicit_execution_schedule")==true&&command.at("schedule")==c.at("schedule")&&command.at("hardware_poll_multiplicity_known")==false,"explicit functional serial schedule required");
+  need(ctas.size()==product(c.at("grid")),"complete serial CTA schedule required");
+  for(U i=0;i<ctas.size();++i)need(ctas[i]==i,"ascending serial CTA schedule required");
+  J expected=c.at("initialization_static");
+  for(const char* key:{"process","native_launch_id","argument_record_sha256","semaphore"})expected[key]=b.at(key);
+  need(command.at("initialization")==expected,"current source-driven serial initialization differs");
+  native_prefill_sweep_qkv_split::generate(b,ctas,sink);
+ }
+ else need(false,"unsupported finite source algorithm");
 }
 inline void execute(Runner& runner,const J& command){runner.validate_program_binding(command.at("binding"));generate(command,[&](const Effect&e,const Policy&p){runner.consume_effect(e,p);});}
 }

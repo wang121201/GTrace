@@ -224,10 +224,16 @@ def preflight(graph, entries):
             need(entry.get('global_program_complete_for_supported_specialization') is True,
                  'source program is not complete for current specialization')
             if entry.get('requires_explicit_execution_schedule'):
-                down = load_module(K / 'llama-prefill-down-native-program-r1/provider.py')
-                need(entry['code_sha256'] == down.CODE, 'only qualified Llama Down stateful program admitted')
-                down.qualify_static(graph.function_static(entry['function_id']))
-                down.validate_initialization(binding, entry['initialization'])
+                if binding.get('schema') == 'CURRENT_QWEN_P256_P512_QKV_SERIAL_SOURCE_BINDING_V1':
+                    # Reuse the same current-ABI/static/initialization and full
+                    # dependency-order checks as the emitted native command.
+                    sweep = load_module(SUPPORT / 'fast-prefill-sweep-r1/command_builder.py', support=True)
+                    sweep.build_command(entry, graph)
+                else:
+                    down = load_module(K / 'llama-prefill-down-native-program-r1/provider.py')
+                    need(entry['code_sha256'] == down.CODE, 'unqualified stateful source program')
+                    down.qualify_static(graph.function_static(entry['function_id']))
+                    down.validate_initialization(binding, entry['initialization'])
         elif kind == 'memory_api_submission':
             api_effects(node)
             api_counts[node['operation']['direction']] += 1
@@ -359,6 +365,13 @@ def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=Fals
             elif prefill_sweep is not None and prefill_sweep.supports(entry):
                 send(prefill_sweep.build_command(entry, graph))
                 counts['native_CPP_PREFILL_SWEEP_programs'] += 1
+                if entry.get('requires_explicit_execution_schedule'):
+                    counts['explicit_serial_splitK_programs'] += 1
+                    # QKV: two dependent parts, one modeled poll per four-warps
+                    # CTA. EL follows the existing declared normal-priority
+                    # approximation; actual hardware polling is not measured.
+                    need(schema == 'CURRENT_QWEN_P256_P512_QKV_SERIAL_SOURCE_BINDING_V1', 'qualified sweep stateful family')
+                    counts['source_EL_events_modeled_normal_priority'] += 8 * node['grid'][0] * node['grid'][1]
             elif prefill is not None and any(schema == c['schema'] and entry['code_sha256'] == c['code'] for c in prefill.CONTRACTS.values()):
                 send(prefill.build_command(entry, graph))
                 counts['native_CPP_PREFILL_programs'] += 1

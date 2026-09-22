@@ -5,20 +5,31 @@ Qwen2.5-1.5B P64/D2 kernels. It preserves the existing cache implementation and
 source family/semantic names. The whole-stream switch is
 `--fast-prefill-sweep`; commands use `qwen_prefill_sweep_program_v1`.
 
-Only four exact P64 variants are currently implemented. P256/P512 are admitted
-as requested experiment lengths by the graph contract but their new native
-programs are not yet qualified. Length admission does not imply a runnable
-model. No shape-scaled traffic estimate or implicit old-template fallback is
-allowed. Actual graph/source/ABI/carveout and runner-evidence gates remain
-mandatory before replay.
+The four exact P64 variants have completed whole-inference r4 replay. New QKV,
+Gate, O and Down variants for P256/P512 share this command dispatcher and preserve
+their separately reviewed source formulas. The finite contract includes shape,
+code and dispatch geometry: matching a code alone does not admit another shape.
+Attention completion, actual interface checks and final graph admission remain
+separate gates. No shape-scaled traffic estimate or implicit template
+fallback is allowed. The cache implementation is unchanged.
 
 Validation: local full runner compiles; the corresponding independently written
 Python source programs and this C++ path agree on 16,640 Effect records across
-8 first/last CTA schedule cases, with 9 invalid commands rejected. Fresh actual
-P64 source binding checks exist for the four primary GEMMs. Complete helper
-source admission and Linux runner equivalence have not yet run: source upload
-requires the pending explicit user authorization requested after automatic
-approval review rejected it.
+8 first/last CTA schedule cases, with 9 invalid commands rejected. Complete P64
+helper admission, Linux runner validation and all-launch resource matching have
+also passed. P256/P512 Gate, O and Down have fresh actual ABI/full-static and
+Linux C++ source-Effect evidence. QKV also has both current-case Linux checks,
+including its two trailing-predicate-false drain iterations per CTA. This does
+not replace final whole-graph checks.
+Python/C++ agreement concerns the modeled source projection, not measured GPU
+issue order, hardware poll counts or acceptance of NCU traffic error.
+
+QKV uses a complete ascending serial split CTA schedule. Part0 publishes before
+dependent parts read its semaphore; an exact source-driven initialization
+witness is required. The chosen schedule emits one successful poll per
+dependent warp. Its EL semaphore load follows the existing normal-priority
+approximation, recorded separately by the producer. Internal shared-memory
+barrier timing and real GPU warp issue order are outside this functional trace.
 
 The experiment's immutable code packages, source-derived Python programs,
 per-case proof and report live in the enclosing

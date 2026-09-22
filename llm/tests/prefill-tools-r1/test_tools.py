@@ -44,6 +44,19 @@ def change_witness(a,edit):
     path=Path(a['runner_evidence']['path']);x=json.loads(path.read_text());edit(x);save(path,x);a['runner_evidence']=P.pin(path)
 
 class PrepareTests(unittest.TestCase):
+    def test_new_cases_use_pinned_frozen_producer_without_replacing_p64(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp).resolve();a=fixture(root,256)
+            frozen=root/'builds/p256-p512-r2/repo/llm/executor-r1/whole_stream.py'
+            frozen.parent.mkdir(parents=True);frozen.write_text('# frozen synthetic producer')
+            a['producer']=str(frozen)
+            with self.assertRaisesRegex(ValueError,'explicit producer must be pinned'):
+                P.producer_path(root,a)
+            a['source_pins'].append(P.pin(frozen))
+            self.assertEqual(P.producer_path(root,a),frozen)
+            frozen.write_text('# changed after admission')
+            with self.assertRaises(ValueError):P.producer_path(root,a)
+
     def test_only_three_new_prefills_and_six_full_phases(self):
         for p in (64,256,512):
             with self.subTest(prefill=p),tempfile.TemporaryDirectory() as tmp:

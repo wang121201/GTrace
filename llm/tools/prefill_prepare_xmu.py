@@ -148,10 +148,20 @@ def binary_evidence(admission, paths):
 
 
 
+def producer_path(root, admission):
+    producer = absolute(admission.get('producer', str(root/'repo/llm/executor-r1/whole_stream.py')))
+    need(producer.is_relative_to(root) and producer.name == 'whole_stream.py', 'task-owned frozen producer required')
+    if 'producer' in admission:
+        pinned = [row for row in admission['source_pins'] if row['path'] == str(producer)]
+        need(len(pinned) == 1, 'explicit producer must be pinned in admission')
+        checked(pinned[0])
+    return producer
+
+
 def build_specs(root, admission, paths, cpu, source_pins):
     need(type(cpu) is int and 0 <= cpu <= 15, 'single shared CPU ID in0..15')
     directory=root/'cases'/admission['case_id']
-    producer=root/'repo/llm/executor-r1/whole_stream.py'
+    producer=producer_path(root, admission)
     env=dict(TILEGEN_ADA_L1_PROFILE='r4',TILEGEN_NATIVE_TREE=str(paths['native_tree']),TILEGEN_NATIVE_SUPPORT_TREE=str(paths['support_tree']),
              TILEGEN_ADA_REQUIRE_OBSERVED='1',TILEGEN_L2_DIRTY_AGE_ACCESSES='64000000',TILEGEN_EF_HIT_RATE='288',
              PYTHONDONTWRITEBYTECODE='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1')
@@ -176,7 +186,7 @@ def main():
     root=a.root.resolve();need(root==REMOTE_ROOT,'exact task-owned remote root required')
     admission_path=a.admission.resolve();admission=json.loads(admission_path.read_text())
     paths,sources,actual=validate_admission(admission)
-    producer=root/'repo/llm/executor-r1/whole_stream.py'
+    producer=producer_path(root, admission)
     allpins=merge_pins(sources+binary_evidence(admission,paths)+[pin(producer),pin(Path(__file__)),pin(admission_path),pin(paths['launch_resources'])])
     directory,argv,env,specs=build_specs(root,admission,paths,a.cpu,allpins)
     directory.parent.mkdir(exist_ok=True)
