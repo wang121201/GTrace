@@ -42,7 +42,7 @@ class LengthAdmission(unittest.TestCase):
         return graph, entries
 
     def test_requested_cases_require_all_warmup_and_measured_phases(self):
-        for prefill,decode in [(32,2),(128,2),(128,4),(128,8),(128,16)]:
+        for prefill,decode in [(32,2),(64,2),(128,2),(256,2),(512,2),(128,4),(128,8),(128,16)]:
             with self.subTest(prefill=prefill,decode=decode), tempfile.TemporaryDirectory() as tmp:
                 g,e=self.fixture(Path(tmp),prefill,decode)
                 timeline,receipt=self.module.preflight(g,e)
@@ -51,10 +51,10 @@ class LengthAdmission(unittest.TestCase):
                 self.assertEqual(len(timeline),6*(decode+1))
 
     def test_unrequested_lengths_rejected(self):
-        for prefill,decode in [(32,4),(128,1),(128,3),(128,32),(256,2)]:
+        for prefill,decode in [(32,4),(128,1),(128,3),(128,32),(256,4),(512,4),(1024,2)]:
             with self.subTest(prefill=prefill,decode=decode), tempfile.TemporaryDirectory() as tmp:
                 g,e=self.fixture(Path(tmp),prefill,decode)
-                with self.assertRaisesRegex(ValueError,'only P32/D2 regression'):
+                with self.assertRaisesRegex(ValueError,'only admitted native'):
                     self.module.preflight(g,e)
 
     def test_truncated_warmup_is_not_an_independent_shorter_case(self):

@@ -1,0 +1,94 @@
+{
+  "P64_o": {
+    "schema": "CURRENT_P64_QWEN_OGATE_SOURCE_BINDING_V1",
+    "code": "9c09ff9a8d265e70107a6f008d50b302e6afeee01250777025dd352f6f2a7ce8",
+    "static_sha256": "f08cb06906026a30579b3b8572feb262ac341fe34ec96623b65fb8a719380d43",
+    "masked_ABI_sha256": "e0d21dab34c6dd04f0100738376db84f4efef824dc500dcb40db6c900bec35fc",
+    "shape": [
+      64,
+      1536,
+      1536
+    ],
+    "grid": [
+      16,
+      6,
+      1
+    ],
+    "block": [
+      128,
+      1,
+      1
+    ],
+    "parts": 1,
+    "role": "o_proj"
+  },
+  "P64_gate": {
+    "schema": "CURRENT_P64_QWEN_OGATE_SOURCE_BINDING_V1",
+    "code": "9a8fe59d9270514cb2f9cd76fbf5d0358da92807fef74e0370ea4a48a1759b4f",
+    "static_sha256": "4b71490c522e5892f2c02d9ef579d9ff3dbed94c1d697fc27e20f8115ac8f69b",
+    "masked_ABI_sha256": "c23f1bdde729c140eed16421af45978faa908e682f7ed8546d141f28c31abf3b",
+    "shape": [
+      64,
+      17920,
+      1536
+    ],
+    "grid": [
+      140,
+      1,
+      1
+    ],
+    "block": [
+      128,
+      1,
+      1
+    ],
+    "parts": 1,
+    "role": "gate_up_proj"
+  },
+  "P64_down": {
+    "schema": "CURRENT_P64_QWEN_PREFILL_DOWN_BINDING_V1",
+    "code": "660f5894eb9d208c220d58b5a4118c15674580edc6bf8eaf12972f111a8f8982",
+    "static_sha256": "9b4eb7409b3f0262ee2cbabfeba6a437cbf4e159e5826f0ea7108492ff14a9cb",
+    "masked_ABI_sha256": "762d3b4778d9db92f27658a7055a7179c1924b03c6787f7fe4ff0fe0c9d55328",
+    "shape": [
+      64,
+      1536,
+      8960
+    ],
+    "grid": [
+      12,
+      1,
+      4
+    ],
+    "block": [
+      128,
+      1,
+      1
+    ],
+    "parts": 4,
+    "role": "down_proj"
+  },
+  "P64_qkv": {
+    "schema": "CURRENT_QWEN_P64_QKV_SOURCE_BINDING_V1",
+    "code": "955d93fb8bc90174ec3d7cfa0d9cfaff0d840dc737e0d46818e97bbcbd24cf6a",
+    "static_sha256": "0970a317639bf2735bcb7ea32f939de5043005352c6fef8a4f0c6fcd8691f992",
+    "masked_ABI_sha256": "fc3056474bfda36c982fbbf2b336d7c972b7e57236f085cc7d04eac6a01f01df",
+    "shape": [
+      64,
+      2048,
+      1536
+    ],
+    "grid": [
+      32,
+      1,
+      1
+    ],
+    "block": [
+      128,
+      1,
+      1
+    ],
+    "parts": 1,
+    "role": "qkv_proj"
+  }
+}

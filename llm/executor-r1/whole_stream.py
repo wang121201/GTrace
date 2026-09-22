@@ -184,8 +184,8 @@ def bind_static_opcode(event, static_by_pc):
 def preflight(graph, entries):
     value = graph.value
     contract = value['input_contract']
-    need((contract['prefill_length'], contract['decode_steps']) in ((32, 2), (128, 2), (128, 4), (128, 8), (128, 16)),
-         'only P32/D2 regression and requested P128/D2,D4,D8,D16 admitted')
+    need((contract['prefill_length'], contract['decode_steps']) in ((32, 2), (64, 2), (128, 2), (256, 2), (512, 2), (128, 4), (128, 8), (128, 16)),
+         'only admitted native Prefill/D2 sweep and P128 decode regression cases allowed')
     need(contract['batch_size'] == 1 and contract['dtype'] == 'bfloat16'
          and contract['warmup_runs'] == 1 and contract['sampling_retained']
          and not contract['output_feedback'] and not contract['cuda_graph'], 'inference contract')
@@ -308,7 +308,7 @@ def gemm_command(entry, graph, provider, contracts):
                 policies=policies, cta_range=[0, math.prod(binding['grid'])])
 
 
-def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=False, fast_gemm=False, fast_prefill=False, fast_down=False, fast_p32_prefill=False, launch_resources=None):
+def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=False, fast_gemm=False, fast_prefill=False, fast_down=False, fast_p32_prefill=False, launch_resources=None, fast_prefill_sweep=False):
     send(dict(type='run_begin', schema='TILEGEN_SOURCE_CACHE_STREAM_V1', sm_policy='cta_mod_48'))
     counts = collections.Counter()
     function_statics = {}
@@ -317,6 +317,7 @@ def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=Fals
     llama_gemv = load_module(K / 'llama-gemv-native-program-r1/provider.py') if fast_gemv and 'CURRENT_LLAMA_GEMV_SOURCE_BINDING_V1' in schemas else None
     last_measured_phase = 'Measured/Decode' + str(graph.value['input_contract']['decode_steps'])
     prefill = load_module(SUPPORT / 'fast-prefill-r2/command_builder.py', support=True) if fast_prefill else None
+    prefill_sweep = load_module(SUPPORT / 'fast-prefill-sweep-r1/command_builder.py', support=True) if fast_prefill_sweep else None
     down_fast = load_module(SUPPORT / 'fast-down-r1/command.py', support=True) if fast_down else None
     p32_prefill = load_module(SUPPORT / 'fast-llama-p32-prefill-r1/command_builder.py', support=True) if fast_p32_prefill else None
     gemm = load_module(K / 'p32d2-smoke-r1/prefill-programs/provider.py') if fast_gemm else None
@@ -355,6 +356,9 @@ def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=Fals
                     and entry['binding'].get('schema') == 'CURRENT_P32_QWEN_GEMM_SOURCE_BINDING_V1'):
                 send(gemm_command(entry, graph, gemm, gemm_contracts))
                 counts['native_CPP_GEMM_programs'] += 1
+            elif prefill_sweep is not None and prefill_sweep.supports(entry):
+                send(prefill_sweep.build_command(entry, graph))
+                counts['native_CPP_PREFILL_SWEEP_programs'] += 1
             elif prefill is not None and any(schema == c['schema'] and entry['code_sha256'] == c['code'] for c in prefill.CONTRACTS.values()):
                 send(prefill.build_command(entry, graph))
                 counts['native_CPP_PREFILL_programs'] += 1
@@ -423,6 +427,7 @@ def main():
     parser.add_argument('--fast-gemv', action='store_true')
     parser.add_argument('--fast-gemm', action='store_true')
     parser.add_argument('--fast-prefill', action='store_true')
+    parser.add_argument('--fast-prefill-sweep', action='store_true')
     parser.add_argument('--fast-down', action='store_true')
     parser.add_argument('--fast-p32-prefill', action='store_true')
     args = parser.parse_args()
@@ -449,7 +454,7 @@ def main():
         extra_runtime_pins = [pin(K / 'p32d2-smoke-r1' / relative) for relative in (
             'prefill-programs/provider.py', 'prefill-programs/contracts.json',
             'cache-runner-gemm-r1/source-contracts.json')]
-    for enabled, directory in ((args.fast_prefill, 'fast-prefill-r2'), (args.fast_down, 'fast-down-r1'), (args.fast_p32_prefill, 'fast-llama-p32-prefill-r1')):
+    for enabled, directory in ((args.fast_prefill, 'fast-prefill-r2'), (args.fast_prefill_sweep, 'fast-prefill-sweep-r1'), (args.fast_down, 'fast-down-r1'), (args.fast_p32_prefill, 'fast-llama-p32-prefill-r1')):
         if enabled:
             extra_runtime_pins.extend(pin(p) for p in sorted((SUPPORT / directory).iterdir()) if p.is_file() and p.suffix in ('.py', '.json', '.h'))
     graph = Graph(args.graph)
@@ -467,6 +472,8 @@ def main():
     write_state()
     try:
         entries = all_entries(registry)
+        if graph.value['input_contract']['prefill_length'] in (64, 256, 512):
+            need(args.fast_prefill_sweep, 'new Prefill source programs require --fast-prefill-sweep')
         if args.fast_gemv:
             schemas = {entry['binding'].get('schema') for entry in entries.values()}
             for schema, directory in [('CURRENT_QWEN_GEMV_SOURCE_BINDING_V1', 'qwen-gemv-native-program-r1'),
@@ -496,7 +503,7 @@ def main():
                 journal.write(json.dumps(row, separators=(',', ':')) + '\n')
                 journal.flush()
                 process.stdin.flush()
-            state['executed_counts'] = emit(timeline, registry, entries, send, progress, graph, args.fast_gemv, args.fast_gemm, args.fast_prefill, args.fast_down, args.fast_p32_prefill, launch_resources)
+            state['executed_counts'] = emit(timeline, registry, entries, send, progress, graph, args.fast_gemv, args.fast_gemm, args.fast_prefill, args.fast_down, args.fast_p32_prefill, launch_resources, args.fast_prefill_sweep)
             process.stdin.close()
             need(process.wait() == 0, 'cache runner failed; inspect stderr')
             state['source_stream'] = dict(bytes=send.bytes, records=send.records, sha256=send.hash.hexdigest(), retained_full_trace=False)

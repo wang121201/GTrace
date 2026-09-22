@@ -83,14 +83,14 @@ class Tests(unittest.TestCase):
                 self.assertEqual(a,self.normalized(b));self.assertEqual(loads,[selected])
                 self.assertEqual(sum(r['type']=='native_gemv_program' for r in b),1)
 
-    def run_main_fixture(self, transform, expect_error, preflight=False):
+    def run_main_fixture(self, transform, expect_error, preflight=False, prefill=32):
         # Three launches represent initialization, warmup and measured history.
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
             for name in ('graph','registry','runtime','runner'):(root/name).write_text('{}')
             resources=dict(schema='OBSERVED_LAUNCH_CARVEOUT_V1',graph_sha256=pin(root/'graph')['sha256'],evidence_scope='per_kernel_launch',kernels=[dict(native_launch_id=i,observed_shared_bytes=s) for i,s in [(1,8192),(2,16384),(3,32768)]])
             transform(resources);(root/'resources').write_text(json.dumps(resources))
-            graph=types.SimpleNamespace(close=lambda:None)
+            graph=types.SimpleNamespace(value={"input_contract":{"prefill_length":prefill}},close=lambda:None)
             registry=types.SimpleNamespace(entries={},close=lambda:None)
             timeline=[(i,'node',dict(kind='native_kernel',native_launch_id=i)) for i in (1,2,3)]
             receipt=dict(kernel_count=3,phases=['fixture-only'])
@@ -103,6 +103,7 @@ class Tests(unittest.TestCase):
                 popen.assert_not_called()
             if not expect_error:self.assertEqual(json.loads((root/'out/status.json').read_text())['status'],'PASS_COMPLETE_NATIVE_INPUT_PREFLIGHT')
 
+    def test_new_prefill_cannot_start_without_qualified_fast_path(self):self.run_main_fixture(lambda x:None,True,True,prefill=64)
     def test_complete_three_history_regions_preflight(self):self.run_main_fixture(lambda x:None,False,True)
     def test_missing_initialization_rejected_before_cache(self):self.run_main_fixture(lambda x:x['kernels'].pop(0),True)
     def test_extra_launch_rejected_before_cache(self):self.run_main_fixture(lambda x:x['kernels'].append(dict(native_launch_id=4,observed_shared_bytes=32768)),True)
