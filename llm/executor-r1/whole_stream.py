@@ -184,12 +184,13 @@ def bind_static_opcode(event, static_by_pc):
 def preflight(graph, entries):
     value = graph.value
     contract = value['input_contract']
-    need((contract['prefill_length'], contract['decode_steps']) in ((32, 2), (128, 16)),
-         'only original regression P32/D2 and requested fresh P128/D16 admitted')
+    need((contract['prefill_length'], contract['decode_steps']) in ((32, 2), (128, 2), (128, 4), (128, 8), (128, 16)),
+         'only P32/D2 regression and requested P128/D2,D4,D8,D16 admitted')
     need(contract['batch_size'] == 1 and contract['dtype'] == 'bfloat16'
          and contract['warmup_runs'] == 1 and contract['sampling_retained']
          and not contract['output_feedback'] and not contract['cuda_graph'], 'inference contract')
-    nodes = list(map(json.loads, checked(value['artifacts']['nodes']).open()))
+    with checked(value['artifacts']['nodes']).open() as stream:
+        nodes = list(map(json.loads, stream))
     kernels = {n['id'] for n in nodes if n['kind'] == 'native_kernel'}
     need(kernels == set(entries), 'all and only current kernel nodes require a native source program')
     streams = set()
