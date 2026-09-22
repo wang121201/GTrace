@@ -140,11 +140,19 @@ def normalized_event(event, entry=None):
     # expected by the common consumer; shared destinations remain out of scope.
     if (entry is not None and entry['family'] == 'qwen_merge'
             and entry['code_sha256'] == MERGE_CODE and row.get('pc') == 0x750):
-        need(row['operation'] == 'READ' and row['width'] == 16,
-             'unexpected frozen merge async-read projection')
-        row['source_projection_operation'] = row['operation']
-        row['operation'] = 'GLOBAL_TO_SHARED'
-        row['source_read_mask'] = row['global_effective_mask']
+        if entry.get('binding', {}).get('schema') == 'CURRENT_QWEN_P256_P512_MERGE_BINDING_V1':
+            need(row['operation'] == 'GLOBAL_TO_SHARED'
+                 and row['width'] == row.get('transfer_width') == 16
+                 and row.get('transfer_policy') == 1
+                 and row.get('source_read_mask') == row.get('global_effective_mask')
+                 and row.get('shared_destination_projection_omitted') is True,
+                 'unexpected current merge async-transfer projection')
+        else:
+            need(row['operation'] == 'READ' and row['width'] == 16,
+                 'unexpected frozen merge async-read projection')
+            row['source_projection_operation'] = row['operation']
+            row['operation'] = 'GLOBAL_TO_SHARED'
+            row['source_read_mask'] = row['global_effective_mask']
     row.setdefault('cta_linear_id', row.get('cta'))
     row.setdefault('cta_warp_id', row.get('warp'))
     need(type(row['cta_linear_id']) is int and type(row['cta_warp_id']) is int,

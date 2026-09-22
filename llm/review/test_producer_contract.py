@@ -112,4 +112,22 @@ class Tests(unittest.TestCase):
     def test_range_scope_rejected_before_cache(self):self.run_main_fixture(lambda x:x.update(evidence_scope='ROI'),True)
     def test_invalid_shared_rejected_before_cache(self):self.run_main_fixture(lambda x:x['kernels'][0].update(observed_shared_bytes=12288),True)
 
+    def test_merge_native_async_projection_and_legacy_read(self):
+        entry = dict(family='qwen_merge', code_sha256=self.new.MERGE_CODE,
+                     binding=dict(schema='CURRENT_QWEN_P256_P512_MERGE_BINDING_V1'))
+        row = dict(operation='GLOBAL_TO_SHARED', pc=0x750, width=16,
+                   lane_addresses={0:4096}, cta_linear_id=0, cta_warp_id=0,
+                   effective_mask=1, global_effective_mask=1, source_read_mask=1,
+                   transfer_width=16, transfer_policy=1, shared_destination_projection_omitted=True)
+        self.assertEqual(self.new.normalized_event(row, entry), row)
+        for field,value in [('operation','READ'),('transfer_width',8),('transfer_policy',0),
+                            ('source_read_mask',0),('shared_destination_projection_omitted',False)]:
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                self.new.normalized_event(dict(row, **{field:value}), entry)
+        legacy_entry = dict(entry, binding=dict(schema='legacy'))
+        legacy = dict(row, operation='READ')
+        self.assertEqual(self.new.normalized_event(legacy, legacy_entry),
+                         self.old.normalized_event(legacy, legacy_entry))
+        with self.assertRaises(ValueError):self.new.normalized_event(row, legacy_entry)
+
 if __name__=='__main__':unittest.main(verbosity=2)
