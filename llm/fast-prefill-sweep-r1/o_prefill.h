@@ -42,7 +42,7 @@ template<class Sink> inline void generate(const J& c,Sink&& sink){
 // Optional integration API; preserves the same finite guard and Effect sequence.
 template<class Sink> inline void generate(const J& binding,const std::vector<U>& order,Sink&& sink){
  J command={{"type","qwen_o_prefill_program_v1"},{"binding",binding},{"source_static_sha256",static_sha},{"ctas",order}};
- generate(command,std::forward<Sink>(sink));
+ qwen_o_prefill::generate(command,std::forward<Sink>(sink));
 }
-inline void execute(Runner& runner,const J& c){runner.validate_program_binding(c.at("binding"));generate(c,[&](const Effect& e,const Policy& p){runner.consume_effect(e,p);});}
+inline void execute(Runner& runner,const J& c){runner.validate_program_binding(c.at("binding"));qwen_o_prefill::generate(c,[&](const Effect& e,const Policy& p){runner.consume_effect(e,p);});}
 }
