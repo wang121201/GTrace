@@ -1,0 +1,36 @@
+{
+  "schema": "PREFILL_FAILED_RETRY_CPU_VALIDATION_V1",
+  "status": "PASS_19_TEST_METHODS",
+  "test_command": "python3 -B -m unittest discover -s /Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tests/prefill-tools-r1 -p 'test*.py' -v",
+  "test_methods": 19,
+  "new_retry_methods": 9,
+  "previous_methods": 10,
+  "elapsed_seconds": 0.695,
+  "source_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tools/prefill_prepare_xmu.py",
+      "bytes": 14659,
+      "sha256": "71c37c7ba92ce1edb8f1c915c2201652def9d5957a44404ffd8b0d380e5ad5f7"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tools/prefill_safe_status_xmu.py",
+      "bytes": 13697,
+      "sha256": "7df18bdf1c33b61461873c5cc2658e8c534dde675660ad96dc070fae80ebb8b0"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tools/prefill_retry_chain.py",
+      "bytes": 7409,
+      "sha256": "f79472468eeb630c3cabc5628df5323356f91c96dee88fda487dd9302debb443"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tests/prefill-tools-r1/test_failed_retry.py",
+      "bytes": 10573,
+      "sha256": "3892b43fda53f206ccfff0d346c3ebee0c5149955f5c0369321d6ab86d18e3d9"
+    }
+  ],
+  "remote_work_performed": false,
+  "GPU_executed": false,
+  "cache_executed": false,
+  "legacy_case_artifacts_modified": false,
+  "scope": "strict finite failed-run retry chain; original source graph, complete input contract, observed launch resources and fixed r4 configuration unchanged"
+}

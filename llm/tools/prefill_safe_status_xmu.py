@@ -7,6 +7,11 @@ import json
 import math
 from pathlib import Path
 import re
+import importlib.util
+
+_retry_spec=importlib.util.spec_from_file_location('prefill_retry_chain',Path(__file__).with_name('prefill_retry_chain.py'))
+retry_chain=importlib.util.module_from_spec(_retry_spec)
+_retry_spec.loader.exec_module(retry_chain)
 
 REMOTE_ROOT=Path('/home/xmu/nvidiagds/codex-runs/gtsim-ada-r4-prefill-20260922-r1')
 PREFILL_LENGTHS=(64,256,512)
@@ -85,8 +90,10 @@ def configuration(source):
 
 
 def ncu_reference(root,case_id,prefill):
+    try:retry_chain.retry_number(case_id,prefill)
+    except ValueError:return dict(status='INPUT_CONTRACT_MISMATCH',ROI_rows=None)
     directory=root/'cases'/case_id;decode=2
-    path=root/'references'/case_id/'ncu-result.json';x=load(path)
+    path=root/'references'/retry_chain.logical_id(prefill)/'ncu-result.json';x=load(path)
     if not x:return dict(status='NOT_READY',ROI_rows=None)
     identity=dict(source_sha256=sha(path))
     preparation=load(directory/'prepare-result.json') or {}
@@ -193,20 +200,16 @@ def aggregate_variant(root,directory,case_id,prefill):
 
 
 def aggregate(root):
-    known={}
-    for receipt in (root/'cases').glob('*/prepare-result.json'):
-        p=load(receipt)
-        if not p or p.get('schema')!='PREFILL_R4_PREPARATION_V1':continue
-        prefill=p.get('prefill_length');case_id=p.get('case_id')
-        if prefill not in PREFILL_LENGTHS or p.get('model_key')!='qwen25_1p5b' or p.get('decode_steps')!=2 or p.get('profile')!='r4':continue
-        if not isinstance(case_id,str) or re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}',case_id) is None or receipt.parent.name!=case_id:continue
-        if prefill in known:raise ValueError('duplicate prepared prefill length')
-        known[prefill]=(receipt.parent,case_id)
+    selected=retry_chain.selected_preparations(root)
+    known={p:(path.parent,value['case_id']) for p,(path,value,depth) in selected.items()}
     cases=[]
     for prefill in PREFILL_LENGTHS:
         default_id='qwen-p'+str(prefill)+'d2'
         directory,case_id=known.get(prefill,(root/'cases'/default_id,default_id))
-        cases.append(aggregate_variant(root,directory,case_id,prefill))
+        row=aggregate_variant(root,directory,case_id,prefill)
+        row['logical_case_id']=default_id
+        row['validated_failed_retry_count']=selected[prefill][2] if prefill in selected else 0
+        cases.append(row)
     return dict(schema='PREFILL_R4_LLM_SAFE_AGGREGATES_V1',generated_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 scope='safe aggregate snapshot; new P64/P256/P512 only; reused P32/P128 reported separately; no raw addresses/symbols; not full acceptance',cases=cases)
 

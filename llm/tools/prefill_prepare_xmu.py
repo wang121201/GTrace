@@ -8,6 +8,11 @@ from pathlib import Path
 import re
 import subprocess
 import time
+import importlib.util
+
+_retry_spec = importlib.util.spec_from_file_location('prefill_retry_chain', Path(__file__).with_name('prefill_retry_chain.py'))
+retry_chain = importlib.util.module_from_spec(_retry_spec)
+_retry_spec.loader.exec_module(retry_chain)
 
 REMOTE_ROOT = Path('/home/xmu/nvidiagds/codex-runs/gtsim-ada-r4-prefill-20260922-r1')
 PREFILL_LENGTHS = (64, 256, 512)
@@ -187,12 +192,12 @@ def main():
     admission_path=a.admission.resolve();admission=json.loads(admission_path.read_text())
     paths,sources,actual=validate_admission(admission)
     producer=producer_path(root, admission)
-    allpins=merge_pins(sources+binary_evidence(admission,paths)+[pin(producer),pin(Path(__file__)),pin(admission_path),pin(paths['launch_resources'])])
+    allpins=merge_pins(sources+binary_evidence(admission,paths)+[pin(producer),pin(Path(__file__)),pin(Path(retry_chain.__file__)),pin(admission_path),pin(paths['launch_resources'])])
     directory,argv,env,specs=build_specs(root,admission,paths,a.cpu,allpins)
     directory.parent.mkdir(exist_ok=True)
-    for receipt in directory.parent.glob('*/prepare-result.json'):
-        other=json.loads(receipt.read_text())
-        need(other['prefill_length']!=admission['prefill_length'],'one admitted case per prefill length')
+    retry_pins=retry_chain.validate_new(root,admission,pin(paths['graph']),
+        json.loads(paths['graph'].read_text())['input_contract'],pin(paths['launch_resources']),specs['r4'])
+    allpins=merge_pins(allpins+retry_pins)
     directory.mkdir(exist_ok=False)
     start=time.monotonic()
     # The parent run_job owns the single-CPU lease. Preflight never launches the cache binary.
@@ -208,6 +213,9 @@ def main():
     for row in allpins:checked(row)
     runtime_pins=[checked(row) for row in state.get('fast_source_runtime_pins',[])]
     allpins=merge_pins(allpins+runtime_pins)
+    need(retry_chain.validate_new(root,admission,pin(paths['graph']),
+        json.loads(paths['graph'].read_text())['input_contract'],pin(paths['launch_resources']),specs['r4'])==retry_pins,
+        'retry predecessor changed during preflight')
     spec_pins=[]
     for profile,spec in specs.items():
         spec['sources']=allpins
@@ -217,6 +225,8 @@ def main():
         input_contract=json.loads(paths['graph'].read_text())['input_contract'],admission=pin(admission_path),graph=pin(paths['graph']),launch_resources=pin(paths['launch_resources']),producer=pin(producer),binary=pin(paths['runner']),runner_evidence=admission['runner_evidence'],source_pin_count=len(allpins),specs=spec_pins,
         preflight_wall_minutes=(time.monotonic()-start)/60,compiled=False,launched=False,GPU_executed=False,
         lease_scope='outer shared run_job must acquire one CPU per spec; this preparer does not acquire leases',NCU_status='NOT_REQUIRED_FOR_SOURCE_PREFLIGHT')
+    if 'supersedes_failed_case' in admission:
+        receipt['supersedes_failed_case']=admission['supersedes_failed_case']
     save(directory/'prepare-result.json',receipt)
     print(json.dumps({k:receipt[k] for k in ('status','case_id','prefill_length','decode_steps','expected_counts','compiled','launched','preflight_wall_minutes')}))
 
