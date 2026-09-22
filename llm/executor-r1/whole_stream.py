@@ -2,7 +2,8 @@
 
 This is a new executor, not a change to the frozen registry's admission flags.
 The source input remains separate from the explicitly modeled cache/SM schedule.
-No byte multiplier, omitted launch fallback, or end-of-run dirty flush exists.
+No byte multiplier or omitted launch fallback exists. Diagnostic dirty drains
+are opt-in interventions; the default preserves continuous cache residency.
 """
 import argparse
 import os
@@ -285,6 +286,7 @@ def serial_down_schedule():
 class Writer:
     def __init__(self, stream):
         self.stream, self.hash, self.bytes, self.records = stream, hashlib.sha256(), 0, 0
+        self.source_hash, self.source_bytes, self.source_records = hashlib.sha256(), 0, 0
 
     def __call__(self, row):
         raw = (json.dumps(row, separators=(',', ':')) + '\n').encode()
@@ -292,6 +294,61 @@ class Writer:
         self.hash.update(raw)
         self.bytes += len(raw)
         self.records += 1
+        if not (row['type'] == 'drain' or
+                (row['type'] == 'snapshot' and '/diagnostic-drain/' in row['label'])):
+            self.source_hash.update(raw)
+            self.source_bytes += len(raw)
+            self.source_records += 1
+
+
+def diagnostic_drain(send, label, phase):
+    """Separate intervention traffic from the natural source phase endpoint."""
+    send(dict(type='snapshot', label=label + '/diagnostic-drain/begin'))
+    send(dict(type='drain', label=label, phase=phase))
+    send(dict(type='snapshot', label=label + '/diagnostic-drain/end'))
+
+
+def phase_traffic(label, before_row, after_row):
+    """Difference additive counters; retain endpoint residency as a gauge."""
+    before, after = before_row['cumulative'], after_row['cumulative']
+    keys = ['DRAM_read_bytes', 'DRAM_write_bytes', 'source_read_effect_bytes',
+            'source_write_effect_bytes', 'dirty_sector_creations', 'evicted_dirty_sectors',
+            'age_writeback_bytes', 'capacity_eviction_writeback_bytes', 'L2_forwarded_access_sequence',
+            'drain_writeback_bytes', 'explicit_drain_count', 'masked_writeback_requests',
+            'writeback_enabled_byte_coverage', 'L2_sector_read_hits', 'L2_sector_read_misses']
+    for cause in ('load_fill', 'read_merge', 'atomic_read', 'capacity_merge', 'age_merge',
+                  'drain_merge', 'old_store_RFO', 'old_atomic_RFO'):
+        keys += ['DRAM_' + cause + suffix for suffix in ('_requests', '_bytes')]
+    delta = {k: after[k] - before[k] for k in keys if k in before and k in after}
+    need(all(v >= 0 for v in delta.values()), 'phase cumulative counters regressed')
+    need(before['dirty_tail_bytes'] + delta['dirty_sector_creations'] * 32 ==
+         delta['DRAM_write_bytes'] + after['dirty_tail_bytes'], 'phase dirty ledger does not close')
+    cause_keys = ['DRAM_' + c + '_bytes' for c in ('load_fill', 'read_merge', 'atomic_read',
+                  'capacity_merge', 'age_merge', 'drain_merge', 'old_store_RFO', 'old_atomic_RFO')]
+    if all(k in delta for k in cause_keys):
+        need(sum(delta[k] for k in cause_keys) == delta['DRAM_read_bytes'], 'typed DRAM reads do not close')
+    row = dict(phase=label, **delta, dirty_start_bytes=before['dirty_tail_bytes'],
+               dirty_end_bytes=after['dirty_tail_bytes'], dirty_ledger_closed=True)
+    if 'CPU_minutes_since_run_start' in before_row and 'CPU_minutes_since_run_start' in after_row:
+        row['cache_CPU_minutes'] = after_row['CPU_minutes_since_run_start'] - before_row['CPU_minutes_since_run_start']
+    if 'dirty_ownership' in before_row and 'dirty_ownership' in after_row:
+        b, e = before_row['dirty_ownership'], after_row['dirty_ownership']
+        values = ('write_bytes','enabled_write_byte_coverage','masked_writeback_requests','writeback_merge_read_bytes')
+        dimensions = ('first_writer_phase','last_writer_phase','trigger_phase','reason',
+                      'first_writer_semantic','last_writer_semantic','trigger_semantic')
+        def key(r): return tuple(r.get(k) for k in dimensions)
+        prior = {key(r):r for r in b['writebacks_cumulative']}
+        flows = []
+        for item in e['writebacks_cumulative']:
+            p = prior.get(key(item), {})
+            flow = {k:item.get(k) for k in dimensions}
+            flow.update({k:item.get(k,0)-p.get(k,0) for k in values})
+            need(all(flow[k] >= 0 for k in values), 'ownership cumulative counters regressed')
+            if flow['write_bytes']: flows.append(flow)
+        need(sum(r['write_bytes'] for r in flows) == delta['DRAM_write_bytes'], 'phase write ownership does not close')
+        row['dirty_ownership'] = dict(scope=e['scope'], writeback_flows=flows,
+            resident_start=b['resident_dirty_carry'], resident_end=e['resident_dirty_carry'])
+    return row
 
 
 def gemv_command(entry, graph, provider):
@@ -322,7 +379,8 @@ def gemm_command(entry, graph, provider, contracts):
                 policies=policies, cta_range=[0, math.prod(binding['grid'])])
 
 
-def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=False, fast_gemm=False, fast_prefill=False, fast_down=False, fast_p32_prefill=False, launch_resources=None, fast_prefill_sweep=False):
+def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=False, fast_gemm=False, fast_prefill=False, fast_down=False, fast_p32_prefill=False, launch_resources=None, fast_prefill_sweep=False, drain_policy='none'):
+    need(drain_policy in ('none', 'measured-phase-end', 'run-end'), 'explicit drain policy')
     send(dict(type='run_begin', schema='TILEGEN_SOURCE_CACHE_STREAM_V1', sm_policy='cta_mod_48'))
     counts = collections.Counter()
     function_statics = {}
@@ -344,6 +402,9 @@ def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=Fals
             send(dict(type='snapshot', label=payload + '/' + edge))
             if payload == last_measured_phase and edge == 'end':
                 send(dict(type='snapshot', label='Measured/Full/end'))
+            if drain_policy == 'measured-phase-end' and edge == 'end' and payload.startswith('Measured/'):
+                diagnostic_drain(send, payload, payload + '/diagnostic-drain')
+                counts['diagnostic_drains'] += 1
             progress(dict(event=kind, phase=payload, source_event_ordinal=ordinal, counts=dict(counts)))
             continue
         node = payload
@@ -433,6 +494,9 @@ def emit(timeline, registry, entries, send, progress, graph=None, fast_gemv=Fals
         if counts['kernels'] % 25 == 0:
             progress(dict(event='node_completed', graph_node=node['id'], phase=phase,
                           source_event_ordinal=ordinal, counts=dict(counts)))
+    if drain_policy == 'run-end':
+        diagnostic_drain(send, 'RunEnd', 'Diagnostic/RunEndDrain')
+        counts['diagnostic_drains'] += 1
     send(dict(type='run_end'))
     return dict(counts)
 
@@ -451,6 +515,8 @@ def main():
     parser.add_argument('--fast-prefill-sweep', action='store_true')
     parser.add_argument('--fast-down', action='store_true')
     parser.add_argument('--fast-p32-prefill', action='store_true')
+    parser.add_argument('--drain-policy', choices=('none', 'measured-phase-end', 'run-end'), default='none',
+                        help='Opt-in diagnostic intervention, not a native CUDA phase flush')
     args = parser.parse_args()
     need(not args.output.exists(), 'fresh result directory required')
     args.output.mkdir(parents=True)
@@ -486,7 +552,9 @@ def main():
                  source_hint_interpretation={'EF': 'fixed_h288', 'EL': 'explicitly_modeled_as_normal_priority'},
                  splitK_schedule='serial_parts_then_tiles_one_poll_per_warp_after_predecessor_publish',
                  compute_stall_cosimulation=False, hardware_warp_schedule_claimed=False,
-                 DMA_model='L2_COHERENT_FUNCTIONAL_128B_CHUNKS', terminal_dirty_flush=False,
+                 DMA_model='L2_COHERENT_FUNCTIONAL_128B_CHUNKS', terminal_dirty_flush=args.drain_policy == 'run-end',
+                 drain_policy=args.drain_policy,
+                 measured_cache_history_intervened=args.drain_policy == 'measured-phase-end',
                  NCU_accuracy_accepted=False)
     def write_state():
         (args.output / 'status.json').write_text(json.dumps(state, indent=2) + '\n')
@@ -524,10 +592,11 @@ def main():
                 journal.write(json.dumps(row, separators=(',', ':')) + '\n')
                 journal.flush()
                 process.stdin.flush()
-            state['executed_counts'] = emit(timeline, registry, entries, send, progress, graph, args.fast_gemv, args.fast_gemm, args.fast_prefill, args.fast_down, args.fast_p32_prefill, launch_resources, args.fast_prefill_sweep)
+            state['executed_counts'] = emit(timeline, registry, entries, send, progress, graph, args.fast_gemv, args.fast_gemm, args.fast_prefill, args.fast_down, args.fast_p32_prefill, launch_resources, args.fast_prefill_sweep, args.drain_policy)
             process.stdin.close()
             need(process.wait() == 0, 'cache runner failed; inspect stderr')
             state['source_stream'] = dict(bytes=send.bytes, records=send.records, sha256=send.hash.hexdigest(), retained_full_trace=False)
+            state['source_stream_without_drain_interventions'] = dict(bytes=send.source_bytes, records=send.source_records, sha256=send.source_hash.hexdigest())
         result = json.loads((args.output / 'cache-summary.json').read_text())
         state['actual_cache_configuration'] = result['configuration']
         need(result['configuration']['L2']['EF_hit_numerator'] == 288, 'frozen EF h288 changed')
@@ -539,20 +608,22 @@ def main():
         for row in map(json.loads, (args.output / 'cache-snapshots.jsonl').open()):
             if row['type'] == 'snapshot':
                 need(row['label'] not in observations, 'duplicate phase boundary snapshot')
-                observations[row['label']] = row['cumulative']
+                observations[row['label']] = row
         phases = []
         for label in receipt['phases'] + ['Measured/Full']:
-            before, after = observations[label + '/begin'], observations[label + '/end']
-            keys = ['DRAM_read_bytes', 'DRAM_write_bytes', 'source_read_effect_bytes',
-                    'source_write_effect_bytes', 'dirty_sector_creations', 'evicted_dirty_sectors',
-                    'age_writeback_bytes', 'capacity_eviction_writeback_bytes', 'L2_forwarded_access_sequence']
-            delta = {key: after[key] - before[key] for key in keys}
-            need(all(v >= 0 for v in delta.values()), 'phase cumulative counters regressed')
-            phases.append(dict(phase=label, **delta, dirty_start_bytes=before['dirty_tail_bytes'],
-                               dirty_end_bytes=after['dirty_tail_bytes']))
+            phases.append(phase_traffic(label, observations[label + '/begin'], observations[label + '/end']))
+        drains = []
+        for key in observations:
+            if key.endswith('/diagnostic-drain/begin'):
+                label = key[:-len('/begin')]
+                drains.append(phase_traffic(label, observations[key], observations[label + '/end']))
         (args.output / 'phase-traffic.json').write_text(json.dumps(dict(
             status='PASS_COMPLETE_SMOKE_PHASE_TRAFFIC', input_contract=graph.value['input_contract'],
-            model_only=True, NCU_accuracy_claimed=False, phase_rows=phases,
+            model_only=True, NCU_accuracy_claimed=False, phase_rows=phases, diagnostic_drain_rows=drains,
+            drain_policy=args.drain_policy, measured_cache_history_intervened=args.drain_policy == 'measured-phase-end',
+            diagnostic_drains_are_native_operations=False,
+            source_stream_without_drain_interventions=state['source_stream_without_drain_interventions'],
+            actual_cache_configuration=state['actual_cache_configuration'],
             DMA_model=state['DMA_model'], source_stream=state['source_stream']), indent=2) + '\n')
         state.update(status='PASS_COMPLETE_NATIVE_GRAPH_CACHE_EXECUTION', cache_replay=True)
     except BaseException as exc:
