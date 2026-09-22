@@ -68,6 +68,11 @@ def main():
             admission=next(x['admission'] for x in preparation['cases'] if x['case']==name)
             r['baseline_source_stream']=admission['baseline_source_stream']
             r['source_stream_matches_closed_baseline']=s is not None and s.get('source_stream_without_drain_interventions')=={k:admission['baseline_source_stream'][k] for k in ('bytes','records','sha256')}
+            if name=='p32-old128' and summary:
+                baseline=read(Path(admission['baseline_status']['path']).parent/'cache-summary.json')
+                legacy={k:v for k,v in baseline['snapshot'].items() if isinstance(v,(int,float)) and not any(x in k.lower() for x in ('address','covered_min','covered_max'))}
+                mismatches=[dict(counter=k,expected=v,actual=summary['snapshot'].get(k)) for k,v in legacy.items() if summary['snapshot'].get(k)!=v]
+                r['old128_regression']=dict(scope='all safe scalar legacy final counters including original source and postcache hashes',compared_counters=len(legacy),exact_match=not mismatches,mismatches=mismatches)
         result['cases'].append(r)
     print(json.dumps(result,indent=2))
 
