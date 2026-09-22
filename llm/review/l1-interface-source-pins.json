@@ -1,0 +1,42 @@
+{
+  "status": "READ_ONLY_SOURCE_AUDIT_NOT_EXECUTED_EQUIVALENCE_TEST",
+  "utc": "2026-09-22T05:39:57.776763+00:00",
+  "sources": {
+    "old_l1": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/llama-p32d2-20260921/cpu-llama-package-r1/tree/kernel-complete-input-r1/input-graph-rebuild-r1/engine/cache-deps/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+      "bytes": 27020,
+      "sha256": "c65c7cdd1aad8f5eb54458f263b3d756b9de2d4da6c850837105a2fd156a367f"
+    },
+    "old_actual_runner": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/llama-p32d2-20260921/cpu-llama-package-r1/tree/llama-p32d2-20260921/executor-r1/runner.h",
+      "bytes": 15226,
+      "sha256": "3a289ace29beffa6dcd341b541b4a5e97f5f05cc20181dfa8b7c53f853da97a3"
+    },
+    "old_actual_cache": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/llama-p32d2-20260921/cpu-llama-package-r1/tree/llama-p32d2-20260921/executor-r1/candidate_direct_cache.h",
+      "bytes": 22637,
+      "sha256": "d52918b41d5533d418776d264f5408eb33332e85d5e61fccf4e9a8eff0de9a88"
+    },
+    "new_shared_l1": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+      "bytes": 42793,
+      "sha256": "b41bc28692c3ca1dcecb1ec98df6e6c57ea3e42e125b5bc414fe353f3d0d3ed8"
+    },
+    "r4_profile": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/ada_r4_profile.h",
+      "bytes": 1858,
+      "sha256": "492280fa9039547f7bae939e3cbf832219d6e5fd1081e257d6c008c86366ccfd"
+    },
+    "new_general_direct_cache": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/source/direct_cache.h",
+      "bytes": 17612,
+      "sha256": "57a3b51240f78f89893123361ec482ea672302763d2266a2efce614ac2f535b5"
+    },
+    "llm_adapter_in_development": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/llm_l1_adapter.h",
+      "bytes": 10896,
+      "sha256": "04949bdaf0a6c8efc581317e0edbb8dd7c312f41b1230847ead59a65dee94161"
+    }
+  },
+  "production_files_modified": false
+}

@@ -1,0 +1,39 @@
+{
+  "status": "PASS_UNCHANGED_FROZEN_L2_AND_SOURCE_ORDER_BODIES",
+  "old": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/llama-p32d2-20260921/executor-r1/candidate_direct_cache.h",
+    "bytes": 22637,
+    "sha256": "d52918b41d5533d418776d264f5408eb33332e85d5e61fccf4e9a8eff0de9a88"
+  },
+  "new": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/candidate_direct_cache.h",
+    "bytes": 22804,
+    "sha256": "9d485971cdf84468f6e51ee86055ea962247964275e263349024e604b977c5a1"
+  },
+  "fragments": [
+    {
+      "name": "dirty_age_and_writeback",
+      "byte_identical": true,
+      "bytes": 1801,
+      "sha256": "c269b015c172ddb2c5ae63b91927a75c4808b292efae64f374c3ab1878c18643"
+    },
+    {
+      "name": "L2_forwarded_access_body",
+      "byte_identical": true,
+      "bytes": 3560,
+      "sha256": "e582ce762c761f6bc05b209bdd9c60e8d941dfac2496d32191cf561c82c5a805"
+    },
+    {
+      "name": "source_instruction_order",
+      "byte_identical": true,
+      "bytes": 2501,
+      "sha256": "67e68c7e2fdcbdb2eebc1b94e17b5749370d9ed50e910008a9de900ee528443d"
+    },
+    {
+      "name": "DRAM_record_emit",
+      "byte_identical": true,
+      "bytes": 927,
+      "sha256": "1d1d0b3643d793ac832c39d5cd352815485ade5f34901a4532ef14100d236c97"
+    }
+  ]
+}

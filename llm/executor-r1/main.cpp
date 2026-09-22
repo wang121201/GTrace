@@ -1,0 +1,14 @@
+#include "native_gemv.h"
+#include "qwen_p32_gemm.h"
+#include "../fast-prefill-r2/native_prefill.h"
+#include "../fast-down-r1/llama_down.h"
+#include "../fast-llama-p32-prefill-r1/llama_p32_prefill.h"
+#include <fstream>
+#include <iostream>
+#include <filesystem>
+int main(int argc,char** argv){using namespace source_cache;std::string input="-",summary,snapshots;U line_no=0,bytes=0;tiny_sha::Sha256 hash;
+ try{for(int i=1;i<argc;++i){std::string k=argv[i];need(i+1<argc,"CLI value required");auto v=std::string(argv[++i]);if(k=="--input")input=v;else if(k=="--summary")summary=v;else if(k=="--snapshots")snapshots=v;else throw std::invalid_argument("unknown CLI option");}need(!summary.empty()&&!snapshots.empty()&&summary!=snapshots,"summary and snapshots required");need(!std::filesystem::exists(summary)&&!std::filesystem::exists(snapshots),"fresh output files required");std::ifstream file;if(input!="-"){file.open(input);need(bool(file),"input open");}std::istream& in=input=="-"?std::cin:file;std::ofstream out(snapshots);need(bool(out),"snapshot file open");Runner r(out);std::string line;
+  while(std::getline(in,line)){++line_no;need(line.size()<=1048576,"stream command exceeds1MiB");need(!line.empty(),"empty stream line");hash.add(line);bytes=add(bytes,line.size());if(!in.eof()){hash.add("\n");bytes=add(bytes,1);}auto command=J::parse(line);if(command.at("type")=="native_gemv_program")native_gemv::execute(r,command);else if(command.at("type")=="qwen_p32_gemm_program")qwen_p32_gemm::execute(r,command);else if(command.at("type")=="llama_p32_prefill_program_v1")llama_p32_prefill::execute(r,command);else if(command.at("type")=="native_prefill_program_v1")native_prefill::execute(r,command);else if(command.at("type")=="llama_down_program")llama_down::execute(r,command);else r.command(command);}
+  need(in.eof()&&!in.bad(),"input stream read failure");auto s=r.summary();s["input_raw_SHA256"]=hash.hex();s["input_bytes"]=bytes;s["input_lines"]=line_no;s["snapshots_path"]=snapshots;std::ofstream result(summary);need(bool(result),"summary file open");result<<s.dump(2)<<'\n';need(bool(result),"summary write");std::cout<<J({{"status",s.at("status")},{"summary",summary},{"CPU_minutes",s.at("CPU_minutes")},{"DRAM_read_bytes",s.at("snapshot").at("DRAM_read_bytes")},{"DRAM_write_bytes",s.at("snapshot").at("DRAM_write_bytes")}}).dump()<<'\n';return 0;
+ }catch(const std::exception& e){std::cerr<<J({{"status","FAIL_SOURCE_CACHE_STREAM"},{"line",line_no},{"error",e.what()},{"accepted_prefix_raw_sha256",hash.hex()},{"partial_snapshots_path",snapshots}}).dump()<<'\n';return 1;}
+}

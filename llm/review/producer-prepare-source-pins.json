@@ -1,0 +1,49 @@
+{
+  "status": "READ_ONLY_PRODUCER_REVIEW_WITH_ONE_QWEN_PROVIDER_ADMISSION_RISK",
+  "utc": "2026-09-22T05:42:25.409821+00:00",
+  "ast_equal_to_sealed_llama": {
+    "preflight": true,
+    "api_effects": true,
+    "source_policy": true,
+    "normalized_event": true,
+    "bind_static_opcode": true,
+    "serial_down_schedule": true,
+    "gemv_command": true,
+    "gemm_command": true
+  },
+  "sources": {
+    "producer": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/whole_stream.py",
+      "bytes": 33281,
+      "sha256": "a93baac49c40b3aad4744a801f7253e9e0873293781f649d11eaabe70a117073"
+    },
+    "sealed_llama_producer": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/llama-p32d2-20260921/cpu-llama-package-r1/tree/llama-p32d2-20260921/executor-r1/whole_stream.py",
+      "bytes": 30732,
+      "sha256": "17edfe314d20dc5fc5b9158d89ecc05a9a00d9eb2ddeba1262669b68a81e1c3b"
+    },
+    "prepare": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tools/prepare_xmu.py",
+      "bytes": 5672,
+      "sha256": "d535708264793c0f3077f31a70fdacae19d9e60faf0a04f71667589b48def4bc"
+    },
+    "adapter_development_snapshot": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/llm_l1_adapter.h",
+      "bytes": 11862,
+      "sha256": "cf14057b94b0a3312504da856062246d3a4fa4e54c26b4b278348a25b191f50a"
+    },
+    "sealed_qwen_spec_local_copy": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/l2-policy-unified-p32d2-20260921/age-sweep-r1/results/a64000000h288/spec.json",
+      "bytes": 56589,
+      "sha256": "2f638569c80cc016283c965419c86db31693baa08a5b5bf4e23ba141d6dcb9d7"
+    },
+    "sealed_llama_spec_local_copy": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/llama-p32d2-20260921/cpu-llama-package-r1-receipt-results/run-spec.json",
+      "bytes": 55641,
+      "sha256": "7d02dfac0d6f1f3257165d50f2c98bdd5d63e0edb94676ff044ba3da6a82c705"
+    }
+  },
+  "qwen_sealed_sources_contain_llama_gemv_provider": false,
+  "remote_checked": false,
+  "tests_executed": false
+}
