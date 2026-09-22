@@ -6,6 +6,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <limits>
+#include <optional>
 #include <stdexcept>
 #include <unordered_map>
 #include <vector>
@@ -29,6 +30,12 @@ enum class PerSmL1Persistence : std::uint8_t {
 enum class PerSmL1ReplacementPolicy : std::uint8_t {
     LRU = 0,
     FIFO = 1,
+    CLOCK = 2,
+};
+
+enum class PerSmL1HashPolicy : std::uint8_t {
+    LINEAR_GLOBAL = 0,
+    ALLOCATION_RELATIVE_HASH2 = 2,
 };
 
 enum class PerSmL1Outcome : std::uint8_t {
@@ -61,6 +68,15 @@ inline const char* per_sm_l1_replacement_name(PerSmL1ReplacementPolicy value) {
     switch (value) {
         case PerSmL1ReplacementPolicy::LRU: return "LRU";
         case PerSmL1ReplacementPolicy::FIFO: return "FIFO";
+        case PerSmL1ReplacementPolicy::CLOCK: return "CLOCK";
+    }
+    return "UNKNOWN";
+}
+
+inline const char* per_sm_l1_hash_name(PerSmL1HashPolicy value) {
+    switch (value) {
+        case PerSmL1HashPolicy::LINEAR_GLOBAL: return "LINEAR_GLOBAL";
+        case PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2: return "ALLOCATION_RELATIVE_HASH2";
     }
     return "UNKNOWN";
 }
@@ -88,6 +104,7 @@ struct PerSmL1Config {
     std::uint32_t dirty_protection_percent = 0;
     // FIFO is an explicit experiment option; default LRU remains unchanged.
     PerSmL1ReplacementPolicy replacement = PerSmL1ReplacementPolicy::LRU;
+    PerSmL1HashPolicy hash_policy = PerSmL1HashPolicy::LINEAR_GLOBAL;
 };
 
 struct PerSmL1Access {
@@ -103,6 +120,10 @@ struct PerSmL1Access {
     // Store byte coverage in each selected sector. Zero means unknown/no
     // known bytes, NEVER a complete sector. Ignored by the legacy model.
     std::array<std::uint32_t,4> known_byte_masks{};
+    // Byte offset OF canonical_line from its allocation base, not a VA and
+    // not a lane/sector byte offset. Required by opt-in r4 hash2. The frozen
+    // serial reference takes uint32 addresses; no wider-offset extrapolation.
+    std::optional<std::uint64_t> allocation_relative_byte_offset = std::nullopt;
 };
 
 // Each forwarded modeled read owns a separate delivery obligation. Multiple
@@ -131,6 +152,7 @@ struct ReadinessLine {
     std::array<std::uint32_t,4> known_byte_masks{};
     bool modified = false;
     std::uint8_t resident_sector_mask = 0;
+    bool clock_reference_bit = false;
 };
 
 struct ReadinessStatistics {
@@ -208,6 +230,7 @@ struct L1ReadMissMemo {
     bool valid=false;
     std::uint8_t sector_mask=0;
     std::uint64_t layout_epoch=0;
+    std::optional<std::uint64_t> allocation_relative_byte_offset = std::nullopt;
 };
 
 class PerSmL1Cache {
@@ -220,7 +243,12 @@ public:
             config_.capacity_bytes_per_sm % config_.line_bytes != 0 ||
             config_.dirty_protection_percent > 100 ||
             (config_.replacement != PerSmL1ReplacementPolicy::LRU &&
-             config_.replacement != PerSmL1ReplacementPolicy::FIFO) ||
+             config_.replacement != PerSmL1ReplacementPolicy::FIFO &&
+             config_.replacement != PerSmL1ReplacementPolicy::CLOCK) ||
+            (config_.hash_policy != PerSmL1HashPolicy::LINEAR_GLOBAL &&
+             config_.hash_policy != PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2) ||
+            (config_.hash_policy == PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2 &&
+             config_.line_bytes != 128) ||
             (config_.sector32 && config_.line_bytes != 128) ||
             (!config_.sector32 && (config_.write_allocate ||
                                   config_.dirty_protection_percent != 0))) {
@@ -234,6 +262,7 @@ public:
                 "per-SM L1 capacity lines must be divisible by ways");
         }
         num_sets_ = capacity_lines_per_sm_ / config_.ways;
+        validate_hash_sets(num_sets_);
         if (capacity_lines_per_sm_ >
             std::numeric_limits<std::size_t>::max() / config_.num_sms) {
             throw std::overflow_error("per-SM L1 allocation size overflow");
@@ -244,6 +273,7 @@ public:
         modified_per_sm_.assign(config_.num_sms, 0);
         ready_promotion_epochs_.assign(static_cast<std::size_t>(num_sets_)*config_.num_sms,0);
         ready_promotion_epochs_sm_.assign(config_.num_sms,0);
+        clock_hands_.assign(static_cast<std::size_t>(num_sets_)*config_.num_sms,0);
         statistics_.per_sm.resize(config_.num_sms);
         for (std::uint32_t sm = 0; sm < config_.num_sms; ++sm) {
             statistics_.per_sm[sm].sm_id = sm;
@@ -252,6 +282,13 @@ public:
 
     const PerSmL1Config& config() const { return config_; }
     std::uint64_t host_ready_epoch(int sm) const { return ready_promotion_epochs_sm_.at(sm); }
+    // Diagnostic accessor. classify()/inspect() never mutate CLOCK state.
+    std::uint32_t clock_hand(int sm, std::uint32_t set) const {
+        validate_modeled_sm(sm);
+        if (config_.replacement != PerSmL1ReplacementPolicy::CLOCK || set >= num_sets_)
+            throw std::invalid_argument("CLOCK hand requires CLOCK policy and valid set");
+        return clock_hands_.at(std::size_t(sm)*num_sets_+set);
+    }
 
     // Quiescent kernel-boundary reconfiguration. Callers select the adaptive
     // partition; this method does not guess occupancy/shared-memory usage.
@@ -264,6 +301,7 @@ public:
             (bytes / config_.line_bytes) % ways)
             throw std::invalid_argument("invalid L1 adaptive capacity/ways");
         const auto count = bytes / config_.line_bytes;
+        validate_hash_sets(count / ways);
         if (count > std::numeric_limits<std::size_t>::max() / config_.num_sms ||
             layout_epoch_ == std::numeric_limits<std::uint64_t>::max())
             throw std::overflow_error("L1 capacity reconfiguration overflow");
@@ -274,12 +312,15 @@ public:
         // harmless. Every outstanding read was explicitly ruled out above.
         std::vector<Line> replacement(static_cast<std::size_t>(count) * config_.num_sms);
         std::vector<std::uint64_t> epochs(static_cast<std::size_t>(count / ways) * config_.num_sms, 0);
+        std::vector<std::uint32_t> hands(static_cast<std::size_t>(count / ways) * config_.num_sms, 0);
         statistics_.capacity_reconfiguration_flushed_lines += total_resident_;
         ++statistics_.capacity_reconfigurations;
         ++layout_epoch_;
         for (auto& e : ready_promotion_epochs_sm_) ++e;
         lines_.swap(replacement);
         ready_promotion_epochs_.swap(epochs);
+        clock_hands_.swap(hands);
+        allocation_bases_.clear();
         std::fill(resident_per_sm_.begin(), resident_per_sm_.end(), 0);
         std::fill(modified_per_sm_.begin(), modified_per_sm_.end(), 0);
         total_resident_ = ready_lines_ = 0;
@@ -295,6 +336,7 @@ public:
     PerSmL1Outcome classify(const PerSmL1Access& access) const {
         ++retry_host::counts.l1_classify_calls;
         validate_sector_access(access);
+        validate_relative_address(access);
         // BYPASS is a strict compatibility path: legacy direct-key tests may
         // use abstract, non-byte-aligned keys which never enter modeled L1.
         if (config_.mode == PerSmL1Mode::BYPASS || access.bypass_l1 ||
@@ -322,8 +364,9 @@ public:
     // rejection. No positive hit/victim/LRU state survives across calls.
     bool same_negative_read(const PerSmL1Access& a,const L1ReadMissMemo& memo) const {
         if(a.bypass_l1 || a.is_write || config_.mode!=PerSmL1Mode::MODELED_SET_ASSOCIATIVE || !memo.valid)return false;
-        if(memo.owner!=this || memo.sm!=a.sm_id || memo.allocation!=a.allocation_id || memo.line!=a.canonical_line || memo.sector_mask!=request_mask(a) || memo.layout_epoch!=layout_epoch_){++retry_host::counts.memo_identity_rechecks;return false;}
-        const auto set=(a.canonical_line/config_.line_bytes)%num_sets_;
+        if(memo.owner!=this || memo.sm!=a.sm_id || memo.allocation!=a.allocation_id || memo.line!=a.canonical_line || memo.sector_mask!=request_mask(a) || memo.layout_epoch!=layout_epoch_ ||
+           (config_.hash_policy==PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2 && memo.allocation_relative_byte_offset!=a.allocation_relative_byte_offset)){++retry_host::counts.memo_identity_rechecks;return false;}
+        const auto set=set_index_for_access(a);
         const auto epoch=ready_promotion_epochs_[std::size_t(a.sm_id)*num_sets_+set];
         if(memo.epoch!=epoch){++retry_host::counts.memo_epoch_rechecks;return false;}
         return true;
@@ -331,14 +374,19 @@ public:
     void remember_negative_read(const PerSmL1Access& a,L1ReadMissMemo& memo) const {
         if(a.bypass_l1 || a.is_write || config_.mode!=PerSmL1Mode::MODELED_SET_ASSOCIATIVE){memo.valid=false;return;}
         // Called only after original classify successfully validated this key.
-        const auto set=(a.canonical_line/config_.line_bytes)%num_sets_;
+        const auto set=set_index_for_access(a);
         memo={this,a.canonical_line,ready_promotion_epochs_[std::size_t(a.sm_id)*num_sets_+set],a.sm_id,a.allocation_id,true};
         memo.sector_mask=request_mask(a);memo.layout_epoch=layout_epoch_;
+        memo.allocation_relative_byte_offset=a.allocation_relative_byte_offset;
         ++retry_host::counts.memo_negative_records;
     }
 
     PerSmL1Decision access(const PerSmL1Access& access) {
         const PerSmL1Outcome classified = classify(access);
+        if (config_.hash_policy == PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2 &&
+            classified != PerSmL1Outcome::BYPASS)
+            allocation_bases_.emplace(access.allocation_id,
+                access.canonical_line - *access.allocation_relative_byte_offset);
         PerSmL1Decision decision;
         decision.outcome = classified;
         decision.forwarded_to_l2 = classified != PerSmL1Outcome::READ_HIT;
@@ -390,6 +438,8 @@ public:
             // reorder it. Delivery completion also leaves it untouched.
             if (config_.replacement == PerSmL1ReplacementPolicy::LRU)
                 line.last_use = use_clock_;
+            if (config_.replacement == PerSmL1ReplacementPolicy::CLOCK)
+                line.clock_reference_bit = true; // includes resident-tag sector misses
             if (access.is_write) {
                 ++statistics_.l2_input_transactions;
                 if (classified == PerSmL1Outcome::WRITE_HIT) {
@@ -443,7 +493,9 @@ public:
         }
         const std::size_t chosen = before.empty_way < config_.ways
                                        ? before.empty_way
-                                       : before.victim_way;
+                                       : (config_.replacement == PerSmL1ReplacementPolicy::CLOCK
+                                              ? select_clock_victim(before, access.sm_id)
+                                              : before.victim_way);
         if (chosen == config_.ways) {
             // Timing reservation failure is not implemented in the functional
             // interface. Forward without allocation; never evict a protected
@@ -471,6 +523,7 @@ public:
         line.occupied = true;
         line.ready = false;
         line.generation = next_generation_++;
+        line.clock_reference_bit = config_.replacement == PerSmL1ReplacementPolicy::CLOCK;
         if (access.is_write) {
             apply_store(line, access, before.set_index);
         } else {
@@ -541,6 +594,7 @@ public:
             result.known_byte_masks = line.known_byte_masks;
             result.modified = line.modified;
             result.resident_sector_mask = line.resident_sector_mask;
+            result.clock_reference_bit = line.clock_reference_bit;
         }
         return result;
     }
@@ -597,6 +651,7 @@ private:
         bool modified = false;
         std::uint64_t pending_read_tickets = 0;
         std::uint8_t resident_sector_mask = 0;
+        bool clock_reference_bit = false;
     };
 
     struct Location {
@@ -612,6 +667,60 @@ private:
             throw std::invalid_argument(
                 "modeled per-SM L1 requires a valid scheduler SM id");
         }
+    }
+
+    void validate_hash_sets(std::uint64_t sets) const {
+        if (config_.hash_policy == PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2 &&
+            (!sets || (sets & (sets-1)) || sets > (std::uint64_t{1} << 32)))
+            throw std::invalid_argument("r4 hash2 requires power-of-two set count within32bits");
+    }
+    void validate_relative_address(const PerSmL1Access& access) const {
+        if (config_.hash_policy != PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2) return;
+        if (!access.allocation_relative_byte_offset)
+            throw std::invalid_argument("r4 hash2 requires explicit allocation-relative byte offset");
+        const auto offset = *access.allocation_relative_byte_offset;
+        if (offset > UINT32_MAX || offset % config_.line_bytes ||
+            access.canonical_line < offset || access.allocation_id < 0)
+            throw std::invalid_argument("invalid r4 allocation-relative128B line offset");
+        const auto found = allocation_bases_.find(access.allocation_id);
+        if (found != allocation_bases_.end() && found->second != access.canonical_line-offset)
+            throw std::invalid_argument("inconsistent r4 allocation base for live L1 namespace");
+    }
+    std::uint32_t set_index_for_access(const PerSmL1Access& access) const {
+        if (config_.hash_policy == PerSmL1HashPolicy::LINEAR_GLOBAL)
+            return static_cast<std::uint32_t>((access.canonical_line/config_.line_bytes)%num_sets_);
+        validate_relative_address(access);
+        // Exact uint32 overflow semantics from frozen cache_policy_replay_r4.cpp.
+        std::uint32_t mix = static_cast<std::uint32_t>(*access.allocation_relative_byte_offset/config_.line_bytes);
+        mix ^= mix >> 16; mix *= 0x7feb352dU; mix ^= mix >> 15;
+        mix *= 0x846ca68bU; mix ^= mix >> 16;
+        return mix & static_cast<std::uint32_t>(num_sets_-1);
+    }
+    bool victim_eligible(const Line& line, int sm) const {
+        const bool protected_dirty = config_.dirty_protection_percent && line.modified &&
+            static_cast<long double>(modified_per_sm_[sm]) * 100.0L <
+                static_cast<long double>(capacity_lines_per_sm_) * config_.dirty_protection_percent;
+        return !(config_.sector32 && line.pending_read_tickets) && !protected_dirty;
+    }
+    std::size_t select_clock_victim(const Location& location, int sm) {
+        if (location.victim_way == config_.ways) return config_.ways;
+        auto& hand = clock_hands_.at(std::size_t(sm)*num_sets_+location.set_index);
+        // The frozen serial-read algorithm clears reference bits until it
+        // finds zero, then advances past that slot. Dirty/pending exclusions
+        // remain the inherited functional approximation, not r4 calibration.
+        // With one eligible slot, at most two revolutions suffice.
+        for (std::uint64_t scanned=0; scanned<std::uint64_t(config_.ways)*2; ++scanned) {
+            const auto slot = hand;
+            auto& candidate = lines_[location.base+slot];
+            hand = (hand+1) % config_.ways;
+            if (!victim_eligible(candidate,sm)) continue;
+            if (candidate.clock_reference_bit) {
+                candidate.clock_reference_bit = false;
+                continue;
+            }
+            return slot;
+        }
+        throw std::logic_error("CLOCK failed to select known eligible victim");
     }
 
     std::uint8_t request_mask(const PerSmL1Access& access) const {
@@ -680,8 +789,7 @@ private:
         ++retry_host::counts.l1_locate_calls;
         validate_modeled_sm(access.sm_id);
         Location result;
-        const auto line_index = access.canonical_line / config_.line_bytes;
-        result.set_index = static_cast<std::uint32_t>(line_index % num_sets_);
+        result.set_index = set_index_for_access(access);
         result.base = static_cast<std::size_t>(access.sm_id) *
                           static_cast<std::size_t>(capacity_lines_per_sm_) +
                       static_cast<std::size_t>(result.set_index) * config_.ways;
@@ -703,10 +811,7 @@ private:
             // The source policy protects modified lines while the per-SM
             // modified fraction is below its threshold. A WT eviction does
             // not emit another store. Sector reservations are ineligible too.
-            const bool protected_dirty = config_.dirty_protection_percent && line.modified &&
-                static_cast<long double>(modified_per_sm_[access.sm_id]) * 100.0L <
-                    static_cast<long double>(capacity_lines_per_sm_) * config_.dirty_protection_percent;
-            if ((config_.sector32 && line.pending_read_tickets) || protected_dirty) continue;
+            if (!victim_eligible(line,access.sm_id)) continue;
             if (line.last_use < oldest) {
                 oldest = line.last_use;
                 result.victim_way = way;
@@ -726,10 +831,13 @@ private:
             line.modified = false;
             line.pending_read_tickets = 0;
             line.resident_sector_mask = 0;
+            line.clock_reference_bit = false;
             ++flushed;
         }
         std::fill(resident_per_sm_.begin(), resident_per_sm_.end(), 0);
         std::fill(modified_per_sm_.begin(), modified_per_sm_.end(), 0);
+        std::fill(clock_hands_.begin(), clock_hands_.end(), 0);
+        allocation_bases_.clear();
         total_resident_ = 0;
         ready_lines_ = 0;
         ++statistics_.kernel_flushes;
@@ -797,6 +905,8 @@ private:
             append_u64(statistics_.decision_order_fnv1a64, decision.forwarded_sector_mask);
             append_u64(statistics_.decision_order_fnv1a64, decision.reservation_failed);
         }
+        if (config_.hash_policy == PerSmL1HashPolicy::ALLOCATION_RELATIVE_HASH2)
+            append_u64(statistics_.decision_order_fnv1a64, *access.allocation_relative_byte_offset);
     }
 
     PerSmL1Config config_;
@@ -805,6 +915,9 @@ private:
     std::vector<Line> lines_;
     std::vector<std::uint64_t> resident_per_sm_;
     std::vector<std::uint64_t> modified_per_sm_;
+    std::vector<std::uint32_t> clock_hands_;
+    // Explicit binding per allocation namespace, cleared when L1 is flushed.
+    std::unordered_map<int,std::uint64_t> allocation_bases_;
     std::uint64_t total_resident_ = 0;
     std::uint64_t ready_lines_ = 0;
     std::uint64_t next_generation_ = 1;

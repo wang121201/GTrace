@@ -1,0 +1,38 @@
+{
+  "status": "FROZEN_REFERENCE_CANDIDATE_NOT_DEPLOYED",
+  "config_id": "CLOCK_u128_s16_h2_c1062",
+  "policy": "CLOCK",
+  "allocation_unit_bytes": 128,
+  "sector_bytes": 32,
+  "set_hash": 2,
+  "capacity_scale_per_thousand": 1062,
+  "profiles": [
+    {
+      "observed_shared_kib": 32,
+      "nominal_l1_bytes": 98304,
+      "effective_l1_bytes": 102400,
+      "sets": 16,
+      "ways": 50
+    },
+    {
+      "observed_shared_kib": 64,
+      "nominal_l1_bytes": 65536,
+      "effective_l1_bytes": 67584,
+      "sets": 16,
+      "ways": 33
+    },
+    {
+      "observed_shared_kib": 100,
+      "nominal_l1_bytes": 28672,
+      "effective_l1_bytes": 28672,
+      "sets": 16,
+      "ways": 14
+    }
+  ],
+  "model_seeds": [
+    0
+  ],
+  "scope": "synchronous serial read filter; no cache timing, writes, concurrency, or physical geometry claim",
+  "source_sha256": "9319661e7abe613cc9bdb81ce488d1b3448aab6e87ad085e394fe92e8db042aa",
+  "frozen_selection_sha256": "f9ec786e7dbeb884f0e751d187692880969bc9a2648d1c4ca29f30a3e2161ca6"
+}
