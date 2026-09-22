@@ -1,5 +1,7 @@
 # TileGen 原生 trace / HBFSIM 融合分支
 
+当前独立分支新增 **r4 串行读缓存候选**：`ada_r4.py` 使用共享 GTSim L1 回放冻结请求，比较 r2 LRU 与 r4 CLOCK/hash2。它只验证 L2 读入口 sector，r2 默认和旧 direct/cosim 配置保持原样；见 [r4 参数、运行及验证边界](docs/ada-r4-serial.md)。下文保留历史融合分支记录。
+
 分支：`codex/tilegen-trace-cosim-20260918-r1`。B8 合并暂停，本分支固定 B1。
 
 当前缓存结构档为 `TILEGEN_PAPER_ADA_GEOMETRY_R1`：三个入口共用 L1 **32 KiB/SM、64 ways、4 sets、128 B line、store bypass、kernel-flush**；L2 **40 MiB、20 logical slices ×1024 sets ×16 ways、128 B line、32 B dirty**，使用封存 PAPER_ADA 的 quotient/XOR 索引和组内 LRU。完整配置写入每次结果的 `cache_configuration`。这统一结构和生命周期，尚未统一 MemGen 的 sector/known-byte 有效性和 lazy write allocation；TileGen仍为128 B fill/RFO，写回每请求32 B。此档不表示硬件精度已校准。历史报告的64 KiB/全相联结果保持原样。

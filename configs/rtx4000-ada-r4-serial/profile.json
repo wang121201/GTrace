@@ -1,0 +1,22 @@
+{
+  "schema": "GTSIM_ADA_R4_SERIAL_PROFILE_V1",
+  "status": "EXPLICIT_EXPERIMENT_NOT_DEFAULT",
+  "candidate_id": "CLOCK_u128_s16_h2_c1062",
+  "baseline_id": "LRU_u128_s4_h0_c1000",
+  "mode": "synchronous serial read filter",
+  "comparison_metric": "lts__t_sectors_srcunit_tex_op_read.sum",
+  "sector_bytes": 32,
+  "source_sha256": {
+    "cache_policy_replay_r4.cpp": "9319661e7abe613cc9bdb81ce488d1b3448aab6e87ad085e394fe92e8db042aa",
+    "candidate_parameters.json": "5f4c729a924a2898afc829379d878b8aefe6496265c92e03412cb6acfbeb59c1"
+  },
+  "scope_exclusions": [
+    "DRAM traffic calibration",
+    "writes and dirty policies",
+    "concurrent requests and MSHRs",
+    "GPU timing",
+    "LLM accuracy",
+    "HBFSIM calibration"
+  ],
+  "default_profile_unchanged": "r2-adaptive"
+}
