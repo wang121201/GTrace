@@ -13,18 +13,16 @@ import shutil
 import subprocess
 import time
 
-ROOT = Path('/home/xmu/nvidiagds/codex-runs/gtsim-ada-age-20260922-r1')
+ROOT = Path('/home/xmu/nvidiagds/codex-runs/gtsim-ada-set-age-20260922-r1')
 CTRL = Path('/home/xmu/nvidiagds/simulators/hyfiss/analysis/full-inference-matrix-20260919-r1/sampled-workflow-r1/run_job.py')
 BASE_SPECS = {
     32: Path('/home/xmu/nvidiagds/codex-runs/gtsim-ada-r4-llm-20260922-r1/qwen-r4-spec.json'),
     128: Path('/home/xmu/nvidiagds/codex-runs/gtsim-ada-r4-p128-20260922-r1/cases/qwen-p128d2/r4-spec.json'),
 }
-ARMS = [('p32-age0',32,'sector32','run-end',0,0),
-        ('p128-age0',128,'sector32','run-end',1,0),
-        ('p32-age96m',32,'sector32','run-end',2,96000000),
-        ('p128-age96m',128,'sector32','run-end',8,96000000),
-        ('p32-age128m',32,'sector32','run-end',10,128000000),
-        ('p128-age128m',128,'sector32','run-end',11,128000000)]
+ARMS = [('p32-set3125',32,'sector32','run-end',3,3125),
+        ('p128-set3125',128,'sector32','run-end',4,3125),
+        ('p32-set4688',32,'sector32','run-end',5,4688),
+        ('p128-set4688',128,'sector32','run-end',6,4688)]
 
 def need(ok,msg):
     if not ok: raise ValueError(msg)
@@ -101,9 +99,9 @@ def main():
     for name,p,policy,drain,cpu,age in ARMS:
         old=originals[p]; out=cases/name; out.mkdir(exist_ok=False)
         argv=old['argv'][:]; argv[2]=str(producer); replace(argv,'--runner',binary)
-        replace(argv,'--output',out/'preflight'); argv+=['--drain-policy',drain,'--expected-dirty-age-accesses',str(age)]
-        caseenv=dict(old['environment'],TILEGEN_L2_DATA_POLICY=policy,TILEGEN_ADA_L1_PROFILE='r4',TILEGEN_L2_DIRTY_AGE_ACCESSES=str(age))
-        for k,v in {'TILEGEN_EF_HIT_RATE':'288','TILEGEN_L2_DIRTY_AGE_ACCESSES':str(age),'TILEGEN_ADA_REQUIRE_OBSERVED':'1'}.items():need(caseenv.get(k)==v,'controlled cache parameter changed')
+        replace(argv,'--output',out/'preflight'); argv+=['--drain-policy',drain,'--expected-dirty-age-accesses',str(age),'--expected-dirty-age-clock','set']
+        caseenv=dict(old['environment'],TILEGEN_L2_DATA_POLICY=policy,TILEGEN_ADA_L1_PROFILE='r4',TILEGEN_L2_DIRTY_AGE_ACCESSES=str(age),TILEGEN_L2_DIRTY_AGE_CLOCK='set')
+        for k,v in {'TILEGEN_EF_HIT_RATE':'288','TILEGEN_L2_DIRTY_AGE_ACCESSES':str(age),'TILEGEN_ADA_REQUIRE_OBSERVED':'1','TILEGEN_L2_DIRTY_AGE_CLOCK':'set'}.items():need(caseenv.get(k)==v,'controlled cache parameter changed')
         proc=subprocess.run(argv+['--preflight-only'],env=dict(env,**caseenv),capture_output=True,text=True)
         (out/'preflight.log').write_text(proc.stdout+proc.stderr);proc.check_returncode()
         state=json.loads((out/'preflight/status.json').read_text())
@@ -112,9 +110,9 @@ def main():
         allpins=unique(sources+old['sources']+state['fast_source_runtime_pins']+[pin(binary),pin(build/'evidence.json'),pin(BASE_SPECS[p])])
         for row in allpins:checked(row)
         replace(argv,'--output',out/'result')
-        spec=dict(case_id=name+'-r1',tool='native-functional-sector32-age-ablation',input_kind='COMPLETE_NATIVE_TILEGRAPH_SOURCE_PROGRAMS_AND_API_HISTORY',cpu=cpu,gpu=None,seconds=21600,rss_limit_bytes=16<<30,argv=argv,environment=caseenv,sources=allpins)
+        spec=dict(case_id=name+'-r1',tool='native-functional-sector32-set-age-ablation',input_kind='COMPLETE_NATIVE_TILEGRAPH_SOURCE_PROGRAMS_AND_API_HISTORY',cpu=cpu,gpu=None,seconds=21600,rss_limit_bytes=16<<30,argv=argv,environment=caseenv,sources=allpins)
         sp=out/'spec.json';save(sp,spec)
-        prepared.append(dict(case=name,prefill=p,decode=2,policy=policy,drain_policy=drain,dirty_age_accesses=age,cpu=cpu,spec=pin(sp),output=str(out/'result'),job_directory=str(out/'job'),admission=admissions[p]))
+        prepared.append(dict(case=name,prefill=p,decode=2,policy=policy,drain_policy=drain,dirty_age_accesses=age,dirty_age_clock='set',cpu=cpu,spec=pin(sp),output=str(out/'result'),job_directory=str(out/'job'),admission=admissions[p]))
     save(ROOT/'prepare-result.json',dict(status='PASS_FINITE_CASE_PREFLIGHT_NOT_LAUNCHED',cases=prepared,build=evidence,
         old_inputs_modified=False,new_GPU_capture=False,compute_stall_cosimulation=False))
     print(json.dumps(dict(status='PASS_FINITE_CASE_PREFLIGHT_NOT_LAUNCHED',cases=len(prepared),compile_wall_minutes=evidence['compile_wall_minutes'])))
