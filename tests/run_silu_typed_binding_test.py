@@ -11,7 +11,11 @@ import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-OLD = Path('/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1')
+# Root of the original sealed-input work tree. Overridable so this test is not
+# tied to the author's macOS path; see --source-root / TILEGEN_SEALED_SOURCE_ROOT.
+OLD = Path(os.environ.get(
+    'TILEGEN_SEALED_SOURCE_ROOT',
+    '/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-full-r1'))
 
 
 def pin(p):
@@ -23,6 +27,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sanitize', action='store_true')
+    parser.add_argument('--source-root', type=Path, default=OLD,
+                        help='root containing canonical-silu-driver-r1/sealed-inputs.json '
+                             '(default: $TILEGEN_SEALED_SOURCE_ROOT, else the original author path)')
     a = parser.parse_args()
     out = a.output.resolve();out.mkdir(parents=True, exist_ok=False)
     config = json.loads((ROOT/'build-config.json').read_text())
@@ -31,7 +38,11 @@ def main():
     # Exact existing SourceBundle/SourceCatalog definitions, excluding all
     # simulation entry points. No replacement source validation in the fixture.
     (out/'native_sequence_source_pool.inc').write_text(raw[:cut]+'\n} // namespace native_sequence\n')
-    sealed = json.loads((OLD/'canonical-silu-driver-r1/sealed-inputs.json').read_text())
+    old = a.source_root.resolve()
+    manifest = old/'canonical-silu-driver-r1/sealed-inputs.json'
+    if not manifest.is_file():
+        parser.error(f'sealed-inputs.json not found under {old}; pass --source-root')
+    sealed = json.loads(manifest.read_text())
     evidence = []
     for name in ['plan_file', 'template_file', 'program_file', 'register_file', 'model_manifest', 'model_source']:
         expected = sealed[name];actual = pin(expected['path'])
