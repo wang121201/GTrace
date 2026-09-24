@@ -2,10 +2,11 @@
 """Reproduce original regression and set-age prototype checks; bounded CPU only."""
 import argparse, hashlib, json, os, pathlib, resource, shlex, shutil, subprocess, time
 ROOT=pathlib.Path(__file__).resolve().parents[2]
+ORIGINAL_FROZEN_COMMIT='17f03b070ecb86fa034597a6a7ac972ff319bef7'
 def pin(p):
     p=p.resolve();b=p.read_bytes();return dict(path=str(p),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--output',type=pathlib.Path,required=True);ap.add_argument('--cxx',default='clang++');a=ap.parse_args();out=a.output.resolve();out.mkdir(parents=True,exist_ok=False);commands=[]
+    ap=argparse.ArgumentParser();ap.add_argument('--output',type=pathlib.Path,required=True);ap.add_argument('--cxx',default='clang++');ap.add_argument('--frozen-commit',default=os.environ.get('TILEGEN_SECTOR32_FROZEN_COMMIT',ORIGINAL_FROZEN_COMMIT),help='commit holding the frozen sector32 candidate header; override when the original commit is absent');a=ap.parse_args();out=a.output.resolve();out.mkdir(parents=True,exist_ok=False);commands=[]
     def run(name,argv,env=None):
         t=time.monotonic();before=resource.getrusage(resource.RUSAGE_CHILDREN);p=subprocess.run(list(map(str,argv)),cwd=ROOT,env=env,text=True,capture_output=True,timeout=240);after=resource.getrusage(resource.RUSAGE_CHILDREN)
         (out/(name+'.stdout')).write_text(p.stdout);(out/(name+'.stderr')).write_text(p.stderr)
@@ -13,8 +14,13 @@ def main():
     py=shutil.which('python3');cxx=shutil.which(a.cxx);assert py and cxx
     sources={p.resolve():pin(p) for top in ('llm','source') for p in (ROOT/top).rglob('*') if p.is_file() and p.suffix in ('.h','.hpp','.cpp','.cc','.py')}
     run('global-regression',[py,ROOT/'llm/tests/run_sector32_tests.py','--output',out/'global','--cxx',cxx])
-    frozen_commit='17f03b070ecb86fa034597a6a7ac972ff319bef7'
-    raw=run('export-frozen-sector32',['git','show',frozen_commit+':llm/executor-r1/candidate_direct_cache.h']).stdout
+    frozen_commit=a.frozen_commit
+    try:
+        raw=run('export-frozen-sector32',['git','show',frozen_commit+':llm/executor-r1/candidate_direct_cache.h']).stdout
+    except AssertionError as error:
+        raise SystemExit(f'cannot export the frozen sector32 candidate header from {frozen_commit}: {error}\n'
+            f'Pass --frozen-commit <sha> or set TILEGEN_SECTOR32_FROZEN_COMMIT. The original commit {ORIGINAL_FROZEN_COMMIT} '
+            'is absent from a reconstructed repository; point this at the equivalent reconstructed commit instead.')
     assert raw.count('namespace direct_native {')==1
     frozen=out/'frozen_sector32_cache.h';frozen.write_text(raw.replace('namespace direct_native {','namespace frozen_sector32 { using direct_native::EfHitThrottle;'))
     sources[frozen]=pin(frozen)
