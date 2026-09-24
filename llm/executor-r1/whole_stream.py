@@ -29,6 +29,31 @@ def need(value, message):
         raise ValueError(message)
 
 
+def parse_dirty_age_accesses(text):
+    """Accept an explicit unsigned decimal access count, including disabled=0."""
+    if not isinstance(text, str) or not text.isascii() or not text.isdecimal():
+        raise argparse.ArgumentTypeError('dirty age must be an unsigned decimal uint64')
+    value = int(text)
+    if value >= 1 << 64:
+        raise argparse.ArgumentTypeError('dirty age exceeds uint64')
+    return value
+
+
+def dirty_age_expectation(value):
+    return dict(expected_dirty_age_accesses=64000000 if value is None else value,
+                expected_dirty_age_source='legacy_default_64000000' if value is None
+                else 'explicit_cli_expected_dirty_age_accesses')
+
+
+def validate_cache_configuration(configuration, expected_dirty_age_accesses):
+    need(type(expected_dirty_age_accesses) is int and
+         0 <= expected_dirty_age_accesses < 1 << 64, 'expected dirty age must be uint64')
+    need(configuration['L2']['EF_hit_numerator'] == 288, 'frozen EF h288 changed')
+    actual = configuration['L2']['dirty_age_accesses']
+    need(type(actual) is int and actual == expected_dirty_age_accesses,
+         'runner dirty age differs from explicit/default expected access count')
+
+
 def load_module(path, support=False):
     path = Path(path).resolve()
     need(path.is_relative_to(K) or (support and path.is_relative_to(SUPPORT)), 'runtime must be inside declared task source trees')
@@ -517,7 +542,10 @@ def main():
     parser.add_argument('--fast-p32-prefill', action='store_true')
     parser.add_argument('--drain-policy', choices=('none', 'measured-phase-end', 'run-end'), default='none',
                         help='Opt-in diagnostic intervention, not a native CUDA phase flush')
+    parser.add_argument('--expected-dirty-age-accesses', type=parse_dirty_age_accesses,
+                        help='Admit only this runner dirty-age setting (uint64; 0 disables age); default 64000000. Does not configure the runner.')
     args = parser.parse_args()
+    age_expectation = dirty_age_expectation(args.expected_dirty_age_accesses)
     need(not args.output.exists(), 'fresh result directory required')
     args.output.mkdir(parents=True)
     start, cpu_start = time.monotonic(), time.process_time()
@@ -554,6 +582,7 @@ def main():
                  compute_stall_cosimulation=False, hardware_warp_schedule_claimed=False,
                  DMA_model='L2_COHERENT_FUNCTIONAL_128B_CHUNKS', terminal_dirty_flush=args.drain_policy == 'run-end',
                  drain_policy=args.drain_policy,
+                 **age_expectation,
                  measured_cache_history_intervened=args.drain_policy == 'measured-phase-end',
                  NCU_accuracy_accepted=False)
     def write_state():
@@ -599,8 +628,7 @@ def main():
             state['source_stream_without_drain_interventions'] = dict(bytes=send.source_bytes, records=send.source_records, sha256=send.source_hash.hexdigest())
         result = json.loads((args.output / 'cache-summary.json').read_text())
         state['actual_cache_configuration'] = result['configuration']
-        need(result['configuration']['L2']['EF_hit_numerator'] == 288, 'frozen EF h288 changed')
-        need(result['configuration']['L2']['dirty_age_accesses'] == 64000000, 'frozen age64M changed')
+        validate_cache_configuration(result['configuration'], age_expectation['expected_dirty_age_accesses'])
         need(result['status'] == 'PASS_STREAMED_SOURCE_FUNCTIONAL_CACHE_RUN', 'cache completion status')
         need(result['input_raw_SHA256'] == send.hash.hexdigest() and result['input_bytes'] == send.bytes
              and result['input_lines'] == send.records, 'producer/consumer stream identity differs')
@@ -624,6 +652,7 @@ def main():
             diagnostic_drains_are_native_operations=False,
             source_stream_without_drain_interventions=state['source_stream_without_drain_interventions'],
             actual_cache_configuration=state['actual_cache_configuration'],
+            **age_expectation,
             DMA_model=state['DMA_model'], source_stream=state['source_stream']), indent=2) + '\n')
         state.update(status='PASS_COMPLETE_NATIVE_GRAPH_CACHE_EXECUTION', cache_replay=True)
     except BaseException as exc:
