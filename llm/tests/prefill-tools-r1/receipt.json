@@ -1,0 +1,43 @@
+{
+  "status": "PASS_LOCAL_PREFILL_PREPARE_AND_SAFE_STATUS_INTERFACES",
+  "generated_utc": "2026-09-22T07:54:47.675116+00:00",
+  "command": "python3 -B llm/tests/prefill-tools-r1/test_tools.py",
+  "cwd": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo",
+  "returncode": 0,
+  "tests": 9,
+  "unittest_seconds": 0.176,
+  "python": "3.9.6",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "remote_executed": false,
+  "GPU_executed": false,
+  "cache_replay_executed": false,
+  "fixtures": "Synthetic source/ELF bytes; mocked producer preflight; no real workload result",
+  "files": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tools/prefill_prepare_xmu.py",
+      "bytes": 13490,
+      "sha256": "ddda1efb7a79d88679ef032bb3b5439728b1ebec4dee82913d83496a9290c499"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tools/prefill_safe_status_xmu.py",
+      "bytes": 13656,
+      "sha256": "243ab7da04d9abfeeb8cebf21e533c08ecf7daeec66af5e3d6b43993b5071dd5"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tests/prefill-tools-r1/test_tools.py",
+      "bytes": 15403,
+      "sha256": "dd197df2a237caa304e16664a120bd1609b433053eeb5b987c62f52c668e1be6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-prefill-sweep-20260922-r1/repo/llm/tests/prefill-tools-r1/README.md",
+      "bytes": 6715,
+      "sha256": "45223b06deee787e1e77af86801b270730c2fcc76c777a15fdc4787ad2d32277"
+    }
+  ],
+  "schemas": {
+    "admission": "ADMITTED_PREFILL_CASE_V1",
+    "runner_evidence": "PREFILL_NATIVE_RUNNER_EVIDENCE_V1",
+    "preparation": "PREFILL_R4_PREPARATION_V1",
+    "safe_status": "PREFILL_R4_LLM_SAFE_AGGREGATES_V1"
+  }
+}

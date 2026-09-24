@@ -1,0 +1,29 @@
+{
+  "status": "PASS_LOCAL_SYNTHETIC_P128_PREPARE_SAFE_STATUS",
+  "utc": "2026-09-22T06:43:17.291603+00:00",
+  "tests": 11,
+  "test_seconds": 0.04,
+  "command": "python3 -B /Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-p128-sweep-20260922-r1/repo/llm/tests/p128-tools-r1/test_tools.py",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "sources": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-p128-sweep-20260922-r1/repo/llm/tools/p128_prepare_xmu.py",
+      "bytes": 11534,
+      "sha256": "ecd3d23aa7c08319339593b204a684e626f9c0ebc3f84f7282beb0a67160304a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-p128-sweep-20260922-r1/repo/llm/tools/p128_safe_status_xmu.py",
+      "bytes": 12890,
+      "sha256": "f086a1bb9e1af9aab2e524240124b9063293903139b35f15a3cafd8fad1839f5"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-p128-sweep-20260922-r1/repo/llm/tests/p128-tools-r1/test_tools.py",
+      "bytes": 13164,
+      "sha256": "ba2b5f1288edf697efa166c8cbb6fef489add16d0dbcc83d318064c2c3d9f83f"
+    }
+  ],
+  "scope": "Synthetic input files and mocked preflight subprocess. No real cache binary, compile, remote, GPU or full source generation.",
+  "initial_fixture_fix": "Resolve macOS /var symlink in temporary fixture roots before equality comparisons; no production compatibility loosening.",
+  "remote_run": false,
+  "GPU_executed": false
+}

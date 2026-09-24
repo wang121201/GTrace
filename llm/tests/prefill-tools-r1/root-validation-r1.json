@@ -1,0 +1,57 @@
+{
+  "status": "PASS_LOCAL_BUILD_AND_INPUT_GUARDS_REMOTE_ADMISSION_PENDING",
+  "generated_utc": "2026-09-22T08:27:02.060384+00:00",
+  "review_tests": 13,
+  "prepare_status_tests": 9,
+  "CPP_main_local_compile_returncode": 0,
+  "synthetic_CPP_Python_effect_records": 16640,
+  "actual_complete_case_admission": false,
+  "new_r4_cache_runs_started": 0,
+  "files": [
+    {
+      "path": "llm/executor-r1/main.cpp",
+      "bytes": 2753,
+      "sha256": "1d1b2bed608aa9b88d99692e322ba0e8acd793f2ff66e45839196b7ee8957c8b"
+    },
+    {
+      "path": "llm/executor-r1/whole_stream.py",
+      "bytes": 34071,
+      "sha256": "c9daef0ddc2880970e96e3361e9a8d9c16ebcd5aa52cc26e0ed10eebbf5b70a3"
+    },
+    {
+      "path": "llm/tools/prefill_prepare_xmu.py",
+      "bytes": 13513,
+      "sha256": "7a6cd328dc4c99f683716cc64977f210b5ec9624e21899b48f572929e906d881"
+    },
+    {
+      "path": "llm/tools/prefill_safe_status_xmu.py",
+      "bytes": 13656,
+      "sha256": "243ab7da04d9abfeeb8cebf21e533c08ecf7daeec66af5e3d6b43993b5071dd5"
+    },
+    {
+      "path": "llm/fast-prefill-sweep-r1/probe.cpp",
+      "bytes": 986,
+      "sha256": "6a2e189a42afc030fe30b7090c2f6d8ce2d28225cb8b56be7139f7045407d8dd"
+    },
+    {
+      "path": "llm/fast-prefill-sweep-r1/README.md",
+      "bytes": 1613,
+      "sha256": "f3a1c38d0626c919ef5766905dcea514ccc172ff3dbb75b80b99f64da76a31fa"
+    },
+    {
+      "path": "llm/fast-prefill-sweep-r1/contracts.json",
+      "bytes": 2134,
+      "sha256": "38aa0758890a0938f6e5f5fe5d1eb88777e87db119e61043c7241d8c28ddaf29"
+    },
+    {
+      "path": "llm/fast-prefill-sweep-r1/contracts.h",
+      "bytes": 1661,
+      "sha256": "458061ede6ebb822c87baacfb87d210d6bd7305f905ba2979a8887620cb2ee3d"
+    },
+    {
+      "path": "llm/fast-prefill-sweep-r1/native_prefill_sweep.h",
+      "bytes": 6040,
+      "sha256": "f857cc9ebd03cc69cb7f7d1798661e09dae7579dae7b6e14c9bf909f4e97b403"
+    }
+  ]
+}

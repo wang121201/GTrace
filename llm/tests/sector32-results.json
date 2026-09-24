@@ -1,0 +1,391 @@
+{
+  "schema": "SECTOR32_CACHE_COMPONENT_VALIDATION_V1",
+  "status": "PASS_SECTOR32_COMPONENTS_AND_ACTUAL_MAIN",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "leak_sanitizer_enabled": false,
+  "commands": [
+    {
+      "name": "build-sector32-cache-test",
+      "argv": [
+        "/usr/bin/clang++",
+        "-std=c++20",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-DTINY_SHA_PORTABLE",
+        "-I",
+        "llm/executor-r1",
+        "-I",
+        "source",
+        "-I",
+        "source/work/tilegen-full-r1/core-native-copy-r2/include",
+        "-I",
+        "source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+        "-MMD",
+        "-MF",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/sector32-cache-test.d",
+        "llm/tests/sector32_cache_test.cpp",
+        "-o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/sector32-cache-test"
+      ],
+      "returncode": 0,
+      "CPU_minutes": 0.13737273333333333,
+      "wall_minutes": 0.13784796666666665,
+      "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/build-sector32-cache-test.stdout",
+      "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/build-sector32-cache-test.stderr"
+    },
+    {
+      "name": "build-source-cache-runner",
+      "argv": [
+        "/usr/bin/clang++",
+        "-std=c++20",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-DTINY_SHA_PORTABLE",
+        "-I",
+        "llm/executor-r1",
+        "-I",
+        "source",
+        "-I",
+        "source/work/tilegen-full-r1/core-native-copy-r2/include",
+        "-I",
+        "source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+        "-MMD",
+        "-MF",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/source-cache-runner.d",
+        "llm/executor-r1/main.cpp",
+        "-o",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/source-cache-runner"
+      ],
+      "returncode": 0,
+      "CPU_minutes": 0.1751245,
+      "wall_minutes": 0.17619572499999997,
+      "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/build-source-cache-runner.stdout",
+      "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/build-source-cache-runner.stderr"
+    },
+    {
+      "name": "legacy32",
+      "argv": [
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/sector32-cache-test"
+      ],
+      "returncode": 0,
+      "CPU_minutes": 0.01481653333333328,
+      "wall_minutes": 0.03160736805,
+      "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/legacy32.stdout",
+      "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/legacy32.stderr"
+    },
+    {
+      "name": "r4",
+      "argv": [
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/sector32-cache-test"
+      ],
+      "returncode": 0,
+      "CPU_minutes": 0.0012818333333333542,
+      "wall_minutes": 0.0014488125000000332,
+      "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/r4.stdout",
+      "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/r4.stderr"
+    },
+    {
+      "name": "actual-cli",
+      "argv": [
+        "/usr/bin/python3",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/tests/sector32_cli_test.py",
+        "--binary",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/source-cache-runner",
+        "--output",
+        "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli"
+      ],
+      "returncode": 0,
+      "CPU_minutes": 0.0055949333333332905,
+      "wall_minutes": 0.011992226400000009,
+      "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/actual-cli.stdout",
+      "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/actual-cli.stderr"
+    }
+  ],
+  "component_tests": [
+    {
+      "checks": 282118,
+      "full_model_or_GPU_test": false,
+      "profile": "legacy32",
+      "status": "PASS_SECTOR32_FUNCTIONAL_CACHE"
+    },
+    {
+      "checks": 42,
+      "full_model_or_GPU_test": false,
+      "profile": "r4",
+      "status": "PASS_SECTOR32_FUNCTIONAL_CACHE"
+    }
+  ],
+  "actual_cli_receipt": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/receipt.json",
+    "bytes": 3015,
+    "sha256": "d842f85cc81aa92069bf706dfdf6cc99f9584068640d77ee6c15097c6c09c640"
+  },
+  "source_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/candidate_direct_cache.h",
+      "bytes": 33080,
+      "sha256": "5aa79f0194b1353324d7e95ff23f7d9a7e397700d7413bf51450972de5281062"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/ef_hit_throttle.h",
+      "bytes": 1165,
+      "sha256": "a9f9a11ccfa19e6f60ccfcc6c450eb5fd05dacf0f47a1ee1b60c879a330a54ae"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/frozen_cache_geometry.h",
+      "bytes": 6165,
+      "sha256": "9456853c598198056447e98d7cb9983806388adc62526bcdc8817c05b0afe1c8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/legacy_per_sm_l1.h",
+      "bytes": 27132,
+      "sha256": "e42b50575143578015fd725c1906765505dedc2b69321262a5da56e64104f665"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/llm_l1_adapter.h",
+      "bytes": 12117,
+      "sha256": "5c0640219e723c165506dc6a6b7c4dad8de3987af2c1b7ce3ec3f413632d3b36"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/main.cpp",
+      "bytes": 2753,
+      "sha256": "1d1b2bed608aa9b88d99692e322ba0e8acd793f2ff66e45839196b7ee8957c8b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/native_gemv.h",
+      "bytes": 4879,
+      "sha256": "24584714c1c9973c8e36ce4746dbc646356acb07975c1e5e1d4d75d40c1fe7c1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/qwen_gemv.h",
+      "bytes": 4408,
+      "sha256": "fd29bfdb6368647339888d23a99bf6aea00eae529726c25b55ee42c65ff305eb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/qwen_gemv_stages.h",
+      "bytes": 19160,
+      "sha256": "ef7cf41b1f74b836107bc02901c559412d8783129aed721b7f061e375a2ca37e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/qwen_p32_gemm.h",
+      "bytes": 4762,
+      "sha256": "63bf967e01ce4032ae2bd11f43cd32cd194c848d1bb60ea127b8e8cf092b787a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/qwen_p32_gemm_contracts.h",
+      "bytes": 33290,
+      "sha256": "0eb7f5c1aa7d5f2051ecb40c630ccb0326de57cc9b1ca1d793dba076f750ae8e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/executor-r1/runner.h",
+      "bytes": 20012,
+      "sha256": "856967fad6cd43399b3af4409addce0bacea8fa576a8c10a55936240c5f6d19e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-down-r1/llama_down.h",
+      "bytes": 7918,
+      "sha256": "5ce52174d3a3015f60d654e7e101cb9600c10d1f7e8337464f6623716d3cbafc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-llama-p32-prefill-r1/llama_p32_prefill.h",
+      "bytes": 4147,
+      "sha256": "d2675146d59736ef2255e47e136a99c27cecb10593342796490aa0168cb8c5bb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-llama-p32-prefill-r1/llama_p32_prefill_contracts.h",
+      "bytes": 3972,
+      "sha256": "3be234ef7c67a6b471c3720be2f3f1b2745ee8f22c7ef3cfdd8bab831ac5ee7a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-prefill-r2/native_prefill.h",
+      "bytes": 8100,
+      "sha256": "a695d432f8ea0d22e8aca40105a7f1abf118d508f3f30c1fb3fc25e0e58f0357"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-prefill-r2/native_prefill_contracts.h",
+      "bytes": 10530,
+      "sha256": "6c0c7526546ce01caa69a8aa9587c0222c7579a3dcdda3ad682e159e6d2c5505"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-prefill-sweep-r1/contracts.h",
+      "bytes": 7491,
+      "sha256": "58e7d7cc3bce4aa34091dca15d4e4a743ff4f95a4b617d3a75e203133b58f786"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-prefill-sweep-r1/down_source.h",
+      "bytes": 2906,
+      "sha256": "7618b6646bacb6a637c12898d3b682a38f25c548fec96a1a2f41097a26e81c98"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-prefill-sweep-r1/gate_source.h",
+      "bytes": 2719,
+      "sha256": "d2b42c3df5fb2f2503a38ba0f4161cf4a4f5ce3f39e554cb5d28fce951ec0a2e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-prefill-sweep-r1/native_prefill_sweep.h",
+      "bytes": 8686,
+      "sha256": "70af8649d6166406176267642d0d0ba1636850a6b7202efd23d7f0fffdb71ce3"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-prefill-sweep-r1/o_prefill.h",
+      "bytes": 4416,
+      "sha256": "bfd906c47969a178094ab3ae193482aa1f039a0b165cb0f18d179d5010b9ea7f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/fast-prefill-sweep-r1/qkv_source.h",
+      "bytes": 3874,
+      "sha256": "66c90b7e11e2c276a715142497c15bd50ab3a80cf69b5eb1548575c5dd978492"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/tests/frozen_candidate_direct_cache.h",
+      "bytes": 22725,
+      "sha256": "047ddc327b7096263a77ac19685689fd545af1a3e922812732a3007a2368bb81"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/tests/sector32_cache_test.cpp",
+      "bytes": 10323,
+      "sha256": "3b4c727f4db6f7e06af3da2883d8b1d935893e0c047c63003d8882e15a6bc831"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/native_trace.h",
+      "bytes": 13512,
+      "sha256": "d70f51a166b36c4d8cad78cf45ac3fe68820ebfb53cec35a662cb9d3ee2a4453"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party/nlohmann/json.hpp",
+      "bytes": 919975,
+      "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/ada_r4_profile.h",
+      "bytes": 1858,
+      "sha256": "492280fa9039547f7bae939e3cbf832219d6e5fd1081e257d6c008c86366ccfd"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/cycle.h",
+      "bytes": 567,
+      "sha256": "d097deac2c86a7922aa0f9ec87299d8decb7cd18d9556c7146a3c9a1c9e2ff14"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/dag_node.h",
+      "bytes": 20940,
+      "sha256": "50e6823eda5db331cc3ae73294505614192c3e8968413046339c3560251b8778"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/dirty_sector_eval.h",
+      "bytes": 4178,
+      "sha256": "48a6a78f91a6dead97dd51a671888f55898ac4f882849abfc213157a0b9dc4bd"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+      "bytes": 42793,
+      "sha256": "b41bc28692c3ca1dcecb1ec98df6e6c57ea3e42e125b5bc414fe353f3d0d3ed8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/retry_host_memo.h",
+      "bytes": 1924,
+      "sha256": "33418c9addbb05490dc1653d127ca5edfae7d2e78dbbf59135933f45ef25c182"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/sha256.h",
+      "bytes": 5279,
+      "sha256": "48f2bcb813d93c1fa509cc255e4d1cea2c2a5293ebb1c68e6692f581e62d8bf8"
+    }
+  ],
+  "source_closure": true,
+  "binaries": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/sector32-cache-test",
+      "bytes": 2887136,
+      "sha256": "79da2eda7124d9d9aaa19f9032c3148bf89a9266763be611a656941e05f4b933"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/source-cache-runner",
+      "bytes": 3323216,
+      "sha256": "8ba5cb30969d5ef2e5971fe2cba98794ca23e37c78ec20ab230a9bb8c342f345"
+    }
+  ],
+  "full_model_or_GPU_test": false,
+  "actual_cli": {
+    "status": "PASS_SECTOR32_ACTUAL_MAIN_BOUNDED_CLI",
+    "full_model_or_GPU_test": false,
+    "binary": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/source-cache-runner",
+      "bytes": 3323216,
+      "sha256": "8ba5cb30969d5ef2e5971fe2cba98794ca23e37c78ec20ab230a9bb8c342f345"
+    },
+    "tests": [
+      {
+        "name": "sector32",
+        "returncode": 0,
+        "wall_seconds": 0.430190917,
+        "expected_success": true,
+        "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/sector32/stdout.txt",
+        "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/sector32/stderr.txt",
+        "CPU_minutes": 0.00022134999999999999
+      },
+      {
+        "name": "old128",
+        "returncode": 0,
+        "wall_seconds": 0.06838966699999999,
+        "expected_success": true,
+        "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/old128/stdout.txt",
+        "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/old128/stderr.txt",
+        "CPU_minutes": 0.00021171666666666667
+      },
+      {
+        "name": "continuous-no-drain",
+        "returncode": 0,
+        "wall_seconds": 0.06725058299999997,
+        "expected_success": true,
+        "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/continuous-no-drain/stdout.txt",
+        "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/continuous-no-drain/stderr.txt",
+        "CPU_minutes": 0.00019486666666666664
+      },
+      {
+        "name": "invalid-policy",
+        "returncode": 1,
+        "wall_seconds": 0.053916500000000034,
+        "expected_success": false,
+        "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/invalid-policy/stdout.txt",
+        "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/invalid-policy/stderr.txt"
+      },
+      {
+        "name": "nested-drain",
+        "returncode": 1,
+        "wall_seconds": 0.05910991600000004,
+        "expected_success": false,
+        "stdout": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/nested-drain/stdout.txt",
+        "stderr": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/build/sector32-components-final-r1/cli/nested-drain/stderr.txt"
+      }
+    ],
+    "source_requested_projection_equal_old128_sector32": true,
+    "continuous_no_implicit_flush": true,
+    "explicit_drain_separate_from_natural_phase": true
+  },
+  "test_driver_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/tests/run_sector32_tests.py",
+      "bytes": 3790,
+      "sha256": "2af240ad1e742900cd5596ec7143141a22f4031794082bed655e8a03a4254b67"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/tests/sector32_cli_test.py",
+      "bytes": 4929,
+      "sha256": "ab6ca8b3fae2623e986131d433d56a5e1845b1d0bf86174b423fd64ee19de1e2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-sector32-20260922-r1/repo/llm/tests/sector32-cache-contract.md",
+      "bytes": 8096,
+      "sha256": "ad2a1b753976c168743ae0a220d92da3ec390bc793a2ac18dd08ed0c9562cfc7"
+    }
+  ]
+}

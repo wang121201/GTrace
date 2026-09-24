@@ -1,0 +1,40 @@
+{
+  "status": "PASS_LOCAL_SYNTHETIC_PRODUCER_CONTRACT_9_TESTS",
+  "utc": "2026-09-22T05:44:30.327492+00:00",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "command": "python3 -B /Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/review/test_producer_contract.py",
+  "tests": 9,
+  "test_report_seconds": 0.029,
+  "result": "OK",
+  "sources": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/whole_stream.py",
+      "bytes": 33281,
+      "sha256": "a93baac49c40b3aad4744a801f7253e9e0873293781f649d11eaabe70a117073"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/llm_l1_adapter.h",
+      "bytes": 11862,
+      "sha256": "cf14057b94b0a3312504da856062246d3a4fa4e54c26b4b278348a25b191f50a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tools/prepare_xmu.py",
+      "bytes": 5672,
+      "sha256": "d535708264793c0f3077f31a70fdacae19d9e60faf0a04f71667589b48def4bc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tools/safe_status_xmu.py",
+      "bytes": 5241,
+      "sha256": "1ad7cee5e65a26ab64a006d670a32a4f58260625400847d36f979f4ed8eccd5a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/review/test_producer_contract.py",
+      "bytes": 8239,
+      "sha256": "a4840a7d02d7e7faeeacfb0ff2f4febdd4159cef4b0ae43fa837816c86e022f2"
+    }
+  ],
+  "scope": "Python producer protocol only; retrieval/registry/preflight input loaders are synthetic fixtures; no C++ cache launched; not full native equivalence or NCU validation",
+  "initial_fixture_error": "test harness work-root parent index corrected before final 9-test run; no production change",
+  "remote_access": false,
+  "GPU_executed": false
+}
