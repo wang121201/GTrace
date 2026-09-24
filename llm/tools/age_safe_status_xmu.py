@@ -3,8 +3,8 @@ import hashlib
 import json
 from pathlib import Path
 
-ROOT=Path('/home/xmu/nvidiagds/codex-runs/gtsim-ada-age-20260922-r1')
-CASES=('p32-age0','p128-age0','p32-age96m','p128-age96m','p32-age128m','p128-age128m')
+ROOT=Path('/home/xmu/nvidiagds/codex-runs/gtsim-ada-set-age-20260922-r1')
+CASES=('p32-set3125','p128-set3125','p32-set4688','p128-set4688')
 
 def read(p):return json.loads(p.read_text()) if p.is_file() else None
 
@@ -37,10 +37,10 @@ def main():
     for name in CASES:
         out=ROOT/'cases'/name/'result';job=out.parent/'job';r={'case':name,'status':'NOT_STARTED'}
         spec=read(out.parent/'spec.json')
-        if spec:r.update(cpu=spec['cpu'],data_policy=spec['environment']['TILEGEN_L2_DATA_POLICY'],dirty_age_accesses=int(spec['environment']['TILEGEN_L2_DIRTY_AGE_ACCESSES']),drain_policy=spec['argv'][spec['argv'].index('--drain-policy')+1])
+        if spec:r.update(cpu=spec['cpu'],data_policy=spec['environment']['TILEGEN_L2_DATA_POLICY'],dirty_age_accesses=int(spec['environment']['TILEGEN_L2_DIRTY_AGE_ACCESSES']),dirty_age_clock=spec['environment']['TILEGEN_L2_DIRTY_AGE_CLOCK'],drain_policy=spec['argv'][spec['argv'].index('--drain-policy')+1])
         s=read(out/'status.json')
         if s:
-            for k in ('status','error_type','wall_minutes','producer_CPU_minutes','child_CPU_minutes','executed_counts','source_stream','source_stream_without_drain_interventions','measured_cache_history_intervened','expected_dirty_age_accesses','expected_dirty_age_source'):
+            for k in ('status','error_type','wall_minutes','producer_CPU_minutes','child_CPU_minutes','executed_counts','source_stream','source_stream_without_drain_interventions','measured_cache_history_intervened','expected_dirty_age_accesses','expected_dirty_age_source','expected_dirty_age_clock'):
                 if k in s:r[k]=s[k]
             r['status_sha256']=sha(out/'status.json')
         for edge in ('start','finish'):
@@ -64,6 +64,15 @@ def main():
             r['cache_CPU_minutes']=summary['CPU_minutes'];r['configuration']=summary['configuration']
             r['final_counters']={k:v for k,v in summary['snapshot'].items() if isinstance(v,(int,float)) and not any(x in k.lower() for x in ('address','covered_min','covered_max'))}
             r['final_dirty_ownership']=owners(summary.get('dirty_ownership'))
+            obs=summary.get('dirty_age_observation',{})
+            r['dirty_age_observation']={k:v for k,v in obs.items() if isinstance(v,(int,float,bool,str)) or k.endswith('_histogram')}
+            for key in ('group_ticks','group_age_writeback_bytes','group_resident_dirty_lines'):
+                if key in obs:
+                    r['dirty_age_observation'][key+'_sum']=sum(obs[key])
+                    r['dirty_age_observation'][key+'_count']=len(obs[key])
+            if 'group_age_writeback_bytes' in obs:
+                r['dirty_age_observation']['group_age_writeback_sum_matches_counter']=sum(obs['group_age_writeback_bytes'])==summary['snapshot']['age_writeback_bytes']
+
         if preparation:
             admission=next(x['admission'] for x in preparation['cases'] if x['case']==name)
             r['baseline_source_stream']=admission['baseline_source_stream']

@@ -41,17 +41,20 @@ struct CacheKeyHash {
     }
 };
 enum class DataPolicy { OLD128, SECTOR32 };
+enum class DirtyAgeClock { GLOBAL_FORWARDED_LINE, SET_FORWARDED_LINE };
+inline const char* dirty_age_clock_name(DirtyAgeClock clock){return clock==DirtyAgeClock::GLOBAL_FORWARDED_LINE?"global":"set";}
+inline const char* dirty_age_budget_unit(DirtyAgeClock clock){return clock==DirtyAgeClock::GLOBAL_FORWARDED_LINE?"GLOBAL_FORWARDED_L2_128B_LINE_ACCESSES":"SAME_GROUP_FORWARDED_L2_128B_LINE_ACCESSES";}
 enum class ReadReason : unsigned { LOAD_FILL, READ_MERGE, ATOMIC_READ, CAPACITY_MERGE, AGE_MERGE, DRAIN_MERGE, OLD_STORE_RFO, OLD_ATOMIC_RFO, COUNT };
 inline const char* read_reason_name(ReadReason r){static constexpr const char* names[]={"load_fill","read_merge","atomic_read","capacity_merge","age_merge","drain_merge","old_store_RFO","old_atomic_RFO"};return names[unsigned(r)];}
 enum class WritebackReason : unsigned { CAPACITY, AGE, DRAIN };
 inline const char* writeback_reason_name(WritebackReason r){return r==WritebackReason::CAPACITY?"capacity":r==WritebackReason::AGE?"age":"drain";}
-struct DiagnosticOptions { bool skip_store_rfo=false; bool bypass_streaming_reads=false; bool ef_fill_only=false; int ef_hit_rate=-1; U dirty_age_accesses=0; DataPolicy data_policy=DataPolicy::OLD128; };
+struct DiagnosticOptions { bool skip_store_rfo=false; bool bypass_streaming_reads=false; bool ef_fill_only=false; int ef_hit_rate=-1; U dirty_age_accesses=0; DataPolicy data_policy=DataPolicy::OLD128; DirtyAgeClock dirty_age_clock=DirtyAgeClock::GLOBAL_FORWARDED_LINE; };
 inline bool dirty_age_due(U now,U last,U budget){require(last<=now,"dirty age sequence regressed");return budget&&now-last>=budget;}
 struct DirtyOwner { U first=native_trace::unknown,last=native_trace::unknown; int first_role=0,last_role=0; };
 using OwnerObserver=std::function<void(U,const DirtyOwner&,const Context&,bool)>;
 using WritebackObserver=std::function<void(const DirtyOwner&,const Context&,WritebackReason,std::uint32_t)>;
 class FunctionalCache {
-    struct Entry { std::uint8_t dirty; std::list<CacheKey>::iterator position; std::array<DirtyOwner,4> owners{}; U last_write_sequence=0; bool age_cleaned=false; std::list<CacheKey>::iterator age_position{}; std::array<std::uint32_t,4> known{},dirty_bytes{}; };
+    struct Entry { std::uint8_t dirty; std::list<CacheKey>::iterator position; std::array<DirtyOwner,4> owners{}; U last_write_sequence=0,last_write_age_tick=0; bool age_cleaned=false; std::list<CacheKey>::iterator age_position{}; std::array<std::uint32_t,4> known{},dirty_bytes{}; };
     DiagnosticOptions options_; OwnerObserver observe_; WritebackObserver observe_writeback_;
     EfHitThrottle ef_hit_throttle_;
     U skipped_store_rfo_=0,streaming_bypass_=0,ef_read_hits_=0;
@@ -81,26 +84,45 @@ class FunctionalCache {
     // Candidate clock is forwarded L2 line accesses, never time or phase count.
     U l2_access_sequence_=0,age_triggers_=0,age_lines_=0,age_sectors_=0,age_rewrites_=0,age_redirty_=0,age_queue_peak_=0;
     std::list<CacheKey> age_queue_;
+    std::vector<std::list<CacheKey>> set_age_queues_;
+    std::vector<U> set_age_ticks_,set_age_writeback_bytes_;
+    U age_queue_entries_=0;
+    bool set_age()const{return options_.dirty_age_clock==DirtyAgeClock::SET_FORWARDED_LINE;}
+    U age_group(const CacheKey& key)const{return set_age()?lru_.group(key.line):0;}
+    U age_now(U group)const{return set_age()?set_age_ticks_.at(group):l2_access_sequence_;}
+    std::list<CacheKey>& age_queue(U group){return set_age()?set_age_queues_.at(group):age_queue_;}
+    const std::list<CacheKey>& age_queue(U group)const{return set_age()?set_age_queues_.at(group):age_queue_;}
+    U age_tick(const CacheKey& key){
+        require(l2_access_sequence_<UINT64_MAX,"L2 access sequence overflow");++l2_access_sequence_;
+        const U group=age_group(key);
+        if(set_age()){auto& tick=set_age_ticks_.at(group);require(tick<UINT64_MAX,"set age sequence overflow");++tick;}
+        return group;
+    }
     std::array<U,16> age_masks_{};
-    std::array<U,65> capacity_age_sector_hist_{},age_written_sector_hist_{};
+    std::array<U,65> capacity_age_sector_hist_{},age_written_sector_hist_{},selected_capacity_age_hist_{},selected_written_age_hist_{};
     static unsigned age_bucket(U age){unsigned bucket=0;while(age){++bucket;age>>=1;}return bucket;}
     static J age_histogram(const std::array<U,65>& counts){J rows=J::array();for(unsigned b=0;b<65;++b)if(counts[b])rows.push_back({{"min_L2_accesses",b?U{1}<<(b-1):0},{"max_L2_accesses",b==64?UINT64_MAX:b?(U{1}<<b)-1:0},{"dirty_sectors",counts[b]},{"bytes",counts[b]*32}});return rows;}
-    void age_store(const CacheKey& key,Entry& entry){
+    void age_store(const CacheKey& key,Entry& entry,U group){
         if(entry.dirty)++age_rewrites_;else if(entry.age_cleaned){++age_redirty_;entry.age_cleaned=false;}
-        entry.last_write_sequence=l2_access_sequence_;
+        entry.last_write_sequence=l2_access_sequence_;entry.last_write_age_tick=age_now(group);
         if(!options_.dirty_age_accesses)return;
-        if(entry.dirty)age_queue_.splice(age_queue_.end(),age_queue_,entry.age_position);
-        else{age_queue_.push_back(key);entry.age_position=std::prev(age_queue_.end());age_queue_peak_=std::max<U>(age_queue_peak_,age_queue_.size());}
+        auto& queue=age_queue(group);
+        if(entry.dirty)queue.splice(queue.end(),queue,entry.age_position);
+        else{queue.push_back(key);entry.age_position=std::prev(queue.end());++age_queue_entries_;age_queue_peak_=std::max(age_queue_peak_,age_queue_entries_);}
     }
-    void age_forget(Entry& entry){if(options_.dirty_age_accesses)age_queue_.erase(entry.age_position);}
-    void age_enforce(const Context& context,bool trigger_write){
-        if(!options_.dirty_age_accesses)return;bool triggered=false;
-        while(!age_queue_.empty()){
-            const auto key=age_queue_.front();auto found=l2_.find(key);require(found!=l2_.end()&&found->second.dirty,"age queue invalid");auto& entry=found->second;
-            if(!dirty_age_due(l2_access_sequence_,entry.last_write_sequence,options_.dirty_age_accesses))break;
+    void age_forget(const CacheKey& key,Entry& entry){
+        if(options_.dirty_age_accesses){age_queue(age_group(key)).erase(entry.age_position);require(age_queue_entries_>0,"age queue gauge underflow");--age_queue_entries_;}
+    }
+    void age_enforce(const Context& context,bool trigger_write,U group){
+        if(!options_.dirty_age_accesses)return;bool triggered=false;auto& queue=age_queue(group);
+        while(!queue.empty()){
+            const auto key=queue.front();auto found=l2_.find(key);require(found!=l2_.end()&&found->second.dirty,"age queue invalid");auto& entry=found->second;
+            if(!dirty_age_due(age_now(group),entry.last_write_age_tick,options_.dirty_age_accesses))break;
             triggered=true;const auto bits=entry.dirty;const U sectors=g::sector_popcount(bits);
-            --resident_dirty_lines_;dirty_group_remove(key.line);resident_dirty_sectors_-=sectors;age_forget(entry);
+            --resident_dirty_lines_;dirty_group_remove(key.line);resident_dirty_sectors_-=sectors;age_forget(key,entry);
             ++age_lines_;age_sectors_+=sectors;++age_masks_.at(bits);age_written_sector_hist_.at(age_bucket(l2_access_sequence_-entry.last_write_sequence))+=sectors;
+            selected_written_age_hist_.at(age_bucket(age_now(group)-entry.last_write_age_tick))+=sectors;
+            if(set_age())set_age_writeback_bytes_.at(group)+=sectors*32;
             for(unsigned sector=0;sector<4;++sector)if(bits&(1U<<sector)){
                 writeback_sector(key,entry,sector,context,WritebackReason::AGE,trigger_write);
             }
@@ -145,7 +167,7 @@ class FunctionalCache {
         const auto bits=entry.dirty;
         if(bits){
             const unsigned sectors=g::sector_popcount(bits);
-            capacity_age_sector_hist_.at(age_bucket(l2_access_sequence_-entry.last_write_sequence))+=sectors;age_forget(entry);
+            capacity_age_sector_hist_.at(age_bucket(l2_access_sequence_-entry.last_write_sequence))+=sectors;selected_capacity_age_hist_.at(age_bucket(age_now(age_group(victim))-entry.last_write_age_tick))+=sectors;age_forget(victim,entry);
             --resident_dirty_lines_;dirty_group_remove(victim.line);resident_dirty_sectors_-=sectors;
             dirty_.evicted_dirty_sectors+=sectors;++dirty_.eviction_masks.at(bits);++dirty_.eviction_popcounts.at(sectors);
             for(unsigned sector=0;sector<4;++sector)if(bits&(1U<<sector)){writeback_sector(victim,entry,sector,context,WritebackReason::CAPACITY,write);++dirty_.writeback_run_lengths.at(1);}
@@ -159,7 +181,7 @@ class FunctionalCache {
         const auto decision=l1_.access(a);if(!decision.forwarded_to_l2)return;
         const auto forwarded=decision.forwarded_sector_mask;
         require(forwarded && (forwarded&requested)==forwarded,"L1 forwarded sector mask invalid");
-        require(l2_access_sequence_<UINT64_MAX,"L2 access sequence overflow");++l2_access_sequence_;
+        const U group=age_tick(key);
         auto found=l2_.find(key);const bool new_tag=found==l2_.end();
         // Complete one forwarded line request synchronously, preserving source line order.
         // An absent tag read is issued before capacity writeback, as in old128.
@@ -184,13 +206,13 @@ class FunctionalCache {
             emit(key,sector*32,32,false,context,reason);entry.known[sector]=UINT32_MAX;
         }
         if(write){
-            age_store(key,entry);const auto created=g::sector_popcount(std::uint8_t(forwarded&~entry.dirty));
+            age_store(key,entry,group);const auto created=g::sector_popcount(std::uint8_t(forwarded&~entry.dirty));
             dirty_.dirty_sector_creations+=created;resident_dirty_sectors_+=created;
             if(!entry.dirty){++resident_dirty_lines_;dirty_group_add(key.line);}
             mark_owner(entry,forwarded,context);entry.dirty|=forwarded;
             for(unsigned sector=0;sector<4;++sector)if(forwarded&(1U<<sector)){require(coverage[sector],"store lacks byte coverage");entry.known[sector]|=coverage[sector];entry.dirty_bytes[sector]|=coverage[sector];}
         }
-        age_enforce(context,write);
+        age_enforce(context,write,group);
         if(decision.read_ticket.valid)require(l1_.complete_read(decision.read_ticket),"sector immediate L1 completion failed");
     }
     void access(const CacheKey& key,bool write,std::uint8_t mask,std::uint8_t requested_mask,bool bypass,const Context& context) {
@@ -198,7 +220,7 @@ class FunctionalCache {
         const g::PerSmL1Access a{int(context.sm_id),key.matrix,key.line,write,-1,bypass,requested_mask};
         const auto decision=l1_.access(a);
         if (!decision.forwarded_to_l2) return;
-        require(l2_access_sequence_<UINT64_MAX,"L2 access sequence overflow");++l2_access_sequence_;
+        const U group=age_tick(key);
         if(!write&&context.low_priority&&options_.bypass_streaming_reads){
             emit(key,0,128,false,context);++streaming_bypass_;
             if(decision.read_ticket.valid)require(l1_.complete_read(decision.read_ticket),"bypass read completion");
@@ -213,7 +235,7 @@ class FunctionalCache {
             if(context.low_priority&&!write&&!promote)lru_.touch_lru(key.line,found->second.position);
             else lru_.touch(key.line,found->second.position);
             if(write) {
-                if(mask)age_store(key,found->second);
+                if(mask)age_store(key,found->second,group);
                 const auto created=g::sector_popcount(std::uint8_t(mask&~found->second.dirty));
                 dirty_.dirty_sector_creations+=created;resident_dirty_sectors_+=created;
                 if(!found->second.dirty&&mask){++resident_dirty_lines_;dirty_group_add(key.line);}
@@ -229,7 +251,7 @@ class FunctionalCache {
                 const auto bits=prior->second.dirty;
                 if(bits) {
                     const unsigned sectors=g::sector_popcount(bits);
-                    capacity_age_sector_hist_.at(age_bucket(l2_access_sequence_-prior->second.last_write_sequence))+=sectors;age_forget(prior->second);
+                    capacity_age_sector_hist_.at(age_bucket(l2_access_sequence_-prior->second.last_write_sequence))+=sectors;selected_capacity_age_hist_.at(age_bucket(age_now(age_group(victim))-prior->second.last_write_age_tick))+=sectors;age_forget(victim,prior->second);
                     --resident_dirty_lines_;dirty_group_remove(victim.line);resident_dirty_sectors_-=sectors;
                     dirty_.evicted_dirty_sectors+=sectors;
                     ++dirty_.eviction_masks.at(bits);++dirty_.eviction_popcounts.at(sectors);
@@ -243,11 +265,11 @@ class FunctionalCache {
             auto position=lru_.insert_mru(key.line,key);
             if(context.low_priority&&!write)lru_.touch_lru(key.line,position);
             Entry entry{0,position,{}};mark_owner(entry,mask,context);
-            auto added=l2_.emplace(key,std::move(entry));if(mask)age_store(key,added.first->second);added.first->second.dirty=mask;
+            auto added=l2_.emplace(key,std::move(entry));if(mask)age_store(key,added.first->second,group);added.first->second.dirty=mask;
             dirty_.dirty_sector_creations+=g::sector_popcount(mask);
             if(mask){++resident_dirty_lines_;dirty_group_add(key.line);resident_dirty_sectors_+=g::sector_popcount(mask);}
         }
-        age_enforce(context,write);
+        age_enforce(context,write,group);
         if(decision.read_ticket.valid)
             require(l1_.complete_read(decision.read_ticket),"direct immediate L1 read completion failed");
     }
@@ -265,7 +287,9 @@ public:
         require(options_.ef_hit_rate<0||(l1.sector32&&!options_.ef_fill_only&&!options_.skip_store_rfo&&!options_.bypass_streaming_reads),"EF hit calibration requires sector L1 and no simultaneous cache override");
         require(!options_.dirty_age_accesses||(!options_.skip_store_rfo&&!options_.bypass_streaming_reads&&!options_.ef_fill_only&&options_.ef_hit_rate>=0),"dirty age requires unchanged frozen admission/RFO and explicit EF rate");
         require(options_.data_policy==DataPolicy::OLD128||(!options_.skip_store_rfo&&!options_.bypass_streaming_reads&&!options_.ef_fill_only),"sector mode rejects legacy admission overrides");
+        require(options_.dirty_age_clock==DirtyAgeClock::GLOBAL_FORWARDED_LINE||options_.dirty_age_clock==DirtyAgeClock::SET_FORWARDED_LINE,"unknown dirty age clock");
         l2_.reserve(std::size_t(max_lines_));dirty_lines_by_group_.assign(lru_.geometry().group_count(),0);
+        if(set_age()){const auto count=lru_.geometry().group_count();set_age_queues_.resize(count);set_age_ticks_.assign(count,0);set_age_writeback_bytes_.assign(count,0);}
     }
     J ef_fill_only_observation()const{return {{"enabled",options_.ef_fill_only||options_.ef_hit_rate>0},{"resident_EF_read_hits_promoted_to_MRU",ef_read_hits_},{"synchronous_completion",true},{"hardware_replacement_qualified",false}};}
     J ef_hit_throttle_observation()const{return {{"schema","LLM_EF_HIT_THROTTLE_CALIBRATION_V1"},{"enabled",options_.ef_hit_rate>=0},
@@ -327,7 +351,7 @@ public:
         std::sort(keys.begin(),keys.end(),[](const auto&a,const auto&b){return std::tie(a.matrix,a.line)<std::tie(b.matrix,b.line);});
         for(const auto& key:keys){auto& entry=l2_.at(key);const auto bits=entry.dirty;const U sectors=g::sector_popcount(bits);
             for(unsigned sector=0;sector<4;++sector)if(bits&(1U<<sector))writeback_sector(key,entry,sector,context,WritebackReason::DRAIN,false);
-            drain_sectors_+=sectors;--resident_dirty_lines_;resident_dirty_sectors_-=sectors;dirty_group_remove(key.line);age_forget(entry);entry.dirty=0;entry.dirty_bytes={};entry.owners={};entry.age_cleaned=true;
+            drain_sectors_+=sectors;--resident_dirty_lines_;resident_dirty_sectors_-=sectors;dirty_group_remove(key.line);age_forget(key,entry);entry.dirty=0;entry.dirty_bytes={};entry.owners={};entry.age_cleaned=true;
         }
     }
     void verify_resident_ledger() const {
@@ -338,10 +362,18 @@ public:
             require((entry.dirty_bytes[sector]&~entry.known[sector])==0,"dirty bytes not known");
         }
         require(groups==dirty_lines_by_group_,"independent dirty group gauge audit failed");
+        if(set_age()){
+            U ticks=0;for(U tick:set_age_ticks_){require(tick<=UINT64_MAX-ticks,"set tick sum overflow");ticks+=tick;}
+            require(ticks==l2_access_sequence_,"set ticks do not partition global forwarded sequence");
+            U age_bytes=0;for(U bytes:set_age_writeback_bytes_)age_bytes+=bytes;require(age_bytes==age_sectors_*32,"group age writeback bytes do not sum to global age bytes");
+        }
         if(options_.dirty_age_accesses){
-            require(age_queue_.size()==resident_lines,"age queue gauge mismatch");std::unordered_map<CacheKey,bool,CacheKeyHash> seen;U previous=0;
-            for(auto it=age_queue_.begin();it!=age_queue_.end();++it){auto found=l2_.find(*it);require(found!=l2_.end()&&found->second.dirty&&found->second.age_position==it&&seen.emplace(*it,true).second,"age queue identity mismatch");require(found->second.last_write_sequence>=previous&&found->second.last_write_sequence<=l2_access_sequence_,"age queue time order");previous=found->second.last_write_sequence;require(!dirty_age_due(l2_access_sequence_,previous,options_.dirty_age_accesses),"expired dirty line remained");}
-        }else require(age_queue_.empty(),"disabled age queue must stay empty");
+            require(age_queue_entries_==resident_lines,"age queue gauge mismatch");std::unordered_map<CacheKey,bool,CacheKeyHash> seen;U entries=0;
+            for(U group=0;group<(set_age()?set_age_queues_.size():1);++group){U previous=0;const auto& queue=age_queue(group);
+                for(auto it=queue.begin();it!=queue.end();++it){auto found=l2_.find(*it);require(found!=l2_.end()&&found->second.dirty&&found->second.age_position==it&&seen.emplace(*it,true).second,"age queue identity mismatch");require(age_group(*it)==group,"dirty queue group mismatch");const auto last=found->second.last_write_age_tick;require(last>=previous&&last<=age_now(group),"age queue time order");previous=last;require(!dirty_age_due(age_now(group),last,options_.dirty_age_accesses),"expired dirty line remained");require(found->second.last_write_sequence<=l2_access_sequence_,"global store sequence regressed");++entries;}
+            }
+            require(entries==age_queue_entries_,"age queue scan count mismatch");
+        }else {require(age_queue_.empty()&&age_queue_entries_==0,"disabled age queue must stay empty");for(const auto& queue:set_age_queues_)require(queue.empty(),"disabled set age queue must stay empty");}
         require(resident_lines==resident_dirty_lines_&&resident_sectors==resident_dirty_sectors_,
                 "direct independent resident dirty gauge audit failed");
         require(lru_.size()==l2_.size()&&l2_.size()<=max_lines_,"direct group/tag capacity ledger failed");
@@ -353,9 +385,23 @@ public:
         return {{"passive_no_policy_change",options_.dirty_age_accesses==0},{"group_mapping","frozen L2GroupedLru.group(line)"},{"group_capacity",lru_.capacity_per_group()},{"resident_dirty_lines_by_group",dirty_lines_by_group_},{"resident_dirty_lines_histogram",rows},{"resident_max_dirty_lines_per_group",maximum},{"peak_dirty_lines_in_any_group",peak_dirty_lines_per_group_},{"independent_final_scan_verified",true}};
     }
     J dirty_age_observation()const{
-        verify_resident_ledger();std::array<U,65> resident{};
-        for(const auto& [key,entry]:l2_)if(entry.dirty)resident.at(age_bucket(l2_access_sequence_-entry.last_write_sequence))+=g::sector_popcount(entry.dirty);
-        return {{"clock","FORWARDED_L2_128B_LINE_ACCESSES_NOT_TIME"},{"age_budget_accesses",options_.dirty_age_accesses},{"off",options_.dirty_age_accesses==0},{"now",l2_access_sequence_},{"resident_dirty_age_histogram",age_histogram(resident)},{"capacity_evicted_dirty_age_histogram",age_histogram(capacity_age_sector_hist_)},{"age_written_dirty_age_histogram",age_histogram(age_written_sector_hist_)},{"dirty_queue_entries",age_queue_.size()},{"dirty_queue_peak_entries",age_queue_peak_},{"store_refresh_precedes_same_tick_expiry",true},{"independent_queue_scan_verified",true}};
+        verify_resident_ledger();std::array<U,65> resident{},selected_resident{};
+        for(const auto& [key,entry]:l2_)if(entry.dirty){const auto count=g::sector_popcount(entry.dirty);resident.at(age_bucket(l2_access_sequence_-entry.last_write_sequence))+=count;selected_resident.at(age_bucket(age_now(age_group(key))-entry.last_write_age_tick))+=count;}
+        // The original histograms remain GLOBAL forwarded-line units in both modes.
+        J result={{"clock","FORWARDED_L2_128B_LINE_ACCESSES_NOT_TIME"},{"age_budget_accesses",options_.dirty_age_accesses},{"off",options_.dirty_age_accesses==0},{"now",l2_access_sequence_},{"resident_dirty_age_histogram",age_histogram(resident)},{"capacity_evicted_dirty_age_histogram",age_histogram(capacity_age_sector_hist_)},{"age_written_dirty_age_histogram",age_histogram(age_written_sector_hist_)},{"dirty_queue_entries",age_queue_entries_},{"dirty_queue_peak_entries",age_queue_peak_},{"store_refresh_precedes_same_tick_expiry",true},{"independent_queue_scan_verified",true}};
+        result["selected_clock"]=dirty_age_clock_name(options_.dirty_age_clock);result["age_budget_unit"]=dirty_age_budget_unit(options_.dirty_age_clock);result["global_histogram_unit"]="GLOBAL_FORWARDED_L2_128B_LINE_ACCESSES";
+        auto selected_hist=[](const auto& counts){J rows=age_histogram(counts);for(auto& row:rows){row["min_selected_ticks"]=row["min_L2_accesses"];row["max_selected_ticks"]=row["max_L2_accesses"];row.erase("min_L2_accesses");row.erase("max_L2_accesses");}return rows;};
+        result["selected_resident_dirty_age_histogram"]=selected_hist(selected_resident);result["selected_capacity_evicted_dirty_age_histogram"]=selected_hist(selected_capacity_age_hist_);result["selected_age_written_dirty_age_histogram"]=selected_hist(selected_written_age_hist_);
+        result["group_count"]=lru_.geometry().group_count();result["group_mapping"]="frozen L2GroupedLru.group(original_byte_VA); matrix namespace excluded";
+        result["whole_line_store_timer"]=true;result["implicit_end_flush"]=false;
+        if(set_age()){
+            std::map<U,U> counts;U sum=0;for(U tick:set_age_ticks_){++counts[tick];sum+=tick;}
+            J histogram=J::array();for(auto [tick,count]:counts)histogram.push_back({{"selected_ticks",tick},{"groups",count}});
+            result["group_ticks"]=set_age_ticks_;result["group_ticks_histogram"]=histogram;result["group_ticks_sum"]=sum;
+            result["group_age_writeback_bytes"]=set_age_writeback_bytes_;result["group_resident_dirty_lines"]=dirty_lines_by_group_;
+            result["set_clock_static_vector_payload_bytes"]=set_age_ticks_.size()*sizeof(U)+set_age_writeback_bytes_.size()*sizeof(U)+set_age_queues_.size()*sizeof(std::list<CacheKey>);
+        }
+        result["entry_selected_age_tick_bytes"]=sizeof(U);return result;
     }
     J dirty_owner_tail()const{
         std::map<std::array<U,4>,U> counts;

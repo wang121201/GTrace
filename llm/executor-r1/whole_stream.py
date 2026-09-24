@@ -39,16 +39,20 @@ def parse_dirty_age_accesses(text):
     return value
 
 
-def dirty_age_expectation(value):
-    return dict(expected_dirty_age_accesses=64000000 if value is None else value,
+def dirty_age_expectation(value, clock="global"):
+    need(clock in ("global", "set"), "expected dirty age clock must be global or set")
+    need(clock == "global" or value is not None, "set clock requires an explicit expected dirty age budget")
+    return dict(expected_dirty_age_clock=clock, expected_dirty_age_accesses=64000000 if value is None else value,
                 expected_dirty_age_source='legacy_default_64000000' if value is None
                 else 'explicit_cli_expected_dirty_age_accesses')
 
 
-def validate_cache_configuration(configuration, expected_dirty_age_accesses):
+def validate_cache_configuration(configuration, expected_dirty_age_accesses, expected_dirty_age_clock="global"):
     need(type(expected_dirty_age_accesses) is int and
          0 <= expected_dirty_age_accesses < 1 << 64, 'expected dirty age must be uint64')
     need(configuration['L2']['EF_hit_numerator'] == 288, 'frozen EF h288 changed')
+    need(expected_dirty_age_clock in ('global', 'set'), 'expected dirty age clock must be global or set')
+    need(configuration['L2'].get('dirty_age_clock', 'global') == expected_dirty_age_clock, 'runner dirty age clock differs from expected clock')
     actual = configuration['L2']['dirty_age_accesses']
     need(type(actual) is int and actual == expected_dirty_age_accesses,
          'runner dirty age differs from explicit/default expected access count')
@@ -544,8 +548,10 @@ def main():
                         help='Opt-in diagnostic intervention, not a native CUDA phase flush')
     parser.add_argument('--expected-dirty-age-accesses', type=parse_dirty_age_accesses,
                         help='Admit only this runner dirty-age setting (uint64; 0 disables age); default 64000000. Does not configure the runner.')
+    parser.add_argument('--expected-dirty-age-clock', choices=('global', 'set'), default='global',
+                        help='Expected clock unit: global forwarded lines or same-group forwarded lines. Does not configure runner.')
     args = parser.parse_args()
-    age_expectation = dirty_age_expectation(args.expected_dirty_age_accesses)
+    age_expectation = dirty_age_expectation(args.expected_dirty_age_accesses, args.expected_dirty_age_clock)
     need(not args.output.exists(), 'fresh result directory required')
     args.output.mkdir(parents=True)
     start, cpu_start = time.monotonic(), time.process_time()
@@ -628,7 +634,7 @@ def main():
             state['source_stream_without_drain_interventions'] = dict(bytes=send.source_bytes, records=send.source_records, sha256=send.source_hash.hexdigest())
         result = json.loads((args.output / 'cache-summary.json').read_text())
         state['actual_cache_configuration'] = result['configuration']
-        validate_cache_configuration(result['configuration'], age_expectation['expected_dirty_age_accesses'])
+        validate_cache_configuration(result['configuration'], age_expectation['expected_dirty_age_accesses'], age_expectation['expected_dirty_age_clock'])
         need(result['status'] == 'PASS_STREAMED_SOURCE_FUNCTIONAL_CACHE_RUN', 'cache completion status')
         need(result['input_raw_SHA256'] == send.hash.hexdigest() and result['input_bytes'] == send.bytes
              and result['input_lines'] == send.records, 'producer/consumer stream identity differs')
