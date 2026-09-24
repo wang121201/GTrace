@@ -12,7 +12,7 @@ def main():
         need(actual['bytes']==row['bytes'] and actual['sha256']==row['sha256'],'staged file identity')
         sources.append(actual)
     sources += [pin(ROOT/'repo-manifest.json'),pin(CTRL)]
-    spec=dict(case_id='age-ablation-build-admit-r1',tool='pinned-CPU-build-and-preflight',input_kind='SOURCE_ONLY_REUSE_FROZEN_GRAPHS',
+    spec=dict(case_id='set-age-ablation-build-admit-r1',tool='pinned-CPU-build-and-preflight',input_kind='SOURCE_ONLY_REUSE_FROZEN_GRAPHS',
         cpu=9,gpu=None,seconds=1200,rss_limit_bytes=8<<30,
         argv=['/usr/bin/python3','-B',str(ROOT/'repo/llm/tools/age_prepare_xmu.py'),'--root',str(ROOT)],
         environment=dict(PYTHONDONTWRITEBYTECODE='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1'),sources=sources)
