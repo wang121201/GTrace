@@ -1,0 +1,23 @@
+[
+  {
+    "profile": "legacy32",
+    "returncode": 0,
+    "stdout": "{\"DRAM_records\":7185,\"checks\":12186,\"profile\":\"legacy32\",\"status\":\"PASS_LLM_L1_ADAPTER\"}\n",
+    "stderr": "",
+    "wall_seconds": 2.235683792
+  },
+  {
+    "profile": "r2",
+    "returncode": 0,
+    "stdout": "{\"DRAM_records\":7,\"checks\":23,\"profile\":\"r2\",\"status\":\"PASS_LLM_L1_ADAPTER\"}\n",
+    "stderr": "",
+    "wall_seconds": 0.08305212500000003
+  },
+  {
+    "profile": "r4",
+    "returncode": 0,
+    "stdout": "{\"DRAM_records\":7,\"checks\":23,\"profile\":\"r4\",\"status\":\"PASS_LLM_L1_ADAPTER\"}\n",
+    "stderr": "",
+    "wall_seconds": 0.08504937499999965
+  }
+]

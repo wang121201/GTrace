@@ -1,0 +1,96 @@
+[
+  {
+    "model": "qwen",
+    "status": "PASS_ACTUAL_ALLOCATION_METADATA_ONLY_NOT_MODEL_REPLAY",
+    "nodes_source": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/kernel-complete-input-r1/p32d2-smoke-r1/input-qwen/current-graph-r1/nodes.jsonl",
+      "bytes": 5860524,
+      "sha256": "20cde40575043aa4c39d4944d99989b985e32070f7a5c3cc8bc31c3c6ca465e7"
+    },
+    "allocation_nodes": 105,
+    "observation": {
+      "L1_adapter_statistics_scope": "global_only; per_SM counters not exported",
+      "L1_allocation_resolved_line_accesses": 0,
+      "L1_allocation_unresolved_line_accesses": 0,
+      "L1_covered_max_sector_byte": null,
+      "L1_covered_min_line": null,
+      "L1_hash_not_required_bypass_line_accesses": 0,
+      "active_driver_allocations": 104,
+      "allocation_or_free_flushes_L2": false,
+      "allocation_scope": "observed CUDA driver allocation generations; not tensor or suballocator roots",
+      "complete_suballocator_lifetime": false,
+      "configuration": {
+        "SMs": 48,
+        "bytes_per_SM": 102400,
+        "hash": "ALLOCATION_RELATIVE_HASH2",
+        "line_bytes": 128,
+        "persistence": "KERNEL_FLUSH",
+        "profile": "r4",
+        "replacement": "CLOCK",
+        "scope": "functional serial caller order; CTA mod48 modeled SM; r4 read-filter model extrapolation; stores preserve original bypass",
+        "sets": 16,
+        "shared_capacity_qualification": "original_serial_read_calibrated_bin_extrapolated_to_LLM",
+        "shared_carveout_bytes": 32768,
+        "shared_carveout_origin": "bootstrap_before_first_kernel_no_shared_claim",
+        "shared_is_per_CTA_dynamic_bytes": false,
+        "store_bypass": true,
+        "validity_bytes": 32,
+        "ways": 50,
+        "write_allocate": false
+      },
+      "driver_allocates": 104,
+      "driver_allocation_observations": 105,
+      "driver_frees": 0,
+      "driver_null_frees": 1,
+      "shared_observed_required": true
+    },
+    "source_memory_events": 0
+  },
+  {
+    "model": "llama",
+    "status": "PASS_ACTUAL_ALLOCATION_METADATA_ONLY_NOT_MODEL_REPLAY",
+    "nodes_source": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/llama-p32d2-20260921/input-graphs-r1/llama/integrated-r1/nodes.jsonl",
+      "bytes": 6638622,
+      "sha256": "840bb7f5c3c2966cb122909e62d0034cbceb9b170f4ec9964c57cb1ebbee7a63"
+    },
+    "allocation_nodes": 150,
+    "observation": {
+      "L1_adapter_statistics_scope": "global_only; per_SM counters not exported",
+      "L1_allocation_resolved_line_accesses": 0,
+      "L1_allocation_unresolved_line_accesses": 0,
+      "L1_covered_max_sector_byte": null,
+      "L1_covered_min_line": null,
+      "L1_hash_not_required_bypass_line_accesses": 0,
+      "active_driver_allocations": 149,
+      "allocation_or_free_flushes_L2": false,
+      "allocation_scope": "observed CUDA driver allocation generations; not tensor or suballocator roots",
+      "complete_suballocator_lifetime": false,
+      "configuration": {
+        "SMs": 48,
+        "bytes_per_SM": 102400,
+        "hash": "ALLOCATION_RELATIVE_HASH2",
+        "line_bytes": 128,
+        "persistence": "KERNEL_FLUSH",
+        "profile": "r4",
+        "replacement": "CLOCK",
+        "scope": "functional serial caller order; CTA mod48 modeled SM; r4 read-filter model extrapolation; stores preserve original bypass",
+        "sets": 16,
+        "shared_capacity_qualification": "original_serial_read_calibrated_bin_extrapolated_to_LLM",
+        "shared_carveout_bytes": 32768,
+        "shared_carveout_origin": "bootstrap_before_first_kernel_no_shared_claim",
+        "shared_is_per_CTA_dynamic_bytes": false,
+        "store_bypass": true,
+        "validity_bytes": 32,
+        "ways": 50,
+        "write_allocate": false
+      },
+      "driver_allocates": 149,
+      "driver_allocation_observations": 150,
+      "driver_frees": 0,
+      "driver_null_frees": 1,
+      "shared_observed_required": true
+    },
+    "source_memory_events": 0
+  }
+]

@@ -1,0 +1,189 @@
+{
+  "schema": "FULL_SOURCE_LLM_L1_CPP_ADAPTER_DELIVERY_V1",
+  "status": "PASS_LOCAL_COMPONENT_AND_CLI_NOT_FULL_MODEL_REPLAY",
+  "source_files": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/candidate_direct_cache.h",
+      "bytes": 22804,
+      "sha256": "9d485971cdf84468f6e51ee86055ea962247964275e263349024e604b977c5a1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/ef_hit_throttle.h",
+      "bytes": 1165,
+      "sha256": "a9f9a11ccfa19e6f60ccfcc6c450eb5fd05dacf0f47a1ee1b60c879a330a54ae"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/frozen_cache_geometry.h",
+      "bytes": 6165,
+      "sha256": "9456853c598198056447e98d7cb9983806388adc62526bcdc8817c05b0afe1c8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/legacy_per_sm_l1.h",
+      "bytes": 27132,
+      "sha256": "e42b50575143578015fd725c1906765505dedc2b69321262a5da56e64104f665"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/llm_l1_adapter.h",
+      "bytes": 11862,
+      "sha256": "cf14057b94b0a3312504da856062246d3a4fa4e54c26b4b278348a25b191f50a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/main.cpp",
+      "bytes": 2593,
+      "sha256": "e3239325d0ae70a3c890deda11f5edda0090665b253890af3a17b9277583b444"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/native_gemv.h",
+      "bytes": 4879,
+      "sha256": "24584714c1c9973c8e36ce4746dbc646356acb07975c1e5e1d4d75d40c1fe7c1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/qwen_gemv.h",
+      "bytes": 4408,
+      "sha256": "fd29bfdb6368647339888d23a99bf6aea00eae529726c25b55ee42c65ff305eb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/qwen_gemv_stages.h",
+      "bytes": 19160,
+      "sha256": "ef7cf41b1f74b836107bc02901c559412d8783129aed721b7f061e375a2ca37e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/qwen_p32_gemm.h",
+      "bytes": 4762,
+      "sha256": "63bf967e01ce4032ae2bd11f43cd32cd194c848d1bb60ea127b8e8cf092b787a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/qwen_p32_gemm_contracts.h",
+      "bytes": 33290,
+      "sha256": "0eb7f5c1aa7d5f2051ecb40c630ccb0326de57cc9b1ca1d793dba076f750ae8e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/executor-r1/runner.h",
+      "bytes": 15282,
+      "sha256": "55606b1a6225bd04e8577df0a7b1a79656a551322633b3d881a78b4c6cdf006f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/fast-down-r1/llama_down.h",
+      "bytes": 7918,
+      "sha256": "5ce52174d3a3015f60d654e7e101cb9600c10d1f7e8337464f6623716d3cbafc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/fast-llama-p32-prefill-r1/llama_p32_prefill.h",
+      "bytes": 4147,
+      "sha256": "d2675146d59736ef2255e47e136a99c27cecb10593342796490aa0168cb8c5bb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/fast-llama-p32-prefill-r1/llama_p32_prefill_contracts.h",
+      "bytes": 3972,
+      "sha256": "3be234ef7c67a6b471c3720be2f3f1b2745ee8f22c7ef3cfdd8bab831ac5ee7a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/fast-llama-p32-prefill-r1/probe.cpp",
+      "bytes": 2226,
+      "sha256": "c1f9cedc84da8326d12e26b1b0257dbbe98d1b338aba06cd789e0f8565c0f355"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/fast-llama-p32-prefill-r1/test_main.cpp",
+      "bytes": 610,
+      "sha256": "137b98772172d3621a68e0036372f6e985e4a4ff52b71f7589707649d2bda630"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/fast-prefill-r2/native_prefill.h",
+      "bytes": 8100,
+      "sha256": "a695d432f8ea0d22e8aca40105a7f1abf118d508f3f30c1fb3fc25e0e58f0357"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/fast-prefill-r2/native_prefill_contracts.h",
+      "bytes": 10530,
+      "sha256": "6c0c7526546ce01caa69a8aa9587c0222c7579a3dcdda3ad682e159e6d2c5505"
+    }
+  ],
+  "shared_L1": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+    "bytes": 42793,
+    "sha256": "b41bc28692c3ca1dcecb1ec98df6e6c57ea3e42e125b5bc414fe353f3d0d3ed8"
+  },
+  "shared_profile_helper": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/ada_r4_profile.h",
+    "bytes": 1858,
+    "sha256": "492280fa9039547f7bae939e3cbf832219d6e5fd1081e257d6c008c86366ccfd"
+  },
+  "legacy_L1_original": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/write-gap-fix-20260920-r1/kernel-complete-input-r1/input-graph-rebuild-r1/engine/cache-deps/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+    "bytes": 27020,
+    "sha256": "c65c7cdd1aad8f5eb54458f263b3d756b9de2d4da6c850837105a2fd156a367f"
+  },
+  "legacy_transformation": "include guard renamed; namespace GTSim renamed llm_legacy_l1; retry_host aliases current shared host counters only; all cache algorithms unchanged",
+  "evidence": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tests/component-results.json",
+      "bytes": 664,
+      "sha256": "eee0e1e961c54c70586d94f573d44b3e63fc8a368e0926a9e13a18fd75d97791"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tests/cli-results.json",
+      "bytes": 35165,
+      "sha256": "58eb61d3826d676895e5e71b7e2ed828ca94a170396a2b2b4c1802ee13c86bd3"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tests/actual-allocation-results.json",
+      "bytes": 4027,
+      "sha256": "39be69188c995d183c77f5c4df65f02966746628219c3afa930a84998680e4ed"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tests/l2-core-identity.json",
+      "bytes": 1351,
+      "sha256": "ed0d6915fde5cb948233e69226e2f8f8fb5e2fe668de821ea22be22b8069cb87"
+    }
+  ],
+  "local_binary": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tests/build/source-cache-runner",
+    "bytes": 651584,
+    "sha256": "77d91e13935ccbb98b573781bee2175f0dcc0f1dd0ce5bd4d436a2b4d0c031a6"
+  },
+  "local_sanitized_test_binary": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/tests/build/l1-integration-test",
+    "bytes": 1645632,
+    "sha256": "770abe7d33fa8cdd1b1610f2aed611772d24d9e187bba7d3f2e296a597aeeb64"
+  },
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "build_flags": [
+    "-std=c++20",
+    "-O2",
+    "-DTINY_SHA_PORTABLE"
+  ],
+  "sanitizer_flags": [
+    "-O1",
+    "-g",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer"
+  ],
+  "includes": [
+    "llm/executor-r1",
+    "source",
+    "source/work/tilegen-full-r1/core-native-copy-r2/include",
+    "source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party"
+  ],
+  "scope": {
+    "whole_graph_admission_owned_by_caller": true,
+    "whole_model_cache_run_performed": false,
+    "remote_jobs_started": false,
+    "GPU_work_performed": false,
+    "full_model_allocation_address_coverage_proved": false,
+    "current_observed_driver_allocation_metadata_admitted": {
+      "qwen": 105,
+      "llama": 150
+    },
+    "new_L1_stats": "global only",
+    "new_L1_write_policy": "stores bypass; no write allocation; no dirty protection; preserved from original full-flow runner",
+    "capacity_bins_8_16KiB": "explicit uncalibrated extrapolation",
+    "L2_changed": false,
+    "no_final_flush": true
+  },
+  "documentation": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/llm/CPP-L1-ADAPTER.md",
+    "bytes": 6006,
+    "sha256": "3793ba557dd5c51d36d6ef0e4c670068d0387b6b9ccbbd94386d14c45a8fce45"
+  }
+}
