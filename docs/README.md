@@ -19,12 +19,12 @@
 
 ## 合并记录（2026-09-25）
 
-| 新文档 | 吸收的原文 |
+| 新文档 | 吸收的原文（均已删除） |
 |---|---|
-| `ada-calibration.md` | `ada-calibration.md`、`ada-calibration.md`、`ada-calibration.md` |
-| `ada-r4-serial.md` | 原 `ada-r4-serial.md`、`ada-r4-serial.md` |
-| `native-p1024d32.md` | `native-p1024d32.md`、`native-p1024d32.md`、`native-p1024d32.md`、`native-p1024d32.md` |
-| `replay-modes.md` | `replay-modes.md`、`replay-modes.md`、`replay-modes.md` |
+| `ada-calibration.md` | `ada-accelsim-profile.md`、`ada-calibrated-profile.md`、`ada-calibrated-timing.md` |
+| `ada-r4-serial.md` | `ada-r4-serial-replay.md`（并入原文件） |
+| `native-p1024d32.md` | `native-p1024d32-admission.md`、`native-p1024d32-argument-capture.md`、`native-p1024d32-binding-plan.md`、`native-p1024d32-implementation-status.md` |
+| `replay-modes.md` | `memory-only-replay.md`、`multi-backend-stage.md`、`stage-overlap.md` |
 
 合并规则：
 

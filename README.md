@@ -38,7 +38,7 @@ Model、Prepared、binding / Builder 提供快速缓存后地址流和 HBFSIM co
 | `validation/` | 验收收据（JSON）；判等基准见下表 |
 | `provenance/` | 来源映射、依赖扫描与导入记录 |
 | `native_transfer/` | 模板/回归输入的解码与冻结 |
-| `archive/` | GDDR P2 隔离重跑包（control 脚本 + receipts 结果） |
+| `archive/` | GDDR P2 隔离重跑包：代码、构建、运行与冒烟测试见其 [README](archive/hbserve-gddr-p2-rerun-20260922-r1/README.md) |
 | `docs/` | 设计说明，索引见 [docs/README.md](docs/README.md) |
 
 复跑对账的判等基准：`archive/hbserve-gddr-p2-rerun-20260922-r1/receipts/acceptance-{prefill,decode}-sweep.json`。

@@ -32,5 +32,6 @@ data.json     sha256 58eabb56d9f20c9bf6f49589ccaa209ac4468d326ec66fb0618f76b2a60
 | `acceptance-prefill-sweep.json` | P64/P256/P512 prefill sweep 验收表（16 张） |
 | `acceptance-decode-sweep.json` | P128 D2/D4/D8/D16 decode sweep 验收表（15 张） |
 
-两份 `acceptance-*.json` 是重跑对账的唯一判等基准；数值判等方法与 smoke 测试入口
-见仓库根 [`SMOKE.md`](../SMOKE.md) 和 [`docs/ada-r4-reproduction.md`](../docs/ada-r4-reproduction.md)。
+两份 `acceptance-*.json` 是重跑对账的唯一判等基准；数值判等方法见仓库根
+[`SMOKE.md`](../../../SMOKE.md)。本归档算例的重建与有界重跑见
+[`smoke/smoke.py`](../smoke/smoke.py)，布局与构建说明见 [`README.md`](../README.md)。

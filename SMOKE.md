@@ -11,7 +11,7 @@
 |---|---|
 | 系统 | Linux x86_64（本轮 48 核验证机） |
 | Python | 3.10+（stdlib only；工具脚本无第三方依赖） |
-| 编译器 | C++20。**注意**：本机 `clang++` 14 与 `g++` 11 各有已知局限，见 [§8](#8-已知阻塞项既有非瘦身引入) |
+| 编译器 | C++20。**注意**：本机 `clang++` 14 与 `g++` 11 各有已知局限，见 [§9](#9-已知阻塞项既有非瘦身引入) |
 | 磁盘 | 完整 build 约 200 MB；完整 sweep 每 case 约 30–700 MB |
 
 所有命令都从**仓库根目录**运行。除 S0/S1/S2 外，其余档位需要**封存输入**（见 §7）。
@@ -88,14 +88,14 @@ python3 tests/run_unit_tests.py --output build/unit-tests --compiler g++
 | `ada_l1_clock_test`、`ada_l1_policy_test`、`ada_l1_test`、`ada_profile_test`、`ada_address_mapping_test`、`ada_direct_cache_test`、`ada_fine_partition_test`、`ada_calibrated_profile_test`、`ada_calibrated_timing_test` |
 
 **这 9 个失败与瘦身无关**：用瘦身前的提交 `2f9ab10` 跑同一命令，得到完全相同的 9 个失败
-（见 §9 对照记录）。根因见 §8 阻塞项 B1。
+（见 §10 对照记录）。根因见 §9 阻塞项 B1。
 
 ---
 
 ## 4. S3 — 完整原生构建（离线）
 
 ```sh
-# 本机 clang14 需要显式指向 libstdc++（见 §8 阻塞项 B3）：
+# 本机 clang14 需要显式指向 libstdc++（见 §9 阻塞项 B3）：
 cat > /tmp/clangwrap <<'EOF'
 #!/bin/sh
 exec /usr/bin/clang++ -isystem /usr/include/c++/11 \
@@ -110,7 +110,7 @@ python3 build.py --output build/native-gcc --compiler g++ --jobs 2 --native
 
 **判定**：`build/build-receipt.json` 的 `status == "PASS_BUILD"`，产出 `tilegen_native`。
 
-**实测（瘦身后）**：**FAIL_BUILD**（两个编译器各卡在不同 TU，见 §8 阻塞项 B2）：
+**实测（瘦身后）**：**FAIL_BUILD**（两个编译器各卡在不同 TU，见 §9 阻塞项 B2）：
 
 | 编译器 | 失败 TU | 错误 |
 |---|---|---|
@@ -134,7 +134,7 @@ python3 ada_profile.py --compiler /tmp/clangwrap --profile r2-adaptive \
 **判定**：`receipt.json` 的 `status`，以及 `result.json` 的读写字节与
 `validation/ada-accelsim-r1/local-fixture-result.json` 一致。
 
-**实测（瘦身后）**：**FAILED_COMPILE**，19 个错误，全部同源（§8 阻塞项 B1）：
+**实测（瘦身后）**：**FAILED_COMPILE**，19 个错误，全部同源（§9 阻塞项 B1）：
 
 ```
 ada_tuner_profile.h:58: error: no member named 'sector32' in 'GTSim::PerSmL1Config'
@@ -210,7 +210,43 @@ runtime stderr 为空。
 
 ---
 
-## 8. 已知阻塞项（既有，非瘦身引入）
+## 8. S7 — 归档算例重建与有界重跑（离线，约 2.5 分钟）
+
+针对 GDDR P2 归档算例本身：用本分支的代码重建 `fixture`，再用真实 plan 跑有界时长，
+断言**已产出的前缀行与归档结果逐字段相同**。这是唯一一条端到端验证归档算例的路线
+（S3 只构建 `tilegen_native`，S5/S6 还依赖另一套封存输入）。
+
+```sh
+cd archive/hbserve-gddr-p2-rerun-20260922-r1
+python3 smoke/smoke.py                   # 三级全跑，不可用级别自动 SKIP
+python3 smoke/smoke.py --stage build     # 只做构建，约 20 秒
+python3 smoke/smoke.py --seconds 120     # 有界重跑 120 秒
+```
+
+| 级别 | 内容 |
+|---|---|
+| `integrity` | `TREE-SHA256.tsv` 里 224 个编译输入，`receipts/result-r1/{data.json,dashboard.html,receipt.json}` 的 pin，`MANIFEST.tsv` 中本仓库内的部分 |
+| `build` | 按原始 macOS 布局组装工作树 → 实体化 2 处 `-ivfsoverlay` → 打 `p28::statistics` 补丁 → 编译 21 个 TU → 链接 |
+| `run` | 校验 plan 的 sha256，然后有界运行，并与归档结果逐字段比对前缀行 |
+
+**判定**：末行 `--- N ok, 0 skipped, 0 failed ---`，退出码 0。
+
+**实测（2026-09-25，48 核验证机，g++ 11.4）**：**11 ok / 0 skipped / 0 failed，2 分 26 秒**
+
+| 项 | 结果 |
+|---|---|
+| `build` | 21 个 TU 用 16.6 s 编译，链接出 `fixture` 6,247,432 B，sha256 `5090e74cd7c7a040…` |
+| `run`（60 s 有界） | `phase=Measured/Prefill  kernels=24  nodes=44/1173` |
+| 前缀比对 | **前 44 行与归档结果逐字段相同**（只排除宿主耗时字段） |
+
+该二进制 sha256 与完整 144 分钟重跑的产物**完全相同**，说明有界重跑足以判定构建正确性。
+
+没有 `bubblewrap` 时自动退回 `--rewrite-paths`（可移植但非逐字节保真，只做构建冒烟）。
+约 1.3 GB 的运行输入不在仓库内，缺失时 `run` 级别会 SKIP。
+
+---
+
+## 9. 已知阻塞项（既有，非瘦身引入）
 
 ### B1 — `PerSmL1Config` API 缺口（影响 S2 的 9 个测试、S4）
 
@@ -256,6 +292,10 @@ L2GeometryConfig::accelsim_rtx4000_ada_v1
 
 **建议**：`build.py` 增加按 TU 选择编译器，或修掉这三处（第一处是 clang14 过旧，升级工具链即可）。
 
+其中第三处（未限定的 `statistics`）**已有验证过的修法**：改成 `p28::statistics`
+（与仓库提交 `5211abc` 同一改动），语义不变。S7 的归档构建就只打了这一行补丁，
+g++ 随后 21/21 个 TU 全部编译通过、链接成功，并跑出与归档逐位一致的结果。
+
 ### B3 — clang14 默认 libstdc++ 路径错误（影响 S3/S4 的 clang 路线）
 
 clang14 默认搜索 `/usr/include/c++`（**不带版本号，本机不存在**），实际只装了
@@ -270,7 +310,7 @@ clang14 默认搜索 `/usr/include/c++`（**不带版本号，本机不存在**�
 
 ---
 
-## 9. 对照记录（2026-09-25）
+## 10. 对照记录（2026-09-25）
 
 瘦身前提交 `2f9ab10` 与本轮瘦身结果 `b6c89d7`（+ 文档提交）的对照：
 
@@ -288,7 +328,7 @@ clang14 默认搜索 `/usr/include/c++`（**不带版本号，本机不存在**�
 
 ---
 
-## 10. 相关文档
+## 11. 相关文档
 
 - 构建与运行：[README.md](README.md)
 - 设计说明索引：[docs/README.md](docs/README.md)

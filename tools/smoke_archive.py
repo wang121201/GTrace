@@ -94,8 +94,8 @@ def main():
     print("== 5. every relative Markdown link resolves ==")
     dangling = []
     scanned = 0
-    for md in sorted(set(REPO.glob("*.md")) | set(REPO.glob("docs/*.md"))
-                     | set(REPO.glob("*/*.md")) | set(REPO.glob("*/*/*.md"))):
+    for md in sorted(m for m in REPO.rglob("*.md")
+                     if not {"build", ".git"} & set(m.relative_to(REPO).parts)):
         scanned += 1
         text = md.read_text(encoding="utf-8", errors="replace")
         for m in re.finditer(r"\]\(([^)\s]+)\)", text):
