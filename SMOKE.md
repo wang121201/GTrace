@@ -42,16 +42,23 @@ python3 tools/smoke_archive.py .
 
 ## 2. S1 — 依赖闭合扫描（离线，~1–2 s）
 
-不编译，只验证所有非系统 include 都落在 `source/` 内。
+不编译，只验证所有非系统 include 都落在 `source/` 内。它仍然要调用编译器做
+`-MM` 依赖扫描，所以**必须指定一个能用的编译器**：
 
 ```sh
-python3 build.py --output build/deps-check --deps-only
+python3 build.py --output build/deps-check --compiler g++ --deps-only
 ```
+
+> ⚠️ 不要省略 `--compiler`。默认走 `build-config.json` 的 `clang++`，而本机 clang14
+> 找不到 libstdc++ 头（见 §9 阻塞项 B3），22 个 TU 会全部以
+> `fatal error: 'cstdint' file not found` 失败，状态是 `FAIL_BUILD` —— 那是编译器
+> 问题，不是依赖不闭合。
 
 **判定**：`"status": "PASS_SELF_CONTAINED_DEPENDENCY_SCAN_NO_BUILD"`。
 
-**实测**：`PASS`，`wall_seconds = 1.20`，`local_dependency_files = 192`。
-说明源码树的 include 闭包是自包含的，**这一点没有被瘦身破坏**（删掉的只有 `.d`/`.o`/重复收据）。
+**实测**：`PASS`，`wall_seconds = 1.11`，`local_dependency_files = 191`。
+说明源码树的 include 闭包是自包含的，**这一点没有被瘦身破坏**（删掉的只有
+`.d`/`.o`/重复收据）。
 
 ---
 
