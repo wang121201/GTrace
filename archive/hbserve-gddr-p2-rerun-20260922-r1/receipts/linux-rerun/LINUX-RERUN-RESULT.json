@@ -1,0 +1,258 @@
+{
+  "schema": "HBSERVE_GDDR_P2_LINUX_RERUN_RESULT_V1",
+  "created_utc": "2026-09-25T11:22:48.993246+00:00",
+  "status": "MATCHES_DOCUMENT",
+  "qualification": "REBUILT_AND_REEXECUTED_ON_LINUX_XMU",
+  "objective": "Check whether outputs/ada-gddr-p2-rerun-r1/result-r1/dashboard.html reproduces on Linux/xmu from the frozen archive",
+  "verdict": {
+    "document_anchors": "ALL_MATCH",
+    "phase_table": "BITWISE_EQUAL_TO_ARCHIVED_MACOS_ORIGIN",
+    "model_relevant_differences_vs_archive": 0,
+    "notes": [
+      "result.json has 175994 comparable leaves; 173322 are byte-equal to the archived macOS result",
+      "the 2672 differing leaves are 2314 host wall-clock timings, 358 compiler-ABI struct sizes/offsets, and 3 host duration scalars",
+      "no key exists on only one side"
+    ]
+  },
+  "host": {
+    "name": "xmu (SYS-741GE-TNRT-PC002)",
+    "cpu": "Intel(R) Xeon(R) Silver 4410Y",
+    "cpu_mhz_reported": 2000,
+    "cores": 48,
+    "note": "no cpufreq sysfs, no turbo -> ~2.3x slower per cycle than the Mac"
+  },
+  "timing": {
+    "wall_seconds": 8657.164276437834,
+    "wall_minutes": 144.2860712739639,
+    "host_execution_seconds": 8654.729835599,
+    "host_preparation_seconds": 0.446153746,
+    "host_finalization_seconds": 0.108693221,
+    "macos_reference_execution_seconds": 4282.494552875
+  },
+  "inputs": {
+    "plan": {
+      "path": "work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/plan.json",
+      "sha256": "4c34da34eae1e1ed90d7e22fd9836ec12f68766863e103913ef666f5fb49a3cf",
+      "byte_identical_to_archive": true,
+      "doc_pin": "4c34da34eae1e1ed90d7e22fd9836ec12f68766863e103913ef666f5fb49a3cf"
+    },
+    "argv": [
+      "fixture",
+      "<plan.json>",
+      "<out>/result.json"
+    ],
+    "switches": []
+  },
+  "binary": {
+    "path": "/home/xmu/nvidiagds/codex-runs/hbserve-memgen-gtsim-alignment/build-r1/fixture",
+    "bytes": 6247432,
+    "sha256": "5090e74cd7c7a040ce0c22c17902dd1c5bf11365480bbb3096e0d6a64ea63d29"
+  },
+  "sandbox": "bwrap --tmpfs / --dev-bind /usr /usr --dev-bind /lib /lib --dev-bind /lib64 /lib64 --dev-bind /bin /bin --dev-bind /sbin /sbin --dev-bind /etc /etc --dev-bind /home /home --dev-bind /var /var --proc /proc --dev /dev --tmpfs /tmp --dir /Users --dir /Users/wgs --dir /Users/wgs/Documents --dir /Users/wgs/Documents/Codex --dir /Users/wgs/Documents/Codex/2026-09-14 --bind /home/xmu/nvidiagds/codex-runs/hbserve-memgen-gtsim-alignment/build-r1/mirror /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment",
+  "source_deviations": {
+    "path_bytes_changed": 0,
+    "mechanism": "frozen macOS absolute paths resolved by bind-mounting the reconstructed tree at its original path inside bubblewrap",
+    "overlay_substitutions": [
+      {
+        "overlay": "structure-adapter",
+        "virtual": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cache_geometry.h",
+        "external": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/cache_geometry.h",
+        "sha256": "16965780a8e7d8df7f0d61f81a32f751b6fe2abb9a9936ca1b7fdf307be04b18"
+      },
+      {
+        "overlay": "structure-adapter",
+        "virtual": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/ada_address_mapping.h",
+        "external": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/ada_address_mapping.h",
+        "sha256": "1dedfe56368be08dd3ba3bdc13690c11c383a8ebb2e25aa60c1d1f4c433d6068"
+      },
+      {
+        "overlay": "write-attribution",
+        "virtual": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/writer_observer.h",
+        "external": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/writer_observer.h",
+        "sha256": "093ff52c405a42b4b1275e0be93a17d6b5752c14e4f49d676e69774584e1b653"
+      }
+    ],
+    "source_patches": [
+      {
+        "file": "work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/streaming.cpp",
+        "from": "{\"before\",statistics(r.before)},{\"after\",statistics(r.after)}",
+        "to": "{\"before\",p28::statistics(r.before)},{\"after\",p28::statistics(r.after)}",
+        "why": "unqualified lookup rejected by GCC/clang on Linux; same edit as repo 5211abc",
+        "apple_clang_needed_it": false
+      }
+    ],
+    "compiler": "g++",
+    "compiler_note": "clang 14/18 on this host cannot find libstdc++ (built against a GCC 12 tree; only libstdc++-11-dev installed). g++ 11.4 builds the tree unchanged, so none of the three clang-only fixes from the repo commit dc6b84a are needed.",
+    "why_inputs_were_not_rewritten": "the loader enforces exact bytes/SHA on pinned inputs; rewriting the frozen prefix is rejected (observed: \"exact bytes/SHA\" failure)"
+  },
+  "anchors": {
+    "status": "PASS_SELECTED_CONTINUOUS_CURRENT_HISTORY",
+    "counts": {
+      "epoch_begin": 3,
+      "epoch_end": 3,
+      "memory_api_submission": 29,
+      "native_kernel": 1138
+    },
+    "kernels": 1138,
+    "APIs": 29,
+    "rows": 1173,
+    "CTAs": 772512,
+    "nodes": 4712768255,
+    "cycles": 826832904,
+    "HBFSIM_physical": {
+      "finish_ns": 380129130.2923976,
+      "read_bytes": 45241836416,
+      "write_bytes": 146843072
+    },
+    "initial_cache_state": "EMPTY_EXPLICIT_DIAGNOSTIC",
+    "full_measured_complete": true,
+    "no_end_dirty_flush": true
+  },
+  "phase_table_linux": {
+    "Prefill": {
+      "rows": 429,
+      "read_bytes": 15251476992,
+      "write_bytes": 146801856,
+      "cycles": 307528284,
+      "modeled_ns": 141392314.4827586,
+      "bandwidth_GB_s": 108.90463816459888
+    },
+    "Decode1": {
+      "rows": 372,
+      "read_bytes": 15000056960,
+      "write_bytes": 9984,
+      "cycles": 259639595,
+      "modeled_ns": 119374526.4367816,
+      "bandwidth_GB_s": 125.65550952735079
+    },
+    "Decode2": {
+      "rows": 372,
+      "read_bytes": 14990302464,
+      "write_bytes": 31232,
+      "cycles": 259665025,
+      "modeled_ns": 119386218.39080459,
+      "bandwidth_GB_s": 125.56167619724683
+    },
+    "Full": {
+      "rows": 1173,
+      "read_bytes": 45241836416,
+      "write_bytes": 146843072,
+      "cycles": 826832904,
+      "modeled_ns": 380153059.3103448,
+      "bandwidth_GB_s": 119.39580223382112
+    }
+  },
+  "phase_table_archived": {
+    "Prefill": {
+      "rows": 429,
+      "read_bytes": 15251476992,
+      "write_bytes": 146801856,
+      "cycles": 307528284,
+      "modeled_ns": 141392314.4827586,
+      "bandwidth_GB_s": 108.90463816459888
+    },
+    "Decode1": {
+      "rows": 372,
+      "read_bytes": 15000056960,
+      "write_bytes": 9984,
+      "cycles": 259639595,
+      "modeled_ns": 119374526.4367816,
+      "bandwidth_GB_s": 125.65550952735079
+    },
+    "Decode2": {
+      "rows": 372,
+      "read_bytes": 14990302464,
+      "write_bytes": 31232,
+      "cycles": 259665025,
+      "modeled_ns": 119386218.39080459,
+      "bandwidth_GB_s": 125.56167619724683
+    },
+    "Full": {
+      "rows": 1173,
+      "read_bytes": 45241836416,
+      "write_bytes": 146843072,
+      "cycles": 826832904,
+      "modeled_ns": 380153059.3103448,
+      "bandwidth_GB_s": 119.39580223382112
+    }
+  },
+  "phase_table_identical": true,
+  "diff_vs_archive": {
+    "comparable_leaves": 175994,
+    "equal": 173322,
+    "categories": {
+      "other": 3,
+      "host_wall_clock_timing": 2311,
+      "compiler_abi_struct_sizes": 358
+    },
+    "keys_only_in_linux": 0,
+    "keys_only_in_archive": 0
+  },
+  "artifacts": {
+    "result.json": {
+      "path": "build-r1/out/result.json",
+      "bytes": 6991245,
+      "sha256": "7ecc442ae473dd113a152aabbd93b84be4b39203d1211f5d4c21126ec3046e82"
+    },
+    "compare.log": {
+      "path": "build-r1/compare.log",
+      "bytes": 3693,
+      "sha256": "c10990b0d5ed3b534db5d187e45aa0135dd66511e80930fe9c1fec95c65cfe2a"
+    },
+    "build-receipt.json": {
+      "path": "build-r1/build-receipt.json",
+      "bytes": 4847,
+      "sha256": "32322bc3f7ae4d018e967f06cecf508a73b844814d32c2a9875ced56a6aef385"
+    },
+    "run-r1.log": {
+      "path": "build-r1/run-r1.log",
+      "bytes": 1911,
+      "sha256": "642bb0e6016c618d5bf7609a0ec12280b669cb0768744c18f5c08fea5f316ee0"
+    },
+    "result.json.progress.json": {
+      "path": "build-r1/out/result.json.progress.json",
+      "bytes": 393,
+      "sha256": "8bc9d74e30d5409b3ac197d4c0709be8aae98a18f7b827284a7596e97bd60292"
+    },
+    "result.json.operations.jsonl": {
+      "path": "build-r1/out/result.json.operations.jsonl",
+      "bytes": 4808932,
+      "sha256": "913eafbeedd3ad620430d2fea82fd552294cf4c101d367d20b7c5d8b7d1953a9"
+    },
+    "build_linux.py": {
+      "path": "build-r1/build_linux.py",
+      "bytes": 10606,
+      "sha256": "4dc44db6786ff43960609cc6029019496a5d7a175e3f911e502f467b57de88d1"
+    },
+    "run_linux.py": {
+      "path": "build-r1/run_linux.py",
+      "bytes": 2314,
+      "sha256": "dfd5982ac7f4496d6c6a6532a0e6313c3b3dfa08cd78aad600b05e78ec3f6b08"
+    },
+    "recompile.py": {
+      "path": "build-r1/recompile.py",
+      "bytes": 6210,
+      "sha256": "d1137506cb3f9aeb6e80cbd86265c16c7540b193b631f67bf8094c08e4bf553c"
+    },
+    "final_compare.py": {
+      "path": "build-r1/final_compare.py",
+      "bytes": 6632,
+      "sha256": "54885e21176cd22bd39dac03873a9896c430620ee3999529a1fa0c57d3eb7370"
+    },
+    "partial_check.py": {
+      "path": "build-r1/partial_check.py",
+      "bytes": 2726,
+      "sha256": "d4c779e75abc99a97f13f857d0f69efad78bcb2642a4e30a82b90c57b51bbbea"
+    },
+    "phase_table.py": {
+      "path": "build-r1/phase_table.py",
+      "bytes": 2551,
+      "sha256": "90aad589deaa46931a2d81d6d28a5822f6445bae908fc96f4d81ec668f13d043"
+    }
+  },
+  "mirror": {
+    "files": 2166,
+    "manifest": "mirror-manifest.tsv",
+    "bytes": 1294410253
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "HBSERVE_GDDR_P2_LINUX_REBUILD_V1",
+  "status": "PASS_BUILD_ONLY_NO_SIMULATION",
+  "compiler": "g++",
+  "flags": [
+    "-std=c++20",
+    "-O3",
+    "-Wall",
+    "-Wextra",
+    "-pthread",
+    "-Wno-unused-parameter",
+    "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+    "-DTILEGEN_SOURCE_MEMORY_SEMANTICS=1",
+    "-DTILEGEN_EF_INSERTION_COUNTERFACTUAL=1",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-evaluation-r1/driver",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-norm-shared-r1/adapter",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/gddr6-support/hbf_coupling"
+  ],
+  "sandbox": "bwrap --tmpfs / --dev-bind /usr /usr --dev-bind /lib /lib --dev-bind /lib64 /lib64 --dev-bind /bin /bin --dev-bind /sbin /sbin --dev-bind /etc /etc --dev-bind /home /home --dev-bind /var /var --proc /proc --dev /dev --tmpfs /tmp --dir /Users --dir /Users/wgs --dir /Users/wgs/Documents --dir /Users/wgs/Documents/Codex --dir /Users/wgs/Documents/Codex/2026-09-14 --bind /home/xmu/nvidiagds/codex-runs/hbserve-memgen-gtsim-alignment/build-r1/mirror /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment",
+  "path_fidelity": {
+    "bytes_modified_for_paths": 0,
+    "mechanism": "bind-mount the reconstructed workspace at its original macOS path inside bubblewrap"
+  },
+  "overlay_substitutions": [
+    {
+      "overlay": "structure-adapter",
+      "virtual": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cache_geometry.h",
+      "external": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/cache_geometry.h",
+      "sha256": "16965780a8e7d8df7f0d61f81a32f751b6fe2abb9a9936ca1b7fdf307be04b18"
+    },
+    {
+      "overlay": "structure-adapter",
+      "virtual": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/ada_address_mapping.h",
+      "external": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/ada_address_mapping.h",
+      "sha256": "1dedfe56368be08dd3ba3bdc13690c11c383a8ebb2e25aa60c1d1f4c433d6068"
+    },
+    {
+      "overlay": "write-attribution",
+      "virtual": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/writer_observer.h",
+      "external": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/writer_observer.h",
+      "sha256": "093ff52c405a42b4b1275e0be93a17d6b5752c14e4f49d676e69774584e1b653"
+    }
+  ],
+  "source_patches": [
+    {
+      "file": "work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/streaming.cpp",
+      "from": "{\"before\",statistics(r.before)},{\"after\",statistics(r.after)}",
+      "to": "{\"before\",p28::statistics(r.before)},{\"after\",p28::statistics(r.after)}",
+      "why": "unqualified lookup rejected by GCC/clang on Linux; same edit as repo 5211abc",
+      "apple_clang_needed_it": false
+    }
+  ],
+  "objects": 21,
+  "binary": {
+    "path": "/home/xmu/nvidiagds/codex-runs/hbserve-memgen-gtsim-alignment/build-r1/fixture",
+    "bytes": 6247432,
+    "sha256": "5090e74cd7c7a040ce0c22c17902dd1c5bf11365480bbb3096e0d6a64ea63d29"
+  },
+  "simulation_executed": false,
+  "rebuild_note": "recompiled after the bulk provenance fetch restored pristine upstream bytes"
+}

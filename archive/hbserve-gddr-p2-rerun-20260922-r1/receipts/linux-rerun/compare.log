@@ -1,0 +1,67 @@
+==============================================================================
+1. DOCUMENT ANCHORS
+==============================================================================
+  OK   status                         'PASS_SELECTED_CONTINUOUS_CURRENT_HISTORY'
+  OK   counts.native_kernel           1138
+  OK   counts.memory_api_submission   29
+  OK   counts.epoch_begin             3
+  OK   counts.epoch_end               3
+  OK   CTAs                           772512
+  OK   nodes                          4712768255
+  OK   cycles                         826832904
+  OK   HBFSIM.physical.read_bytes     45241836416
+  OK   HBFSIM.physical.write_bytes    146843072
+  OK   HBFSIM.physical.finish_ns      380129130.2923976
+  OK   rows                           1173
+  ANCHORS_ALL_MATCH: True
+
+==============================================================================
+2. DERIVED DASHBOARD TABLE (phase windows over result.json rows)
+==============================================================================
+  phase      rows        read      write   time ms     GB/s   | doc read / write / ms / GB/s
+  Prefill     429    15.25 GB  146.80 MB    141.39   108.90   | 15.25 GB / 146.80 MB / 141.39 / 108.9   BITWISE-EQUAL-TO-ARCHIVE
+  Decode1     372    15.00 GB    9.98 KB    119.37   125.66   | 15.00 GB / 9.98 KB / 119.37 / 125.66   BITWISE-EQUAL-TO-ARCHIVE
+  Decode2     372    14.99 GB   31.23 KB    119.39   125.56   | 14.99 GB / 31.23 KB / 119.39 / 125.56   BITWISE-EQUAL-TO-ARCHIVE
+  Full       1173    45.24 GB  146.84 MB    380.15   119.40   | 45.24 GB / 146.84 MB / 380.15 / 119.4   BITWISE-EQUAL-TO-ARCHIVE
+
+  archive vs linux, exact:
+    Prefill  read 15251476992 -> 15251476992 OK | write 146801856 -> 146801856 OK | cycles 307528284 -> 307528284 OK
+    Decode1  read 15000056960 -> 15000056960 OK | write 9984 -> 9984 OK | cycles 259639595 -> 259639595 OK
+    Decode2  read 14990302464 -> 14990302464 OK | write 31232 -> 31232 OK | cycles 259665025 -> 259665025 OK
+    Full     read 45241836416 -> 45241836416 OK | write 146843072 -> 146843072 OK | cycles 826832904 -> 826832904 OK
+
+==============================================================================
+3. FULL DIFF CLASSIFICATION vs ARCHIVED result.json
+==============================================================================
+  leaves compared: 175994   equal: 173322
+    2311  host wall-clock timing (machine dependent)
+          rows.0.operation_host_seconds
+              linux=3.42e-05  arch=2.6666e-05
+          rows.1.operation_host_seconds
+              linux=0.000196377  arch=0.000142084
+          rows.10.operation_host_seconds
+              linux=9.4567e-05  arch=2.275e-05
+          rows.100.host_seconds
+              linux=0.440281582  arch=0.187036416
+     358  compiler ABI: struct sizes/offsets (diagnostic only)
+          rows.100.resident_graph.sizeof_DAGNode
+              linux=888  arch=792
+          rows.1006.resident_graph.sizeof_DAGNode
+              linux=888  arch=792
+          rows.1007.resident_graph.sizeof_DAGNode
+              linux=888  arch=792
+          rows.1008.resident_graph.sizeof_DAGNode
+              linux=888  arch=792
+       3  OTHER
+          host_execution_seconds
+              linux=8654.729835599  arch=4282.494552875
+          host_finalization_seconds
+              linux=0.108693221  arch=0.019691667
+          host_preparation_seconds
+              linux=0.446153746  arch=0.108438208
+  keys only in new: 0  only in arch: 0
+
+  MODEL-RELEVANT DIFFERENCES (excluding timing/ABI/loader): 3
+     host_execution_seconds 8654.729835599 4282.494552875
+     host_finalization_seconds 0.108693221 0.019691667
+     host_preparation_seconds 0.446153746 0.108438208

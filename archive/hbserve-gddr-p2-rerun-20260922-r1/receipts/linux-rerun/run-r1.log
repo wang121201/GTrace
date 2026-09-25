@@ -1,0 +1,19 @@
+plan sha256 (unchanged, must be 4c34da34...): 4c34da34eae1e1ed90d7e22fd9836ec12f68766863e103913ef666f5fb49a3cf
+run: ./fixture /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/plan.json /home/xmu/nvidiagds/codex-runs/hbserve-memgen-gtsim-alignment/build-r1/out/result.json
+{"returncode": 0, "wall_seconds": 8657.164276437834, "wall_minutes": 144.2860712739639, "result_exists": true, "result_bytes": 6991245}
+--- stderr tail ---
+   {"continuous_cycle":794296025,"progress_completed_CTAs":2,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":794296026,"progress_completed_CTAs":3,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":794296027,"progress_completed_CTAs":4,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":794296028,"progress_completed_CTAs":5,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":794296029,"progress_completed_CTAs":6,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":794296029,"progress_completed_CTAs":7,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":794296030,"progress_completed_CTAs":8,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":801786707,"progress_completed_CTAs":1,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":801786707,"progress_completed_CTAs":2,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":801786708,"progress_completed_CTAs":3,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":801786709,"progress_completed_CTAs":4,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":801786710,"progress_completed_CTAs":5,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":801786711,"progress_completed_CTAs":6,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":801786711,"progress_completed_CTAs":7,"role":"Decode2","total_CTAs":8}
+   {"continuous_cycle":801786712,"progress_completed_CTAs":8,"role":"Decode2","total_CTAs":8}

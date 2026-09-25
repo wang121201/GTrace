@@ -80,3 +80,18 @@ source/archive/hbserve-gddr-p2-rerun-20260922-r1/
 - x86 上去掉 `-mcpu=native` 与 `-flto=thin`；需要 `-lz`。
 
 详细步骤见完整归档的 `README.md`。
+
+## 5. Linux/xmu 重建验证（2026-09-25）
+
+本分支的冻结代码与输入已在 xmu 上重建并重跑成功，结果与
+`outputs/ada-gddr-p2-rerun-r1/result-r1/dashboard.html` 的数据**逐位一致**：
+
+- 文档锚点（status / counts / rows=1173 / CTAs / nodes / cycles / HBFSIM 物理读写）全部一致；
+- 文档四阶段表格（Prefill·D1·D2·Full 的读/写/时间/带宽）逐位一致；
+- 与归档 macOS 原始 `result.json` 的 175994 个可比叶子中 173322 个完全相同，
+  其余仅为宿主墙钟耗时（2311）、编译器 ABI 结构体尺寸（358）、宿主总耗时（3），
+  **模型相关差异 0**；
+- 输入未改一个字节（`plan.json` sha256 与 pin 一致），编译闭包仅 1 行改动
+  （`p28::statistics`，与仓库提交 5211abc 相同）。
+
+详见 `LINUX-RERUN.md` 与 `receipts/linux-rerun/LINUX-RERUN-RESULT.json`。
