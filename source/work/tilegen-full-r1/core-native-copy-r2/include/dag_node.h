@@ -1,4 +1,5 @@
 #include "cycle.h"
+#include "source_semantics.h"
 #ifndef DAG_NODE_H
 #define DAG_NODE_H
 
@@ -191,6 +192,9 @@ struct ExplicitMemorySubop {
     std::vector<int> source_member_ordinals;
     std::uint64_t requested_bytes = 0;
     std::vector<MemoryByteRange> ranges;
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+    const source_memory::Record* source_semantics = nullptr;
+#endif
 };
 
 // DAG node representing a single operation

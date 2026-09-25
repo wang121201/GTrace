@@ -1,0 +1,76 @@
+{
+  "schema": "GDDR_P2_SAME_INPUT_RERUN_CONTROLLER_READINESS_V1",
+  "status": "PASS_SOURCE_AND_PREFLIGHT_NOT_EXECUTED_BY_PREPARER",
+  "native_launched_by_this_preparation": false,
+  "run_path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/run-r1",
+  "original_admission": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/admission.json",
+    "bytes": 420281,
+    "sha256": "b8eeb7b81e85f6479d044aa1cd22c50ba326e03eb1223f189ef2070174a607ed"
+  },
+  "host_manifest": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/host-budget.json",
+    "bytes": 2380,
+    "sha256": "b52bd3f0514b1ca50ab69ee3462d0086d17adf891e55fe13f742afae23ba8a3c"
+  },
+  "command": [
+    "/usr/bin/caffeinate",
+    "-i",
+    "/usr/bin/python3",
+    "-B",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/run_full.py",
+    "--admission-sha",
+    "b8eeb7b81e85f6479d044aa1cd22c50ba326e03eb1223f189ef2070174a607ed",
+    "--host-manifest-sha",
+    "b52bd3f0514b1ca50ab69ee3462d0086d17adf891e55fe13f742afae23ba8a3c",
+    "--run-name",
+    "run-r1",
+    "--execute"
+  ],
+  "one_hour_target_seconds": 3600,
+  "hard_controller_budget_seconds": 7200,
+  "execution_deadline_seconds": 7140,
+  "cleanup_reserve_seconds": 60,
+  "source_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/run_full.py",
+      "bytes": 9334,
+      "sha256": "89747eec0ae0ec22394c88e2854553413b6b32fa07ef2ce27a8232b5ecc7c047"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/contract.py",
+      "bytes": 7884,
+      "sha256": "eece8274e79364039c4e2cb675843d0bf4d602075828d7268f65aecf5212f71f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/host-budget.json",
+      "bytes": 2380,
+      "sha256": "b52bd3f0514b1ca50ab69ee3462d0086d17adf891e55fe13f742afae23ba8a3c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/source.patch",
+      "bytes": 5586,
+      "sha256": "5e86bc19b47cb211e5fe794223d5b922e8439870c478d483b477aad2fe1fc5a4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/check_source.py",
+      "bytes": 3103,
+      "sha256": "e5aa9c926dc4ff892c2da0ed00b4831127e445d594764eeb8e5cccc98bfbf83b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/source-checks.json",
+      "bytes": 2280,
+      "sha256": "cb527ebc0036b342c14bf0e4c408e029d706dd32be72a8143c32cfa53aee823a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/preflight.json",
+      "bytes": 2065,
+      "sha256": "f3051be9af2863301ce68ffeb04c780f566bef6ec9540aad9ce6d1bde1ee91a0"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/README.md",
+      "bytes": 2505,
+      "sha256": "b2c8c63c8b113fb00512341be09492ad454302303fb8ac27c6e7f81308ba0036"
+    }
+  ]
+}

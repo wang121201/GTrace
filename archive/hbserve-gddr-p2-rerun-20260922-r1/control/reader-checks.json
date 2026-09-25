@@ -1,0 +1,29 @@
+{
+  "status": "PASS_LIGHTWEIGHT_SAVED_AND_SYNTHETIC_CHECKS",
+  "checks": [
+    "2 source ASTs",
+    "original closed receipt gate unchanged",
+    "synthetic authorized host-budget receipt accepted",
+    "reject status",
+    "reject max_seconds",
+    "reject execution_deadline_seconds",
+    "reject sources_unchanged",
+    "reject cleanup failure",
+    "existing snapshot renders without polling or new run reads"
+  ],
+  "source_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/progress_report.py",
+      "bytes": 9204,
+      "sha256": "fa071a53c0d93446bc35f497af8bc301b499a71f5a8683fa2991b41a4d90f49d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/report_compare.py",
+      "bytes": 11125,
+      "sha256": "66f2648f95bfcac13dbbfd82a969dbf6626f0592fb67f2a42eeb32d2a764a75e"
+    }
+  ],
+  "new_result_json_read": false,
+  "model_executed": false,
+  "synthetic_receipt_not_actual_completion": true
+}

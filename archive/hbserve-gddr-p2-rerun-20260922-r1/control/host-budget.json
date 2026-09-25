@@ -1,0 +1,52 @@
+{
+  "schema": "GDDR_P2_SAME_INPUT_HOST_BUDGET_OVERRIDE_V1",
+  "status": "PREPARED_NOT_EXECUTED",
+  "original_admission": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/admission.json",
+    "bytes": 420281,
+    "sha256": "b8eeb7b81e85f6479d044aa1cd22c50ba326e03eb1223f189ef2070174a607ed"
+  },
+  "original_controller": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/run_full.py",
+    "bytes": 7758,
+    "sha256": "76eb874b358b87d37f6f6f7a4c5081777f8c22e4a836838c5404eeb231a3d3b9"
+  },
+  "original_contract": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/contract.py",
+    "bytes": 7884,
+    "sha256": "eece8274e79364039c4e2cb675843d0bf4d602075828d7268f65aecf5212f71f"
+  },
+  "original_budget": {
+    "target_seconds": 3600,
+    "max_seconds": 5400,
+    "execution_deadline_seconds": 5340,
+    "cleanup_reserve_seconds": 60
+  },
+  "effective_host_budget": {
+    "target_seconds": 3600,
+    "max_seconds": 7200,
+    "execution_deadline_seconds": 7140,
+    "cleanup_reserve_seconds": 60
+  },
+  "controller_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/run_full.py",
+      "bytes": 9334,
+      "sha256": "89747eec0ae0ec22394c88e2854553413b6b32fa07ef2ce27a8232b5ecc7c047"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/contract.py",
+      "bytes": 7884,
+      "sha256": "eece8274e79364039c4e2cb675843d0bf4d602075828d7268f65aecf5212f71f"
+    }
+  ],
+  "model_changes": [],
+  "compile_executed": false,
+  "one_hour_target_claimed": false,
+  "reason": "Only extend host execution tolerance after the prior deadline failure; retain the 3600s performance target, all model inputs and cleanup validators.",
+  "prior_terminal_receipt": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/run-r1/receipt.json",
+    "bytes": 422982,
+    "sha256": "c689edab54cd3cf33ae9b631d52c88cc19c3750306ccc128af9ebf3c9d3e4726"
+  }
+}

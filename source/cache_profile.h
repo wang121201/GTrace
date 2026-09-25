@@ -22,7 +22,7 @@ nlohmann::json profile(const Config& cfg) {
             {"index","linear original VA line modulo sets"},{"replacement","LRU"},
             {"persistence",per_sm_l1_persistence_name(l1.persistence)},
             {"store_policy",l1.store_bypass?"bypass_no_L1_touch":"write_through_no_allocate"},
-            {"validity_bytes",l1.line_bytes},{"modeled_hit_latency_cycles",l1.hit_latency_cycles}}},
+            {"validity_bytes",l1.sector_validity?32:l1.line_bytes},{"modeled_hit_latency_cycles",l1.hit_latency_cycles}}},
         {"L2",{{"bytes",cfg.l2_cache_size_bytes},{"line_bytes",cfg.l2_line_size_bytes},
             {"logical_slices",paper?20:1},{"sets_per_slice",paper?1024:1},
             {"ways",l2.capacity_per_group()},{"groups",l2.group_count()},

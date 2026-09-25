@@ -1,0 +1,11 @@
+{
+  "schema": "CURRENT_HISTORY_WRITER_SOURCE_CHECKS_V1",
+  "status": "PASS_PURE_SOURCE_CHECKS",
+  "checks": 70,
+  "negative_domain_cases": 6,
+  "compiler_invoked": false,
+  "simulation_executed": false,
+  "GPU_executed": false,
+  "source_pins_checked": 31,
+  "actual_model_fields_regression_performed": false
+}

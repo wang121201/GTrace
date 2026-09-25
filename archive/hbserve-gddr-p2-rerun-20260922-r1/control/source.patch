@@ -1,0 +1,71 @@
+--- /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/run_full.py
++++ /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/run_full.py
+@@ -7,9 +7,23 @@
+ import sys
+ from contract import *
+ sys.dont_write_bytecode=True
++PARENT=HERE.parent/'gddr-full-p2-r1'
++ADMISSION=PARENT/'admission.json'
++
++def host_gate(expected_sha):
++    hp=HERE/'host-budget.json';h=read(hp)
++    need(pin(hp)['sha256']==expected_sha and h['schema']=='GDDR_P2_SAME_INPUT_HOST_BUDGET_OVERRIDE_V1','fixed host budget manifest')
++    need(h['original_admission']==pin(ADMISSION),'same original admission')
++    need(h['original_budget']==dict(target_seconds=3600,max_seconds=5400,execution_deadline_seconds=5340,cleanup_reserve_seconds=60),'original budget provenance')
++    need(h['effective_host_budget']==dict(target_seconds=3600,max_seconds=7200,execution_deadline_seconds=7140,cleanup_reserve_seconds=60),'only authorized host budget')
++    need(h['model_changes']==[] and h['compile_executed'] is False and h['one_hour_target_claimed'] is False,'host-only change scope')
++    need({q['path'] for q in h['controller_pins']}=={str(HERE/'run_full.py'),str(HERE/'contract.py')},'new controller source set')
++    for q in h['controller_pins']:need(pin(q['path'])==q,'new host controller source changed')
++    need(pin(HERE/'contract.py')['sha256']==pin(PARENT/'contract.py')['sha256'],'byteexact original validators')
++    return dict(manifest=pin(hp),effective_host_budget=h['effective_host_budget'],original_budget=h['original_budget'],controller_pins=h['controller_pins'])
+ 
+ def preflight(expected_sha):
+-    ap=HERE/'admission.json';a=read(ap)
++    ap=ADMISSION;a=read(ap)
+     need(pin(ap)['sha256']==expected_sha and a['schema']=='ADA_COLD_MEASURED_BINARY_ADMISSION_V1','fixed admission identity')
+     need(a['target_seconds']==3600 and a['hard_controller_budget_seconds']==5400 and a['execution_deadline_seconds']==5340,'fixed budget')
+     need(a['no_recompile'] is True and a['full_measured'] is True and a['full_history'] is False,'fixed scope')
+@@ -23,19 +37,21 @@
+ def main():
+     parser=argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--admission-sha',required=True);parser.add_argument('--run-name',default='run-r1')
++    parser.add_argument('--host-manifest-sha',required=True)
+     parser.add_argument('--execute',action='store_true');args=parser.parse_args()
+     need(re.fullmatch(r'run-[A-Za-z0-9_-]{1,60}',args.run_name),'bounded fresh run directory')
+     owned=R/'work/tilegen-hbf-traceoff-full-r1/owned_group.py'
+     spec=importlib.util.spec_from_file_location('_owned_full_measured',owned);G=importlib.util.module_from_spec(spec);spec.loader.exec_module(G)
+-    started=G.raw();deadline=started+5400
++    started=G.raw();deadline=started+7200
++    host=host_gate(args.host_manifest_sha)
+     if not args.execute:
+         a,p=preflight(args.admission_sha)
+-        print(json.dumps(dict(status='PREPARED_NOT_EXECUTED',binary=a['binary'],plan=a['plan'],counts=COUNTS,target_seconds=3600,hard_cleanup_budget_seconds=5400)))
++        print(json.dumps(dict(status='PREPARED_NOT_EXECUTED',binary=a['binary'],plan=a['plan'],counts=COUNTS,target_seconds=3600,hard_cleanup_budget_seconds=7200,execution_deadline_seconds=7140,host_budget_override=host)))
+         return 0
+     out=HERE/args.run_name;out.mkdir(exist_ok=False)
+     rec=dict(schema='ADA_COLD_FULL_MEASURED_OWNED_V1',status='RUNNING',steps=[],GPU=False,full_trace_saved=False,
+         full_measured=True,full_history=False,initial_cache_state='EMPTY_EXPLICIT_DIAGNOSTIC',
+-        target_seconds=3600,max_seconds=5400,execution_deadline_seconds=5340,cleanup_reserve_seconds=60,
++        target_seconds=3600,max_seconds=7200,execution_deadline_seconds=7140,cleanup_reserve_seconds=60,host_budget_override=host,
+         compiler_executed=False,matched_warm_NCU_claim=False,hardware_accuracy_claimed=False)
+     def save():
+         rec['elapsed_seconds']=G.raw()-started
+@@ -43,7 +59,7 @@
+     with G.SignalLatch() as signals:
+         try:
+             save();a,p=preflight(args.admission_sha)
+-            rec.update(admission=pin(HERE/'admission.json'),binary=a['binary'],plan=a['plan'],pins=a['pins'],host_preflight_seconds=G.raw()-started);save()
++            rec.update(admission=pin(ADMISSION),binary=a['binary'],plan=a['plan'],pins=a['pins'],host_preflight_seconds=G.raw()-started);save()
+             need(signals.first_signal is None and G.raw()<deadline-60,'cancel/deadline before launch')
+             result_path=out/'result.json';argv=[a['binary']['path'],a['plan']['path'],str(result_path)]
+             shim=('import json,os,sys;p=json.loads(sys.argv[1]);'
+@@ -89,7 +105,8 @@
+                     for v in x:loader_pins(v)
+             loader_pins(result['loader'])
+             for q in a['pins']:need(pin(q['path'])==q,'input/code/binary changed during run')
+-            need(pin(HERE/'admission.json')==rec['admission'],'admission changed')
++            need(pin(ADMISSION)==rec['admission'],'admission changed')
++            need(host_gate(args.host_manifest_sha)==host,'new host controller/manifest changed during run')
+             need(signals.first_signal is None and G.raw()<deadline,'closed within total budget')
+             rec.update(status='PASS_CLOSED_COMPLETE_MEASURED_COLD_GDDR_P2',sources_unchanged=True,
+                 target_3600s_met=G.raw()-started<=3600,native_host_execution_seconds=result['host_execution_seconds'])

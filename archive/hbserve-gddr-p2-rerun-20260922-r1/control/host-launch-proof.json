@@ -1,0 +1,19 @@
+{
+  "recorded_utc": "2026-09-22T12:45:36.345843+00:00",
+  "tool_session_id": 43301,
+  "receipt_status": "RUNNING",
+  "native_pid": 77789,
+  "controller_pid": 77787,
+  "process_observations": [
+    "77787 15644 77787       00:35   0:00.57   0.1  0.3 /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python",
+    "77788 77787 77787       00:35   0:00.01   0.0  0.0 /usr/bin/caffeinate",
+    "77789 77787 77789       00:35   0:34.49  99.1  5.5 /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/run-native-windows-r1/fixture"
+  ],
+  "idle_sleep_assertion_observations": [
+    "   PreventUserIdleSystemSleep     1",
+    "   pid 336(powerd): [0x00115c9600018cdf] 00:15:42 PreventUserIdleSystemSleep named: \"Powerd - Prevent sleep while display is on\"  ",
+    "   pid 77788(caffeinate): [0x0011602100018d26] 00:00:35 PreventUserIdleSystemSleep named: \"caffeinate command-line tool\"  ",
+    "\tDetails: caffeinate asserting on behalf of '/usr/bin/python3' (pid 77787)"
+  ],
+  "note": "Prevent idle sleep only; does not override user lid close or explicit sleep. Original inputs and simulation settings unchanged."
+}

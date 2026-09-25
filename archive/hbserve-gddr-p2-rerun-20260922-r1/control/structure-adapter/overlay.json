@@ -1,0 +1,17 @@
+{
+  "version": 0,
+  "case-sensitive": true,
+  "use-external-names": false,
+  "roots": [
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cache_geometry.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/cache_geometry.h"
+    },
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/ada_address_mapping.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/ada_address_mapping.h"
+    }
+  ]
+}

@@ -21,6 +21,11 @@ class PreparedMemory {
         for(std::size_t i=0;i<records.size();++i) {
             const auto& record=records[i];const auto& plan=source.range_plan.records.at(i);
             Instruction prepared;
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+            // Stable source identity, assigned once per pre-cache instruction.
+            // Zero-lane instructions produce no memory access and stay unknown.
+            if(!record.lanes.empty())prepared.shape.source_semantics=source.source_semantics.at(i);
+#endif
             prepared.shape.requested_bytes=p::multiply(record.lanes.size(),U(record.width));
             prepared.shape.source_member_ordinals.reserve(record.lanes.size());
             for(const auto& lane:record.lanes)prepared.shape.source_member_ordinals.push_back(lane.lane);

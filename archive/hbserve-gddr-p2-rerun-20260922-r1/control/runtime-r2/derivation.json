@@ -1,0 +1,82 @@
+{
+  "status": "DERIVED_NOT_COMPILED",
+  "original": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-execution-r1/history_runtime-r3.cpp",
+    "bytes": 12180,
+    "sha256": "78fdb3da69ac80f3903cb815140b93101c3bceb1b7fec38b7b011f186b743cc5"
+  },
+  "generated": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/runtime-r2/history_runtime.cpp",
+    "bytes": 14938,
+    "sha256": "2ce893d82b0d79a1e2007c3ac35e9689d487bd30fd7282eaece7edbfda3f8b61"
+  },
+  "generator": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/build_runtime.py",
+    "bytes": 4939,
+    "sha256": "072f5a0a84458ce849d5e97fdfa70f030095d86871188767989402700cfe5557"
+  },
+  "edits": [
+    {
+      "before": "need(std::abs(1e6*p.at(\"clock\").at(\"period_ps_denominator\").get<double>()/p.at(\"clock\").at(\"period_ps_numerator\").get<double>()-cfg.core_frequency_mhz)",
+      "after": "need(std::abs(1e6*plan.at(\"profile\").at(\"clock\").at(\"period_ps_denominator\").get<double>()/plan.at(\"profile\").at(\"clock\").at(\"period_ps_numerator\").get<double>()-cfg.core_frequency_mhz)"
+    },
+    {
+      "before": "static g::SimulatorConfig config(){auto c=g::make_rtx4000_ada_footprint_reference_config();",
+      "after": "static g::SimulatorConfig config(const J&p){auto c=g::make_ada_cosim_alignment_config(p.at(\"ada_alignment_profile\").get<std::string>());"
+    },
+    {
+      "before": "Device(const J&p,const coupling::ServiceMapper&map):cfg(config()),backend(p),",
+      "after": "Device(const J&plan,const coupling::ServiceMapper&map):cfg(config(plan)),backend(plan.at(\"profile\")),"
+    },
+    {
+      "before": "#include \"../current-history-write-attribution-r1/history_attribution.h\"",
+      "after": "#include \"/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/history_attribution.h\""
+    },
+    {
+      "before": "#include \"../current-history-loader-r3/catalog.h\"",
+      "after": "#include \"/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-loader-r3/catalog.h\""
+    },
+    {
+      "before": "Mapper base;auto cfg=Device::config();",
+      "after": "if(plan.value(\"full_measured\",false)){\n need(!plan.at(\"full_history\").get<bool>()&&!plan.at(\"complete_prefix_from_process_start\").get<bool>()&&plan.at(\"initial_cache_state\")==\"EMPTY_EXPLICIT_DIAGNOSTIC\",\"explicit cold measured entry\");\n need(plan.at(\"counts\")==J({{\"native_kernel\",1138},{\"memory_api_submission\",29},{\"epoch_begin\",3},{\"epoch_end\",3}})&&plan.at(\"timeline\").size()==1173,\"complete measured event census\");\n need(plan.at(\"kernel_work\").at(\"CTAs\")==772512&&plan.at(\"kernel_work\").at(\"nodes\")==4712768255ULL,\"complete measured source work\");\n U id=1288;std::map<std::string,U> phases;for(const auto&e:plan.at(\"timeline\")){need(e.at(\"epoch\").get<int>()>=4&&e.at(\"epoch\").get<int>()<=6,\"only measured epochs\");if(e.at(\"kind\")==\"native_kernel\"){need(e.at(\"native_launch_id\")==id++,\"complete consecutive native measured calls\");++phases[e.at(\"phase\").get<std::string>()];}}\n need(id==2426&&J(phases)==J({{\"Measured/Prefill\",408},{\"Measured/Decode1\",365},{\"Measured/Decode2\",365}}),\"all three measured phases\");\n }\n Mapper base;auto cfg=Device::config();"
+    },
+    {
+      "before": "std::ofstream(output)<<result.dump(2)",
+      "after": "result[\"ada_alignment\"]={{\"profile\",plan.at(\"ada_alignment_profile\")},{\"core_MHz\",d.cfg.core_frequency_mhz},{\"L1_hit_cycles\",d.cfg.per_sm_l1.hit_latency_cycles},{\"L2_hit_cycles\",d.cfg.l2_hit_latency_cycles},{\"L2_bytes\",d.cfg.l2_cache_size_bytes},{\"L1_capacity_bytes_per_SM\",d.cfg.per_sm_l1.capacity_bytes_per_sm},{\"external_HBFSIM_route_aligned_to_AccelSim\",false},{\"L1_r4_adopted\",false},{\"whole_line_RFO_preserved\",true},{\"internal_604_parameter_executed\",false},{\"hardware_accuracy_claimed\",false}};\n result[\"initial_cache_state\"]=plan.value(\"initial_cache_state\",std::string(\"PROCESS_START_EMPTY\"));\n result[\"full_measured_complete\"]=plan.value(\"full_measured\",false);\n result[\"full_inference\"]=plan.value(\"full_measured\",false)||plan.at(\"full_history\").get<bool>();\n std::ofstream(output)<<result.dump(2)"
+    },
+    {
+      "before": "Device d(plan.at(\"profile\"),map);",
+      "after": "Device d(plan,map);"
+    },
+    {
+      "before": "#include \"tiny_dispatch-r2.h\"",
+      "after": "#include \"/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-execution-r1/tiny_dispatch-r2.h\""
+    },
+    {
+      "before": "#include \"fine_dispatch.h\"",
+      "after": "#include \"/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-execution-r1/fine_dispatch.h\""
+    },
+    {
+      "before": "auto cfg=Device::config();",
+      "after": "auto cfg=Device::config(plan);"
+    },
+    {
+      "before": "#include \"api_port-r2.h\"",
+      "after": "#include \"/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-execution-r1/api_port-r2.h\""
+    },
+    {
+      "before": "namespace history_case {",
+      "after": "#include \"/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/config.h\"\nnamespace history_case {"
+    }
+  ],
+  "unchanged": [
+    "source workload",
+    "Tiny/Fine dispatchers",
+    "API q1",
+    "q16/GEMV phase16/kernel epoch8",
+    "shared h288 policy",
+    "HBFSIM generic GDDR6 config and route",
+    "32B writeback",
+    "no end flush"
+  ]
+}

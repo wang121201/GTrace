@@ -1,0 +1,12 @@
+{
+  "version": 0,
+  "case-sensitive": true,
+  "use-external-names": false,
+  "roots": [
+    {
+      "type": "file",
+      "name": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/writer_observer.h",
+      "external-contents": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/writer_observer.h"
+    }
+  ]
+}

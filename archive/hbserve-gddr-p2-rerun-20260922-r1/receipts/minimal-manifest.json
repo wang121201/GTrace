@@ -1,0 +1,90 @@
+[
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-helpers-execution-r1/prepared-r1/source-models.json",
+  "bytes": 26929254
+ },
+ {
+  "path": "../work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/full.input",
+  "bytes": 24009563
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-index-copy-execution-r1/prepared-r1/calls.json",
+  "bytes": 10868474
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-registry-r3/assembled-r1/dispatch.json",
+  "bytes": 8368946
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-registry-r1/assembled-r1/dispatch.json",
+  "bytes": 7231463
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-elementwise-bridge-r1/plan.json",
+  "bytes": 5447138
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-attention-execution-r1/plan-r2.json",
+  "bytes": 4565070
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-gemv-bridge-r1/plan.json",
+  "bytes": 2769054
+ },
+ {
+  "path": "../work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/plan.json",
+  "bytes": 2429536
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-rotary-execution-r1/prepared-r1/plan.json",
+  "bytes": 2387169
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-elementwise-bridge-r1/calls.json",
+  "bytes": 1964064
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-gemm-bridge-r1/prepared-r1/plan.json",
+  "bytes": 1645072
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-helpers-execution-r1/prepared-r1/plan.json",
+  "bytes": 1126756
+ },
+ {
+  "path": "../work/tilegen-full-r1/canonical-prefill-gemm-next-address-r1/roles/gate/plan.json",
+  "bytes": 460939
+ },
+ {
+  "path": "../work/tilegen-full-r1/canonical-prefill-gemm-next-address-r1/roles/down/plan.json",
+  "bytes": 460281
+ },
+ {
+  "path": "../work/tilegen-full-r1/canonical-prefill-gemm-next-address-r1/roles/o/plan.json",
+  "bytes": 460048
+ },
+ {
+  "path": "../work/tilegen-full-r1/canonical-gemm-p28-address-r1/plan.json",
+  "bytes": 445656
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-controls-execution-r1/prepared-r1/plan.json",
+  "bytes": 142165
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-helpers-execution-r1/prepared-r1/calls.json",
+  "bytes": 128795
+ },
+ {
+  "path": "../work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-index-copy-execution-r1/prepared-r1/plan.json",
+  "bytes": 28474
+ },
+ {
+  "path": "../work/ada-cosim-alignment-20260922-r1/gddr-review-r1/observed-gpu0-p2-r2/rtx4000-ada-observed-p2.cfg",
+  "bytes": 4307
+ },
+ {
+  "path": "../work/tilegen-cycle-overlap-r1/selected.cfg",
+  "bytes": 3578
+ }
+]

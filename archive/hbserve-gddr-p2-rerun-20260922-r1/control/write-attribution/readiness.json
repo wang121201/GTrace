@@ -1,0 +1,52 @@
+{
+  "schema": "CURRENT_HISTORY_WRITE_ATTRIBUTION_SOURCE_READY_V1",
+  "status": "SOURCE_READY_NOT_MODEL_QUALIFIED",
+  "source_pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/writer_observer.h",
+      "bytes": 10583,
+      "sha256": "093ff52c405a42b4b1275e0be93a17d6b5752c14e4f49d676e69774584e1b653"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/history_attribution.h",
+      "bytes": 1828,
+      "sha256": "0dfdbbb346b72f7b0cd794f47d1c27ded6453a104e32b859df48251826bcc7ca"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/overlay.json",
+      "bytes": 577,
+      "sha256": "90017bb9a0d685489ec6d2ce149d1842f2f94de8d3e407df065e1090526dda76"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/observer-range.patch",
+      "bytes": 2350,
+      "sha256": "461db5dbba26823740a971cf96cf361b20cce6328c826ac39b81eda21cadde85"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/source-proof.json",
+      "bytes": 19198,
+      "sha256": "1b50cfaef4431654f5807d7415cfc591316f41a1e8156f8c18fe8191899472dc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/check_source.py",
+      "bytes": 2537,
+      "sha256": "47994965bd4d54b86fe9ae4e64aa1ff56f8a21dd7ebd4075adf908ba1b82af77"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/source-checks.json",
+      "bytes": 311,
+      "sha256": "eb3cbfc7a8d5e96b6c4656243cbfd79dae6e1a5d1179a29345be1d371f909cee"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/README.md",
+      "bytes": 6396,
+      "sha256": "9446e33acbc1edfade662b82bf86b58352285607250ad5e2e99e7d08d18d8563"
+    }
+  ],
+  "cache_behavior_change_intended": false,
+  "default_constructor_call_domain_unchanged": true,
+  "model_regression_required": true,
+  "compiled": false,
+  "simulation_executed": false,
+  "GPU_executed": false
+}

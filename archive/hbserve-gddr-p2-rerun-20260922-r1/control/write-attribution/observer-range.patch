@@ -1,0 +1,11 @@
+--- /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/writer_observer.h
++++ /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/writer_observer.h
+@@ -39,7 +39,7 @@
+  void room(){need(live_.size()<bound_,"writer live dirty-line bound exceeded");}
+  void unique(std::unordered_map<Key,unsigned,Hash>&seen,U&count,const Key&k,unsigned mask){if(!unique_enabled_)return;auto it=seen.find(k);unsigned before=it==seen.end()?0:it->second;U added=bits(mask&~before);need(count+added<=unique_sector_bound_,"writer unique-sector hard bound exceeded");if(it==seen.end())seen.emplace(k,mask);else it->second|=mask;count+=added;}
+ public:
+- explicit Observation(int first,int last,bool unique_history=false,decode_gate_joint::Observation* joint=nullptr):first_(first),last_(last),unique_enabled_(unique_history),joint_(joint){need(first>=0&&last>=first&&last-first<1138,"writer fixed call domain invalid");calls_.resize(last-first+1);}
++ explicit Observation(int first,int last,bool unique_history=false,decode_gate_joint::Observation* joint=nullptr,int max_calls=1138):first_(first),last_(last),unique_enabled_(unique_history),joint_(joint){need(max_calls>0&&first>=0&&last>=first&&last-first<max_calls,"writer fixed call domain invalid");calls_.resize(last-first+1);}
+  void begin(U bound,Native n){need(!begun_&&!closed_&&!abandoned_&&bound>0&&bound<=400000,"writer begin/bound invalid");bound_=bound;before_=n;if(joint_)joint_->begin(first_,last_);begun_=true;}
+  void seed(int matrix,U line,unsigned mask){need(begun_&&call_==-1&&!closed_,"writer seed outside entry");Key k{matrix,line};key_ok(k,mask);room();Line x;x.mask=mask;for(unsigned s=0;s<4;++s)if(mask&(1u<<s))x.cells[s].inherited=true;need(live_.emplace(k,x).second,"writer duplicate inherited line");initial_+=bits(mask);peak_=std::max<U>(peak_,live_.size());if(joint_)joint_->seed(matrix,line,mask);}
+  void set_call(int call){need(begun_&&!closed_&&!abandoned_,"writer call before begin/after end");need(call==(call_==-1?first_:call_+1)&&call<=last_,"writer calls must be contiguous");call_=call;if(joint_)joint_->set_call(call);}

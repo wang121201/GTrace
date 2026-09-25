@@ -1,0 +1,1781 @@
+{
+  "schema": "ADA_STRUCTURE_OWNED_CPU_V1",
+  "status": "PASS_OWNED_ADA_STRUCTURE_ASYNC_COMPONENT",
+  "max_seconds": 120,
+  "cleanup_reserve_seconds": 8,
+  "jobs": 2,
+  "GPU": false,
+  "full_model": false,
+  "elapsed_seconds": 18.81511904182844,
+  "pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/accelsim-evidence/evidence.json",
+      "bytes": 43650,
+      "sha256": "9d73b42dd3cbc8cdd96d09c57270fbfbb73fd8b6c1c08c427f4fba38ed80f9a5"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/accelsim-evidence/report.md",
+      "bytes": 4936,
+      "sha256": "10ddb63e56aa28765d649a9de70fbb04a190bfc67265e7ec6e85b0a8222b0bf9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/ada_address_mapping.h",
+      "bytes": 3756,
+      "sha256": "1dedfe56368be08dd3ba3bdc13690c11c383a8ebb2e25aa60c1d1f4c433d6068"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/cache_geometry.h",
+      "bytes": 7532,
+      "sha256": "16965780a8e7d8df7f0d61f81a32f751b6fe2abb9a9936ca1b7fdf307be04b18"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/config.h",
+      "bytes": 1667,
+      "sha256": "4279af69cd7ce806d5065df1be6726caf235863338c0164e476c0bd466ed9396"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/fixture.cpp",
+      "bytes": 11097,
+      "sha256": "8b28b06e63d36325425389e57cb68606870f239462d9bf4ba293d5eb0df74f2a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/overlay.json",
+      "bytes": 983,
+      "sha256": "e3cfb267da63cea9e6ddc744449cef799059dbeab6bc9b712750dd5ba7b73b3d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/prepare.py",
+      "bytes": 6801,
+      "sha256": "fdd055efee3a7cb8201ea5e05f98c1415bdc6f1e2cb5ac41817cfcdc430db3cf"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/profile.json",
+      "bytes": 2298,
+      "sha256": "4a3e89c1c915e6bc13b97f3d4b62eb1468c5ac3d3997f5f124a35f56ce2f3918"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/provenance.json",
+      "bytes": 14329,
+      "sha256": "1c415c37a6c35cb07e2af7f0c8ad132040f1db65655e6df5ba801cd0e72c2f53"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run_cpu.py",
+      "bytes": 10279,
+      "sha256": "e32e3459fbefcac2f12203ca312a174e56b2ee919c267206b252f52d5d1ef312"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/source-proof.json",
+      "bytes": 4067,
+      "sha256": "db423920dc24616c1b64b1712cc03849014ff016dc59bf75469e366f5ea76ac6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/source.patch",
+      "bytes": 2514,
+      "sha256": "82e4108fa188649afd954926933956de02c940963c17b0e33ee0f932690b0a6e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-cycle-overlap-r1/selected.cfg",
+      "bytes": 3578,
+      "sha256": "b0b1098dd31828b92c11a8ec9d8eca8b61ccae5a2389e1f8612aba967a41a1ca"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-hbf-traceoff-full-r1/owned_group.py",
+      "bytes": 5976,
+      "sha256": "8ed82cbf27b7a3ee78f7e274c719a4a181b96c27ae5c5304da0b9ca383f91155"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-execution-r1/prepared-r1/input.json",
+      "bytes": 7734,
+      "sha256": "399ef2fce5288fe01abc10121e636cc6c8a7bcabf7a919dc697c20a169efeb8c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/README.md",
+      "bytes": 6396,
+      "sha256": "9446e33acbc1edfade662b82bf86b58352285607250ad5e2e99e7d08d18d8563"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/build-r1/dependency-proof.json",
+      "bytes": 134743,
+      "sha256": "bf18f5aa056190654c4bb2522b6cd5224d5cf77c5fed1d294b6c5bd7b571a2fe"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/build-r1/receipt.json",
+      "bytes": 105305,
+      "sha256": "fcbdd80e2ce4ca88176c8ad4624f999384226b5445fae3a129427ad3e2a5f625"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/check_source.py",
+      "bytes": 2537,
+      "sha256": "47994965bd4d54b86fe9ae4e64aa1ff56f8a21dd7ebd4075adf908ba1b82af77"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/history_attribution.h",
+      "bytes": 1828,
+      "sha256": "0dfdbbb346b72f7b0cd794f47d1c27ded6453a104e32b859df48251826bcc7ca"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/observer-range.patch",
+      "bytes": 2350,
+      "sha256": "461db5dbba26823740a971cf96cf361b20cce6328c826ac39b81eda21cadde85"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/overlay.json",
+      "bytes": 577,
+      "sha256": "90017bb9a0d685489ec6d2ce149d1842f2f94de8d3e407df065e1090526dda76"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/readiness.json",
+      "bytes": 2887,
+      "sha256": "185e76fe90bead510aee05e336ff377a48025bf39b104315928cc8ca77950616"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/source-checks.json",
+      "bytes": 311,
+      "sha256": "eb3cbfc7a8d5e96b6c4656243cbfd79dae6e1a5d1179a29345be1d371f909cee"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/source-proof.json",
+      "bytes": 19198,
+      "sha256": "1b50cfaef4431654f5807d7415cfc591316f41a1e8156f8c18fe8191899472dc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/writer_observer.h",
+      "bytes": 10583,
+      "sha256": "093ff52c405a42b4b1275e0be93a17d6b5752c14e4f49d676e69774584e1b653"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/decode-sector-l1-component-r1/serializers.inc",
+      "bytes": 4376,
+      "sha256": "8a50bbfe10b0c43c8cc00e1c23056ce20cc0d8b97b79ded279e40082ae4e2ce8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/00.d",
+      "bytes": 47494,
+      "sha256": "1106589c313bed4872ae3d7f36b794dabb018bc9ff0e0fdca1d6f75a42f81c23"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/01.d",
+      "bytes": 7903,
+      "sha256": "9b0a462e845130fee8c380345e9bd32e17a986c117c4976ce337f8fb5b4068cd"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/01.o",
+      "bytes": 309408,
+      "sha256": "f41878f4def4094811d9533d541062d35186f83090a43236d2cb4577c100f000"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/02.d",
+      "bytes": 7054,
+      "sha256": "8f48b13c6e471c0a137f6fdb326c2d1d733583284bd43fd05437796b22a69dcb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/02.o",
+      "bytes": 344304,
+      "sha256": "ad2c9b6de8b98ce20a243e47cd530f50d8c2e9e1e0bdeb62b947787f764aede2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/03.d",
+      "bytes": 9035,
+      "sha256": "c3ebd2a41bb48573e657a07b0f15faf2801a442dcf27618b6c4d705b6b36290c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/03.o",
+      "bytes": 494800,
+      "sha256": "3024a2587203419c6eaf0e132000f4ed887a49be64eae16d6dae30c7e99e210f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/04.d",
+      "bytes": 9488,
+      "sha256": "05504eefc4f99e39cc11c53d8c293c973d31cc8607999eab9d1accbedb8e15ab"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/04.o",
+      "bytes": 612688,
+      "sha256": "418eb30c3ad048db0b8786fcf14e7157a816ce03337fb04a2a1fe214572c9cd3"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/05.d",
+      "bytes": 7691,
+      "sha256": "461cde4ccdac350304132da0328598fd3acfe4f917c5792eb93d3b5e6bc205d5"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/05.o",
+      "bytes": 225824,
+      "sha256": "956fdcc5067454fe0dbb9a68cbd9f5c28f9eed2995972e0e64348db01797e1d7"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/06.d",
+      "bytes": 7712,
+      "sha256": "12948ba69eedd34b57cd7fa3aaf7e15ccc44f5e12878369ad69c5336c14319f8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/06.o",
+      "bytes": 355328,
+      "sha256": "cc5ca9673d3f395dc3c58464f84b5c669c75ab72828203159c895ff47e1b7b05"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/07.d",
+      "bytes": 3627,
+      "sha256": "fe0ec702396b99de245e970595b197d594f4654bf803f8403c56d48ebdb01d36"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/07.o",
+      "bytes": 143920,
+      "sha256": "f1ee48f1ae422da456d42487fc4a36b336a47801c906e157f155eb66795fbc87"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/08.d",
+      "bytes": 606,
+      "sha256": "2e6c970db43d8d68a4949e7b2f0a0693471069873bc03c5d04cc999488d9d265"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/08.o",
+      "bytes": 112512,
+      "sha256": "a492c3b236df82f81f8e75e21404635d3d67210ea7da8d620a8b8691f6d168ae"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/09.d",
+      "bytes": 1035,
+      "sha256": "e36d962d083126f794500e2899413bea0867afc05b8a5fef7cf81493e53d64bc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/09.o",
+      "bytes": 36688,
+      "sha256": "ceebdf5c3308eb7c0eb77019e5c753b41b64111f05dbbd70815439ed18ee30d9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/10.d",
+      "bytes": 1275,
+      "sha256": "13aff62f8e46ab3b6f73ff0e09e8261ea652840c0b406991dbe6d1f37b5a630b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/10.o",
+      "bytes": 64432,
+      "sha256": "f2b11878c753ca6cd791fbea2b89851ac387c54a0f2e63224e9cc1a8e272b8b7"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/11.d",
+      "bytes": 1291,
+      "sha256": "7ec9929f7e6a1f93db0dfce9be1d45cb220789ef04bb1a532239a526a9256c26"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/11.o",
+      "bytes": 159008,
+      "sha256": "388484b10d27b74d18dd96ba6d66e550e7d394f6c0b0ec69dec98646eb5f6709"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/12.d",
+      "bytes": 1686,
+      "sha256": "93241f214cdca872dbb73d2f3e747e711e5230815a4014889ad136b859589228"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/12.o",
+      "bytes": 321552,
+      "sha256": "5a9898915893d2f7a2e567e1cc6a7c310187855322f0df313d0b9c3cb45b2eef"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/13.d",
+      "bytes": 1690,
+      "sha256": "28ff64fa098aa41c4ed4b50b25b4b624031b1fd1f0d85534f8d03d7df1bd19d2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/13.o",
+      "bytes": 93872,
+      "sha256": "7810bb47ea65360bee3ee353e15edaedb9701328a4a223dd9971279ba2c422d6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/14.d",
+      "bytes": 1043,
+      "sha256": "5586b90b4f552e7b524190b475c978b6589798a670bad048e62ef8268f6f657d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/14.o",
+      "bytes": 47840,
+      "sha256": "4a36b2f8c353d9b380e6d97dfb8ebee75c7212b784f5d323cffbe3838b93c123"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/15.d",
+      "bytes": 1252,
+      "sha256": "0e60c32013c0bb769f798ed37354c2bc6266b19a92db3b81d8dd68fe10529267"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/15.o",
+      "bytes": 77424,
+      "sha256": "6a5f24cc71123dbd05e0706e07c9ce3b539220b19c5acf24486cca72581aea63"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/16.d",
+      "bytes": 2744,
+      "sha256": "afd10f014c8fee890558d542ceed1af37f7fa78c50720d4b466aa35a7724aaf3"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/16.o",
+      "bytes": 201488,
+      "sha256": "d0da6b1eebf720e5d07538e8f70c2072a6ff3f1110694e01caf232ba4c40993e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/17.d",
+      "bytes": 2747,
+      "sha256": "6f8aa049733c1acd31cd913a20e9468a8ef776c78d9d246b957949d46663fbef"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/17.o",
+      "bytes": 91952,
+      "sha256": "bc30b2137c8d97d333161f3def6ff04922c2ebfcc439c3547c2f82884226540f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/18.d",
+      "bytes": 2755,
+      "sha256": "cded88ed38cbfdcf1b1d0329d346333c0ee9725381b401f96386280cfbc07c60"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/18.o",
+      "bytes": 57872,
+      "sha256": "01c41a60a4706a9d94b5b5a03ad38621866d5fc09c31500d3bc63bcca0845f1b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/19.d",
+      "bytes": 2752,
+      "sha256": "6ff644a6f65ce8c18acc01d16c77c0bb594914478b30532836df797580e70126"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/19.o",
+      "bytes": 1221392,
+      "sha256": "19ec2c6a38d166959f5d7c37ba1e0a8059725e527710cfb15e4f0b9b8db2dc99"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/20.d",
+      "bytes": 2976,
+      "sha256": "00fed2730b74e71a333ae7bf27ff38867f6e8c8760f686555df5ea0c3d77b190"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/20.o",
+      "bytes": 115536,
+      "sha256": "e3b91acf73d59d9911de73c6b9b995390eead83f040cb5494a5433372748ace2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/21.d",
+      "bytes": 3647,
+      "sha256": "e5bb1b5888faa20b8973a2e7a98ecb8df217b8b5a55970b83abf099a7559a269"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/21.o",
+      "bytes": 319744,
+      "sha256": "a96d2e62330337158ee72c3cd6cca74e0852daaed23bcc5a873c1a5f6f77c8e2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/build-receipt.json",
+      "bytes": 87514,
+      "sha256": "3b8825c151852f9ecf523b46ac99ceeb1bef8cda3f07f65ff5dc1a976fb2e305"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/cache_profile.h",
+      "bytes": 2357,
+      "sha256": "290c9b6c590b4d131c5cdf58fddab10b64d670f3cbbcc5dff601d0d44517ef60"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/direct_cache.h",
+      "bytes": 10357,
+      "sha256": "b22540db86331561bfc2f7b0fa3a82098f7625435c26bcb228757a8ea1e08f5d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/direct_native.h",
+      "bytes": 14334,
+      "sha256": "3e4f969dc6ffefb8ef7c251e3c29b4d654b7fadc0ddb6a8ad8ab27c8d19df3f6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/direct_phase_profile.h",
+      "bytes": 11037,
+      "sha256": "f900695da12c410049214717072a9ae389d66e524a7a6f3c9b50352622a90e1e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/hbf_replay_backend.h",
+      "bytes": 19612,
+      "sha256": "56d55fa34495deda5d4cc6b5aaba6280e6d45d1d43041c5061fa021dffcef6d2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/native_trace.h",
+      "bytes": 13512,
+      "sha256": "d70f51a166b36c4d8cad78cf45ac3fe68820ebfb53cec35a662cb9d3ee2a4453"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/native_typed_identity.h",
+      "bytes": 656,
+      "sha256": "9ec7743fe9881bb9a6800cc41b91fc1dbc2af9fa8f3847fdab22dbab7aace55e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/replay_backend.h",
+      "bytes": 4099,
+      "sha256": "22cd39fa871c14b56d7e366287f99a5025942c4902b654ff9f193f2b18a1ed3b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/replay_phase_report.h",
+      "bytes": 9428,
+      "sha256": "3361cafb9f3d4a171011c14d97e04b24e217ffd6214002c5b027c453fb0fbdef"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/stage_replay.h",
+      "bytes": 28739,
+      "sha256": "12db9a0a4a6884bbb6478384d34c57c4230b91c38f613f87074dd1031a9e88aa"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/trace_replay.h",
+      "bytes": 15523,
+      "sha256": "bb457dca97705e558c4b2c8ec69eca1d082f7bb80a5eb2e07a442ff182490042"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/trace_replay_main.cpp",
+      "bytes": 16961,
+      "sha256": "1b246e665f34749b062645be1c556d3a925b869053e7ba862fcb19549687f132"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party/nlohmann/json.hpp",
+      "bytes": 919975,
+      "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/gddr6-support/hbf_coupling/prepared/directed_time.h",
+      "bytes": 3578,
+      "sha256": "19ded7e38869c90539112e86f277899c757e7934d4230a44a50d3262372ea55e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/app/system_config.cpp",
+      "bytes": 32019,
+      "sha256": "de9c57e37a9e3f5d26e3f278ce1d7096ee9150cd8b20ef4ed60055d61867283f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/app/system_config.hpp",
+      "bytes": 4376,
+      "sha256": "0b6dd8a106b69626ebc82ff95308b7405f798e029e8113ed97b60493044541ff"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/host/hbf_config.hpp",
+      "bytes": 10522,
+      "sha256": "d3b63ff8b39e01aceb1a08b0c36b4c41df0b2802071b16f6fa1404cb75ca47f4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/host/hbf_controller.cpp",
+      "bytes": 444753,
+      "sha256": "a82e9e7e5eb64ee19fe3f06621e28829ecbb7f57715886141dd17fe2ff775fde"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/host/hbf_controller.hpp",
+      "bytes": 90278,
+      "sha256": "8dc09d6266598d16c6f1370dc463d2cae11d37b213aea77ef778ffe6742fdc23"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/host/hbf_gc.cpp",
+      "bytes": 64196,
+      "sha256": "0f273817f4d74de7b6a883e96ba77c02204c0022066aabf729d4f1b46f3fadf9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.cpp",
+      "bytes": 28983,
+      "sha256": "a4dcc5582b3df298c025cb015cd546228b10b3066a7a2ef3d8eba0ef5afc8cc8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/host/hbf_persistent_image.hpp",
+      "bytes": 517,
+      "sha256": "b549ea2ef24026964329738f87846e9ce036a48455c9ca0d74c7895de68e4536"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/host/hbf_wear_snapshot.cpp",
+      "bytes": 5767,
+      "sha256": "1dbda009daf3032055ae0c31088ceb6f7b5b4b7f0c69bb093077a10d378bc9d4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/host/hbf_zones.cpp",
+      "bytes": 11503,
+      "sha256": "400fd6cc863f00101d5bc6b21e8170a6318b16a60f4b70492efe9c466bfd7119"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/address_heatmap.cpp",
+      "bytes": 37423,
+      "sha256": "2761e80808fb056e45839d528475dd59a0169bac67beb9c78a5eb3d8fd8d007d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/address_heatmap.hpp",
+      "bytes": 7528,
+      "sha256": "ed782f559c914a3bb9abe92242d69e8e116d5e66572e5d09b4beaa0f8118417f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/base_die_link.cpp",
+      "bytes": 6347,
+      "sha256": "5f5080bbdd9843e790292ef62b2fa39b4f39a6e4f2fcdc3c0a8dde7e818d0bda"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/base_die_link.hpp",
+      "bytes": 1901,
+      "sha256": "fe6f1117fadcb99f345e937269486d1f91025d262e900b00b4a205436e21475e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.cpp",
+      "bytes": 9720,
+      "sha256": "5fbc0d1a89cd48a2f42d122b68158707e46486708104d9caa610c2a863e817ed"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/external/cxl_ssd.hpp",
+      "bytes": 5452,
+      "sha256": "e250874eb71bdeaa4fab12ddd285bcaa4ea2b7dcb95a21610a7ed5c973af499f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.cpp",
+      "bytes": 51380,
+      "sha256": "187867e0db28bf830161eb5b4a10b17aacce4b2e7413a656830e1a1b21e7015a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/external/external_backing_device.hpp",
+      "bytes": 15343,
+      "sha256": "1ec89f1df9005bad19ecd53b3f7713bacd1f2ffe42e947f8a766ec706abb9701"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/gap_calendar.cpp",
+      "bytes": 30173,
+      "sha256": "7bf8c2c7defbc878b67cf3066dafca48853d8d6b7864bf32dfd64a1c96811c0a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/gap_calendar.hpp",
+      "bytes": 6171,
+      "sha256": "bad943adc9e4631d94c30fa1b51f25c665579e16094d542104729218ebed9670"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_config.hpp",
+      "bytes": 6058,
+      "sha256": "9241a41f135d49aea00ed50e845ca8c3847c1a8a978aa4b0e8a69af597cf939b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.cpp",
+      "bytes": 9947,
+      "sha256": "7e2ec124c6f86804253536b53a257fc81e13b46ca12be584cc62d362e185cca4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_device.hpp",
+      "bytes": 3482,
+      "sha256": "1358813578eb719c405ea4b4da27b794ba17c70a345e7c20a49c0d525544043b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/hbf/hbf_standard.hpp",
+      "bytes": 896,
+      "sha256": "f9a1b25aed6d4a1601e500d35fb27dc5b172070d773760cf97f8f2aeffecb27b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_config.hpp",
+      "bytes": 3547,
+      "sha256": "f7e233096b3efad2cfa2c2dd8f58e0e1bf3a2b783e19469d4256a6fec97e5d5e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.cpp",
+      "bytes": 102872,
+      "sha256": "b2d62d09f75a7dfa0b760fce56ea76159c96e747ddfa1775e8190dbc393604d8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/hbm/hbm_device.hpp",
+      "bytes": 21599,
+      "sha256": "ba20fc2f59e40434b0ec622dffe79acfa77881cd65c9b63629a3b41ea0d817e9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/physical_types.hpp",
+      "bytes": 12537,
+      "sha256": "e91bb6097d86582aa44fbd4561cf4cf22327e8b74bd778e786861abd9ede6337"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/resource_calendar.cpp",
+      "bytes": 16878,
+      "sha256": "822cc3e37b3a4f6b6545c63914e4d0b7ad5c82cbf17b4d264c34d4e8aea3ef91"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/resource_calendar.hpp",
+      "bytes": 5256,
+      "sha256": "96556c2bfd0ed394f7718272047afe501ab8d3557772cd1afe6e64e5e0603449"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/simulation_session.cpp",
+      "bytes": 53244,
+      "sha256": "69b2abc988083a159bf310764b622e2e1cecc115ce7b0cd82079fd442bbac04d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src/physical/simulation_session.hpp",
+      "bytes": 16098,
+      "sha256": "edb47687ba947a4c73097480129e918e7f8cdb4f0fd2f715528fbcf052951a0a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-evaluation-r1/driver/backend_reporting.h",
+      "bytes": 8380,
+      "sha256": "9432f90a4ba44dd212d4aaebd9e70f7ebddedbe2733f62f3bb775561d368e092"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-full-runtime-r4/attention_support.h",
+      "bytes": 5330,
+      "sha256": "b2a1a1063da9462480c405eea1fc8b5f3e7cd91f08417d69e77022007b89807e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-full-runtime-r4/frame_bridge.h",
+      "bytes": 4269,
+      "sha256": "0f754902660febdad7e2b9c3eb2167782e6f6cc39f5c40741ca7c2d87e633830"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-full-runtime-r4/helper_class_gate.h",
+      "bytes": 6617,
+      "sha256": "833c2aa7aa582445f1c2e945da43eec712dbf0d6cc38078014f82ec63c4c0d9e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-full-runtime-r4/helper_support.h",
+      "bytes": 15290,
+      "sha256": "4db736b32d88f230e3fa432db99cb16562f9614d9b3e10b660d896a3b50e0488"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-full-runtime-r4/legacy_prepared.h",
+      "bytes": 3823,
+      "sha256": "3a6e131280fa3a67b04f003583e4218634b74f9449db6f4c83b844cd96d73c2d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-full-runtime-r4/model_dispatch.h",
+      "bytes": 17456,
+      "sha256": "86ec0c1b4d2c6cf50cbd6a4e83acfa6c0be7ebe20e06e3f290acedadf43ac5d4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-full-runtime-r4/sealed_inputs.h",
+      "bytes": 399446,
+      "sha256": "29c41aba4320d9d6e795ee957fb5e5e05609b2697fc355811d558e2d83fc95c9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-full-runtime-r4/streaming.cpp",
+      "bytes": 51435,
+      "sha256": "f2093d117825c5dd37b27caccf4cc68459b038b1695bd7309e9962aa8a0239e6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/model_plan.h",
+      "bytes": 8776,
+      "sha256": "9e3ca30e1cf20ad3811c33d17967dbcbfb47392d3e10a773646960504129eb9f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/modeled_builder.h",
+      "bytes": 3471,
+      "sha256": "00cdeb37c566ea1264b91b42dd482ebe552e2ece96955488a182202302a1057f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-fusednorm-driver-r1/sealed_inputs.h",
+      "bytes": 5235,
+      "sha256": "20009af6159f671be927c80e36205d34ab9ad06e18742afdce0854c3af0d1288"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-gemv-driver-r2/model_plan.h",
+      "bytes": 8058,
+      "sha256": "0385b93c436d637388c76b64e62309a6b1866a504dbfdb523956d0a151e99a11"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-gemv-driver-r2/sealed_inputs.h",
+      "bytes": 11835,
+      "sha256": "9f42a5b783463df432acf07137b72d6e5543455b7f7465ec10205ad7bcebdccf"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-gemv-host-r2/modeled_builder.h",
+      "bytes": 3465,
+      "sha256": "858f9bb27e05f344572f38aff80ed7908b72cedea700b48a2e664da3a9e9e923"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-gemv-host-r2/prepared_address.h",
+      "bytes": 1803,
+      "sha256": "f0c27981159978e6b492c2614649867742a557b683f510d878c8aad651aff1ca"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-gemv-host-r2/prepared_memory.h",
+      "bytes": 3756,
+      "sha256": "73a6261693253eeea9bcbee1dcd8cabcc72d26a9310cf5b9256b6a8272fffcdc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-gemv-host-r2/typed_binding.h",
+      "bytes": 8407,
+      "sha256": "aed5161b81f17686fefc18fc9b5f37a7aeaeac6fa2ff323c0ae1cf0d875adb50"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-indexput-driver-r2/model_plan.h",
+      "bytes": 7067,
+      "sha256": "480c2febb3f5d2739044b9cf9db93cd2f00e2ad7a508e37f6c7f658f61633a45"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-indexput-driver-r2/modeled_builder.h",
+      "bytes": 5145,
+      "sha256": "2ed970e392ba957eaa9919a9aa0eb273f8b096728324eb6ce143533629655c91"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-indexput-driver-r2/sealed_inputs.h",
+      "bytes": 10472,
+      "sha256": "96b653f3ce1982c76ee553775b9fe7ac8a3e863f4678cc5555210f42c3907248"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-indexput-driver-r2/source_adapter.h",
+      "bytes": 6836,
+      "sha256": "c17521d9cd834362bb3c0e91f8a25dea0769a606c21b05f7a1e3a381c2e3ec3c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-mixed643-driver-r1/copy_adapter_support.h",
+      "bytes": 2113,
+      "sha256": "72f2797010f246953e7b028abb9d204a8211a868fdd35205a9937762769591ae"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-mixed643-driver-r1/index_adapter_support.h",
+      "bytes": 2106,
+      "sha256": "dbf13ecd90acfbca659583d5377dfdb6b6926a59b794d1b33f1848ea9f2f1c33"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-mixed643-driver-r1/mixed_seals.h",
+      "bytes": 2941,
+      "sha256": "9638560e4f24135066a0f4b5de74b55e5af329b6dcf8d878b3d262ab0c96850d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-mixed643-driver-r1/model_dispatch.h",
+      "bytes": 9435,
+      "sha256": "df1d883df3e36f9aa21d946243c267e30aa917c737ebc6e0ae83b56d1d8a5105"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-mixed643-driver-r1/p28_support.h",
+      "bytes": 3089,
+      "sha256": "483e31097b7f78ccfdbd82bffe94c2cec672af0bc166776da88d764e8203f208"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-mixed643-driver-r1/rotary_class_support.h",
+      "bytes": 155902,
+      "sha256": "37a538cb2850f96f203c3c6d9d23a24b79095d8ace123cce5836370d4ab29515"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-norm-driver-r1/model_plan.h",
+      "bytes": 8751,
+      "sha256": "b3e3cbdaaabbbd3bc6b52de64862d1ac0478ab9bc7f6b34e3d588d0209c76a9f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-norm-driver-r1/modeled_builder.h",
+      "bytes": 3470,
+      "sha256": "d221da9aa3f2d56004e025d49a92dc262851d3ad68a5f26c05c2cbef0a9d394a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-norm-driver-r1/sealed_inputs.h",
+      "bytes": 4256,
+      "sha256": "68b30498d4f52d812a2a95d9583289dde85f1a762cf7ce8372cc5703f05ad460"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/model_plan.h",
+      "bytes": 6632,
+      "sha256": "18b48de275b3e4cdb1d96af65bcda567ec653f77f9b47a4c2c133148713571bd"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/modeled_builder.h",
+      "bytes": 4917,
+      "sha256": "617a8ecca7ee7070efc46584c36f140a4048ed5c90943b6071e6f6011d554b04"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/sealed_inputs.h",
+      "bytes": 4529,
+      "sha256": "17dce883a3b6534f4db728c47e77a17ef9cc83ea1649fb4d82271dfa0a03b536"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-prefillcopy-driver-r1/source_adapter.h",
+      "bytes": 5794,
+      "sha256": "6e8ff0aaf4d78f5d1ca26d88e008bf7e9123ec1640bead2a2079547934ebf5ed"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-rotary-driver-r1/model_plan.h",
+      "bytes": 7449,
+      "sha256": "ef1940f2a0159ae1a44a618160d0ab125fdaa451dd15317bdae8b5e3419d3ab5"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-rotary-driver-r1/modeled_builder.h",
+      "bytes": 3458,
+      "sha256": "0a295d6e02bf896b53f5f0b1f6c458864165689c79c2410e19081c62b9609bc7"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-rotary-driver-r1/sealed_inputs.h",
+      "bytes": 4590,
+      "sha256": "25d6fe3b2f738c538a1cf7888c750301877165e312e27714669598e9bdedd09b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-silu-driver-r1/model_plan.h",
+      "bytes": 8981,
+      "sha256": "2c320342e02967352acf1062ad6d41514b312a0cd681b495206c6a49002df743"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-silu-driver-r1/modeled_builder.h",
+      "bytes": 3180,
+      "sha256": "8d2968c8f9a0482d0b8a691b05978e7491ee68e3ec5c8023b64da8173793c02c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-silu-driver-r1/prepared_memory.h",
+      "bytes": 5518,
+      "sha256": "2b5e71795602bc02aa39504de4032d82a731234a84c6e771f8be16bb57f2bedb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-silu-driver-r1/sealed_inputs.h",
+      "bytes": 3339,
+      "sha256": "422466c135bdba2e33e2efef48b61e34b53616873e4ee504fb28d3b7f574f786"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/canonical-silu-driver-r1/typed_binding.h",
+      "bytes": 8206,
+      "sha256": "46c5415c5cd37d5550f9206d53eae02db48f81f365905d95a382f7e43f7d6ba1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/bulk_copy.h",
+      "bytes": 26422,
+      "sha256": "18c592bc52d3a228506565c2723413f61ddcda393d74ab63b031f223becaaab2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cache_geometry.h",
+      "bytes": 6591,
+      "sha256": "3f5f4a05b9247df7c12402e6d88e0f226a84ec1cdc1d2db0d772baccfe7b267a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cta_graph_store.h",
+      "bytes": 36331,
+      "sha256": "2744b759949319b27a81b186cbb8ed2b91ec57415f02d5c0a2f445c03a0ec18b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cta_sparse_slots.h",
+      "bytes": 11613,
+      "sha256": "c5b41229b86c27eacea78b5b1adaf9d1c9ad91a2387a35fb1d5eb482e741b773"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cta_warp_placement.h",
+      "bytes": 1229,
+      "sha256": "6701357f8b553f85dd5e89a8ce590ca8ccce92f06113d09eaa8299fd44d8944c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cycle.h",
+      "bytes": 567,
+      "sha256": "d097deac2c86a7922aa0f9ec87299d8decb7cd18d9556c7146a3c9a1c9e2ff14"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cycle_overlap.h",
+      "bytes": 11950,
+      "sha256": "31ee18bed6e9ec5fcda38a424e903fea9396b756bc4a06c22f3a6dab05b38a15"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/dag_node.h",
+      "bytes": 21074,
+      "sha256": "b2c6de256a306851ed3e9e4e65227f40920bc7c2a73f55369fa8e3edef43a937"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/dirty_sector_eval.h",
+      "bytes": 4178,
+      "sha256": "48a6a78f91a6dead97dd51a671888f55898ac4f882849abfc213157a0b9dc4bd"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/ef_hit_throttle.h",
+      "bytes": 1165,
+      "sha256": "a9f9a11ccfa19e6f60ccfcc6c450eb5fd05dacf0f47a1ee1b60c879a330a54ae"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/ef_insertion.h",
+      "bytes": 3468,
+      "sha256": "e723b728277715e41777914f6e5a062c1d470722c8753a3eb7bd2464b0dc61b5"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/ef_natural_control.h",
+      "bytes": 1295,
+      "sha256": "9e449bd03c094ec4031749868d5f5879981b15dc648be3a6e7ac657d99ab96f7"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/gate_joint_observer.h",
+      "bytes": 10266,
+      "sha256": "41c9607d03c03b3c85b2cd34b4c38c6bf6409a662f8658552454040a0c6ac981"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/gpu.h",
+      "bytes": 6869,
+      "sha256": "97429c86043b316c9dfba2eed266f55c5146ca81af41af015b4b7610863d9dcd"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/host_issue_certificate.h",
+      "bytes": 683,
+      "sha256": "407f356115039dce7fd4eb9f323b4cccdd87bbecb6bae64810192ca67ee0f95d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/host_pipeline_front.h",
+      "bytes": 965,
+      "sha256": "e168311c217b73ea3ae03262e9e5b08abb6ed076eaaaa2a9079d4d4421353a89"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/lazy_ready_queue.h",
+      "bytes": 7360,
+      "sha256": "bf1d3c6ef672e822b373b7e895d1d72f18b8ac95ff1b2e6c4eb2b6e694982424"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h",
+      "bytes": 125314,
+      "sha256": "1933bf4da020ac9a0502d7bea2955c03ff8389bd628f3076ea94e0058ef5d653"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/model_semantics.h",
+      "bytes": 7706,
+      "sha256": "5c023882e4f9afc5400b87bdc855721da6a90605b749ea5aca9700c86a7d5bb4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/noc.h",
+      "bytes": 16668,
+      "sha256": "7492b96dc52c2df2aef2c84b9977a0c5382b1dc96d2f3c381917148d44054ad3"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/p32_observation.h",
+      "bytes": 6898,
+      "sha256": "4bbe1d4a05413bf3b1d126046a4ec9a204c537a6ef7d302e56ecfdc8bc9d265b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/p32_request_mask.h",
+      "bytes": 3186,
+      "sha256": "f27a9a65a3e07c00d44f9f0cb85e0ea7fe0b5291de7eca3f697096d0a2d1ad08"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/per_sm_l1.h",
+      "bytes": 27020,
+      "sha256": "c65c7cdd1aad8f5eb54458f263b3d756b9de2d4da6c850837105a2fd156a367f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/pipeline.h",
+      "bytes": 3610,
+      "sha256": "387d564fb07a31a897ebd615a03328bffbb452b082c86c42d5e1aae445a0d05f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/requested_l1_sectors.h",
+      "bytes": 1708,
+      "sha256": "91633136c43a422a3de929b68d64efd70bc60ac1a407529b966e820283d0896f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/retry_host_memo.h",
+      "bytes": 1924,
+      "sha256": "33418c9addbb05490dc1653d127ca5edfae7d2e78dbbf59135933f45ef25c182"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/retry_prefix.h",
+      "bytes": 2524,
+      "sha256": "080a2292e311242d0d31a1ad2adb9988ef3e7d7ed0e831c4d040f0a760130ecc"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/rtx4000_ada_profile_readiness.h",
+      "bytes": 10129,
+      "sha256": "0090492b9b818fb6f54775fd7482097400ffa3ca36ca0e29dae93e0c881edb12"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/scheduler.h",
+      "bytes": 9679,
+      "sha256": "bbd7dbbd0b4afe38a85e8b5e40c8e9931fd9a8a66e74dd0c576031de2e169f70"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/scheduler_observer.h",
+      "bytes": 6814,
+      "sha256": "edacc13d5f4100a41d4a4e4d971751b279e7171c9cedf1795411cf9283203b7f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/sector_observer.h",
+      "bytes": 3760,
+      "sha256": "b77ea82709a8a18a30df98c1f4f7c0721e0031573b8771fba132fa448f5723cb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/service_source.h",
+      "bytes": 2624,
+      "sha256": "a4bf750221c0cd588c65e4c9e1bbf0c3ca86803eed07d7480753b51e8a55c525"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/session_mode.h",
+      "bytes": 170,
+      "sha256": "2db9324c9bee66f22095ac10fee5e67a06eadef1332fc976f9d1309ad4e9a6d9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/shared_cache_policy.h",
+      "bytes": 3148,
+      "sha256": "6f1c2da1c24de7f25826c6a18b71a355aca8c9ee028ba9739644a4ce2bd4295e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/simulator.h",
+      "bytes": 37426,
+      "sha256": "046b4772f006c58423055c9aba0ce6e6523f651799ae7e763e7ac7188c88a281"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/simulator_session.h",
+      "bytes": 2392,
+      "sha256": "963c78fcd5d5a75f361b6014ae80ed4ea860db28893d0f9b9df78cba4ee9dbaf"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/sm.h",
+      "bytes": 6714,
+      "sha256": "62ef1392dee51ff9ce878527454b05c8c64c7d6387a12a6f7ff5f3cf4c48e460"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/source_metadata.h",
+      "bytes": 853,
+      "sha256": "a5d7976ba4ea58012da1e6158f6fcb768fb482d93ae771397ab64e36a0c285a9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/source_native_summary.h",
+      "bytes": 2091,
+      "sha256": "4cfe93a7b4e413f3e74031efb19dcd99dbc36198db47abf27b4abf7ae2d34ceb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/source_semantics.h",
+      "bytes": 6176,
+      "sha256": "7b2c6bd57ab0cae17804c0b97dee819181659b7249efee94b655fcea8d200bae"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/subpartition.h",
+      "bytes": 5971,
+      "sha256": "464ccfb69e3827ad1c373777bfc6fb8c18bd020f43ac1cbb7bf041e479dffe83"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/tma.h",
+      "bytes": 389,
+      "sha256": "2f3d4437b0e308f3d1d1c38b6f561f29ecbede02e99a3e066fb8159169725840"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/tmem.h",
+      "bytes": 7913,
+      "sha256": "269d6d44a860d1a9ce529d9e67503f41a6af4171d1e5f0c741d95c7bcfa970eb"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/writer_observer.h",
+      "bytes": 10546,
+      "sha256": "ec88d36d6ec4a1fed32024024d4525304891e0a5a293b3e4fb31631c007ed7e9"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/src/gpu.cpp",
+      "bytes": 9362,
+      "sha256": "2191fdc6c6b39a3c4b7a5140af5825a5795e0990eaef7c81b872460233dbba6b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/src/scheduler.cpp",
+      "bytes": 31075,
+      "sha256": "82a817f5a741f8e1f7176c8ad7b4d929ff34d9bccb95bf4389ed7c4eb4cd83de"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/src/simulator.cpp",
+      "bytes": 55280,
+      "sha256": "6356a82e99ba3e445124e09cd7baeac9ea8842f3942d0760ed34576153176256"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/src/simulator_session.cpp",
+      "bytes": 5929,
+      "sha256": "f1b32bbb305d247996a6141ab65460656f67e72f31b2f4035fa70745698ced8f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/src/sm.cpp",
+      "bytes": 7496,
+      "sha256": "c44537914573ff063a219876510b57b74bf80f1e6a43f19fdcb9e9ff66f8c5d1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/src/subpartition.cpp",
+      "bytes": 29651,
+      "sha256": "0bef9d7123d38b4b493cb3c157871d80e8426ee37de3f12aa5d522d9448c9129"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-attention-r1/model.h",
+      "bytes": 12503,
+      "sha256": "fd4548442cdd5ef9f55f6f054990961ae7e689f97e9f0d612a6ae612dfc4cb1c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-attention-r1/phase_seals.h",
+      "bytes": 13127,
+      "sha256": "905fe49041bfa70df4112d2330f024cb02d96034ae8314331db9732e1866b1b6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-gemm-p28-r2/statistics.h",
+      "bytes": 1284,
+      "sha256": "7644b93e31cf264ef466848f97d3f92882f3072186a3dd4b19a97b7e77bd9c2e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-gemm-p28-r2/streaming.cpp",
+      "bytes": 22742,
+      "sha256": "27f97defc3128e37514192916a82e6c8538513e952d32fd80093d3e1791c068d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_catalog.h",
+      "bytes": 4321,
+      "sha256": "dd0bdbeef224d65b2924a195a2bfebfdf2bbd24eee1169b53c6b945923c8dfc1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/a67_qualified.h",
+      "bytes": 1908,
+      "sha256": "b001efa03d6b39ed552318741cfeaaf16067c368b9a405faaf7e83a5a9e2da43"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/builder.h",
+      "bytes": 6604,
+      "sha256": "06df72e65713545eb413385da77bcc71842ae0c3d03acf4eeee8e9034ad08631"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/counters.h",
+      "bytes": 1818,
+      "sha256": "66ccc8347bb262c13493e774ce21a95665ee74c3e7c945e07c04f0f757cbe753"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/family_admission.h",
+      "bytes": 5915,
+      "sha256": "d496e773f2ee8e6e141c7049a1f2d1ed8d472583ca3df2e1190f6097bcaf9b59"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_admission.h",
+      "bytes": 6448,
+      "sha256": "6831c8ac2b120d8464054b9fd71bba41042a7acd6334d24c6d7b56d8cd56833e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/fused_model_sources.h",
+      "bytes": 143178,
+      "sha256": "a3405bc12986a6ab5ee80883cdd1f2d8d3750e1327f04fa27a341e3bb5218382"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/l2_event_audit.h",
+      "bytes": 2062,
+      "sha256": "72860c4d4d1575e04168fce8dd226ec5c0167769b12738e91941aff063e18f99"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/linear31_admission.h",
+      "bytes": 5840,
+      "sha256": "5d5271d35caf3aa6d0fe702ca7c3706a6d6dbc1f32008aa232f67b89684d958f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/native_memory_program.h",
+      "bytes": 14081,
+      "sha256": "9fef1c4ca114f83202b3b71eeff11ff4f2a44224bd0f78ea5460b509998cbeb4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_admission.h",
+      "bytes": 5243,
+      "sha256": "5f00d0b671064b2dc36867b8c5d1a19a106e34e8d0eb888cb64a92d8dd690dd2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/norm_model_sources.h",
+      "bytes": 75792,
+      "sha256": "a2decb7eee381275a46808c6407ef8931003264694595bf15f10b66fce43944b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/range_plan.h",
+      "bytes": 2712,
+      "sha256": "dcd5e11890c4b135a6fd0976f875c0b940cfb6898d1e72c20eb6bd1e2ef69350"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/register_program.h",
+      "bytes": 10575,
+      "sha256": "2feb2bfd5b30865a2d1de9e0945be187a4ce166013e41308e12ec03592569b05"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/semantic_hash.h",
+      "bytes": 745,
+      "sha256": "6c5a1aa7bfd6cd2124d3fb48802c56804b331b5933e0634d5341550c4c6ac35f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/sha256.h",
+      "bytes": 5279,
+      "sha256": "48f2bcb813d93c1fa509cc255e4d1cea2c2a5293ebb1c68e6692f581e62d8bf8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_admission.h",
+      "bytes": 6310,
+      "sha256": "6477bc58d46e330cd41eedc2d3811d826d9e4e45aad6d728721b128f3d349562"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_catalog.h",
+      "bytes": 3405,
+      "sha256": "27b7e5856218b005d2cca2434704b912e503452f677aabbf497d011a9c555da1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/silu_qualified.h",
+      "bytes": 1484,
+      "sha256": "90479bd60318a5d333be231f32c73a5f423a830cb34861c4d045240ce49e246f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-fusednorm-r1/streaming.cpp",
+      "bytes": 31061,
+      "sha256": "484c2d959af4fa65edae0496db6df2a0d43183a9b046c0e47c224b03d1475404"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-pooled-hash-bulk-r1/sha256.h",
+      "bytes": 3627,
+      "sha256": "71482a5bba470590a9727b85b65faf81bce8a6bd092cbc6741690673aa9fca72"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/role_profiles.h",
+      "bytes": 840,
+      "sha256": "677cc879b0b2d8529f8597bc451ec0ae8ebce75e6f14a1890d87b7bf493eeb9e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/statistics.h",
+      "bytes": 1284,
+      "sha256": "7644b93e31cf264ef466848f97d3f92882f3072186a3dd4b19a97b7e77bd9c2e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/driver-prefill-gemm-next-r1/streaming.cpp",
+      "bytes": 24298,
+      "sha256": "f23887eb33b74d82e2dde4301704103f467ad3a84231ab7699b086b0ff4a73b8"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/observation-output-compact-r1/compact_cycle_overlap.h",
+      "bytes": 4967,
+      "sha256": "300646c4f07aded8a75960a76739f309e3e1968effe7716f93cb05392e12508e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/runtime-compressed-frame-r1/compressed_frame.h",
+      "bytes": 5657,
+      "sha256": "2e3fbd8c543ec88040f30f5c8b0614d4163d4329d68eefa1affdd19c64063c8b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-hbf-drain-native-r1/native_backend.h",
+      "bytes": 26188,
+      "sha256": "c38dd92110316b10d701203caf61ec6c7d1fc08334d47ab632365b0256935d27"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-hybrid-cache-r1/bindings.h",
+      "bytes": 10262,
+      "sha256": "eaf18045a2e1fc98b57c7189f16d97317b0844653f810c12f3d9bcc542218c6b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-hybrid-cache-r1/prefill_binding.h",
+      "bytes": 21248,
+      "sha256": "ded832585cdd20155f24be39eaf5f3a584c2dc2aecf1f63fa3b54014595ce650"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-hybrid-cache-r1/progress_summary.h",
+      "bytes": 2072,
+      "sha256": "acb9b7f7f57e4c8eef3a596d7b83875153b3c1c80c77346c1bb97a0aef2b3ce0"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-hybrid-cache-r1/tiny_context.h",
+      "bytes": 21490,
+      "sha256": "60aaf8390d0b99f8742fc2d0325c88c1afa4084e9c182c522b0c4341ab6bf6c1"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-hybrid-full-r1/fine_context.h",
+      "bytes": 6464,
+      "sha256": "a1ac94ed36f932d1b34e07bb13b823733cd98e42df68977a22e8aa8de7dad2b4"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-hybrid-full-r1/options.h",
+      "bytes": 2090,
+      "sha256": "5d45e185c89a0509fd543e5000ede895c8bd72bbe30e82e0c67a1e4bdaf2db50"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-memory-epoch-native-r1/ada_source.h",
+      "bytes": 13907,
+      "sha256": "5710aa9d3729a8e39a17019d8887e8eb1fb69d03369d43d8c58a770a46b2d488"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-memory-epoch-native-r1/port.h",
+      "bytes": 30379,
+      "sha256": "fb191a41ba0d98f00e6d89a3ea1dc6d7400b0964def58cbdc48ace43f5811d4e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-memory-phase-runtime-r1/phase_plan.h",
+      "bytes": 11158,
+      "sha256": "772dc174beb5fa2fa1b285219647b8e401b3f7e3442ba4c4b43dac45aae48058"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-norm-shared-r1/adapter/backend.h",
+      "bytes": 23562,
+      "sha256": "051de2ad41dd151115df94e466ff483c8ffec59b9b522f84c409ae1d1ef2da3e"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-norm-shared-r1/adapter/integration.h",
+      "bytes": 22884,
+      "sha256": "a5fd5bff945110af9d247d790e0ca4d7ab33edb2be675ae3fa03bf6d66c53825"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-packet-integration-r1/binding.h",
+      "bytes": 7173,
+      "sha256": "94b9b048bf5e461bbde052879162690d4fcc38b9e879d22e806ce4c4bfb29580"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-packet-integration-r1/source_support.h",
+      "bytes": 185,
+      "sha256": "21d7858b1857b371a14c041da04f20d0dd78ebd85283a941fbb769cdd1577f10"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-packet-runtime-r1/runtime.h",
+      "bytes": 57533,
+      "sha256": "3f963370f3ffae24b276ee007771a4ff7b4a519a6317ddf9db0f206d8e82118a"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-prefill-compute-native-r1/pref_support/compiled_program.h",
+      "bytes": 5155,
+      "sha256": "c8906e5cc4a65cf3366ccc6366c3712a75f0f43530e5946283e317e1e61e3928"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-prefill-compute-native-r1/pref_support/engine.h",
+      "bytes": 18612,
+      "sha256": "230ad3fa9cbc5a3aa587ebf68cf41abb0dc5b81cbccd95748e7092ff939bc216"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-prefill-compute-native-r1/pref_support/selector.h",
+      "bytes": 5950,
+      "sha256": "e83f0a48303026afbbea44d24d0c39b96ad736d3b5edb3b41ce8eb64956f801b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-prefill-compute-native-r1/prefill_setup.h",
+      "bytes": 10753,
+      "sha256": "d5db90b38ab00f27b43fcc21a026f1187f9f4b5aeef7b40fdc9c3bcb9fa915db"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-prefill-compute-phase-r1/runtime-recurrence-r1/resource_recurrence.h",
+      "bytes": 8069,
+      "sha256": "4016e5bcb7f49969db7314bd4a00247dfc04ec0d917463f65bac79af91127f8d"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-prefill-compute-phase-r1/segment_plan.h",
+      "bytes": 17868,
+      "sha256": "591a0c0b47d58d86691f0b2fa9c154d98f0d8fed83d608562dcacaa9d956dc37"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-basic-r1/gemv_binding.h",
+      "bytes": 7282,
+      "sha256": "89bf8767d1faad7dcefc372602426afede68d44be4baf4e6869e198708aed6c2"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-basic-r1/silu_binding.h",
+      "bytes": 8761,
+      "sha256": "bf6cb9ea4c26796a136cdf149f8d607d220d84b65608e5cf67db9a7df98e0c72"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-full-r1/import.h",
+      "bytes": 6667,
+      "sha256": "08deb8be5e3b673ac0f6ea141596aa9f84aa6d1fda4139b55bb9895416048301"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-full-r1/prefill_seals.h",
+      "bytes": 1980,
+      "sha256": "d1f50413e8d1e6efb77045da946471a1272ab67b2b13b4313ba6a16233a25fe6"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-full-r1/prefill_support.h",
+      "bytes": 175,
+      "sha256": "f9aa47f59a9359ab7ed7823b5d377f20b394b4b5f4b8b014e964294d99fd2700"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-full-r1/reporting.h",
+      "bytes": 4485,
+      "sha256": "d8b6c7613fd4da02cf99b8873574edb7e75edbb664d729388ada46661912ef96"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-full-r1/source.h",
+      "bytes": 1878,
+      "sha256": "6f9e19a86707038ce3ae9146f785c670bb121b20227cf3f4c5367c28ef3ffc1b"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-norm-r1/norm_binding.h",
+      "bytes": 10322,
+      "sha256": "e8749999774c6946026c9842b71b93b8e499721470c4950a99b2c2f444806f27"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-tiny-rotary-r1/rotary_binding.h",
+      "bytes": 9881,
+      "sha256": "a316f4e594a8c4e305995ea4b96b5712ee3ee6e21f18befd587df8c64ae560d3"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/ada_address_mapping.h",
+      "bytes": 3756,
+      "sha256": "1dedfe56368be08dd3ba3bdc13690c11c383a8ebb2e25aa60c1d1f4c433d6068"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-21/lian/outputs/RTX4000_Ada_targeted_config/T_user_tuner/gpgpusim.config",
+      "bytes": 5417,
+      "sha256": "e09511b9d168632e975422b19a9557ff5ed4482ace160fa428f9c70455f5a891"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-21/lian/outputs/RTX4000_Ada_tuner_refine_continue_20260922/candidate_configs/J_refine26_l2delay/gpgpusim.config",
+      "bytes": 7037,
+      "sha256": "08985c9342affa46bfccad7f330857317aec85f768d56c260a046669934c6221"
+    }
+  ],
+  "commands": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/commands.json",
+    "bytes": 30327,
+    "sha256": "bf56992e6304de56236dba3a9ce37f4c506544d47206e7ffabff5cf7c4a1c027"
+  },
+  "dependency_proof": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/dependency-proof.json",
+    "bytes": 134185,
+    "sha256": "06083e9a04ec9862f76b3145a45d2cd4afabcc3e4a5c060205b3b84e90812081"
+  },
+  "overlay_flags": [
+    "-ivfsoverlay",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/overlay.json",
+    "-ivfsoverlay",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-write-attribution-r1/overlay.json"
+  ],
+  "cleanup": {
+    "owned_controller_PID": 55870,
+    "owned_process_group": 55870,
+    "group_present_on_cleanup_entry": false,
+    "group_absent_after_cleanup": true,
+    "direct_child_reaped": true,
+    "returncode": 0,
+    "cleanup_complete": true,
+    "TERM_grace_seconds": 3,
+    "KILL_grace_seconds": 3,
+    "maximum_termination_grace_seconds": 6,
+    "cleanup_RAW_seconds": 1.1833151802420616e-05,
+    "actions": [],
+    "errors": [],
+    "scope": "Only this newly created process group; direct child reaped, descendants checked by group disappearance; no session escape is permitted."
+  },
+  "signals": {
+    "first_signal": null,
+    "counts": {
+      "SIGTERM": 0,
+      "SIGHUP": 0,
+      "SIGINT": 0
+    }
+  },
+  "reason": "leader_exited",
+  "returncode": 0,
+  "sources_unchanged": true,
+  "baseline_q1_q8_exact": true,
+  "worker": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/worker.json",
+    "bytes": 34859,
+    "sha256": "5f76bb7899e714b4d3e3df90064a966fcfa648438c7991a0b4240f52a89bac41"
+  },
+  "results": {
+    "baseline": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/baseline-run.stdout",
+      "bytes": 6201,
+      "sha256": "04cf11ef39b63023d53d1342e97688f7abe4d356d9b3c8b9a619b16df7bd26b1"
+    },
+    "candidate": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/candidate-run.stdout",
+      "bytes": 35321,
+      "sha256": "22110e6a81570a36eddb3701650bbd823da114250df3ba7f5a643a3494781f88"
+    }
+  },
+  "binaries": {
+    "baseline": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/baseline",
+      "bytes": 257288,
+      "sha256": "d0c373cab408c143275f9ca2b02ed9ceaab4e34ccb8b93a95fc33a9448bb459c"
+    },
+    "candidate": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/candidate",
+      "bytes": 503496,
+      "sha256": "88db5af5d992b5a6a73c5f5f6f8a33d9e667242137da32f40517202ab95376e0"
+    }
+  },
+  "objects": [
+    {
+      "name": "01",
+      "disposition": "recompiled_both_overlays",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/01.o",
+        "bytes": 309776,
+        "sha256": "6dd4445d28b6a349cf9cef525b2b16512a22455813fd1ef7605563a64d9114c7"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/01.d",
+        "bytes": 8095,
+        "sha256": "7ebbfd4d30ed679a934f4c6c8959c3a93d4b8e7a0c630cabe92c8e49ca941529"
+      }
+    },
+    {
+      "name": "02",
+      "disposition": "recompiled_both_overlays",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/02.o",
+        "bytes": 344304,
+        "sha256": "ad2c9b6de8b98ce20a243e47cd530f50d8c2e9e1e0bdeb62b947787f764aede2"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/02.d",
+        "bytes": 7246,
+        "sha256": "d9ad2d36a1aeb6759b02fab066a331f7c51a376863e76d20234278e230c4bc56"
+      }
+    },
+    {
+      "name": "03",
+      "disposition": "recompiled_both_overlays",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/03.o",
+        "bytes": 494800,
+        "sha256": "3024a2587203419c6eaf0e132000f4ed887a49be64eae16d6dae30c7e99e210f"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/03.d",
+        "bytes": 9227,
+        "sha256": "90a2e0c53d67813c7929b2b47ae4e5dc70a8f23ba07ea0282e74ef5299435547"
+      }
+    },
+    {
+      "name": "04",
+      "disposition": "recompiled_both_overlays",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/04.o",
+        "bytes": 613280,
+        "sha256": "bfc6b223c6d04be064e40f2c1658ea2f5c63a2035c66493c0c49032c555cbc28"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/04.d",
+        "bytes": 9680,
+        "sha256": "43203aac6bf662113afa7d270a387ea834f8cf386c34818c18be24cd2557646d"
+      }
+    },
+    {
+      "name": "05",
+      "disposition": "recompiled_both_overlays",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/05.o",
+        "bytes": 225824,
+        "sha256": "956fdcc5067454fe0dbb9a68cbd9f5c28f9eed2995972e0e64348db01797e1d7"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/05.d",
+        "bytes": 7883,
+        "sha256": "5257769e8bc0720958b98bd2dd9de0f3746f16247ee10c9eb6b36be583e3117f"
+      }
+    },
+    {
+      "name": "06",
+      "disposition": "recompiled_both_overlays",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/06.o",
+        "bytes": 355328,
+        "sha256": "cc5ca9673d3f395dc3c58464f84b5c669c75ab72828203159c895ff47e1b7b05"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/06.d",
+        "bytes": 7904,
+        "sha256": "6f9ca247879afd467f22f31c6cede2fb8ae230514ec77e4dfcfd155dd1210dab"
+      }
+    },
+    {
+      "name": "07",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/07.o",
+        "bytes": 143920,
+        "sha256": "f1ee48f1ae422da456d42487fc4a36b336a47801c906e157f155eb66795fbc87"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/07.d",
+        "bytes": 3627,
+        "sha256": "fe0ec702396b99de245e970595b197d594f4654bf803f8403c56d48ebdb01d36"
+      }
+    },
+    {
+      "name": "08",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/08.o",
+        "bytes": 112512,
+        "sha256": "a492c3b236df82f81f8e75e21404635d3d67210ea7da8d620a8b8691f6d168ae"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/08.d",
+        "bytes": 606,
+        "sha256": "2e6c970db43d8d68a4949e7b2f0a0693471069873bc03c5d04cc999488d9d265"
+      }
+    },
+    {
+      "name": "09",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/09.o",
+        "bytes": 36688,
+        "sha256": "ceebdf5c3308eb7c0eb77019e5c753b41b64111f05dbbd70815439ed18ee30d9"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/09.d",
+        "bytes": 1035,
+        "sha256": "e36d962d083126f794500e2899413bea0867afc05b8a5fef7cf81493e53d64bc"
+      }
+    },
+    {
+      "name": "10",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/10.o",
+        "bytes": 64432,
+        "sha256": "f2b11878c753ca6cd791fbea2b89851ac387c54a0f2e63224e9cc1a8e272b8b7"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/10.d",
+        "bytes": 1275,
+        "sha256": "13aff62f8e46ab3b6f73ff0e09e8261ea652840c0b406991dbe6d1f37b5a630b"
+      }
+    },
+    {
+      "name": "11",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/11.o",
+        "bytes": 159008,
+        "sha256": "388484b10d27b74d18dd96ba6d66e550e7d394f6c0b0ec69dec98646eb5f6709"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/11.d",
+        "bytes": 1291,
+        "sha256": "7ec9929f7e6a1f93db0dfce9be1d45cb220789ef04bb1a532239a526a9256c26"
+      }
+    },
+    {
+      "name": "12",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/12.o",
+        "bytes": 321552,
+        "sha256": "5a9898915893d2f7a2e567e1cc6a7c310187855322f0df313d0b9c3cb45b2eef"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/12.d",
+        "bytes": 1686,
+        "sha256": "93241f214cdca872dbb73d2f3e747e711e5230815a4014889ad136b859589228"
+      }
+    },
+    {
+      "name": "13",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/13.o",
+        "bytes": 93872,
+        "sha256": "7810bb47ea65360bee3ee353e15edaedb9701328a4a223dd9971279ba2c422d6"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/13.d",
+        "bytes": 1690,
+        "sha256": "28ff64fa098aa41c4ed4b50b25b4b624031b1fd1f0d85534f8d03d7df1bd19d2"
+      }
+    },
+    {
+      "name": "14",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/14.o",
+        "bytes": 47840,
+        "sha256": "4a36b2f8c353d9b380e6d97dfb8ebee75c7212b784f5d323cffbe3838b93c123"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/14.d",
+        "bytes": 1043,
+        "sha256": "5586b90b4f552e7b524190b475c978b6589798a670bad048e62ef8268f6f657d"
+      }
+    },
+    {
+      "name": "15",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/15.o",
+        "bytes": 77424,
+        "sha256": "6a5f24cc71123dbd05e0706e07c9ce3b539220b19c5acf24486cca72581aea63"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/15.d",
+        "bytes": 1252,
+        "sha256": "0e60c32013c0bb769f798ed37354c2bc6266b19a92db3b81d8dd68fe10529267"
+      }
+    },
+    {
+      "name": "16",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/16.o",
+        "bytes": 201488,
+        "sha256": "d0da6b1eebf720e5d07538e8f70c2072a6ff3f1110694e01caf232ba4c40993e"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/16.d",
+        "bytes": 2744,
+        "sha256": "afd10f014c8fee890558d542ceed1af37f7fa78c50720d4b466aa35a7724aaf3"
+      }
+    },
+    {
+      "name": "17",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/17.o",
+        "bytes": 91952,
+        "sha256": "bc30b2137c8d97d333161f3def6ff04922c2ebfcc439c3547c2f82884226540f"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/17.d",
+        "bytes": 2747,
+        "sha256": "6f8aa049733c1acd31cd913a20e9468a8ef776c78d9d246b957949d46663fbef"
+      }
+    },
+    {
+      "name": "18",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/18.o",
+        "bytes": 57872,
+        "sha256": "01c41a60a4706a9d94b5b5a03ad38621866d5fc09c31500d3bc63bcca0845f1b"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/18.d",
+        "bytes": 2755,
+        "sha256": "cded88ed38cbfdcf1b1d0329d346333c0ee9725381b401f96386280cfbc07c60"
+      }
+    },
+    {
+      "name": "19",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/19.o",
+        "bytes": 1221392,
+        "sha256": "19ec2c6a38d166959f5d7c37ba1e0a8059725e527710cfb15e4f0b9b8db2dc99"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/19.d",
+        "bytes": 2752,
+        "sha256": "6ff644a6f65ce8c18acc01d16c77c0bb594914478b30532836df797580e70126"
+      }
+    },
+    {
+      "name": "20",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/20.o",
+        "bytes": 115536,
+        "sha256": "e3b91acf73d59d9911de73c6b9b995390eead83f040cb5494a5433372748ace2"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/20.d",
+        "bytes": 2976,
+        "sha256": "00fed2730b74e71a333ae7bf27ff38867f6e8c8760f686555df5ea0c3d77b190"
+      }
+    },
+    {
+      "name": "21",
+      "disposition": "reused_unrelated_HBF",
+      "object": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/21.o",
+        "bytes": 319744,
+        "sha256": "a96d2e62330337158ee72c3cd6cca74e0852daaed23bcc5a873c1a5f6f77c8e2"
+      },
+      "dependencies": {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/build/shared-h288-r1/21.d",
+        "bytes": 3647,
+        "sha256": "e5bb1b5888faa20b8973a2e7a98ecb8df217b8b5a55970b83abf099a7559a269"
+      }
+    }
+  ],
+  "compile_flags": [
+    "-std=c++20",
+    "-O3",
+    "-Wall",
+    "-Wextra",
+    "-pthread",
+    "-DTILEGEN_DIRTY_SECTOR_MODE=2",
+    "-DTILEGEN_SOURCE_MEMORY_SEMANTICS=1",
+    "-DTILEGEN_EF_INSERTION_COUNTERFACTUAL=1",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-evaluation-r1/driver",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-norm-shared-r1/adapter",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/gddr6-support/delivery-stage/sources/third_party/gtsim-prepared/third_party",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/hbfsim-latest/upstream/src",
+    "-I/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/gddr6-support/hbf_coupling",
+    "-mcpu=native",
+    "-flto=thin"
+  ],
+  "fixture_dependencies": {
+    "baseline": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/baseline.d",
+      "bytes": 13509,
+      "sha256": "2c8489eec0091bcad70e42d83f084fe33a641d1fdb6b57d9713619e67d0b524b"
+    },
+    "candidate": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/run-r1/candidate.d",
+      "bytes": 13874,
+      "sha256": "9cef5c2ac6d206b7ed86746b279b2566d04e6d3b2f9feeda10a6a795b3547358"
+    }
+  }
+}

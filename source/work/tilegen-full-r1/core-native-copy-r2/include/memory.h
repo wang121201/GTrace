@@ -3,11 +3,17 @@
 #define MEMORY_H
 
 #include "dag_node.h"
+#include "source_metadata.h"
+#include "service_source.h"
+#include "ef_insertion.h"
+#include "shared_cache_policy.h"
 #include "model_semantics.h"
 #include "per_sm_l1.h"
+#include "requested_l1_sectors.h"
 #include "cache_geometry.h"
 #include "p32_observation.h"
 #include "dirty_sector_eval.h"
+#include "writer_observer.h"
 #include <algorithm>
 #include <cassert>
 #include <cmath>
@@ -541,6 +547,13 @@ struct DagLineMetadata {
     int subop_index;
     void begin(bool) const noexcept {}
     bool bypass_l1() const { return node && node->async_copy_bypass_l1; }
+    requested_l1_sectors::Coverage l1_requested(int matrix,std::uint64_t line,int line_bytes) const {
+        return node ? requested_l1_sectors::clip(node->matrix_id,node->memory_coalesce_bytes,
+            node->explicit_memory_subops,subop_index,matrix,line,line_bytes) : requested_l1_sectors::Coverage{};
+    }
+    source_memory::View source_semantics() const noexcept {
+        return source_memory::select(node ? std::span<const ExplicitMemorySubop>(node->explicit_memory_subops) : std::span<const ExplicitMemorySubop>{},subop_index);
+    }
     native_p32_observability::RequestMask request_mask(int matrix,
             std::uint64_t line,int line_bytes) const {
         return node ? native_p32_observability::request_mask(*node,matrix,line,line_bytes)
@@ -567,6 +580,13 @@ struct LightLineMetadata {
             "light line request does not support active P32 metadata observation");
     }
     bool bypass_l1() const { return request.bypass_l1; }
+    requested_l1_sectors::Coverage l1_requested(int matrix,std::uint64_t line,int line_bytes) const {
+        return requested_l1_sectors::clip(request.source_matrix_id,request.memory_coalesce_bytes,
+            request.source_subops,request.source_subop_index,matrix,line,line_bytes);
+    }
+    source_memory::View source_semantics() const noexcept {
+        return source_memory::select(request.source_subops,request.source_subop_index);
+    }
     native_p32_observability::RequestMask request_mask(int,std::uint64_t,int) const {
         throw std::logic_error("light line request does not support active P32 metadata observation");
     }
@@ -1137,6 +1157,9 @@ public:
         ReadFillTicket read_ticket;
         native_p32_observability::RequestMask observation_mask;
         std::uint8_t dirty_mask = 0;
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+        source_memory::View source_evidence;
+#endif
     };
 
     struct ReadCompletion {
@@ -1234,6 +1257,45 @@ public:
                static_cast<size_t>(l2_queue_depth);
     }
 
+    // External writer labels: quiescent entry/exit only, no modeled fields.
+    void decode_writer_begin() const {
+        auto* o=decode_writer::attached(this);
+        if(!o || !is_quiescent() || kTilegenDirtySectorMode!=2)
+            throw std::logic_error("writer begin needs attached mode2 quiescent L2");
+        const auto d=dirty_sector_snapshot();const auto r=runtime_statistics();
+        o->begin(max_lines+dram_backend->admission_capacity()+pending_dram_capacity_,
+            {r.processed_writes,d.dirty_sector_creations,d.evicted_dirty_sectors,
+             r.dram_writeback_bytes,r.dram_writeback_completed_bytes});
+        for(const auto& [key,line]:cache)if(line.dirty)o->seed(key.matrix_id,key.line_addr,line.dirty);
+        for(const auto& [key,line]:mshr)if(line.dirty_mask)o->seed(key.matrix_id,key.line_addr,line.dirty_mask);
+    }
+    void decode_writer_end() const {
+        auto* o=decode_writer::attached(this);
+        if(!o || !is_quiescent())throw std::logic_error("writer end needs attached quiescent L2");
+        o->check_begin();
+        for(const auto& [key,line]:cache)if(line.dirty)o->check_line(key.matrix_id,key.line_addr,line.dirty);
+        for(const auto& [key,line]:mshr)if(line.dirty_mask)o->check_line(key.matrix_id,key.line_addr,line.dirty_mask);
+        const auto d=dirty_sector_snapshot();const auto r=runtime_statistics();
+        o->end({r.processed_writes,d.dirty_sector_creations,d.evicted_dirty_sectors,
+            r.dram_writeback_bytes,r.dram_writeback_completed_bytes});
+    }
+
+    // Explicit whole-history owner: enable once at cold/quiescent entry.
+    void enable_shared_cache(unsigned numerator=288) {
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+        if(shared_cache_state_||!is_quiescent()||statistics_.accepted_transactions!=0||
+           !l1_cache_.config().sector_validity)
+            throw std::logic_error("shared cache needs fresh quiescent sector-L1 history");
+        shared_cache_state_=std::make_unique<shared_cache_policy::State>(numerator);
+#else
+        (void)numerator;throw std::logic_error("shared cache requires source evidence transport");
+#endif
+    }
+    bool shared_cache_enabled() const {return bool(shared_cache_state_);}
+    template<class J> J shared_cache_report() const {
+        if(shared_cache_state_)return shared_cache_state_->template report<J>();
+        return shared_cache_policy::State(0).template report<J>();
+    }
     const DirtySectorEvalStatistics& dirty_sector_statistics() const { return dirty_sector_stats_; }
     DirtySectorEvalStatistics dirty_sector_snapshot() const {
         auto snapshot=dirty_sector_stats_;
@@ -1279,7 +1341,13 @@ public:
     std::uint64_t host_prefix_domain_generation() const { return host_transform_generation_; }
     std::uint64_t host_prefix_ready_epoch(int sm) const { return l1_cache_.host_ready_epoch(sm); }
     bool host_current_negative_read(const L1ReadMissMemo& memo,int sm,const CacheLineKey& key) const {
-        return host_prefix_domain_allowed(sm) && l1_cache_.same_negative_read({sm,key.matrix_id,key.line_addr,false,0},memo);
+        // The sole production caller invokes this immediately after the same
+        // RetryEntry failed a real enqueue. That enqueue either remembered its
+        // validated exact mask, or matched this memo against that exact mask.
+        // This is certification of that rejection, not a general key lookup.
+        if(l1_cache_.config().sector_validity&&!retry_host::enabled)return false;
+        const auto mask=l1_cache_.config().sector_validity?memo.requested_sector_mask:std::uint8_t{15};
+        return host_prefix_domain_allowed(sm) && l1_cache_.same_negative_read({sm,key.matrix_id,key.line_addr,false,0,false,mask},memo);
     }
     void set_address_transform(const L2AddressTransform* transform) {
         if(host_transform_generation_==std::numeric_limits<std::uint64_t>::max())throw std::overflow_error("host transform generation overflow");
@@ -1674,7 +1742,8 @@ public:
             if (cache_enabled && (mshr_it->second.any_read || mshr_it->second.any_write)) {
                 insert_result = insert_line(
                     key, mshr_it->second.dirty_mask, current_cycle,
-                    mshr_it->second.waiting.front());
+                    mshr_it->second.waiting.front(),
+                    (shared_cache_state_?shared_cache_state_->fill_at_lru(mshr_it->second.waiting):ef_insertion::pure_completed_read_fill(this,mshr_it->second.waiting)));
             }
             if (p32_observation_ && mshr_it->second.any_write)
                 p32_observation_->filled(key.matrix_id, key.line_addr);
@@ -1686,6 +1755,10 @@ public:
                 mshr_it->second.allocate_decision_sequence;
             const Cycle allocate_cycle = mshr_it->second.allocate_cycle;
             for (const auto& tx : mshr_it->second.waiting) {
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+                observe_source(source_service::Stage::FillWaiter,tx,current_cycle,
+                               0,mshr_it->second.fill_sequence);
+#endif
                 if (model_semantics_.l2_miss_latency ==
                     L2MissLatencySemantics::END_TO_END_FROM_MISS_DECISION) {
                     // completion_queue was drained earlier in this step. Emit
@@ -1824,7 +1897,8 @@ public:
             if (cache_enabled && (mshr_it->second.any_read || mshr_it->second.any_write)) {
                 insert_result = insert_line(
                     key, mshr_it->second.dirty_mask, current_cycle,
-                    mshr_it->second.waiting.front());
+                    mshr_it->second.waiting.front(),
+                    (shared_cache_state_?shared_cache_state_->fill_at_lru(mshr_it->second.waiting):ef_insertion::pure_completed_read_fill(this,mshr_it->second.waiting)));
             }
             if (p32_observation_ && mshr_it->second.any_write)
                 p32_observation_->filled(key.matrix_id, key.line_addr);
@@ -1836,6 +1910,10 @@ public:
                 mshr_it->second.allocate_decision_sequence;
             const Cycle allocate_cycle = mshr_it->second.allocate_cycle;
             for (const auto& tx : mshr_it->second.waiting) {
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+                observe_source(source_service::Stage::FillWaiter,tx,current_cycle,
+                               0,mshr_it->second.fill_sequence);
+#endif
                 if (model_semantics_.l2_miss_latency ==
                     L2MissLatencySemantics::END_TO_END_FROM_MISS_DECISION) {
                     // completion_queue was drained earlier in this step. Emit
@@ -1972,6 +2050,7 @@ private:
     std::deque<std::uint64_t> pending_dram_requests;
     std::size_t pending_dram_capacity_ = 0;
     DirtySectorEvalStatistics dirty_sector_stats_;
+    std::unique_ptr<shared_cache_policy::State> shared_cache_state_;
     std::uint64_t dram_admission_rejections_ = 0, peak_pending_dram_admissions_ = 0;
     std::unique_ptr<DRAMModel> owned_dram_backend;
     L2DramCompletionBackend* dram_backend;
@@ -2026,9 +2105,19 @@ private:
                         L1ReadMissMemo* host_memo) {
         if (forwarded_to_l2 != nullptr) *forwarded_to_l2 = false;
         metadata.begin(p32_observation_ != nullptr);
+        std::uint8_t requested_sector_mask=15;
+        if(l1_cache_.config().sector_validity) {
+            // Pure validation precedes negative-memo counters, classify,
+            // reservations, dirty-store statistics and accepted transactions.
+            if(!(native_key==key))throw std::invalid_argument("sector L1 requires exact native/cache key");
+            const auto coverage=metadata.l1_requested(native_key.matrix_id,native_key.line_addr,line_size_bytes);
+            if(!coverage.known||!coverage.mask||coverage.mask>15)
+                throw std::invalid_argument("sector L1 requires known exact requested byte ranges");
+            requested_sector_mask=coverage.mask;
+        }
         const PerSmL1Access access{
             request_sm_id, key.matrix_id, key.line_addr, is_write, node_id,
-            metadata.bypass_l1()};
+            metadata.bypass_l1(),requested_sector_mask};
         const bool forwarding_blocked=!allow_l2_forward || !can_accept_transaction();
         if(retry_host::enabled && host_memo && forwarding_blocked && l1_cache_.same_negative_read(access,*host_memo)) {
             ++retry_host::counts.negative_memo_hits;
@@ -2060,9 +2149,21 @@ private:
             }
         }
         const auto decision = l1_cache_.access(access);
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+        // The original acceptance gate passed. Copy only a stable source view;
+        // never keep the borrowed metadata/node/subop container.
+        const auto source_evidence=metadata.source_semantics();
+        const auto source_call_id=source_service::call_id(this);
+#endif
         if (p32_observation_) p32_observation_->accepted(observation_mask,
             observation_first,is_write,request_sm_id,outcome,observation_pending);
         if (!decision.forwarded_to_l2) {
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+            source_service::emit(this,{source_service::Stage::Accepted,
+                source_evidence,source_call_id,source_service::unknown_id,
+                source_service::unknown_id,std::max<Cycle>(0,current_cycle),
+                node_id,key.matrix_id,key.line_addr,is_write,false,0});
+#endif
             host_append_completion(
                 {node_id, std::max<Cycle>(0, current_cycle) +
                               l1_cache_.config().hit_latency_cycles, {}});
@@ -2075,6 +2176,9 @@ private:
                        next_accept_sequence++, std::max<Cycle>(0, current_cycle),
                        std::max(0, request_sm_id),
                        std::max(0, request_subpartition_id), 0, 0, decision.read_ticket, observation_mask, dirty_mask};
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+        tx.source_evidence=source_evidence;
+#endif
         if (is_write) {
             l2_queue_write.push_back(tx);
             record_accept(l2_queue_write.back());
@@ -2082,6 +2186,10 @@ private:
             l2_queue_read.push_back(tx);
             record_accept(l2_queue_read.back());
         }
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+        observe_source(source_service::Stage::Accepted,tx,tx.accept_cycle,0,
+                       source_service::unknown_id);
+#endif
         if (forwarded_to_l2 != nullptr) *forwarded_to_l2 = true;
         return true;
     }
@@ -2171,6 +2279,15 @@ private:
                     l2_queue_read.size() + l2_queue_write.size());
     }
 
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+    void observe_source(source_service::Stage stage,const Transaction& tx,
+                        Cycle cycle,std::uint8_t outcome,std::uint64_t fill) {
+        source_service::emit(this,{stage,tx.source_evidence,source_service::call_id(this),
+            tx.accept_sequence,fill,cycle,tx.node_id,tx.key.matrix_id,
+            tx.key.line_addr,tx.is_write,true,outcome});
+    }
+#endif
+
     void emit_decision_event(const Transaction& tx,
                              std::uint64_t decision_sequence,
                              Cycle decision_cycle,
@@ -2195,6 +2312,10 @@ private:
             static_cast<std::int64_t>(tx.native_key.matrix_id),
             tx.native_key.line_addr,
         };
+#if TILEGEN_SOURCE_MEMORY_SEMANTICS
+        observe_source(source_service::Stage::Decision,tx,decision_cycle,
+                       static_cast<std::uint8_t>(outcome),fill_sequence);
+#endif
         append_decision_fingerprint(statistics_.decision_order_fnv1a64, event);
         if (p32_observation_) p32_observation_->decided(tx.observation_mask,tx.is_write,
             tx.sm_id,static_cast<unsigned>(outcome));
@@ -2216,13 +2337,16 @@ private:
         if (cache_enabled) {
             auto cache_it = cache.find(tx.key);
             if (cache_it != cache.end()) {
-                touch_lru(tx.key);
+                if(shared_cache_state_&&shared_cache_state_->hit_to_lru(tx))
+                    lru_list.touch_lru(tx.key.line_addr,cache_it->second.lru_it);
+                else touch_lru(tx.key);
                 if (tx.is_write) {
                     if (p32_observation_ && !cache_it->second.dirty)
                         p32_observation_->created(tx.key.matrix_id,tx.key.line_addr,false);
                     if constexpr (kTilegenDirtySectorMode != 0)
                         dirty_sector_stats_.dirty_sector_creations+=sector_popcount(
                             std::uint8_t(tx.dirty_mask & ~cache_it->second.dirty));
+                    decode_writer::store(this,tx.key.matrix_id,tx.key.line_addr,cache_it->second.dirty,tx.dirty_mask);
                     cache_it->second.dirty |= tx.dirty_mask;
                     statistics_.write_hits += 1;
                 } else {
@@ -2255,6 +2379,7 @@ private:
             entry.dram_request_id = enqueue_dram_request(
                 tx.key, current_cycle, L2DramRequestCause::FILL_READ, tx);
             mshr.emplace(tx.key, std::move(entry));
+            if(tx.is_write)decode_writer::store(this,tx.key.matrix_id,tx.key.line_addr,0,tx.dirty_mask);
             if (p32_observation_ && tx.is_write)
                 p32_observation_->created(tx.key.matrix_id,tx.key.line_addr,true);
             if (tx.is_write) {
@@ -2276,6 +2401,7 @@ private:
             if constexpr (kTilegenDirtySectorMode != 0)
                 dirty_sector_stats_.dirty_sector_creations+=sector_popcount(
                     std::uint8_t(tx.dirty_mask & ~mshr_it->second.dirty_mask));
+            decode_writer::store(this,tx.key.matrix_id,tx.key.line_addr,mshr_it->second.dirty_mask,tx.dirty_mask);
             mshr_it->second.dirty_mask |= tx.dirty_mask;
             statistics_.write_pending_fill_merges += 1;
         } else {
@@ -2406,10 +2532,11 @@ private:
 
     InsertResult insert_line(const CacheLineKey& key, std::uint8_t dirty,
                              Cycle current_cycle,
-                             const Transaction& completion_context) {
+                             const Transaction& completion_context, bool insert_at_lru = false) {
         InsertResult result;
         auto it = cache.find(key);
         if (it != cache.end()) {
+            if(shared_cache_state_)shared_cache_policy::State::add(shared_cache_state_->existing_line_fills);
             it->second.dirty |= dirty;
             touch_lru(key);
             return result;
@@ -2457,6 +2584,7 @@ private:
                         if (p32_observation_) p32_observation_->writeback_issue(
                             victim.matrix_id,victim.line_addr,observation_wb_id);
                     }
+                    decode_writer::evict(this,victim.matrix_id,victim.line_addr,mask);
                     statistics_.dirty_evictions += 1;
                 } else {
                     statistics_.clean_evictions += 1;
@@ -2465,7 +2593,9 @@ private:
             }
         }
 
-        auto position = lru_list.insert_mru(key.line_addr,key);
+        auto position = insert_at_lru ? lru_list.insert_lru(key.line_addr,key)
+                                      : lru_list.insert_mru(key.line_addr,key);
+        if (insert_at_lru) {if(shared_cache_state_)shared_cache_policy::State::add(shared_cache_state_->new_EF_lines_inserted_lru);else ef_insertion::inserted(this);}
         cache.emplace(key, CacheLineState{dirty, position});
         result.inserted = true;
         statistics_.cache_inserts += 1;
@@ -2505,13 +2635,7 @@ private:
         request.bytes = request_bytes ? request_bytes : static_cast<std::uint32_t>(line_size_bytes);
         request.node_id = context.node_id;
         request.sm_id = context.sm_id;
-        // The transaction keeps its SM-local origin. Only the Ada backend
-        // request uses a memory destination, decoded from this request's key
-        // (the victim key for writeback), before service-address remapping.
-        request.l2_subpartition_id = lru_list.geometry().config().mode ==
-                L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE
-            ? static_cast<std::int32_t>(AdaAddressMapping::sub_partition(key.line_addr))
-            : context.l2_subpartition_id;
+        request.l2_subpartition_id = context.l2_subpartition_id;
         request.cause = cause;
         const auto inserted = outstanding_dram_requests.emplace(
             request.request_id, request);

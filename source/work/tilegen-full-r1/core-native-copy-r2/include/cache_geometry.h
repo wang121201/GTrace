@@ -1,5 +1,4 @@
 #pragma once
-#include "ada_address_mapping.h"
 // Shared functional L2 indexing and ordinary group-local LRU only. This does
 // not model sector validity, write allocation, dirty admission, or GPU timing.
 #include <cstddef>
@@ -13,17 +12,13 @@ namespace GTSim {
 
 enum class L2GeometryMode : std::uint8_t {
     FULLY_ASSOCIATIVE,
-    PAPER_ADA_SET_ASSOCIATIVE,
-    ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE
+    PAPER_ADA_SET_ASSOCIATIVE
 };
 
 struct L2GeometryConfig {
     L2GeometryMode mode = L2GeometryMode::FULLY_ASSOCIATIVE;
     static L2GeometryConfig paper_ada_l2_v1() {
         return {L2GeometryMode::PAPER_ADA_SET_ASSOCIATIVE};
-    }
-    static L2GeometryConfig accelsim_rtx4000_ada_v1() {
-        return {L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE};
     }
 };
 
@@ -49,13 +44,6 @@ public:
             groups_ = 20 * 1024;
             group_capacity_ = 16;
             break;
-        case L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE:
-            if (line_bytes != AdaAddressMapping::line_bytes ||
-                cache_bytes != AdaAddressMapping::cache_bytes)
-                throw std::invalid_argument("Accel-Sim RTX4000 Ada L2 requires10x2x1024x16x128 bytes");
-            groups_ = AdaAddressMapping::subpartitions * AdaAddressMapping::sets_per_subpartition;
-            group_capacity_ = AdaAddressMapping::ways;
-            break;
         default:
             throw std::invalid_argument("unknown L2 geometry mode");
         }
@@ -78,13 +66,9 @@ public:
     // byte VA, before any backend service-address mapping. Matrix namespaces
     // remain part of the engine's tag key and are not mixed into this index.
     U partition(U address) const {
-        if (config_.mode == L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE)
-            return AdaAddressMapping::sub_partition(address);
         return config_.mode == L2GeometryMode::FULLY_ASSOCIATIVE ? 0 : (address >> 8) % 20;
     }
     U set(U address) const {
-        if (config_.mode == L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE)
-            return AdaAddressMapping::set(address);
         if (config_.mode == L2GeometryMode::FULLY_ASSOCIATIVE) return 0;
         const U index_address = (((address >> 8) / 20) << 8) | (address & 255);
         const U block = index_address >> 7;
@@ -135,9 +119,23 @@ public:
         ++size_;
         return list.begin();
     }
+    iterator insert_lru(U address, const Key& key) {
+        auto& list = groups_[group(address)];
+        if (list.size() >= capacity_per_group())
+            throw std::logic_error("L2 group full: account for and erase victim before insert");
+        list.push_back(key);
+        ++size_;
+        auto position=list.end();
+        return --position;
+    }
     void touch(U address, iterator position) {
         auto& list = groups_[group(address)];
         list.splice(list.begin(), list, position);
+    }
+    // Same LRU-end splice as the selected shared functional cache.
+    void touch_lru(U address, iterator position) {
+        auto& list = groups_[group(address)];
+        list.splice(list.end(), list, position);
     }
     void erase(U address, iterator position) {
         auto& list = groups_[group(address)];

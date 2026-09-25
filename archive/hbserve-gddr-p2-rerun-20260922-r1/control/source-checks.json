@@ -1,0 +1,50 @@
+{
+  "status": "PASS_SOURCE_AND_SAVED_PREFLIGHT_ONLY",
+  "checks": [
+    "all original plan/result validators byteexact",
+    "native argv, owned cleanup, complete work and final source validation byteexact",
+    "actual budget equals receipt budget; target unchanged",
+    "7140 execution deadline, 60 reserve",
+    "no native run directory created",
+    "actual preflight exit0 with no stderr",
+    "same fixture and plan; no execution",
+    "preflight declares exact host budget",
+    "preflight never creates runtime output",
+    "wrong host manifest SHA rejected before launch"
+  ],
+  "elapsed_preflight_seconds": 0.7046418750000001,
+  "admission_pin_count": 1372,
+  "native_executed": false,
+  "compiler_executed": false,
+  "preflight_argv": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/run_full.py",
+    "--admission-sha",
+    "b8eeb7b81e85f6479d044aa1cd22c50ba326e03eb1223f189ef2070174a607ed",
+    "--host-manifest-sha",
+    "b52bd3f0514b1ca50ab69ee3462d0086d17adf891e55fe13f742afae23ba8a3c"
+  ],
+  "pins": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/run_full.py",
+      "bytes": 9334,
+      "sha256": "89747eec0ae0ec22394c88e2854553413b6b32fa07ef2ce27a8232b5ecc7c047"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/contract.py",
+      "bytes": 7884,
+      "sha256": "eece8274e79364039c4e2cb675843d0bf4d602075828d7268f65aecf5212f71f"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/host-budget.json",
+      "bytes": 2380,
+      "sha256": "b52bd3f0514b1ca50ab69ee3462d0086d17adf891e55fe13f742afae23ba8a3c"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/admission.json",
+      "bytes": 420281,
+      "sha256": "b8eeb7b81e85f6479d044aa1cd22c50ba326e03eb1223f189ef2070174a607ed"
+    }
+  ]
+}

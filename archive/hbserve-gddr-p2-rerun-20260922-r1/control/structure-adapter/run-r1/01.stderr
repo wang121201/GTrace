@@ -1,0 +1,19 @@
+In file included from /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/src/gpu.cpp:1:
+In file included from /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/gpu.h:5:
+In file included from /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/sm.h:5:
+In file included from /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/subpartition.h:5:
+In file included from /Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/scheduler.h:9:
+/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h:2178:118: warning: missing field 'source_evidence' initializer [-Wmissing-field-initializers]
+ 2178 |                        std::max(0, request_subpartition_id), 0, 0, decision.read_ticket, observation_mask, dirty_mask};
+      |                                                                                                                      ^
+/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h:2178:118: warning: missing field 'source_evidence' initializer [-Wmissing-field-initializers]
+/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h:1561:16: note: in instantiation of function template specialization 'GTSim::L2Cache::enqueue_pre_l1_metadata<GTSim::LightLineMetadata>' requested here
+ 1561 |         return enqueue_pre_l1_metadata(request.completion_token,
+      |                ^
+/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h:2178:118: warning: missing field 'source_evidence' initializer [-Wmissing-field-initializers]
+ 2178 |                        std::max(0, request_subpartition_id), 0, 0, decision.read_ticket, observation_mask, dirty_mask};
+      |                                                                                                                      ^
+/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h:2089:16: note: in instantiation of function template specialization 'GTSim::L2Cache::enqueue_pre_l1_metadata<GTSim::DagLineMetadata>' requested here
+ 2089 |         return enqueue_pre_l1_metadata(node_id,native_key,key,is_write,current_cycle,
+      |                ^
+3 warnings generated.

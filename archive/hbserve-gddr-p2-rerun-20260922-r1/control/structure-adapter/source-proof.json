@@ -1,0 +1,66 @@
+{
+  "status": "PASS_LITERAL_INVERSE_SOURCE_ONLY",
+  "inverse_byte_exact": true,
+  "original_geometry": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/cache_geometry.h",
+    "bytes": 6591,
+    "sha256": "3f5f4a05b9247df7c12402e6d88e0f226a84ec1cdc1d2db0d772baccfe7b267a"
+  },
+  "candidate_geometry": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/cache_geometry.h",
+    "bytes": 7532,
+    "sha256": "16965780a8e7d8df7f0d61f81a32f751b6fe2abb9a9936ca1b7fdf307be04b18"
+  },
+  "mapping_source": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-17/zhi/work/gtsim-ada-r4-llm-20260922-r1/repo/source/work/tilegen-full-r1/core-native-copy-r2/include/ada_address_mapping.h",
+    "bytes": 3756,
+    "sha256": "1dedfe56368be08dd3ba3bdc13690c11c383a8ebb2e25aa60c1d1f4c433d6068"
+  },
+  "mapping_copy": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/structure-adapter/ada_address_mapping.h",
+    "bytes": 3756,
+    "sha256": "1dedfe56368be08dd3ba3bdc13690c11c383a8ebb2e25aa60c1d1f4c433d6068"
+  },
+  "literal_edits": [
+    [
+      "#include <vector>",
+      "#include <vector>\n#include \"ada_address_mapping.h\""
+    ],
+    [
+      "    PAPER_ADA_SET_ASSOCIATIVE\n",
+      "    PAPER_ADA_SET_ASSOCIATIVE,\n    ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE\n"
+    ],
+    [
+      "    static L2GeometryConfig paper_ada_l2_v1() {",
+      "    static L2GeometryConfig accelsim_rtx4000_ada() {\n        return {L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE};\n    }\n    static L2GeometryConfig paper_ada_l2_v1() {"
+    ],
+    [
+      "        default:\n            throw std::invalid_argument(\"unknown L2 geometry mode\");",
+      "        case L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE:\n            if (line_bytes != AdaAddressMapping::line_bytes || cache_bytes != AdaAddressMapping::cache_bytes)\n                throw std::invalid_argument(\"AccelSim Ada software geometry requires20x1024x16x128 bytes\");\n            groups_ = AdaAddressMapping::subpartitions * AdaAddressMapping::sets_per_subpartition;\n            group_capacity_ = AdaAddressMapping::ways;\n            break;\n        default:\n            throw std::invalid_argument(\"unknown L2 geometry mode\");"
+    ],
+    [
+      "    U partition(U address) const {\n",
+      "    U partition(U address) const {\n        if (config_.mode == L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE)\n            return AdaAddressMapping::sub_partition(address);\n"
+    ],
+    [
+      "    U set(U address) const {\n",
+      "    U set(U address) const {\n        if (config_.mode == L2GeometryMode::ACCELSIM_RTX4000_ADA_SET_ASSOCIATIVE)\n            return AdaAddressMapping::set(address);\n"
+    ]
+  ],
+  "grouped_LRU_byte_exact": true,
+  "core_memory_byte_exact": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-full-r1/core-native-copy-r2/include/memory.h",
+    "bytes": 125314,
+    "sha256": "1933bf4da020ac9a0502d7bea2955c03ff8389bd628f3076ea94e0058ef5d653"
+  },
+  "HBF_backend_byte_exact": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/unified-cache-cosim-r1/shared-l2-latest-adoption-r1/candidate/snapshot/source/work/tilegen-hbf-drain-native-r1/native_backend.h",
+    "bytes": 26188,
+    "sha256": "c38dd92110316b10d701203caf61ec6c7d1fc08334d47ab632365b0256935d27"
+  },
+  "profile_original": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/tilegen-input-contract-r1/llama-p32-history-capture-r1/current-history-execution-r1/prepared-r1/input.json",
+    "bytes": 7734,
+    "sha256": "399ef2fce5288fe01abc10121e636cc6c8a7bcabf7a919dc697c20a169efeb8c"
+  }
+}

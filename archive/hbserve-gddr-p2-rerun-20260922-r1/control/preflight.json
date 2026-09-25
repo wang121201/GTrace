@@ -1,0 +1,53 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "binary": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/run-native-windows-r1/fixture",
+    "bytes": 3099384,
+    "sha256": "93f12882fc6c1a6ae1f99f4e2957343b6d04fc5461f27a162e254e03f69339aa"
+  },
+  "plan": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-r1/plan.json",
+    "bytes": 2429536,
+    "sha256": "4c34da34eae1e1ed90d7e22fd9836ec12f68766863e103913ef666f5fb49a3cf"
+  },
+  "counts": {
+    "native_kernel": 1138,
+    "memory_api_submission": 29,
+    "epoch_begin": 3,
+    "epoch_end": 3
+  },
+  "target_seconds": 3600,
+  "hard_cleanup_budget_seconds": 7200,
+  "execution_deadline_seconds": 7140,
+  "host_budget_override": {
+    "manifest": {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/host-budget.json",
+      "bytes": 2380,
+      "sha256": "b52bd3f0514b1ca50ab69ee3462d0086d17adf891e55fe13f742afae23ba8a3c"
+    },
+    "effective_host_budget": {
+      "target_seconds": 3600,
+      "max_seconds": 7200,
+      "execution_deadline_seconds": 7140,
+      "cleanup_reserve_seconds": 60
+    },
+    "original_budget": {
+      "target_seconds": 3600,
+      "max_seconds": 5400,
+      "execution_deadline_seconds": 5340,
+      "cleanup_reserve_seconds": 60
+    },
+    "controller_pins": [
+      {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/run_full.py",
+        "bytes": 9334,
+        "sha256": "89747eec0ae0ec22394c88e2854553413b6b32fa07ef2ce27a8232b5ecc7c047"
+      },
+      {
+        "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/contract.py",
+        "bytes": 7884,
+        "sha256": "eece8274e79364039c4e2cb675843d0bf4d602075828d7268f65aecf5212f71f"
+      }
+    ]
+  }
+}

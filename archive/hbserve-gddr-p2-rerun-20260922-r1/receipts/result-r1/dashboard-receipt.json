@@ -1,0 +1,64 @@
+{
+  "schema": "CLOSED_GDDR_P2_DASHBOARD_RENDER_V1",
+  "status": "PASS_RENDERED_FROM_VALIDATED_COMPLETE_DATA",
+  "source_data": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/outputs/ada-gddr-p2-rerun-r1/result-r1/data.json",
+    "bytes": 594481,
+    "sha256": "58eabb56d9f20c9bf6f49589ccaa209ac4468d326ec66fb0618f76b2a6031e19"
+  },
+  "source_comparison_receipt": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/outputs/ada-gddr-p2-rerun-r1/result-r1/receipt.json",
+    "bytes": 423093,
+    "sha256": "a08c54f06e9cc8766519186f13f25811dfc0da34d571c4fa4929ace05e821534"
+  },
+  "source_generator": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/work/ada-cosim-alignment-20260922-r1/gddr-full-p2-rerun-r1/build_dashboard.py",
+    "bytes": 8590,
+    "sha256": "f1a2c03cced40d467d689c990a199080b044ca1e8a7562586a2479a5ab11a13a"
+  },
+  "html": {
+    "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/outputs/ada-gddr-p2-rerun-r1/result-r1/dashboard.html",
+    "bytes": 6178,
+    "sha256": "03cfd1dff28de4fe62124e1cfd9484678b43795b62cc292209d8861c726c3731"
+  },
+  "original_four_artifacts_unchanged": [
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/outputs/ada-gddr-p2-rerun-r1/result-r1/data.json",
+      "bytes": 594481,
+      "sha256": "58eabb56d9f20c9bf6f49589ccaa209ac4468d326ec66fb0618f76b2a6031e19"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/outputs/ada-gddr-p2-rerun-r1/result-r1/report.md",
+      "bytes": 1770,
+      "sha256": "d0430d45e69b21567eb424fc2558184bcbbf1515fefb073299134a8dfa038167"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/outputs/ada-gddr-p2-rerun-r1/result-r1/index.html",
+      "bytes": 2094,
+      "sha256": "e8132e2fcc6f6d4a5c7c85bc97a8f334265a39c5f33861bcce46a878bc961df3"
+    },
+    {
+      "path": "/Users/wgs/Documents/Codex/2026-09-14/hbserve-memgen-gtsim-alignment/outputs/ada-gddr-p2-rerun-r1/result-r1/receipt.json",
+      "bytes": 423093,
+      "sha256": "a08c54f06e9cc8766519186f13f25811dfc0da34d571c4fa4929ace05e821534"
+    }
+  ],
+  "scope": {
+    "case": "Llama3-8B B1/P32/D2 max1280",
+    "complete_measured": true,
+    "complete_process_history": false,
+    "kernels": 1138,
+    "APIs": 29,
+    "layers": 32,
+    "initialization_and_warmup_simulated": false,
+    "cold_empty_entry": true,
+    "no_end_dirty_flush": true,
+    "core_MHz": 2175,
+    "hardware_per_layer_available": false
+  },
+  "owned_elapsed_minutes": 71.40509265069849,
+  "one_hour_target_met": false,
+  "external_complete_preparation_seconds": null,
+  "no_new_simulation": true,
+  "no_CPU_speed_claim": true
+}
