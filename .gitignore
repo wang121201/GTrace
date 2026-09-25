@@ -21,3 +21,9 @@ validation/dirty32-review/
 validation/dirty32-review-r2/
 capture/native-arguments-r1/argument-plan.json
 capture/native-arguments-r1/argument_plan.h
+
+# Compiler dependency files. Each build receipt carries dependency-proof.json,
+# so the raw .d files are derived duplicates and must not be re-committed.
+*.d
+# macOS
+.DS_Store
