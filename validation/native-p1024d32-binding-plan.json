@@ -1216,7 +1216,7 @@
     "gpu_or_ssh_used": false,
     "new_simulation_or_test_run": false,
     "generated_files": [
-      "docs/native-p1024d32-binding-plan.md",
+      "docs/native-p1024d32.md",
       "validation/native-p1024d32-binding-plan.json"
     ]
   },

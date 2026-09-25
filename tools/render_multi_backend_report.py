@@ -610,8 +610,8 @@ def argument_preparation_section():
         link(REPO / 'native_transfer/legacy-regression.json', '旧真实参数 646 calls 回归') + ' · ' +
         link(REPO / 'validation/gemv-typed-binding.json', 'GEMV 地址对照') + ' · ' +
         link(REPO / 'validation/silu-typed-binding.json', 'SiLU 地址对照') + ' · ' +
-        link(REPO / 'docs/native-p1024d32-implementation-status.md', '当前实现状态与剩余工作') + ' · ' +
-        link(REPO / 'docs/native-p1024d32-binding-plan.md', '各类地址绑定适配边界') + '</p>',
+        link(REPO / 'docs/native-p1024d32.md', '当前实现状态与剩余工作') + ' · ' +
+        link(REPO / 'docs/native-p1024d32.md', '各类地址绑定适配边界') + '</p>',
     ])
 
 
@@ -663,7 +663,7 @@ def discovery_section(capture, ncu, observer):
     parts.append(theoretical_read_section(capture,ncu))
     parts.append(observer_section(observer))
     parts.append(argument_preparation_section())
-    parts.append('<h3>新 native 模型仍未准入</h3><p>新 Decode attention grid 为 [9,8,1]，旧源为 [1,8,1]；新 CUTLASS / Ampere GEMM 与 PersistentVariableLengthMergeStates 首先由 profiler symbol 文本比较发现。后续静态 census 提供 decoded code / ABI layout 身份，具体与旧工作流差异见独立审计；静态身份也不能证明动态访问可套入旧绑定。完整 8B P1024D32 simulation 仍需要新 shape 的 raw arguments、完整 native witness、独立 heldout、bindings 及 phase 支持。</p><p>容量也尚待证明：trace 单文件硬上限 64 GiB；HBF 多离散 range 的 sparse seed 上限为 1,048,576 页（4 GiB payload），新工作负载实际 trace 规模尚未测得。不能只调大命令参数就宣称整模可运行。</p><p>'+link(REPO/'docs/native-p1024d32-admission.md','原生 P1024D32 准入审计')+' · '+link(REPO/'validation/native-p1024d32-admission.json','53 项证据 SHA 与具体缺口')+'。这份早期审计的 metadata weight_content_hashes_complete=false 对应内层 manifest；外层 discovery controller 另行记录了四个权重 shard 的内容 SHA。静态 census 后续补齐的身份以上方独立审计为准，动态访存 / 计算模型资格仍未建立。</p>')
+    parts.append('<h3>新 native 模型仍未准入</h3><p>新 Decode attention grid 为 [9,8,1]，旧源为 [1,8,1]；新 CUTLASS / Ampere GEMM 与 PersistentVariableLengthMergeStates 首先由 profiler symbol 文本比较发现。后续静态 census 提供 decoded code / ABI layout 身份，具体与旧工作流差异见独立审计；静态身份也不能证明动态访问可套入旧绑定。完整 8B P1024D32 simulation 仍需要新 shape 的 raw arguments、完整 native witness、独立 heldout、bindings 及 phase 支持。</p><p>容量也尚待证明：trace 单文件硬上限 64 GiB；HBF 多离散 range 的 sparse seed 上限为 1,048,576 页（4 GiB payload），新工作负载实际 trace 规模尚未测得。不能只调大命令参数就宣称整模可运行。</p><p>'+link(REPO/'docs/native-p1024d32.md','原生 P1024D32 准入审计')+' · '+link(REPO/'validation/native-p1024d32-admission.json','53 项证据 SHA 与具体缺口')+'。这份早期审计的 metadata weight_content_hashes_complete=false 对应内层 manifest；外层 discovery controller 另行记录了四个权重 shard 的内容 SHA。静态 census 后续补齐的身份以上方独立审计为准，动态访存 / 计算模型资格仍未建立。</p>')
     return '\n'.join(parts)
 
 
@@ -751,7 +751,7 @@ def render(root, output, discovery_root, ncu_root, observer_root):
               f'<p>Read {g["read_bytes"]:,} B；Write {g["write_bytes"]:,} B；records {g["requests"]:,}；trace file {g["trace"]["file_bytes"]:,} B。所有三组 result hash、input hash、config hash、source receipt hash 与 ledger 已在渲染前检查。</p></details>']
     upstream = REPO / 'source/work/hbfsim-latest/upstream/src'
     parts += ['<p>代码证据：'+link(REPO/'source/hbf_replay_backend.h','HBF adapter / EOF drain')+' · '+link(upstream/'host/hbf_controller.cpp','HbfController foreground read（4414–4439）、mapping merge（5990 / 6181）')+' · '+link(upstream/'physical/hbf/hbf_device.cpp','HbfDevice time-aware page cache（99–155）')+' · '+link(REPO/'source/stage_replay.h','stage 调度与时间口径')+'</p>',
-              '<p>'+link(REPO/'validation/render-multi-backend-report.py','本报告 renderer')+' · '+link(REPO/'docs/multi-backend-stage.md','复现说明')+' · '+link(root/'gddr6/source-result.json','原 direct source result')+' · '+link(root/'gddr6/source-run-receipt.json','direct CPU receipt')+'</p>',
+              '<p>'+link(REPO/'tools/render_multi_backend_report.py','本报告 renderer')+' · '+link(REPO/'docs/replay-modes.md','复现说明')+' · '+link(root/'gddr6/source-result.json','原 direct source result')+' · '+link(root/'gddr6/source-run-receipt.json','direct CPU receipt')+'</p>',
               discovery_section(capture, ncu, observer),
               '<p class="foot muted">静态报告由冻结 JSON 生成，图为内嵌 SVG；刷新报告不触发模拟、GPU 采样或参数拟合。单位：GB / MB 十进制，GiB 二进制；运行成本以分钟展示。</p></main></html>']
     output.parent.mkdir(parents=True, exist_ok=True)

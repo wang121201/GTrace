@@ -1,35 +1,47 @@
 # TileGen 原生 trace / HBFSIM 融合分支
 
-当前独立分支新增 **r4 串行读缓存候选**：`ada_r4.py` 使用共享 GTSim L1 回放冻结请求，比较 r2 LRU 与 r4 CLOCK/hash2。它只验证 L2 读入口 sector，r2 默认和旧 direct/cosim 配置保持原样；见 [r4 参数、运行及验证边界](docs/ada-r4-serial.md)。下文保留历史融合分支记录。
+本分支在独立源码树中重建 TileGen 的原生访存路径，并把同一套地址流接入 HBFSIM
+cosimulation、纯访存回放与 Ada 缓存档。三条路径共用地址规则，**过 cache 流量不保证
+逐条相同**。
+
+当前新增 **r4 串行读缓存候选**：`ada_r4.py` 使用共享 GTSim L1 回放冻结请求，比较
+r2 LRU 与 r4 CLOCK/hash2。它只验证 L2 读入口 sector；r2 默认与旧 direct/cosim 配置
+保持原样。见 [r4 参数、运行及验证边界](docs/ada-r4-serial.md)。
 
 分支：`codex/tilegen-trace-cosim-20260918-r1`。B8 合并暂停，本分支固定 B1。
 
-当前缓存结构档为 `TILEGEN_PAPER_ADA_GEOMETRY_R1`：三个入口共用 L1 **32 KiB/SM、64 ways、4 sets、128 B line、store bypass、kernel-flush**；L2 **40 MiB、20 logical slices ×1024 sets ×16 ways、128 B line、32 B dirty**，使用封存 PAPER_ADA 的 quotient/XOR 索引和组内 LRU。完整配置写入每次结果的 `cache_configuration`。这统一结构和生命周期，尚未统一 MemGen 的 sector/known-byte 有效性和 lazy write allocation；TileGen仍为128 B fill/RFO，写回每请求32 B。此档不表示硬件精度已校准。历史报告的64 KiB/全相联结果保持原样。
+当前缓存结构档为 `TILEGEN_PAPER_ADA_GEOMETRY_R1`：三个入口共用 L1 **32 KiB/SM、
+64 ways、4 sets、128 B line、store bypass、kernel-flush**；L2 **40 MiB、20 logical
+slices ×1024 sets ×16 ways、128 B line、32 B dirty**，使用封存 PAPER_ADA 的
+quotient/XOR 索引和组内 LRU。完整配置写入每次结果的 `cache_configuration`。这统一
+结构和生命周期，尚未统一 MemGen 的 sector/known-byte 有效性和 lazy write
+allocation；TileGen 仍为 128 B fill/RFO，写回每请求 32 B。此档**不表示硬件精度已
+校准**。历史报告的 64 KiB/全相联结果保持原样。
 
-以 C 最新原生运行时为唯一源码基线，复用 A 正式版与 C 同源的原生访存规则。
-同一套 Model、Prepared、binding / Builder 提供快速缓存后地址流和 HBFSIM cosimulation。
+以 C 最新原生运行时为唯一源码基线，复用 A 正式版与 C 同源的原生访存规则。同一套
+Model、Prepared、binding / Builder 提供快速缓存后地址流和 HBFSIM cosimulation。
 所有写回请求均为 **32 B**；读填充及 store RFO 仍为 **128 B**。
 
-最新衔接：GEMV、SiLU 的 direct binding 与精确 cosim Builder 已共用 cache 前 `PreparedMemory`，并减少等价 CTA 校验的主机分配。三组配对测试中引擎执行窗口为 **1.08×**，完整子进程 CPU 时间基本持平；不能据此声称端到端明显提速。实现、验收和范围见 [共享前端报告](docs/shared-frontend.md)。
+> 按时间顺序累积的阶段性记录（"最新衔接…""最新增加…"等）已移入
+> [HISTORY.md](HISTORY.md)。它们描述当时状态，不作为当前验收依据。
 
-最新增加：已有 direct trace 可通过独立 `replay.py` 直接回放到 HBFSIM，跳过计算和 GPU stall，保留内存队列/时序。Decode 有界子集的 591,652 条请求回放 CPU **0.022 分钟**；完整生成与回放合计约 **0.440 分钟**，与保留计算依赖的 cosim 口径不同。见 [纯访存回放说明](docs/memory-only-replay.md)。
+## 目录速览
 
-现在可在这条 direct 路径导出 CTA 组计算 profile，再用 `replay.py --mode stage-overlap` 执行阶段级计算/访存重叠。地址流不变，计算成本取原 SourceNode 的静态资源需求，运行时跳过 warp/DAG 调度；窗口、计算尾部、kernel 屏障及近似范围见 [阶段重叠说明](docs/stage-overlap.md)。自动 profile 当前限九类原生 binding，不覆盖完整 1138-call 流程。
+| 目录 | 内容 |
+|---|---|
+| `source/` | 独立源码基线：原生运行时、direct 路径、HBF 后端与封存配置 |
+| `llm/` | LLM 侧 executor、fast-prefill / fast-prefill-sweep 契约与 warmup 工具 |
+| `configs/` | Ada 各档 profile（tuner-v1、r2-adaptive、r2-shared*、r3-fifo-*、r4-serial） |
+| `capture/` | 硬件侧采集包：observer、host argument capture、P1024D32 |
+| `tests/` | CPU 单元测试、端到端脚本与夹具 |
+| `tools/` | 导入器、评估器、报告生成器 |
+| `validation/` | 验收收据（JSON）；判等基准见下表 |
+| `provenance/` | 来源映射、依赖扫描与导入记录 |
+| `native_transfer/` | 模板/回归输入的解码与冻结 |
+| `archive/` | GDDR P2 隔离重跑包（control 脚本 + receipts 结果） |
+| `docs/` | 设计说明，索引见 [docs/README.md](docs/README.md) |
 
-阶段回放现在支持配置独立的 GDDR6、HBM 和原生 HBF controller/NAND 后端，并输出阶段、kernel、CTA 组的读写与带宽。HBF 的请求字节、4 KB 页介质流量、控制器 HBM 流量和最终持久化尾部独立计数；它们不能混为同一个带宽。见 [多后端阶段报告](docs/multi-backend-stage.md)。
-
-新目标为当前 SGLang native 的 **B1 / BF16 / 32 层 / P1024 / D32**，同源硬件采集包见 [采集说明](capture/p1024d32/README.md)。33 阶段输入与自然 CUDA event 已采集；正式 NCU 已完成 3 组 × 6 范围（Full、Prefill、D1、D8、D16、D32），保存原始报告、CSV 和来源校验记录。不同范围来自独立运行，不能用 Full−Prefill 推导 Decode 流量；NCU 时间与自然运行时间分别报告。
-
-输入采集、NCU 测量与新形状 TileGen 地址模型的资格检查是不同步骤；**完整 P1024/D32 TileGen 尚未准入**，新 attention/GEMM/merge kernel 的参数、原生动态证据、地址绑定及阶段/容量适配见 [准入审计](docs/native-p1024d32-admission.md)。状态与正式 NCU 汇总见 [进度记录](validation/native-p1024d32-progress.json)，结果文档见 [阶段后端与新负载报告](/Users/wgs/Documents/Codex/2026-09-17/zhi/outputs/tilegen-stage-backends-20260918/index.html)。
-
-## 独立分支与实现
-
-- 基线提交 `0e21251f126510744d1b319f043e7e6b2dae5e1f`：抽取 22 个翻译单元、171 个实际源码依赖（约 4.19 MB），展开原 VFS overlay。原工作目录未修改，B8 候选仍在另一个仓库。
-- `provenance/source-map.json` 逐文件记录逻辑路径、实际来源、SHA 和 include 改写。上游以封存文件组织，所以这是有来源记录的独立导入及集成提交，没有伪造 Git 合并祖先。
-- `source/direct_native.h`：9 类复用原 native binding，其余 11 类通过原 Builder 按一个 CTA 提取访存并释放，没有新增模型地址公式。
-- `source/direct_cache.h`：复用原 L1、dirty-mask 规则，使用立即完成的功能 L2 LRU。两种模式共用 `source/native_trace.h`。
-- 原生 L2 把连续 dirty run 改为逐个 32 B 请求，有限待准入队列上界改为 `4(B+1)`。后端只增加可选观察器，成功准入后记录一次，重试不重记。
-- 有界子集只构建实际选中 family 的 typed 预验证模型；八帧仍全部解压并验证声明的 SHA。预验证与执行模型分开持有，避免 full-grid 模板被 prefix-CTA 执行错误复用。完整 1138 流程仍包含全部 family，不能把这项子集收益外推给完整流程。
+复跑对账的判等基准：`archive/hbserve-gddr-p2-rerun-20260922-r1/receipts/acceptance-{prefill,decode}-sweep.json`。
 
 ## 运行档
 
@@ -43,6 +55,8 @@
 
 direct 与 cosim 共用地址规则，**过 cache 流量不保证逐条相同**：跳过计算和在途请求会改变跨 warp/CTA 顺序、MSHR 合并及 LRU。需要实际调度顺序的地址流时使用 `cosim --trace`。
 硬件时序尚未校准；原有 estimated-address、依赖资格等限制保留。后端和阶段模型没有使用 NCU 流量或带宽拟合系数；P1024/D32 新采集的执行状态以独立收据为准。
+
+三种 replay 档的差别与共用边界见 [replay 档说明](docs/replay-modes.md)。
 
 ## 构建与使用
 
@@ -68,18 +82,9 @@ python3 run.py --input /absolute/path/workload.input --output build/fast-run --m
 full 导出需显式设置 `--max-trace-bytes 68719476736`（64 GiB 上限）并准备空间。
 超配额会失败并保留 `.partial`，只有读回校验完成才发布正式文件。两种模式都不做最终 dirty flush。
 
-## 初次融合验收
+分档 smoke 测试（从零到完整回放）见 [SMOKE.md](SMOKE.md)。
 
-以下为 `ad8afa3` 集成基线的记录。最新源码的独立原公式检查、CTA 校验负测、20-family trace 精确回归及配对性能结果见 [共享前端报告](docs/shared-frontend.md) 和 `validation/shared-frontend.json`。
-
-- 32 B：15 种 dirty mask、跨行/重复/部分写、6 种容量、step/epoch1/4/8 背压；ASan/UBSan 三模式共 59,321 项检查，每 tick 核验 dirty-sector/byte 守恒。
-- Trace：18,981 项检查；后端开关前后完成序列、周期、读写及物理统计一致，覆盖重试、损坏、截断、配额和文件发布。
-- 9 类 binding 对原 Builder：19,816 条访存指令、542,588 个地址范围，方向、bypass、matrix、subop、lane、地址和宽度精确一致。
-- 20 类 kernel 的实际运行、decode 子集性能和同二进制 trace 开关比较，见 `validation/qualification.json`、`docs/qualification.md`。
-
-上述为代表性来源和有界 CTA 验证，未重跑 1138 个完整网格；不把 direct/cosim 流量相等列作验收条件。格式与地址含义见 `docs/native-trace.md`。
-
-复跑入口（均为 CPU 工作）：
+## 复跑入口
 
 ```sh
 python3 tests/run_unit_tests.py --output build/unit-tests
@@ -92,10 +97,30 @@ python3 tests/run_direct_projection.py --test prepared-memory --build build/shar
 准备脚本复用原封存的 CPU lowering，记录准备时间和输入 SHA，不进行 GPU 采样。
 该准备器沿用上游 Darwin 内存监控，数据准备仍依赖当前本机封存目录。
 
-## 新增：XMU Accel-Sim Ada 配置入口
+## 当前状态与剩余工作
 
-`ada_profile.py` 提供独立的 adaptive L1 / 32 B sector / lazy-write 功能缓存回放；配置来源、运行示例及与 structure-only GTSim 适配器的区别见 [Ada Accel-Sim 配置说明](docs/ada-accelsim-profile.md)。该入口不表示旧 cosim 已完整实现 Accel-Sim 时序，也未完成本配置的 NCU 精度验收。
+新目标为当前 SGLang native 的 **B1 / BF16 / 32 层 / P1024 / D32**，同源硬件采集包见 [采集说明](capture/p1024d32/README.md)。33 阶段输入与自然 CUDA event 已采集；正式 NCU 已完成 3 组 × 6 范围（Full、Prefill、D1、D8、D16、D32），保存原始报告、CSV 和来源校验记录。不同范围来自独立运行，不能用 Full−Prefill 推导 Decode 流量；NCU 时间与自然运行时间分别报告。
 
-### Ada 校准配置 r2 / r3
+输入采集、NCU 测量与新形状 TileGen 地址模型的资格检查是不同步骤；**完整 P1024/D32 TileGen 尚未准入**，新 attention/GEMM/merge kernel 的参数、原生动态证据、地址绑定及阶段/容量适配见 [P1024D32 准入与绑定](docs/native-p1024d32.md)。状态与正式 NCU 汇总见 [进度记录](validation/native-p1024d32-progress.json)，结果文档见 [阶段后端与新负载报告](/Users/wgs/Documents/Codex/2026-09-17/zhi/outputs/tilegen-stage-backends-20260918/index.html)。
 
-当前新增功能入口 `ada_profile.py` 默认使用 `r2-adaptive`，保留 `--profile tuner-v1`；r3 FIFO静态配置仅显式实验选择。详见 [校准配置、实际shared绑定与运行说明](docs/ada-calibrated-profile.md)。原 `run.py` direct/cosim默认未变。
+## 独立分支与实现
+
+- 基线提交 `0e21251f126510744d1b319f043e7e6b2dae5e1f`：抽取 22 个翻译单元、171 个实际源码依赖（约 4.19 MB），展开原 VFS overlay。原工作目录未修改，B8 候选仍在另一个仓库。
+- `provenance/source-map.json` 逐文件记录逻辑路径、实际来源、SHA 和 include 改写。上游以封存文件组织，所以这是有来源记录的独立导入及集成提交，没有伪造 Git 合并祖先。
+- `source/direct_native.h`：9 类复用原 native binding，其余 11 类通过原 Builder 按一个 CTA 提取访存并释放，没有新增模型地址公式。
+- `source/direct_cache.h`：复用原 L1、dirty-mask 规则，使用立即完成的功能 L2 LRU。两种模式共用 `source/native_trace.h`。
+- 原生 L2 把连续 dirty run 改为逐个 32 B 请求，有限待准入队列上界改为 `4(B+1)`。后端只增加可选观察器，成功准入后记录一次，重试不重记。
+- 有界子集只构建实际选中 family 的 typed 预验证模型；八帧仍全部解压并验证声明的 SHA。预验证与执行模型分开持有，避免 full-grid 模板被 prefix-CTA 执行错误复用。完整 1138 流程仍包含全部 family，不能把这项子集收益外推给完整流程。
+
+## XMU Accel-Sim Ada 配置入口
+
+`ada_profile.py` 提供独立的 adaptive L1 / 32 B sector / lazy-write 功能缓存回放；配置来源、运行示例及与 structure-only GTSim 适配器的区别见 [Ada 配置与内部参考时延](docs/ada-calibration.md)。该入口不表示旧 cosim 已完整实现 Accel-Sim 时序，也未完成本配置的 NCU 精度验收。
+
+当前默认 profile 为 `r2-adaptive`，保留 `--profile tuner-v1`；r3 FIFO 静态配置仅显式实验选择。原 `run.py` direct/cosim 默认未变。fine 侧尚未实现的部分见 [Ada fine 时序缺口](docs/ada-fine-timing-gaps.md)。
+
+## 复现状态
+
+GDDR P2 隔离重跑包已归档在 [archive/](archive/hbserve-gddr-p2-rerun-20260922-r1/README.md)，
+其 sweep 数值已在独立机器上重新跑通并与 `acceptance-*.json` 逐格对齐；判定见
+[receipts/README.md](archive/hbserve-gddr-p2-rerun-20260922-r1/receipts/README.md)
+与 [SMOKE.md](SMOKE.md)。
