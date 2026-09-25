@@ -1,0 +1,17 @@
+archive : /home/xmu/nvidiagds/codex-runs/hbserve-memgen-gtsim-alignment/repo/archive/hbserve-gddr-p2-rerun-20260922-r1
+repo    : /home/xmu/nvidiagds/codex-runs/hbserve-memgen-gtsim-alignment/repo
+stages  : integrity, build, run
+
+[OK  ] integrity  compile inputs 224: 224 identical, 0 changed, 0 missing
+[OK  ] integrity  receipts/result-r1/data.json sha256 58eabb56d9f20c9b…
+[OK  ] integrity  receipts/result-r1/dashboard.html sha256 03cfd1dff28de4fe…
+[OK  ] integrity  receipts/result-r1/receipt.json sha256 a08c54f06e9cc876…
+[OK  ] integrity  MANIFEST.tsv 225 rows: 5 verified here, 220 expected outside the branch (source/, inputs/)
+[OK  ] build      layout assembled in /tmp/hbserve-smoke-log/tree [sandbox]; overlays: cache_geometry.h, ada_address_mapping.h, writer_observer.h; patch applied: True
+[OK  ] build      compiled 21 TUs in 16.7s, 0 failed
+[OK  ] build      linked /tmp/hbserve-smoke-log/fixture (6247432 bytes, sha256 5090e74cd7c7a040…)
+[OK  ] run        plan sha256 matches the pin (4c34da34eae1e1ed…)
+[OK  ] run        phase=Measured/Prefill kernels=24 nodes=44/1173 exec=24.8s
+[OK  ] run        first 44 rows identical to the archived result (host timing fields excluded)
+
+--- 11 ok, 0 skipped, 0 failed ---
